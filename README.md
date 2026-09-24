@@ -11,6 +11,9 @@ This repository is the source of truth for the GitHub Pages site. The earlier Ch
 ## Files
 
 - `docs/data.js`: All 50 state summaries, 16 rule definitions, classifications, citations, original-source links, and review status. Start here when reviewing the research.
+- `docs/coverage.js`: Four coverage types, separate hourly-rate / paid-hours buckets, and unverified research records. Existing factory-warranty flags are carried forward with explicit provenance.
+- `docs/labor-coverage-research-prompt.md`: Full research instructions for filling coverage and method gaps.
+- `docs/labor-coverage-template.json`: A 200-record, claim-evidence research template; not loaded as verified data.
 - `docs/app.js`: Search, filtering, comparison, state details and share links.
 - `docs/index.html`: Page structure, methodology and coverage statements.
 - `docs/styles.css`: Presentation and responsive styles.
@@ -30,6 +33,14 @@ The 16-column matrix includes actual technician time, accuracy-limited rate chal
 The date control applies only documented changes, not an exhaustive historical/current-law reconstruction. Shared URLs preserve that date. Pending review notes retain unresolved items for GA, IN, MI, NE, WI, ID and HI.
 
 This is a working public-source reference. It contains no actual approved SOA dealer rates, internal rate master, or paid claims.
+
+## Labor by coverage
+
+The new `?view=labor` view separates factory warranty, manufacturer-backed service contracts (including Added Security), CPO warranties and independent service contracts. Each has distinct hourly-rate, paid-hours and coverage-applicability fields. Counts are clickable filters; shared links preserve coverage, method, search, selected states and the known-changes date.
+
+All 200 dedicated state / coverage applicability reviews remain pending. Factory method counts inherit existing flags; they are not new scope verification. The other three coverage types are unverified in all 50 states. A dash means an unknown count, not zero states with protections. The old six-state combined guide category is shown as “split pending,” never counted as six third-party-guide states. Factory guide, independent guide, retail guide and agreed guide buckets require separate research.
+
+Coverage-specific research can be returned using the prompt and JSON template. Do not move any record into a completed review status until the claim-level evidence supports it. Keep coverage applicability separate from mandatory, elective and fallback treatment for individual methods. Source totals in the banner refer to the original warranty research only.
 
 ## Reviewing with Claude or another assistant
 
