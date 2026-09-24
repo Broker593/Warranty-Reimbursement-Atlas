@@ -1,5 +1,5 @@
 window.REFERENCE = {
-  "date": "September 21, 2026",
+  "date": "September 24, 2026",
   "rules": [
     {
       "id": "retail_parts",
@@ -66,6 +66,14 @@ window.REFERENCE = {
       "example": "Wisconsin. Do not apply a second time multiplier to duplicate the adjustment."
     },
     {
+      "id": "actual_time",
+      "group": "Paid hours",
+      "name": "Documented actual technician time",
+      "short": "Actual technician time",
+      "description": "Warranty labor hours are expressly based on documented actual technician time. A check reflects the displayed rule date; upcoming changes appear in state details. A question mark means this feature has not been classified.",
+      "example": "Rhode Island from October 1, 2026: time punches, supporting records and dealer attestation."
+    },
+    {
       "id": "sample_100_90",
       "group": "Rate submissions",
       "name": "100 repair orders / 90-day sample",
@@ -104,6 +112,22 @@ window.REFERENCE = {
       "short": "Special sample selection",
       "description": "A reviewed procedure has a distinct selection rule: 50 repairs, an all-order fallback, a separate 100-order labor sample, comparison by total cost, or the greater of labor averages.",
       "example": "See California, Florida, Hawaii, Illinois, Maine, Texas and Vermont for the exact requirement."
+    },
+    {
+      "id": "accuracy_only",
+      "group": "Rate submissions",
+      "name": "Accuracy-limited rate challenge",
+      "short": "Accuracy-limited challenge",
+      "description": "The reviewed rate-submission challenge is limited to accuracy or completeness rather than a broader market-reasonableness comparison. Read the state detail for materiality, supplemental-order procedures and deadlines. This does not classify claim audits.",
+      "example": "Maryland: material inaccuracy. Oklahoma: inaccuracy or incompleteness."
+    },
+    {
+      "id": "automatic_rate",
+      "group": "Rate submissions",
+      "name": "Rate effective without express approval",
+      "short": "Automatic rate effect",
+      "description": "A qualifying submitted rate becomes effective, or is deemed approved, if no timely rebuttal occurs. This is a rate-submission rule, not a warranty-claim payment deadline. State-specific conditions and effective dates still apply.",
+      "example": "Maryland: day 31 without timely rebuttal. Oregon: deemed approval after 30 days, followed by another 30 days to effectiveness."
     }
   ],
   "states": [
@@ -133,9 +157,23 @@ window.REFERENCE = {
         "sample_60": false,
         "prior_month": false,
         "lookback_90": false,
-        "special_sample": false
+        "special_sample": false,
+        "actual_time": null,
+        "accuracy_only": null,
+        "automatic_rate": null
       },
-      "original": null
+      "original": {
+        "url": "https://alison.legislature.state.al.us/code-of-alabama?section=8-20-7",
+        "kind": "portal",
+        "note": "ALISON code viewer; navigate to §8-20-7. Link availability does not verify the summary.",
+        "locatedDate": "2026-09-24",
+        "linkStatus": "Link supplied by external review; browser access and exact destination not independently confirmed."
+      },
+      "review": {
+        "status": "reproduction",
+        "date": "2026-09-21",
+        "scope": "Existing payment-method and sample summary. No claim of an exhaustive legal update."
+      }
     },
     {
       "state": "Alaska",
@@ -163,9 +201,23 @@ window.REFERENCE = {
         "sample_60": false,
         "prior_month": false,
         "lookback_90": false,
-        "special_sample": false
+        "special_sample": false,
+        "actual_time": null,
+        "accuracy_only": null,
+        "automatic_rate": null
       },
-      "original": null
+      "original": {
+        "url": "http://www.akleg.gov/basis/statutes.asp#45.25.210",
+        "kind": "portal",
+        "note": "Alaska statutory viewer. The reviewed source remains the 2025 Justia reproduction.",
+        "locatedDate": "2026-09-24",
+        "linkStatus": "Link supplied by external review; browser access and exact destination not independently confirmed."
+      },
+      "review": {
+        "status": "reproduction",
+        "date": "2026-09-21",
+        "scope": "Existing payment-method and sample summary. No claim of an exhaustive legal update."
+      }
     },
     {
       "state": "Arizona",
@@ -193,12 +245,22 @@ window.REFERENCE = {
         "sample_60": false,
         "prior_month": false,
         "lookback_90": false,
-        "special_sample": false
+        "special_sample": false,
+        "actual_time": null,
+        "accuracy_only": null,
+        "automatic_rate": null
       },
       "original": {
         "url": "https://www.azleg.gov/ars/28/04451.htm",
         "kind": "text",
-        "note": "Original statutory text located. Summary comparison against this source remains pending."
+        "note": "Original statutory text located. Summary comparison against this source remains pending.",
+        "linkStatus": "Located in earlier research; not retested in this update.",
+        "locatedDate": "2026-09-21"
+      },
+      "review": {
+        "status": "reproduction",
+        "date": "2026-09-21",
+        "scope": "Existing payment-method and sample summary. No claim of an exhaustive legal update."
       }
     },
     {
@@ -227,12 +289,22 @@ window.REFERENCE = {
         "sample_60": false,
         "prior_month": false,
         "lookback_90": false,
-        "special_sample": false
+        "special_sample": false,
+        "actual_time": null,
+        "accuracy_only": null,
+        "automatic_rate": null
       },
       "original": {
-        "url": "https://labor.arkansas.gov/licensing/motor-vehicle-commission/laws-rules/",
+        "url": "https://www.lexisnexis.com/hottopics/arcode/Default.asp",
         "kind": "portal",
-        "note": "Official commission laws directory. Locate Arkansas Code §§23-112-310(d) and 23-112-313; no direct current section text confirmed."
+        "note": "Arkansas Code public-access route supplied by external review. Navigate to §§23-112-310 and 23-112-313.",
+        "locatedDate": "2026-09-24",
+        "linkStatus": "Link supplied by external review; browser access and exact destination not independently confirmed."
+      },
+      "review": {
+        "status": "reproduction",
+        "date": "2026-09-21",
+        "scope": "Existing payment-method and sample summary. No claim of an exhaustive legal update."
       }
     },
     {
@@ -261,12 +333,22 @@ window.REFERENCE = {
         "sample_60": false,
         "prior_month": false,
         "lookback_90": false,
-        "special_sample": true
+        "special_sample": true,
+        "actual_time": null,
+        "accuracy_only": null,
+        "automatic_rate": null
       },
       "original": {
         "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?sectionNum=3065.2.&lawCode=VEH",
         "kind": "text",
-        "note": "Official §3065.2 (retail-rate submissions). Read alongside §3065 for the general warranty framework. Summary comparison remains pending."
+        "note": "Official §3065.2 (retail-rate submissions). Read alongside §3065 for the general warranty framework. Summary comparison remains pending.",
+        "linkStatus": "Located in earlier research; not retested in this update.",
+        "locatedDate": "2026-09-21"
+      },
+      "review": {
+        "status": "reproduction",
+        "date": "2026-09-21",
+        "scope": "Existing payment-method and sample summary. No claim of an exhaustive legal update."
       }
     },
     {
@@ -295,15 +377,29 @@ window.REFERENCE = {
         "sample_60": false,
         "prior_month": false,
         "lookback_90": true,
-        "special_sample": false
+        "special_sample": false,
+        "actual_time": null,
+        "accuracy_only": null,
+        "automatic_rate": null
       },
-      "original": null
+      "original": {
+        "url": "https://leg.colorado.gov/laws/colorado-revised-statutes",
+        "kind": "portal",
+        "note": "Official code access directory. Locate §44-20-141.5 and check the applicable edition and later amendments. A 2024 PDF alone does not establish 2026 currency.",
+        "locatedDate": "2026-09-24",
+        "linkStatus": "Official access directory retrieved 2026-09-24; links to the LexisNexis code. Section text not retrieved."
+      },
+      "review": {
+        "status": "reproduction",
+        "date": "2026-09-21",
+        "scope": "Existing payment-method and sample summary. No claim of an exhaustive legal update."
+      }
     },
     {
       "state": "Connecticut",
       "parts": "Dealer cost plus the dealer’s qualifying retail parts markup; no fixed statewide percentage.",
       "labor": "Prior-month qualifying labor sales divided by billed labor hours.",
-      "time": "Reasonable and adequate diagnostic / repair time; no statewide numeric multiplier identified in reviewed text.",
+      "time": "No separate standard for the number of paid labor hours identified in the reviewed section. Retail-rate or fair-compensation language alone is not an express time-allowance requirement.",
       "sample": "Parts: fewer of 100 sequential ROs or 60 days, within 180 days. Labor: all qualifying customer-pay ROs in the preceding month.",
       "statute": "Conn. Gen. Stat. § 42-133s",
       "note": "Parts and labor use different sampling periods; comparable-dealer reasonableness applies.",
@@ -325,9 +421,36 @@ window.REFERENCE = {
         "sample_60": true,
         "prior_month": true,
         "lookback_90": false,
-        "special_sample": false
+        "special_sample": false,
+        "actual_time": null,
+        "accuracy_only": false,
+        "automatic_rate": true
       },
-      "original": null
+      "original": {
+        "url": "https://www.cga.ct.gov/current/pub/chap_739.htm#sec_42-133s",
+        "kind": "text",
+        "note": "§42-133s. Parts and labor have different samples; see the 2026 supplement for any applicable amendments.",
+        "locatedDate": "2026-09-24",
+        "linkStatus": "Relevant text retrieved on 2026-09-24."
+      },
+      "review": {
+        "status": "partial",
+        "date": "2026-09-24",
+        "scope": "Checked the cited warranty section for the time-allowance correction. Broader summary verification remains incomplete. Also checked the rate-submission challenge and effectiveness provisions."
+      },
+      "checks": [
+        {
+          "date": "2026-09-24",
+          "scope": "Checked the cited warranty section for the time-allowance correction. Broader summary verification remains incomplete.",
+          "url": "https://www.cga.ct.gov/current/pub/chap_739.htm#sec_42-133s",
+          "sourceType": "Official text"
+        }
+      ],
+      "process": {
+        "challenge": "Reasonableness against same-line dealers in the vicinity; rebut within 30 days.",
+        "rateApproval": "Declared retail parts and labor rates take effect 30 days after declaration, subject to audit and timely rebuttal.",
+        "claimApproval": "Claim-approval mechanics not classified in this update."
+      }
     },
     {
       "state": "Delaware",
@@ -355,12 +478,22 @@ window.REFERENCE = {
         "sample_60": false,
         "prior_month": false,
         "lookback_90": false,
-        "special_sample": false
+        "special_sample": false,
+        "actual_time": null,
+        "accuracy_only": null,
+        "automatic_rate": null
       },
       "original": {
         "url": "https://delcode.delaware.gov/title6/c049/index.html#4903",
         "kind": "text",
-        "note": "Original statutory text located. Summary comparison against this source remains pending."
+        "note": "Original statutory text located. Summary comparison against this source remains pending.",
+        "linkStatus": "Located in earlier research; not retested in this update.",
+        "locatedDate": "2026-09-21"
+      },
+      "review": {
+        "status": "reproduction",
+        "date": "2026-09-21",
+        "scope": "Existing payment-method and sample summary. No claim of an exhaustive legal update."
       }
     },
     {
@@ -389,12 +522,22 @@ window.REFERENCE = {
         "sample_60": false,
         "prior_month": true,
         "lookback_90": false,
-        "special_sample": true
+        "special_sample": true,
+        "actual_time": null,
+        "accuracy_only": null,
+        "automatic_rate": null
       },
       "original": {
         "url": "https://www.leg.state.fl.us/statutes/index.cfm?App_mode=Display_Statute&URL=0300-0399/0320/Sections/0320.696.html",
         "kind": "text",
-        "note": "Original source used for this summary."
+        "note": "Original source used for this summary.",
+        "linkStatus": "Located in earlier research; not retested in this update.",
+        "locatedDate": "2026-09-21"
+      },
+      "review": {
+        "status": "official",
+        "date": "2026-09-21",
+        "scope": "Existing payment-method and sample summary. No claim of an exhaustive legal update."
       }
     },
     {
@@ -423,15 +566,30 @@ window.REFERENCE = {
         "sample_60": false,
         "prior_month": false,
         "lookback_90": false,
-        "special_sample": false
+        "special_sample": false,
+        "actual_time": null,
+        "accuracy_only": null,
+        "automatic_rate": null
       },
-      "original": null
+      "original": {
+        "url": "https://advance.lexis.com/container?config=00JAAzZDgzNzU2ZC05MDA0LTRmMDItYjkzMS0xOGY3MjE3OWNlODIKAFBvZENhdGFsb2fcIFfJnJ2IC8XZi1AYM4Ne",
+        "kind": "portal",
+        "note": "Georgia General Assembly Public Access, hosted by LexisNexis. Navigate to Title 10, Chapter 1, §10-1-641. This is an access portal, not a direct section link.",
+        "locatedDate": "2026-09-24",
+        "linkStatus": "Public-access container located in search; section content and interactive access not verified."
+      },
+      "review": {
+        "status": "reproduction",
+        "date": "2026-09-21",
+        "scope": "Existing payment-method and sample summary. No claim of an exhaustive legal update."
+      },
+      "pendingNote": "External review reports 2025 SB81 compensation for OTA/remote-update assistance. Verify the enacted text and current §10-1-641 before relying on this addition; a direct section link remains pending."
     },
     {
       "state": "Hawaii",
       "parts": "At least dealer retail markup, if reasonable against same-line dealers in Hawaii.",
       "labor": "Equal to dealer’s retail hourly rate; statute prohibits both a lower and a higher hourly rate.",
-      "time": "Fair and adequate labor compensation; no numeric time multiplier in the reviewed sections.",
+      "time": "No separate standard for the number of paid labor hours identified in the reviewed section. Retail-rate or fair-compensation language alone is not an express time-allowance requirement.",
       "sample": "Parts: 100 qualifying customer-paid ROs. If unavailable within the preceding two months, submit all types of ROs for that two-month period.",
       "statute": "HRS §§ 437-56, 437-28(a)(21)(G)",
       "note": "Official parts and labor sections checked. Engine/transmission assemblies are excluded from the parts rate sample.",
@@ -453,17 +611,36 @@ window.REFERENCE = {
         "sample_60": false,
         "prior_month": false,
         "lookback_90": false,
-        "special_sample": true
+        "special_sample": true,
+        "actual_time": null,
+        "accuracy_only": null,
+        "automatic_rate": null
       },
       "original": {
         "url": "https://data.capitol.hawaii.gov/hrscurrent/Vol10_Ch0436-0474/HRS0437/HRS_0437-0056.htm",
         "kind": "text",
-        "note": "Original source used for this summary."
-      }
+        "note": "Original source used for this summary.",
+        "linkStatus": "Relevant official text retrieved on 2026-09-24. See the review record for which provisions were compared.",
+        "locatedDate": "2026-09-21"
+      },
+      "review": {
+        "status": "official",
+        "date": "2026-09-24",
+        "scope": "Checked §437-56 and §437-28(a)(21) for time-allowance wording. Keep hourly-rate compensation distinct from the number of paid hours."
+      },
+      "checks": [
+        {
+          "date": "2026-09-24",
+          "scope": "Checked §437-56 and §437-28(a)(21) for time-allowance wording. Keep hourly-rate compensation distinct from the number of paid hours.",
+          "url": "https://data.capitol.hawaii.gov/hrscurrent/Vol10_Ch0436-0474/HRS0437/HRS_0437-0056.htm",
+          "sourceType": "Official text"
+        }
+      ],
+      "pendingNote": "External review flags potentially different claim deadlines in §437-56(d) and §437-28(a)(21)(G). Applicability needs reconciliation before classifying a single claim-payment deadline."
     },
     {
       "state": "Idaho",
-      "parts": "Dealer cost plus the dealer’s qualifying retail parts markup; no fixed statewide percentage.",
+      "parts": "Retail-rate benchmark, subject to statutory reasonableness. An express dealer-cost-plus-markup formula has not been independently confirmed.",
       "labor": "Dealer’s qualifying retail labor rate; no fixed statewide $/hour.",
       "time": "Reasonable and adequate diagnostic / repair time; no statewide numeric multiplier identified in reviewed text.",
       "sample": "Fewer of 100 qualifying sequential customer-pay ROs or 90 consecutive days; repairs within 180 days.",
@@ -487,13 +664,24 @@ window.REFERENCE = {
         "sample_60": false,
         "prior_month": false,
         "lookback_90": false,
-        "special_sample": false
+        "special_sample": false,
+        "actual_time": null,
+        "accuracy_only": null,
+        "automatic_rate": null
       },
       "original": {
         "url": "https://legislature.idaho.gov/statutesrules/idstat/Title49/T49CH16/SECT49-1626/",
         "kind": "text",
-        "note": "Original statutory text located. Summary comparison against this source remains pending."
-      }
+        "note": "Original statutory text located. Summary comparison against this source remains pending.",
+        "linkStatus": "Located in earlier research; not retested in this update.",
+        "locatedDate": "2026-09-21"
+      },
+      "review": {
+        "status": "reproduction",
+        "date": "2026-09-21",
+        "scope": "Existing payment-method and sample summary. No claim of an exhaustive legal update."
+      },
+      "pendingNote": "External review questions whether the statute expressly supports a cost-plus formula. The text below has been softened to avoid an unsupported formula."
     },
     {
       "state": "Illinois",
@@ -521,9 +709,23 @@ window.REFERENCE = {
         "sample_60": false,
         "prior_month": false,
         "lookback_90": false,
-        "special_sample": true
+        "special_sample": true,
+        "actual_time": null,
+        "accuracy_only": null,
+        "automatic_rate": null
       },
-      "original": null
+      "original": {
+        "url": "https://www.ilga.gov/legislation/ilcs/documents/081507100K6.htm",
+        "kind": "text",
+        "note": "Direct section page for 815 ILCS 710/6, supplied by external review. Existing official-text review status retained.",
+        "locatedDate": "2026-09-24",
+        "linkStatus": "Retrieval attempt 2026-09-24 failed with a gateway error; browser availability remains unconfirmed."
+      },
+      "review": {
+        "status": "reproduction",
+        "date": "2026-09-21",
+        "scope": "Existing payment-method and sample summary. No claim of an exhaustive legal update."
+      }
     },
     {
       "state": "Indiana",
@@ -551,9 +753,24 @@ window.REFERENCE = {
         "sample_60": false,
         "prior_month": false,
         "lookback_90": false,
-        "special_sample": false
+        "special_sample": false,
+        "actual_time": null,
+        "accuracy_only": null,
+        "automatic_rate": null
       },
-      "original": null
+      "original": {
+        "url": "https://iga.in.gov/laws/2025/ic/titles/9",
+        "kind": "portal",
+        "note": "Official 2025 Title 9 viewer. Navigate to Article 32, Chapter 13. The review-supplied PDF URL returned an application shell; exact current section text remains unverified.",
+        "locatedDate": "2026-09-24",
+        "linkStatus": "Checked 2026-09-24: interactive viewer shell retrieved; section text not retrieved."
+      },
+      "review": {
+        "status": "reproduction",
+        "date": "2026-09-21",
+        "scope": "Existing payment-method and sample summary. No claim of an exhaustive legal update."
+      },
+      "pendingNote": "External review reports P.L.92-2025 removed a pre-complaint mediation-demand requirement. Amendment comparison remains pending."
     },
     {
       "state": "Iowa",
@@ -581,12 +798,22 @@ window.REFERENCE = {
         "sample_60": false,
         "prior_month": false,
         "lookback_90": false,
-        "special_sample": false
+        "special_sample": false,
+        "actual_time": null,
+        "accuracy_only": null,
+        "automatic_rate": null
       },
       "original": {
         "url": "https://www.legis.iowa.gov/docs/code/322A.5.pdf",
         "kind": "text",
-        "note": "Original statutory text located. Summary comparison against this source remains pending."
+        "note": "Original statutory text located. Summary comparison against this source remains pending.",
+        "linkStatus": "Located in earlier research; not retested in this update.",
+        "locatedDate": "2026-09-21"
+      },
+      "review": {
+        "status": "reproduction",
+        "date": "2026-09-21",
+        "scope": "Existing payment-method and sample summary. No claim of an exhaustive legal update."
       }
     },
     {
@@ -615,12 +842,22 @@ window.REFERENCE = {
         "sample_60": false,
         "prior_month": false,
         "lookback_90": false,
-        "special_sample": false
+        "special_sample": false,
+        "actual_time": null,
+        "accuracy_only": null,
+        "automatic_rate": null
       },
       "original": {
-        "url": "https://www.ksrevisor.gov/statutes/chapters/ch08/008_024_0015.html",
+        "url": "https://www.kslegislature.gov/b2025_26/laws/008_000_0000_chapter/008_024_0000_article/008_024_0015_section/008_024_0015_k/",
         "kind": "text",
-        "note": "Original statutory text located. Summary comparison against this source remains pending."
+        "note": "Official §8-2415 text. Recheck the biennium-specific URL in 2027.",
+        "locatedDate": "2026-09-24",
+        "linkStatus": "Relevant text retrieved on 2026-09-24."
+      },
+      "review": {
+        "status": "reproduction",
+        "date": "2026-09-21",
+        "scope": "Existing payment-method and sample summary. No claim of an exhaustive legal update."
       }
     },
     {
@@ -630,7 +867,7 @@ window.REFERENCE = {
       "time": "General vehicle rule requires reasonable diagnostic, repair and administrative compensation.",
       "sample": "No standard 100-RO / 90-day rate-submission formula identified in the reviewed general-vehicle provision.",
       "statute": "KRS § 190.046",
-      "note": "Do not label this simply 30% markup. July 15, 2026 Class 7+ commercial-vehicle rules are separate and should not be applied to Subaru passenger vehicles.",
+      "note": "Do not label the statutory gross-profit wording simply 30% markup. Class 7+ commercial-vehicle provisions began with 2024 HB592 (effective July 15, 2024) and were expanded by 2026 chapter 83 (effective July 15, 2026). Those provisions are separate from Subaru passenger-vehicle rules.",
       "basis": "Secondary statutory reproduction (Armatus); current official code not independently checked.",
       "sourceDate": "June 25, 2026",
       "url": "https://www.dealeruplift.com/state-retail-warranty-reimbursement-laws/kentucky-warranty-reimbursement-law/",
@@ -649,13 +886,31 @@ window.REFERENCE = {
         "sample_60": false,
         "prior_month": false,
         "lookback_90": false,
-        "special_sample": false
+        "special_sample": false,
+        "actual_time": null,
+        "accuracy_only": null,
+        "automatic_rate": null
       },
       "original": {
         "url": "https://apps.legislature.ky.gov/law/statutes/statute.aspx?id=57533",
         "kind": "text",
-        "note": "Official section PDF; includes amendment effective July 15, 2026. Summary comparison remains pending."
-      }
+        "note": "Official section PDF; includes amendment effective July 15, 2026. Summary comparison remains pending.",
+        "linkStatus": "Relevant official text retrieved on 2026-09-24. See the review record for which provisions were compared.",
+        "locatedDate": "2026-09-21"
+      },
+      "review": {
+        "status": "partial",
+        "date": "2026-09-24",
+        "scope": "Checked the current section amendment history and the official 2024 HB592 enacted summary for the origin of Class 7+ provisions."
+      },
+      "checks": [
+        {
+          "date": "2026-09-24",
+          "scope": "Checked the current section amendment history and the official 2024 HB592 enacted summary for the origin of Class 7+ provisions.",
+          "url": "https://apps.legislature.ky.gov/record/24rs/hb592.html",
+          "sourceType": "Official text"
+        }
+      ]
     },
     {
       "state": "Louisiana",
@@ -683,17 +938,27 @@ window.REFERENCE = {
         "sample_60": false,
         "prior_month": false,
         "lookback_90": false,
-        "special_sample": false
+        "special_sample": false,
+        "actual_time": null,
+        "accuracy_only": null,
+        "automatic_rate": null
       },
       "original": {
         "url": "https://legis.la.gov/legis/Law.aspx?d=321503",
         "kind": "text",
-        "note": "Original statutory text located. Summary comparison against this source remains pending."
+        "note": "Original statutory text located. Summary comparison against this source remains pending.",
+        "linkStatus": "Located in earlier research; not retested in this update.",
+        "locatedDate": "2026-09-21"
+      },
+      "review": {
+        "status": "reproduction",
+        "date": "2026-09-21",
+        "scope": "Existing payment-method and sample summary. No claim of an exhaustive legal update."
       }
     },
     {
       "state": "Maine",
-      "parts": "Customary retail parts rate for vehicles under 10,000 lb GVWR; dealer-specific markup.",
+      "parts": "Customary retail parts rate for vehicles not over 10,000 lb GVWR; dealer-specific markup.",
       "labor": "Customary retail labor rate, conspicuously posted.",
       "time": "Retail reimbursement framework; no numeric time multiplier identified in reviewed section.",
       "sample": "Parts: 100 sequential ROs or 60 days, whichever is less in total cost; repairs within 180 days.",
@@ -717,22 +982,40 @@ window.REFERENCE = {
         "sample_60": true,
         "prior_month": false,
         "lookback_90": false,
-        "special_sample": true
+        "special_sample": true,
+        "actual_time": null,
+        "accuracy_only": null,
+        "automatic_rate": null
       },
       "original": {
         "url": "https://legislature.maine.gov/statutes/10/title10sec1176.html",
         "kind": "text",
-        "note": "Original source used for this summary."
-      }
+        "note": "Original source used for this summary.",
+        "linkStatus": "Relevant official text retrieved on 2026-09-24. See the review record for which provisions were compared.",
+        "locatedDate": "2026-09-21"
+      },
+      "review": {
+        "status": "official",
+        "date": "2026-09-24",
+        "scope": "Confirmed §1176 vehicle-weight boundary: the separate rule is for vehicles over 10,000 lb GVWR, so exactly 10,000 is included in the ordinary retail-parts rule."
+      },
+      "checks": [
+        {
+          "date": "2026-09-24",
+          "scope": "Confirmed §1176 vehicle-weight boundary: the separate rule is for vehicles over 10,000 lb GVWR, so exactly 10,000 is included in the ordinary retail-parts rule.",
+          "url": "https://legislature.maine.gov/statutes/10/title10sec1176.html",
+          "sourceType": "Official text"
+        }
+      ]
     },
     {
       "state": "Maryland",
       "parts": "Dealer cost plus the dealer’s qualifying retail parts markup; no fixed statewide percentage.",
       "labor": "At least current retail labor rate for like nonwarranty repairs.",
-      "time": "Reasonable compensation includes diagnostic and administrative work.",
+      "time": "Reasonable and adequate time allowances for labor, including diagnostic labor and associated administrative requirements.",
       "sample": "Fewer of 100 qualifying sequential customer-pay ROs or 90 consecutive days; repairs within 180 days.",
-      "statute": "Md. Code, Transp. § 15-212.1",
-      "note": "Challenges to a retail submission are limited to material inaccuracy; validation may change rates prospectively.",
+      "statute": "Md. Code, Transp. §15-212(c)",
+      "note": "Rate-submission disputes are limited to material inaccuracy. Annual rate verification may change compensation prospectively. Warranty chargebacks generally have a nine-month window, with a fraud exception; §15-212.1 is a separate incentive-claims provision.",
       "basis": "Secondary statutory reproduction (Armatus); current official code not independently checked.",
       "sourceDate": "November 28, 2024",
       "url": "https://www.dealeruplift.com/state-retail-warranty-reimbursement-laws/maryland-warranty-reimbursement-law/",
@@ -751,12 +1034,35 @@ window.REFERENCE = {
         "sample_60": false,
         "prior_month": false,
         "lookback_90": false,
-        "special_sample": false
+        "special_sample": false,
+        "actual_time": null,
+        "accuracy_only": true,
+        "automatic_rate": true
       },
       "original": {
-        "url": "https://mgaleg.maryland.gov/mgawebsite/Laws/StatuteText?article=gtr&section=15-212.1",
-        "kind": "portal",
-        "note": "Official statute viewer. Section text could not be retrieved during this check; navigate to Transportation §§15-212 and 15-212.1."
+        "url": "https://mgaleg.maryland.gov/mgawebsite/Laws/StatuteText?article=gtr&section=15-212&enactments=false",
+        "kind": "text",
+        "note": "Warranty reimbursement is §15-212(c). Section 15-212.1 concerns incentive claims.",
+        "locatedDate": "2026-09-24",
+        "linkStatus": "Relevant text retrieved on 2026-09-24."
+      },
+      "review": {
+        "status": "partial",
+        "date": "2026-09-24",
+        "scope": "Corrected citation; checked retail floors, sample, time allowances, rate challenges and approval, and warranty claim approval/chargeback provisions in §15-212(c)."
+      },
+      "checks": [
+        {
+          "date": "2026-09-24",
+          "scope": "Corrected citation; checked retail floors, sample, time allowances, rate challenges and approval, and warranty claim approval/chargeback provisions in §15-212(c).",
+          "url": "https://mgaleg.maryland.gov/mgawebsite/Laws/StatuteText?article=gtr&section=15-212&enactments=false",
+          "sourceType": "Official text"
+        }
+      ],
+      "process": {
+        "challenge": "Material inaccuracy only; written rebuttal with substantiating evidence within 30 days.",
+        "rateApproval": "Without timely rebuttal, effective on day 31 after receipt. If expressly approved, compensation begins within 30 days after approval. Timely disputes have separate resolution timing.",
+        "claimApproval": "Claims not approved or disapproved within 30 days are deemed approved; payment or credit within 30 days of approval."
       }
     },
     {
@@ -785,12 +1091,22 @@ window.REFERENCE = {
         "sample_60": true,
         "prior_month": false,
         "lookback_90": false,
-        "special_sample": false
+        "special_sample": false,
+        "actual_time": null,
+        "accuracy_only": null,
+        "automatic_rate": null
       },
       "original": {
         "url": "https://malegislature.gov/Laws/GeneralLaws/PartI/TitleXV/Chapter93B/Section9",
         "kind": "text",
-        "note": "Original statutory text located. Summary comparison against this source remains pending."
+        "note": "Original statutory text located. Summary comparison against this source remains pending.",
+        "linkStatus": "Located in earlier research; not retested in this update.",
+        "locatedDate": "2026-09-21"
+      },
+      "review": {
+        "status": "reproduction",
+        "date": "2026-09-21",
+        "scope": "Existing payment-method and sample summary. No claim of an exhaustive legal update."
       }
     },
     {
@@ -819,9 +1135,24 @@ window.REFERENCE = {
         "sample_60": false,
         "prior_month": false,
         "lookback_90": false,
-        "special_sample": false
+        "special_sample": false,
+        "actual_time": null,
+        "accuracy_only": null,
+        "automatic_rate": null
       },
-      "original": null
+      "original": {
+        "url": "https://www.legislature.mi.gov/Laws/MCL?objectName=mcl-445-1577a",
+        "kind": "portal",
+        "note": "Interactive section viewer for §445.1577a; read alongside §445.1577.",
+        "locatedDate": "2026-09-24",
+        "linkStatus": "Link supplied by external review; browser access and exact destination not independently confirmed."
+      },
+      "review": {
+        "status": "reproduction",
+        "date": "2026-09-21",
+        "scope": "Existing payment-method and sample summary. No claim of an exhaustive legal update."
+      },
+      "pendingNote": "External review reports a 180-day repair-order recency limit in §445.1577a(2)(a). Independent comparison remains pending."
     },
     {
       "state": "Minnesota",
@@ -849,12 +1180,22 @@ window.REFERENCE = {
         "sample_60": false,
         "prior_month": false,
         "lookback_90": false,
-        "special_sample": false
+        "special_sample": false,
+        "actual_time": null,
+        "accuracy_only": null,
+        "automatic_rate": null
       },
       "original": {
         "url": "https://www.revisor.mn.gov/statutes/cite/80E.041",
         "kind": "text",
-        "note": "Original source used for this summary."
+        "note": "Original source used for this summary.",
+        "linkStatus": "Located in earlier research; not retested in this update.",
+        "locatedDate": "2026-09-21"
+      },
+      "review": {
+        "status": "official",
+        "date": "2026-09-21",
+        "scope": "Existing payment-method and sample summary. No claim of an exhaustive legal update."
       }
     },
     {
@@ -883,12 +1224,22 @@ window.REFERENCE = {
         "sample_60": false,
         "prior_month": false,
         "lookback_90": false,
-        "special_sample": false
+        "special_sample": false,
+        "actual_time": null,
+        "accuracy_only": null,
+        "automatic_rate": null
       },
       "original": {
-        "url": "https://www.mmvc.ms.gov/section-63-17-85",
-        "kind": "text",
-        "note": "Agency-hosted statutory text for §63-17-85(j), covering labor. This link does not supply §63-17-86; full parts-method verification remains pending."
+        "url": "https://www.lexisnexis.com/hottopics/mscode/",
+        "kind": "portal",
+        "note": "Mississippi Code public-access route supplied by external review; navigate to §§63-17-85 and 63-17-86. Removed the agency page flagged as outdated; current-code comparison remains pending.",
+        "locatedDate": "2026-09-24",
+        "linkStatus": "Link supplied by external review; browser access and exact destination not independently confirmed."
+      },
+      "review": {
+        "status": "reproduction",
+        "date": "2026-09-21",
+        "scope": "Existing payment-method and sample summary. No claim of an exhaustive legal update."
       }
     },
     {
@@ -917,12 +1268,22 @@ window.REFERENCE = {
         "sample_60": false,
         "prior_month": false,
         "lookback_90": false,
-        "special_sample": false
+        "special_sample": false,
+        "actual_time": null,
+        "accuracy_only": null,
+        "automatic_rate": null
       },
       "original": {
         "url": "https://revisor.mo.gov/main/OneSection.aspx?section=407.828",
         "kind": "text",
-        "note": "Original statutory text located. Summary comparison against this source remains pending."
+        "note": "Original statutory text located. Summary comparison against this source remains pending.",
+        "linkStatus": "Located in earlier research; not retested in this update.",
+        "locatedDate": "2026-09-21"
+      },
+      "review": {
+        "status": "reproduction",
+        "date": "2026-09-21",
+        "scope": "Existing payment-method and sample summary. No claim of an exhaustive legal update."
       }
     },
     {
@@ -951,12 +1312,22 @@ window.REFERENCE = {
         "sample_60": false,
         "prior_month": false,
         "lookback_90": false,
-        "special_sample": false
+        "special_sample": false,
+        "actual_time": null,
+        "accuracy_only": null,
+        "automatic_rate": null
       },
       "original": {
         "url": "https://mca.legmt.gov/bills/mca/title_0610/chapter_0040/part_0020/section_0130/0610-0040-0020-0130.html",
         "kind": "text",
-        "note": "Original source used for this summary."
+        "note": "Original source used for this summary.",
+        "linkStatus": "Located in earlier research; not retested in this update.",
+        "locatedDate": "2026-09-21"
+      },
+      "review": {
+        "status": "official",
+        "date": "2026-09-21",
+        "scope": "Existing payment-method and sample summary. No claim of an exhaustive legal update."
       }
     },
     {
@@ -985,13 +1356,24 @@ window.REFERENCE = {
         "sample_60": false,
         "prior_month": false,
         "lookback_90": false,
-        "special_sample": false
+        "special_sample": false,
+        "actual_time": null,
+        "accuracy_only": null,
+        "automatic_rate": null
       },
       "original": {
         "url": "https://nebraskalegislature.gov/laws/statutes.php?statute=60-1438",
         "kind": "text",
-        "note": "Original source used for this summary."
-      }
+        "note": "Original source used for this summary.",
+        "linkStatus": "Located in earlier research; not retested in this update.",
+        "locatedDate": "2026-09-21"
+      },
+      "review": {
+        "status": "official",
+        "date": "2026-09-21",
+        "scope": "Existing payment-method and sample summary. No claim of an exhaustive legal update."
+      },
+      "pendingNote": "External review identifies LB972 §70 as operative October 1, 2026. Recheck §60-1438 and applicability before using this entry on or after that date."
     },
     {
       "state": "Nevada",
@@ -1019,12 +1401,22 @@ window.REFERENCE = {
         "sample_60": false,
         "prior_month": false,
         "lookback_90": false,
-        "special_sample": false
+        "special_sample": false,
+        "actual_time": null,
+        "accuracy_only": null,
+        "automatic_rate": null
       },
       "original": {
         "url": "https://www.leg.state.nv.us/NRS/NRS-482.html#NRS482Sec36385",
         "kind": "text",
-        "note": "Original statutory text located. Summary comparison against this source remains pending."
+        "note": "Original statutory text located. Summary comparison against this source remains pending.",
+        "linkStatus": "Located in earlier research; not retested in this update.",
+        "locatedDate": "2026-09-21"
+      },
+      "review": {
+        "status": "reproduction",
+        "date": "2026-09-21",
+        "scope": "Existing payment-method and sample summary. No claim of an exhaustive legal update."
       }
     },
     {
@@ -1053,12 +1445,22 @@ window.REFERENCE = {
         "sample_60": false,
         "prior_month": false,
         "lookback_90": false,
-        "special_sample": false
+        "special_sample": false,
+        "actual_time": null,
+        "accuracy_only": null,
+        "automatic_rate": null
       },
       "original": {
         "url": "https://gc.nh.gov/rsa/html/XXXI/357-C/357-C-5.htm",
         "kind": "text",
-        "note": "Original statutory text located. Summary comparison against this source remains pending."
+        "note": "Original statutory text located. Summary comparison against this source remains pending.",
+        "linkStatus": "Located in earlier research; not retested in this update.",
+        "locatedDate": "2026-09-21"
+      },
+      "review": {
+        "status": "reproduction",
+        "date": "2026-09-21",
+        "scope": "Existing payment-method and sample summary. No claim of an exhaustive legal update."
       }
     },
     {
@@ -1087,19 +1489,37 @@ window.REFERENCE = {
         "sample_60": false,
         "prior_month": false,
         "lookback_90": false,
-        "special_sample": false
+        "special_sample": false,
+        "actual_time": null,
+        "accuracy_only": null,
+        "automatic_rate": null
       },
       "original": {
-        "url": "https://www.njleg.state.nj.us/bill-search/2024/S3309",
-        "kind": "portal",
-        "note": "Official legislative record for S3309 (2024–2025 session). The page requires interactive access; enacted text and §56:10-15 were not retrieved during this check."
-      }
+        "url": "https://pub.njleg.state.nj.us/Bills/2024/PL25/140_.PDF",
+        "kind": "act",
+        "note": "P.L.2025, chapter 140, §7 amends C.56:10-15. Approved September 11, 2025; effective April 1, 2026.",
+        "locatedDate": "2026-09-24",
+        "linkStatus": "Relevant text retrieved on 2026-09-24."
+      },
+      "review": {
+        "status": "partial",
+        "date": "2026-09-24",
+        "scope": "Confirmed P.L.2025 chapter 140 effective April 1, 2026 and the dealer-specific OEM-hour time-factor provision."
+      },
+      "checks": [
+        {
+          "date": "2026-09-24",
+          "scope": "Confirmed P.L.2025 chapter 140 effective April 1, 2026 and the dealer-specific OEM-hour time-factor provision.",
+          "url": "https://pub.njleg.state.nj.us/Bills/2024/PL25/140_.PDF",
+          "sourceType": "Official text"
+        }
+      ]
     },
     {
       "state": "New Mexico",
       "parts": "Dealer cost plus the dealer’s qualifying retail parts markup; no fixed statewide percentage.",
       "labor": "Dealer’s qualifying retail labor rate; no fixed statewide $/hour.",
-      "time": "Reasonable and adequate diagnostic / repair time; no statewide numeric multiplier identified in reviewed text.",
+      "time": "No separate standard for the number of paid labor hours identified in the reviewed section. Retail-rate or fair-compensation language alone is not an express time-allowance requirement.",
       "sample": "Fewer of 100 qualifying sequential customer-pay ROs or 90 consecutive days; repairs within 180 days.",
       "statute": "N.M. Stat. § 57-16-7",
       "note": "Reasonableness may consider comparable dealers; rate requests generally permitted twice yearly.",
@@ -1121,9 +1541,31 @@ window.REFERENCE = {
         "sample_60": false,
         "prior_month": false,
         "lookback_90": false,
-        "special_sample": false
+        "special_sample": false,
+        "actual_time": null,
+        "accuracy_only": null,
+        "automatic_rate": null
       },
-      "original": null
+      "original": {
+        "url": "https://nmonesource.com/nmos/en/nav.do",
+        "kind": "portal",
+        "note": "Official compilation access. Search for 57-16-7. Reviewed reproduction is separately identified.",
+        "locatedDate": "2026-09-24",
+        "linkStatus": "Link supplied by external review; browser access and exact destination not independently confirmed."
+      },
+      "review": {
+        "status": "reproduction",
+        "date": "2026-09-24",
+        "scope": "Removed unsupported time-allowance boilerplate after checking the 2025 reproduction of §57-16-7. Official-text verification remains pending."
+      },
+      "checks": [
+        {
+          "date": "2026-09-24",
+          "scope": "Removed unsupported time-allowance boilerplate after checking the 2025 reproduction of §57-16-7. Official-text verification remains pending.",
+          "url": "https://law.justia.com/codes/new-mexico/chapter-57/article-16/section-57-16-7/",
+          "sourceType": "Third-party code reproduction"
+        }
+      ]
     },
     {
       "state": "New York",
@@ -1151,12 +1593,22 @@ window.REFERENCE = {
         "sample_60": false,
         "prior_month": false,
         "lookback_90": false,
-        "special_sample": false
+        "special_sample": false,
+        "actual_time": null,
+        "accuracy_only": null,
+        "automatic_rate": null
       },
       "original": {
         "url": "https://www.nysenate.gov/legislation/laws/VAT/465",
         "kind": "text",
-        "note": "Original source used for this summary."
+        "note": "Original source used for this summary.",
+        "linkStatus": "Located in earlier research; not retested in this update.",
+        "locatedDate": "2026-09-21"
+      },
+      "review": {
+        "status": "official",
+        "date": "2026-09-21",
+        "scope": "Existing payment-method and sample summary. No claim of an exhaustive legal update."
       }
     },
     {
@@ -1185,12 +1637,22 @@ window.REFERENCE = {
         "sample_60": true,
         "prior_month": false,
         "lookback_90": false,
-        "special_sample": false
+        "special_sample": false,
+        "actual_time": null,
+        "accuracy_only": null,
+        "automatic_rate": null
       },
       "original": {
         "url": "https://www.ncleg.gov/EnactedLegislation/Statutes/HTML/BySection/Chapter_20/GS_20-305.1.html",
         "kind": "text",
-        "note": "Original source used for this summary."
+        "note": "Original source used for this summary.",
+        "linkStatus": "Located in earlier research; not retested in this update.",
+        "locatedDate": "2026-09-21"
+      },
+      "review": {
+        "status": "official",
+        "date": "2026-09-21",
+        "scope": "Existing payment-method and sample summary. No claim of an exhaustive legal update."
       }
     },
     {
@@ -1219,12 +1681,22 @@ window.REFERENCE = {
         "sample_60": false,
         "prior_month": false,
         "lookback_90": false,
-        "special_sample": false
+        "special_sample": false,
+        "actual_time": null,
+        "accuracy_only": null,
+        "automatic_rate": null
       },
       "original": {
         "url": "https://www.ndlegis.gov/cencode/t51c07.pdf",
         "kind": "text",
-        "note": "Original source used for this summary."
+        "note": "Original source used for this summary.",
+        "linkStatus": "Located in earlier research; not retested in this update.",
+        "locatedDate": "2026-09-21"
+      },
+      "review": {
+        "status": "official",
+        "date": "2026-09-21",
+        "scope": "Existing payment-method and sample summary. No claim of an exhaustive legal update."
       }
     },
     {
@@ -1253,12 +1725,22 @@ window.REFERENCE = {
         "sample_60": false,
         "prior_month": false,
         "lookback_90": false,
-        "special_sample": false
+        "special_sample": false,
+        "actual_time": null,
+        "accuracy_only": null,
+        "automatic_rate": null
       },
       "original": {
         "url": "https://codes.ohio.gov/ohio-revised-code/section-4517.52",
         "kind": "text",
-        "note": "Original source used for this summary."
+        "note": "Original source used for this summary.",
+        "linkStatus": "Located in earlier research; not retested in this update.",
+        "locatedDate": "2026-09-21"
+      },
+      "review": {
+        "status": "official",
+        "date": "2026-09-21",
+        "scope": "Existing payment-method and sample summary. No claim of an exhaustive legal update."
       }
     },
     {
@@ -1268,7 +1750,7 @@ window.REFERENCE = {
       "time": "Reasonable and adequate diagnostic / repair time; no statewide numeric multiplier identified in reviewed text.",
       "sample": "Fewer of 100 qualifying sequential customer-pay ROs or 90 consecutive days; repairs within 180 days.",
       "statute": "47 O.S. § 565",
-      "note": "An inaccurate / incomplete submission can be challenged; statutory additional-sample procedures apply.",
+      "note": "2025 HB2158 and HB2160 amendments effective November 1, 2025: a written rate rebuttal must substantiate inaccuracy or incompleteness within 45 days. Additional repair-order requests can suspend deadlines. Rates take effect 30 days after approval. Dealer protest deadline: 30 days after the proposed adjustment. Rate revalidation is limited to once in 12 months.",
       "basis": "Secondary statutory reproduction (Armatus); current official code not independently checked.",
       "sourceDate": "November 27, 2024",
       "url": "https://www.dealeruplift.com/state-retail-warranty-reimbursement-laws/oklahoma-warranty-reimbursement-law/",
@@ -1287,18 +1769,59 @@ window.REFERENCE = {
         "sample_60": false,
         "prior_month": false,
         "lookback_90": false,
-        "special_sample": false
+        "special_sample": false,
+        "actual_time": null,
+        "accuracy_only": true,
+        "automatic_rate": false
       },
-      "original": null
+      "original": {
+        "url": "https://www.oklegislature.gov/cf_pdf/2025-26%20ENR/hB/HB2160%20ENR.PDF",
+        "kind": "act",
+        "note": "HB2160 enrolled act, §565 amendments, effective November 1, 2025. Official bill history confirms it became law May 29, 2025. Read alongside HB2158.",
+        "locatedDate": "2026-09-24",
+        "linkStatus": "Relevant text retrieved on 2026-09-24."
+      },
+      "review": {
+        "status": "partial",
+        "date": "2026-09-24",
+        "scope": "Checked 2025 enrolled §565 rate rebuttal, supplemental orders, approval timing, protest and revalidation provisions; enactment status confirmed in official bill histories."
+      },
+      "checks": [
+        {
+          "date": "2026-09-24",
+          "scope": "Checked 2025 enrolled §565 rate rebuttal, supplemental orders, approval timing, protest and revalidation provisions; enactment status confirmed in official bill histories.",
+          "url": "https://www.oklegislature.gov/cf_pdf/2025-26%20ENR/hB/HB2160%20ENR.PDF",
+          "sourceType": "Official text"
+        }
+      ],
+      "extraSources": [
+        {
+          "url": "https://www.oklegislature.gov/cf_pdf/2025-26%20ENR/hB/HB2158%20ENR.PDF",
+          "label": "HB2158 enrolled act, effective November 1, 2025"
+        },
+        {
+          "url": "https://www.oklegislature.gov/BillInfo.aspx?Bill=hb2160&Session=2500",
+          "label": "Official HB2160 enactment history"
+        },
+        {
+          "url": "https://www.oklegislature.gov/BillInfo.aspx?Bill=hb2158&Session=2500",
+          "label": "Official HB2158 enactment history"
+        }
+      ],
+      "process": {
+        "challenge": "Inaccuracy or incompleteness; initial rebuttal within 45 days. Supplemental repair-order procedures may suspend deadlines.",
+        "rateApproval": "Effective 30 days after manufacturer approval. The reviewed rate provision does not expressly deem an unanswered submission approved.",
+        "claimApproval": "Approve or disapprove within 30 days of receipt; pay within 30 days after approval. These are separate from rate-submission deadlines."
+      }
     },
     {
       "state": "Oregon",
       "parts": "Retail markup proposal subject to reasonableness against same-line dealers in contiguous markets.",
       "labor": "No less than the dealer’s retail hourly labor rate.",
-      "time": "Reasonable and adequate diagnostic / repair time; no statewide numeric multiplier identified in reviewed text.",
+      "time": "Time allowances must be reasonable and adequate for a qualified technician. The manufacturer may not unreasonably deny a documented written request to modify a specific warranty repair allowance or add diagnostic or repair time.",
       "sample": "Fewer of 100 qualifying sequential customer-pay ROs or 90 consecutive days; repairs within 180 days.",
       "statute": "ORS § 650.158",
-      "note": "Annual validation may support a prospective reduction if effective retail rates decrease.",
+      "note": "At most annually, the manufacturer may verify retail rates and the dealer may propose an increase. Decreases may support prospective reductions. The 2025 edition of §650.158 incorporates the additional time protections.",
       "basis": "Secondary statutory reproduction (Armatus); current official code not independently checked.",
       "sourceDate": "November 27, 2024",
       "url": "https://www.dealeruplift.com/state-retail-warranty-reimbursement-laws/oregon-warranty-reimbursement-law/",
@@ -1317,19 +1840,42 @@ window.REFERENCE = {
         "sample_60": false,
         "prior_month": false,
         "lookback_90": false,
-        "special_sample": false
+        "special_sample": false,
+        "actual_time": null,
+        "accuracy_only": false,
+        "automatic_rate": true
       },
       "original": {
         "url": "https://www.oregonlegislature.gov/bills_laws/ors/ors650.html",
         "kind": "text",
-        "note": "Original statutory text located. Summary comparison against this source remains pending."
+        "note": "Original statutory text located. Summary comparison against this source remains pending.",
+        "linkStatus": "Relevant official text retrieved on 2026-09-24. See the review record for which provisions were compared.",
+        "locatedDate": "2026-09-21"
+      },
+      "review": {
+        "status": "partial",
+        "date": "2026-09-24",
+        "scope": "Checked §650.158(2): time protections, rate challenge grounds, approval mechanics and annual verification; checked claim approval in subsection (4)."
+      },
+      "checks": [
+        {
+          "date": "2026-09-24",
+          "scope": "Checked §650.158(2): time protections, rate challenge grounds, approval mechanics and annual verification; checked claim approval in subsection (4).",
+          "url": "https://www.oregonlegislature.gov/bills_laws/ors/ors650.html",
+          "sourceType": "Official text"
+        }
+      ],
+      "process": {
+        "challenge": "May challenge accuracy, comparable-market reasonableness or other relevant evidence; statutory dealer-comparison requirements apply.",
+        "rateApproval": "No contest within 30 days means approval; the proposal takes effect 30 days after approval. A contested proposal requires an adjustment proposal within 30 days of submission.",
+        "claimApproval": "Claims not approved or disapproved within 30 days are deemed approved; pay within 60 days of receipt for those claims."
       }
     },
     {
       "state": "Pennsylvania",
       "parts": "Retail parts markup, including major assemblies.",
       "labor": "Dealer’s qualifying effective retail labor rate.",
-      "time": "Reasonable and adequate diagnostic / repair time; no statewide numeric multiplier identified in reviewed text.",
+      "time": "Section 307(a)(1) requires the manufacturer to provide time allowances in its compensation schedule. No reasonable-and-adequate time standard or numeric time multiplier identified in the reviewed current section.",
       "sample": "Fewer of 100 qualifying sequential customer-pay ROs or 90 consecutive days; repairs within 180 days.",
       "statute": "63 P.S. § 818.307",
       "note": "Submission may be challenged for material accuracy or reasonableness; statutory timing differs from 30-day states.",
@@ -1351,22 +1897,45 @@ window.REFERENCE = {
         "sample_60": false,
         "prior_month": false,
         "lookback_90": false,
-        "special_sample": false
+        "special_sample": false,
+        "actual_time": null,
+        "accuracy_only": false,
+        "automatic_rate": true
       },
       "original": {
         "url": "https://www.legis.state.pa.us/WU01/LI/LI/US/HTM/1983/0/0084..HTM",
         "kind": "text",
-        "note": "Official Board of Vehicles Act compilation. Open Section 307 (63 P.S. §818.307). Summary comparison remains pending."
+        "note": "Official Board of Vehicles Act compilation. Open Section 307 (63 P.S. §818.307). Summary comparison remains pending.",
+        "linkStatus": "Relevant official text retrieved on 2026-09-24. See the review record for which provisions were compared.",
+        "locatedDate": "2026-09-21"
+      },
+      "review": {
+        "status": "partial",
+        "date": "2026-09-24",
+        "scope": "Checked the cited warranty section for the time-allowance correction. Broader summary verification remains incomplete. Also checked the rate-submission challenge and effectiveness provisions."
+      },
+      "checks": [
+        {
+          "date": "2026-09-24",
+          "scope": "Checked the cited warranty section for the time-allowance correction. Broader summary verification remains incomplete.",
+          "url": "https://www.legis.state.pa.us/WU01/LI/LI/US/HTM/1983/0/0084..HTM",
+          "sourceType": "Official text"
+        }
+      ],
+      "process": {
+        "challenge": "Unreasonableness or material inaccuracy; rebut within 60 days.",
+        "rateApproval": "Rate takes effect 60 days after declaration unless audited and rebutted under §307(a).",
+        "claimApproval": "Claim-approval mechanics not classified in this update."
       }
     },
     {
       "state": "Rhode Island",
       "parts": "Dealer cost plus the dealer’s qualifying retail parts markup; no fixed statewide percentage.",
       "labor": "Prior-month qualifying labor sales divided by billed labor hours.",
-      "time": "Reasonable and adequate diagnostic / repair time; no statewide numeric multiplier identified in reviewed text.",
+      "time": "Through September 30, 2026: no separate actual-technician-time formula identified in the reviewed pre-amendment text. The October 1 amendment is shown below.",
       "sample": "Parts: fewer of 100 sequential ROs or 60 days, within 180 days. Labor: all qualifying customer-pay ROs in the preceding month.",
       "statute": "R.I. Gen. Laws § 31-5.1-6",
-      "note": "Parts and labor use different sampling periods.",
+      "note": "The prior-month sample determines the hourly labor rate and remains in the October 1, 2026 amendment. The amendment changes paid warranty hours to documented actual technician time; it does not replace that hourly-rate sample.",
       "basis": "Secondary statutory reproduction (Armatus); current official code not independently checked.",
       "sourceDate": "November 28, 2024",
       "url": "https://www.dealeruplift.com/state-retail-warranty-reimbursement-laws/rhode-island-warranty-reimbursement-law/",
@@ -1385,19 +1954,58 @@ window.REFERENCE = {
         "sample_60": true,
         "prior_month": true,
         "lookback_90": false,
-        "special_sample": false
+        "special_sample": false,
+        "actual_time": false,
+        "accuracy_only": null,
+        "automatic_rate": null
       },
       "original": {
         "url": "https://webserver.rilegislature.gov/Statutes/TITLE31/31-5.1/31-5.1-6.htm",
         "kind": "text",
-        "note": "Original statutory text located. Summary comparison against this source remains pending."
-      }
+        "note": "Original statutory text located. Summary comparison against this source remains pending.",
+        "linkStatus": "Located in earlier research; not retested in this update.",
+        "locatedDate": "2026-09-21"
+      },
+      "review": {
+        "status": "partial",
+        "date": "2026-09-24",
+        "scope": "Confirmed actual-time requirements, retained prior-month labor-rate sample, and October 1, 2026 effective-date clause in official S2347 Substitute A. Enactment status corroborated by LegiScan."
+      },
+      "changes": [
+        {
+          "effective": "2026-10-01",
+          "title": "Actual technician time for warranty labor",
+          "time": "From October 1, 2026: nonwarranty labor rate × actual technician time for necessary repairs performed under manufacturer procedures, including diagnostic and manufacturer technical-assistance time. Support with technician time punches, relevant electronic records, and dealer attestation of accuracy.",
+          "flags": {
+            "actual_time": true
+          },
+          "url": "https://webserver.rilegislature.gov/BillText26/SenateText26/S2347A.pdf"
+        }
+      ],
+      "extraSources": [
+        {
+          "url": "https://webserver.rilegislature.gov/BillText26/SenateText26/S2347A.pdf",
+          "label": "2026 S2347 Substitute A: actual-time text and October 1 effective date"
+        },
+        {
+          "url": "https://legiscan.com/RI/bill/S2347/2026",
+          "label": "LegiScan enactment-status corroboration (third party)"
+        }
+      ],
+      "checks": [
+        {
+          "date": "2026-09-24",
+          "scope": "Confirmed actual-time requirements, retained prior-month labor-rate sample, and October 1, 2026 effective-date clause in official S2347 Substitute A. Enactment status corroborated by LegiScan.",
+          "url": "https://webserver.rilegislature.gov/BillText26/SenateText26/S2347A.pdf",
+          "sourceType": "Official text"
+        }
+      ]
     },
     {
       "state": "South Carolina",
       "parts": "Dealer may request cost plus its qualifying retail parts markup.",
       "labor": "Dealer may request its qualifying effective retail labor rate.",
-      "time": "Fair and reasonable warranty compensation; consult current text for time and sample exclusions.",
+      "time": "No separate standard for the number of paid labor hours identified in the reviewed section. Retail-rate or fair-compensation language alone is not an express time-allowance requirement.",
       "sample": "Fewer of 100 qualifying sequential customer-pay ROs or 90 consecutive days; repairs within 180 days.",
       "statute": "S.C. Code § 56-15-60",
       "note": "Source updated April 3, 2026; use the listed statutory exclusions in a submission.",
@@ -1419,12 +2027,35 @@ window.REFERENCE = {
         "sample_60": false,
         "prior_month": false,
         "lookback_90": false,
-        "special_sample": false
+        "special_sample": false,
+        "actual_time": null,
+        "accuracy_only": null,
+        "automatic_rate": false
       },
       "original": {
         "url": "https://www.scstatehouse.gov/code/t56c015.php",
         "kind": "text",
-        "note": "Original statutory text located. Summary comparison against this source remains pending."
+        "note": "Original statutory text located. Summary comparison against this source remains pending.",
+        "linkStatus": "Relevant official text retrieved on 2026-09-24. See the review record for which provisions were compared.",
+        "locatedDate": "2026-09-21"
+      },
+      "review": {
+        "status": "partial",
+        "date": "2026-09-24",
+        "scope": "Checked the cited warranty section for the time-allowance correction. Broader summary verification remains incomplete. Also checked the rate-submission challenge and effectiveness provisions."
+      },
+      "checks": [
+        {
+          "date": "2026-09-24",
+          "scope": "Checked the cited warranty section for the time-allowance correction. Broader summary verification remains incomplete.",
+          "url": "https://www.scstatehouse.gov/code/t56c015.php",
+          "sourceType": "Official text"
+        }
+      ],
+      "process": {
+        "challenge": "Challenge grounds not fully classified in this update.",
+        "rateApproval": "Rate takes effect 30 days after approval; additional-documentation requests can extend the review period. No express deemed-approval rule identified in §56-15-60(C)(4).",
+        "claimApproval": "Claim-approval mechanics not classified in this update."
       }
     },
     {
@@ -1453,13 +2084,29 @@ window.REFERENCE = {
         "sample_60": false,
         "prior_month": false,
         "lookback_90": false,
-        "special_sample": false
+        "special_sample": false,
+        "actual_time": null,
+        "accuracy_only": null,
+        "automatic_rate": null
       },
       "original": {
-        "url": "https://sdlegislature.gov/Statutes/32-6B-61",
-        "kind": "portal",
-        "note": "Official interactive statute viewer; navigate to §§32-6B-58 and 32-6B-61. Text was not retrievable during this check."
-      }
+        "url": "https://sdlegislature.gov/api/Statutes/32-6B-61.html",
+        "kind": "text",
+        "note": "Labor provision. Companion parts provision is §32-6B-58.",
+        "locatedDate": "2026-09-24",
+        "linkStatus": "Relevant text retrieved on 2026-09-24."
+      },
+      "review": {
+        "status": "reproduction",
+        "date": "2026-09-21",
+        "scope": "Existing payment-method and sample summary. No claim of an exhaustive legal update."
+      },
+      "extraSources": [
+        {
+          "url": "https://sdlegislature.gov/api/Statutes/32-6B-58.html",
+          "label": "Official companion parts provision: §32-6B-58 (link supplied by external review)"
+        }
+      ]
     },
     {
       "state": "Tennessee",
@@ -1487,12 +2134,22 @@ window.REFERENCE = {
         "sample_60": false,
         "prior_month": false,
         "lookback_90": false,
-        "special_sample": false
+        "special_sample": false,
+        "actual_time": null,
+        "accuracy_only": null,
+        "automatic_rate": null
       },
       "original": {
-        "url": "https://www.tn.gov/commerce/regboards/mvc/rules-laws/laws.html",
+        "url": "https://www.lexisnexis.com/hottopics/tncode/",
         "kind": "portal",
-        "note": "The commission links to its designated LexisNexis code access. Follow Laws → Title 55 → Chapter 17 → §55-17-121."
+        "note": "Tennessee Code public-access route supplied by external review. Navigate to §55-17-121.",
+        "locatedDate": "2026-09-24",
+        "linkStatus": "Link supplied by external review; browser access and exact destination not independently confirmed."
+      },
+      "review": {
+        "status": "reproduction",
+        "date": "2026-09-21",
+        "scope": "Existing payment-method and sample summary. No claim of an exhaustive legal update."
       }
     },
     {
@@ -1521,12 +2178,22 @@ window.REFERENCE = {
         "sample_60": false,
         "prior_month": false,
         "lookback_90": false,
-        "special_sample": true
+        "special_sample": true,
+        "actual_time": null,
+        "accuracy_only": null,
+        "automatic_rate": null
       },
       "original": {
         "url": "https://statutes.capitol.texas.gov/",
         "kind": "portal",
-        "note": "Select Occupations Code, Chapter 2301, §§2301.402–2301.403. Older deep links currently return the statute home page."
+        "note": "Select Occupations Code, Chapter 2301, §§2301.402–2301.403. Older deep links currently return the statute home page.",
+        "linkStatus": "Located in earlier research; not retested in this update.",
+        "locatedDate": "2026-09-21"
+      },
+      "review": {
+        "status": "reproduction",
+        "date": "2026-09-21",
+        "scope": "Existing payment-method and sample summary. No claim of an exhaustive legal update."
       }
     },
     {
@@ -1555,12 +2222,22 @@ window.REFERENCE = {
         "sample_60": false,
         "prior_month": false,
         "lookback_90": false,
-        "special_sample": false
+        "special_sample": false,
+        "actual_time": null,
+        "accuracy_only": null,
+        "automatic_rate": null
       },
       "original": {
         "url": "https://le.utah.gov/xcode/Title13/Chapter14/13-14-S204.html",
         "kind": "portal",
-        "note": "Official viewer for §13-14-204. Current section text was not retrievable during this check; an older superseded PDF was excluded."
+        "note": "Official viewer for §13-14-204. Current section text was not retrievable during this check; an older superseded PDF was excluded.",
+        "linkStatus": "Located in earlier research; not retested in this update.",
+        "locatedDate": "2026-09-21"
+      },
+      "review": {
+        "status": "reproduction",
+        "date": "2026-09-21",
+        "scope": "Existing payment-method and sample summary. No claim of an exhaustive legal update."
       }
     },
     {
@@ -1589,12 +2266,22 @@ window.REFERENCE = {
         "sample_60": true,
         "prior_month": false,
         "lookback_90": false,
-        "special_sample": true
+        "special_sample": true,
+        "actual_time": null,
+        "accuracy_only": null,
+        "automatic_rate": null
       },
       "original": {
         "url": "https://legislature.vermont.gov/statutes/section/09/108/04086",
         "kind": "text",
-        "note": "Original statutory text located. Summary comparison against this source remains pending."
+        "note": "Original statutory text located. Summary comparison against this source remains pending.",
+        "linkStatus": "Located in earlier research; not retested in this update.",
+        "locatedDate": "2026-09-21"
+      },
+      "review": {
+        "status": "reproduction",
+        "date": "2026-09-21",
+        "scope": "Existing payment-method and sample summary. No claim of an exhaustive legal update."
       }
     },
     {
@@ -1623,12 +2310,22 @@ window.REFERENCE = {
         "sample_60": false,
         "prior_month": false,
         "lookback_90": false,
-        "special_sample": false
+        "special_sample": false,
+        "actual_time": null,
+        "accuracy_only": null,
+        "automatic_rate": null
       },
       "original": {
         "url": "https://law.lis.virginia.gov/vacode/title46.2/chapter15/section46.2-1571/",
         "kind": "text",
-        "note": "Original source used for this summary."
+        "note": "Original source used for this summary.",
+        "linkStatus": "Located in earlier research; not retested in this update.",
+        "locatedDate": "2026-09-21"
+      },
+      "review": {
+        "status": "official",
+        "date": "2026-09-21",
+        "scope": "Existing payment-method and sample summary. No claim of an exhaustive legal update."
       }
     },
     {
@@ -1657,12 +2354,22 @@ window.REFERENCE = {
         "sample_60": false,
         "prior_month": false,
         "lookback_90": false,
-        "special_sample": false
+        "special_sample": false,
+        "actual_time": null,
+        "accuracy_only": null,
+        "automatic_rate": null
       },
       "original": {
         "url": "https://app.leg.wa.gov/RCW/default.aspx?cite=46.96.105",
         "kind": "text",
-        "note": "Original statutory text located. Summary comparison against this source remains pending."
+        "note": "Original statutory text located. Summary comparison against this source remains pending.",
+        "linkStatus": "Located in earlier research; not retested in this update.",
+        "locatedDate": "2026-09-21"
+      },
+      "review": {
+        "status": "reproduction",
+        "date": "2026-09-21",
+        "scope": "Existing payment-method and sample summary. No claim of an exhaustive legal update."
       }
     },
     {
@@ -1691,12 +2398,22 @@ window.REFERENCE = {
         "sample_60": false,
         "prior_month": false,
         "lookback_90": false,
-        "special_sample": false
+        "special_sample": false,
+        "actual_time": null,
+        "accuracy_only": null,
+        "automatic_rate": null
       },
       "original": {
         "url": "https://code.wvlegislature.gov/17A-6A-8A/",
         "kind": "text",
-        "note": "Original statutory text located. Summary comparison against this source remains pending."
+        "note": "Original statutory text located. Summary comparison against this source remains pending.",
+        "linkStatus": "Located in earlier research; not retested in this update.",
+        "locatedDate": "2026-09-21"
+      },
+      "review": {
+        "status": "reproduction",
+        "date": "2026-09-21",
+        "scope": "Existing payment-method and sample summary. No claim of an exhaustive legal update."
       }
     },
     {
@@ -1725,13 +2442,24 @@ window.REFERENCE = {
         "sample_60": false,
         "prior_month": false,
         "lookback_90": false,
-        "special_sample": false
+        "special_sample": false,
+        "actual_time": null,
+        "accuracy_only": null,
+        "automatic_rate": null
       },
       "original": {
         "url": "https://docs.legis.wisconsin.gov/statutes/statutes/218/i/0125",
         "kind": "text",
-        "note": "Original statutory text located. Summary comparison against this source remains pending."
-      }
+        "note": "Original statutory text located. Summary comparison against this source remains pending.",
+        "linkStatus": "Located in earlier research; not retested in this update.",
+        "locatedDate": "2026-09-21"
+      },
+      "review": {
+        "status": "reproduction",
+        "date": "2026-09-21",
+        "scope": "Existing payment-method and sample summary. No claim of an exhaustive legal update."
+      },
+      "pendingNote": "External review references 2025 Act 247 and a motorcycle exclusion. Verify applicability and current text; do not extrapolate the passenger-vehicle classification to motorcycles."
     },
     {
       "state": "Wyoming",
@@ -1759,13 +2487,24 @@ window.REFERENCE = {
         "sample_60": false,
         "prior_month": false,
         "lookback_90": false,
-        "special_sample": false
+        "special_sample": false,
+        "actual_time": null,
+        "accuracy_only": null,
+        "automatic_rate": null
       },
       "original": {
         "url": "https://wyoleg.gov/statutes/compress/title31.pdf#page=435",
         "kind": "text",
-        "note": "Official Title 31 PDF; §31-16-117 begins on PDF page 435. Summary comparison remains pending."
+        "note": "Official Title 31 PDF; §31-16-117 begins on PDF page 435. Summary comparison remains pending.",
+        "linkStatus": "Located in earlier research; not retested in this update.",
+        "locatedDate": "2026-09-21"
+      },
+      "review": {
+        "status": "reproduction",
+        "date": "2026-09-21",
+        "scope": "Existing payment-method and sample summary. No claim of an exhaustive legal update."
       }
     }
-  ]
+  ],
+  "reviewDate": "2026-09-24"
 };
