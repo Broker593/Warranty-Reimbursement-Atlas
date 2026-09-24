@@ -12,6 +12,7 @@ This repository is the source of truth for the GitHub Pages site. The earlier Ch
 
 - `docs/data.js`: All 50 state summaries, 16 rule definitions, classifications, citations, original-source links, and review status. Start here when reviewing the research.
 - `docs/coverage.js`: Four coverage types, separate hourly-rate / paid-hours buckets, and unverified research records. Existing factory-warranty flags are carried forward with explicit provenance.
+- `docs/research.html`: Browser-readable full prompt with a copy button. Keep its prompt text in sync with the Markdown source.
 - `docs/labor-coverage-research-prompt.md`: Full research instructions for filling coverage and method gaps.
 - `docs/labor-coverage-template.json`: A 200-record, claim-evidence research template; not loaded as verified data.
 - `docs/app.js`: Search, filtering, comparison, state details and share links.
