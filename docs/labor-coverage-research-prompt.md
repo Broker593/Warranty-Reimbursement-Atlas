@@ -33,7 +33,7 @@ For coverage applicability and each method, distinguish mandatory, dealer electi
 
 Do not assign OEM hours by default to states lacking an identified alternative. Do not invent a reasonable-time standard where the text is silent. Distinguish a rate multiplier from an hours multiplier and avoid double-counting a normalized-rate formula. A sample exclusion for CPO or service-contract repairs is not necessarily exclusion from reimbursement protection.
 
-Check diagnostic time, technical assistance, agreed alternatives and whether service-contract repairs enter the retail-rate sample when material to the result. Public statutory methods do not establish actual SOA-approved dealer rates or actual paid amounts.
+Check diagnostic time, technical assistance, agreed alternatives and whether service-contract repairs enter the retail-rate sample when material to the result. Public statutory methods do not establish actual dealer-specific rates or actual paid amounts.
 
 ## 3. Evidence and currency
 
@@ -52,3 +52,4 @@ Recheck high-risk existing distinctions, including Illinois's conditional multip
 5. **A short findings and gaps memo**, prioritizing conclusions that could change reimbursement and identifying the SOA rate approvals, policy manuals, Added Security/CPO contracts or claims data needed for actual-payment analysis.
 
 Do not claim “all 50 states verified” merely because all records have links. State exactly which claims were verified, through which source types, and which coverage questions remain unresolved.
+

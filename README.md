@@ -1,53 +1,52 @@
 # Warranty Reimbursement Atlas
 
-Interactive reference covering automotive warranty reimbursement rules across all 50 states.
+Interactive 50-state reference for franchised passenger-vehicle dealers. Public legal methods; actual retailer payment data are not included.
 
 ## Publishing
 
-GitHub Pages publishes the `docs/` folder from the `main` branch. Changes pushed or merged into `main` automatically trigger publication. Local edits and unmerged pull requests are not live. Check the repository Actions tab for deployment status.
+GitHub Pages serves `docs/` from `main`. A successful Pages deployment publishes committed changes automatically. The older ChatGPT Sites deployment is separate and does not synchronize with this repository.
 
-This repository is the source of truth for the GitHub Pages site. The earlier ChatGPT Sites address is a separate deployment and does not automatically synchronize with this repository.
+## Coverage research v2
+
+Imported September 25, 2026 from Claude's September 24 v2 research: all 50 states and all four coverage types, 200 entries. Source types reported by the supplied research: 40 official-statute records, 5 enacted-law records, 5 code reproductions. Importing this research is not a claim that every source was independently rechecked.
+
+| Coverage | Required | Conditional | Not reached | Not addressed |
+|---|---:|---:|---:|---:|
+| Factory warranty | 50 | 0 | 0 | 0 |
+| Mfr-backed service contract | 4 | 9 | 1 | 36 |
+| CPO warranty | 9 | 8 | 0 | 33 |
+| Independent service contract | 0 | 0 | 8 | 42 |
+
+Factory paid-hours research counts: Factory time 29; Independent/retail time guide 5; OEM time × multiplier 2; Actual technician time 2; Negotiated/other 1; Statute silent on time 11.
+
+These are enacted-law research classifications, including Rhode Island's October 1, 2026 provisions. The date selector updates upcoming/effective labels in the coverage view; it does not remove enacted future provisions from its fixed research totals. The original warranty matrix still applies its dated rule flags. Before October 1, Rhode Island's time and CPO changes are explicitly marked upcoming.
+
+Required concerns statutory scope, not an unconditional payment method. Conditional cells show the specific condition. Not reached is an exclusion or scope limit. Not addressed is researched silence in the reviewed provisions, not Unverified and not a finding that no other law applies.
+
+Factory time includes general time-allowance standards and additional-time rights. Mississippi's qualified-technician actual-time standard differs from Rhode Island's individual technician clock time. Wisconsin remains Negotiated/other in the supplied primary-method taxonomy: its time adjustment is in the hourly-rate denominator; paid hours remain OEM time.
+
+The original JSON and Markdown patch are preserved verbatim under `docs/research/`. The display adapter reconciles older affirmative draft wording in FL/IL notes and WI's independent-contract narrative with the v2 cells; no supplied applicability or paid-hours value is changed.
+
+## Warranty corrections
+
+Connecticut's reasonable-and-adequate time language is restored. Pennsylvania is factory time with no statutory standard. North Carolina and Nebraska reflect the 2025 time-request amendments. Tennessee retains its retail labor-rate floor. Wyoming's retail ceiling and 2025 submission process, Virginia's deleted presumption, Hawaii's floor/cap, and Maine's posting condition are clarified. Mississippi's actual-time standard is included. The original actual-time checkbox now describes the primary standard, excluding guide-only fallbacks.
+
+Earlier source availability and verification records are retained separately from the imported coverage research. The warranty source banner therefore differs from the v2 coverage banner. Historic checks are not silently converted into comprehensive current official reviews.
 
 ## Files
 
-- `docs/data.js`: All 50 state summaries, 16 rule definitions, classifications, citations, original-source links, and review status. Start here when reviewing the research.
-- `docs/coverage.js`: Four coverage types, separate hourly-rate / paid-hours buckets, and unverified research records. Existing factory-warranty flags are carried forward with explicit provenance.
-- `docs/research.html`: Browser-readable full prompt with a copy button. Keep its prompt text in sync with the Markdown source.
-- `docs/labor-coverage-research-prompt.md`: Full research instructions for filling coverage and method gaps.
-- `docs/labor-coverage-template.json`: A 200-record, claim-evidence research template; not loaded as verified data.
-- `docs/app.js`: Search, filtering, comparison, state details and share links.
-- `docs/index.html`: Page structure, methodology and coverage statements.
-- `docs/styles.css`: Presentation and responsive styles.
+- `docs/research/labor-by-coverage-v2.json`: supplied 50-state JSON, unchanged.
+- `docs/research/labor-by-coverage-patch-v2.md`: supplied patch and research notes, unchanged.
+- `docs/coverage-data.js`: executable copy of the supplied JSON for the static site; keep it in sync with the source JSON.
+- `docs/coverage.js`: coverage/status mappings, visible conditions, primary paid-hours taxonomy, date notes, and count calculation.
+- `docs/data.js`: original 50-state warranty matrix and corrections, source links and review history.
+- `docs/app.js`: rendering, filters, comparison, evidence drawers and share URLs.
+- `docs/index.html`, `docs/styles.css`: structure, methodology and high-contrast visual labels.
+- `docs/research.html`, `docs/labor-coverage-research-prompt.md`: reusable research instructions.
+- `docs/labor-coverage-template.json`: original blank research template, not site data.
 
-No build step or dependencies are needed. Preview with `python -m http.server 8000 --directory docs`.
+No build step or dependencies. Preview with `python -m http.server 8000 --directory docs`.
 
-## Research status, September 24, 2026
+## Editing and validation
 
-All 50 entries now include either a direct original-text/act link (38) or a code access page (12). An access page is not a direct provision, and located links are not necessarily tested links. Each original link includes its recorded retrieval status.
-
-Verification remains separate: 11 existing official-text reviews, 9 partial official checks and 30 reproduction-based entries. Per-state `review` and `checks` fields document dates, scope and supporting URLs. The external reviewer’s blanket “50 of 50 verified” claim was not adopted.
-
-Corrections include Maryland’s citation, Oregon time protections, Oklahoma’s 2025 rate procedures, Kentucky’s Class 7+ history, Maine’s weight boundary, and unsupported time-allowance wording. Pennsylvania retains the actual requirement to provide time allowances, without inventing a reasonable-and-adequate standard. Rhode Island retains its prior-month labor-rate sample while its October 1, 2026 amendment changes paid hours to documented actual time.
-
-The 16-column matrix includes actual technician time, accuracy-limited rate challenges and automatic rate effectiveness. These new fields use `null` for unclassified states. Empty and unknown boxes are clickable. Rate-submission approval and warranty-claim approval are separate fields.
-
-The date control applies only documented changes, not an exhaustive historical/current-law reconstruction. Shared URLs preserve that date. Pending review notes retain unresolved items for GA, IN, MI, NE, WI, ID and HI.
-
-This is a working public-source reference. It contains no actual approved SOA dealer rates, internal rate master, or paid claims.
-
-## Labor by coverage
-
-The new `?view=labor` view separates factory warranty, manufacturer-backed service contracts (including Added Security), CPO warranties and independent service contracts. Each has distinct hourly-rate, paid-hours and coverage-applicability fields. Counts are clickable filters; shared links preserve coverage, method, search, selected states and the known-changes date.
-
-All 200 dedicated state / coverage applicability reviews remain pending. Factory method counts inherit existing flags; they are not new scope verification. The other three coverage types are unverified in all 50 states. A dash means an unknown count, not zero states with protections. The old six-state combined guide category is shown as “split pending,” never counted as six third-party-guide states. Factory guide, independent guide, retail guide and agreed guide buckets require separate research.
-
-Coverage-specific research can be returned using the prompt and JSON template. Do not move any record into a completed review status until the claim-level evidence supports it. Keep coverage applicability separate from mandatory, elective and fallback treatment for individual methods. Source totals in the banner refer to the original warranty research only.
-
-## Reviewing with Claude or another assistant
-
-Read `docs/data.js` directly if the interactive website cannot be rendered. Independently verify claims against current official statutes, distinguish mandatory rules from elections and conditional fallbacks, and identify exact state-specific corrections with supporting links. Preserve unresolved questions and verification status.
-
-## Editing
-
-Make changes in this repository, review the diff, then commit or merge to `main` to publish. Update coverage figures in `docs/index.html` and this README if verification status changes. Do not mark a summary officially verified merely because its original link was found.
-
+Read `AGENTS.md`. Update data, narrative and flags together; preserve conditions, source provenance and effective dates. Validate all 200 records and the exact tally/state lists, then test coverage/status/method filters, deep links, comparisons, evidence drawers, and the Rhode Island date boundary. Run `node --check` on each changed JavaScript file.

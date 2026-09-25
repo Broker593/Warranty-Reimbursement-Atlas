@@ -1,49 +1,79 @@
-/* Coverage-specific research. Existing warranty flags are leads, not new scope reviews. */
+/* Presentation adapter for the supplied v2 research. No scope inferred from old flags. */
 (() => {
-  'use strict';
-  const types = [
-    {id:'factory', name:'Factory warranty', note:'Original manufacturer warranty repairs. Existing warranty summaries are carried forward; coverage applicability and mandatory versus optional treatment need a dedicated review.'},
-    {id:'manufacturer_contract', name:'Manufacturer-backed service contract', note:'Includes programs such as Subaru Added Security. Verify the issuer, obligor, administrator and manufacturer affiliation; the program name alone does not establish statutory coverage.'},
-    {id:'cpo', name:'CPO warranty', note:'Certified pre-owned warranty repair claims. Separate these from certification inspections, reconditioning and any separately purchased service contract.'},
-    {id:'independent_contract', name:'Independent service contract', note:'A service contract with an independent obligor. A third-party labor-time guide is a different concept and does not establish coverage for these contracts.'}
-  ];
-  const methods = [
-    {id:'retail_benchmark', axis:'rate', name:'Retail rate benchmark', legacy:'retail_labor', description:'Broad reference, floor or available route based on retail charges. Does not by itself establish an unconditional retail rate or a particular sample formula.'},
-    {id:'posted_rate', axis:'rate', name:'Posted retail rate', legacy:'posted_labor', description:'Express use of the dealer’s posted hourly rate, with applicable statutory conditions.'},
-    {id:'financial_rate', axis:'rate', name:'Financial-statement formula', legacy:'financial_labor', description:'An hourly-rate alternative calculated from dealership financial information.'},
-    {id:'normalized_rate', axis:'rate', name:'OEM-hour-normalized rate', legacy:'normalized_rate', description:'Retail labor revenue divided by OEM-guide hours. The time difference is incorporated into the rate; do not apply an additional time multiplier without authority.'},
-    {id:'other_rate', axis:'rate', name:'Other hourly-rate method', description:'A specified method not captured above, such as a contract rate, negotiated rate, regional benchmark or statutory minimum. Describe the method and who may choose it.'},
-    {id:'multiplier', axis:'hours', name:'Multiplier on factory hours', legacy:'time_multiplier', description:'An explicit factor changes OEM-guide paid hours. Record the exact factor or ratio, conditions and election rights; this is not an hourly-dollar-rate multiplier.'},
-    {id:'factory_guide', axis:'hours', name:'Factory / OEM guide', description:'Express legal use of OEM-guide hours, including an election where applicable. Do not assume this category merely because no alternative rule was found.'},
-    {id:'third_party_guide', axis:'hours', name:'Third-party time guide', description:'An independent labor-guide publisher supplies allowed hours. This does not mean an independent service-contract provider.'},
-    {id:'retail_guide', axis:'hours', name:'Dealer customer-pay guide', description:'The dealer’s guide used for retail customer-paid repairs. May overlap with a third-party guide when the text supports both.'},
-    {id:'agreed_guide', axis:'hours', name:'Agreed time guide', description:'A time guide selected by agreement. Using an extended-warranty guide for factory warranty pricing does not itself bring service contracts within the statute.'},
-    {id:'actual_time', axis:'hours', name:'Actual technician time', legacy:'actual_time', description:'Documented actual time, whether the primary method or a conditional fallback. Record which, including diagnostic and technical-assistance treatment.'},
-    {id:'other_hours', axis:'hours', name:'Other paid-hours method', description:'Describe any other express time method. Silence about time allowances is not an OEM-guide mandate or a reasonable-time standard.'},
-    {id:'guide_unsplit', axis:'hours', name:'Guide rule — split pending', legacy:'retail_time', description:'Existing broad category combining retail, independent and agreed guides. Its count must not be presented as the count for any one of those narrower categories.'}
-  ];
-  // Future claim-backed records replace the complete corresponding default record.
-  // See labor-coverage-template.json and labor-coverage-research-prompt.md.
-  const findings = [];
-  function record(state, coverage, asOf, ruleValue, effectiveTime) {
-    const reviewed = findings.find(r=>r.state===state.abbr && r.coverage===coverage && r.asOf===asOf);
-    if (reviewed) return reviewed;
-    const factory = coverage==='factory';
-    return {
-      state:state.abbr, coverage, asOf,
-      reviewStatus:factory?'existing_summary':'unverified',
-      applicability:'unverified',
-      applicabilityNote:factory?'Existing warranty research; a coverage-specific applicability review is still needed.':'No coverage-specific review has been completed. This does not mean no reimbursement protection exists.',
-      hourlyRate:factory?state.labor:'Unverified for this coverage type.',
-      paidHours:factory?effectiveTime(state):'Unverified for this coverage type.',
-      methods:methods.map(m=>{
-        const value=factory && m.legacy ? ruleValue(state,m.legacy) : null;
-        return {id:m.id, finding:value===true?'identified':value===false?'not_identified':'unverified', operation:'unverified', condition:'', evidenceIds:[], basis:value==null?'unverified':'existing_summary'};
-      }),
-      evidence:[],
-      unresolved:factory?['Verify statutory scope and required, optional or conditional treatment for each method.','Split the combined guide category using the exact text; review factory-guide, actual-time fallback and other methods separately.']:['Identify the legal obligor and applicable statutory definitions.','Verify hourly-rate and paid-hours protections independently.'],
-      amendments:[]
-    };
-  }
-  window.LABOR_COVERAGE = {types, methods, findings, record};
+ 'use strict';
+ const types=[
+  {id:'factory',key:'factory_warranty',name:'Factory warranty',note:'Manufacturer warranty repairs. Required describes statutory scope; time-guide elections, waivers and fallback conditions still apply.'},
+  {id:'manufacturer_contract',key:'mfr_service_contract',name:'Mfr-backed service contract',note:'Includes programs such as Subaru Added Security only when the issuer, obligor, affiliation and payment conditions are met.'},
+  {id:'cpo',key:'cpo',name:'CPO warranty',note:'CPO warranty claims, separate from certification inspections, reconditioning and separately purchased contracts.'},
+  {id:'independent_contract',key:'independent_service_contract',name:'Independent service contract',note:'Independent contract obligors differ from independent guide publishers. Not addressed means the reviewed provisions are silent, not that all law is silent.'}
+ ];
+ const statuses=[
+  {id:'yes',name:'Required',symbol:'✓',description:'The researched provisions reach this coverage type. Method-specific conditions and elections remain in the notes.'},
+  {id:'conditional',name:'Conditional',symbol:'!',description:'Scope depends on the issuer, obligor, manufacturer payment, or a stated interpretation. Read the condition in the cell.'},
+  {id:'no',name:'Not reached',symbol:'×',description:'Outside the reviewed provisions because of an express exclusion or limitation to manufacturer-issued or sponsored work.'},
+  {id:'silent',name:'Not addressed',symbol:'—',description:'The statute was researched and does not address this coverage type. This is not an unverified entry or an affirmative exclusion.'}
+ ];
+ const methods=[
+  {id:'factory',name:'Factory time',description:'Research grouping for manufacturer/warrantor time allowances, including reasonable-and-adequate standards and additional-time rights. It does not mean every statute mandates a named OEM guide.'},
+  {id:'independent_guide',name:'Independent/retail time guide',description:'Independent or customer-pay guide. Alaska permits agreement otherwise; Montana gives a choice; Minnesota and North Dakota have actual-time fallbacks.'},
+  {id:'multiplier',name:'OEM time × multiplier',description:'Illinois: 1.5× only if no guide is agreed or the guide omits the repair. New Jersey: dealer-elected customer-pay/OEM-hours ratio, effective April 1, 2026.'},
+  {id:'actual_time',name:'Actual technician time',description:'Mississippi: time required by a qualified technician of ordinary skill. Rhode Island: the particular technician’s documented time, effective October 1, 2026.'},
+  {id:'negotiated_other',name:'Negotiated/other',description:'Wisconsin normalizes its hourly rate: retail labor revenue divided by OEM hours. Paid hours stay OEM time. Do not apply the time difference twice.'},
+  {id:'silent',name:'Statute silent on time',description:'No general repair-time allowance standard identified. Specific diagnostic or assistance-time protections can still apply.'},
+  {id:'n/a',name:'—',description:'No paid-hours method assigned to a coverage type classified Not reached or Not addressed.'}
+ ];
+ const conditions={
+  FL:{all:'Issued by the licensee or a common entity that is itself a manufacturer. Non-manufacturer common-entity issuers are excluded; check the named obligor.'},
+  GA:{all:'Interpretive scope: the contract must fit the new-vehicle warranty definition. The exclusion may spare manufacturer-controlled extended warranties, but may also exclude all service contracts.'},
+  IL:{manufacturer_contract:'Reached through affiliate-issued warranty/service/repair plans in § 6(f) and the extended-warranty guide clause, rather than an express service-contract scope sentence.',cpo:'CPO is not named. This depends on treating manufacturer- or affiliate-issued and compensated CPO work as warranty or factory-compensated repair.'},
+  MA:{all:'Issued by the manufacturer, distributor, or a common entity that is itself a manufacturer. Non-manufacturer common-entity issuers are excluded.'},
+  MS:{all:'CPO appears in the parts-oriented warranty-work definition, § 63-17-55(ee). Extending the labor rule to CPO is an interpretation, not an express labor-scope provision.'},
+  NC:{all:'Extended warranties appear in the manufacturer’s obligations list. The rate floor names warranty and recall service; applying it depends on reading warranty to include the extended coverage.'},
+  NJ:{all:'Repair service must be offered and reimbursed by the franchisor, subject to affiliate rules and the circumstances for administered plans in (g) and (h). CPO is not expressly named.'},
+  NY:{all:'CPO must fall within the franchisor’s own warranty agreement or a factory-compensated repair; CPO is not expressly named.'},
+  PA:{all:'Service-contract claims filed with the manufacturer have timing and nondiscrimination protections. The retail-rate floor expressly names warranty service, so applying it remains conditional.'},
+  VA:{all:'Manufacturer or distributor must compensate the work. Whether a separate insurance or service-contract affiliate qualifies remains unresolved.'},
+  WI:{all:'Manufacturer, importer or distributor must require, request or approve the work, or agree to pay for it.'}
+ };
+ const hourNotes={
+  AK:'Independent-guide floor applies unless otherwise agreed.',
+  IL:'1.5× OEM time is a fallback only when no guide is agreed or the agreed guide does not cover the repair.',
+  NJ:'Dealer election: customer-paid billed hours ÷ OEM-guide hours, applied to OEM time. Effective April 1, 2026.',
+  MS:'Time required by a qualified technician of ordinary skill; not necessarily the individual technician’s clock time.',
+  RI:'Documented technician time, including diagnostic and OEM assistance time. Effective October 1, 2026.',
+  KY:'Passenger vehicles use factory time. Class 7+ heavy trucks have an actual-hours exception, expanded July 15, 2026, outside this comparison.',
+  MN:'Dealer’s retail guide with an actual-time fallback; effective October 1, 2023.',
+  MT:'Dealer chooses the manufacturer’s guide or its customer-pay guide.',
+  ND:'Customer-pay guide with an actual-time fallback when it omits the repair.',
+  WI:'Paid hours remain OEM time. The retail/factory time difference is incorporated into the hourly rate’s denominator.',
+  NC:'Documented requests for modified or additional diagnosis/repair time may not be unreasonably denied; the old reasonable-and-adequate sentence was deleted July 1, 2025.',
+  NE:'Allowances must be adequate for a qualified technician; documented requests to modify or add time may not be unreasonably denied.',
+  WV:'The dealer’s written modification request is presumed reasonable; diagnostic time includes manufacturer communications.',
+  OR:'Additional-time protections apply to new or renewed franchises from January 1, 2026.',
+  PA:'Factory time, no statutory standard: § 307 requires disclosure of the time allowance but sets no reasonableness standard.',
+  CT:'Diagnosis and warranty-service time allowances must be reasonable and adequate for the work to be performed.',
+  VA:'No general repair-time standard; diagnostic work includes manufacturer technical-assistance communications.'
+ };
+ const sourceNames={official:'Official statute',enrolled_act:'Enacted-law text',mirror:'Code reproduction'};
+ const byState=new Map(window.COVERAGE_V2.map(r=>[r.state,r]));
+ const sourceUrls=raw=>[...new Set((raw.match(/https?:\/\/[^\s<>"']+/g)||[]).map(u=>u.replace(/[),.;]+$/,'')))];
+ function displayNotes(raw){return raw
+  .replace("CPO is expressly named and is normally issued by the licensee itself, hence 'yes' (same issuer qualifier applies).",'CPO has the same issuer qualifier; v2 classifies it as Conditional.')
+  .replace(/MFR SC = yes because .*?holder\./,'Manufacturer-backed service contracts are Conditional under v2: § 6(f) reaches affiliate-issued plans, but coverage remains interpretive.')
+  .replace("A third-party obligor is not a 'manufacturer, importer, or distributor', so independent contracts are not reached.",'The v2 cell is Not addressed for independent contracts; the manufacturer-limited wording is not treated as an express exclusion in this record.');}
+ function record(state,coverage,asOf){
+  const raw=byState.get(state.abbr),type=types.find(t=>t.id===coverage),cell=raw.coverage[type.key];
+  const condition=cell.applies==='conditional'?(conditions[state.abbr]?.[coverage]||conditions[state.abbr]?.all):'';
+  const assigned=['yes','conditional'].includes(cell.applies),status=statuses.find(s=>s.id===cell.applies);
+  const dated=state.abbr==='RI'&&['factory','cpo'].includes(coverage),upcoming=dated&&asOf<'2026-10-01';
+  return {state:state.abbr,coverage,applicability:cell.applies,statusLabel:status.name,condition,applicabilityNote:condition||status.description,
+   hourlyRate:assigned?raw.hourly_rate_method:cell.applies==='no'?'Not reached under the reviewed provisions; no statutory hourly-rate method assigned to this coverage.':'Not addressed by the reviewed provisions; no coverage-specific hourly-rate method assigned.',
+   stateHourlyRate:raw.hourly_rate_method,paidHoursId:cell.paid_hours,paidHours:methods.find(m=>m.id===cell.paid_hours).name,
+   hoursNote:assigned?(hourNotes[state.abbr]||'Read the quoted provision and notes for the time-allowance requirements.'):'No paid-hours classification assigned to this coverage.',
+   quote:cell.quote,pinpoint:cell.pinpoint,primaryCite:raw.primary_cite,definitionCite:raw.definition_cite,notes:displayNotes(raw.notes),effectiveNotes:raw.effective_notes,
+   confidence:raw.confidence,sourceQuality:raw.source_quality,sourceName:sourceNames[raw.source_quality],sourceNote:raw.official_url,urls:sourceUrls(raw.official_url),upcoming,
+   dateNote:dated?(upcoming?'Upcoming October 1, 2026. Before then, the prior text has no general time-allowance rule and does not expressly name CPO.':'Effective October 1, 2026. The displayed Rhode Island classification is effective on the selected date.'):'',reviewStatus:'v2_researched'};
+ }
+ const tallies=()=>types.map(t=>({coverage:t.id,name:t.name,counts:Object.fromEntries(statuses.map(s=>[s.id,window.COVERAGE_V2.filter(r=>r.coverage[t.key].applies===s.id).length]))}));
+ window.LABOR_COVERAGE={types,statuses,methods,record,tallies,sourceUrls,researchDate:'2026-09-24',byState};
 })();

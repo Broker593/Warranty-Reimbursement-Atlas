@@ -1,5 +1,5 @@
 window.REFERENCE = {
-  "date": "September 24, 2026",
+  "date": "September 25, 2026",
   "rules": [
     {
       "id": "retail_parts",
@@ -68,10 +68,10 @@ window.REFERENCE = {
     {
       "id": "actual_time",
       "group": "Paid hours",
-      "name": "Documented actual technician time",
-      "short": "Actual technician time",
-      "description": "Warranty labor hours are expressly based on documented actual technician time. A check reflects the displayed rule date; upcoming changes appear in state details. A question mark means this feature has not been classified.",
-      "example": "Rhode Island from October 1, 2026: time punches, supporting records and dealer attestation."
+      "name": "Primary actual-time labor standard",
+      "short": "Actual-time standard",
+      "description": "The primary paid-hours standard uses actual technician time, including Mississippi’s qualified-technician reasonableness standard and Rhode Island’s documented individual time from October 1, 2026. Guide-specific fallback methods are not counted here.",
+      "example": "MS uses time required by a qualified technician of ordinary skill; RI uses the technician’s documented time. These are distinct standards."
     },
     {
       "id": "sample_100_90",
@@ -158,7 +158,7 @@ window.REFERENCE = {
         "prior_month": false,
         "lookback_90": false,
         "special_sample": false,
-        "actual_time": null,
+        "actual_time": false,
         "accuracy_only": null,
         "automatic_rate": null
       },
@@ -202,7 +202,7 @@ window.REFERENCE = {
         "prior_month": false,
         "lookback_90": false,
         "special_sample": false,
-        "actual_time": null,
+        "actual_time": false,
         "accuracy_only": null,
         "automatic_rate": null
       },
@@ -246,7 +246,7 @@ window.REFERENCE = {
         "prior_month": false,
         "lookback_90": false,
         "special_sample": false,
-        "actual_time": null,
+        "actual_time": false,
         "accuracy_only": null,
         "automatic_rate": null
       },
@@ -290,7 +290,7 @@ window.REFERENCE = {
         "prior_month": false,
         "lookback_90": false,
         "special_sample": false,
-        "actual_time": null,
+        "actual_time": false,
         "accuracy_only": null,
         "automatic_rate": null
       },
@@ -334,7 +334,7 @@ window.REFERENCE = {
         "prior_month": false,
         "lookback_90": false,
         "special_sample": true,
-        "actual_time": null,
+        "actual_time": false,
         "accuracy_only": null,
         "automatic_rate": null
       },
@@ -378,7 +378,7 @@ window.REFERENCE = {
         "prior_month": false,
         "lookback_90": true,
         "special_sample": false,
-        "actual_time": null,
+        "actual_time": false,
         "accuracy_only": null,
         "automatic_rate": null
       },
@@ -398,8 +398,8 @@ window.REFERENCE = {
     {
       "state": "Connecticut",
       "parts": "Dealer cost plus the dealer’s qualifying retail parts markup; no fixed statewide percentage.",
-      "labor": "Prior-month qualifying labor sales divided by billed labor hours.",
-      "time": "No separate standard for the number of paid labor hours identified in the reviewed section. Retail-rate or fair-compensation language alone is not an express time-allowance requirement.",
+      "labor": "Retail rate: all nonwarranty customer-paid ROs from the month before submission; total labor sales ÷ labor hours. Presumed fair unless rebutted within 30 days vs other same line-make dealers 'in the vicinity'; effective 30 days after declaration; protest to the DMV Commissioner; ≤2 declarations per calendar year.",
+      "time": "Time allowances for diagnosis and performance of warranty work and service must be reasonable and adequate for the work to be performed. Conn. Gen. Stat. § 42-133s(h). The earlier silence classification was incorrect.",
       "sample": "Parts: fewer of 100 sequential ROs or 60 days, within 180 days. Labor: all qualifying customer-pay ROs in the preceding month.",
       "statute": "Conn. Gen. Stat. § 42-133s",
       "note": "Parts and labor use different sampling periods; comparable-dealer reasonableness applies.",
@@ -422,7 +422,7 @@ window.REFERENCE = {
         "prior_month": true,
         "lookback_90": false,
         "special_sample": false,
-        "actual_time": null,
+        "actual_time": false,
         "accuracy_only": false,
         "automatic_rate": true
       },
@@ -436,21 +436,37 @@ window.REFERENCE = {
       "review": {
         "status": "partial",
         "date": "2026-09-24",
-        "scope": "Checked the cited warranty section for the time-allowance correction. Broader summary verification remains incomplete. Also checked the rate-submission challenge and effectiveness provisions."
+        "scope": "Earlier time-allowance classification superseded by the September 25 v2 correction. Section 42-133s(h) requires reasonable and adequate time allowances. Earlier rate-submission review retained."
       },
       "checks": [
         {
           "date": "2026-09-24",
-          "scope": "Checked the cited warranty section for the time-allowance correction. Broader summary verification remains incomplete.",
+          "scope": "Checked the cited warranty section for the time-allowance correction. Broader summary verification remains incomplete. The prior time-silence conclusion was corrected on September 25, 2026 using v2’s quotation of subsection (h).",
           "url": "https://www.cga.ct.gov/current/pub/chap_739.htm#sec_42-133s",
           "sourceType": "Official text"
+        },
+        {
+          "date": "2026-09-25",
+          "scope": "Applied supplied Claude v2 labor correction. Time allowances for diagnosis and performance of warranty work and service must be reasonable and adequate for the work to be performed. Conn. Gen. Stat. § 42-133s(h). The earlier silence classification was incorrect.",
+          "url": "https://www.cga.ct.gov/current/pub/chap_739.htm",
+          "sourceType": "Supplied v2 research; official statute"
         }
       ],
       "process": {
         "challenge": "Reasonableness against same-line dealers in the vicinity; rebut within 30 days.",
         "rateApproval": "Declared retail parts and labor rates take effect 30 days after declaration, subject to audit and timely rebuttal.",
         "claimApproval": "Claim-approval mechanics not classified in this update."
-      }
+      },
+      "extraSources": [
+        {
+          "url": "https://www.cga.ct.gov/current/pub/chap_739.htm",
+          "label": "V2 labor research source"
+        },
+        {
+          "url": "https://www.cga.ct.gov/2026/ACT/PA/PDF/2026PA-00024-R00SB-00413-PA.PDF",
+          "label": "V2 labor research source"
+        }
+      ]
     },
     {
       "state": "Delaware",
@@ -479,7 +495,7 @@ window.REFERENCE = {
         "prior_month": false,
         "lookback_90": false,
         "special_sample": false,
-        "actual_time": null,
+        "actual_time": false,
         "accuracy_only": null,
         "automatic_rate": null
       },
@@ -523,7 +539,7 @@ window.REFERENCE = {
         "prior_month": true,
         "lookback_90": false,
         "special_sample": true,
-        "actual_time": null,
+        "actual_time": false,
         "accuracy_only": null,
         "automatic_rate": null
       },
@@ -567,7 +583,7 @@ window.REFERENCE = {
         "prior_month": false,
         "lookback_90": false,
         "special_sample": false,
-        "actual_time": null,
+        "actual_time": false,
         "accuracy_only": null,
         "automatic_rate": null
       },
@@ -588,8 +604,8 @@ window.REFERENCE = {
     {
       "state": "Hawaii",
       "parts": "At least dealer retail markup, if reasonable against same-line dealers in Hawaii.",
-      "labor": "Equal to dealer’s retail hourly rate; statute prohibits both a lower and a higher hourly rate.",
-      "time": "No separate standard for the number of paid labor hours identified in the reviewed section. Retail-rate or fair-compensation language alone is not an express time-allowance requirement.",
+      "labor": "Retail rate: warranty labor rate per hour can be no less than the rate the dealer charges retail customers, and no more than it. The statute gives no RO-sample method for labor; the RO method in § 437-56(b) is for parts markup only.",
+      "time": "Statute silent on a general paid-hours allowance standard. Hourly compensation must be neither below nor above the dealer’s retail hourly rate.",
       "sample": "Parts: 100 qualifying customer-paid ROs. If unavailable within the preceding two months, submit all types of ROs for that two-month period.",
       "statute": "HRS §§ 437-56, 437-28(a)(21)(G)",
       "note": "Official parts and labor sections checked. Engine/transmission assemblies are excluded from the parts rate sample.",
@@ -612,7 +628,7 @@ window.REFERENCE = {
         "prior_month": false,
         "lookback_90": false,
         "special_sample": true,
-        "actual_time": null,
+        "actual_time": false,
         "accuracy_only": null,
         "automatic_rate": null
       },
@@ -634,9 +650,16 @@ window.REFERENCE = {
           "scope": "Checked §437-56 and §437-28(a)(21) for time-allowance wording. Keep hourly-rate compensation distinct from the number of paid hours.",
           "url": "https://data.capitol.hawaii.gov/hrscurrent/Vol10_Ch0436-0474/HRS0437/HRS_0437-0056.htm",
           "sourceType": "Official text"
+        },
+        {
+          "date": "2026-09-25",
+          "scope": "Applied supplied Claude v2 labor correction. Statute silent on a general paid-hours allowance standard. Hourly compensation must be neither below nor above the dealer’s retail hourly rate.",
+          "url": "https://data.capitol.hawaii.gov/hrscurrent/Vol10_Ch0436-0474/HRS0437/HRS_0437-0028.htm",
+          "sourceType": "Supplied v2 research; official statute"
         }
       ],
-      "pendingNote": "External review flags potentially different claim deadlines in §437-56(d) and §437-28(a)(21)(G). Applicability needs reconciliation before classifying a single claim-payment deadline."
+      "pendingNote": "External review flags potentially different claim deadlines in §437-56(d) and §437-28(a)(21)(G). Applicability needs reconciliation before classifying a single claim-payment deadline.",
+      "extraSources": []
     },
     {
       "state": "Idaho",
@@ -665,7 +688,7 @@ window.REFERENCE = {
         "prior_month": false,
         "lookback_90": false,
         "special_sample": false,
-        "actual_time": null,
+        "actual_time": false,
         "accuracy_only": null,
         "automatic_rate": null
       },
@@ -710,7 +733,7 @@ window.REFERENCE = {
         "prior_month": false,
         "lookback_90": false,
         "special_sample": true,
-        "actual_time": null,
+        "actual_time": false,
         "accuracy_only": null,
         "automatic_rate": null
       },
@@ -754,7 +777,7 @@ window.REFERENCE = {
         "prior_month": false,
         "lookback_90": false,
         "special_sample": false,
-        "actual_time": null,
+        "actual_time": false,
         "accuracy_only": null,
         "automatic_rate": null
       },
@@ -799,7 +822,7 @@ window.REFERENCE = {
         "prior_month": false,
         "lookback_90": false,
         "special_sample": false,
-        "actual_time": null,
+        "actual_time": false,
         "accuracy_only": null,
         "automatic_rate": null
       },
@@ -843,7 +866,7 @@ window.REFERENCE = {
         "prior_month": false,
         "lookback_90": false,
         "special_sample": false,
-        "actual_time": null,
+        "actual_time": false,
         "accuracy_only": null,
         "automatic_rate": null
       },
@@ -887,7 +910,7 @@ window.REFERENCE = {
         "prior_month": false,
         "lookback_90": false,
         "special_sample": false,
-        "actual_time": null,
+        "actual_time": false,
         "accuracy_only": null,
         "automatic_rate": null
       },
@@ -939,7 +962,7 @@ window.REFERENCE = {
         "prior_month": false,
         "lookback_90": false,
         "special_sample": false,
-        "actual_time": null,
+        "actual_time": false,
         "accuracy_only": null,
         "automatic_rate": null
       },
@@ -959,8 +982,8 @@ window.REFERENCE = {
     {
       "state": "Maine",
       "parts": "Customary retail parts rate for vehicles not over 10,000 lb GVWR; dealer-specific markup.",
-      "labor": "Customary retail labor rate, conspicuously posted.",
-      "time": "Retail reimbursement framework; no numeric time multiplier identified in reviewed section.",
+      "labor": "The 'retail rate customarily charged by that franchisee for the same labor when not performed in satisfaction of a warranty', as long as the nonwarranty labor rate is 'routinely posted in a place conspicuous to its service customer'. The statute has no RO-sample method for labor; the 100-RO / 60-day method is for parts markup only.",
+      "time": "Statute silent on a general paid-hours allowance standard. The customary retail hourly rate applies only when routinely posted conspicuously for service customers.",
       "sample": "Parts: 100 sequential ROs or 60 days, whichever is less in total cost; repairs within 180 days.",
       "statute": "10 M.R.S. § 1176",
       "note": "Vehicle-weight distinction matters. Parts markup requests may be made twice per calendar year.",
@@ -983,7 +1006,7 @@ window.REFERENCE = {
         "prior_month": false,
         "lookback_90": false,
         "special_sample": true,
-        "actual_time": null,
+        "actual_time": false,
         "accuracy_only": null,
         "automatic_rate": null
       },
@@ -1005,8 +1028,15 @@ window.REFERENCE = {
           "scope": "Confirmed §1176 vehicle-weight boundary: the separate rule is for vehicles over 10,000 lb GVWR, so exactly 10,000 is included in the ordinary retail-parts rule.",
           "url": "https://legislature.maine.gov/statutes/10/title10sec1176.html",
           "sourceType": "Official text"
+        },
+        {
+          "date": "2026-09-25",
+          "scope": "Applied supplied Claude v2 labor correction. Statute silent on a general paid-hours allowance standard. The customary retail hourly rate applies only when routinely posted conspicuously for service customers.",
+          "url": "https://legislature.maine.gov/statutes/10/title10sec1176.html",
+          "sourceType": "Supplied v2 research; official statute"
         }
-      ]
+      ],
+      "extraSources": []
     },
     {
       "state": "Maryland",
@@ -1035,7 +1065,7 @@ window.REFERENCE = {
         "prior_month": false,
         "lookback_90": false,
         "special_sample": false,
-        "actual_time": null,
+        "actual_time": false,
         "accuracy_only": true,
         "automatic_rate": true
       },
@@ -1092,7 +1122,7 @@ window.REFERENCE = {
         "prior_month": false,
         "lookback_90": false,
         "special_sample": false,
-        "actual_time": null,
+        "actual_time": false,
         "accuracy_only": null,
         "automatic_rate": null
       },
@@ -1136,7 +1166,7 @@ window.REFERENCE = {
         "prior_month": false,
         "lookback_90": false,
         "special_sample": false,
-        "actual_time": null,
+        "actual_time": false,
         "accuracy_only": null,
         "automatic_rate": null
       },
@@ -1181,7 +1211,7 @@ window.REFERENCE = {
         "prior_month": false,
         "lookback_90": false,
         "special_sample": false,
-        "actual_time": null,
+        "actual_time": false,
         "accuracy_only": null,
         "automatic_rate": null
       },
@@ -1201,8 +1231,8 @@ window.REFERENCE = {
     {
       "state": "Mississippi",
       "parts": "Dealer cost plus the dealer’s qualifying retail parts markup; no fixed statewide percentage.",
-      "labor": "Retail-equivalent hourly compensation under the statute’s floor / ceiling wording.",
-      "time": "Time must reasonably cover diagnosis and performance by an ordinary qualified technician.",
+      "labor": "At the dealer's written request, the retail rate is total labor charges on qualified repairs divided by hours. The sample is all consecutive ROs containing 100 sequential qualified-repair ROs, or all ROs closed in 90 consecutive days, whichever gives fewer, no older than 180 days. The rate is presumed reasonable and takes effect 45 days after receipt unless the manufacturer rebuts once. The dealer may protest to the Motor Vehicle Commission, where the manufacturer bears the burden. At most once per 12 months.",
+      "time": "Time allowances must be reasonable and adequate using the actual time required by a qualified technician of ordinary skill. This is a qualified-technician reasonableness standard, not necessarily the individual technician’s clock time. § 63-17-85(j), effective July 1, 2021.",
       "sample": "Fewer of 100 qualifying sequential customer-pay ROs or 90 consecutive days; repairs within 180 days.",
       "statute": "Miss. Code §§ 63-17-85(j), 63-17-86",
       "note": "No fixed statewide parts percentage or labor dollar amount.",
@@ -1225,7 +1255,7 @@ window.REFERENCE = {
         "prior_month": false,
         "lookback_90": false,
         "special_sample": false,
-        "actual_time": null,
+        "actual_time": true,
         "accuracy_only": null,
         "automatic_rate": null
       },
@@ -1240,7 +1270,25 @@ window.REFERENCE = {
         "status": "reproduction",
         "date": "2026-09-21",
         "scope": "Existing payment-method and sample summary. No claim of an exhaustive legal update."
-      }
+      },
+      "checks": [
+        {
+          "date": "2026-09-25",
+          "scope": "Applied supplied Claude v2 labor correction. Time allowances must be reasonable and adequate using the actual time required by a qualified technician of ordinary skill. This is a qualified-technician reasonableness standard, not necessarily the individual technician’s clock time. § 63-17-85(j), effective July 1, 2021.",
+          "url": "https://billstatus.ls.state.ms.us/documents/2021/html/HB/0700-0799/HB0746SG.htm",
+          "sourceType": "Supplied v2 research; enacted-law text"
+        }
+      ],
+      "extraSources": [
+        {
+          "url": "https://billstatus.ls.state.ms.us/documents/2021/html/HB/0700-0799/HB0746SG.htm",
+          "label": "V2 labor research source"
+        },
+        {
+          "url": "https://law.justia.com/codes/mississippi/title-63/chapter-17/distribution-and-sales/section-63-17-85/",
+          "label": "V2 labor research source"
+        }
+      ]
     },
     {
       "state": "Missouri",
@@ -1269,7 +1317,7 @@ window.REFERENCE = {
         "prior_month": false,
         "lookback_90": false,
         "special_sample": false,
-        "actual_time": null,
+        "actual_time": false,
         "accuracy_only": null,
         "automatic_rate": null
       },
@@ -1313,7 +1361,7 @@ window.REFERENCE = {
         "prior_month": false,
         "lookback_90": false,
         "special_sample": false,
-        "actual_time": null,
+        "actual_time": false,
         "accuracy_only": null,
         "automatic_rate": null
       },
@@ -1333,8 +1381,8 @@ window.REFERENCE = {
     {
       "state": "Nebraska",
       "parts": "At least dealer retail or fleet charges under the updated statute.",
-      "labor": "At least dealer retail or fleet charges; prevailing-wage considerations also appear in the statute.",
-      "time": "Reasonable and adequate diagnostic / repair time; no statewide numeric multiplier identified in reviewed text.",
+      "labor": "Principal factor: 'the prevailing wage rates being paid by dealers in the community'. The floor is the dealer's own rates for like service to retail or fleet customers, excluding listed maintenance work. There is no statutory labor-rate declaration formula; the 100 ROs/90 days/180-day method is written for parts markup. The manufacturer may request up to 100 additional ROs from a 90-day window to test the declared 'retail labor rate' and may adjust if the dealer's retail rates are lower. Negotiated rates are allowed.",
+      "time": "Manufacturer time allowances must be adequate for a qualified technician. A documented request to modify or add diagnostic/repair time may not be unreasonably denied. LB667 operative September 3, 2025. LB972 excludes RVs from this section October 1, 2026; passenger-vehicle coverage remains.",
       "sample": "Parts: Fewer of 100 qualifying sequential customer-pay ROs or 90 consecutive days; repairs within 180 days.",
       "statute": "Neb. Rev. Stat. § 60-1438",
       "note": "Official text checked; 2025 amendments effective September 3, 2025.",
@@ -1357,7 +1405,7 @@ window.REFERENCE = {
         "prior_month": false,
         "lookback_90": false,
         "special_sample": false,
-        "actual_time": null,
+        "actual_time": false,
         "accuracy_only": null,
         "automatic_rate": null
       },
@@ -1373,7 +1421,16 @@ window.REFERENCE = {
         "date": "2026-09-21",
         "scope": "Existing payment-method and sample summary. No claim of an exhaustive legal update."
       },
-      "pendingNote": "External review identifies LB972 §70 as operative October 1, 2026. Recheck §60-1438 and applicability before using this entry on or after that date."
+      "pendingNote": "RV scope changes October 1, 2026 under LB972. This comparison concerns passenger vehicles.",
+      "checks": [
+        {
+          "date": "2026-09-25",
+          "scope": "Applied supplied Claude v2 labor correction. Manufacturer time allowances must be adequate for a qualified technician. A documented request to modify or add diagnostic/repair time may not be unreasonably denied. LB667 operative September 3, 2025. LB972 excludes RVs from this section October 1, 2026; passenger-vehicle coverage remains.",
+          "url": "https://nebraskalegislature.gov/laws/statutes.php?statute=60-1438",
+          "sourceType": "Supplied v2 research; official statute"
+        }
+      ],
+      "extraSources": []
     },
     {
       "state": "Nevada",
@@ -1402,7 +1459,7 @@ window.REFERENCE = {
         "prior_month": false,
         "lookback_90": false,
         "special_sample": false,
-        "actual_time": null,
+        "actual_time": false,
         "accuracy_only": null,
         "automatic_rate": null
       },
@@ -1446,7 +1503,7 @@ window.REFERENCE = {
         "prior_month": false,
         "lookback_90": false,
         "special_sample": false,
-        "actual_time": null,
+        "actual_time": false,
         "accuracy_only": null,
         "automatic_rate": null
       },
@@ -1490,7 +1547,7 @@ window.REFERENCE = {
         "prior_month": false,
         "lookback_90": false,
         "special_sample": false,
-        "actual_time": null,
+        "actual_time": false,
         "accuracy_only": null,
         "automatic_rate": null
       },
@@ -1542,7 +1599,7 @@ window.REFERENCE = {
         "prior_month": false,
         "lookback_90": false,
         "special_sample": false,
-        "actual_time": null,
+        "actual_time": false,
         "accuracy_only": null,
         "automatic_rate": null
       },
@@ -1594,7 +1651,7 @@ window.REFERENCE = {
         "prior_month": false,
         "lookback_90": false,
         "special_sample": false,
-        "actual_time": null,
+        "actual_time": false,
         "accuracy_only": null,
         "automatic_rate": null
       },
@@ -1614,8 +1671,8 @@ window.REFERENCE = {
     {
       "state": "North Carolina",
       "parts": "Dealer cost plus the dealer’s qualifying retail parts markup; no fixed statewide percentage.",
-      "labor": "Dealer’s qualifying retail labor rate; no fixed statewide $/hour.",
-      "time": "Reasonable time; supported requests for additional diagnostic / repair time cannot be unreasonably denied.",
+      "labor": "Not less than the dealer's 'current retail labor rate'. Dealer may declare it from 100 sequential non-warranty customer-paid ROs containing warranty-like parts or 60 consecutive days of such ROs, whichever is less (within 180 days). Presumed accurate. Manufacturer may rebut within 30 days by substantiating inaccuracy. Protest goes to the DMV Commissioner.",
+      "time": "Manufacturer time allowances. Since July 1, 2025, the former reasonable-and-adequate sentence has been removed. Section 20-305.1(a5) bars unreasonable denial of documented requests to modify a uniform allowance or add diagnosis/repair time.",
       "sample": "Fewer of 100 qualifying sequential ROs or 60 consecutive days; repairs within 180 days.",
       "statute": "N.C. Gen. Stat. § 20-305.1",
       "note": "2025 amendments limit retail-rate challenges to submission accuracy rather than comparable-market reasonableness.",
@@ -1638,7 +1695,7 @@ window.REFERENCE = {
         "prior_month": false,
         "lookback_90": false,
         "special_sample": false,
-        "actual_time": null,
+        "actual_time": false,
         "accuracy_only": null,
         "automatic_rate": null
       },
@@ -1653,7 +1710,16 @@ window.REFERENCE = {
         "status": "official",
         "date": "2026-09-21",
         "scope": "Existing payment-method and sample summary. No claim of an exhaustive legal update."
-      }
+      },
+      "checks": [
+        {
+          "date": "2026-09-25",
+          "scope": "Applied supplied Claude v2 labor correction. Manufacturer time allowances. Since July 1, 2025, the former reasonable-and-adequate sentence has been removed. Section 20-305.1(a5) bars unreasonable denial of documented requests to modify a uniform allowance or add diagnosis/repair time.",
+          "url": "https://www.ncleg.gov/EnactedLegislation/Statutes/HTML/BySection/Chapter_20/GS_20-305.1.html",
+          "sourceType": "Supplied v2 research; official statute"
+        }
+      ],
+      "extraSources": []
     },
     {
       "state": "North Dakota",
@@ -1682,7 +1748,7 @@ window.REFERENCE = {
         "prior_month": false,
         "lookback_90": false,
         "special_sample": false,
-        "actual_time": null,
+        "actual_time": false,
         "accuracy_only": null,
         "automatic_rate": null
       },
@@ -1726,7 +1792,7 @@ window.REFERENCE = {
         "prior_month": false,
         "lookback_90": false,
         "special_sample": false,
-        "actual_time": null,
+        "actual_time": false,
         "accuracy_only": null,
         "automatic_rate": null
       },
@@ -1770,7 +1836,7 @@ window.REFERENCE = {
         "prior_month": false,
         "lookback_90": false,
         "special_sample": false,
-        "actual_time": null,
+        "actual_time": false,
         "accuracy_only": true,
         "automatic_rate": false
       },
@@ -1841,7 +1907,7 @@ window.REFERENCE = {
         "prior_month": false,
         "lookback_90": false,
         "special_sample": false,
-        "actual_time": null,
+        "actual_time": false,
         "accuracy_only": false,
         "automatic_rate": true
       },
@@ -1874,8 +1940,8 @@ window.REFERENCE = {
     {
       "state": "Pennsylvania",
       "parts": "Retail parts markup, including major assemblies.",
-      "labor": "Dealer’s qualifying effective retail labor rate.",
-      "time": "Section 307(a)(1) requires the manufacturer to provide time allowances in its compensation schedule. No reasonable-and-adequate time standard or numeric time multiplier identified in the reviewed current section.",
+      "labor": "Dealer's retail rate: declared average labor rate = total labor sales ÷ total labor hours from the lesser of 100 sequential non-warranty customer-paid ROs or 90 consecutive days (within 180 days). Presumed reasonable and effective 60 days after declaration. Manufacturer may rebut within 60 days and propose an adjustment. Protest to the State Board of Vehicle Manufacturers, Dealers and Salespersons. One declaration per calendar year. Dealer may opt out (revert to nonretail) once a year to avoid a surcharge.",
+      "time": "Factory time, no statutory standard. Section 307(a)(1) requires disclosure of the time allowance in the manufacturer’s compensation schedule but sets no reasonableness or other paid-hours standard.",
       "sample": "Fewer of 100 qualifying sequential customer-pay ROs or 90 consecutive days; repairs within 180 days.",
       "statute": "63 P.S. § 818.307",
       "note": "Submission may be challenged for material accuracy or reasonableness; statutory timing differs from 30-day states.",
@@ -1898,7 +1964,7 @@ window.REFERENCE = {
         "prior_month": false,
         "lookback_90": false,
         "special_sample": false,
-        "actual_time": null,
+        "actual_time": false,
         "accuracy_only": false,
         "automatic_rate": true
       },
@@ -1920,13 +1986,20 @@ window.REFERENCE = {
           "scope": "Checked the cited warranty section for the time-allowance correction. Broader summary verification remains incomplete.",
           "url": "https://www.legis.state.pa.us/WU01/LI/LI/US/HTM/1983/0/0084..HTM",
           "sourceType": "Official text"
+        },
+        {
+          "date": "2026-09-25",
+          "scope": "Applied supplied Claude v2 labor correction. Factory time, no statutory standard. Section 307(a)(1) requires disclosure of the time allowance in the manufacturer’s compensation schedule but sets no reasonableness or other paid-hours standard.",
+          "url": "https://www.legis.state.pa.us/WU01/LI/LI/US/HTM/1983/0/0084..HTM",
+          "sourceType": "Supplied v2 research; official statute"
         }
       ],
       "process": {
         "challenge": "Unreasonableness or material inaccuracy; rebut within 60 days.",
         "rateApproval": "Rate takes effect 60 days after declaration unless audited and rebutted under §307(a).",
         "claimApproval": "Claim-approval mechanics not classified in this update."
-      }
+      },
+      "extraSources": []
     },
     {
       "state": "Rhode Island",
@@ -2028,7 +2101,7 @@ window.REFERENCE = {
         "prior_month": false,
         "lookback_90": false,
         "special_sample": false,
-        "actual_time": null,
+        "actual_time": false,
         "accuracy_only": null,
         "automatic_rate": false
       },
@@ -2085,7 +2158,7 @@ window.REFERENCE = {
         "prior_month": false,
         "lookback_90": false,
         "special_sample": false,
-        "actual_time": null,
+        "actual_time": false,
         "accuracy_only": null,
         "automatic_rate": null
       },
@@ -2111,8 +2184,8 @@ window.REFERENCE = {
     {
       "state": "Tennessee",
       "parts": "Retail parts markup established by the statutory sample.",
-      "labor": "Dealer’s posted retail hourly rate, subject to statutory commission-review provisions.",
-      "time": "Reasonable diagnosis and repair compensation; no numeric time multiplier identified.",
+      "labor": "The warranty hourly rate may not be less than 'the dealer's retail labor rate for similar repairs' unless the manufacturer shows the Motor Vehicle Commission that the rate is 'improper in light of all economic circumstances'. The dealer may not charge more than its posted retail labor rate. Dealers file sworn labor-rate statements with the commission. The 100-RO/90-day submission in (d)(2)(C) covers parts markup only.",
+      "time": "Statute silent on a general paid-hours allowance standard. The retail hourly-rate floor and posted-rate ceiling remain separate requirements; this is not a finding that Tennessee has no reimbursement law.",
       "sample": "Parts: Fewer of 100 qualifying sequential customer-pay ROs or 90 consecutive days; repairs within 180 days.",
       "statute": "Tenn. Code § 55-17-121",
       "note": "Retail labor rates are reported to the commission; posted rate should not be replaced with an assumed statewide average.",
@@ -2135,7 +2208,7 @@ window.REFERENCE = {
         "prior_month": false,
         "lookback_90": false,
         "special_sample": false,
-        "actual_time": null,
+        "actual_time": false,
         "accuracy_only": null,
         "automatic_rate": null
       },
@@ -2150,7 +2223,21 @@ window.REFERENCE = {
         "status": "reproduction",
         "date": "2026-09-21",
         "scope": "Existing payment-method and sample summary. No claim of an exhaustive legal update."
-      }
+      },
+      "checks": [
+        {
+          "date": "2026-09-25",
+          "scope": "Applied supplied Claude v2 labor correction. Statute silent on a general paid-hours allowance standard. The retail hourly-rate floor and posted-rate ceiling remain separate requirements; this is not a finding that Tennessee has no reimbursement law.",
+          "url": "https://law.justia.com/codes/tennessee/2025/title-55/chapter-17/part-1/section-55-17-121/",
+          "sourceType": "Supplied v2 research; code reproduction"
+        }
+      ],
+      "extraSources": [
+        {
+          "url": "https://law.justia.com/codes/tennessee/2025/title-55/chapter-17/part-1/section-55-17-121/",
+          "label": "V2 labor research source"
+        }
+      ]
     },
     {
       "state": "Texas",
@@ -2179,7 +2266,7 @@ window.REFERENCE = {
         "prior_month": false,
         "lookback_90": false,
         "special_sample": true,
-        "actual_time": null,
+        "actual_time": false,
         "accuracy_only": null,
         "automatic_rate": null
       },
@@ -2223,7 +2310,7 @@ window.REFERENCE = {
         "prior_month": false,
         "lookback_90": false,
         "special_sample": false,
-        "actual_time": null,
+        "actual_time": false,
         "accuracy_only": null,
         "automatic_rate": null
       },
@@ -2267,7 +2354,7 @@ window.REFERENCE = {
         "prior_month": false,
         "lookback_90": false,
         "special_sample": true,
-        "actual_time": null,
+        "actual_time": false,
         "accuracy_only": null,
         "automatic_rate": null
       },
@@ -2287,11 +2374,11 @@ window.REFERENCE = {
     {
       "state": "Virginia",
       "parts": "Retail OEM-parts markup, established by agreement approximating retail or by the statutory average.",
-      "labor": "Retail labor compensation under the updated statute.",
-      "time": "Reasonable diagnostic / repair time, including qualifying technical-assistance work.",
+      "labor": "Compensation must be at least 'the amounts charged by the dealer ... to retail customers for nonwarranty service'. Increases are requested in writing and based on 100 consecutive ROs or all ROs over a 90-day period, 'whichever occurs first'. Only retail ROs count; menu pricing, internal work, group or special-event discounts and insurance repairs are excluded.",
+      "time": "Statute silent on general repair-time allowances. Diagnostic work includes all qualifying technician time communicating with manufacturer technical assistance. Do not imply a general reasonable-time standard.",
       "sample": "Parts: 100 consecutive ROs or all ROs over 90 consecutive days, whichever occurs first.",
       "statute": "Va. Code § 46.2-1571",
-      "note": "Official updated text checked. Recall parts have a special prior-12-month highest-price basis; do not apply that automatically to all warranty parts.",
+      "note": "Official updated text checked. Recall parts have a special prior-12-month highest-price basis; do not apply that automatically to all warranty parts. V2 correction: 2025 chapters 546/558, effective July 1, 2025, removed the deemed-reasonable clause. The current retail compensation floor is retained.",
       "basis": "Official statute checked; includes 2025 amendments.",
       "sourceDate": "Official current page",
       "url": "https://law.lis.virginia.gov/vacode/title46.2/chapter15/section46.2-1571/",
@@ -2311,7 +2398,7 @@ window.REFERENCE = {
         "prior_month": false,
         "lookback_90": false,
         "special_sample": false,
-        "actual_time": null,
+        "actual_time": false,
         "accuracy_only": null,
         "automatic_rate": null
       },
@@ -2326,7 +2413,16 @@ window.REFERENCE = {
         "status": "official",
         "date": "2026-09-21",
         "scope": "Existing payment-method and sample summary. No claim of an exhaustive legal update."
-      }
+      },
+      "checks": [
+        {
+          "date": "2026-09-25",
+          "scope": "Applied supplied Claude v2 labor correction. Statute silent on general repair-time allowances. Diagnostic work includes all qualifying technician time communicating with manufacturer technical assistance. Do not imply a general reasonable-time standard.",
+          "url": "https://law.lis.virginia.gov/vacode/title46.2/chapter15/section46.2-1571/",
+          "sourceType": "Supplied v2 research; official statute"
+        }
+      ],
+      "extraSources": []
     },
     {
       "state": "Washington",
@@ -2355,7 +2451,7 @@ window.REFERENCE = {
         "prior_month": false,
         "lookback_90": false,
         "special_sample": false,
-        "actual_time": null,
+        "actual_time": false,
         "accuracy_only": null,
         "automatic_rate": null
       },
@@ -2399,7 +2495,7 @@ window.REFERENCE = {
         "prior_month": false,
         "lookback_90": false,
         "special_sample": false,
-        "actual_time": null,
+        "actual_time": false,
         "accuracy_only": null,
         "automatic_rate": null
       },
@@ -2443,7 +2539,7 @@ window.REFERENCE = {
         "prior_month": false,
         "lookback_90": false,
         "special_sample": false,
-        "actual_time": null,
+        "actual_time": false,
         "accuracy_only": null,
         "automatic_rate": null
       },
@@ -2464,8 +2560,8 @@ window.REFERENCE = {
     {
       "state": "Wyoming",
       "parts": "Dealer cost plus the dealer’s qualifying retail parts markup; no fixed statewide percentage.",
-      "labor": "Dealer retail-derived labor rate, subject to reasonableness and the retail cap.",
-      "time": "Reasonable and adequate diagnostic / repair time; no statewide numeric multiplier identified in reviewed text.",
+      "labor": "The rate is set by mutual agreement or by dealer submission. Rate = total labor charged on qualified ROs ÷ 'total number of hours worked' on those ROs, from 100 sequential qualified ROs or 90 consecutive days, whichever is less, within 180 days. It takes effect 45 days after receipt unless the manufacturer requests more ROs or contests it (material incompleteness, inaccuracy or unreasonableness). A contest goes to 60 days of mediation, then court, where the manufacturer bears the burden. One submission per 12 months. The retained § 31-16-117(b) sentence says the warranty rate shall not exceed the nonwarranty rate; it is a ceiling, not a floor.",
+      "time": "Manufacturer time allowances must be reasonable and adequate. The hourly-rate sentence is a retail-rate ceiling, not a floor; the July 1, 2025 amendment supplies a dealer rate-submission process.",
       "sample": "Fewer of 100 qualifying sequential customer-pay ROs or 90 consecutive days; repairs within 180 days.",
       "statute": "Wyo. Stat. § 31-16-117",
       "note": "2025 amendments effective July 1, 2025 added retail-rate submission procedures.",
@@ -2488,7 +2584,7 @@ window.REFERENCE = {
         "prior_month": false,
         "lookback_90": false,
         "special_sample": false,
-        "actual_time": null,
+        "actual_time": false,
         "accuracy_only": null,
         "automatic_rate": null
       },
@@ -2503,8 +2599,33 @@ window.REFERENCE = {
         "status": "reproduction",
         "date": "2026-09-21",
         "scope": "Existing payment-method and sample summary. No claim of an exhaustive legal update."
-      }
+      },
+      "checks": [
+        {
+          "date": "2026-09-25",
+          "scope": "Applied supplied Claude v2 labor correction. Manufacturer time allowances must be reasonable and adequate. The hourly-rate sentence is a retail-rate ceiling, not a floor; the July 1, 2025 amendment supplies a dealer rate-submission process.",
+          "url": "https://wyoleg.gov/statutes/compress/title31.pdf",
+          "sourceType": "Supplied v2 research; official statute"
+        }
+      ],
+      "extraSources": [
+        {
+          "url": "https://wyoleg.gov/statutes/compress/title31.pdf",
+          "label": "V2 labor research source"
+        },
+        {
+          "url": "https://wyoleg.gov/2025/Enroll/SF0106.pdf",
+          "label": "V2 labor research source"
+        }
+      ]
     }
   ],
-  "reviewDate": "2026-09-24"
+  "reviewDate": "2026-09-24",
+  "coverageImport": {
+    "version": 2,
+    "researchDate": "2026-09-24",
+    "importedDate": "2026-09-25",
+    "records": 200,
+    "source": "research/labor-by-coverage-v2.json"
+  }
 };

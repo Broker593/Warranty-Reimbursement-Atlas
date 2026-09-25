@@ -1,0 +1,1853 @@
+/* Claude research v2, 2026-09-24; supplied JSON preserved in research/. */
+window.COVERAGE_V2 = [
+ {
+  "state": "AK",
+  "primary_cite": "Alaska Stat. § 45.25.210 (see also § 45.25.200)",
+  "definition_cite": "Alaska Stat. § 45.25.990(18) ('schedule of compensation'), (19) ('service contract'), (23) ('warranty work'); § 45.25.210(j) ('rate', 'time allowance')",
+  "official_url": "https://www.akleg.gov/basis/statutes.asp?media=print&secStart=45.25.010&secEnd=45.25.990",
+  "source_quality": "official",
+  "effective_notes": "HB 233 (ch. 20 SLA 2024), signed 7/29/2024; no effective-date clause, so Alaska's 90-day default applies (~10/27/2024). It added labor time allowances and the independent-labor-time-guide floor (§ 45.25.210(b), (c), (j)), barred manufacturer cost recovery (§ 45.25.300(8)), and amended § 45.25.990(18). Verified against enrolled HB 233.",
+  "hourly_rate_method": "Unless otherwise agreed, the rate may not be less than the rate the dealer charges retail customers for similar nonwarranty service work. The statute sets no labor-rate sample or formula (the 100-RO/90-day method in (d) covers parts markup only). The manufacturer may disapprove only if the rate is materially miscalculated or unreasonable compared with similarly situated AK dealers. ≤1 rate increase per calendar year.",
+  "coverage": {
+   "factory_warranty": {
+    "applies": "yes",
+    "paid_hours": "independent_guide",
+    "quote": "Unless otherwise agreed to by the manufacturer and the new motor vehicle dealer, the schedule of compensation may not contain ... (2) time allowances less than time allowances provided in independent labor time guides.",
+    "pinpoint": "§ 45.25.210(c)(2)"
+   },
+   "mfr_service_contract": {
+    "applies": "no",
+    "paid_hours": "n/a",
+    "quote": "\"warranty work\" (A) means repairs that are covered under a manufacturer's warranty or a recall; ... (C) does not mean work under a separate service contract.",
+    "pinpoint": "§ 45.25.990(23)(A), (C)"
+   },
+   "cpo": {
+    "applies": "silent",
+    "paid_hours": "n/a",
+    "quote": "(A) means repairs that are covered under a manufacturer's warranty or a recall;",
+    "pinpoint": "§ 45.25.990(23)(A)"
+   },
+   "independent_service_contract": {
+    "applies": "no",
+    "paid_hours": "n/a",
+    "quote": "\"warranty work\" (A) means repairs that are covered under a manufacturer's warranty or a recall; ... (C) does not mean work under a separate service contract.",
+    "pinpoint": "§ 45.25.990(23)(C)"
+   }
+  },
+  "notes": "Both floors (rate and independent-guide time) apply 'unless otherwise agreed', so they are defaults that can be contracted around. 'Time allowance' = 'the maximum number of hours and fractions of an hour of labor that may be billed for a particular job'. 'Service contract' (990(19)) = optional agreement separate from the sale contract covering repairs beyond warranty, so OEM extended warranties sold separately look excluded. 'Warranty work' includes manufacturer-directed goodwill (990(23)(B)). Claims are framed as work 'on the new motor vehicle' (§ 45.25.200(b)); 'warranty' is undefined; CPO appears only in § 45.25.300(2) (inventory coercion). The chapter's 'motor vehicle' excludes motor homes, RVs and motorcycles (990(12)).",
+  "confidence": "high"
+ },
+ {
+  "state": "AL",
+  "primary_cite": "Ala. Code § 8-20-7",
+  "definition_cite": "Ala. Code § 8-20-7(a) (in-section definitions: 'warranty work', 'warrantor', 'qualified repair'); § 8-20-3 checked — no 'warranty' definition",
+  "official_url": "https://alison.legislature.state.al.us/code-of-alabama?section=8-20-7",
+  "source_quality": "official",
+  "effective_notes": "None found for 2023–2026. Official code history for § 8-20-7 ends with Act 2022-104.",
+  "hourly_rate_method": "Floor = dealer's retail rate for like nonwarranty service (if not unreasonable); at dealer's election, set from 100 sequential qualified-repair ROs or all ROs in 90 consecutive days (whichever fewer), ≤180 days old: total labor charges ÷ hours; effective 45 days after receipt unless rebutted; ≤1x per 12 months.",
+  "coverage": {
+   "factory_warranty": {
+    "applies": "yes",
+    "paid_hours": "factory",
+    "quote": "Time allowances for the diagnosis and performance of warranty work and service shall be reasonable and adequate for the work to be performed.",
+    "pinpoint": "§ 8-20-7(c); see (b) (warrantor supplies 'the time allowance')"
+   },
+   "mfr_service_contract": {
+    "applies": "silent",
+    "paid_hours": "n/a",
+    "quote": "in fulfilling a warrantor’s obligations under a new motor vehicle warranty, a recall, or a certified pre-owned warranty, to consumers",
+    "pinpoint": "§ 8-20-7(a)(6)"
+   },
+   "cpo": {
+    "applies": "yes",
+    "paid_hours": "factory",
+    "quote": "in fulfilling a warrantor’s obligations under a new motor vehicle warranty, a recall, or a certified pre-owned warranty, to consumers",
+    "pinpoint": "§ 8-20-7(a)(6)"
+   },
+   "independent_service_contract": {
+    "applies": "silent",
+    "paid_hours": "n/a",
+    "quote": "in fulfilling a warrantor’s obligations under a new motor vehicle warranty, a recall, or a certified pre-owned warranty, to consumers",
+    "pinpoint": "§ 8-20-7(a)(6)"
+   }
+  },
+  "notes": "Warrantor must furnish a compensation schedule and 'the time allowance for the performance of such work and service' (b). The retail-rate floor in (c) does not apply to motor-home residential components or 'parts related to motorcycle repairs'. 'Qualified repair' = customer-paid repair that would have been covered by the new-vehicle warranty but for time/mileage. 30-day approve/disapprove with deemed approval; pay within 30 days of approval; 12-month chargeback window; 120-day resubmission. Service contracts appear only in § 8-20-4 (item j., ban on coercing dealers to sell manufacturer-backed extended service contracts/maintenance plans), which is not a reimbursement rule.",
+  "confidence": "high"
+ },
+ {
+  "state": "AR",
+  "primary_cite": "Ark. Code Ann. § 23-112-313 (with § 23-112-310(d))",
+  "definition_cite": "Ark. Code Ann. § 23-112-103 (no 'warranty' definition); in-section definitions § 23-112-313(c)(6) ('qualified repair order'), (f) ('routine maintenance')",
+  "official_url": "Mirror read: https://law.justia.com/codes/arkansas/title-23/subtitle-4/chapter-112/subchapter-3/section-23-112-313/ (2025 code). Official portal: Arkansas Code via arkleg.state.ar.us (LexisNexis-hosted). Enrolled Act 515 of 2023 read at arkleg.state.ar.us.",
+  "source_quality": "mirror",
+  "effective_notes": "Act 515 of 2023 (HB 1579), approved 4/10/2023, no emergency clause; eff. 8/1/2023 per the Justia history note. It revised the 'routine maintenance' definition (EV/hybrid propulsion batteries no longer excluded) and added § 23-112-313(g) (pay dealers for assisting with OTA/remote updates). No 2024–2026 changes found (mirror history ends there).",
+  "hourly_rate_method": "Not less than the dealer's retail labor rate per hour, provided it is reasonable vs same line-make dealers in the relevant/competitive market area. Rate = total labor sales ÷ labor hours from qualified customer-pay ROs (excluding routine maintenance), from the lesser of 100 sequential ROs (≤180 days old) or a 90-day look-back. Change requests are deemed approved if not acted on within 45 days.",
+  "coverage": {
+   "factory_warranty": {
+    "applies": "yes",
+    "paid_hours": "factory",
+    "quote": "Time allowances for the diagnosis and performance of warranty or recall campaign work and service shall be reasonable and adequate for the work to be performed.",
+    "pinpoint": "§ 23-112-313(c)(1)"
+   },
+   "mfr_service_contract": {
+    "applies": "silent",
+    "paid_hours": "n/a",
+    "quote": "shall properly fulfill any warranty or recall campaign agreements and adequately and fairly compensate each of its motor vehicle dealers for labor and parts.",
+    "pinpoint": "§ 23-112-313(a)"
+   },
+   "cpo": {
+    "applies": "silent",
+    "paid_hours": "n/a",
+    "quote": "shall properly fulfill any warranty or recall campaign agreements and adequately and fairly compensate each of its motor vehicle dealers for labor and parts.",
+    "pinpoint": "§ 23-112-313(a)"
+   },
+   "independent_service_contract": {
+    "applies": "silent",
+    "paid_hours": "n/a",
+    "quote": "shall properly fulfill any warranty or recall campaign agreements and adequately and fairly compensate each of its motor vehicle dealers for labor and parts.",
+    "pinpoint": "§ 23-112-313(a)"
+   }
+  },
+  "notes": "Two overlapping sections. § 23-112-310(d)(1)(A)–(B) sets the retail-rate floor (subject to a reasonableness comparison) and bars dealers from charging manufacturers more than retail. § 23-112-313(c) supplies the formula. Motorcycles/ATVs have a separate standard (310(d)(1)(C)). Manufacturers must file compensation schedules with the Motor Vehicle Commission (310(a)). Claims: 30-day approve/disapprove with deemed approval; 1-year audit; chargeback appeals to the Commission. A keyword scan of subchapters 1, 3 and 4 found no reference to service contracts, extended warranties or CPO.",
+  "confidence": "medium"
+ },
+ {
+  "state": "AZ",
+  "primary_cite": "A.R.S. § 28-4451(C)–(F), (K)",
+  "definition_cite": "A.R.S. § 28-4301 (no 'warranty' definition; (31) 'Service' includes 'extended service contracts' but is not used in § 28-4451's compensation duty)",
+  "official_url": "https://www.azleg.gov/ars/28/04451.htm",
+  "source_quality": "official",
+  "effective_notes": "Laws 2024, ch. 94 (HB 2410), signed 4/8/2024 (general effective date believed to be 9/14/2024). It amended § 28-4451 (claim resubmission, stop-sale, dealer indemnification BB–CC) and added § 28-4464. The labor-rate and time-allowance text in (D)–(E) is unchanged (compared Justia 2023 vs 2024 text).",
+  "hourly_rate_method": "Must be 'fair and reasonable'. At the dealer's option, the dealer declares a retail labor rate from the lesser of 100 sequential nonwarranty customer-paid ROs or 90 consecutive days of customer-paid ROs for warranty-like repairs (≤180 days old): total labor sales ÷ labor hours. The rate is presumed fair and takes effect in 30 days unless rebutted vs similarly situated same line-make AZ dealers; dealer can protest to the director. ≤1 declaration per 12 months.",
+  "coverage": {
+   "factory_warranty": {
+    "applies": "yes",
+    "paid_hours": "factory",
+    "quote": "Time allowances for the diagnosis and performance of warranty work and service shall be reasonable and adequate for the work or services to be performed.",
+    "pinpoint": "§ 28-4451(D)"
+   },
+   "mfr_service_contract": {
+    "applies": "silent",
+    "paid_hours": "n/a",
+    "quote": "The manufacturer or distributor shall compensate an authorized new motor vehicle dealer who performs work to rectify the manufacturer's or distributor's warranty obligations, recall obligations or delivery and preparation obligations.",
+    "pinpoint": "§ 28-4451(C)"
+   },
+   "cpo": {
+    "applies": "silent",
+    "paid_hours": "n/a",
+    "quote": "The manufacturer or distributor shall compensate an authorized new motor vehicle dealer who performs work to rectify the manufacturer's or distributor's warranty obligations, recall obligations or delivery and preparation obligations.",
+    "pinpoint": "§ 28-4451(C)"
+   },
+   "independent_service_contract": {
+    "applies": "silent",
+    "paid_hours": "n/a",
+    "quote": "The manufacturer or distributor shall compensate an authorized new motor vehicle dealer who performs work to rectify the manufacturer's or distributor's warranty obligations, recall obligations or delivery and preparation obligations.",
+    "pinpoint": "§ 28-4451(C)"
+   }
+  },
+  "notes": "The time rule says only 'reasonable and adequate' and names no guide, so the bucket is factory. (K): the manufacturer may use the submitted ROs to validate rates, may require re-validation once every 12 months, and may reduce the reimbursement rate going forward if the dealer's retail rate has declined (two-way ratchet). Recall repairs (U) are paid on the same basis. CPO appears only in § 28-4458 (parts-sourcing coercion). The 2024 amendments to § 28-4460 address factory-sponsored extended service contracts only as a competition issue. § 28-4464: the article does not apply to manufacturers that have never used franchised dealers.",
+  "confidence": "high"
+ },
+ {
+  "state": "CA",
+  "primary_cite": "Cal. Veh. Code §§ 3065, 3065.2",
+  "definition_cite": "Cal. Veh. Code § 3065.25(b) ('Warranty' includes new vehicle warranty, certified preowned warranty, TSB/customer-service-campaign repairs within warranty period, federal recalls); § 3065.2(j) ('qualified repair order')",
+  "official_url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=VEH&sectionNum=3065",
+  "source_quality": "official",
+  "effective_notes": "None found for 2023–2026 in §§ 3065, 3065.2, 3065.25. Last changes: AB 179 (Stats. 2019, ch. 796), eff. 1/1/2020; SB 1371 (Stats. 2020, ch. 370), eff. 1/1/2021, technical. Bills signed in 2026 (eff. 1/1/2027) were not exhaustively checked.",
+  "hourly_rate_method": "Retail labor rate from the fewer of any 100 consecutive qualified ROs or all ROs in a 90-consecutive-day period (≤180 days old): total labor charges ÷ hours. Takes effect on the 30th day unless the franchisor contests it as materially inaccurate or fraudulent. ≤1x per calendar year. A voluntary signed agreement for other rates is allowed if it 'adequately and fairly compensates'.",
+  "coverage": {
+   "factory_warranty": {
+    "applies": "yes",
+    "paid_hours": "factory",
+    "quote": "The franchisor shall use time allowances for the diagnosis and performance of work and service that are reasonable and adequate for a qualified technician to perform the work or services.",
+    "pinpoint": "§ 3065(a)(1)"
+   },
+   "mfr_service_contract": {
+    "applies": "silent",
+    "paid_hours": "n/a",
+    "quote": "“Warranty” includes a new vehicle warranty, a certified preowned warranty, a repair pursuant to a technical service bulletin on a vehicle covered under the period of warranty ...",
+    "pinpoint": "§ 3065.25(b)"
+   },
+   "cpo": {
+    "applies": "yes",
+    "paid_hours": "factory",
+    "quote": "“Warranty” includes a new vehicle warranty, a certified preowned warranty",
+    "pinpoint": "§ 3065.25(b)"
+   },
+   "independent_service_contract": {
+    "applies": "silent",
+    "paid_hours": "n/a",
+    "quote": "“Warranty” includes a new vehicle warranty, a certified preowned warranty, a repair pursuant to a technical service bulletin on a vehicle covered under the period of warranty ...",
+    "pinpoint": "§ 3065.25(b)"
+   }
+  },
+  "notes": "'Warranty' is an inclusive ('includes') definition, but it does not name service contracts. The retail-rate sample excludes 'Repairs for government agencies or service contract providers' (§ 3065.2(c)(11)). Time rules: the franchisor may not unreasonably deny a written request to change its uniform time allowance or to add time for a specific vehicle (§ 3065(a)(1)); no fixed-percentage cuts to time or compensation (§ 3065(a)(2)); specific reductions need 15 days' notice and can be protested (§ 3065(a)(3)). Claims: 30-day deemed approval, 9-month audit window, Board protests. | Cross-check 9/24: Grok did not treat CA as reaching CPO because it read only § 3065. § 3065.25(b) defines 'Warranty' to include 'a certified preowned warranty' (re-confirmed 9/24).",
+  "confidence": "high"
+ },
+ {
+  "state": "CO",
+  "primary_cite": "C.R.S. § 44-20-141.5",
+  "definition_cite": "C.R.S. § 44-20-141.5(1) (in-section definitions incl. (1)(g) 'warranty obligation', (1)(a) 'manufacturer' includes distributor)",
+  "official_url": "Mirror read: https://law.justia.com/codes/colorado/title-44/automobiles/article-20/part-1/section-44-20-141-5/ (2025 C.R.S.). Official: enrolled SB 23-078 at https://content.leg.colorado.gov/sites/default/files/2023a_078_signed.pdf; official C.R.S. portal via leg.colorado.gov (LexisNexis-hosted).",
+  "source_quality": "mirror",
+  "effective_notes": "SB 23-078 (L. 2023, ch. 51), eff. Aug. 7, 2023, for warranty repairs on or after that date. It removed the requirement that rates be 'reasonable and consistent' before payment is owed, and it dropped 'substantially different from similarly situated dealers' as a ground to contest. Now the only contest ground is 'materially inaccurate'. No 2024–2026 amendments to § 44-20-141.5 found (the 2026 session was not exhaustively checked).",
+  "hourly_rate_method": "At the dealer's request, the retail labor rate: the dealer's choice of 100 sequential nonwarranty ROs or all nonwarranty ROs over 90 consecutive days (from the last 90 days); nonwarranty labor sales ÷ hours. Effective 45 days after submission unless contested as materially inaccurate; court or executive-director determination, retroactive. ≤1 increase request per year.",
+  "coverage": {
+   "factory_warranty": {
+    "applies": "yes",
+    "paid_hours": "factory",
+    "quote": "Shall not establish an unreasonable flat-rate time, nor establish unreasonable flat-rate labor times for new line-makes that are inconsistent with the existing rates",
+    "pinpoint": "§ 44-20-141.5(7)(a)"
+   },
+   "mfr_service_contract": {
+    "applies": "silent",
+    "paid_hours": "n/a",
+    "quote": "“Warranty obligation” means diagnosing and repairing a motor vehicle in accordance with any warranty, recall, or certified preowned warranty, under which a manufacturer makes a repair commitment to a consumer or motor vehicle dealer.",
+    "pinpoint": "§ 44-20-141.5(1)(g)"
+   },
+   "cpo": {
+    "applies": "yes",
+    "paid_hours": "factory",
+    "quote": "“Warranty obligation” means diagnosing and repairing a motor vehicle in accordance with any warranty, recall, or certified preowned warranty, under which a manufacturer makes a repair commitment to a consumer or motor vehicle dealer.",
+    "pinpoint": "§ 44-20-141.5(1)(g)"
+   },
+   "independent_service_contract": {
+    "applies": "silent",
+    "paid_hours": "n/a",
+    "quote": "“Warranty obligation” means diagnosing and repairing a motor vehicle in accordance with any warranty, recall, or certified preowned warranty, under which a manufacturer makes a repair commitment to a consumer or motor vehicle dealer.",
+    "pinpoint": "§ 44-20-141.5(1)(g)"
+   }
+  },
+  "notes": "Service contracts and extended warranties are not named. One could argue a manufacturer-obligor extended warranty is 'any warranty ... under which a manufacturer makes a repair commitment', but that is untested. Notable: the retail-rate sample KEEPS work paid by service-contract companies, because exclusion (4)(c)(XI) for volume-discount third-party payers states it does 'not includ[e] third-party warranty companies or service contract companies'. The section does not apply to RV dealers/manufacturers ((9)); powersports are covered by § 44-20-439.5 and RV warranty by § 44-20-141.6.",
+  "confidence": "medium"
+ },
+ {
+  "state": "CT",
+  "primary_cite": "Conn. Gen. Stat. § 42-133s",
+  "definition_cite": "Conn. Gen. Stat. § 42-133r (no 'warranty' or 'service contract' definition; replaced by PA 26-24 § 20 eff. 10/1/2026 — adds consumer-data/substantial-alteration terms only)",
+  "official_url": "https://www.cga.ct.gov/current/pub/chap_739.htm (2025 revision; 2026 Supplement lists no ch. 739 changes); PA 26-24: https://www.cga.ct.gov/2026/ACT/PA/PDF/2026PA-00024-R00SB-00413-PA.PDF",
+  "source_quality": "official",
+  "effective_notes": "PA 26-24 (sSB 413), §§ 20–25, eff. Oct. 1, 2026. New § 22 requires stop-sale/used-vehicle recall compensation (≥1% of value per month), and § 23 amends § 42-133s(j) to cover those claims. It also replaces § 42-133r (new definitions) and amends §§ 42-133bb and 42-133cc. The labor rate (c) and time (h) are unchanged. SB 412 (2026), a separate franchise-act bill, died on the Senate calendar.",
+  "hourly_rate_method": "Retail rate: all nonwarranty customer-paid ROs from the month before submission; total labor sales ÷ labor hours. Presumed fair unless rebutted within 30 days vs other same line-make dealers 'in the vicinity'; effective 30 days after declaration; protest to the DMV Commissioner; ≤2 declarations per calendar year.",
+  "coverage": {
+   "factory_warranty": {
+    "applies": "yes",
+    "paid_hours": "factory",
+    "quote": "Time allowances for the diagnosis and performance of warranty work and service shall be reasonable and adequate for the work to be performed.",
+    "pinpoint": "§ 42-133s(h)"
+   },
+   "mfr_service_contract": {
+    "applies": "silent",
+    "paid_hours": "n/a",
+    "quote": "the dealer's obligations for predelivery preparation and warranty service on its products, and shall compensate the dealer for such preparation and service.",
+    "pinpoint": "§ 42-133s(a)"
+   },
+   "cpo": {
+    "applies": "silent",
+    "paid_hours": "n/a",
+    "quote": "the dealer's obligations for predelivery preparation and warranty service on its products, and shall compensate the dealer for such preparation and service.",
+    "pinpoint": "§ 42-133s(a)"
+   },
+   "independent_service_contract": {
+    "applies": "silent",
+    "paid_hours": "n/a",
+    "quote": "the dealer's obligations for predelivery preparation and warranty service on its products, and shall compensate the dealer for such preparation and service.",
+    "pinpoint": "§ 42-133s(a)"
+   }
+  },
+  "notes": "The labor sample is a full month of customer-pay ROs (not limited to warranty-like repairs); rate-calc exclusions are in (d). A keyword scan of §§ 42-133r–42-133ee (2025 revision) found no reference to service contracts, extended warranties, CPO or maintenance plans. Claims: 30-day deemed approval, 1-year audit/chargeback, resubmission for clerical errors (j). | Cross-check 9/24: re-confirmed § 42-133s contains 'reasonable and adequate' time-allowance language (reverses the 9/22 review).",
+  "confidence": "high"
+ },
+ {
+  "state": "DE",
+  "primary_cite": "6 Del. C. § 4903",
+  "definition_cite": "6 Del. C. § 4902 (no 'warranty'/'service contract' definition; (8) 'Manufacturer' includes controlled persons acting in distribution); scope enumerated in § 4903(a)(1)a.",
+  "official_url": "https://delcode.delaware.gov/title6/c049/index.html; session law: https://legis.delaware.gov/SessionLaws?volume=84&chapter=389",
+  "source_quality": "official",
+  "effective_notes": "84 Del. Laws c. 389 (SB 278), approved Aug. 29, 2024; no delayed effective-date clause found. It expanded § 4903 from 'predelivery preparation and warranty service' to also cover manufacturer-sponsored maintenance programs, manufacturer extended warranty, CPO warranty, manufacturer-issued service contracts and parts exchange programs, confirmed against the Justia 2023 pre-amendment text. It also added a 180-day claim window, shortened the audit/chargeback period from 1 year to 180 days, and revised the battery/lightbulb rate-calc exclusions.",
+  "hourly_rate_method": "Not less than the dealer's rate to nonwarranty customers for like services. Declared from 100 sequential customer-paid ROs or 90 days of customer-paid ROs (whichever less), covering like repairs ≤180 days old. No arithmetic formula in the text. Presumed fair; effective within 30 days (clock restarts after reasonably requested information); ≤1 change per 9 months; Public Service Commission protest with burden on the manufacturer.",
+  "coverage": {
+   "factory_warranty": {
+    "applies": "yes",
+    "paid_hours": "factory",
+    "quote": "Time allowances for the diagnosis and performance of warranty work and service shall be reasonable and adequate for the work to be performed.",
+    "pinpoint": "§ 4903(b); see (a)(1)c."
+   },
+   "mfr_service_contract": {
+    "applies": "yes",
+    "paid_hours": "factory",
+    "quote": "With respect to manufacturer-sponsored maintenance programs, manufacturer extended warranty, certified pre-owned warranty, manufacturer-issued service contracts, parts exchange programs, recall and warranty parts and labor reimbursement, reasonable compensation shall not be less than the rate charged by such dealer",
+    "pinpoint": "§ 4903(b)"
+   },
+   "cpo": {
+    "applies": "yes",
+    "paid_hours": "factory",
+    "quote": "manufacturer-sponsored maintenance programs, manufacturer extended warranty, certified pre-owned warranty, manufacturer-issued service contracts, parts exchange programs, recall and warranty service on its products.",
+    "pinpoint": "§ 4903(a)(1)a."
+   },
+   "independent_service_contract": {
+    "applies": "silent",
+    "paid_hours": "n/a",
+    "quote": "manufacturer-sponsored maintenance programs, manufacturer extended warranty, certified pre-owned warranty, manufacturer-issued service contracts, parts exchange programs, recall and warranty service on its products.",
+    "pinpoint": "§ 4903(a)(1)a."
+   }
+  },
+  "notes": "The manufacturer must provide a compensation schedule including 'the time allowance for the performance of such work and service' for all (a)(1) services ((a)(1)c.), so the bucket is factory for every covered program. The 'reasonable and adequate' sentence itself says 'warranty work'. Third-party/dealer-sold non-OEM contracts are not named in § 4903; the only issuer named is 'manufacturer-issued', so they are effectively outside by implication, though there is no express exclusion. § 4913(a)(18) only bars discriminating against dealers who sell non-OEM service contracts. | Cross-check 9/24: Grok missed DE. SB 278 (2024) § 4903(a)-(b) expressly names manufacturer extended warranty, CPO and manufacturer-issued service contracts (re-confirmed 9/24).",
+  "confidence": "high"
+ },
+ {
+  "state": "FL",
+  "primary_cite": "Fla. Stat. § 320.696",
+  "definition_cite": "Fla. Stat. § 320.60(2) ('common entity', incl. 2023 (2)(b) distributor carve-out), (9) ('licensee'), (17) ('service'); in-section definitions § 320.696(1)(b)",
+  "official_url": "http://www.leg.state.fl.us/statutes/index.cfm?App_mode=Display_Statute&URL=0300-0399/0320/Sections/0320.696.html (2026 Florida Statutes)",
+  "source_quality": "official",
+  "effective_notes": "§ 320.696 has not been amended since ch. 2017-187. Ch. 2023-233 (CS/CS/HB 637), eff. July 1, 2023, amended the § 320.60(2) 'common entity' definition. The new (2)(b) says an affiliate of a distributor licensed on 3/1/2023 is not that distributor's common entity if neither the affiliate nor the distributor is or was a common entity of a manufacturer/importer. That narrows which affiliate-issued contracts count under § 320.696(1)(a).",
+  "hourly_rate_method": "Agreed hourly rate. If there is no agreement within 30 days of the dealer's written request, the dealer chooses the greater of (1) retail customer labor rate = total retail labor sales ÷ hours for the preceding month, or (2) a gross-profit-percentage method using the mean technician wage. The rate is applied uniformly and can never be below the rate paid on Jan. 2, 2008. Requests ≤ semiannually; increases retroactive to claims filed 15 days after receipt of the request.",
+  "coverage": {
+   "factory_warranty": {
+    "applies": "yes",
+    "paid_hours": "factory",
+    "quote": "A licensee shall not eliminate flat-rate times from or establish an unreasonable flat-rate time in its warranty repair manual, warranty time guide, or any other similarly named document.",
+    "pinpoint": "§ 320.696(4)(b) (flush text)"
+   },
+   "mfr_service_contract": {
+    "applies": "conditional",
+    "paid_hours": "factory",
+    "quote": "under a warranty or maintenance plan, extended warranty, certified pre-owned warranty, or a service contract, issued by the licensee or its common entity, unless issued by a common entity that is not a manufacturer",
+    "pinpoint": "§ 320.696(1)(a)"
+   },
+   "cpo": {
+    "applies": "conditional",
+    "paid_hours": "factory",
+    "quote": "under a warranty or maintenance plan, extended warranty, certified pre-owned warranty, or a service contract, issued by the licensee or its common entity, unless issued by a common entity that is not a manufacturer",
+    "pinpoint": "§ 320.696(1)(a)"
+   },
+   "independent_service_contract": {
+    "applies": "no",
+    "paid_hours": "n/a",
+    "quote": "under a warranty or maintenance plan, extended warranty, certified pre-owned warranty, or a service contract, issued by the licensee or its common entity, unless issued by a common entity that is not a manufacturer",
+    "pinpoint": "§ 320.696(1)(a)"
+   }
+  },
+  "notes": "Coverage depends on who issued the contract. OEM-branded extended warranties/service contracts are covered only if issued by the licensee (manufacturer/distributor/importer) or a common entity that IS a manufacturer. Contracts issued through a non-manufacturer affiliate (e.g., a captive insurer or administrator) are carved out, hence 'conditional'. CPO is expressly named and is normally issued by the licensee itself, hence 'yes' (same issuer qualifier applies). Third-party contracts fall outside the 'issued by the licensee or its common entity' limit. 'Labor' includes 'time spent by employees for diagnosis and repair' ((1)(b)). The licensee must set reasonable flat-rate times, including for newly introduced models. The retail rate excludes 'other third-party payors' ((4)(c)). Payment within 30 days; ≤1 audit per year; the licensee may not recover its reimbursement costs. | Cross-check 9/24: CPO and service contracts sit in the same sentence, which excludes products 'issued by a common entity that is not a manufacturer'. Coverage turns on who the legal obligor is, so both are Conditional (same treatment as MA).",
+  "confidence": "high"
+ },
+ {
+  "state": "GA",
+  "primary_cite": "O.C.G.A. § 10-1-641 (see also § 10-1-645)",
+  "definition_cite": "O.C.G.A. § 10-1-622(15) ('warranty')",
+  "official_url": "Mirror read: https://law.justia.com/codes/georgia/title-10/chapter-1/article-22/part-3/section-10-1-641/ (2025 Code of Georgia). Official portal: legis.ga.gov (O.C.G.A. hosted by LexisNexis).",
+  "source_quality": "mirror",
+  "effective_notes": "SB 81 (Ga. L. 2025, p. 703), eff. July 1, 2025, added § 10-1-641(a)(1)(E), which requires paying dealers for helping customers with remote/OTA updates. SB 448 (2024), eff. July 1, 2024, was technical only. No rate/time changes. A legis.ga.gov search of the 2025–2026 session found no other franchise-practices bill.",
+  "hourly_rate_method": "At the dealer's election, 'reasonable compensation'. The principal factors are the dealer's retail rate and rates of similarly situated same line-make dealers in a comparable area. Labor retail rate from 100 sequential nonwarranty customer-paid ROs for warranty-like repairs or 90 consecutive days (whichever less), ≤180 days old: total labor sales ÷ hours. The franchisor may contest within 30 days; commissioner hearing with burden on the franchisor. ≤1 declaration per calendar year.",
+  "coverage": {
+   "factory_warranty": {
+    "applies": "yes",
+    "paid_hours": "factory",
+    "quote": "Time allowances for the diagnosis and performance of such work and service shall be reasonable and adequate for the work to be performed.",
+    "pinpoint": "§ 10-1-641(a)(1)(D)"
+   },
+   "mfr_service_contract": {
+    "applies": "conditional",
+    "paid_hours": "factory",
+    "quote": "Such term does not include service contracts, mechanical or other insurance, or “extended warranties” sold for separate consideration by a dealer or other person not controlled by a manufacturer or distributor.",
+    "pinpoint": "§ 10-1-622(15)"
+   },
+   "cpo": {
+    "applies": "silent",
+    "paid_hours": "n/a",
+    "quote": "“Warranty” means a written document signed or authorized by the party on whose behalf it is given which is made or given incident to the sale or lease of a new motor vehicle",
+    "pinpoint": "§ 10-1-622(15)"
+   },
+   "independent_service_contract": {
+    "applies": "no",
+    "paid_hours": "n/a",
+    "quote": "Such term does not include service contracts, mechanical or other insurance, or “extended warranties” sold for separate consideration by a dealer or other person not controlled by a manufacturer or distributor.",
+    "pinpoint": "§ 10-1-622(15)"
+   }
+  },
+  "notes": "The franchisor must supply 'a schedule of the time allowance' ((a)(1)(D)). § 10-1-645 lets a manufacturer and a majority of its line-make dealers adopt a uniform time standards manual (allowances must be 'reasonable and adequate'), but it expressly does not authorize a uniform hourly labor rate. Manufacturer service contracts are covered only by negative implication: the exclusion reaches contracts sold 'by a dealer or other person not controlled by a manufacturer or distributor', and the contract must still fit the core definition (a written document given incident to the sale or lease of a NEW vehicle). The modifier may also be read to exclude ALL 'service contracts' and spare only manufacturer-controlled 'extended warranties'. CPO is not mentioned; the definition is limited to new vehicles.",
+  "confidence": "medium"
+ },
+ {
+  "state": "HI",
+  "primary_cite": "Haw. Rev. Stat. § 437-28(a)(21)(G) (labor); § 437-56 (parts, claims)",
+  "definition_cite": "Haw. Rev. Stat. § 437-1.1 (no definition of 'warranty' or 'service contract'; 'consumer' refers to 'express warranty')",
+  "official_url": "https://data.capitol.hawaii.gov/hrscurrent/Vol10_Ch0436-0474/HRS0437/HRS_0437-0028.htm (the legislature's own data host; www.capitol.hawaii.gov returned a Cloudflare 403). Cross-checked against the Justia 2025 HRS mirror.",
+  "source_quality": "official",
+  "effective_notes": "None found. § 437-28 last amended L 2010, c 164; § 437-56 last amended L 2012, c 246. The 2025 bill HB938 deals with remote OTA feature sales and does not touch warranty labor.",
+  "hourly_rate_method": "Retail rate: warranty labor rate per hour can be no less than the rate the dealer charges retail customers, and no more than it. The statute gives no RO-sample method for labor; the RO method in § 437-56(b) is for parts markup only.",
+  "coverage": {
+   "factory_warranty": {
+    "applies": "yes",
+    "paid_hours": "silent",
+    "quote": "In no event shall any manufacturer or distributor pay its dealers a labor rate per hour for warranty work that is less than that charged by the dealer to the retail customers of the dealer",
+    "pinpoint": "§ 437-28(a)(21)(G)"
+   },
+   "mfr_service_contract": {
+    "applies": "silent",
+    "paid_hours": "n/a",
+    "quote": "failed to adequately and fairly compensate its dealers for labor incurred by the dealer to perform under and comply with manufacturer's warranty agreements",
+    "pinpoint": "§ 437-28(a)(21)(G)"
+   },
+   "cpo": {
+    "applies": "silent",
+    "paid_hours": "n/a",
+    "quote": "failed to adequately and fairly compensate its dealers for labor incurred by the dealer to perform under and comply with manufacturer's warranty agreements",
+    "pinpoint": "§ 437-28(a)(21)(G)"
+   },
+   "independent_service_contract": {
+    "applies": "silent",
+    "paid_hours": "n/a",
+    "quote": "In determining qualifying repair orders for parts, the following work shall not be included: repairs for manufacturer or distributor special events; repairs covered by any insurance or service contract",
+    "pinpoint": "§ 437-56(c) (parts-markup RO exclusion only)"
+   }
+  },
+  "notes": "The rate works as both a floor and a ceiling: 'nor shall the rates be more than the retail rates.' Nothing in the text addresses time allowances. 'Warranty agreements' is undefined. The only 'service contract' reference excludes service-contract repairs from the parts-markup RO sample. It is not a coverage rule. The claim deadlines conflict: § 437-28(a)(21)(G) requires approval or disapproval within 30 days and payment within 30 days of approval, while § 437-56(d) (2012) requires approval/disapproval and payment within 45 days, with deemed approval. § 437-56(e) bars cost recovery. § 437-57 limits audits and chargebacks to 1 year. § 437-59(e) makes recall and stop-sale claims subject to the same limits as warranty claims under § 437-56 or § 437-28(a)(21)(G). 'n/a' means the statute text does not reach that coverage.",
+  "confidence": "high"
+ },
+ {
+  "state": "IA",
+  "primary_cite": "Iowa Code § 322A.5",
+  "definition_cite": "Iowa Code § 322A.1 (no definition of 'warranty' or 'service contract'). Chapter 322 was also checked: § 322.3(14) and (16) cover chargeback and claim-timing limits, and § 322.19 references service contracts only for financing.",
+  "official_url": "https://www.legis.iowa.gov/docs/code/322A.5.pdf (Iowa Code 2026; chapter PDF https://www.legis.iowa.gov/docs/code/322A.pdf)",
+  "source_quality": "official",
+  "effective_notes": "No substantive 2023-2026 change. 2023 Acts ch 19 §1971 was a conforming change to the agency name (dept. of inspections, appeals, and licensing). 2024 Acts ch 1145 §27 (HF 674) amended only the § 322A.1 lead-in ('unless the context otherwise requires'). The substantive rate rules date from 2018 Acts ch 1095 and 2021 Acts ch 38. I searched for 2026 session changes and found none; the Iowa Code 2026 PDF is dated Dec. 2025.",
+  "hourly_rate_method": "Not less than the franchisee's rates for like services to retail customers, provided the rates are reasonable. The franchiser 'may' compute the retail labor rate as retail labor sales for warranty-like services ÷ hours, from 100 sequential customer-paid ROs or all ROs in 90 days, whichever is less, within 180 days, excluding routine maintenance such as tire or oil service. Effective 45 days after approval. A denial can be contested before DIAL, with the burden on the franchiser. At most once per year.",
+  "coverage": {
+   "factory_warranty": {
+    "applies": "yes",
+    "paid_hours": "factory",
+    "quote": "The franchiser shall provide to the franchisee a list of time allowances for the performance of warranty services. Time allowances for the performance of warranty services, including diagnostic services, shall be reasonable and adequate for the services to be performed.",
+    "pinpoint": "§ 322A.5(2)(c)"
+   },
+   "mfr_service_contract": {
+    "applies": "silent",
+    "paid_hours": "n/a",
+    "quote": "compensate the franchisee for the warranty services the franchiser requires the franchisee to provide, including warranty and recall obligations related to repairing and servicing motor vehicles of the franchiser",
+    "pinpoint": "§ 322A.5(2)(a)"
+   },
+   "cpo": {
+    "applies": "silent",
+    "paid_hours": "n/a",
+    "quote": "compensate the franchisee for the warranty services the franchiser requires the franchisee to provide, including warranty and recall obligations related to repairing and servicing motor vehicles of the franchiser",
+    "pinpoint": "§ 322A.5(2)(a)"
+   },
+   "independent_service_contract": {
+    "applies": "silent",
+    "paid_hours": "n/a",
+    "quote": "The compensation to the franchisee for warranty parts and labor shall not be less than the rates charged by the franchisee for like parts and services to retail customers, provided the rates are reasonable.",
+    "pinpoint": "§ 322A.5(2)(b)(4)"
+   }
+  },
+  "notes": "§ 322A.5(5) extends the obligations to franchisers of new transmissions, engines, or rear axles that separately warrant components. § 322A.5(1) requires franchiser and franchisee to fulfill 'any express or implied warranty concerning the sale of a motor vehicle to the public' (a fulfillment duty, not a reimbursement rate). Claims: approve or deny within 30 days, deemed approved, paid within 30 days (§ 322A.5(4)). The formula is permissive ('may'); the binding floor is (2)(b)(4). This text is nearly identical to K.S.A. 8-2415(c), but Iowa adds a time-allowance clause that Kansas lacks.",
+  "confidence": "high"
+ },
+ {
+  "state": "ID",
+  "primary_cite": "Idaho Code § 49-1626",
+  "definition_cite": "Idaho Code §§ 49-101 to 49-127 (Title 49 ch. 1 definitions; 'franchise' at § 49-107(15)). No definition of 'warranty' or 'service contract'.",
+  "official_url": "https://legislature.idaho.gov/statutesrules/idstat/title49/t49ch16/sect49-1626/ (also the chapter PDF https://legislature.idaho.gov/wp-content/uploads/statutesrules/idstat/Title49/T49CH16.pdf)",
+  "source_quality": "official",
+  "effective_notes": "No amendment enacted. § 49-1626 was last amended in 2011 (ch. 327). 2023 H0127 would have added new § 49-1626(12): labor 'as rendered, using the manufacturer's or distributor's labor time guide or the labor time guide used by the dealer ... at the dealer's election.' It was introduced and referred to House Transportation & Defense only (died). 2023 H0129 would have barred unreasonable denial of time-allowance modification requests; it also died in House Transportation. 2026 S1424 (amending § 49-1613) FAILED. 2024 H0640 (ch. 159, eff. 7/1/2024, service-only facilities) did not amend § 49-1626.",
+  "hourly_rate_method": "Not less than the dealer's rate charged to retail customers for nonwarranty labor, provided it is not unreasonable compared with same or competitive franchises in the area. The dealer declares the rate from 100 sequential customer-paid ROs or 90 days of ROs, whichever is less, covering repairs within 180 days. The declared rate is presumed fair and takes effect within 90 days. At most one change per 12 months.",
+  "coverage": {
+   "factory_warranty": {
+    "applies": "yes",
+    "paid_hours": "factory",
+    "quote": "Time allowances for the diagnosis and performance of warranty work and service shall be reasonable and adequate for the work to be performed.",
+    "pinpoint": "§ 49-1626(2); see (1) (manufacturer provides 'the time allowance for the performance of that work')"
+   },
+   "mfr_service_contract": {
+    "applies": "silent",
+    "paid_hours": "n/a",
+    "quote": "to coerce, or attempt to coerce, any dealer in this state to offer to sell or sell any extended service contract or extended maintenance plan that is offered, sold, backed by or sponsored by the manufacturer or distributor",
+    "pinpoint": "§ 49-1613(4) (anti-coercion only; not a reimbursement rule)"
+   },
+   "cpo": {
+    "applies": "silent",
+    "paid_hours": "n/a",
+    "quote": "Each manufacturer or distributor shall specify in writing to each of its dealers licensed in this state, the dealer's obligations for predelivery preparation and warranty service on its products",
+    "pinpoint": "§ 49-1626(1)"
+   },
+   "independent_service_contract": {
+    "applies": "silent",
+    "paid_hours": "n/a",
+    "quote": "the following shall not be considered in determining amounts charged by the dealer to retail customers: ... (iii) Repairs covered by any insurance or service contract",
+    "pinpoint": "§ 49-1626(11)(a)(iii) (retail-rate RO exclusion only)"
+   }
+  },
+  "notes": "Rate text: 'The schedule of compensation for warranty parts and labor shall not be less than the rates charged by the dealer for similar service to retail customers for nonwarranty parts and labor' (§ 49-1626(11)). Manufacturer-backed service contracts appear in the chapter only in the § 49-1613(4) anti-coercion clause. Claims: 30-day approve/disapprove, deemed approved if not disapproved in writing, paid within 30 days (§ 49-1626(5)). Audits are limited to 1 year except fraud (§ 49-1626(8)). No cost-recovery surcharge (§ 49-1626(13)). For RV living-area components, § 49-1626(11) does not apply (§ 49-1626(14)).",
+  "confidence": "high"
+ },
+ {
+  "state": "IL",
+  "primary_cite": "815 ILCS 710/6",
+  "definition_cite": "815 ILCS 710/2 (no definition of 'warranty'). Scope extension to affiliate-issued plans is at 710/6(f).",
+  "official_url": "https://www.ilga.gov/Documents/legislation/ilcs/documents/081507100K6.htm (full act: https://www.ilga.gov/legislation/ilcs/ilcs3.asp?ActID=2382&ChapterID=67)",
+  "source_quality": "official",
+  "effective_notes": "Sec. 6 was last amended by P.A. 102-232 (eff. 1-1-2022) and P.A. 102-669 (eff. 11-16-2021). No 2023-2026 amendment to Sec. 6 was enacted. SB1939 (104th GA; direct-sales ban plus changes to 'warranty agreements') passed the Senate 55-0 in 2025 and was re-referred to House Rules on 3/20/2026, so it is not law. HB2338 (104th GA, new 710/6.5 warranty disclosures) stalled at Senate Assignments on 6/2/2025. P.A. 103-839 (eff. 8-9-24) amended Sec. 10.1 (motorcycles) only.",
+  "hourly_rate_method": "The dealer's 'same effective labor rate' for customer-pay repairs, computed from 100 sequential ROs chosen and submitted by the dealer, less simple-maintenance ROs. Floor: not less than the rates charged to retail customers for like nonwarranty service. The dealer may request a warranty labor-rate increase at most once per calendar year.",
+  "coverage": {
+   "factory_warranty": {
+    "applies": "yes",
+    "paid_hours": "multiplier",
+    "quote": "In the event that a time guide has not been agreed to for warranty repairs, or said time guide does not define time for an applicable warranty repair, the manufacturer's time guide shall be used, multiplied by 1.5.",
+    "pinpoint": "710/6(b)"
+   },
+   "mfr_service_contract": {
+    "applies": "conditional",
+    "paid_hours": "multiplier",
+    "quote": "shall apply to any parent, subsidiary, affiliate, or agent of the motor vehicle franchiser ... if a warranty or service or repair plan is issued by that person instead of or in addition to one issued by the motor vehicle franchiser",
+    "pinpoint": "710/6(f); also 710/6(b) ('time guide ... for extended warranty repairs')"
+   },
+   "cpo": {
+    "applies": "conditional",
+    "paid_hours": "multiplier",
+    "quote": "No warranty or factory compensated repairs shall be excluded from this requirement, including recalls or other voluntary stop-sell repairs required by the manufacturer.",
+    "pinpoint": "710/6(b)"
+   },
+   "independent_service_contract": {
+    "applies": "silent",
+    "paid_hours": "n/a",
+    "quote": "shall properly fulfill any warranty agreement and adequately and fairly compensate each of its motor vehicle dealers for labor and parts",
+    "pinpoint": "710/6(a)"
+   }
+  },
+  "notes": "The 1.5x multiplier is conditional. It applies only when no time guide has been agreed or the agreed guide does not cover the operation. An agreed time guide 'for extended warranty repairs may be used in lieu of actual time expended.' The baseline is 'no less than the amount the retail customer pays for the same services with regard to rate and time,' and time allowances must be 'no less than charged to retail customers for the same work.' The act also pays technician time spent with a TAC or engineering, including hold time, and covers diagnostic time. It bars reductions based on market norms, chargebacks absent fraud, and cost-recovery surcharges. MFR SC = yes because (f) expressly extends the Sec. 6 duties to any 'warranty or service or repair plan' issued by the franchiser's parent, affiliate, agent, common-control entity, or 1%+ holder. CPO = conditional: CPO is not named, but it is reached as a 'warranty or factory compensated repair' when the manufacturer or an affiliate issues and pays it. This is an interpretive call. Independent SC: the Sec. 6 duties bind only franchisers and their affiliates, and third-party obligors are not addressed. 710/4(c-5) shows the legislature knows these terms: a manufacturer may bar secondary products in repairs paid under a 'warranty, recall, service contract, extended warranty, maintenance plan, or certified pre-owned vehicle program established or offered by the manufacturer.' That is a parts-use rule, not a reimbursement rule. | Cross-check 9/24: mfr service contracts reach the statute through 710/6(f) (plans issued by the franchiser's parent/subsidiary/affiliate/agent) and the 6(b) extended-warranty time-guide clause, not an express scope sentence. Grok reached the same view. Marked Conditional.",
+  "confidence": "medium"
+ },
+ {
+  "state": "IN",
+  "primary_cite": "Ind. Code § 9-32-13-15.5 (with § 9-32-13-15; § 9-32-13-16 optional uniform policy; § 9-32-13-17 claims)",
+  "definition_cite": "Ind. Code art. 9-13-2 and ch. 9-32-13 checked. No definition of 'warranty'. A full-text search of the 2026 Title 9 for 'service contract', 'extended warrant', 'certified pre-owned', and 'maintenance plan' found only § 9-32-13-30.1 (sales coercion) and § 9-32-19-19 (RV 'warrantor' excludes service contracts).",
+  "official_url": "https://iga.in.gov/ic/2026/Title_9.pdf (official Indiana Code 2026, Title 9; § 9-32-13-15.5 at 'Compensation for warranty services')",
+  "source_quality": "official",
+  "effective_notes": "P.L.92-2025, SEC.4 amended § 9-32-13-15.5. Comparing the 2024 and 2026 code shows it only deleted the sentence 'On or before filing a complaint, a dealer must serve a demand for mediation upon the manufacturer or distributor.' That is procedural, with no change to rate, hours, or scope. I did not confirm the act's exact effective date; 2025 acts are typically July 1, 2025. § 9-32-13-15 was last amended by P.L.167-2016.",
+  "hourly_rate_method": "Dealer's retail labor rate = total labor sales for warranty-like repairs ÷ hours that generated them, using the lesser of 100 sequential customer-paid ROs or 90 consecutive days (ROs within 180 days). Takes effect automatically if the manufacturer does not rebut within 60 days. Applies 'unless otherwise agreed'. At most one declaration per 12 months. The dealer may revert to the nonretail rate at most once per 12 months.",
+  "coverage": {
+   "factory_warranty": {
+    "applies": "yes",
+    "paid_hours": "silent",
+    "quote": "Unless otherwise agreed, it is an unfair practice for a manufacturer or distributor to fail to compensate a dealer anything less than the dealer's retail rates for parts or labor the dealer uses in performing the warranty services",
+    "pinpoint": "§ 9-32-13-15.5(b)"
+   },
+   "mfr_service_contract": {
+    "applies": "silent",
+    "paid_hours": "n/a",
+    "quote": "selling or offering for sale a service contract, a debt cancellation agreement, a maintenance agreement, or any similar product that is approved, endorsed, sponsored, or offered by the manufacturer, distributor, affiliate, or captive finance source",
+    "pinpoint": "§ 9-32-13-30.1(a) (anti-coercion on sales only)"
+   },
+   "cpo": {
+    "applies": "silent",
+    "paid_hours": "n/a",
+    "quote": "fail to compensate a dealer anything less than the dealer's retail rate for labor and parts under the manufacturer's warranty agreements as long as the dealer's retail rate is reasonable",
+    "pinpoint": "§ 9-32-13-15(a)"
+   },
+   "independent_service_contract": {
+    "applies": "silent",
+    "paid_hours": "n/a",
+    "quote": "consider a dealer's sale of service contracts, debt cancellation agreements, maintenance agreements, or any similar product not approved, endorsed, sponsored, or offered by the manufacturer",
+    "pinpoint": "§ 9-32-13-30.1(b) (sales-side only)"
+   }
+  },
+  "notes": "Neither § 15 nor § 15.5 mentions time allowances, so paid hours = silent. The only time-standard language is in optional § 9-32-13-16: a uniform warranty reimbursement contract with at least 30% of same-line franchisees may use a 'uniform time standards manual' whose diagnosis allowance 'must be reasonable and adequate.' § 15(b) bars a statewide uniform hourly labor rate. § 15.5 also covers separate component or major-assembly manufacturers that warrant independently. Heavy duty vocational vehicles (49 CFR 523.8), RVs, and manufactured housing are excluded (§ 15(c), § 15.5(a)). The manufacturer may audit annually and reduce the rate prospectively if the dealer's effective rates fall (§ 15.5(h)). No surcharge cost recovery (§ 15.5(i)).",
+  "confidence": "high"
+ },
+ {
+  "state": "KS",
+  "primary_cite": "K.S.A. 8-2415",
+  "definition_cite": "K.S.A. 8-2401 (no definition of 'warranty' or 'service contract'; 'new vehicle dealer' is one obligated 'to fulfill the warranty commitments' of the manufacturer)",
+  "official_url": "https://ksrevisor.gov/statutes/chapters/ch08/008_024_0015.html",
+  "source_quality": "official",
+  "effective_notes": "None found. History: L. 1980 ch. 36; L. 1994 ch. 302; L. 2010 ch. 71; L. 2019 ch. 5, § 1 (July 1). No 2023-2026 amendment appears in the revisor's history.",
+  "hourly_rate_method": "Not less than rates charged to retail customers for like services, provided they are reasonable. The manufacturer 'may' compute the retail labor rate as retail labor sales for warranty-like services ÷ hours, from 100 sequential customer-paid ROs or all ROs in 90 days, whichever is less, within 180 days, excluding routine maintenance such as tire or oil service. Effective 45 days after approval. A denial goes to a hearing before the director of vehicles, with the burden on the manufacturer. At most once per year.",
+  "coverage": {
+   "factory_warranty": {
+    "applies": "yes",
+    "paid_hours": "silent",
+    "quote": "The compensation to the dealer for warranty parts and labor shall not be less than the rates charged by the dealer for like parts and services to retail customers, provided the rates are reasonable.",
+    "pinpoint": "8-2415(c)(3)"
+   },
+   "mfr_service_contract": {
+    "applies": "silent",
+    "paid_hours": "n/a",
+    "quote": "compensate the dealer for the warranty services that the first or second stage manufacturer or distributor requires the dealer to provide, including warranty and recall obligations",
+    "pinpoint": "8-2415(c)(1)(B)"
+   },
+   "cpo": {
+    "applies": "silent",
+    "paid_hours": "n/a",
+    "quote": "shall pay reasonable compensation to any authorized new vehicle dealer who performs work to rectify warranty defects in the first or second stage manufacturer's or distributor's product",
+    "pinpoint": "8-2415(a)"
+   },
+   "independent_service_contract": {
+    "applies": "silent",
+    "paid_hours": "n/a",
+    "quote": "shall pay reasonable compensation to any authorized new vehicle dealer who performs work to rectify warranty defects in the first or second stage manufacturer's or distributor's product",
+    "pinpoint": "8-2415(a)"
+   }
+  },
+  "notes": "The statute says nothing about time allowances or labor time; the only 'time' language is 'time-consuming' in (c)(2)(C)(iii). Its text largely tracks Iowa § 322A.5, but it has no time-allowance clause. Claims: approve or disapprove within 30 days, deemed approved, paid within 30 days (8-2415(e)). A claim cannot be reduced for submission within 60 days of the work (8-2415(d)). Audits are limited to 1 year except fraud. No setoff pending challenge.",
+  "confidence": "high"
+ },
+ {
+  "state": "KY",
+  "primary_cite": "Ky. Rev. Stat. § 190.046 (with § 190.0462)",
+  "definition_cite": "Ky. Rev. Stat. § 190.010 (no definition of 'warranty' or 'service contract'). 'Component manufacturer' is defined at § 190.046(2)(d)10.",
+  "official_url": "https://apps.legislature.ky.gov/law/statutes/statute.aspx?id=57533 (effective July 15, 2026 version)",
+  "source_quality": "official",
+  "effective_notes": "Three recent acts. 2023 Ky. Acts ch. 7 (HB 150, eff. 6/29/2023) changed audit and fraud rules in (7) only. 2024 Ky. Acts ch. 162 (HB 592, eff. 7/15/2024; became law without signature) created (2)(d): Class 7+ (49 C.F.R. 565.15) compensation 'not less than the greater of' retail charges for like nonwarranty work or 'dealer acquisition costs of parts or service'. 2026 Ky. Acts ch. 83 (HB 648, signed 4/10/2026, eff. 7/15/2026) rewrote (2)(d). It sets parts at acquisition cost + 30% GP, adds reimbursement of technician training/certification, warranty admin, diagnostic hardware/software, and special tools, makes actual hours the labor basis, makes component manufacturers liable, sets a 90-day minimum claim-submission window for Class 7+, and changes the incentive-claim window in (5)(a) from 30 to 90 days.",
+  "hourly_rate_method": "'Reasonable compensation', where the principal factor is 'the amount of money that the dealer is charging its other customers for the same type service or repair work'. Floor: not less than the dealer's charges to retail customers for like nonwarranty services (parts at least cost + 30% gross profit), or the warranty-compensation schedule filed with the Motor Vehicle Commission. The statute has no RO-sample formula.",
+  "coverage": {
+   "factory_warranty": {
+    "applies": "yes",
+    "paid_hours": "factory",
+    "quote": "Each manufacturer or distributor shall provide to its dealers with each model year a schedule of time allowances for the performance of warranty repair work and services, ... and shall be reasonable and adequate for the work to be performed.",
+    "pinpoint": "§ 190.046(1); Class 7+ exception at (2)(d)4"
+   },
+   "mfr_service_contract": {
+    "applies": "silent",
+    "paid_hours": "n/a",
+    "quote": "by virtue of any pass-through or extended warranty arrangement, governmental recall mandate, consent decree, judicial decree, litigation settlement, or other means, the component manufacturer shall be subject to all the requirements of this section",
+    "pinpoint": "§ 190.046(2)(d)5 (Class 7+ component manufacturers only)"
+   },
+   "cpo": {
+    "applies": "silent",
+    "paid_hours": "n/a",
+    "quote": "Each manufacturer or distributor shall pay reasonable compensation to any authorized dealer who performs work to repair defects",
+    "pinpoint": "§ 190.046(1)"
+   },
+   "independent_service_contract": {
+    "applies": "silent",
+    "paid_hours": "n/a",
+    "quote": "Each manufacturer or distributor shall pay reasonable compensation to any authorized dealer who performs work to repair defects",
+    "pinpoint": "§ 190.046(1)"
+   }
+  },
+  "notes": "Heavy-truck carve-out (Class 7+ under 49 C.F.R. 565.15; eff. 7/15/2026). Labor hours incurred by a manufacturer-trained or certified technician, or any technician if no training is furnished, are 'the basis of reasonable compensation' unless the manufacturer proves by clear and convincing evidence that they were unreasonable. 'Reference to standard repair times, labor guides, or time allowance guidelines shall not constitute sufficient evidence.' For Class 7+ the paid-hours bucket is therefore actual_time; for light duty it is factory. Since 2026, (2)(b) and (2)(c) begin 'Except as provided in paragraph (d)'. So the (c) retail floor is displaced for Class 7+, and (d) states no labor-rate floor, though the (2)(a) principal factor still applies. The (c) floor is phrased disjunctively (retail amount 'or' the filed schedule). The 'extended warranty arrangement' and component-warranty text in (2)(d)5 applies only to Class 7+ component manufacturers. It does not reach light-duty OEM service contracts (Ford ESP, Toyota ExtraCare), so MFR SC is marked silent. Claims: approve or disapprove within 30 days, deemed approved, paid within 30 days (§ 190.046(3)). Audits are limited to 12 months except fraud (§ 190.046(7)).",
+  "confidence": "high"
+ },
+ {
+  "state": "LA",
+  "primary_cite": "La. Rev. Stat. § 32:1262(A)",
+  "definition_cite": "La. Rev. Stat. § 32:1262(A)(1) (section definitions, including 'warranty' with CPO) and § 32:1252 (general definitions; no service-contract or CPO definition)",
+  "official_url": "https://legis.la.gov/Legis/LawPrint.aspx?d=321503 (also § 32:1252 at https://legis.la.gov/Legis/Law.aspx?d=88035 and § 32:1261 at https://legis.la.gov/Legis/Law.aspx?d=88047)",
+  "source_quality": "official",
+  "effective_notes": "None to § 32:1262 in 2023-2026; last amended Acts 2021, No. 76 (HB 502), which reenacted § 1262(A) including the CPO definition. 2025 HB 623, which would have amended § 1262(A), is 'Pending House Commerce' (died). Acts 2025, No. 408 (SB 37, eff. 6/20/2025) amended §§ 32:1252 and 1261 on satellite warranty and repair centers, with no change to reimbursement. 2026 Act 967 (HB 848) amended §§ 1252, 1254, and 1270.11, not § 1262.",
+  "hourly_rate_method": "Not less than rates charged to retail customers for 'non-warranty qualifying repairs', meaning repairs of the kind the original new-vehicle warranty covers but on vehicles past its time or mileage limits. Labor rate = total labor charges ÷ hours, from all ROs containing 100 sequential qualifying ROs or all ROs in 90 consecutive days, whichever gives fewer, within 180 days. Presumed accurate; effective 45 days after receipt unless rebutted. At most once per 12 months. Protests go to the LMVC.",
+  "coverage": {
+   "factory_warranty": {
+    "applies": "yes",
+    "paid_hours": "factory",
+    "quote": "Time allowances for the performance of warranty work shall be reasonable and adequate in relation to the nature and scope of the work for a qualified technician of ordinary skill to perform the work.",
+    "pinpoint": "§ 32:1262(A)(3)"
+   },
+   "mfr_service_contract": {
+    "applies": "silent",
+    "paid_hours": "n/a",
+    "quote": "To coerce or attempt to coerce any retail motor vehicle dealer ... to offer to sell or sell any extended service contract or extended maintenance plan or gap product offered, sold, backed by, or sponsored by the manufacturer",
+    "pinpoint": "§ 32:1261(A)(1)(w)(i) (anti-coercion only)"
+   },
+   "cpo": {
+    "applies": "yes",
+    "paid_hours": "factory",
+    "quote": "\"... warranty\" means and includes a new motor vehicle warranty, a recall, or a certified pre-owned warranty of a manufacturer, distributor, wholesaler, factory branch, or distributor branch to repair or replace a defect in a vehicle or part.",
+    "pinpoint": "§ 32:1262(A)(1)(a); 'warranty work' at (A)(1)(f)"
+   },
+   "independent_service_contract": {
+    "applies": "silent",
+    "paid_hours": "n/a",
+    "quote": "Repairs for which volume discounts have been negotiated with government agencies, insurers, or service contract providers.",
+    "pinpoint": "§ 32:1262(A)(8)(i) (excluded from rate calculation only)"
+   }
+  },
+  "notes": "This is the only state in the group that expressly includes manufacturer CPO warranties, via the § 1262(A)(1)(a) definition that drives 'warranty work'. The time standard is 'reasonable and adequate' for a 'qualified technician of ordinary skill'. It does not name the manufacturer's guide, but it adds no independent guide, multiplier, or actual time, so the bucket is factory. Rate floor text: 'In no event shall any manufacturer ... pay a dealer for warranty work less than the rates charged by the dealer to the retail customer of the dealer for non-warranty qualifying repairs.' Claims: paid within 30 days after approval, approve or disapprove within 30 days (A)(14). § 1262(B): 12-month audit window, and no claim may be rejected as late if submitted within 60 days. Marine products, motorcycles, ATVs, and RVs are excluded (§ 1262(C)). | Cross-check 9/24: Grok left LA open over aggregator errors. Current § 32:1262 defines the warranty to include a 'certified pre-owned warranty' and requires time allowances 'reasonable and adequate ... for a qualified technician of ordinary skill' (re-confirmed 9/24).",
+  "confidence": "high"
+ },
+ {
+  "state": "MA",
+  "primary_cite": "Mass. Gen. Laws ch. 93B, § 9(b)",
+  "definition_cite": "Mass. Gen. Laws ch. 93B, § 1 (no 'warranty'/'service contract'/'common entity' definition; scope and 'retail customer repair' defined inside § 9(b)(1))",
+  "official_url": "https://malegislature.gov/Laws/GeneralLaws/PartI/TitleXV/Chapter93B/Section9",
+  "source_quality": "official",
+  "effective_notes": "None found for 2023-2026. The (b)(1) scope language (extended warranty/CPO/service contract/common entity), (b)(2)(ii) labor-rate method and (b)(3) time rule read the same in Justia's 2022 version as in today's official text.",
+  "hourly_rate_method": "Retail rate: 100 sequential non-warranty customer-paid ROs or 60 consecutive days of them, whichever is less, all no older than 180 days; total labor sales divided by total labor hours. Rate is presumed fair and takes effect 30 days after the declaration, subject to audit and rebuttal. The dealer may sue, and the manufacturer bears the burden. One declaration per calendar year. Floor: 'not be less than the rate and price customarily charged for retail customer repairs'.",
+  "coverage": {
+   "factory_warranty": {
+    "applies": "yes",
+    "paid_hours": "factory",
+    "quote": "Time allowances for the diagnosis and performance of warranty work and service shall be reasonable and adequate for the work to be performed.",
+    "pinpoint": "§ 9(b)(3); scope § 9(b)(1)"
+   },
+   "mfr_service_contract": {
+    "applies": "conditional",
+    "paid_hours": "factory",
+    "quote": "under the warranty or maintenance plan, extended warranty, certified preowned warranty or a service contract, issued by the manufacturer or distributor or its common entity, unless issued by a common entity that is not a manufacturer",
+    "pinpoint": "§ 9(b)(1)"
+   },
+   "cpo": {
+    "applies": "conditional",
+    "paid_hours": "factory",
+    "quote": "under the warranty or maintenance plan, extended warranty, certified preowned warranty or a service contract, issued by the manufacturer or distributor or its common entity, unless issued by a common entity that is not a manufacturer",
+    "pinpoint": "§ 9(b)(1)"
+   },
+   "independent_service_contract": {
+    "applies": "no",
+    "paid_hours": "n/a",
+    "quote": "issued by the manufacturer or distributor or its common entity, unless issued by a common entity that is not a manufacturer",
+    "pinpoint": "§ 9(b)(1)"
+   }
+  },
+  "notes": "Extended warranties, CPO warranties, service contracts and maintenance plans are covered only if issued by the manufacturer, the distributor, or a 'common entity' that is itself a manufacturer. A contract issued by a non-manufacturer common entity is expressly excluded; an affiliated captive finance or insurance obligor appears to fall in that group, so check the obligor named on each contract. Third-party contracts are outside the scope by that limiting language; no carve-out names them. Paid hours: the statute requires only 'reasonable and adequate' time allowances, so the factory-time bucket applies. (b)(1) says ''labor'' includes 'time spent by employees for diagnosis and repair'. ''Retail customer repair'' excludes work under the manufacturer's or common entity's warranty, extended warranty, CPO, service contract or maintenance plan. Powersport and RV dealers are paid at 'the rate normally charged by the motor vehicle dealer to the public'. Claims not disapproved within 30 days are deemed approved.",
+  "confidence": "high"
+ },
+ {
+  "state": "MD",
+  "primary_cite": "Md. Code, Transp. § 15-212(b)(3), (c)",
+  "definition_cite": "Md. Code, Transp. § 15-201 (no definition of 'warranty' or 'service contract'; 'manufacturer' includes truck-component-parts manufacturers)",
+  "official_url": "https://mgaleg.maryland.gov/mgawebsite/Laws/StatuteText?article=gtr&section=15-212&enactments=false",
+  "source_quality": "official",
+  "effective_notes": "No enacted 2023-2026 amendment to § 15-212, per the MGA bill master lists for 2023-2026. 2023 HB1208 (dealer compensation for recall and warranty) was withdrawn after an unfavorable report. 2025 SB45 (altering compensation for service obligations) was withdrawn after an unfavorable report. 2026 ch. 463 (SB 345) amended §§ 15-201 and 15-214 (association administrative hearings; procedural). § 15-212.1 covers incentive and reimbursement-program claims, not warranty (confirmed).",
+  "hourly_rate_method": "Not less than 'the dealer's current labor rate for nonwarranty repairs of a like kind for retail customers', established by submitting whichever produces fewer ROs within 180 days: 100 qualifying sequential customer-paid ROs, or 90 days of qualifying ROs. Presumed accurate. The licensee must approve or rebut within 30 days; otherwise the rate takes effect on day 31. One submission per year. The licensee may verify effective rates annually and adjust prospectively.",
+  "coverage": {
+   "factory_warranty": {
+    "applies": "yes",
+    "paid_hours": "factory",
+    "quote": "A licensee shall specify in writing ... (iii) A time allowance for the performance of labor described in this paragraph that is reasonable and adequate.",
+    "pinpoint": "§ 15-212(c)(1)(iii); rate at (c)(2)(i)"
+   },
+   "mfr_service_contract": {
+    "applies": "silent",
+    "paid_hours": "n/a",
+    "quote": "Failed to reasonably compensate any franchised dealer who does work under: ... (ii) Any outstanding express or implied new vehicle or truck component parts warranty.",
+    "pinpoint": "§ 15-212(b)(3)(ii)"
+   },
+   "cpo": {
+    "applies": "silent",
+    "paid_hours": "n/a",
+    "quote": "The dealer's obligation for vehicle preparation, delivery, warranties, and recalls on its products",
+    "pinpoint": "§ 15-212(c)(1)(i)"
+   },
+   "independent_service_contract": {
+    "applies": "silent",
+    "paid_hours": "n/a",
+    "quote": "Parts sold, or repairs performed, at wholesale or for insurance carriers, or other third–party payors",
+    "pinpoint": "§ 15-212(c)(4)(v) (excluded from qualifying ROs only)"
+   }
+  },
+  "notes": "The warranty rules are at § 15-212(c), not § 15-212.1 (incentives), as the brief noted. (c)(1)(i) says 'warranties ... on its products' without the word 'new', but the licensing ground in (b)(3)(ii) refers to 'new vehicle or truck component parts warranty'. Neither reaches service contracts or CPO in the text. Claims: approve or disapprove within 30 days, deemed approved, paid within 30 days (c)(9). Chargebacks allowed only within 9 months (c)(11). No denial for repairs discovered during a separate customer repair or through a recall notice (c)(14). Anti-retaliation and uniformity rules are in (c)(7). (c)(1)-(7) do not apply to travel trailers or non-OEM motor-home living components (c)(8). Remedies: fines up to $50,000 per violation (d).",
+  "confidence": "high"
+ },
+ {
+  "state": "ME",
+  "primary_cite": "Me. Rev. Stat. tit. 10, § 1176",
+  "definition_cite": "Me. Rev. Stat. tit. 10, § 1171 (no definition of 'warranty' or 'service contract'). § 1171-A bars using affiliates to accomplish prohibited conduct.",
+  "official_url": "https://legislature.maine.gov/statutes/10/title10sec1176.html",
+  "source_quality": "official",
+  "effective_notes": "None found. § 1176 was last amended by PL 2013, c. 534, § 7. The revisor page data was extracted 10/20/2025, so it covers 2025 sessions. Searches found no 2026 amendment, but post-extraction changes are not independently confirmed.",
+  "hourly_rate_method": "The 'retail rate customarily charged by that franchisee for the same labor when not performed in satisfaction of a warranty', as long as the nonwarranty labor rate is 'routinely posted in a place conspicuous to its service customer'. The statute has no RO-sample method for labor; the 100-RO / 60-day method is for parts markup only.",
+  "coverage": {
+   "factory_warranty": {
+    "applies": "yes",
+    "paid_hours": "silent",
+    "quote": "the franchisor shall reimburse the franchisee for any labor so performed at the retail rate customarily charged by that franchisee for the same labor when not performed in satisfaction of a warranty",
+    "pinpoint": "§ 1176, first paragraph"
+   },
+   "mfr_service_contract": {
+    "applies": "silent",
+    "paid_hours": "n/a",
+    "quote": "If a motor vehicle franchisor requires or permits a motor vehicle franchisee to perform labor or provide parts in satisfaction of a warranty created by the franchisor",
+    "pinpoint": "§ 1176, first paragraph"
+   },
+   "cpo": {
+    "applies": "silent",
+    "paid_hours": "n/a",
+    "quote": "If a motor vehicle franchisor requires or permits a motor vehicle franchisee to perform labor or provide parts in satisfaction of a warranty created by the franchisor",
+    "pinpoint": "§ 1176, first paragraph"
+   },
+   "independent_service_contract": {
+    "applies": "silent",
+    "paid_hours": "n/a",
+    "quote": "If a motor vehicle franchisor requires or permits a motor vehicle franchisee to perform labor or provide parts in satisfaction of a warranty created by the franchisor",
+    "pinpoint": "§ 1176, first paragraph"
+   }
+  },
+  "notes": "Time allowances are not mentioned. The retail labor rate depends on the dealer posting it. The trigger phrase 'warranty created by the franchisor' is not limited to new-vehicle warranties, so it arguably reaches a franchisor-created CPO warranty, but the text does not say so; marked silent. Parts: vehicles over 10,000 lb GVWR get only 'adequately and fairly compensate'; all others get the retail markup (100 sequential nonwarranty ROs or 60 days, whichever is less in total cost, within 180 days; effective 30 days; at most 2 changes per calendar year). The GVWR split applies to parts, not labor. Claims: approve or disapprove within 60 days, pay within 60 days of approval, submission allowed within 90 days. No cost recovery. The franchisor may not restrict labor in ways that impair warranty work. Attorney fees go to a dealer who wins on a disapproved claim. § 1174 requires recall labor and parts claims to be processed like warranty claims.",
+  "confidence": "high"
+ },
+ {
+  "state": "MI",
+  "primary_cite": "Mich. Comp. Laws §§ 445.1577 (Sec. 17) and 445.1577a (Sec. 17a)",
+  "definition_cite": "Mich. Comp. Laws §§ 445.1562-445.1566 (definitions; no 'warranty' or 'service contract' definition)",
+  "official_url": "https://www.legislature.mi.gov/Laws/MCL?objectName=mcl-445-1577 (and ?objectName=mcl-445-1577a)",
+  "source_quality": "official",
+  "effective_notes": "None found for 2023-2026. Last amended 2018 PA 668, effective 3/28/2019, which added § 445.1577a. The MCL site is 'complete through PA 103 of 2026'.",
+  "hourly_rate_method": "The principal factor is the retail labor rates of similarly situated same line-make dealers in a comparable area of Michigan. A dealer seeking more than the agreed rate submits 100 consecutive and sequential non-warranty customer-paid ROs or 90 consecutive days of them, whichever is less, no older than 180 days. Labor rate is total labor sales divided by hours. The manufacturer has 45 days to approve or contest; the rate takes effect 30 days after approval. Disputes go to circuit court with the manufacturer bearing the burden. One declaration per year.",
+  "coverage": {
+   "factory_warranty": {
+    "applies": "yes",
+    "paid_hours": "factory",
+    "quote": "A manufacturer shall also include in the schedule of compensation a reasonable time allowance for labor for diagnostic work and repair work, included in the manufacturer's labor time allowance or listed as a separate compensable item.",
+    "pinpoint": "§ 445.1577(1)"
+   },
+   "mfr_service_contract": {
+    "applies": "silent",
+    "paid_hours": "n/a",
+    "quote": "A manufacturer shall compensate a new motor vehicle dealer for recall or warranty service required of the dealer by the manufacturer.",
+    "pinpoint": "§ 445.1577(1)"
+   },
+   "cpo": {
+    "applies": "silent",
+    "paid_hours": "n/a",
+    "quote": "A manufacturer shall compensate a new motor vehicle dealer for recall or warranty service required of the dealer by the manufacturer.",
+    "pinpoint": "§ 445.1577(1)"
+   },
+   "independent_service_contract": {
+    "applies": "silent",
+    "paid_hours": "n/a",
+    "quote": "A manufacturer shall compensate a new motor vehicle dealer for recall or warranty service required of the dealer by the manufacturer.",
+    "pinpoint": "§ 445.1577(1)"
+   }
+  },
+  "notes": "The reimbursement duty covers only 'recall or warranty service required of the dealer by the manufacturer'. The Act mentions service contracts once, in § 445.1574(1)(bb), which bars requiring a dealer to sell a manufacturer-backed 'extended service contract or extended maintenance plan'; that provision says nothing about reimbursement. CPO is never mentioned. Time: the manufacturer's schedule sets the time allowance. A dealer may request additional diagnostic or repair time, and the manufacturer 'shall not unreasonably deny' it. Claims not disapproved within 30 days are deemed approved. Chargebacks are limited to 12 months (6 years for fraud).",
+  "confidence": "high"
+ },
+ {
+  "state": "MN",
+  "primary_cite": "Minn. Stat. § 80E.041 (formerly § 80E.04, repealed 2018)",
+  "definition_cite": "Minn. Stat. § 80E.03 (no 'warranty' definition); § 80E.041 subd. 10 ('manufacturer' includes 'distributor')",
+  "official_url": "https://www.revisor.mn.gov/statutes/cite/80E.041",
+  "source_quality": "official",
+  "effective_notes": "2023 Minn. Laws ch. 57, art. 4, § 4, effective 10/1/2023, rewrote subd. 4. It replaced 'time allowances recognized by the manufacturer' with the 'time guide used by the dealer for nonwarranty customer-paid service repair orders', added actual time where no guide exists, and required 'all diagnostic time'. Revisor recent history (2025 Statutes) shows no later amendment.",
+  "hourly_rate_method": "At the dealer's election, the effective non-warranty labor rate: total customer labor charges on qualifying repairs divided by labor hours, from 100 sequential ROs with warranty-like repairs or 90 consecutive days, whichever is less, no older than 180 days. The manufacturer may disapprove in writing within 30 days, with substantiation against comparable same line-make dealers; otherwise the rate is approved. Internal dispute resolution comes first, then suit under § 80E.17. Once per year.",
+  "coverage": {
+   "factory_warranty": {
+    "applies": "yes",
+    "paid_hours": "independent_guide",
+    "quote": "Compensation for warranty labor must equal the dealer's effective nonwarranty labor rate multiplied by the time guide used by the dealer for nonwarranty customer-paid service repair orders.",
+    "pinpoint": "subd. 4(a)"
+   },
+   "mfr_service_contract": {
+    "applies": "silent",
+    "paid_hours": "n/a",
+    "quote": "This section applies to all warranty repair service performed by the dealer for the manufacturer or with the approval of the manufacturer and for which the dealer is entitled to compensation or reimbursement from the manufacturer.",
+    "pinpoint": "subd. 1"
+   },
+   "cpo": {
+    "applies": "silent",
+    "paid_hours": "n/a",
+    "quote": "This section applies to all warranty repair service performed by the dealer for the manufacturer or with the approval of the manufacturer and for which the dealer is entitled to compensation or reimbursement from the manufacturer.",
+    "pinpoint": "subd. 1"
+   },
+   "independent_service_contract": {
+    "applies": "silent",
+    "paid_hours": "n/a",
+    "quote": "This section applies to all warranty repair service performed by the dealer for the manufacturer or with the approval of the manufacturer and for which the dealer is entitled to compensation or reimbursement from the manufacturer.",
+    "pinpoint": "subd. 1"
+   }
+  },
+  "notes": "Hours come from the dealer's own retail time guide. The subd. 4 method applies 'at the election of the dealer' (subd. 1); otherwise labor pay must only be 'reasonable'. Where no time guide exists, actual time is paid, but 'not less than the time charged to retail customers'. Diagnostic time includes time spent talking to the manufacturer's technical assistance. Service contracts and CPO are never named. Subd. 1 does reach 'all warranty repair service' the manufacturer reimburses, which a dealer could argue extends to manufacturer-reimbursed extended-warranty repairs, but the text doesn't say so. The only CPO mention in ch. 80E is in the § 80E.045 stop-sale provision. Manufacturer cost recovery is restricted (subd. 6). A state with fewer than 5 same-make dealers may use national comparisons (subd. 7).",
+  "confidence": "high"
+ },
+ {
+  "state": "MO",
+  "primary_cite": "Mo. Rev. Stat. § 407.828",
+  "definition_cite": "Mo. Rev. Stat. § 407.815 (no 'warranty' or 'service contract' definition)",
+  "official_url": "https://revisor.mo.gov/main/OneSection.aspx?section=407.828",
+  "source_quality": "official",
+  "effective_notes": "2023 S.B. 398, effective 8/28/2023. (1) The labor principal factor is now the franchisee's own retail non-warranty rates; the 2010 text used market-prevailing rates with the dealer's retail rate as a floor 'provided that such rates are reasonable'. (2) Engine, transmission and EV-battery assemblies are carved out of the no-cost-parts markup rule. (3) New Administrative Hearing Commission complaint procedure, including rate-increase denials, with an automatic stay. (4) Deemed-approved claims must be paid in 15 days (was 10). The revisor shows no later version.",
+  "hourly_rate_method": "Principal factor: 'the prevailing wage rates being charged for similar labor and service by the franchisee' to retail customers for non-warranty work. The statute sets no RO sample size or formula. Subsection 7 lists work excluded from the retail-rate calculation. The franchisee may request a rate change at most twice per calendar year and may challenge denials at the AHC within 60 days.",
+  "coverage": {
+   "factory_warranty": {
+    "applies": "yes",
+    "paid_hours": "factory",
+    "quote": "The schedule shall also include reasonable and adequate time allowances for the diagnosis and performance of preparation, delivery, and warranty service to be performed in a careful and professional manner.",
+    "pinpoint": "§ 407.828.2"
+   },
+   "mfr_service_contract": {
+    "applies": "silent",
+    "paid_hours": "n/a",
+    "quote": "The franchisor shall fairly and reasonably compensate the franchisee for preparation, delivery, and warranty service required of the franchisee by the franchisor.",
+    "pinpoint": "§ 407.828.1"
+   },
+   "cpo": {
+    "applies": "silent",
+    "paid_hours": "n/a",
+    "quote": "The franchisor shall fairly and reasonably compensate the franchisee for preparation, delivery, and warranty service required of the franchisee by the franchisor.",
+    "pinpoint": "§ 407.828.1"
+   },
+   "independent_service_contract": {
+    "applies": "silent",
+    "paid_hours": "n/a",
+    "quote": "The franchisor shall fairly and reasonably compensate the franchisee for preparation, delivery, and warranty service required of the franchisee by the franchisor.",
+    "pinpoint": "§ 407.828.1"
+   }
+  },
+  "notes": "Time comes from the franchisor's schedule, which must contain 'reasonable and adequate time allowances'. There is no dealer-guide or multiplier option. The Act never mentions service contracts, extended warranties or CPO. § 407.825 lists warranty-related unlawful practices but adds no scope. Claims not disapproved within 30 days are deemed approved and must be paid within 15 days. Audits and chargebacks are limited to 12 months (2 years for suspected fraud).",
+  "confidence": "high"
+ },
+ {
+  "state": "MS",
+  "primary_cite": "Miss. Code Ann. §§ 63-17-85(j) and 63-17-86",
+  "definition_cite": "Miss. Code Ann. § 63-17-55(ee)-(hh) ('warranty work', 'repair order', 'qualified repair', 'qualified repair order')",
+  "official_url": "Enrolled act: https://billstatus.ls.state.ms.us/documents/2021/html/HB/0700-0799/HB0746SG.htm (2021 HB 746 as sent to Governor; Laws 2021, ch. 315). Current-code mirror: https://law.justia.com/codes/mississippi/title-63/chapter-17/distribution-and-sales/section-63-17-85/ (2025 code). The official Mississippi Code is published only through LexisNexis.",
+  "source_quality": "enrolled_act",
+  "effective_notes": "Nothing new in 2023-2026. The operative text comes from Laws 2021, ch. 315 (HB 746), effective 7/1/2021, which created § 63-17-86, rewrote § 63-17-85(j) and added the § 63-17-55 definitions. A scan of MS bill lists for 2022-2026 found no enacted change to the warranty provisions. 2023 HB 401 amended only §§ 63-17-75 and -109. Laws 2022, ch. 439 amended § 63-17-55, but Justia's 2025 text of (ee) matches the 2021 act. The MMVC agency website still shows the pre-2021 § 63-17-85 and should not be relied on.",
+  "hourly_rate_method": "At the dealer's written request, the retail rate is total labor charges on qualified repairs divided by hours. The sample is all consecutive ROs containing 100 sequential qualified-repair ROs, or all ROs closed in 90 consecutive days, whichever gives fewer, no older than 180 days. The rate is presumed reasonable and takes effect 45 days after receipt unless the manufacturer rebuts once. The dealer may protest to the Motor Vehicle Commission, where the manufacturer bears the burden. At most once per 12 months.",
+  "coverage": {
+   "factory_warranty": {
+    "applies": "yes",
+    "paid_hours": "actual_time",
+    "quote": "Time allowances for the diagnosis and performance of warranty work shall be reasonable and adequate for such work to be performed using the actual time required by a qualified technician of ordinary skill to perform such work.",
+    "pinpoint": "§ 63-17-85(j)"
+   },
+   "mfr_service_contract": {
+    "applies": "silent",
+    "paid_hours": "n/a",
+    "quote": "in fulfilling a manufacturer's obligations under a new motor vehicle warranty, a recall, or a certified pre-owned warranty, to consumers",
+    "pinpoint": "§ 63-17-55(ee)"
+   },
+   "cpo": {
+    "applies": "conditional",
+    "paid_hours": "actual_time",
+    "quote": "in fulfilling a manufacturer's obligations under a new motor vehicle warranty, a recall, or a certified pre-owned warranty, to consumers",
+    "pinpoint": "§ 63-17-55(ee)"
+   },
+   "independent_service_contract": {
+    "applies": "silent",
+    "paid_hours": "n/a",
+    "quote": "in fulfilling a manufacturer's obligations under a new motor vehicle warranty, a recall, or a certified pre-owned warranty, to consumers",
+    "pinpoint": "§ 63-17-55(ee)"
+   }
+  },
+  "notes": "'Warranty work' is a closed definition: new-vehicle warranty, recall, or CPO warranty. Service contracts and extended warranties are not listed. Paid hours are measured by 'the actual time required by a qualified technician of ordinary skill'. That is a reasonableness standard tied to actual time, not the specific technician's clock time. The statute also caps the dealer: no labor rate 'in excess of the rate charged to its retail customers'. Claims not approved or disapproved within 30 days are not expressly deemed approved; the section requires written notice of disapproval with specific grounds. 'Motor vehicle' includes heavy-truck engines, transmissions and axles over 16,000 lb GVWR. | Cross-check 9/24: CPO is named only in the parts-oriented 'warranty work' definition (§ 63-17-55(ee)); applying the labor rule to CPO is an inference, so CPO is Conditional.",
+  "confidence": "high"
+ },
+ {
+  "state": "MT",
+  "primary_cite": "Mont. Code Ann. § 61-4-213",
+  "definition_cite": "Mont. Code Ann. § 61-4-213(13) (section-specific definitions incl. 'warranty', 'qualified repair', 'repair order'); § 61-4-201 checked",
+  "official_url": "https://mca.legmt.gov/bills/mca/title_0610/chapter_0040/part_0020/section_0130/0610-0040-0020-0130.html",
+  "source_quality": "official",
+  "effective_notes": "2025 Mont. Laws ch. 47, § 28 was a Title 61 clarity and cleanup bill (interim draft PD 0061) that reorganized definitions. The time-guide and 'warranty' wording is unchanged; its effective date was not checked. The dealer time-guide election and CPO language come from earlier law: enacted 2019 ch. 283, amended 2021 ch. 389.",
+  "hourly_rate_method": "Prevailing retail labor rate: total labor charges on qualified repairs divided by total hours charged. The sample is all consecutive ROs containing 100 sequential qualified-repair ROs, or 90 consecutive days, whichever gives fewer, no older than 180 days. The rate takes effect 30 days after the franchisor receives notice unless it objects once, with full substantiation, that the rate is 'materially inaccurate'. The franchisor bears the burden, and any resolution is retroactive. One submission per 12 months.",
+  "coverage": {
+   "factory_warranty": {
+    "applies": "yes",
+    "paid_hours": "independent_guide",
+    "quote": "using the franchisor's labor time guide or the labor time guide used by the dealer for labor furnished other than pursuant to warranty, at the dealer's election",
+    "pinpoint": "§ 61-4-213(1)(a)(i)"
+   },
+   "mfr_service_contract": {
+    "applies": "silent",
+    "paid_hours": "n/a",
+    "quote": "\"Warranty\" means, in addition to a new motor vehicle warranty, predelivery preparation, a recall, or a certified preowned warranty, in each case issued or administered by a motor vehicle franchisor.",
+    "pinpoint": "§ 61-4-213(13)(f)"
+   },
+   "cpo": {
+    "applies": "yes",
+    "paid_hours": "independent_guide",
+    "quote": "\"Warranty\" means, in addition to a new motor vehicle warranty, predelivery preparation, a recall, or a certified preowned warranty, in each case issued or administered by a motor vehicle franchisor.",
+    "pinpoint": "§ 61-4-213(13)(f)"
+   },
+   "independent_service_contract": {
+    "applies": "silent",
+    "paid_hours": "n/a",
+    "quote": "\"Warranty\" means, in addition to a new motor vehicle warranty, predelivery preparation, a recall, or a certified preowned warranty, in each case issued or administered by a motor vehicle franchisor.",
+    "pinpoint": "§ 61-4-213(13)(f)"
+   }
+  },
+  "notes": "The dealer chooses the franchisor's time guide or its own retail time guide. The statute doesn't name MOTOR, Mitchell or other guides; it refers to 'the labor time guide used by the dealer'. The 'Warranty' definition lists CPO but not service contracts or extended warranties, and its 'in addition to' wording reads oddly. Service contracts appear only in the qualified-repair exclusions ('volume discounts ... negotiated with ... extended warranty or service contract providers', (13)(c)(ii)(C)) and in § 61-4-208. Carve-outs: the § 61-4-204(4) compensation duty excludes RV household appliances and trucks over 10,000 lb GVWR. RV parts are paid at wholesale plus a 30% handling charge ((10)). Franchisor cost recovery is barred ((8)(b)). Audits are limited to 12 months.",
+  "confidence": "high"
+ },
+ {
+  "state": "NC",
+  "primary_cite": "N.C. Gen. Stat. § 20-305.1",
+  "definition_cite": "N.C. Gen. Stat. § 20-286 (no definition of 'warranty', 'service contract' or CPO)",
+  "official_url": "https://www.ncleg.gov/EnactedLegislation/Statutes/HTML/BySection/Chapter_20/GS_20-305.1.html",
+  "source_quality": "official",
+  "effective_notes": "S.L. 2025-41 (SB 295) § 8, approved 7/1/2025 and effective on becoming law, for current and future franchises. It struck the sentence requiring time allowances to be 'reasonable and adequate' and the 'competitive with ... other franchised dealers' proviso on the retail rate. It changed the rebuttal standard to 'inaccurate' and added (a5), which covers dealer requests to modify time allowances. S.L. 2023-116 (HB 447) § 5, effective 9/1/2023, revised the (a2) exclusions from the rate calculation. S.L. 2025-25 § 29(5) also appears in the history (not reviewed, presumably technical).",
+  "hourly_rate_method": "Not less than the dealer's 'current retail labor rate'. Dealer may declare it from 100 sequential non-warranty customer-paid ROs containing warranty-like parts or 60 consecutive days of such ROs, whichever is less (within 180 days). Presumed accurate. Manufacturer may rebut within 30 days by substantiating inaccuracy. Protest goes to the DMV Commissioner.",
+  "coverage": {
+   "factory_warranty": {
+    "applies": "yes",
+    "paid_hours": "factory",
+    "quote": "The disclosure required under this subsection shall include the schedule of compensation to be paid the dealers for parts, work, and service ... and the time allowances for the performance of the work and service.",
+    "pinpoint": "§ 20-305.1(a); see (a5)"
+   },
+   "mfr_service_contract": {
+    "applies": "conditional",
+    "paid_hours": "factory",
+    "quote": "the dealer's obligations for preparation, delivery, pre-sale maintenance, manufacturer-directed component installation or assembly, warranty, manufacturer-sponsored maintenance programs, manufacturer extended warranty, parts exchange programs, and recall service on its products.",
+    "pinpoint": "§ 20-305.1(a)"
+   },
+   "cpo": {
+    "applies": "silent",
+    "paid_hours": "n/a",
+    "quote": "Under no circumstances shall the compensation under this section for warranty and recall service be in an amount less than the dealer's current retail labor rate",
+    "pinpoint": "§ 20-305.1(a)"
+   },
+   "independent_service_contract": {
+    "applies": "silent",
+    "paid_hours": "n/a",
+    "quote": "Under no circumstances shall the compensation under this section for warranty and recall service be in an amount less than the dealer's current retail labor rate",
+    "pinpoint": "§ 20-305.1(a)"
+   }
+  },
+  "notes": "Paid hours: the manufacturer's own written time allowances. Since 7/1/2025 the statute no longer says 'reasonable and adequate'. Instead, (a5) bars a manufacturer from unreasonably denying a documented dealer request to modify a uniform time allowance or to add time for diagnosis or repair on a specific vehicle. Mfr service contracts are conditional: 'manufacturer extended warranty' and 'manufacturer-sponsored maintenance programs' appear only in the (a) list of obligations the manufacturer must specify in writing. The compensation-schedule sentence and the retail-rate floor name only 'warranty and recall service'. Whether the floor reaches extended warranties therefore depends on reading 'warranty' to include them. § 20-305(45) bars discrimination against dealers for selling non-OEM service contracts but sets no reimbursement rule. Excluded from rate calculations by (a2): promos, wholesale or insurance parts, engine and transmission assemblies, routine maintenance, tires and alignments, reconditioning, batteries and bulbs. Motorcycles are excluded from (a), (b) and (b1) by (f).",
+  "confidence": "high"
+ },
+ {
+  "state": "ND",
+  "primary_cite": "N.D. Cent. Code § 51-07-29",
+  "definition_cite": "N.D. Cent. Code § 51-07-00.1 (defines manufacturer/distributor; no 'warranty' or 'service contract' definition; § 51-07-29(12) borrows its manufacturer/distributor definitions). Scope is enumerated in § 51-07-29(1)(a) itself.",
+  "official_url": "https://www.ndlegis.gov/cencode/t51c07.pdf",
+  "source_quality": "official",
+  "effective_notes": "HB 1515 (2025 S.L. ch. 463), approved 4/10/2025, filed 4/11/2025, effective 8/1/2025 (ND default date). It rewrote § 51-07-29(1) to enumerate the covered manufacturer/distributor items (including extended warranty, CPO warranty and service contracts) and to pay labor at retail rate x the dealer's time guide.",
+  "hourly_rate_method": "Not less than the dealer's average retail labor rate: total labor sales ÷ total hours from 100 sequential non-warranty customer-paid ROs with warranty-like parts or 90 consecutive days, whichever is less (within 180 days). Presumed fair and effective 30 days after receipt. Manufacturer may contest once, within 30 days, with calculations and evidence; the dispute goes to court and the manufacturer bears the burden. A rate may be demanded no more than once every 12 months.",
+  "coverage": {
+   "factory_warranty": {
+    "applies": "yes",
+    "paid_hours": "independent_guide",
+    "quote": "may not be less than the average retail rate charged by the dealer as provided under subsection 5 multiplied by the time guide used by the dealer for nonwarranty customer-paid service repair orders.",
+    "pinpoint": "§ 51-07-29(1)(b)"
+   },
+   "mfr_service_contract": {
+    "applies": "yes",
+    "paid_hours": "independent_guide",
+    "quote": "in connection with the following manufacturer or distributor sponsored, issued, or required items: ... (5) Extended warranty. ... (7) Service contracts.",
+    "pinpoint": "§ 51-07-29(1)(a)(5), (7)"
+   },
+   "cpo": {
+    "applies": "yes",
+    "paid_hours": "independent_guide",
+    "quote": "in connection with the following manufacturer or distributor sponsored, issued, or required items: ... (6) Certified preowned warranty.",
+    "pinpoint": "§ 51-07-29(1)(a)(6)"
+   },
+   "independent_service_contract": {
+    "applies": "no",
+    "paid_hours": "n/a",
+    "quote": "A motor vehicle manufacturer or distributor shall reasonably compensate its dealers for labor and parts provided by the dealer in connection with the following manufacturer or distributor sponsored, issued, or required items:",
+    "pinpoint": "§ 51-07-29(1)(a)"
+   }
+  },
+  "notes": "Paid hours: the dealer names its retail time guide by written notice, and the manufacturer may not demand other information. If no time guide exists for a repair, the dealer is paid its retail rate x actual time spent, not less than the time charged to a retail customer for similar work. The dealer 'shall use time allowances ... reasonable and adequate for a qualified technician'. Independent contracts: 'service contracts' are covered only as 'manufacturer or distributor sponsored, issued, or required items', so third-party contracts are outside the section by scope limit, not by an express exclusion. The enumerated list also covers maintenance programs, parts exchange, predelivery and accessory installation, and goodwill. Claims must be submitted within 90 days and are deemed approved at 30 days. Commercial truck parts and equipment dealers have a separate regime, § 51-07-31 ('adequate time allowances'). | Cross-check 9/24: Grok marked independent service contracts 'conditional' here. The text limits scope to manufacturer/distributor sponsored, issued or required (ND) or issued by the manufacturer/common entity (NH) products, so a true third-party contract is Not reached.",
+  "confidence": "high"
+ },
+ {
+  "state": "NE",
+  "primary_cite": "Neb. Rev. Stat. § 60-1438",
+  "definition_cite": "Neb. Rev. Stat. §§ 60-1401.02 to 60-1401.43 (no 'warranty' or 'service contract' definition; 60-1401.10 'consumer care')",
+  "official_url": "https://nebraskalegislature.gov/laws/statutes.php?statute=60-1438",
+  "source_quality": "official",
+  "effective_notes": "LB667 (2025), approved 5/15/2025, operative 9/3/2025 (general effective date; no emergency clause). It replaced 'reasonable and adequate for the work to be performed' with 'adequate for a qualified technician', added dealer requests to change uniform time or add time, and struck 'as long as such rates are reasonable'. It also added the no-cost-parts markup rule and the manufacturer's right to request 100 additional ROs. LB972 (2026) § 70, operative 10/1/2026, adds subsection (7), 'This section does not apply to recreational vehicles'; RVs move to the new Recreational Vehicle Industry Regulation Act, §§ 60-1442 et seq. As of 9/24/2026 the website text did not yet show (7).",
+  "hourly_rate_method": "Principal factor: 'the prevailing wage rates being paid by dealers in the community'. The floor is the dealer's own rates for like service to retail or fleet customers, excluding listed maintenance work. There is no statutory labor-rate declaration formula; the 100 ROs/90 days/180-day method is written for parts markup. The manufacturer may request up to 100 additional ROs from a 90-day window to test the declared 'retail labor rate' and may adjust if the dealer's retail rates are lower. Negotiated rates are allowed.",
+  "coverage": {
+   "factory_warranty": {
+    "applies": "yes",
+    "paid_hours": "factory",
+    "quote": "Time allowances for the diagnosis and performance of warranty work and service shall be adequate for a qualified technician to perform the work or service.",
+    "pinpoint": "§ 60-1438(2)(a)"
+   },
+   "mfr_service_contract": {
+    "applies": "silent",
+    "paid_hours": "n/a",
+    "quote": "The manufacturer or distributor shall compensate the new motor vehicle dealer for warranty service which such manufacturer or distributor requires the dealer to provide, including warranty and recall obligations",
+    "pinpoint": "§ 60-1438(1)"
+   },
+   "cpo": {
+    "applies": "silent",
+    "paid_hours": "n/a",
+    "quote": "The manufacturer or distributor shall compensate the new motor vehicle dealer for warranty service which such manufacturer or distributor requires the dealer to provide, including warranty and recall obligations",
+    "pinpoint": "§ 60-1438(1)"
+   },
+   "independent_service_contract": {
+    "applies": "silent",
+    "paid_hours": "n/a",
+    "quote": "The manufacturer or distributor shall compensate the new motor vehicle dealer for warranty service which such manufacturer or distributor requires the dealer to provide, including warranty and recall obligations",
+    "pinpoint": "§ 60-1438(1)"
+   }
+  },
+  "notes": "Hours are the franchisor's time allowances, which must be adequate for a qualified technician. A franchisor may not 'unreasonably deny' a request to change a uniform time allowance or to add time on a specific vehicle. No multiplier or independent guide. § 60-1437(12) bars saying a dealer must sell manufacturer-backed extended service contracts but does not touch reimbursement. The duties extend to component makers that warrant their parts separately ((6)). Claims must be filed within 6 months. Audits are limited to 1 year (4 years for suspected fraud). Claims not disapproved within 30 days are deemed approved.",
+  "confidence": "high"
+ },
+ {
+  "state": "NH",
+  "primary_cite": "N.H. Rev. Stat. Ann. § 357-C:5, II",
+  "definition_cite": "N.H. Rev. Stat. Ann. § 357-C:1 (no 'warranty'/'service contract'/'common entity' definition; 'component manufacturer' defined)",
+  "official_url": "https://gc.nh.gov/rsa/html/XXXI/357-C/357-C-5.htm",
+  "source_quality": "official",
+  "effective_notes": "None found for 2023-2026. Source note ends at 2013, 130:12-13, effective 9/23/2013. 2024 SB 515 (ch. 166) amended RSA 415-C on consumer guarantee and service contracts, not 357-C.",
+  "hourly_rate_method": "Floor: the manufacturer may not pay 'an amount of money for warranty work that is less than that charged by the dealer to the retail customers of the dealer for non-warranty work of like kind'. The 100 sequential ROs / 90 days / 180-day declaration procedure in II(b)(1)(B)(ii) is written for parts markup. The statute refers to an 'average labor rate' (once per calendar year) and to 'labor reimbursement' on protest, but gives no labor-rate formula. Declared rates must be reasonable against nearby same line-make dealers of similar size. Protests go to the Motor Vehicle Industry Board.",
+  "coverage": {
+   "factory_warranty": {
+    "applies": "yes",
+    "paid_hours": "factory",
+    "quote": "Time allowances for the diagnosis and performance of warranty work and service shall be reasonable and adequate for the work to be performed.",
+    "pinpoint": "§ 357-C:5, II(b)(1)"
+   },
+   "mfr_service_contract": {
+    "applies": "yes",
+    "paid_hours": "factory",
+    "quote": "labor under the warranty or maintenance plan, extended warranty, certified preowned warranty or a service contract, issued by the manufacturer or distributor or its common entity.",
+    "pinpoint": "§ 357-C:5, II(b)(1); II(b)(1)(A)"
+   },
+   "cpo": {
+    "applies": "yes",
+    "paid_hours": "factory",
+    "quote": "labor under the warranty or maintenance plan, extended warranty, certified preowned warranty or a service contract, issued by the manufacturer or distributor or its common entity.",
+    "pinpoint": "§ 357-C:5, II(b)(1)"
+   },
+   "independent_service_contract": {
+    "applies": "no",
+    "paid_hours": "n/a",
+    "quote": "issued by the manufacturer or distributor or its common entity.",
+    "pinpoint": "§ 357-C:5, II(b)(1)"
+   }
+  },
+  "notes": "Service contracts, extended warranties, maintenance plans and CPO warranties are named in the sentence requiring 'reasonable compensation' for diagnosis, parts, repair and labor in the schedule. The retail-parity floor in the next sentences says only 'warranty work'. Applying parity to service contracts is therefore an inference, though a strong one. II(b)(1)(A) extends the duties to any parent, subsidiary, affiliate or agent that issues 'a warranty or service or repair plan'. Unlike MA, there's no carve-out for non-manufacturer common entities. Third-party contracts are outside the scope by that limiting language; no carve-out names them. Other terms: truck and equipment travel time is capped at 4 hours; engine, transmission and similar assemblies are paid at 30%; RV household items get a capped markup. Audits are limited to 9 months. Claims not disapproved within 30 days are deemed approved. | Cross-check 9/24: Grok marked independent service contracts 'conditional' here. The text limits scope to manufacturer/distributor sponsored, issued or required (ND) or issued by the manufacturer/common entity (NH) products, so a true third-party contract is Not reached.",
+  "confidence": "high"
+ },
+ {
+  "state": "NJ",
+  "primary_cite": "N.J. Stat. Ann. § 56:10-15 (as amended by P.L.2025, c.140, § 7)",
+  "definition_cite": "N.J. Stat. Ann. § 56:10-13 (no 'warranty'/'service contract' definition; scope set in § 56:10-15 intro and subsections g-h)",
+  "official_url": "https://pub.njleg.gov/Bills/2024/PL25/140_.PDF (enrolled chapter law, S3309; official codified text is on lis.njleg.state.nj.us)",
+  "source_quality": "enrolled_act",
+  "effective_notes": "P.L.2025, c.140 (S3309, 'Motor Vehicle Open Recall Notice and Fair Compensation Act'), approved 9/11/2025. It took effect on 'the first day of the seventh month following enactment', 4/1/2026, and applies to franchise agreements in effect on or after that date, not retroactively. It added the average retail labor-time allowance multiplier and the franchisor-reimbursed extended warranty and service-plan scope wording, and created §§ 56:10-32 to -35 (stop-sale compensation, association standing).",
+  "hourly_rate_method": "Average retail labor rate: 100 sequential customer-paid ROs or 90 days of them, whichever is less, no older than 180 days; total labor charges x 1.0 divided by total labor hours. The rate takes effect 30 days after declaration, subject to audit of the submitted sample only. At most two changes to rate, time allowance or parts markup per calendar year.",
+  "coverage": {
+   "factory_warranty": {
+    "applies": "yes",
+    "paid_hours": "multiplier",
+    "quote": "at the motor vehicle franchisee's discretion, an established average retail labor time allowance, in lieu of the motor vehicle franchisor's labor time guide for franchisor-paid repairs or service",
+    "pinpoint": "§ 56:10-15(m)"
+   },
+   "mfr_service_contract": {
+    "applies": "conditional",
+    "paid_hours": "multiplier",
+    "quote": "perform labor services or provide parts in satisfaction of a repair service offered and reimbursed by the motor vehicle franchisor, including, but not limited to, a warranty, an extended warranty, a maintenance plan, a service-related plan, or a recall",
+    "pinpoint": "§ 56:10-15 (intro); (g); (h)"
+   },
+   "cpo": {
+    "applies": "conditional",
+    "paid_hours": "multiplier",
+    "quote": "perform labor services or provide parts in satisfaction of a repair service offered and reimbursed by the motor vehicle franchisor, including, but not limited to, a warranty, an extended warranty, a maintenance plan, a service-related plan, or a recall",
+    "pinpoint": "§ 56:10-15 (intro)"
+   },
+   "independent_service_contract": {
+    "applies": "no",
+    "paid_hours": "n/a",
+    "quote": "in satisfaction of a repair service offered and reimbursed by the motor vehicle franchisor",
+    "pinpoint": "§ 56:10-15 (intro)"
+   }
+  },
+  "notes": "Hours use a ratio. At the dealer's discretion, hours billed on 100 sequential (or 90 days of) customer-paid ROs are divided by the franchisor-guide hours for the same repairs. That quotient is applied to the franchisor's time guide. (m) also requires pay 'not less than the amount a retail customer pays for the same labor services with regard to labor time'. Scope is conditional: the section reaches repair service 'offered and reimbursed by the motor vehicle franchisor', explicitly including extended warranties, maintenance plans and service-related plans. (g) extends it to parents, affiliates, commonly controlled persons and 1%-plus owners that issue a plan. (h) applies it to franchisor-administered plans only in four listed situations; for maintenance-only plans, only those sold after P.L.1999, c.45. CPO is not named. It is reached only through 'including, but not limited to, a warranty' when the franchisor offers and reimburses it. Third-party contracts fall outside the franchisor-offered-and-reimbursed limit; no carve-out names them. Dealers must pass labor payments to factory-certified flat-rate technicians. EV batteries and engine and transmission assemblies are paid at 30%. Franchisor cost recovery is barred. Audits are limited to 12 months unless fraud is suspected.",
+  "confidence": "high"
+ },
+ {
+  "state": "NM",
+  "primary_cite": "N.M. Stat. Ann. § 57-16-7 (NMSA 1978)",
+  "definition_cite": "N.M. Stat. Ann. § 57-16-3 (no definition of 'warranty', 'service contract', 'extended warranty' or 'certified pre-owned')",
+  "official_url": "https://law.justia.com/codes/new-mexico/chapter-57/article-16/section-57-16-7/ (2025 NM Statutes mirror; cross-checked against Armatus text https://www.dealeruplift.com/state-retail-warranty-reimbursement-laws/new-mexico-warranty-reimbursement-law/). Official portal NMOneSource (nmonesource.com) returned HTTP 403.",
+  "source_quality": "mirror",
+  "effective_notes": "none found. Section history ends at Laws 2018, ch. 28, § 3 (2025 NM Statutes edition). 2026 SB 22 (manufacturer-dealer licensing) amends §§ 57-16-3 and 57-16-5 only, not § 57-16-7.",
+  "hourly_rate_method": "Retail customer rate for labor and diagnostic work: dealer declares its average customer-pay labor rate from the lesser of 100 sequential customer-paid ROs or 90 days of customer-paid ROs (repairs within 180 days). Manufacturer may refuse if miscalculated or it 'unreasonably exceed[s]' all other same-line dealers in the relevant market area. No more than 2 increases per calendar year.",
+  "coverage": {
+   "factory_warranty": {
+    "applies": "yes",
+    "paid_hours": "silent",
+    "quote": "A manufacturer shall compensate a dealer for labor and diagnostic work for recall or warranty repairs at the rates charged by the dealer to its retail customers for such work.",
+    "pinpoint": "§ 57-16-7(D)"
+   },
+   "mfr_service_contract": {
+    "applies": "silent",
+    "paid_hours": "n/a",
+    "quote": "schedule of compensation to be paid to the dealer for recall or warranty repairs, work or service, including parts, labor and diagnostic work, required of the dealer by the manufacturer",
+    "pinpoint": "§ 57-16-7(B)"
+   },
+   "cpo": {
+    "applies": "silent",
+    "paid_hours": "n/a",
+    "quote": "schedule of compensation to be paid to the dealer for recall or warranty repairs, work or service, including parts, labor and diagnostic work, required of the dealer by the manufacturer",
+    "pinpoint": "§ 57-16-7(B)"
+   },
+   "independent_service_contract": {
+    "applies": "silent",
+    "paid_hours": "n/a",
+    "quote": "Each manufacturer shall specify in its franchise agreement, or in a separate written agreement, with each of its dealers licensed in this state, the dealer's obligation to perform warranty work or service on the manufacturer's products.",
+    "pinpoint": "§ 57-16-7(A)"
+   }
+  },
+  "notes": "Section has no time-allowance language: the only 'time' words are 'time-consuming' in (C). Hours are therefore 'silent'. § 57-16-6 (predelivery) requires only 'reasonable' compensation for delivery and preparation work. Scope is 'recall or warranty' work 'required of the dealer by the manufacturer'. No definition in § 57-16-3 or text in § 57-16-5 mentions service contracts or CPO. (K) excludes recreational travel trailers and motor-home living systems. Claims are deemed approved if not disapproved within 30 days. Manufacturer cost recovery or surcharges are barred by (I). I could not read the official NMOneSource text (403); the text of both mirrors matches.",
+  "confidence": "medium"
+ },
+ {
+  "state": "NV",
+  "primary_cite": "Nev. Rev. Stat. § 482.36385(3)",
+  "definition_cite": "Nev. Rev. Stat. §§ 482.36311-482.36348 (no 'warranty' or 'service contract' definition)",
+  "official_url": "https://www.leg.state.nv.us/NRS/NRS-482.html#NRS482Sec36385",
+  "source_quality": "official",
+  "effective_notes": "None found for 2023-2026. Last amended 2017. The official NRS 482 page is revised 9/9/2026.",
+  "hourly_rate_method": "Parity floor only: compensation for parts and labor 'must not be less than the amount of money charged to its various retail customers for parts and labor that are not covered by a warranty'. 'Fair compensation includes diagnosis and reasonable administrative and clerical costs.' The statute sets no RO submission or calculation procedure.",
+  "coverage": {
+   "factory_warranty": {
+    "applies": "yes",
+    "paid_hours": "silent",
+    "quote": "fail to compensate a dealer fairly for labor, parts and other expenses incurred by the dealer under the manufacturer's warranty agreements or any recall service or repairs",
+    "pinpoint": "§ 482.36385(3)"
+   },
+   "mfr_service_contract": {
+    "applies": "silent",
+    "paid_hours": "n/a",
+    "quote": "fail to compensate a dealer fairly for labor, parts and other expenses incurred by the dealer under the manufacturer's warranty agreements or any recall service or repairs",
+    "pinpoint": "§ 482.36385(3)"
+   },
+   "cpo": {
+    "applies": "silent",
+    "paid_hours": "n/a",
+    "quote": "fail to compensate a dealer fairly for labor, parts and other expenses incurred by the dealer under the manufacturer's warranty agreements or any recall service or repairs",
+    "pinpoint": "§ 482.36385(3)"
+   },
+   "independent_service_contract": {
+    "applies": "silent",
+    "paid_hours": "n/a",
+    "quote": "fail to compensate a dealer fairly for labor, parts and other expenses incurred by the dealer under the manufacturer's warranty agreements or any recall service or repairs",
+    "pinpoint": "§ 482.36385(3)"
+   }
+  },
+  "notes": "The statute never mentions time allowances, hours or labor-time guides. The floor compares the 'amount of money charged' to retail customers for labor, which a dealer might argue covers retail hours; the text does not say so. Carve-out: the parity rule doesn't apply to motor-home or RV components used mainly for residential purposes. Claims must be approved or disapproved within 30 days and paid within 30 days after approval; there is no deemed-approval language. Amended claims for clerical errors are allowed within 60 days. Audits are limited to 9 months.",
+  "confidence": "high"
+ },
+ {
+  "state": "NY",
+  "primary_cite": "N.Y. Veh. & Traf. Law § 465(1) (Franchised Motor Vehicle Dealer Act, Art. 17-A)",
+  "definition_cite": "N.Y. Veh. & Traf. Law § 462 (no definition of 'warranty' or 'service contract'; section last updated 2014)",
+  "official_url": "https://www.nysenate.gov/legislation/laws/VAT/465 (official; Cloudflare blocks scripted fetch; page shows last update 2024-09-06). Full current text read at https://newyork.public.law/laws/n.y._vehicle_and_traffic_law_section_465 (sourced from nysenate.gov). Operative 2024 amendment verified against the bill text on the official Assembly site: https://assembly.state.ny.us/leg/?bn=A04066&term=2023 (A4066-B/S5085-C).",
+  "source_quality": "enrolled_act",
+  "effective_notes": "L.2024, ch. 301 (A4066-B / S5085-C), signed 9/4/2024 and effective immediately. It added the 'extended warranty repairs, factory compensated repairs' scope list and the rule that paid time follows the dealer's retail labor time guide. PENDING, NOT LAW: 2025-26 A8773/S8360 would add 'extended service contract repairs', 'component part warranties' and 'any other franchisor compensated repairs', a fallback of OEM time x 1.5, and actual time as a last resort. A8773 passed the Assembly on 6/1/2026; S8360 is in Senate Transportation.",
+  "hourly_rate_method": "Not less than the price and rate the dealer charges non-warranty and/or non-service-contract customers. Dealer declares from the lesser of 100 sequential non-warranty customer-paid ROs or 90 days of ROs (within 180 days). Effective 30 days after declaration and presumed reasonable. Franchisor may rebut by comparison with same line-make dealers in the vicinity. At most one change per calendar year.",
+  "coverage": {
+   "factory_warranty": {
+    "applies": "yes",
+    "paid_hours": "independent_guide",
+    "quote": "reasonable compensation shall be the reasonable labor time allowances defined by the retail labor time guide reasonably utilized by a franchised motor vehicle dealer for non-warranty customer paid labor operations.",
+    "pinpoint": "§ 465(1)"
+   },
+   "mfr_service_contract": {
+    "applies": "yes",
+    "paid_hours": "independent_guide",
+    "quote": "Every franchisor shall properly fulfill any warranty agreement and/or franchisor's service contract, including but not limited to all warranty repairs, extended warranty repairs, factory compensated repairs",
+    "pinpoint": "§ 465(1)"
+   },
+   "cpo": {
+    "applies": "conditional",
+    "paid_hours": "independent_guide",
+    "quote": "including but not limited to all warranty repairs, extended warranty repairs, factory compensated repairs, recalls, diagnostics, parts and other voluntary stop-sell repairs",
+    "pinpoint": "§ 465(1)"
+   },
+   "independent_service_contract": {
+    "applies": "no",
+    "paid_hours": "n/a",
+    "quote": "All warranty claims and/or claims under a franchisor's service contract made by franchised motor vehicle dealers shall be paid within thirty days following their approval.",
+    "pinpoint": "§ 465(1)"
+   }
+  },
+  "notes": "CPO is not named. It is reached only if the CPO coverage is the franchisor's own warranty agreement or a 'factory compensated repair', which is the case for manufacturer-backed CPO programs. Independent contracts: the service-contract duty is limited to the 'franchisor's service contract'. Third-party-obligor contracts are not reached. This is a limit on scope, not an express exclusion clause. Excluded from rate calculations: wholesale parts, tires, routine maintenance, reconditioning, and maintenance batteries. The franchisor bears the burden of proof in rate disputes. Claims are deemed approved after 30 days (§ 465(2)).",
+  "confidence": "high"
+ },
+ {
+  "state": "OH",
+  "primary_cite": "Ohio Rev. Code § 4517.52",
+  "definition_cite": "Ohio Rev. Code § 4517.01 (no definition of 'warranty' or 'service contract'). Sections 4517.50-.65 also searched: no 'service contract', 'extended warranty' or 'pre-owned'.",
+  "official_url": "https://codes.ohio.gov/ohio-revised-code/section-4517.52",
+  "source_quality": "official",
+  "effective_notes": "H.B. 96 (136th G.A.), effective 9/30/2025. It added diagnosis, including technician time spent with franchisor technical assistance, plus OTA updates and initialization work to the compensated obligations. It also covers reduced-cost parts in the markup rule and requires full reimbursement of required or offered rental vehicles in (D)(5). The time-allowance rule in (D)(1) is unchanged from the 2016 version.",
+  "hourly_rate_method": "Not less than the franchisee's retail rates for warranty-like diagnosis and labor. The franchisee picks 100 sequential customer-paid warranty-like ROs or all such ROs over 90 consecutive days (within 180 days). Rate = total labor sales ÷ labor hours. Franchisor may contest within 30 days, then internal dispute resolution with appeal to court. Once per calendar year. The franchisor may not unilaterally set the rate.",
+  "coverage": {
+   "factory_warranty": {
+    "applies": "yes",
+    "paid_hours": "factory",
+    "quote": "The franchisor shall use time allowances for the diagnosis and performance of the warranty and recall work and service that are reasonable and adequate for the work or services to be performed by a qualified technician.",
+    "pinpoint": "§ 4517.52(D)(1)"
+   },
+   "mfr_service_contract": {
+    "applies": "silent",
+    "paid_hours": "n/a",
+    "quote": "Each franchisor shall compensate each of its franchisees for labor and parts used to fulfill warranty and recall obligations",
+    "pinpoint": "§ 4517.52(B)"
+   },
+   "cpo": {
+    "applies": "silent",
+    "paid_hours": "n/a",
+    "quote": "Each franchisor shall compensate each of its franchisees for labor and parts used to fulfill warranty and recall obligations",
+    "pinpoint": "§ 4517.52(B)"
+   },
+   "independent_service_contract": {
+    "applies": "silent",
+    "paid_hours": "n/a",
+    "quote": "Each franchisor shall fulfill warranty and recall obligations of diagnosing, repairing, and servicing motor vehicles",
+    "pinpoint": "§ 4517.52(A)"
+   }
+  },
+  "notes": "Paid hours are the franchisor's time allowances, which must be 'reasonable and adequate' for a qualified technician. The statute names no independent guide, multiplier or actual time. Recreational vehicle franchisors and franchisees are exempt from (A), (C), (D) and (E) and from the diagnostic part of (B). Excluded from rate calculations: promos, wholesale, routine maintenance, collision and insurance work, goodwill, tires, and others under (B)(4)(a)-(m).",
+  "confidence": "high"
+ },
+ {
+  "state": "OK",
+  "primary_cite": "Okla. Stat. tit. 47, § 565(A)(9)(b) (Oklahoma Motor Vehicle Commission Act; framed as a license-discipline ground for a 'factory')",
+  "definition_cite": "Okla. Stat. tit. 47, § 562 as amended 2025 (no 'warranty' definition; 'Service' = 'motor vehicle or powersports vehicle warranty repairs including both parts and labor'; 'post-sale work pursuant to the warranty' = work required by 'the warranty that stands extended to the vehicle at the time of its sale')",
+  "official_url": "Enrolled acts: https://oklegislature.gov/cf_pdf/2025-26%20ENR/hB/HB2158%20ENR.PDF and https://oklegislature.gov/cf_pdf/2025-26%20ENR/hB/HB2160%20ENR.PDF. Official code portal OSCN (oscn.net) sits behind a Cloudflare Turnstile human check; not attempted. The pre-2025 sentence was cross-checked on Justia's 2023 OK Statutes.",
+  "source_quality": "enrolled_act",
+  "effective_notes": "HB 2158 (became law without the Governor's signature 5/8/2025) and HB 2160 (same, 5/29/2025) both amend § 565 effective 11/1/2025. In ¶ 9(b) the only substantive change is that the manufacturer now has 45 days, not 30, to propose an adjusted rate after rebuttal; the rest is wording cleanup. HB 2160 extends the paragraph to new powersports dealers. The time-allowance and retail-rate language predates 2025.",
+  "hourly_rate_method": "No less than the rates customarily charged for retail consumer repairs. At the dealer's option, declared from 100 sequential non-warranty consumer-paid ROs with warranty-like repairs or 90 consecutive days, whichever is less (within 180 days). Rate = total labor sales ÷ total labor hours charged. Manufacturer may rebut within 45 days and may request 30 days of supplemental ROs if the rate is substantially higher. Protest goes to the Commission, with the burden on the manufacturer. Once per 12 months.",
+  "coverage": {
+   "factory_warranty": {
+    "applies": "yes",
+    "paid_hours": "factory",
+    "quote": "Time allowances for the diagnosis and performance of repair work shall be reasonable and adequate for the work to be performed.",
+    "pinpoint": "47 O.S. § 565(A)(9)(b)"
+   },
+   "mfr_service_contract": {
+    "applies": "silent",
+    "paid_hours": "n/a",
+    "quote": "adequately and fairly compensate its dealers for labor, parts, and other expenses incurred by the dealer to perform under and comply with manufacturer's warranty agreements and recall repairs",
+    "pinpoint": "47 O.S. § 565(A)(9)(b)"
+   },
+   "cpo": {
+    "applies": "silent",
+    "paid_hours": "n/a",
+    "quote": "adequately and fairly compensate its dealers for labor, parts, and other expenses incurred by the dealer to perform under and comply with manufacturer's warranty agreements and recall repairs",
+    "pinpoint": "47 O.S. § 565(A)(9)(b)"
+   },
+   "independent_service_contract": {
+    "applies": "silent",
+    "paid_hours": "n/a",
+    "quote": "adequately and fairly compensate its dealers for labor, parts, and other expenses incurred by the dealer to perform under and comply with manufacturer's warranty agreements and recall repairs",
+    "pinpoint": "47 O.S. § 565(A)(9)(b)"
+   }
+  },
+  "notes": "Paid hours: the statute requires only that time allowances be 'reasonable and adequate'. No independent guide or multiplier is named, so the bucket is factory. Scope is 'manufacturer's warranty agreements and recall repairs', including diagnosis and OTA-related assistance. The § 562 definitions tie warranty work to the warranty extended 'at the time of its sale', which cuts against separately sold contracts. § 565 otherwise mentions 'extended service contract' only in anti-coercion provisions (¶ 21) and dealer disclosure (¶ 5(h)). Motorcycles, RVs and powersports are addressed separately. The codified merged text was not read because OSCN is behind a human check. The 2024 → 2025 wording was diffed from both enrolled acts.",
+  "confidence": "high"
+ },
+ {
+  "state": "OR",
+  "primary_cite": "Or. Rev. Stat. § 650.158",
+  "definition_cite": "Or. Rev. Stat. § 650.120 (no 'warranty' definition; the RV-only definition in ORS 650.300-.480, which excludes non-manufacturer service contracts, does not apply to motor vehicle dealers)",
+  "official_url": "https://www.oregonlegislature.gov/bills_laws/ors/ors650.html (2025 edition); enrolled HB 2127: https://olis.oregonlegislature.gov/liz/2025R1/Downloads/MeasureDocument/HB2127",
+  "source_quality": "official",
+  "effective_notes": "HB 2127 (Or. Laws 2025, ch. 50, § 5) has no emergency clause, so it took effect 1/1/2026. It added (2)(b)(C): time allowances reasonable and adequate for a qualified technician, and no unreasonable denial of dealer requests to modify or add time. It also reworded the compensation schedule. Under § 10, these amendments apply only to franchises entered into or renewed on or after the Act's effective date.",
+  "hourly_rate_method": "Not less than the rate the dealer charges nonwarranty customers. Dealer proposes it from 100 sequential nonwarranty customer-paid invoices or 90 consecutive days, whichever is less (within 180 days). Presumed fair if uncontested. Manufacturer may contest on accuracy or with evidence from at least 3 dealers in contiguous or similar markets. Effective 30 days after approval, and uncontested for 30 days counts as approval. Verification or increase once per year.",
+  "coverage": {
+   "factory_warranty": {
+    "applies": "yes",
+    "paid_hours": "factory",
+    "quote": "A manufacturer, distributor or importer shall use time allowances that are reasonable and adequate for a qualified technician to make a diagnosis and perform work or service.",
+    "pinpoint": "ORS 650.158(2)(b)(C); see (1)(c), (2)(a)"
+   },
+   "mfr_service_contract": {
+    "applies": "silent",
+    "paid_hours": "n/a",
+    "quote": "A manufacturer, distributor or importer may not pay an hourly rate to a dealer that is less than the rate the dealer charges nonwarranty customers for nonwarranty service and repairs.",
+    "pinpoint": "ORS 650.158(2)(a)"
+   },
+   "cpo": {
+    "applies": "silent",
+    "paid_hours": "n/a",
+    "quote": "A manufacturer, distributor or importer may not pay an hourly rate to a dealer that is less than the rate the dealer charges nonwarranty customers for nonwarranty service and repairs.",
+    "pinpoint": "ORS 650.158(2)(a)"
+   },
+   "independent_service_contract": {
+    "applies": "silent",
+    "paid_hours": "n/a",
+    "quote": "The dealer's obligations for predelivery preparation and warranty service on the manufacturer's, distributor's or importer's motor vehicles;",
+    "pinpoint": "ORS 650.158(1)(a)"
+   }
+  },
+  "notes": "Paid hours are the manufacturer's time allowances, disclosed under (1)(c). Before 2026 the statute already required them to be 'reasonable and adequate' under (2)(a). Since 1/1/2026 there is also a qualified-technician standard and a right to request modified or additional time, but only for franchises entered or renewed on or after 1/1/2026. ORS 650.120-.173 mentions service contracts only in the anti-coercion rule for extended service contracts and maintenance plans, not in reimbursement. Motor homes are excluded from 'motor vehicle'. Claims are deemed approved at 30 days. Payment may not be reduced based on national norms (6)(d).",
+  "confidence": "high"
+ },
+ {
+  "state": "PA",
+  "primary_cite": "Board of Vehicles Act § 307, 63 P.S. § 818.307 (Act of Dec. 22, 1983, P.L. 306, No. 84)",
+  "definition_cite": "63 P.S. § 818.102 (BOVA § 102: no motor-vehicle 'warranty' definition; only 'Recreational vehicle warrantor', which excludes non-manufacturer service contracts, RV only)",
+  "official_url": "https://www.legis.state.pa.us/WU01/LI/LI/US/HTM/1983/0/0084..HTM (official unconsolidated statute, reflecting amendments through July 20, 2026, P.L. 549, No. 51)",
+  "source_quality": "official",
+  "effective_notes": "No change to § 307 found. Act 51 of 2026 (July 20, 2026) amended only trailer and definition provisions. PENDING, NOT LAW: SB 1182 (2025-26) passed the Senate 50-0 on 6/30/2026 and was referred to House Commerce on 7/1/2026. It would expressly add extended warranty, CPO warranty, manufacturer-sponsored maintenance and 'a service contract issued by a manufacturer or distributor', and pay labor at the effective rate x OEM time allowances.",
+  "hourly_rate_method": "Dealer's retail rate: declared average labor rate = total labor sales ÷ total labor hours from the lesser of 100 sequential non-warranty customer-paid ROs or 90 consecutive days (within 180 days). Presumed reasonable and effective 60 days after declaration. Manufacturer may rebut within 60 days and propose an adjustment. Protest to the State Board of Vehicle Manufacturers, Dealers and Salespersons. One declaration per calendar year. Dealer may opt out (revert to nonretail) once a year to avoid a surcharge.",
+  "coverage": {
+   "factory_warranty": {
+    "applies": "yes",
+    "paid_hours": "factory",
+    "quote": "provide the dealer with a schedule of compensation to be paid the dealer for parts, work and service, and the time allowance for the performance of such work and service.",
+    "pinpoint": "§ 307(a)(1); rate: § 307(a)(3)"
+   },
+   "mfr_service_contract": {
+    "applies": "conditional",
+    "paid_hours": "factory",
+    "quote": "Any warranty, recall, service contract or any other required service parts or labor reimbursement claim or incentive or reimbursement program claim filed by the dealer with the manufacturer or distributor",
+    "pinpoint": "§ 307(e)(1); see § 310(b)(2)"
+   },
+   "cpo": {
+    "applies": "silent",
+    "paid_hours": "n/a",
+    "quote": "Compensation for labor used in warranty service shall be at the dealer's retail rate.",
+    "pinpoint": "§ 307(a)(3)"
+   },
+   "independent_service_contract": {
+    "applies": "silent",
+    "paid_hours": "n/a",
+    "quote": "Compensation for labor used in warranty service shall be at the dealer's retail rate.",
+    "pinpoint": "§ 307(a)(3)"
+   }
+  },
+  "notes": "Paid hours: the manufacturer must disclose 'the time allowance' in its compensation schedule. The statute sets no reasonableness or other standard for those hours, so it is effectively silent beyond factory time (bucket: factory). Mfr service contracts are conditional: § 307(e)(1) applies deemed approval and payment timing to 'service contract' claims filed with the manufacturer, and § 310(b)(2) bars unfair discrimination on 'service contract ... labor or parts reimbursement'. The retail-rate floor in § 307(a)(3) names only 'warranty service'. § 307(a)(1) also requires compensation for 'service required of the dealer by the manufacturer'. § 307 does not apply to manufactured housing ((a)(4)) or RVs ((g)). It does apply to medium- and heavy-duty truck component and engine makers ((f)). RVs have their own section, § 508, with a 'reasonable' time allowance.",
+  "confidence": "high"
+ },
+ {
+  "state": "RI",
+  "primary_cite": "R.I. Gen. Laws § 31-5.1-6, as amended by 2026 S 2347 Sub A / H 8213 Sub A (eff. 10/1/2026)",
+  "definition_cite": "R.I. Gen. Laws § 31-5.1-1 (no 'warranty' or 'service contract' definition; not amended by S 2347 Sub A)",
+  "official_url": "https://webserver.rilegislature.gov/BillText/BillText26/SenateText26/S2347A.pdf (enacted Sub A text; strike and underline markup read from the PDF). Pre-amendment codified text: https://webserver.rilegislature.gov/Statutes/TITLE31/31-5.1/31-5.1-6.htm",
+  "source_quality": "enrolled_act",
+  "effective_notes": "2026 S 2347 Sub A was signed 6/22/2026 and takes effect 10/1/2026. Identical companion H 8213 Sub A was also signed 6/22/2026 (per LegiScan and Nelson Mullins; public-law chapter number not located). It pays warranty labor at the non-warranty rate x the technician's actual punched time, adds CPO warranty 'issued by the manufacturer ... common entity, or agent' to retail-rate reimbursement, and extends the duties to distributors and factory branches. It also allows 90 days for claims and puts the burden of proof on the manufacturer for time-based disapprovals. The official codified statute still shows the pre-amendment text (P.L. 2018).",
+  "hourly_rate_method": "Dealer retail rate: total labor sales ÷ total labor hours from all non-warranty customer-paid ROs for the month before submission. Presumed fair. Manufacturer may rebut within 30 days as unfair and unreasonable versus same line-make dealers in the vicinity. Protest goes to the Department. At most twice per calendar year. Unchanged by S 2347A except for adding 'non-warranty' and distributors and factory branches.",
+  "coverage": {
+   "factory_warranty": {
+    "applies": "yes",
+    "paid_hours": "actual_time",
+    "quote": "Compensation for warranty labor shall equal the dealer's non-warranty labor rate multiplied by the actual time worked by the dealer's technician performing necessary repairs",
+    "pinpoint": "§ 31-5.1-6(c) (as amended eff. 10/1/2026)"
+   },
+   "mfr_service_contract": {
+    "applies": "silent",
+    "paid_hours": "n/a",
+    "quote": "Every manufacturer, distributor or factory branch shall properly fulfill any warranty agreement and adequately and fairly compensate each of its motor vehicle dealers for labor and parts.",
+    "pinpoint": "§ 31-5.1-6(a)"
+   },
+   "cpo": {
+    "applies": "yes",
+    "paid_hours": "actual_time",
+    "quote": "certified pre-owned warranty or recall that is issued by the manufacturer, distributor, factory branch, common entity, or agent of the manufacturer, distributor, or factory branch work shall be at the dealer retail rate",
+    "pinpoint": "§ 31-5.1-6(a) (as amended eff. 10/1/2026)"
+   },
+   "independent_service_contract": {
+    "applies": "silent",
+    "paid_hours": "n/a",
+    "quote": "Every manufacturer, distributor or factory branch shall properly fulfill any warranty agreement and adequately and fairly compensate each of its motor vehicle dealers for labor and parts.",
+    "pinpoint": "§ 31-5.1-6(a)"
+   }
+  },
+  "notes": "Current rule (from 10/1/2026): hours = the technician's actual time worked under OEM procedures, shown by the time punch and including diagnostic and OEM tech-assist time, with the dealer's attestation. The (i)(4) burden is on the manufacturer to prove the technician did not spend the time. The actual-time sentence speaks of 'warranty labor'. Applying it to CPO rests on CPO being a 'warranty' now named in (a), which is a reasonable reading but not express. In the enacted (a) sentence the 'or' before 'diagnostic' is struck, so it reads 'warranty repairs diagnostic, certified pre-owned warranty ...' [sic]. Extended warranties and service contracts are not named. New (h): dealers may assign warranty work only to technicians meeting reasonable qualifications, and manufacturers may not unreasonably subject a dealer to audit or chargeback. PRIOR RULE (to 9/30/2026): retail rate from one month of customer-paid ROs, no time-allowance language (hours silent), scope 'any warranty agreement', manufacturers only. I used Sub A, not the introduced S 2347.",
+  "confidence": "high"
+ },
+ {
+  "state": "SC",
+  "primary_cite": "S.C. Code Ann. § 56-15-60",
+  "definition_cite": "S.C. Code Ann. § 56-15-10 (defined terms (a)-(bb); no 'warranty' or 'service contract' definition)",
+  "official_url": "https://www.scstatehouse.gov/code/t56c015.php",
+  "source_quality": "official",
+  "effective_notes": "none found. The official history ends at 2021 Act No. 31 (S.510) § 8, effective 8/4/2021, which rewrote the section. 2025-26 bills checked (H 3777 on direct sales, H 5242 on the RV lemon law) do not touch § 56-15-60.",
+  "hourly_rate_method": "Retail rate only if the dealer requests retail reimbursement under (C)(4). Rate = retail labor sales for warranty-like services ÷ hours of labor spent, from 100 sequential customer-paid ROs or all customer-paid ROs in a 90-day period, whichever is less (within 180 days). Manufacturer may request more documentation (extends time 30 days), then approves or denies. Effective 30 days after approval. Once per 12 months. Dealer may protest a denial in the court of common pleas, with the burden on the manufacturer.",
+  "coverage": {
+   "factory_warranty": {
+    "applies": "yes",
+    "paid_hours": "silent",
+    "quote": "reasonable compensation shall not be less than the rate charged by the dealer for like services to nonwarranty customers for nonwarranty parts, service, and repairs if the dealer has submitted a request for retail reimbursement",
+    "pinpoint": "§ 56-15-60(C)(1)"
+   },
+   "mfr_service_contract": {
+    "applies": "silent",
+    "paid_hours": "n/a",
+    "quote": "The manufacturer or distributor shall compensate the dealer for the warranty services the manufacturer or distributor requires the dealer to provide",
+    "pinpoint": "§ 56-15-60(B)"
+   },
+   "cpo": {
+    "applies": "silent",
+    "paid_hours": "n/a",
+    "quote": "The manufacturer or distributor shall compensate the dealer for the warranty services the manufacturer or distributor requires the dealer to provide",
+    "pinpoint": "§ 56-15-60(B)"
+   },
+   "independent_service_contract": {
+    "applies": "silent",
+    "paid_hours": "n/a",
+    "quote": "The manufacturer or distributor shall compensate the dealer for the warranty services the manufacturer or distributor requires the dealer to provide",
+    "pinpoint": "§ 56-15-60(B)"
+   }
+  },
+  "notes": "The statute says nothing about time allowances or paid hours. The 'hours of labor spent' language in (C)(3) is only the divisor for computing the rate from customer-paid ROs. Until the dealer requests retail reimbursement, the floor is only 'reasonable compensation' on the manufacturer's schedule. Chapter 15 mentions service contracts only in the anti-coercion provision. Claims are deemed approved at 30 days. Audits are limited to once per 12 months.",
+  "confidence": "high"
+ },
+ {
+  "state": "SD",
+  "primary_cite": "S.D. Codified Laws §§ 32-6B-58, 32-6B-61",
+  "definition_cite": "S.D. Codified Laws § 32-6B-1 (no definition of 'warranty' or 'service contract'; defines 'component manufacturer', 'franchisor', 'manufacturer')",
+  "official_url": "https://sdlegislature.gov/Statutes/32-6B-61 (read via official API https://sdlegislature.gov/api/Statutes/32-6B.html?all=true)",
+  "source_quality": "official",
+  "effective_notes": "SL 2023, ch 100 (SB 159, 'revise provisions regarding vehicle warranty claims') amended §§ 32-6B-1, -58, -58.1, -61 and added -58.2/-58.3 (component manufacturers; chargeback limits); effective July 1, 2023 (SD default effective date; not separately confirmed). SL 2025 ch 119 and SL 2026 ch 129 amended unrelated sections (-88, -21.1). No change to the time or rate text found after 2023.",
+  "hourly_rate_method": "Floor: the hourly rate 'may not be less than the rate charged by the dealer for like service to nonwarranty customers'. The manufacturer 'shall rely on the vehicle dealer's written schedule of hourly labor rates'. No transaction-by-transaction proof may be required. There is no repair-order count or submission formula.",
+  "coverage": {
+   "factory_warranty": {
+    "applies": "yes",
+    "paid_hours": "factory",
+    "quote": "Time allowances for diagnosis and performance of warranty work and service shall be adequate for the work to be performed. The hourly labor rate paid to the dealer for warranty services may not be less than the rate charged…",
+    "pinpoint": "§ 32-6B-61"
+   },
+   "mfr_service_contract": {
+    "applies": "silent",
+    "paid_hours": "n/a",
+    "quote": "Every franchisor, component manufacturer, or manufacturer shall properly fulfill any warranty agreement and compensate, as set forth in § 32-6B-61, each of its vehicle dealers for labor and parts.",
+    "pinpoint": "§ 32-6B-58"
+   },
+   "cpo": {
+    "applies": "silent",
+    "paid_hours": "n/a",
+    "quote": "Every franchisor, component manufacturer, or manufacturer shall properly fulfill any warranty agreement and compensate, as set forth in § 32-6B-61, each of its vehicle dealers for labor and parts.",
+    "pinpoint": "§ 32-6B-58"
+   },
+   "independent_service_contract": {
+    "applies": "silent",
+    "paid_hours": "n/a",
+    "quote": "The schedule of compensation for warranty work shall include reasonable compensation for diagnostic work, as well as repair service, parts, and labor.",
+    "pinpoint": "§ 32-6B-61"
+   }
+  },
+  "notes": "The text says only 'adequate', not 'reasonable and adequate'. It does not say who sets the time allowances; they are part of the manufacturer's schedule of compensation, which is why the bucket is factory. 'Warranty agreement' is undefined, and the chapter never mentions service contracts, extended warranties, CPO or maintenance plans. Under § 32-6B-58.1, a franchisor, component manufacturer or manufacturer that issues a separate engine, transmission or rear-axle warranty on a commercial medium- or heavy-duty vehicle must pay any authorized repair facility on § 32-6B-61 terms. The warranty provisions sit in the general dealer-regulation chapter (32-6B); SD has no separate franchise act. paid_hours 'n/a' means the coverage is not reached.",
+  "confidence": "high"
+ },
+ {
+  "state": "TN",
+  "primary_cite": "Tenn. Code Ann. § 55-17-121",
+  "definition_cite": "Tenn. Code Ann. § 55-17-102 (defines manufacturer, distributor, franchise; no definition of 'warranty' or 'service contract' — per Justia 2025 mirror)",
+  "official_url": "Mirror: https://law.justia.com/codes/tennessee/2025/title-55/chapter-17/part-1/section-55-17-121/ (checked against FindLaw, current as of Jan. 2, 2024). The official T.C.A. is published only by LexisNexis (https://www.lexisnexis.com/hottopics/tncode/), and its session-law PDF returned 403.",
+  "source_quality": "mirror",
+  "effective_notes": "No 2023–2026 amendment to § 55-17-121 was found. The last amendment was 2021 Pub. Ch. 277, effective July 1, 2021, which added subsection (d). The GA 114 (2025–26) motor-vehicle bill index shows no warranty-rate bill. 2024 Pub. Chs. 585 and 1017 amended §§ 55-17-102 and 55-17-114; I did not review what they changed, but they do not touch § 55-17-121.",
+  "hourly_rate_method": "The warranty hourly rate may not be less than 'the dealer's retail labor rate for similar repairs' unless the manufacturer shows the Motor Vehicle Commission that the rate is 'improper in light of all economic circumstances'. The dealer may not charge more than its posted retail labor rate. Dealers file sworn labor-rate statements with the commission. The 100-RO/90-day submission in (d)(2)(C) covers parts markup only.",
+  "coverage": {
+   "factory_warranty": {
+    "applies": "yes",
+    "paid_hours": "silent",
+    "quote": "In no event shall a manufacturer or distributor pay to its dealers a labor rate per hour for warranty repairs or servicing less than the dealer's retail labor rate for similar repairs",
+    "pinpoint": "§ 55-17-121(b)"
+   },
+   "mfr_service_contract": {
+    "applies": "silent",
+    "paid_hours": "n/a",
+    "quote": "The manufacturer or distributor shall compensate the dealer for the warranty services the manufacturer or distributor requires the dealer to provide, including warranty and recall obligations related to repairing and servicing motor vehicles",
+    "pinpoint": "§ 55-17-121(d)(1)"
+   },
+   "cpo": {
+    "applies": "silent",
+    "paid_hours": "n/a",
+    "quote": "a schedule of compensation that specifies reasonable compensation the manufacturer or distributor will pay to the dealer for such recalls and warranty services, including for parts and diagnostics.",
+    "pinpoint": "§ 55-17-121(d)(2)(A)"
+   },
+   "independent_service_contract": {
+    "applies": "silent",
+    "paid_hours": "n/a",
+    "quote": "No motor vehicle dealer shall charge the manufacturer or distributor a labor rate per hour for warranty work in excess of its posted retail labor rate.",
+    "pinpoint": "§ 55-17-121(c)"
+   }
+  },
+  "notes": "The section never mentions time allowances, labor hours or service contracts; FindLaw's copy confirms this. § 55-17-114(c) adds a ground for license action when a manufacturer unfairly discriminates among franchisees in warranty reimbursement, and another for failing to pay a valid claim within a reasonable time. I did not fully read § 55-17-114(c): the mirror summary listed 25 items and may be incomplete. Quotes come from the Justia 2025 text through a fetch tool and matched across two mirrors, but they were not checked against the Lexis official code.",
+  "confidence": "medium"
+ },
+ {
+  "state": "TX",
+  "primary_cite": "Tex. Occ. Code §§ 2301.401–.406 (rate: § 2301.402)",
+  "definition_cite": "Tex. Occ. Code § 2301.002 (no definition of 'warranty' or 'warranty work'; 'franchise' and 'franchised dealer' refer to service 'under ... a manufacturer's warranty')",
+  "official_url": "https://statutes.capitol.texas.gov/Docs/OC/htm/OC.2301.htm (JavaScript app; I read the Legislature's own file server copy at https://tcss.legis.texas.gov/resources/OC/htm/OC.2301.htm, last modified Apr. 10, 2026)",
+  "source_quality": "official",
+  "effective_notes": "None found. §§ 2301.402–.406 are unchanged since Acts 2001 (effective June 1, 2003). The chapter file dated April 2026 shows no 2025 (89th Leg.) acts. The only 2023 acts in the chapter (HB 4559, SB 1045) touch other sections.",
+  "hourly_rate_method": "The dealer must be paid at least 'the amount the dealer charges a retail customer for similar nonwarranty work', using the greater of (1) the average labor rate on 100 sequential nonwarranty ROs or (2) the average over 90 consecutive days, both within the preceding 6 months and excluding routine maintenance. Dealers request adjustments by certified mail. The manufacturer has 60 days to respond, then the dealer can protest to the Board. Adjustments are limited to one a year.",
+  "coverage": {
+   "factory_warranty": {
+    "applies": "yes",
+    "paid_hours": "silent",
+    "quote": "A manufacturer or distributor may not pay or reimburse a dealer an amount of money for warranty work that is less than the amount the dealer charges a retail customer for similar nonwarranty work.",
+    "pinpoint": "§ 2301.402(b)"
+   },
+   "mfr_service_contract": {
+    "applies": "silent",
+    "paid_hours": "n/a",
+    "quote": "A manufacturer or distributor shall fairly and adequately compensate its dealers for warranty work.",
+    "pinpoint": "§ 2301.402(a)"
+   },
+   "cpo": {
+    "applies": "silent",
+    "paid_hours": "n/a",
+    "quote": "A manufacturer or distributor shall fairly and adequately compensate its dealers for warranty work.",
+    "pinpoint": "§ 2301.402(a)"
+   },
+   "independent_service_contract": {
+    "applies": "silent",
+    "paid_hours": "n/a",
+    "quote": "duties under the manufacturer's or distributor's warranty; and (2) vehicle preparation and delivery obligations.",
+    "pinpoint": "§ 2301.401(a)(1)–(2)"
+   }
+  },
+  "notes": "There is no time-allowance standard. § 2301.406 says only that a manufacturer 'may not require ... a statement of actual time spent in performance of labor, unless actual time is the basis for reimbursement', which implies the basis for hours can vary. The chapter mentions 'service contract' only in § 2301.470 (financing conditions), with no CPO or extended-warranty language. The rate floor is phrased as an 'amount', but subsection (c) computes it as an average labor rate. § 2301.401(b): manufacturer warranty requirements are unenforceable unless reasonable.",
+  "confidence": "high"
+ },
+ {
+  "state": "UT",
+  "primary_cite": "Utah Code § 13-14-204",
+  "definition_cite": "Utah Code § 13-14-102 (no 'warranty' or 'service contract' definition); 'qualified repair' is defined in § 13-14-204(3)(a)",
+  "official_url": "https://le.utah.gov/xcode/Title13/Chapter14/13-14-S204.html (version effective 5/3/2023; chapter PDF C13-14_1800010118000101.pdf also checked)",
+  "source_quality": "official",
+  "effective_notes": "2023 S.B. 90 'Automobile Franchise Amendments' (Laws 2023 ch. 240), effective May 3, 2023, amended § 13-14-204. It added the 'qualified repair' definition and the process for submitting a retail labor rate or parts markup. 2025 ch. 280 amended § 13-14-201 (prohibited acts, including (1)(ss) reasonable compensation for customer help after over-the-air updates) but not § 204. 2024 ch. 507 amended other sections.",
+  "hourly_rate_method": "Retail labor rate = total labor charges on the submitted qualified repairs ÷ total hours in those repairs. The dealer submits 100 sequential qualified-repair ROs or 90 consecutive days, whichever gives fewer ROs, all within 180 days. The rate takes effect 30 days after submission unless the franchisor objects or asks for extra ROs (the 30 days before or after). Changes are limited to one per 12 months, and payment must start within 15 days of the effective date.",
+  "coverage": {
+   "factory_warranty": {
+    "applies": "yes",
+    "paid_hours": "factory",
+    "quote": "Time allowances described in Subsection (1) for the diagnosis and performance of warranty work and service shall be reasonable and adequate for the work to be performed.",
+    "pinpoint": "§ 13-14-204(2)(b); see (1)(c)"
+   },
+   "mfr_service_contract": {
+    "applies": "silent",
+    "paid_hours": "n/a",
+    "quote": "Reasonable compensation of the franchisee for parts and service in warranty or recall repair work may not be less than the rates charged by the franchisee for like parts and service to retail customers.",
+    "pinpoint": "§ 13-14-204(3)(b)(i)"
+   },
+   "cpo": {
+    "applies": "silent",
+    "paid_hours": "n/a",
+    "quote": "Reasonable compensation of the franchisee for parts and service in warranty or recall repair work may not be less than the rates charged by the franchisee for like parts and service to retail customers.",
+    "pinpoint": "§ 13-14-204(3)(b)(i)"
+   },
+   "independent_service_contract": {
+    "applies": "silent",
+    "paid_hours": "n/a",
+    "quote": "\"Qualified repair\" does not include: ... (C) a repair for a government agency, an insurer, or an extended warranty or service contract provider;",
+    "pinpoint": "§ 13-14-204(3)(a)(ii)(C)"
+   }
+  },
+  "notes": "Under (1)(c), the franchisor sets 'the time allowance for the performance of work and service', and (2)(b) requires it to be 'reasonable and adequate', so the bucket is factory. The only mention of service contracts or extended warranties is (3)(a)(ii)(C), which keeps work paid by extended-warranty or service-contract providers out of the retail-rate sample. It does not bring those contracts into coverage. There is no CPO language. RV dealers get parts at cost plus 20% ((3)(b)(ii)).",
+  "confidence": "high"
+ },
+ {
+  "state": "VA",
+  "primary_cite": "Va. Code Ann. § 46.2-1571",
+  "definition_cite": "Va. Code Ann. § 46.2-1500 (no 'warranty' or 'service contract' definition)",
+  "official_url": "https://law.lis.virginia.gov/vacode/title46.2/chapter15/section46.2-1571/",
+  "source_quality": "official",
+  "effective_notes": "2025 Acts chs. 546 (HB 1683) and 558 (SB 1308), approved Mar. 24, 2025, effective July 1, 2025 (VA default). I compared the ch. 558 enrolled PDF with the current code. The acts struck the clause saying compensation under the section 'shall be deemed reasonable due to the substantial number of repair orders reviewed, unless the manufacturer can show that the amounts are not reasonable'. A LegiScan summary says they also changed diagnostic-time, rental-reimbursement and over-the-air provisions; I did not verify which of those came in 2023 and which in 2025. 2023 chs. 310/311 also amended the section; I did not review their content.",
+  "hourly_rate_method": "Compensation must be at least 'the amounts charged by the dealer ... to retail customers for nonwarranty service'. Increases are requested in writing and based on 100 consecutive ROs or all ROs over a 90-day period, 'whichever occurs first'. Only retail ROs count; menu pricing, internal work, group or special-event discounts and insurance repairs are excluded.",
+  "coverage": {
+   "factory_warranty": {
+    "applies": "yes",
+    "paid_hours": "silent",
+    "quote": "Compensation of a dealer for recall or warranty parts, service, and diagnostic work shall not be less than the amounts charged by the dealer for the manufacturer's or distributor's original parts, service, and diagnostic work to retail customers",
+    "pinpoint": "§ 46.2-1571(A)(1)"
+   },
+   "mfr_service_contract": {
+    "applies": "conditional",
+    "paid_hours": "silent",
+    "quote": "All manufacturer or distributor compensated parts, service, diagnostic work, updates to a vehicle accessory or function, or initialization or repair of a vehicle part, system, accessory, or function performed by the dealer shall be subject to this subsection.",
+    "pinpoint": "§ 46.2-1571(A)(1)"
+   },
+   "cpo": {
+    "applies": "conditional",
+    "paid_hours": "silent",
+    "quote": "All manufacturer or distributor compensated parts, service, diagnostic work, updates to a vehicle accessory or function, or initialization or repair of a vehicle part, system, accessory, or function performed by the dealer shall be subject to this subsection.",
+    "pinpoint": "§ 46.2-1571(A)(1)"
+   },
+   "independent_service_contract": {
+    "applies": "silent",
+    "paid_hours": "n/a",
+    "quote": "All manufacturer or distributor compensated parts, service, diagnostic work, updates to a vehicle accessory or function, or initialization or repair of a vehicle part, system, accessory, or function performed by the dealer shall be subject to this subsection.",
+    "pinpoint": "§ 46.2-1571(A)(1)"
+   }
+  },
+  "notes": "SC and CPO are conditional: the retail floor reaches them only when the manufacturer or distributor is the one paying the dealer. The statute never names service contracts or CPO in the compensation rule. When the obligor is a separate affiliate, such as an OEM insurance or service-contract subsidiary, it is unclear whether that affiliate counts as 'manufacturer or distributor'. On time, the only rule is 'Diagnostic work shall include all time spent by a technician ... communicating with the manufacturer's technical assistance'; nothing covers repair-time allowances. A.6 extends the same compensation to adjustment programs and work 'otherwise requested by the manufacturer or distributor'. Elsewhere, § 46.2-1568 bars coercing dealers to sell manufacturer extended service contracts or maintenance plans, and §§ 46.2-1569 and -1572.4 mention CPO only for recalls. Neither affects compensation. The section does not apply to parts designed primarily for residential use (RV living quarters). The title includes 'maintenance', but no maintenance-plan rule appears in the text.",
+  "confidence": "high"
+ },
+ {
+  "state": "VT",
+  "primary_cite": "Vt. Stat. Ann. tit. 9, § 4086",
+  "definition_cite": "Vt. Stat. Ann. tit. 9, § 4085 (no definition of 'warranty' or 'service contract')",
+  "official_url": "https://legislature.vermont.gov/statutes/section/09/108/04086 (read the full chapter at https://legislature.vermont.gov/statutes/fullchapter/09/108)",
+  "source_quality": "official",
+  "effective_notes": "None found for 2023–2026. The last amendment to § 4086 was 2021, No. 63, § 3, effective June 7, 2021.",
+  "hourly_rate_method": "The hourly rate may not be less than the dealer's rate to customers for nonwarranty service. Labor is paid 'at the retail rate customarily charged', provided the nonwarranty labor rate is 'routinely posted in a place conspicuous' to service customers. The dealer's retail amounts are presumed fair. The manufacturer can rebut by comparison with at least 4 other same-line or competing-line dealers nearby. The 100-RO/60-day method covers parts markup only.",
+  "coverage": {
+   "factory_warranty": {
+    "applies": "yes",
+    "paid_hours": "factory",
+    "quote": "Time allowances for the diagnosis and performance of predelivery and warranty service shall be reasonable and adequate for the work to be performed. The hourly rate paid to a new motor vehicle dealer shall not be less than the rate…",
+    "pinpoint": "§ 4086(b); see (a)"
+   },
+   "mfr_service_contract": {
+    "applies": "silent",
+    "paid_hours": "n/a",
+    "quote": "the dealer's obligations for predelivery preparation and warranty service on its products, shall compensate the new motor vehicle dealer for such service required of the dealer by the manufacturer",
+    "pinpoint": "§ 4086(a)"
+   },
+   "cpo": {
+    "applies": "silent",
+    "paid_hours": "n/a",
+    "quote": "the dealer's obligations for predelivery preparation and warranty service on its products, shall compensate the new motor vehicle dealer for such service required of the dealer by the manufacturer",
+    "pinpoint": "§ 4086(a)"
+   },
+   "independent_service_contract": {
+    "applies": "silent",
+    "paid_hours": "n/a",
+    "quote": "the manufacturer shall reimburse the new motor vehicle dealer for any labor performed at the retail rate customarily charged by that franchisee for the same labor when not performed in satisfaction of a warranty",
+    "pinpoint": "§ 4086(c)"
+   }
+  },
+  "notes": "Under (a), the manufacturer supplies 'the time allowance for the performance of the work and service'. Chapter 108 never mentions 'service contract', 'extended warranty', 'certified pre-owned' or 'maintenance plan'. The rate floor applies to both predelivery and warranty labor. Claims must be approved or denied, and paid, within 45 days, or they are deemed approved. § 4097(9) bars unfair discrimination in warranty reimbursement. The rate cannot be recovered through surcharges.",
+  "confidence": "high"
+ },
+ {
+  "state": "WA",
+  "primary_cite": "Rev. Code Wash. § 46.96.105",
+  "definition_cite": "Rev. Code Wash. § 46.96.020 (incorporates RCW 46.70.011; no 'warranty' or 'service contract' definition)",
+  "official_url": "https://app.leg.wa.gov/RCW/default.aspx?cite=46.96.105 (full chapter: https://app.leg.wa.gov/RCW/default.aspx?cite=46.96&full=true)",
+  "source_quality": "official",
+  "effective_notes": "None affecting § 46.96.105, which was last amended by 2014 c 214. 2024 c 87 amended § 46.96.020 (dealer data/DMS) and 2026 c 186 amended §§ 46.96.010 and .185 (manufacturer ownership exception for BEV makers). Neither changes warranty compensation.",
+  "hourly_rate_method": "Labor and diagnostic work, plus manufacturer-required documentation work, are paid at 'the rates charged by the dealer to its retail customers for such work'. The manufacturer may refuse an increase only by showing the rate 'unreasonably exceed[s] those of all other' same-line or competing-line dealers in the relevant market area. One increase per calendar year. The 100-RO/90-day method in (1)(a) covers parts markup only.",
+  "coverage": {
+   "factory_warranty": {
+    "applies": "yes",
+    "paid_hours": "silent",
+    "quote": "A manufacturer shall compensate a dealer for labor and diagnostic work at the rates charged by the dealer to its retail customers for such work",
+    "pinpoint": "§ 46.96.105(1)(b)"
+   },
+   "mfr_service_contract": {
+    "applies": "silent",
+    "paid_hours": "n/a",
+    "quote": "a schedule of compensation to be paid to the dealer for any warranty work or service, including parts, labor, and diagnostic work, required of the dealer by the manufacturer in connection with the manufacturer's products.",
+    "pinpoint": "§ 46.96.105(1)"
+   },
+   "cpo": {
+    "applies": "silent",
+    "paid_hours": "n/a",
+    "quote": "repair work paid for by the brand owner under the terms of a warranty, recall, service contract, extended warranty, maintenance plan, or certified preowned vehicle program established or offered by the brand owner.",
+    "pinpoint": "§ 46.96.196(3) (secondary-products rule only)"
+   },
+   "independent_service_contract": {
+    "applies": "silent",
+    "paid_hours": "n/a",
+    "quote": "the dealer's obligation to perform warranty work or service on the manufacturer's products.",
+    "pinpoint": "§ 46.96.105(1)"
+   }
+  },
+  "notes": "The legislature lists 'warranty' separately from 'service contract, extended warranty, maintenance plan, or certified preowned vehicle program' in § 46.96.196(3), but only in the rule letting a brand owner bar secondary products on work it pays for. It did not carry that list into § 46.96.105, which suggests 'warranty work' is narrower. § 46.96.185(1)(h) bars manufacturer-owned service facilities for 'new car warranty and extended warranty' work; that is a competition rule, not a pay rule. There are no time-allowance words. Recall pay (§ 46.96.095) uses § 46.96.105 rates.",
+  "confidence": "high"
+ },
+ {
+  "state": "WI",
+  "primary_cite": "Wis. Stat. § 218.0125",
+  "definition_cite": "Wis. Stat. § 218.0101 (no 'warranty' or 'service contract' definition); § 218.0125(1)(b) defines 'qualifying nonwarranty repairs'. The 'warranty' definition excluding non-manufacturer service contracts is in the RV subchapter (§ 218.10(11)) and does not apply here.",
+  "official_url": "https://docs.legis.wisconsin.gov/statutes/statutes/218/i/0125 (chapter 218 PDF, updated through 2025 Wis. Act 247, published 9-4-26)",
+  "source_quality": "official",
+  "effective_notes": "None found. § 218.0125 was last amended by 2017 Wis. Act 235. 2023 Acts 164 and 267 and 2025 Act 129 amended other parts of ch. 218 (RV and finance subchapters).",
+  "hourly_rate_method": "Effective nonwarranty labor rate = total customer labor charges on qualifying nonwarranty repairs ÷ the hours the manufacturer's warranty time allowances would have allowed for those repairs. Qualifying repairs are those that would be warranty-covered, excluding routine maintenance, taken from 100 sequential ROs or all ROs in 90 days, whichever is less, within 180 days. The manufacturer must start paying within 30 days or give a written dispute stating the rate it considers substantiated.",
+  "coverage": {
+   "factory_warranty": {
+    "applies": "yes",
+    "paid_hours": "negotiated_other",
+    "quote": "for labor is equal to the dealer's effective nonwarranty labor rate multiplied by the number of hours allowed for the repair under the manufacturer's, importer's, or distributor's time allowances used in compensating the dealer for warranty work.",
+    "pinpoint": "§ 218.0125(3m)(b); rate formula (3m)(c)1."
+   },
+   "mfr_service_contract": {
+    "applies": "conditional",
+    "paid_hours": "negotiated_other",
+    "quote": "or who performs any other work required, requested, or approved by the manufacturer, importer, or distributor or for which the manufacturer, importer, or distributor has agreed to pay.",
+    "pinpoint": "§ 218.0125(3m)(a)"
+   },
+   "cpo": {
+    "applies": "conditional",
+    "paid_hours": "negotiated_other",
+    "quote": "or who performs any other work required, requested, or approved by the manufacturer, importer, or distributor or for which the manufacturer, importer, or distributor has agreed to pay.",
+    "pinpoint": "§ 218.0125(3m)(a)"
+   },
+   "independent_service_contract": {
+    "applies": "silent",
+    "paid_hours": "n/a",
+    "quote": "shall reasonably compensate a dealer who performs work to rectify the product or warranty defects of the manufacturer, importer, or distributor",
+    "pinpoint": "§ 218.0125(3m)(a)"
+   }
+  },
+  "notes": "Confirmed: the rate uses an OEM-hour denominator, so the gap between retail and factory time is built into the hourly rate. Paid hours are still the factory time allowances. SC and CPO are conditional: covered when the manufacturer, importer or distributor required, requested or approved the work, or agreed to pay for it. A third-party obligor is not a 'manufacturer, importer, or distributor', so independent contracts are not reached. Motorcycles are separate ((2m)): labor at 'the effective labor rate charged all customers'. The manufacturer can defend a parts rate as 'not reasonably competitive' ((5)). Claims are deemed approved after 30 days, with a 1-year audit window.",
+  "confidence": "high"
+ },
+ {
+  "state": "WV",
+  "primary_cite": "W. Va. Code § 17A-6A-8a",
+  "definition_cite": "W. Va. Code § 17A-6A-3 (no 'warranty' or 'service contract' definition; (12) dealership business includes 'performing warranty and recall work')",
+  "official_url": "https://code.wvlegislature.gov/17A-6A-8a/",
+  "source_quality": "official",
+  "effective_notes": "2024 SB 173 (Acts 2024, ch. 184), approved Mar. 13, 2024, effective June 5, 2024, amended §§ 17A-6A-3 and -8a. Per the introduced-version markup, it added 'including time communicating with the manufacturer' to diagnostic allowances, made a dealer's written request to modify a time allowance 'presumed reasonable', and deemed a rate submission approved if the manufacturer does not rebut it in 30 days. The current code contains all of these. 2023 SB 462 is listed in the section's bill history but died in the House.",
+  "hourly_rate_method": "Average labor rate = total labor sales ÷ total hours that generated them, from 100 sequential nonwarranty customer-pay ROs or 90 consecutive days, within 180 days. The rate is presumed reasonable and takes effect 30 days after the manufacturer approves it; if the manufacturer does not rebut within 30 days, it is deemed approved. The manufacturer can rebut only for fraud, inaccuracy, noncompliance, or unreasonableness against all other same-line dealers in an economically similar area, and bears the burden in circuit court. One demand per 12 months.",
+  "coverage": {
+   "factory_warranty": {
+    "applies": "yes",
+    "paid_hours": "factory",
+    "quote": "The manufacturer shall use time allowances for the diagnosis and performance of the warranty and recall work and services that are reasonable and adequate for the work or services to be performed by a qualified technician.",
+    "pinpoint": "§ 17A-6A-8a(m)(1); see (a)(3), (e)"
+   },
+   "mfr_service_contract": {
+    "applies": "silent",
+    "paid_hours": "n/a",
+    "quote": "Compensate the motor vehicle dealer for warranty and factory recall service required of the dealer by the manufacturer, distributor or wholesaler, factory branch or distributor branch",
+    "pinpoint": "§ 17A-6A-8a(a)(2)"
+   },
+   "cpo": {
+    "applies": "silent",
+    "paid_hours": "n/a",
+    "quote": "fail to adequately and fairly compensate the dealers for labor, time, or rate, parts, and other expenses incurred by the dealer to perform under and comply with manufacturer's warranty agreements and factory recalls",
+    "pinpoint": "§ 17A-6A-8a(b)(1)"
+   },
+   "independent_service_contract": {
+    "applies": "silent",
+    "paid_hours": "n/a",
+    "quote": "pay its dealers an amount of money for warranty or recall work that is less than that charged by the dealer to the retail customers of the dealer for nonwarranty and nonrecall work of the like kind",
+    "pinpoint": "§ 17A-6A-8a(b)(2)"
+   }
+  },
+  "notes": "Hours are the manufacturer's time allowances, but the dealer has strong modification rights. Its written request to modify an allowance is 'presumed reasonable' and may not be unreasonably denied ((a)(3), (e)). (b)(3) bars paying on 'a flat-rate figure that is less than what the dealer charges for retail work', which arguably reaches time as well as rate. For trucks and buses over 26,001 lb GVW ((j)), actual retrieval and return time is paid at the retail rate, with a $50 minimum per electronic-tool operation and 3 added hours per 24-hour manufacturer-caused hold. Over-the-air customer assistance must be compensated ((a)(4)). The article has no service-contract, extended-warranty or CPO language.",
+  "confidence": "high"
+ },
+ {
+  "state": "WY",
+  "primary_cite": "Wyo. Stat. Ann. § 31-16-117",
+  "definition_cite": "Wyo. Stat. Ann. § 31-16-101 (no 'warranty' or 'service contract' definition); section-specific definitions in § 31-16-117(t) ('qualified repair', 'repair order', 'parts')",
+  "official_url": "https://wyoleg.gov/statutes/compress/title31.pdf (official Title 31 compilation) plus enrolled act https://wyoleg.gov/2025/Enroll/SF0106.pdf",
+  "source_quality": "official",
+  "effective_notes": "2025 SF0106 (Enrolled Act No. 44), effective July 1, 2025, amended (b) and (d). It struck the fixed 'plus thirty percent (30%)' parts markup, replacing it with the dealer's retail parts markup rate. It also created (f)–(t): a process for the dealer to establish its labor rate and parts markup, extra-RO requests, manufacturer contest, mandatory mediation, and a civil action with the burden on the manufacturer.",
+  "hourly_rate_method": "The rate is set by mutual agreement or by dealer submission. Rate = total labor charged on qualified ROs ÷ 'total number of hours worked' on those ROs, from 100 sequential qualified ROs or 90 consecutive days, whichever is less, within 180 days. It takes effect 45 days after receipt unless the manufacturer requests more ROs or contests it (material incompleteness, inaccuracy or unreasonableness). A contest goes to 60 days of mediation, then court, where the manufacturer bears the burden. One submission per 12 months.",
+  "coverage": {
+   "factory_warranty": {
+    "applies": "yes",
+    "paid_hours": "factory",
+    "quote": "Time allowances for the diagnosis and performance of warranty work and service shall be reasonable and adequate for the work to be performed. The hourly labor rate charged by the dealer for warranty service shall not exceed the hourly labor…",
+    "pinpoint": "§ 31-16-117(b); see (a)"
+   },
+   "mfr_service_contract": {
+    "applies": "silent",
+    "paid_hours": "n/a",
+    "quote": "enters into a contract with a motor vehicle, medium duty or heavy duty truck dealer which authorizes the dealer to perform warranty or other services on products produced or distributed.",
+    "pinpoint": "§ 31-16-117(e)"
+   },
+   "cpo": {
+    "applies": "silent",
+    "paid_hours": "n/a",
+    "quote": "Complete engine and transmission assemblies replaced under warranty or other new vehicle manufacturer reimbursed repairs.",
+    "pinpoint": "§ 31-16-117(r)(ii)"
+   },
+   "independent_service_contract": {
+    "applies": "silent",
+    "paid_hours": "n/a",
+    "quote": "A new vehicle dealer may establish an hourly labor rate or a retail parts markup rate charged for warranty repairs to be included in the manufacturer's schedule of compensation",
+    "pinpoint": "§ 31-16-117(f)"
+   }
+  },
+  "notes": "The hours are the manufacturer's time allowances, which (a) and (b) require to be reasonable and adequate. Surprise: the older sentence in (b), kept in 2025, is worded as a ceiling ('shall not exceed' the nonwarranty rate), not a floor. The new (f)–(q) process is what effectively sets the rate. The rate formula divides by 'hours worked', while (t)(v)(B) says ROs must show 'labor hours charged'; the two may conflict. SC and CPO are marked silent because the labor-rate sentences say only 'warranty'. Still, (e) ('warranty or other services') and the carve-out in (r)(ii) for 'other new vehicle manufacturer reimbursed repairs' imply the section may reach manufacturer-paid non-warranty repairs; this is arguable, not express. Engine and transmission assemblies get cost plus 40%; EV propulsion batteries supplied free get a reasonable handling fee. Some secondary sources cite Wyo. Stat. § 40-20-119, but that is the equipment-dealer act, not this one.",
+  "confidence": "high"
+ }
+];

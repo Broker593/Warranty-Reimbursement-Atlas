@@ -15,7 +15,7 @@
     asOf: /^\d{4}-\d{2}-\d{2}$/.test(initial.get('asof') || '') && initial.get('asof') >= '2026-09-24' && initial.get('asof') <= '2099-12-31' && !Number.isNaN(Date.parse(initial.get('asof'))) ? initial.get('asof') : new Date().toISOString().slice(0,10),
     view: ['payments','submissions','all','labor'].includes(initial.get('view')) ? initial.get('view') : 'payments',
     coverage: labor.types.some(t=>t.id===initial.get('coverage')) ? initial.get('coverage') : 'factory',
-    axis: initial.get('axis')==='rate' ? 'rate' : 'hours',
+    applicability: labor.statuses.some(s=>s.id===initial.get('applicability')) ? initial.get('applicability') : 'all',
     method: labor.methods.some(m=>m.id===initial.get('method')) ? initial.get('method') : '',
     rules: new Set((initial.get('rules') || '').split(',').filter(id => ruleMap.has(id))),
     selected: new Set((initial.get('selected') || '').split(',').filter(id => stateMap.has(id))),
@@ -40,6 +40,7 @@
     const official=states.filter(s=>status(s)==='official').length;
     const partial=states.filter(s=>status(s)==='partial').length;
     $('coverage').innerHTML='<strong>Warranty sources</strong><span>'+text+' direct text / act links</span><span>'+portals+' access pages</span><span>'+(50-text-portals)+' link pending</span><span class="coverage-pending">'+official+' existing official reviews · '+partial+' partial official checks · '+(50-official-partial)+' reproduction-based</span>';
+    if(ui.view==='labor')$('coverage').innerHTML='<strong>Coverage research v2</strong><span>50 states · 200 entries</span><span>40 official-statute records · 5 enacted-law records · 5 code reproductions</span><span>Research dated September 24, 2026</span>';
     $('coverageDetail').textContent='Coverage is calculated from the state records: '+official+' existing official-text reviews, '+partial+' partial official checks, and '+(50-official-partial)+' entries based on reproductions. Partial checks identify exactly which provisions were compared. No status represents legal sign-off or an exhaustive update of all amendments.';
   }
   function sourceInfo(url) {
@@ -85,58 +86,49 @@
   function changeNotice(s) {
     return (s.changes || []).map(c=>'<aside class="change-notice"><strong>'+(c.effective>ui.asOf?'Upcoming: ':'Effective: ')+esc(c.effective)+' · '+esc(c.title)+'</strong><p>'+esc(c.time)+'</p><a href="'+esc(c.url)+'" target="_blank" rel="noopener noreferrer">Read the official amendment ↗</a></aside>').join('')+(s.pendingNote?'<aside class="change-notice pending"><strong>Follow-up verification needed</strong><p>'+esc(s.pendingNote)+'</p></aside>':'');
   }
-  const laborRecord = s => labor.record(s,ui.coverage,ui.asOf,ruleValue,effectiveTime);
+  const laborRecord = s => labor.record(s,ui.coverage,ui.asOf);
   const coverageType = () => labor.types.find(t=>t.id===ui.coverage);
   const laborMethod = id => labor.methods.find(m=>m.id===id);
-  function laborTags(record,axis) {
-    const found=record.methods.filter(m=>m.finding==='identified' && laborMethod(m.id)?.axis===axis);
-    return found.length?'<div class="labor-tags">'+found.map(m=>'<span>'+esc(laborMethod(m.id).name)+'</span>').join('')+'</div>':'<span class="pending-label">Method classification pending</span>';
-  }
-  function laborStatus(record) {
-    return record.reviewStatus==='existing_summary'?'Existing warranty summary':record.reviewStatus==='unverified'?'Unverified':'Coverage review recorded';
-  }
-  function methodReview(record) {
-    return '<section class="state-section"><div class="section-label">Method-by-method research status</div><p>Not identified means no match under the stated definition in the existing summary. It is not an affirmative exclusion.</p><div class="method-review">'+record.methods.map(m=>'<article><strong>'+esc(laborMethod(m.id)?.name || m.id)+'</strong><span>'+esc(m.finding.replaceAll('_',' '))+(m.basis==='existing_summary'?' · existing summary':'')+'</span><small>Required / optional / conditional: '+esc(m.operation.replaceAll('_',' '))+'</small>'+(m.condition?'<p>'+esc(m.condition)+'</p>':'')+'</article>').join('')+'</div></section>';
-  }
+  const statusBadge = r => '<span class="coverage-status status-'+r.applicability+'"><span aria-hidden="true">'+labor.statuses.find(x=>x.id===r.applicability).symbol+'</span> '+esc(r.statusLabel)+'</span>';
+  const dateBadge = r => r.dateNote?'<p class="effective-status '+(r.upcoming?'upcoming':'effective')+'">'+esc(r.dateNote)+'</p>':'';
   function renderLabor() {
-    const type=coverageType(), rows=filteredStates(), records=states.map(laborRecord);
-    const methods=labor.methods.filter(m=>m.axis===ui.axis);
+    const type=coverageType(),rows=filteredStates(),records=states.map(laborRecord);
     document.querySelectorAll('[data-view]').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.view===ui.view)));
-    $('coverageType').value=ui.coverage;$('laborAxis').value=ui.axis;
+    $('coverageType').value=ui.coverage;$('applicabilityFilter').value=ui.applicability;
     $('laborScope').textContent=type.note;
-    const pending=records.filter(r=>['existing_summary','unverified'].includes(r.reviewStatus)).length;
-    $('laborProgress').textContent=(50-pending)+' of 50 coverage-specific reviews completed · '+pending+' pending'+(ui.coverage==='factory'?' · Existing warranty summaries shown below':'');
-    $('laborCountNote').textContent='Counts cover all 50 states for '+type.name.toLowerCase()+', as of '+ui.asOf+'. Buckets overlap. '+(ui.coverage==='factory'?'Identified counts carry forward existing warranty flags. Guide subtypes have not yet been separated; required versus optional treatment remains unverified.':'No completed coverage-specific research is loaded. A dash means the count is unknown, not zero states.')+' Select an identified bucket to filter the table.';
-    $('laborBuckets').innerHTML=methods.map(m=>{
-      const entries=records.map(r=>r.methods.find(x=>x.id===m.id));
-      const identified=entries.filter(x=>x?.finding==='identified').length;
-      const unknown=entries.filter(x=>!x || x.finding==='unverified').length;
-      const notFound=entries.filter(x=>x?.finding==='not_identified').length;
-      return '<button class="labor-bucket" data-labor-method="'+m.id+'" aria-pressed="'+(ui.method===m.id)+'" aria-label="'+esc(m.name)+': '+identified+' identified, '+unknown+' unverified, '+notFound+' not identified under the definition. Filter identified states." title="'+esc(m.description)+'"><span>'+esc(m.name)+'</span><strong>'+(unknown===50?'—':identified)+'</strong><small>'+(unknown===50?'Count pending · 50 unverified':identified+' identified · '+unknown+' unverified')+'</small></button>';
+    $('laborProgress').textContent='50 states researched · 200 coverage entries populated · Claude v2 research dated September 24, 2026';
+    $('coverageTally').innerHTML='<caption>Coverage counts · all 50 states</caption><thead><tr><th scope="col">Coverage</th>'+labor.statuses.map(s=>'<th scope="col">'+s.name+'</th>').join('')+'</tr></thead><tbody>'+labor.tallies().map(t=>'<tr class="'+(t.coverage===ui.coverage?'current-coverage':'')+'"><th scope="row">'+esc(t.name)+'</th>'+labor.statuses.map(s=>'<td><button data-coverage-count="'+t.coverage+'" data-count-status="'+s.id+'" aria-label="Show '+t.counts[s.id]+' '+s.name+' states for '+esc(t.name)+'">'+t.counts[s.id]+'</button></td>').join('')+'</tr>').join('')+'</tbody>';
+    $('laborDateNotice').textContent='Enacted-law research totals include Rhode Island’s October 1, 2026 actual-time and CPO provisions. On the selected date ('+ui.asOf+'), those provisions are '+(ui.asOf<'2026-10-01'?'UPCOMING, not yet effective.':'EFFECTIVE.')+' The date selector updates effective-date notes; it does not remove enacted future provisions from these research totals.';
+    $('hoursHeading').textContent='Paid-hours counts · '+type.name;
+    $('laborBuckets').innerHTML=labor.methods.filter(m=>m.id!=='n/a'||ui.coverage!=='factory').map(m=>{
+      const matches=records.filter(r=>r.paidHoursId===m.id),codes=matches.map(r=>r.state).join(', ');
+      return '<button class="labor-bucket" data-labor-method="'+m.id+'" aria-pressed="'+(ui.method===m.id)+'" aria-label="'+esc(m.name)+': '+matches.length+' states. Filter this paid-hours bucket." title="'+esc(m.description)+'"><span>'+esc(m.name)+(m.id==='n/a'?' No method assigned':'')+'</span><strong>'+matches.length+'</strong><small>'+esc(codes||'No states')+'</small></button>';
     }).join('');
-    $('matrixHead').innerHTML='<tr><th rowspan="2" class="state-head" scope="col">State<span>Select to compare · click for evidence</span></th><th class="group-hourly" scope="colgroup">Hourly dollar rate</th><th class="group-hours" scope="colgroup">Paid labor hours</th><th class="group-samples" scope="colgroup">Coverage applicability</th></tr><tr><th scope="col">How the rate is established</th><th scope="col">How allowed hours are established</th><th scope="col">Required, optional, conditional or excluded?</th></tr>';
+    $('laborCountNote').textContent='One primary paid-hours bucket per state and coverage type. Counts always cover all 50 states, independent of search or comparison filters. Factory time includes general time-allowance standards. Wisconsin stays Negotiated/other because its time adjustment is in the hourly-rate formula; its paid hours remain OEM time.';
+    $('matrixHead').innerHTML='<tr><th rowspan="2" class="state-head" scope="col">State<span>Select to compare · click for evidence</span></th><th class="group-samples" scope="colgroup">Coverage applicability</th><th class="group-hourly" scope="colgroup">Hourly dollar rate</th><th class="group-hours" scope="colgroup">Paid labor hours</th></tr><tr><th scope="col">Status and condition</th><th scope="col">How the rate is established</th><th scope="col">Time method and exceptions</th></tr>';
     $('matrixBody').innerHTML=rows.map(s=>{
       const r=laborRecord(s);
-      return '<tr class="'+(ui.selected.has(s.abbr)?'selected':'')+'"><td class="state-cell"><div class="state-inner"><input type="checkbox" class="compare-check" data-select="'+s.abbr+'" aria-label="Select '+esc(s.state)+' for comparison" '+(ui.selected.has(s.abbr)?'checked':'')+'><button class="state-name" data-state="'+s.abbr+'"><span class="state-text">'+esc(s.state)+'</span><span class="abbr">'+s.abbr+'</span><span class="evidence-label">'+esc(laborStatus(r))+'</span></button></div></td><td>'+laborTags(r,'rate')+'<p>'+esc(r.hourlyRate)+'</p></td><td>'+laborTags(r,'hours')+'<p>'+esc(r.paidHours)+'</p></td><td><span class="scope-status">'+esc(r.applicability==='unverified'?'Unverified':r.applicability)+'</span><p>'+esc(r.applicabilityNote)+'</p><button class="text-button" data-state="'+s.abbr+'">Evidence &amp; open questions →</button></td></tr>';
+      return '<tr class="'+(ui.selected.has(s.abbr)?'selected':'')+'"><td class="state-cell"><div class="state-inner"><input type="checkbox" class="compare-check" data-select="'+s.abbr+'" aria-label="Select '+esc(s.state)+' for comparison" '+(ui.selected.has(s.abbr)?'checked':'')+'><button class="state-name" data-state="'+s.abbr+'"><span class="state-text">'+esc(s.state)+'</span><span class="abbr">'+s.abbr+'</span><span class="evidence-label">Confidence: '+esc(r.confidence)+'</span><span class="evidence-label">'+esc(r.sourceName)+'</span></button></div></td><td>'+statusBadge(r)+'<p class="'+(r.condition?'condition-note':'')+'">'+(r.condition?'<strong>Condition: </strong>':'')+esc(r.applicabilityNote)+'</p>'+dateBadge(r)+'<button class="text-button" data-state="'+s.abbr+'">Quote, notes &amp; source →</button></td><td><p>'+esc(r.hourlyRate)+'</p></td><td><strong class="hours-label">'+esc(r.paidHours)+'</strong><p>'+esc(r.hoursNote)+'</p></td></tr>';
     }).join('');
     $('empty').hidden=rows.length>0;$('matrix').hidden=rows.length===0;
-    $('emptyMessage').textContent='No identified matches are recorded for these filters. Unverified entries are not evidence that a protection is absent.';
+    $('emptyMessage').textContent='No states match the selected coverage, status, paid-hours bucket and search. Reset filters to show all 50 states.';
     $('resultSummary').innerHTML='<strong>'+rows.length+'</strong> of 50 states · '+esc(type.name)+(ui.compare?' · comparison view':'');
     $('compareCount').textContent=ui.selected.size;$('compareBtn').disabled=!ui.selected.size;
     $('compareBtn').classList.toggle('active',ui.compare);$('compareBtn').setAttribute('aria-pressed',String(ui.compare));
     $('compareBtn').firstChild.textContent=ui.compare?'Show all states ':'Compare selected ';
-    $('activeFilters').innerHTML=(ui.method?'<button class="filter-chip" id="clearLaborMethod">'+esc(laborMethod(ui.method).name)+' · identified only <span>×</span></button>':'')+(ui.compare?'<button class="filter-chip" id="exitCompare">Selected states only <span>×</span></button>':'');
+    $('activeFilters').innerHTML=(ui.method?'<button class="filter-chip" id="clearLaborMethod">'+esc(laborMethod(ui.method).name)+' <span>×</span></button>':'')+(ui.applicability!=='all'?'<button class="filter-chip" id="clearApplicability">'+esc(labor.statuses.find(s=>s.id===ui.applicability).name)+' <span>×</span></button>':'')+(ui.compare?'<button class="filter-chip" id="exitCompare">Selected states only <span>×</span></button>':'');
     renderFilters();syncUrl();
   }
   function openLaborState(s) {
     const r=laborRecord(s),type=coverageType();ui.state=s.abbr;ui.detailRule=null;
     $('stateTitle').textContent=s.state+' · '+type.name;
-    $('stateContent').innerHTML='<div class="state-summary"><div class="section-label">'+esc(laborStatus(r))+'</div><p>'+esc(type.note)+'</p><p><strong>Coverage applicability: '+esc(r.applicability)+'.</strong> '+esc(r.applicabilityNote)+'</p></div>'+(ui.coverage==='factory'?changeNotice(s):'')+'<div class="state-sections"><section class="state-section"><div class="section-label">Hourly dollar rate</div>'+laborTags(r,'rate')+'<p>'+esc(r.hourlyRate)+'</p></section><section class="state-section"><div class="section-label">Paid labor hours</div>'+laborTags(r,'hours')+'<p>'+esc(r.paidHours)+'</p></section>'+methodReview(r)+'<section class="state-section"><div class="section-label">What remains to be researched</div><ul>'+r.unresolved.map(q=>'<li>'+esc(q)+'</li>').join('')+'</ul><p>Each method needs its own required, optional, conditional, fallback or excluded designation. Existing checkboxes do not establish that designation.</p></section><section class="state-section"><div class="section-label">Evidence for this coverage</div>'+(r.evidence.length?r.evidence.map(e=>'<p><strong>'+esc(e.id)+' · '+esc(e.provision)+'</strong><br>'+esc(e.claim)+'<br><a href="'+esc(e.url)+'" target="_blank" rel="noopener noreferrer">'+esc(e.sourceType)+' ↗</a></p>').join(''):'<p>No new coverage-specific evidence has been added.</p>')+(ui.coverage==='factory'?'<p>The inherited warranty summary has the following review record. It does not verify the new coverage classification.</p>'+reviewRecord(s)+'<div class="source-links">'+sourceLinks(s)+'</div>':'<p>The state’s existing franchise-law citation is a research starting point, not evidence that it governs this program: '+esc(s.statute)+'.</p>'+(s.original?'<p><a href="'+esc(s.original.url)+'" target="_blank" rel="noopener noreferrer">Open existing statutory research lead ↗</a></p>':''))+'</section><section class="state-section"><a href="research.html" target="_blank" rel="noopener">Open the deep research prompt ↗</a></section></div><div class="detail-actions"><button class="quiet" data-detail-select="'+s.abbr+'">'+(ui.selected.has(s.abbr)?'Remove from comparison':'Add to comparison')+'</button><button class="primary" id="shareState">Share this state ↗</button></div>';
+    const links=r.urls.map((url,i)=>'<a class="source-link" href="'+esc(url)+'" target="_blank" rel="noopener noreferrer"><strong>'+(i===0?'Research source':'Additional source')+' ↗</strong><span>'+esc(url)+'</span></a>').join('');
+    $('stateContent').innerHTML='<div class="state-summary">'+statusBadge(r)+'<p>'+esc(r.applicabilityNote)+'</p>'+dateBadge(r)+'<p><strong>Confidence: '+esc(r.confidence)+'</strong> · '+esc(r.sourceName)+'<br>Claude v2 research: September 24, 2026. Imported September 25, 2026.</p></div><div class="state-sections"><section class="state-section"><div class="section-label">Hourly dollar rate</div><p>'+esc(r.hourlyRate)+'</p>'+(!['yes','conditional'].includes(r.applicability)?'<details><summary>State’s factory-warranty rate method, for context only</summary><p>'+esc(r.stateHourlyRate)+'</p></details>':'')+'</section><section class="state-section"><div class="section-label">Paid hours</div><h3>'+esc(r.paidHours)+'</h3><p>'+esc(r.hoursNote)+'</p></section><section class="state-section"><div class="section-label">Quoted statutory evidence</div><blockquote class="statute-quote">'+esc(r.quote)+'</blockquote><p><strong>Pinpoint: '+esc(r.pinpoint)+'</strong></p><p>Primary citation: '+esc(r.primaryCite)+'</p><p>Definitions checked: '+esc(r.definitionCite)+'</p></section><section class="state-section"><div class="section-label">State notes and qualifications</div><p>'+esc(r.notes)+'</p></section><section class="state-section"><div class="section-label">Effective dates and legislative history</div><p>'+esc(r.effectiveNotes)+'</p></section><section class="state-section"><div class="section-label">Sources and provenance</div><p>Research source type: '+esc(r.sourceName)+'. Source classification and confidence are from the supplied v2 research. This import is not a claim that every source was independently rechecked.</p><p>'+esc(r.sourceNote)+'</p><div class="source-links">'+links+'</div><p><a href="research/labor-by-coverage-v2.json" download>Download supplied JSON</a> · <a href="https://github.com/Broker593/Warranty-Reimbursement-Atlas/blob/main/docs/research/labor-by-coverage-patch-v2.md" target="_blank" rel="noopener">Read supplied research patch ↗</a></p></section></div><div class="detail-actions"><button class="quiet" data-detail-select="'+s.abbr+'">'+(ui.selected.has(s.abbr)?'Remove from comparison':'Add to comparison')+'</button><button class="primary" id="shareState">Share this state ↗</button></div>';
     if(!$('stateDialog').open)$('stateDialog').showModal();$('stateDialog').scrollTop=0;syncUrl();
   }
   function openLaborKey() {
-    $('keyTitle').textContent='Labor methods, separated by coverage';
-    $('keyContent').innerHTML=['rate','hours'].map(axis=>'<section class="key-group"><h3>'+(axis==='rate'?'Hourly dollar rate':'Paid labor hours')+'</h3><div class="rule-cards">'+labor.methods.filter(m=>m.axis===axis).map(m=>'<article class="rule-card"><h4>'+esc(m.name)+'</h4><p>'+esc(m.description)+'</p></article>').join('')+'</div></section>').join('');
+    $('keyTitle').textContent='Coverage status and paid-hours definitions';
+    $('keyContent').innerHTML='<section class="key-group"><h3>Coverage applicability</h3><div class="rule-cards">'+labor.statuses.map(s=>'<article class="rule-card"><h4>'+s.name+'</h4><p>'+esc(s.description)+'</p></article>').join('')+'</div></section><section class="key-group"><h3>Paid-hours methods</h3><div class="rule-cards">'+labor.methods.map(m=>'<article class="rule-card"><h4>'+esc(m.name)+'</h4><p>'+esc(m.description)+'</p></article>').join('')+'</div></section>';
     if(!$('keyDialog').open)$('keyDialog').showModal();
   }
   function visibleRules() {
@@ -148,7 +140,8 @@
       if (terms.length && !terms.some(t => s.state.toLowerCase().includes(t) || s.abbr.toLowerCase() === t)) return false;
       if (ui.view !== 'labor' && ui.evidence !== 'all' && status(s)!==(ui.evidence==='secondary'?'reproduction':ui.evidence)) return false;
       if (ui.compare && !ui.selected.has(s.abbr)) return false;
-      if (ui.view === 'labor' && ui.method && !laborRecord(s).methods.some(m=>m.id===ui.method && m.finding==='identified')) return false;
+      if (ui.view === 'labor' && ui.method && laborRecord(s).paidHoursId!==ui.method) return false;
+      if (ui.view === 'labor' && ui.applicability !== 'all' && laborRecord(s).applicability!==ui.applicability) return false;
       if (ui.view !== 'labor' && ui.rules.size) {
         const flags = [...ui.rules].map(id => ruleValue(s,id));
         if (!(ui.match === 'all' ? flags.every(Boolean) : flags.some(Boolean))) return false;
@@ -161,7 +154,7 @@
     if (ui.q) p.set('q',ui.q);
     p.set('asof',ui.asOf);
     if (ui.view !== 'payments') p.set('view',ui.view);
-    if (ui.view === 'labor') {p.set('coverage',ui.coverage);p.set('axis',ui.axis);if(ui.method)p.set('method',ui.method);}
+    if (ui.view === 'labor') {p.set('coverage',ui.coverage);if(ui.applicability!=='all')p.set('applicability',ui.applicability);if(ui.method)p.set('method',ui.method);}
     if (ui.rules.size) p.set('rules',[...ui.rules].join(','));
     if (ui.selected.size) p.set('selected',[...ui.selected].join(','));
     if (ui.match !== 'all') p.set('match',ui.match);
@@ -183,12 +176,13 @@
     $('asOf').value=ui.asOf;
   }
   function render() {
+    renderCoverage();
     const isLabor=ui.view==='labor';
     $('laborPanel').hidden=!isLabor;
     ['ruleFilter','sourceFilter','sharedToggle','warrantyLegend','warrantyContext'].forEach(id=>$(id).hidden=isLabor);
     $('laborContext').hidden=!isLabor;
     $('matrix').classList.toggle('labor-matrix',isLabor);
-    $('matrixCaption').textContent=isLabor?'Labor reimbursement methods by state and selected coverage. Unverified means research is pending, not that no protection exists.':'State reimbursement features. A check identifies a feature, an empty box means not identified under the definition, and a question mark means unclassified.';
+    $('matrixCaption').textContent=isLabor?'Labor reimbursement methods by state and coverage. Required, Conditional, Not reached and Not addressed are distinct researched statuses. Enacted future changes are flagged.':'State reimbursement features. A check identifies a feature, an empty box means not identified under the definition, and a question mark means unclassified.';
     $('keyBtn').textContent=isLabor?'Labor bucket definitions ⓘ':'Rule definitions ⓘ';
     if(isLabor){renderLabor();return;}
     $('emptyMessage').textContent='Remove a rule filter or switch from “all” to “any.”';
@@ -226,7 +220,7 @@
       ['Rate submission approval',s.process?.rateApproval || 'Not yet classified. This is separate from individual warranty-claim approval.',null],
       ['Warranty claim approval',s.process?.claimApproval || 'Not yet classified. Rate-submission deadlines must not be used as claim-payment deadlines.',null]
     ];
-    $('stateContent').innerHTML = '<div class="state-summary"><div class="statute">Statute: '+esc(s.statute)+'</div>'+reviewRecord(s)+'<p>Public reimbursement rules. Actual approved SOA retailer rates are not available in this reference.</p></div>'+changeNotice(s)+ruleExplanation(s,ui.detailRule)+'<div class="state-sections">'+sections.map(([label,body,group])=>'<section class="state-section"><div class="section-label">'+label+'</div><p>'+esc(body)+'</p>'+(group?'<div class="rule-tags">'+rules.filter(r=>r.group===group&&ruleValue(s,r.id)).map(r=>'<button class="rule-tag" data-key="'+r.id+'">'+esc(r.short)+'</button>').join('')+'</div>':'')+'</section>').join('')+'<section class="state-section"><div class="section-label">Sources and review record</div><p>Original research basis: '+esc(s.basis)+'</p>'+(s.checks || []).map(c=>'<p class="check-record"><strong>'+esc(c.date)+' · '+esc(c.sourceType)+'</strong><br>'+esc(c.scope)+'<br><a href="'+esc(c.url)+'" target="_blank" rel="noopener noreferrer">Evidence for this check ↗</a></p>').join('')+'<div class="source-age">Source page date / code version: <strong>'+esc(s.sourceDate)+'</strong><br>Last recorded review: '+esc(s.review.date)+'<br><small>These dates are separate from a law’s effective date. Effective-date notes appear in the state requirements when established.</small></div><div class="source-links">'+sourceLinks(s)+'</div></section></div><div class="detail-actions"><button class="quiet" data-detail-select="'+s.abbr+'">'+(ui.selected.has(s.abbr)?'Remove from comparison':'Add to comparison')+'</button><button class="primary" id="shareState">Share this state ↗</button></div>';
+    $('stateContent').innerHTML = '<div class="state-summary"><div class="statute">Statute: '+esc(s.statute)+'</div>'+reviewRecord(s)+'<p>Public reimbursement rules. Actual retailer payment amounts are not included.</p></div>'+changeNotice(s)+ruleExplanation(s,ui.detailRule)+'<div class="state-sections">'+sections.map(([label,body,group])=>'<section class="state-section"><div class="section-label">'+label+'</div><p>'+esc(body)+'</p>'+(group?'<div class="rule-tags">'+rules.filter(r=>r.group===group&&ruleValue(s,r.id)).map(r=>'<button class="rule-tag" data-key="'+r.id+'">'+esc(r.short)+'</button>').join('')+'</div>':'')+'</section>').join('')+'<section class="state-section"><div class="section-label">Sources and review record</div><p>Original research basis: '+esc(s.basis)+'</p>'+(s.checks || []).map(c=>'<p class="check-record"><strong>'+esc(c.date)+' · '+esc(c.sourceType)+'</strong><br>'+esc(c.scope)+'<br><a href="'+esc(c.url)+'" target="_blank" rel="noopener noreferrer">Evidence for this check ↗</a></p>').join('')+'<div class="source-age">Source page date / code version: <strong>'+esc(s.sourceDate)+'</strong><br>Last recorded review: '+esc(s.review.date)+'<br><small>These dates are separate from a law’s effective date. Effective-date notes appear in the state requirements when established.</small></div><div class="source-links">'+sourceLinks(s)+'</div></section></div><div class="detail-actions"><button class="quiet" data-detail-select="'+s.abbr+'">'+(ui.selected.has(s.abbr)?'Remove from comparison':'Add to comparison')+'</button><button class="primary" id="shareState">Share this state ↗</button></div>';
     if (!$('stateDialog').open) $('stateDialog').showModal();
     $('stateDialog').scrollTop=0;
     syncUrl();
@@ -238,7 +232,7 @@
     if (!$('keyDialog').open) $('keyDialog').showModal();
   }
   function reset() {
-    ui.q='';ui.method='';ui.rules.clear();ui.selected.clear();ui.compare=false;ui.evidence='all';ui.match='all';ui.hideCommon=true;
+    ui.q='';ui.method='';ui.applicability='all';ui.rules.clear();ui.selected.clear();ui.compare=false;ui.evidence='all';ui.match='all';ui.hideCommon=true;
     render();
   }
   function notify(message) {
@@ -260,8 +254,8 @@
   ['resetBtn','emptyReset'].forEach(id=>$(id).addEventListener('click',reset));
   ['aboutBtn','footerAbout'].forEach(id=>$(id).addEventListener('click',()=>$('aboutDialog').showModal()));
   $('keyBtn').addEventListener('click',()=>ui.view==='labor'?openLaborKey():openKey());
-  $('coverageType').addEventListener('change',e=>{ui.coverage=e.target.value;ui.method='';render();});
-  $('laborAxis').addEventListener('change',e=>{ui.axis=e.target.value;ui.method='';render();});
+  $('coverageType').addEventListener('change',e=>{ui.coverage=e.target.value;ui.method='';ui.applicability='all';render();});
+  $('applicabilityFilter').addEventListener('change',e=>{ui.applicability=e.target.value;render();});
   $('shareBtn').addEventListener('click',share);
   document.addEventListener('change',e=>{
     const target=e.target;
@@ -271,6 +265,8 @@
   document.addEventListener('click',e=>{
     const t=e.target.closest('button');
     if(t){
+      if(t.dataset.coverageCount){ui.coverage=t.dataset.coverageCount;ui.applicability=t.dataset.countStatus;ui.q='';ui.method='';ui.compare=false;render();}
+      if(t.id==='clearApplicability'){ui.applicability='all';render();}
       if(t.hasAttribute('data-labor-method')){ui.method=ui.method===t.dataset.laborMethod?'':t.dataset.laborMethod;render();}
       if(t.id==='clearLaborMethod'){ui.method='';render();}
       if(t.dataset.view){ui.view=t.dataset.view;render();}
@@ -324,3 +320,4 @@
     window.addEventListener('pagehide',()=>lifecycle.abort(),{once:true});
   }
 })();
+
