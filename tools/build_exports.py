@@ -132,7 +132,7 @@ def build_xlsx(audit, cov, weekly, news, build_date, path):
              ('Summary: one row per state with coverage status, key audit fields, law dates and last-verified date. Count formulas at the right.', F),
              ('Coverage: 200 rows (50 states x 4 coverage types) with statute quotes and pinpoint cites.', F),
              ('Audit fields: claim deadlines, chargeback windows, rate submission, manufacturer response and challenge, penalties, with quotes.', F),
-             ('Rate sample rules: what the rate calculator applies for each state.', F),
+             ('Rate sample rules: each state\'s retail-rate sample, RO age limit and exclusions.', F),
              ('Law dates: last amendment, amending act, original enactment, next scheduled change.', F),
              ('Weekly log and News: the Weekly checks and News tabs.', F), ('', F),
              ('How to read it', FB),
@@ -217,7 +217,7 @@ def build_xlsx(audit, cov, weekly, news, build_date, path):
                      '; '.join(c.get('exclusions') or []), a['rate_submission'].get('exclusions_text'), a['rate_submission'].get('formula'),
                      a['rate_submission'].get('frequency_limit'), c.get('note')])
     sheet('Rate sample rules', ['State', 'Name', 'Sample rule', 'RO count', 'Day window', 'Max RO age (days)', 'Denominator', 'Exclusion codes',
-                                'Exclusions (statute wording)', 'Formula', 'Resubmission frequency', 'Calculator note'],
+                                'Exclusions (statute wording)', 'Formula', 'Resubmission frequency', 'Note'],
           rrow, [7, 15, 24, 9, 10, 12, 20, 30, 50, 40, 22, 40])
 
     lrow = []

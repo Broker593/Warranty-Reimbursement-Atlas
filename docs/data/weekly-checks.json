@@ -120,9 +120,10 @@
    "site_changes": [
     "Added Audit Fields tab: claim deadlines, chargeback windows, rate-submission rules, manufacturer response and challenge rules, penalties (50 states, statute-quoted).",
     "Added Law last amended, Next scheduled change and Last verified dates to every state.",
-    "Added Retail Rate Calculator.",
+    "Added a retail rate calculator, then removed it the same day pending a redesign.",
     "Added Weekly Checks and News tabs.",
-    "Added one-page state PDFs and an Excel workbook under Downloads."
+    "Added one-page state PDFs and an Excel workbook under Downloads.",
+    "Added an internal-use banner and Open/Save buttons on Downloads."
    ],
    "no_change_states": [
     "AL",

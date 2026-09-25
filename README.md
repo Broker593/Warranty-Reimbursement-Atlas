@@ -40,18 +40,20 @@ Mississippi's qualified-technician benchmark is in Factory time, not individual 
 
 The original v3 JSON and Markdown are preserved verbatim under `docs/research/`. V2 remains there as a historical source and is not loaded by the current site. The adapter reconciles older narrative sentences in FL, IL, WI, ND and NJ with the final v3 cells. Original quotations and pinpoints are retained; the RI pre-effective-date drawer labels the enacted quotation as upcoming and also shows prior statutory text. PA's independent-contract drawer shows the claim-timing scope quotation separately from its supplied warranty-rate quotation.
 
-## Audit fields, calculator, weekly checks and downloads (September 25, 2026)
+## Audit fields, weekly checks, news and downloads (September 25, 2026)
 
-New tabs sit above the date selector: **Audit fields**, **Rate calculator**, **Weekly checks**, **News**, **Downloads**. They are rendered by `docs/extras.js` / `docs/extras.css` from:
+New tabs sit above the date selector: **Audit fields**, **Weekly checks**, **News**, **Downloads**. They are rendered by `docs/extras.js` / `docs/extras.css` from:
 
 | File | Contents |
 |---|---|
-| `docs/data/audit-fields.json` | 50 states: claim decision/payment deadlines, deemed approval, dealer filing deadlines, chargeback windows, rate-submission frequency and sample rules, exclusions, manufacturer response deadline and challenge standard, dispute forum, penalties, law dates (last amended, amending act, original enactment, next scheduled change), verification dates, and a `calc` block the calculator applies. Every block carries a verbatim quote (40 words max) and pinpoint. |
+| `docs/data/audit-fields.json` | 50 states: claim decision/payment deadlines, deemed approval, dealer filing deadlines, chargeback windows, rate-submission frequency and sample rules, exclusions, manufacturer response deadline and challenge standard, dispute forum, penalties, law dates (last amended, amending act, original enactment, next scheduled change), verification dates, and a `calc` block summarizing each state's retail-rate sample rule. Every block carries a verbatim quote (40 words max) and pinpoint. |
 | `docs/data/weekly-checks.json` | Weekly legislative check log (newest entry shown first). |
 | `docs/data/news.json` | 3–5 relevant items per week, labeled by source type and perspective. |
 | `docs/downloads/` | Excel workbook, one-page PDF per state, all-states PDF and ZIP. Built by `tools/build_exports.py`. |
 
-"Silent" / "No deemed-approval rule" means the reviewed statute says nothing; contracts, regulations or other law may still apply. The state drawer shows **Law last amended**, **Next scheduled change** and **Last verified** for every state. The rate calculator runs entirely in the browser; repair-order data is never uploaded.
+"Silent" / "No deemed-approval rule" means the reviewed statute says nothing; contracts, regulations or other law may still apply. The state drawer shows **Law last amended**, **Next scheduled change** and **Last verified** for every state.
+
+A retail-rate calculator was built and removed on September 25, 2026 pending a redesign; the sample rules remain in the Audit fields tab and the Excel workbook.
 
 The weekly check runs Mondays at 7 AM ET and follows `tools/WEEKLY_CHECK.md`. Pending bills are logged, never loaded as law.
 
