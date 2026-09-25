@@ -1,0 +1,51 @@
+{
+ "schema": 1,
+ "max_per_week": 5,
+ "weeks": [
+  {
+   "week_of": "2026-09-21",
+   "check_date": "2026-09-25",
+   "items": [
+    {
+     "date": "2026-09-18",
+     "title": "Public Act Summary: PA 26-24 (sSB 413), An Act Revising Various Motor Vehicle Statutes ... Concerning ... Automobile Dealers and Manufacturers",
+     "publisher": "Connecticut General Assembly, Office of Legislative Research",
+     "url": "https://www.cga.ct.gov/2026/SUM/PDF/2026SUM00024-R02SB-00413-SUM.PDF",
+     "source_type": "government",
+     "states": [
+      "CT"
+     ],
+     "topic": "Dealer compensation for recalled used vehicles in inventory under stop-sale or do-not-drive orders (at least 1% of value per month after 30 days). Covers claim processing under § 42-133s(j), the national-program or agreement alternative, and the ban on offsets through chargebacks or incentive cuts. Effective 10/1/2026.",
+     "why_it_matters": "From 10/1/2026 Subaru's recall and warranty claim systems must accept and pay Connecticut used-inventory stop-sale claims on the 30-day/1-year-audit timetable, and may not claw these payments back through chargebacks or incentive programs unless the action applies uniformly to every same-line-make dealer in the state.",
+     "perspective": "neutral"
+    },
+    {
+     "date": "2026-08-26",
+     "title": "Illinois Board Rules in Favor of Volkswagen and Audi Dealers",
+     "publisher": "The Times Weekly (republishing the Illinois Automobile Dealers Association statement)",
+     "url": "https://thetimesweekly.com/2026/08/illinois-board-rules-in-favor-of-volkswagen-and-audi-dealers/",
+     "source_type": "dealer association",
+     "states": [
+      "IL"
+     ],
+     "topic": "The Illinois Motor Vehicle Review Board sustained a protest by 33 VW/Audi dealers. It held that VWNA's quarterly warranty cost-recovery surcharge, debited to dealers' parts accounts to offset the 1.5x time-allowance law, violates 815 ILCS 710/6. VWNA's appeal deadline was 9/24/2026.",
+     "why_it_matters": "This is the first board ruling that recovering statutory warranty uplift through per-vehicle or parts-account debits is an illegal surcharge. Subaru should confirm that nothing in its Illinois pricing or charge structure is tied to warranty reimbursement, and should watch for the same argument under other anti-cost-recovery statutes, such as RI § 31-5.1-6(g).",
+     "perspective": "dealer-side"
+    },
+    {
+     "date": "2026-07-21",
+     "title": "Big Issues in a Little State: Rhode Island Takes on Warranty Reimbursement and Con Law",
+     "publisher": "Nelson Mullins Riley & Scarborough LLP (Driving Forward blog)",
+     "url": "https://www.nelsonmullins.com/insights/blogs/driving-forward-developments-in-transportation-law-and-innovation/all/big-issues-in-a-little-state-rhode-island-takes-on-warranty-reimbursement-and-con-law",
+     "source_type": "law firm alert",
+     "states": [
+      "RI"
+     ],
+     "topic": "RI S 2347 (effective 10/1/2026) pays warranty labor at the retail rate multiplied by actual technician time, backed by time punch and attestation. It sets a 90-day submission window and 45-day approve/resubmit periods, puts the burden on the OEM for time-based disapprovals, and allows 12-month chargebacks for false or unsubstantiated claims. The post also covers a First Circuit ruling limiting the RI dealer statute's reach beyond the state's borders.",
+     "why_it_matters": "It explains the first statute that pays warranty labor on actual technician time for all line-makes. From 10/1/2026 Subaru must adjust Rhode Island claim intake and audit to take time-punch evidence and carry the burden of proof on time disallowances.",
+     "perspective": "manufacturer-side"
+    }
+   ]
+  }
+ ]
+}

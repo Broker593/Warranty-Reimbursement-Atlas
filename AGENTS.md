@@ -9,3 +9,6 @@
 - If coverage changes, update the coverage statements in `docs/index.html` and README.md.
 - Static site, no build needed. For JavaScript edits run `node --check docs/app.js` and `node --check docs/data.js`; verify affected interactions when a browser is available.
 - The older ChatGPT Sites deployment is independent. Do not claim it auto-syncs with GitHub.
+- Audit fields, weekly log and news live in `docs/data/*.json` and render through `docs/extras.js`. Run `node --check docs/extras.js` after edits.
+- After any data change run `python3 tools/build_exports.py` so the Excel and PDF downloads match the site. Each state PDF must stay one page.
+- The Monday weekly check follows `tools/WEEKLY_CHECK.md`. Never load pending bills as enacted law.
