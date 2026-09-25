@@ -70,3 +70,8 @@
 .statute-quote{margin:15px 0;padding:15px 18px;border-left:4px solid #142943;background:#f0f3f8;color:#142943;font-size:16px;line-height:1.7}
 .state-section summary{font-size:14px;line-height:1.6;margin-top:12px}
 @media(max-width:640px){.labor-buckets{grid-template-columns:repeat(2,minmax(0,1fr))}.coverage-tally{font-size:12px;min-width:590px}.coverage-legend dl{grid-template-columns:1fr}.coverage-legend dd{margin-bottom:8px}.labor-controls{margin-top:18px}}
+
+/* v3 scope notes remain readable without color cues. */
+.tally-scope{display:block;font-weight:400;font-size:11px;line-height:1.4;max-width:260px;margin-top:5px;color:#26364b}
+.program-scope{border-left:4px solid #152d47;background:#edf1f6;color:#152d47;padding:12px 14px;font-size:13px;line-height:1.6}
+.current-evidence{border:1px solid #667486;padding:12px;margin:12px 0}

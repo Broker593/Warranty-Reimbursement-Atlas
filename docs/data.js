@@ -42,12 +42,44 @@ window.REFERENCE = {
       "example": "Florida’s no-agreement route offers the greater result under specified methods."
     },
     {
+      "id": "independent_guide_floor",
+      "group": "Paid hours",
+      "name": "Independent-guide floor (unless agreed)",
+      "short": "Independent-guide floor",
+      "description": "Time allowances may not be below independent labor time guides unless otherwise agreed. This is a waivable floor, not a mandatory dealer retail guide.",
+      "example": "Alaska."
+    },
+    {
+      "id": "agreed_time_guide",
+      "group": "Paid hours",
+      "name": "Agreed guide with multiplier fallback",
+      "short": "Agreed guide",
+      "description": "An agreed extended-warranty guide may be used. If no guide is agreed or it omits the repair, OEM time × 1.5 applies.",
+      "example": "Illinois. The separate multiplier box identifies that conditional fallback."
+    },
+    {
       "id": "retail_time",
       "group": "Paid hours",
-      "name": "Retail, independent or agreed time guide",
-      "short": "Retail / agreed guide",
-      "description": "The reviewed provision uses or permits a customer-pay, independent or agreed extended-warranty time guide. Whether it is mandatory, elected or conditional is shown in each state’s detail.",
-      "example": "Minnesota uses the customer-pay guide; Montana offers a guide choice; Illinois permits a previously agreed extended-warranty guide."
+      "name": "Dealer retail time guide",
+      "short": "Dealer retail guide",
+      "description": "The reviewed provision uses the time guide the dealer uses for customer-pay repairs. Actual-time fallbacks are classified separately; Montana’s OEM-or-retail election is a separate flag.",
+      "example": "Minnesota, New York and North Dakota."
+    },
+    {
+      "id": "guide_election",
+      "group": "Paid hours",
+      "name": "Dealer elects OEM or retail guide",
+      "short": "OEM / retail election",
+      "description": "The dealer may elect the manufacturer’s time guide or its own customer-pay guide.",
+      "example": "Montana."
+    },
+    {
+      "id": "actual_time_fallback",
+      "group": "Paid hours",
+      "name": "Actual time when retail guide is unavailable",
+      "short": "Actual-time fallback",
+      "description": "Actual time is a fallback when the relevant customer-pay guide is unavailable or does not cover the repair, subject to the retail-time floor. This is not the primary actual-time rule.",
+      "example": "Minnesota and North Dakota."
     },
     {
       "id": "time_multiplier",
@@ -59,10 +91,10 @@ window.REFERENCE = {
     },
     {
       "id": "normalized_rate",
-      "group": "Paid hours",
+      "group": "Hourly rate",
       "name": "OEM-hour-normalized labor rate",
       "short": "OEM-hour rate conversion",
-      "description": "Customer labor charges are divided by OEM-guide hours for the same repairs. The resulting effective rate is applied to OEM warranty hours, incorporating the time difference into the rate.",
+      "description": "Customer labor charges are divided by OEM-guide hours for the same repairs. The resulting effective rate is applied to OEM warranty hours, incorporating the time difference into the rate. This is an hourly-dollar-rate conversion. OEM warranty hours remain the paid-hours basis; do not apply a second time multiplier.",
       "example": "Wisconsin. Do not apply a second time multiplier to duplicate the adjustment."
     },
     {
@@ -70,8 +102,8 @@ window.REFERENCE = {
       "group": "Paid hours",
       "name": "Primary actual-time labor standard",
       "short": "Actual-time standard",
-      "description": "The primary paid-hours standard uses actual technician time, including Mississippi’s qualified-technician reasonableness standard and Rhode Island’s documented individual time from October 1, 2026. Guide-specific fallback methods are not counted here.",
-      "example": "MS uses time required by a qualified technician of ordinary skill; RI uses the technician’s documented time. These are distinct standards."
+      "description": "The primary paid-hours rule uses the particular technician’s documented actual time. Rhode Island only, effective October 1, 2026. Mississippi’s qualified-technician reasonableness benchmark, guide-specific fallbacks and heavy-truck exceptions are not counted here.",
+      "example": "Rhode Island uses documented technician time from October 1, 2026. Before that date, no state in this passenger-vehicle comparison is checked."
     },
     {
       "id": "sample_100_90",
@@ -160,7 +192,11 @@ window.REFERENCE = {
         "special_sample": false,
         "actual_time": false,
         "accuracy_only": null,
-        "automatic_rate": null
+        "automatic_rate": null,
+        "independent_guide_floor": false,
+        "agreed_time_guide": false,
+        "guide_election": false,
+        "actual_time_fallback": false
       },
       "original": {
         "url": "https://alison.legislature.state.al.us/code-of-alabama?section=8-20-7",
@@ -194,7 +230,7 @@ window.REFERENCE = {
         "retail_labor": true,
         "posted_labor": false,
         "financial_labor": false,
-        "retail_time": true,
+        "retail_time": false,
         "time_multiplier": false,
         "normalized_rate": false,
         "sample_100_90": true,
@@ -204,7 +240,11 @@ window.REFERENCE = {
         "special_sample": false,
         "actual_time": false,
         "accuracy_only": null,
-        "automatic_rate": null
+        "automatic_rate": null,
+        "independent_guide_floor": true,
+        "agreed_time_guide": false,
+        "guide_election": false,
+        "actual_time_fallback": false
       },
       "original": {
         "url": "http://www.akleg.gov/basis/statutes.asp#45.25.210",
@@ -217,7 +257,15 @@ window.REFERENCE = {
         "status": "reproduction",
         "date": "2026-09-21",
         "scope": "Existing payment-method and sample summary. No claim of an exhaustive legal update."
-      }
+      },
+      "checks": [
+        {
+          "date": "2026-09-25",
+          "scope": "Applied supplied v3 taxonomy: independent, agreed, retail and elected guides and actual-time fallbacks are separate flags. Wisconsin’s OEM-hour conversion belongs to the hourly-rate group; OEM hours remain the paid-hours basis.",
+          "url": "https://www.akleg.gov/basis/statutes.asp?media=print&secStart=45.25.010&secEnd=45.25.990",
+          "sourceType": "Supplied v3 research; taxonomy correction"
+        }
+      ]
     },
     {
       "state": "Arizona",
@@ -248,7 +296,11 @@ window.REFERENCE = {
         "special_sample": false,
         "actual_time": false,
         "accuracy_only": null,
-        "automatic_rate": null
+        "automatic_rate": null,
+        "independent_guide_floor": false,
+        "agreed_time_guide": false,
+        "guide_election": false,
+        "actual_time_fallback": false
       },
       "original": {
         "url": "https://www.azleg.gov/ars/28/04451.htm",
@@ -292,7 +344,11 @@ window.REFERENCE = {
         "special_sample": false,
         "actual_time": false,
         "accuracy_only": null,
-        "automatic_rate": null
+        "automatic_rate": null,
+        "independent_guide_floor": false,
+        "agreed_time_guide": false,
+        "guide_election": false,
+        "actual_time_fallback": false
       },
       "original": {
         "url": "https://www.lexisnexis.com/hottopics/arcode/Default.asp",
@@ -336,7 +392,11 @@ window.REFERENCE = {
         "special_sample": true,
         "actual_time": false,
         "accuracy_only": null,
-        "automatic_rate": null
+        "automatic_rate": null,
+        "independent_guide_floor": false,
+        "agreed_time_guide": false,
+        "guide_election": false,
+        "actual_time_fallback": false
       },
       "original": {
         "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?sectionNum=3065.2.&lawCode=VEH",
@@ -380,7 +440,11 @@ window.REFERENCE = {
         "special_sample": false,
         "actual_time": false,
         "accuracy_only": null,
-        "automatic_rate": null
+        "automatic_rate": null,
+        "independent_guide_floor": false,
+        "agreed_time_guide": false,
+        "guide_election": false,
+        "actual_time_fallback": false
       },
       "original": {
         "url": "https://leg.colorado.gov/laws/colorado-revised-statutes",
@@ -424,7 +488,11 @@ window.REFERENCE = {
         "special_sample": false,
         "actual_time": false,
         "accuracy_only": false,
-        "automatic_rate": true
+        "automatic_rate": true,
+        "independent_guide_floor": false,
+        "agreed_time_guide": false,
+        "guide_election": false,
+        "actual_time_fallback": false
       },
       "original": {
         "url": "https://www.cga.ct.gov/current/pub/chap_739.htm#sec_42-133s",
@@ -497,7 +565,11 @@ window.REFERENCE = {
         "special_sample": false,
         "actual_time": false,
         "accuracy_only": null,
-        "automatic_rate": null
+        "automatic_rate": null,
+        "independent_guide_floor": false,
+        "agreed_time_guide": false,
+        "guide_election": false,
+        "actual_time_fallback": false
       },
       "original": {
         "url": "https://delcode.delaware.gov/title6/c049/index.html#4903",
@@ -541,7 +613,11 @@ window.REFERENCE = {
         "special_sample": true,
         "actual_time": false,
         "accuracy_only": null,
-        "automatic_rate": null
+        "automatic_rate": null,
+        "independent_guide_floor": false,
+        "agreed_time_guide": false,
+        "guide_election": false,
+        "actual_time_fallback": false
       },
       "original": {
         "url": "https://www.leg.state.fl.us/statutes/index.cfm?App_mode=Display_Statute&URL=0300-0399/0320/Sections/0320.696.html",
@@ -585,7 +661,11 @@ window.REFERENCE = {
         "special_sample": false,
         "actual_time": false,
         "accuracy_only": null,
-        "automatic_rate": null
+        "automatic_rate": null,
+        "independent_guide_floor": false,
+        "agreed_time_guide": false,
+        "guide_election": false,
+        "actual_time_fallback": false
       },
       "original": {
         "url": "https://advance.lexis.com/container?config=00JAAzZDgzNzU2ZC05MDA0LTRmMDItYjkzMS0xOGY3MjE3OWNlODIKAFBvZENhdGFsb2fcIFfJnJ2IC8XZi1AYM4Ne",
@@ -630,7 +710,11 @@ window.REFERENCE = {
         "special_sample": true,
         "actual_time": false,
         "accuracy_only": null,
-        "automatic_rate": null
+        "automatic_rate": null,
+        "independent_guide_floor": false,
+        "agreed_time_guide": false,
+        "guide_election": false,
+        "actual_time_fallback": false
       },
       "original": {
         "url": "https://data.capitol.hawaii.gov/hrscurrent/Vol10_Ch0436-0474/HRS0437/HRS_0437-0056.htm",
@@ -690,7 +774,11 @@ window.REFERENCE = {
         "special_sample": false,
         "actual_time": false,
         "accuracy_only": null,
-        "automatic_rate": null
+        "automatic_rate": null,
+        "independent_guide_floor": false,
+        "agreed_time_guide": false,
+        "guide_election": false,
+        "actual_time_fallback": false
       },
       "original": {
         "url": "https://legislature.idaho.gov/statutesrules/idstat/Title49/T49CH16/SECT49-1626/",
@@ -725,7 +813,7 @@ window.REFERENCE = {
         "retail_labor": true,
         "posted_labor": false,
         "financial_labor": false,
-        "retail_time": true,
+        "retail_time": false,
         "time_multiplier": true,
         "normalized_rate": false,
         "sample_100_90": true,
@@ -735,7 +823,11 @@ window.REFERENCE = {
         "special_sample": true,
         "actual_time": false,
         "accuracy_only": null,
-        "automatic_rate": null
+        "automatic_rate": null,
+        "independent_guide_floor": false,
+        "agreed_time_guide": true,
+        "guide_election": false,
+        "actual_time_fallback": false
       },
       "original": {
         "url": "https://www.ilga.gov/legislation/ilcs/documents/081507100K6.htm",
@@ -748,7 +840,15 @@ window.REFERENCE = {
         "status": "reproduction",
         "date": "2026-09-21",
         "scope": "Existing payment-method and sample summary. No claim of an exhaustive legal update."
-      }
+      },
+      "checks": [
+        {
+          "date": "2026-09-25",
+          "scope": "Applied supplied v3 taxonomy: independent, agreed, retail and elected guides and actual-time fallbacks are separate flags. Wisconsin’s OEM-hour conversion belongs to the hourly-rate group; OEM hours remain the paid-hours basis.",
+          "url": "https://www.ilga.gov/Documents/legislation/ilcs/documents/081507100K6.htm",
+          "sourceType": "Supplied v3 research; taxonomy correction"
+        }
+      ]
     },
     {
       "state": "Indiana",
@@ -779,7 +879,11 @@ window.REFERENCE = {
         "special_sample": false,
         "actual_time": false,
         "accuracy_only": null,
-        "automatic_rate": null
+        "automatic_rate": null,
+        "independent_guide_floor": false,
+        "agreed_time_guide": false,
+        "guide_election": false,
+        "actual_time_fallback": false
       },
       "original": {
         "url": "https://iga.in.gov/laws/2025/ic/titles/9",
@@ -824,7 +928,11 @@ window.REFERENCE = {
         "special_sample": false,
         "actual_time": false,
         "accuracy_only": null,
-        "automatic_rate": null
+        "automatic_rate": null,
+        "independent_guide_floor": false,
+        "agreed_time_guide": false,
+        "guide_election": false,
+        "actual_time_fallback": false
       },
       "original": {
         "url": "https://www.legis.iowa.gov/docs/code/322A.5.pdf",
@@ -868,7 +976,11 @@ window.REFERENCE = {
         "special_sample": false,
         "actual_time": false,
         "accuracy_only": null,
-        "automatic_rate": null
+        "automatic_rate": null,
+        "independent_guide_floor": false,
+        "agreed_time_guide": false,
+        "guide_election": false,
+        "actual_time_fallback": false
       },
       "original": {
         "url": "https://www.kslegislature.gov/b2025_26/laws/008_000_0000_chapter/008_024_0000_article/008_024_0015_section/008_024_0015_k/",
@@ -912,7 +1024,11 @@ window.REFERENCE = {
         "special_sample": false,
         "actual_time": false,
         "accuracy_only": null,
-        "automatic_rate": null
+        "automatic_rate": null,
+        "independent_guide_floor": false,
+        "agreed_time_guide": false,
+        "guide_election": false,
+        "actual_time_fallback": false
       },
       "original": {
         "url": "https://apps.legislature.ky.gov/law/statutes/statute.aspx?id=57533",
@@ -964,7 +1080,11 @@ window.REFERENCE = {
         "special_sample": false,
         "actual_time": false,
         "accuracy_only": null,
-        "automatic_rate": null
+        "automatic_rate": null,
+        "independent_guide_floor": false,
+        "agreed_time_guide": false,
+        "guide_election": false,
+        "actual_time_fallback": false
       },
       "original": {
         "url": "https://legis.la.gov/legis/Law.aspx?d=321503",
@@ -1008,7 +1128,11 @@ window.REFERENCE = {
         "special_sample": true,
         "actual_time": false,
         "accuracy_only": null,
-        "automatic_rate": null
+        "automatic_rate": null,
+        "independent_guide_floor": false,
+        "agreed_time_guide": false,
+        "guide_election": false,
+        "actual_time_fallback": false
       },
       "original": {
         "url": "https://legislature.maine.gov/statutes/10/title10sec1176.html",
@@ -1067,7 +1191,11 @@ window.REFERENCE = {
         "special_sample": false,
         "actual_time": false,
         "accuracy_only": true,
-        "automatic_rate": true
+        "automatic_rate": true,
+        "independent_guide_floor": false,
+        "agreed_time_guide": false,
+        "guide_election": false,
+        "actual_time_fallback": false
       },
       "original": {
         "url": "https://mgaleg.maryland.gov/mgawebsite/Laws/StatuteText?article=gtr&section=15-212&enactments=false",
@@ -1124,7 +1252,11 @@ window.REFERENCE = {
         "special_sample": false,
         "actual_time": false,
         "accuracy_only": null,
-        "automatic_rate": null
+        "automatic_rate": null,
+        "independent_guide_floor": false,
+        "agreed_time_guide": false,
+        "guide_election": false,
+        "actual_time_fallback": false
       },
       "original": {
         "url": "https://malegislature.gov/Laws/GeneralLaws/PartI/TitleXV/Chapter93B/Section9",
@@ -1168,7 +1300,11 @@ window.REFERENCE = {
         "special_sample": false,
         "actual_time": false,
         "accuracy_only": null,
-        "automatic_rate": null
+        "automatic_rate": null,
+        "independent_guide_floor": false,
+        "agreed_time_guide": false,
+        "guide_election": false,
+        "actual_time_fallback": false
       },
       "original": {
         "url": "https://www.legislature.mi.gov/Laws/MCL?objectName=mcl-445-1577a",
@@ -1213,7 +1349,11 @@ window.REFERENCE = {
         "special_sample": false,
         "actual_time": false,
         "accuracy_only": null,
-        "automatic_rate": null
+        "automatic_rate": null,
+        "independent_guide_floor": false,
+        "agreed_time_guide": false,
+        "guide_election": false,
+        "actual_time_fallback": true
       },
       "original": {
         "url": "https://www.revisor.mn.gov/statutes/cite/80E.041",
@@ -1226,13 +1366,21 @@ window.REFERENCE = {
         "status": "official",
         "date": "2026-09-21",
         "scope": "Existing payment-method and sample summary. No claim of an exhaustive legal update."
-      }
+      },
+      "checks": [
+        {
+          "date": "2026-09-25",
+          "scope": "Applied supplied v3 taxonomy: independent, agreed, retail and elected guides and actual-time fallbacks are separate flags. Wisconsin’s OEM-hour conversion belongs to the hourly-rate group; OEM hours remain the paid-hours basis.",
+          "url": "https://www.revisor.mn.gov/statutes/cite/80E.041",
+          "sourceType": "Supplied v3 research; taxonomy correction"
+        }
+      ]
     },
     {
       "state": "Mississippi",
       "parts": "Dealer cost plus the dealer’s qualifying retail parts markup; no fixed statewide percentage.",
       "labor": "At the dealer's written request, the retail rate is total labor charges on qualified repairs divided by hours. The sample is all consecutive ROs containing 100 sequential qualified-repair ROs, or all ROs closed in 90 consecutive days, whichever gives fewer, no older than 180 days. The rate is presumed reasonable and takes effect 45 days after receipt unless the manufacturer rebuts once. The dealer may protest to the Motor Vehicle Commission, where the manufacturer bears the burden. At most once per 12 months.",
-      "time": "Time allowances must be reasonable and adequate using the actual time required by a qualified technician of ordinary skill. This is a qualified-technician reasonableness standard, not necessarily the individual technician’s clock time. § 63-17-85(j), effective July 1, 2021.",
+      "time": "Factory time with a reasonable-and-adequate standard benchmarked to the actual time required by a qualified technician of ordinary skill. This is not the dealer’s own clock time. § 63-17-85(j), effective July 1, 2021.",
       "sample": "Fewer of 100 qualifying sequential customer-pay ROs or 90 consecutive days; repairs within 180 days.",
       "statute": "Miss. Code §§ 63-17-85(j), 63-17-86",
       "note": "No fixed statewide parts percentage or labor dollar amount.",
@@ -1255,9 +1403,13 @@ window.REFERENCE = {
         "prior_month": false,
         "lookback_90": false,
         "special_sample": false,
-        "actual_time": true,
+        "actual_time": false,
         "accuracy_only": null,
-        "automatic_rate": null
+        "automatic_rate": null,
+        "independent_guide_floor": false,
+        "agreed_time_guide": false,
+        "guide_election": false,
+        "actual_time_fallback": false
       },
       "original": {
         "url": "https://www.lexisnexis.com/hottopics/mscode/",
@@ -1277,6 +1429,12 @@ window.REFERENCE = {
           "scope": "Applied supplied Claude v2 labor correction. Time allowances must be reasonable and adequate using the actual time required by a qualified technician of ordinary skill. This is a qualified-technician reasonableness standard, not necessarily the individual technician’s clock time. § 63-17-85(j), effective July 1, 2021.",
           "url": "https://billstatus.ls.state.ms.us/documents/2021/html/HB/0700-0799/HB0746SG.htm",
           "sourceType": "Supplied v2 research; enacted-law text"
+        },
+        {
+          "date": "2026-09-25",
+          "scope": "Supplied v3 supersedes the v2 actual-time classification: the qualified-technician benchmark belongs to factory/reasonable-time, not individual clock time. The statutory quotation is unchanged.",
+          "url": "https://billstatus.ls.state.ms.us/documents/2021/html/HB/0700-0799/HB0746SG.htm",
+          "sourceType": "Supplied v3 research; enacted-law text"
         }
       ],
       "extraSources": [
@@ -1319,7 +1477,11 @@ window.REFERENCE = {
         "special_sample": false,
         "actual_time": false,
         "accuracy_only": null,
-        "automatic_rate": null
+        "automatic_rate": null,
+        "independent_guide_floor": false,
+        "agreed_time_guide": false,
+        "guide_election": false,
+        "actual_time_fallback": false
       },
       "original": {
         "url": "https://revisor.mo.gov/main/OneSection.aspx?section=407.828",
@@ -1353,7 +1515,7 @@ window.REFERENCE = {
         "retail_labor": true,
         "posted_labor": false,
         "financial_labor": false,
-        "retail_time": true,
+        "retail_time": false,
         "time_multiplier": false,
         "normalized_rate": false,
         "sample_100_90": true,
@@ -1363,7 +1525,11 @@ window.REFERENCE = {
         "special_sample": false,
         "actual_time": false,
         "accuracy_only": null,
-        "automatic_rate": null
+        "automatic_rate": null,
+        "independent_guide_floor": false,
+        "agreed_time_guide": false,
+        "guide_election": true,
+        "actual_time_fallback": false
       },
       "original": {
         "url": "https://mca.legmt.gov/bills/mca/title_0610/chapter_0040/part_0020/section_0130/0610-0040-0020-0130.html",
@@ -1376,7 +1542,15 @@ window.REFERENCE = {
         "status": "official",
         "date": "2026-09-21",
         "scope": "Existing payment-method and sample summary. No claim of an exhaustive legal update."
-      }
+      },
+      "checks": [
+        {
+          "date": "2026-09-25",
+          "scope": "Applied supplied v3 taxonomy: independent, agreed, retail and elected guides and actual-time fallbacks are separate flags. Wisconsin’s OEM-hour conversion belongs to the hourly-rate group; OEM hours remain the paid-hours basis.",
+          "url": "https://mca.legmt.gov/bills/mca/title_0610/chapter_0040/part_0020/section_0130/0610-0040-0020-0130.html",
+          "sourceType": "Supplied v3 research; taxonomy correction"
+        }
+      ]
     },
     {
       "state": "Nebraska",
@@ -1407,7 +1581,11 @@ window.REFERENCE = {
         "special_sample": false,
         "actual_time": false,
         "accuracy_only": null,
-        "automatic_rate": null
+        "automatic_rate": null,
+        "independent_guide_floor": false,
+        "agreed_time_guide": false,
+        "guide_election": false,
+        "actual_time_fallback": false
       },
       "original": {
         "url": "https://nebraskalegislature.gov/laws/statutes.php?statute=60-1438",
@@ -1461,7 +1639,11 @@ window.REFERENCE = {
         "special_sample": false,
         "actual_time": false,
         "accuracy_only": null,
-        "automatic_rate": null
+        "automatic_rate": null,
+        "independent_guide_floor": false,
+        "agreed_time_guide": false,
+        "guide_election": false,
+        "actual_time_fallback": false
       },
       "original": {
         "url": "https://www.leg.state.nv.us/NRS/NRS-482.html#NRS482Sec36385",
@@ -1505,7 +1687,11 @@ window.REFERENCE = {
         "special_sample": false,
         "actual_time": false,
         "accuracy_only": null,
-        "automatic_rate": null
+        "automatic_rate": null,
+        "independent_guide_floor": false,
+        "agreed_time_guide": false,
+        "guide_election": false,
+        "actual_time_fallback": false
       },
       "original": {
         "url": "https://gc.nh.gov/rsa/html/XXXI/357-C/357-C-5.htm",
@@ -1549,7 +1735,11 @@ window.REFERENCE = {
         "special_sample": false,
         "actual_time": false,
         "accuracy_only": null,
-        "automatic_rate": null
+        "automatic_rate": null,
+        "independent_guide_floor": false,
+        "agreed_time_guide": false,
+        "guide_election": false,
+        "actual_time_fallback": false
       },
       "original": {
         "url": "https://pub.njleg.state.nj.us/Bills/2024/PL25/140_.PDF",
@@ -1601,7 +1791,11 @@ window.REFERENCE = {
         "special_sample": false,
         "actual_time": false,
         "accuracy_only": null,
-        "automatic_rate": null
+        "automatic_rate": null,
+        "independent_guide_floor": false,
+        "agreed_time_guide": false,
+        "guide_election": false,
+        "actual_time_fallback": false
       },
       "original": {
         "url": "https://nmonesource.com/nmos/en/nav.do",
@@ -1653,7 +1847,11 @@ window.REFERENCE = {
         "special_sample": false,
         "actual_time": false,
         "accuracy_only": null,
-        "automatic_rate": null
+        "automatic_rate": null,
+        "independent_guide_floor": false,
+        "agreed_time_guide": false,
+        "guide_election": false,
+        "actual_time_fallback": false
       },
       "original": {
         "url": "https://www.nysenate.gov/legislation/laws/VAT/465",
@@ -1666,7 +1864,15 @@ window.REFERENCE = {
         "status": "official",
         "date": "2026-09-21",
         "scope": "Existing payment-method and sample summary. No claim of an exhaustive legal update."
-      }
+      },
+      "checks": [
+        {
+          "date": "2026-09-25",
+          "scope": "Applied supplied v3 taxonomy: independent, agreed, retail and elected guides and actual-time fallbacks are separate flags. Wisconsin’s OEM-hour conversion belongs to the hourly-rate group; OEM hours remain the paid-hours basis.",
+          "url": "https://www.nysenate.gov/legislation/laws/VAT/465",
+          "sourceType": "Supplied v3 research; taxonomy correction"
+        }
+      ]
     },
     {
       "state": "North Carolina",
@@ -1697,7 +1903,11 @@ window.REFERENCE = {
         "special_sample": false,
         "actual_time": false,
         "accuracy_only": null,
-        "automatic_rate": null
+        "automatic_rate": null,
+        "independent_guide_floor": false,
+        "agreed_time_guide": false,
+        "guide_election": false,
+        "actual_time_fallback": false
       },
       "original": {
         "url": "https://www.ncleg.gov/EnactedLegislation/Statutes/HTML/BySection/Chapter_20/GS_20-305.1.html",
@@ -1750,7 +1960,11 @@ window.REFERENCE = {
         "special_sample": false,
         "actual_time": false,
         "accuracy_only": null,
-        "automatic_rate": null
+        "automatic_rate": null,
+        "independent_guide_floor": false,
+        "agreed_time_guide": false,
+        "guide_election": false,
+        "actual_time_fallback": true
       },
       "original": {
         "url": "https://www.ndlegis.gov/cencode/t51c07.pdf",
@@ -1763,7 +1977,15 @@ window.REFERENCE = {
         "status": "official",
         "date": "2026-09-21",
         "scope": "Existing payment-method and sample summary. No claim of an exhaustive legal update."
-      }
+      },
+      "checks": [
+        {
+          "date": "2026-09-25",
+          "scope": "Applied supplied v3 taxonomy: independent, agreed, retail and elected guides and actual-time fallbacks are separate flags. Wisconsin’s OEM-hour conversion belongs to the hourly-rate group; OEM hours remain the paid-hours basis.",
+          "url": "https://www.ndlegis.gov/cencode/t51c07.pdf",
+          "sourceType": "Supplied v3 research; taxonomy correction"
+        }
+      ]
     },
     {
       "state": "Ohio",
@@ -1794,7 +2016,11 @@ window.REFERENCE = {
         "special_sample": false,
         "actual_time": false,
         "accuracy_only": null,
-        "automatic_rate": null
+        "automatic_rate": null,
+        "independent_guide_floor": false,
+        "agreed_time_guide": false,
+        "guide_election": false,
+        "actual_time_fallback": false
       },
       "original": {
         "url": "https://codes.ohio.gov/ohio-revised-code/section-4517.52",
@@ -1838,7 +2064,11 @@ window.REFERENCE = {
         "special_sample": false,
         "actual_time": false,
         "accuracy_only": true,
-        "automatic_rate": false
+        "automatic_rate": false,
+        "independent_guide_floor": false,
+        "agreed_time_guide": false,
+        "guide_election": false,
+        "actual_time_fallback": false
       },
       "original": {
         "url": "https://www.oklegislature.gov/cf_pdf/2025-26%20ENR/hB/HB2160%20ENR.PDF",
@@ -1909,7 +2139,11 @@ window.REFERENCE = {
         "special_sample": false,
         "actual_time": false,
         "accuracy_only": false,
-        "automatic_rate": true
+        "automatic_rate": true,
+        "independent_guide_floor": false,
+        "agreed_time_guide": false,
+        "guide_election": false,
+        "actual_time_fallback": false
       },
       "original": {
         "url": "https://www.oregonlegislature.gov/bills_laws/ors/ors650.html",
@@ -1966,7 +2200,11 @@ window.REFERENCE = {
         "special_sample": false,
         "actual_time": false,
         "accuracy_only": false,
-        "automatic_rate": true
+        "automatic_rate": true,
+        "independent_guide_floor": false,
+        "agreed_time_guide": false,
+        "guide_election": false,
+        "actual_time_fallback": false
       },
       "original": {
         "url": "https://www.legis.state.pa.us/WU01/LI/LI/US/HTM/1983/0/0084..HTM",
@@ -2005,7 +2243,7 @@ window.REFERENCE = {
       "state": "Rhode Island",
       "parts": "Dealer cost plus the dealer’s qualifying retail parts markup; no fixed statewide percentage.",
       "labor": "Prior-month qualifying labor sales divided by billed labor hours.",
-      "time": "Through September 30, 2026: no separate actual-technician-time formula identified in the reviewed pre-amendment text. The October 1 amendment is shown below.",
+      "time": "Through September 30, 2026: statute silent on a general paid-hours allowance. From October 1, the actual-technician-time rule applies as shown below.",
       "sample": "Parts: fewer of 100 sequential ROs or 60 days, within 180 days. Labor: all qualifying customer-pay ROs in the preceding month.",
       "statute": "R.I. Gen. Laws § 31-5.1-6",
       "note": "The prior-month sample determines the hourly labor rate and remains in the October 1, 2026 amendment. The amendment changes paid warranty hours to documented actual technician time; it does not replace that hourly-rate sample.",
@@ -2030,7 +2268,11 @@ window.REFERENCE = {
         "special_sample": false,
         "actual_time": false,
         "accuracy_only": null,
-        "automatic_rate": null
+        "automatic_rate": null,
+        "independent_guide_floor": false,
+        "agreed_time_guide": false,
+        "guide_election": false,
+        "actual_time_fallback": false
       },
       "original": {
         "url": "https://webserver.rilegislature.gov/Statutes/TITLE31/31-5.1/31-5.1-6.htm",
@@ -2103,7 +2345,11 @@ window.REFERENCE = {
         "special_sample": false,
         "actual_time": false,
         "accuracy_only": null,
-        "automatic_rate": false
+        "automatic_rate": false,
+        "independent_guide_floor": false,
+        "agreed_time_guide": false,
+        "guide_election": false,
+        "actual_time_fallback": false
       },
       "original": {
         "url": "https://www.scstatehouse.gov/code/t56c015.php",
@@ -2160,7 +2406,11 @@ window.REFERENCE = {
         "special_sample": false,
         "actual_time": false,
         "accuracy_only": null,
-        "automatic_rate": null
+        "automatic_rate": null,
+        "independent_guide_floor": false,
+        "agreed_time_guide": false,
+        "guide_election": false,
+        "actual_time_fallback": false
       },
       "original": {
         "url": "https://sdlegislature.gov/api/Statutes/32-6B-61.html",
@@ -2210,7 +2460,11 @@ window.REFERENCE = {
         "special_sample": false,
         "actual_time": false,
         "accuracy_only": null,
-        "automatic_rate": null
+        "automatic_rate": null,
+        "independent_guide_floor": false,
+        "agreed_time_guide": false,
+        "guide_election": false,
+        "actual_time_fallback": false
       },
       "original": {
         "url": "https://www.lexisnexis.com/hottopics/tncode/",
@@ -2268,7 +2522,11 @@ window.REFERENCE = {
         "special_sample": true,
         "actual_time": false,
         "accuracy_only": null,
-        "automatic_rate": null
+        "automatic_rate": null,
+        "independent_guide_floor": false,
+        "agreed_time_guide": false,
+        "guide_election": false,
+        "actual_time_fallback": false
       },
       "original": {
         "url": "https://statutes.capitol.texas.gov/",
@@ -2312,7 +2570,11 @@ window.REFERENCE = {
         "special_sample": false,
         "actual_time": false,
         "accuracy_only": null,
-        "automatic_rate": null
+        "automatic_rate": null,
+        "independent_guide_floor": false,
+        "agreed_time_guide": false,
+        "guide_election": false,
+        "actual_time_fallback": false
       },
       "original": {
         "url": "https://le.utah.gov/xcode/Title13/Chapter14/13-14-S204.html",
@@ -2356,7 +2618,11 @@ window.REFERENCE = {
         "special_sample": true,
         "actual_time": false,
         "accuracy_only": null,
-        "automatic_rate": null
+        "automatic_rate": null,
+        "independent_guide_floor": false,
+        "agreed_time_guide": false,
+        "guide_election": false,
+        "actual_time_fallback": false
       },
       "original": {
         "url": "https://legislature.vermont.gov/statutes/section/09/108/04086",
@@ -2400,7 +2666,11 @@ window.REFERENCE = {
         "special_sample": false,
         "actual_time": false,
         "accuracy_only": null,
-        "automatic_rate": null
+        "automatic_rate": null,
+        "independent_guide_floor": false,
+        "agreed_time_guide": false,
+        "guide_election": false,
+        "actual_time_fallback": false
       },
       "original": {
         "url": "https://law.lis.virginia.gov/vacode/title46.2/chapter15/section46.2-1571/",
@@ -2453,7 +2723,11 @@ window.REFERENCE = {
         "special_sample": false,
         "actual_time": false,
         "accuracy_only": null,
-        "automatic_rate": null
+        "automatic_rate": null,
+        "independent_guide_floor": false,
+        "agreed_time_guide": false,
+        "guide_election": false,
+        "actual_time_fallback": false
       },
       "original": {
         "url": "https://app.leg.wa.gov/RCW/default.aspx?cite=46.96.105",
@@ -2497,7 +2771,11 @@ window.REFERENCE = {
         "special_sample": false,
         "actual_time": false,
         "accuracy_only": null,
-        "automatic_rate": null
+        "automatic_rate": null,
+        "independent_guide_floor": false,
+        "agreed_time_guide": false,
+        "guide_election": false,
+        "actual_time_fallback": false
       },
       "original": {
         "url": "https://code.wvlegislature.gov/17A-6A-8A/",
@@ -2515,7 +2793,7 @@ window.REFERENCE = {
     {
       "state": "Wisconsin",
       "parts": "Cost × (qualifying retail parts sales ÷ qualifying parts cost). This statutory ratio includes recovery of cost.",
-      "labor": "Qualifying customer labor charges ÷ OEM-guide hours for those same repairs.",
+      "labor": "Qualifying customer labor charges ÷ OEM-guide hours for those same repairs. This is an hourly-dollar-rate conversion. OEM warranty hours remain the paid-hours basis; do not apply a second time multiplier.",
       "time": "Multiply that effective rate by OEM-guide warranty hours. The retail/OEM time difference is incorporated in the hourly-rate calculation.",
       "sample": "Fewer of 100 qualifying sequential customer-pay ROs or 90 consecutive days; repairs within 180 days.",
       "statute": "Wis. Stat. § 218.0125(3m)–(4m)",
@@ -2541,7 +2819,11 @@ window.REFERENCE = {
         "special_sample": false,
         "actual_time": false,
         "accuracy_only": null,
-        "automatic_rate": null
+        "automatic_rate": null,
+        "independent_guide_floor": false,
+        "agreed_time_guide": false,
+        "guide_election": false,
+        "actual_time_fallback": false
       },
       "original": {
         "url": "https://docs.legis.wisconsin.gov/statutes/statutes/218/i/0125",
@@ -2555,7 +2837,15 @@ window.REFERENCE = {
         "date": "2026-09-21",
         "scope": "Existing payment-method and sample summary. No claim of an exhaustive legal update."
       },
-      "pendingNote": "External review references 2025 Act 247 and a motorcycle exclusion. Verify applicability and current text; do not extrapolate the passenger-vehicle classification to motorcycles."
+      "pendingNote": "External review references 2025 Act 247 and a motorcycle exclusion. Verify applicability and current text; do not extrapolate the passenger-vehicle classification to motorcycles.",
+      "checks": [
+        {
+          "date": "2026-09-25",
+          "scope": "Applied supplied v3 taxonomy: independent, agreed, retail and elected guides and actual-time fallbacks are separate flags. Wisconsin’s OEM-hour conversion belongs to the hourly-rate group; OEM hours remain the paid-hours basis.",
+          "url": "https://docs.legis.wisconsin.gov/statutes/statutes/218/i/0125",
+          "sourceType": "Supplied v3 research; taxonomy correction"
+        }
+      ]
     },
     {
       "state": "Wyoming",
@@ -2586,7 +2876,11 @@ window.REFERENCE = {
         "special_sample": false,
         "actual_time": false,
         "accuracy_only": null,
-        "automatic_rate": null
+        "automatic_rate": null,
+        "independent_guide_floor": false,
+        "agreed_time_guide": false,
+        "guide_election": false,
+        "actual_time_fallback": false
       },
       "original": {
         "url": "https://wyoleg.gov/statutes/compress/title31.pdf#page=435",
@@ -2622,10 +2916,10 @@ window.REFERENCE = {
   ],
   "reviewDate": "2026-09-24",
   "coverageImport": {
-    "version": 2,
-    "researchDate": "2026-09-24",
+    "version": 3,
+    "researchDate": "2026-09-25",
     "importedDate": "2026-09-25",
     "records": 200,
-    "source": "research/labor-by-coverage-v2.json"
+    "source": "research/labor-by-coverage-v3.json"
   }
 };

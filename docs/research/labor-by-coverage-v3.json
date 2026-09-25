@@ -1,5 +1,4 @@
-/* Supplied Claude v3 research, September 25, 2026. Original JSON preserved in research/. */
-window.COVERAGE_V3 = [
+[
  {
   "state": "AK",
   "primary_cite": "Alaska Stat. § 45.25.210 (see also § 45.25.200)",
@@ -1850,4 +1849,4 @@ window.COVERAGE_V3 = [
   "notes": "The hours are the manufacturer's time allowances, which (a) and (b) require to be reasonable and adequate. Surprise: the older sentence in (b), kept in 2025, is worded as a ceiling ('shall not exceed' the nonwarranty rate), not a floor. The new (f)–(q) process is what effectively sets the rate. The rate formula divides by 'hours worked', while (t)(v)(B) says ROs must show 'labor hours charged'; the two may conflict. SC and CPO are marked silent because the labor-rate sentences say only 'warranty'. Still, (e) ('warranty or other services') and the carve-out in (r)(ii) for 'other new vehicle manufacturer reimbursed repairs' imply the section may reach manufacturer-paid non-warranty repairs; this is arguable, not express. Engine and transmission assemblies get cost plus 40%; EV propulsion batteries supplied free get a reasonable handling fee. Some secondary sources cite Wyo. Stat. § 40-20-119, but that is the equipment-dealer act, not this one.",
   "confidence": "high"
  }
-];
+]
