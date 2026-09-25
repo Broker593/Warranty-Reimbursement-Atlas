@@ -42,16 +42,18 @@ The original v3 JSON and Markdown are preserved verbatim under `docs/research/`.
 
 ## Site layout (September 25, 2026 redesign)
 
-Tabs: **States** (home) · **Weekly checks** · **News** · **Downloads** · **Research detail**. Rendered by `docs/extras.js` / `docs/extras.css`.
+Tabs: **States** (home) · **Summary** · **News** · **Downloads**, with **Update log** on the far right. Rendered by `docs/extras.js` / `docs/extras.css`.
 
 - **States** (`#states`): one row per state with plain-English columns: labor rate, rate increase requests (frequency and RO sample), manufacturer response, paid hours (labor-time guide), parts markup, and service contracts and CPO. Search, a "Show" filter and a CSV export.
 - **State overview** (`#state/XX`): key facts with "Full details" fold-outs (statute quotes, pinpoints, conditions), then claims, audits and chargebacks, penalties, and sources. Links to the one-page PDF and the official statute. It shows the law in effect today and flags scheduled changes.
-- **Research detail** (`#research`): the original 20-feature matrix, coverage counts and date selector (`docs/app.js`), unchanged.
-- Old links still work: `#atlas` → `#research`; `#audit` → `#states`; `#audit?state=XX` → `#state/XX`.
+- **Summary** (`#summary`, sections at `#summary/<id>`): a dashboard of answer counts for every column (labor rate, request frequency, RO sample, manufacturer response and silence, paid hours, multiplier, parts markup, service contracts and CPO, claim deadlines, late claims, filing deadline, chargeback lookback). Below it, each answer has a plain-English definition and its states, each linking to the state page. Groups are defined once in `dims()` in `docs/extras.js`; labor and parts groups come from `labor_type` / `parts_type` in `docs/data/key-facts.json`. The original September 21 20-feature classification is collapsed at the bottom.
+- **Update log** (`#updates`): the Monday law-change checks and site updates from `docs/data/weekly-checks.json`.
+- The original interactive matrix (`docs/app.js`, date selector, count boxes) was retired on September 25, 2026; it is in git history (commit 072b010) if ever needed.
+- Old links still work: `#atlas`, `#audit`, `#calculator` → `#states`; `#audit?state=XX` → `#state/XX`; `#weekly` → `#updates`; `#research` → `#summary`.
 
 | File | Contents |
 |---|---|
-| `docs/data/key-facts.json` | Short plain-English labels (labor rate, request frequency, parts markup, plus manufacturer-response, paid-hours and multiplier overrides where needed). Summaries only, no new research; update the state's entry whenever enacted law changes one of these rules. |
+| `docs/data/key-facts.json` | Short plain-English labels (labor rate, request frequency, parts markup, plus manufacturer-response, paid-hours and multiplier overrides where needed) and the `labor_type` / `parts_type` answer categories used by the Summary. Summaries only, no new research; update the state's entry whenever enacted law changes one of these rules. |
 | `docs/data/audit-fields.json` | 50 states: claim decision/payment deadlines, deemed approval, dealer filing deadlines, chargeback windows, rate-submission frequency and sample rules, exclusions, manufacturer response deadline and challenge standard, dispute forum, penalties, law dates (last amended, amending act, original enactment, next scheduled change), verification dates, and a `calc` block summarizing each state's retail-rate sample rule. Every block carries a verbatim quote (40 words max) and pinpoint. |
 | `docs/data/weekly-checks.json` | Weekly legislative check log (newest entry shown first). |
 | `docs/data/news.json` | 3–5 relevant items per week, labeled by source type and perspective. |
@@ -88,6 +90,6 @@ Earlier source availability and verification records remain separate from import
 - `docs/coverage-data.js`: same JSON records wrapped for a static browser page.
 - `docs/coverage.js`: display labels, coverage-specific conditions, scope notes and RI date overrides.
 - `docs/data.js`: original warranty records and corrected rule taxonomy.
-- `docs/app.js`, `docs/index.html`, `docs/styles.css`: interactive interface with text, symbols and distinct high-contrast borders.
+- `docs/index.html`, `docs/extras.js`, `docs/extras.css`, `docs/styles.css`: the site shell and interface (high-contrast, text labels, never color alone).
 
 No build is required. Run `node --check` for each JavaScript file. Validate all 200 imported cells against v3; check exact totals on both sides of October 1; confirm 20 Conditional notes, NC/PA exceptions, separate guide flags, Wisconsin grouping, filters, comparisons, share URLs, source details and original-file byte identity.

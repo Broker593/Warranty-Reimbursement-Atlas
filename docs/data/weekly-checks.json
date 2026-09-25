@@ -124,7 +124,8 @@
     "Added Weekly Checks and News tabs.",
     "Added one-page state PDFs and an Excel workbook under Downloads.",
     "Added an internal-use banner and Open/Save buttons on Downloads.",
-    "Redesigned the site around a States home page: one plain-English row per state and a state overview page with key facts and full statute details. The Audit fields tab merged into these pages; the original matrix moved to a Research detail tab."
+    "Redesigned the site around a States home page: one plain-English row per state and a state overview page with key facts and full statute details. The Audit fields tab merged into these pages; the original matrix moved to a Research detail tab.",
+    "Made States the default page, replaced the old matrix with a Summary dashboard (answer counts, plain-English definitions and states for every column), and renamed Weekly checks to Update log (far right)."
    ],
    "no_change_states": [
     "AL",

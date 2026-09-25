@@ -1,7 +1,7 @@
-/* Warranty Atlas front end: States (home) and state overview pages, Weekly checks,
-   News, Downloads, and the Research detail tab (the original matrix rendered by app.js).
+/* Warranty Atlas front end: States (home) and state overview pages, Summary dashboard
+   (answer counts, definitions and states for every column), News, Downloads and Update log (weekly checks).
    Data: docs/data/*.json plus window.REFERENCE (data.js) and window.LABOR_COVERAGE (coverage.js).
-   Independent of app.js; it only reads #stateTitle / #stateContent when app.js opens its state drawer. */
+   The original matrix UI (app.js) was retired on September 25, 2026; it remains in git history. */
 (() => {
   'use strict';
   const $ = id => document.getElementById(id);
@@ -12,9 +12,9 @@
   const trim = (t, n) => { t = String(t || ''); return t.length > n ? t.slice(0, n - 1).trim() + '…' : t; };
   const TODAY = (() => { try { return new Date().toLocaleDateString('en-CA', {timeZone: 'America/New_York'}); } catch (e) { return new Date().toISOString().slice(0, 10); } })();
 
-  const TABS = [['states', 'States'], ['weekly', 'Weekly checks'], ['news', 'News'], ['downloads', 'Downloads'], ['research', 'Research detail']];
-  const LEGACY = {atlas: 'research', audit: 'states', calculator: 'states'};
-  const RESEARCH_ONLY = ['.intro', '#coverage', '.date-bar', '.workspace', '#warrantyContext', '#laborContext', '.page-footer', '#shareBtn', '#xresearchnote'];
+  const TABS = [['states', 'States'], ['summary', 'Summary'], ['news', 'News'], ['downloads', 'Downloads'], ['updates', 'Update log']];
+  const QUIET = ['updates'];
+  const LEGACY = {atlas: 'states', audit: 'states', calculator: 'states', weekly: 'updates', research: 'summary'};
   const EXCL = {
     MAINT: 'Routine maintenance', TIRES: 'Tires', ALIGN: 'Alignments', INSPECT: 'State inspections',
     RECON: 'New-vehicle prep / used reconditioning', ACCESS: 'Accessory installation', BODY: 'Collision / body / glass',
@@ -88,22 +88,17 @@
 
   /* ---------- shell and routing ---------- */
   function buildShell() {
-    const intro = document.querySelector('.intro');
-    if (!intro || $('xnav')) return;
-    const nav = document.createElement('nav');
-    nav.id = 'xnav'; nav.className = 'xnav'; nav.setAttribute('aria-label', 'Atlas sections');
-    nav.innerHTML = TABS.map(([id, label]) => '<a href="#' + id + '" data-tab="' + id + '"' + (id === 'research' ? ' class="xnav-quiet"' : '') + '>' + esc(label) + '</a>').join('');
-    intro.parentNode.insertBefore(nav, intro);
-    const note = document.createElement('p');
-    note.id = 'xresearchnote'; note.className = 'xnote xresearch'; note.hidden = true;
-    note.innerHTML = '<strong>Research detail.</strong> The original 20-feature classification matrix and the coverage counts behind the States pages. Click a count to list those states. For everyday lookups, use <a href="#states">States</a>.';
-    intro.parentNode.insertBefore(note, intro);
-    const host = document.createElement('div');
-    host.id = 'xpanels';
-    host.innerHTML = TABS.filter(t => t[0] !== 'research').map(([id, label]) => '<section id="x-' + id + '" class="xpanel" hidden aria-label="' + esc(label) + '"><div class="xloading">Loading…</div></section>').join('');
-    const ws = document.querySelector('.workspace');
-    ws.parentNode.insertBefore(host, ws);
-    const about = $('aboutBtn'); if (about) about.textContent = 'About';
+    const main = $('main') || document.querySelector('main');
+    if (!main || $('xnav')) return;
+    main.innerHTML = '<nav id="xnav" class="xnav" aria-label="Atlas sections">' + TABS.map(([id, label]) => '<a href="#' + id + '" data-tab="' + id + '"' + (QUIET.includes(id) ? ' class="xnav-quiet"' : '') + '>' + esc(label) + '</a>').join('') + '</nav>' +
+      '<div id="xpanels">' + TABS.map(([id, label]) => '<section id="x-' + id + '" class="xpanel" hidden aria-label="' + esc(label) + '"><div class="xloading">Loading…</div></section>').join('') + '</div>';
+    const about = $('aboutBtn'), dlg = $('aboutDialog');
+    if (about && dlg) {
+      about.textContent = 'About';
+      about.addEventListener('click', () => { if (!dlg.open) dlg.showModal(); });
+      dlg.addEventListener('click', e => { if (e.target === dlg) dlg.close(); });
+    }
+    document.querySelectorAll('[data-close]').forEach(b => b.addEventListener('click', () => { const d = $(b.dataset.close); if (d && d.open) d.close(); }));
     window.addEventListener('hashchange', route);
   }
   function hashParam(k) { const m = new RegExp('[?&]' + k + '=([^&]+)').exec(location.hash); return m ? decodeURIComponent(m[1]) : ''; }
@@ -111,6 +106,8 @@
     const h = (location.hash || '').replace(/^#/, '');
     const m = /^state\/([A-Za-z]{2})$/.exec(h);
     if (m) return {tab: 'states', state: m[1].toUpperCase()};
+    const sm = /^summary\/([a-z]+)$/.exec(h);
+    if (sm) return {tab: 'summary', state: '', section: sm[1]};
     const base = h.split(/[?&]/)[0];
     if (base === 'audit') { const s = hashParam('state').toUpperCase(); return {tab: 'states', state: s, redirect: s ? '#state/' + s : '#states'}; }
     if (LEGACY[base]) return {tab: LEGACY[base], state: '', redirect: '#' + LEGACY[base]};
@@ -121,13 +118,8 @@
     if (r.redirect && history.replaceState) history.replaceState(null, '', location.pathname + location.search + r.redirect);
     const tab = r.tab;
     document.querySelectorAll('#xnav a').forEach(a => a.setAttribute('aria-current', a.dataset.tab === tab ? 'page' : 'false'));
-    RESEARCH_ONLY.forEach(sel => document.querySelectorAll(sel).forEach(el => {
-      if (tab === 'research') { if (el.dataset.xhid) { el.hidden = el.dataset.xhid === 'was-hidden'; delete el.dataset.xhid; } if (el.id === 'xresearchnote') el.hidden = false; }
-      else if (!el.dataset.xhid) { el.dataset.xhid = el.hidden ? 'was-hidden' : 'shown'; el.hidden = true; }
-    }));
     TABS.forEach(([id]) => { const p = $('x-' + id); if (p) p.hidden = id !== tab; });
-    if (tab === 'research') { document.title = 'Research detail · Warranty Atlas'; return; }
-    ensureData().then(() => render(tab, r.state)).catch(() => {});
+    ensureData().then(() => render(tab, r.state, r.section)).catch(() => {});
   }
   function ensureData() {
     if (loaded) return Promise.resolve();
@@ -145,10 +137,11 @@
     return loading;
   }
   const rendered = {};
-  function render(tab, state) {
+  function render(tab, state, section) {
     if (tab === 'states') return state && byAbbr[state] ? renderState(state) : renderHome();
     document.title = (TABS.find(t => t[0] === tab) || ['', ''])[1] + ' · Warranty Atlas';
-    if (!rendered[tab]) { rendered[tab] = true; ({weekly: renderWeekly, news: renderNews, downloads: renderDownloads})[tab](); }
+    if (!rendered[tab]) { rendered[tab] = true; ({updates: renderWeekly, news: renderNews, downloads: renderDownloads, summary: renderSummary})[tab](); }
+    if (tab === 'summary') scrollToSection(section);
   }
 
   /* ---------- States: home table ---------- */
@@ -168,6 +161,7 @@
         '<label>Show<select id="ksFilter"><option value="">All 50 states</option><option value="sc">Service contracts or CPO covered</option><option value="guide">Uses a non-OEM guide, multiplier or actual time</option><option value="request">Has a rate-request frequency rule</option><option value="change">Law change coming up</option></select></label>' +
         '<button type="button" class="quiet ks-csv" id="ksCsv">Download table (CSV) ↓</button></div>' +
         '<p class="xcount" id="ksCount" aria-live="polite"></p>' +
+        '<p class="ks-defs"><strong>What the answers mean:</strong> ' + [['labor', 'Labor rate'], ['requests', 'Rate increase requests'], ['response', 'Manufacturer response'], ['hours', 'Paid hours'], ['parts', 'Parts markup'], ['mfrsc', 'Service contracts & CPO']].map(x => '<a href="#summary/' + x[0] + '">' + x[1] + '</a>').join(' · ') + ' · <a href="#summary">All counts</a></p>' +
         '<div class="table-scroll xtable-scroll ks-scroll" tabindex="0" role="region" aria-label="State rules table"><table class="xtable ks-table"><thead><tr>' +
         ['State', 'Labor rate', 'Rate increase requests', 'Manufacturer response', 'Paid hours (labor-time guide)', 'Parts markup', 'Service contracts & CPO'].map(h => '<th scope="col">' + h + '</th>').join('') +
         '</tr></thead><tbody id="ksBody"></tbody></table></div>' +
@@ -300,7 +294,7 @@
   const CAT = {enacted_upcoming: 'Enacted · takes effect soon', enacted_recent: 'Took effect recently', pending: 'Pending bill', dead_or_stalled: 'Dead or stalled', no_change: 'No change'};
   function renderWeekly() {
     const E = (WEEKLY.entries || []).slice().sort((a, b) => a.check_date < b.check_date ? 1 : -1);
-    $('x-weekly').innerHTML = '<div class="xhead"><div><h2>Weekly checks</h2><p>Every Monday at 7 AM ET, Claude checks all 50 legislatures for enacted, effective and pending changes to warranty-reimbursement law, updates the Atlas when enacted law changes, and logs the result here. Pending bills are tracked but never loaded as law.</p></div><div class="xstamp">Last check <strong>' + fmtDate(E[0] && E[0].check_date) + '</strong><br>' + E.length + ' check' + (E.length === 1 ? '' : 's') + ' logged</div></div>' +
+    $('x-updates').innerHTML = '<div class="xhead"><div><h2>Update log</h2><p>Every Monday at 7 AM ET, Claude checks all 50 legislatures for enacted, effective and pending changes to warranty-reimbursement law, updates the Atlas when enacted law changes, and logs the result here with any site changes. Pending bills are tracked but never loaded as law.</p></div><div class="xstamp">Last check <strong>' + fmtDate(E[0] && E[0].check_date) + '</strong><br>' + E.length + ' check' + (E.length === 1 ? '' : 's') + ' logged</div></div>' +
       E.map(e => '<article class="xweek"><header><time datetime="' + esc(e.check_date) + '">' + fmtDate(e.check_date) + '</time><span class="xbadge ' + (e.type === 'baseline' ? 'alt' : '') + '">' + esc((e.type || 'weekly').toUpperCase()) + '</span></header><h3>' + esc(e.headline) + '</h3><p>' + esc(e.summary) + '</p>' +
         (e.items && e.items.length ? '<ul class="xitems">' + e.items.map(it => '<li><div class="xitem-top"><span class="xbadge ' + (it.category === 'pending' ? 'muted' : it.category === 'enacted_upcoming' ? '' : 'alt') + '">' + esc(CAT[it.category] || it.category) + '</span><strong>' + esc(it.state) + ' · ' + esc(it.bill) + '</strong>' + (it.effective ? '<span class="xpin">Effective ' + fmtDate(it.effective) + '</span>' : '') + (byAbbr[it.state] ? '<a class="xpin" href="#state/' + esc(it.state) + '">State overview →</a>' : '') + '</div><p>' + esc(it.summary_short || it.summary) + '</p>' + (it.atlas_impact ? '<p class="xnote"><strong>Atlas impact:</strong> ' + esc(it.atlas_impact) + '</p>' : '') + '<p class="xpin">' + esc(it.status || '') + ' ' + link(it.source_url, 'Official source') + '</p>' + (it.summary && it.summary !== it.summary_short ? '<details><summary>Full summary</summary><p>' + esc(it.summary) + '</p></details>' : '') + '</li>').join('') + '</ul>' : '<p class="xnote">No enacted, effective or pending changes found this week.</p>') +
         (e.site_changes && e.site_changes.length ? '<details open><summary>Site updates this week</summary><ul>' + e.site_changes.map(x => '<li>' + esc(x) + '</li>').join('') + '</ul></details>' : '') +
@@ -335,25 +329,113 @@
     $('dlCsv').addEventListener('click', () => homeCsv(AUDIT));
   }
 
-  /* ---------- Research detail: enrich app.js state drawer ---------- */
-  function enrichDrawer() {
-    const content = $('stateContent'), title = $('stateTitle'); if (!content || !title) return;
-    const obs = new MutationObserver(() => {
-      if (content.querySelector('.xdrawer')) return;
-      const name = (title.textContent || '').split(' · ')[0].trim().toLowerCase();
-      const go = () => { const r = byName[name]; if (!r) return; const n = nextChange(r); const box = document.createElement('div'); box.className = 'xdrawer';
-        box.innerHTML = '<div><span class="section-label">Law last amended</span><strong>' + esc(amended(r)) + '</strong>' + ((r.law_dates || {}).last_amending_act ? '<small>' + esc(trim(r.law_dates.last_amending_act, 90)) + '</small>' : '') + '</div>' +
-          '<div><span class="section-label">Next scheduled change</span><strong>' + (n ? fmtDate(n.effective) : 'None found') + '</strong>' + (n ? '<small>' + esc(trim(n.summary || n.act, 90)) + '</small>' : '') + '</div>' +
-          '<div><span class="section-label">Last verified</span><strong>' + fmtDate(r.verified.audit_fields) + '</strong><small>Coverage cells ' + fmtDate(r.verified.coverage) + (r.verified.last_change_check ? ' · Checked for changes ' + fmtDate(r.verified.last_change_check) : '') + '</small></div>' +
-          '<div class="xbtns"><a class="quiet" href="#state/' + r.state + '" data-xclose>State overview →</a><a class="quiet" href="downloads/state-pdfs/' + r.state + '.pdf" target="_blank" rel="noopener">Open one-page PDF ↗</a></div>';
-        const anchor = content.querySelector('.state-summary'); if (anchor) anchor.after(box); else content.prepend(box);
-        box.querySelectorAll('[data-xclose]').forEach(a => a.addEventListener('click', () => { const d = $('stateDialog'); if (d.open) d.close(); }));
-      };
-      if (loaded) go(); else ensureData().then(go).catch(() => {});
+  /* ---------- Summary dashboard: answer counts, definitions and states for every column ---------- */
+  function chips(list, tip) { return list.length ? list.map(r => '<a class="xs-chip" href="#state/' + r.state + '" title="' + esc(r.name + (tip && tip(r) ? ' — ' + tip(r) : '')) + '">' + r.state + '</a>').join('') : '<span class="ks-muted">None</span>'; }
+  function freqGroup(l) {
+    l = l || '';
+    if (/procedure|^No labor-rate request process|^No request frequency/.test(l)) return 'none';
+    if (/9 months/.test(l)) return 'other';
+    if (/^1 |^Not within 12 months/.test(l)) return 'once';
+    if (/^2 |semiannual/i.test(l)) return 'twice';
+    if (/^No frequency limit/.test(l)) return 'nolimit';
+    return 'other';
+  }
+  const daysKey = v => v == null ? 'none' : String(v);
+  const daysGroups = (vals, def, noneDef) => vals.map(v => [String(v), v + ' days', def.replace('{n}', v)]).concat([['none', 'Not set in statute', noneDef]]);
+  /* Each dimension: [key, label, plain-English definition] groups + how to classify a state. Tiles and detail lists both render from this. */
+  function dims() {
+    const riUp = (cov('RI', 'factory') || {}).upcoming;
+    const scGroups = [
+      ['yes', 'Yes', 'The state\'s warranty rate and time rules apply to this coverage.'],
+      ['conditional', 'Conditional', 'The rules apply only if a condition is met, usually that the manufacturer or its affiliate issues or pays for the contract.'],
+      ['no', 'Not covered', 'Outside the statute\'s reach: expressly excluded, or the rules cover only work the manufacturer itself issues or pays for.'],
+      ['silent', 'Silent', 'The statute doesn\'t address this coverage. Contracts or other law may still apply.']
+    ];
+    return [
+      {sec: 'Labor rate and rate increase requests', id: 'labor', title: 'Labor rate', q: 'How is the warranty hourly labor rate set?', key: r => kf(r.state).labor_type, tip: r => kf(r.state).labor, groups: [
+        ['retail', 'Dealer\'s retail rate', 'Warranty labor is paid at the dealer\'s own retail (customer-pay) rate, usually calculated from a sample of customer-pay repair orders. In some states the dealer must request or elect it.'],
+        ['floor', 'At least the retail rate', 'The dealer\'s retail rate is a minimum; warranty labor can\'t be paid below it. Tennessee also caps it at the posted rate.'],
+        ['posted', 'Posted retail rate', 'Warranty labor is paid at the retail rate the dealer posts where service customers can see it. If it isn\'t posted, the rule doesn\'t apply.'],
+        ['reasonable', 'Reasonable pay, retail is a factor', 'The statute requires reasonable compensation. The dealer\'s retail rate (in Nebraska, local market rates) is a key factor, not an automatic entitlement.'],
+        ['other', 'Other method', 'Florida: agreed rate first, then a statutory method. Texas and Wisconsin: statutory formulas. Wyoming: a submission process, with retail as a ceiling.']]},
+      {id: 'requests', title: 'Rate increase requests: how often', q: 'How often can a dealer ask for a new labor rate?', key: r => freqGroup(kf(r.state).requests), tip: r => kf(r.state).requests, groups: [
+        ['once', 'Once a year', 'One request per 12 months or per calendar year. Some states count labor and parts separately.'],
+        ['twice', 'Twice a year', 'Up to two requests per calendar year (Florida: not more than semiannually).'],
+        ['other', 'Other interval', 'Delaware: once every 9 months.'],
+        ['nolimit', 'No limit stated', 'A request process exists, but the statute doesn\'t limit how often.'],
+        ['none', 'No labor-rate request process', 'The statute has no labor-rate request process. Some have one for parts markup only.']]},
+      {id: 'sample', title: 'Rate increase requests: repair-order sample', q: 'Which customer-pay repair orders (ROs) set the retail rate?', key: r => sampleShort(r), tip: r => sampleLong(r), groups: [
+        ['100 ROs or 90 days, whichever is fewer', '100 ROs or 90 days (fewer)', 'The dealer submits 100 consecutive qualifying customer-pay ROs or all qualifying ROs from 90 consecutive days, whichever is fewer. Most states also cap how old the ROs can be.'],
+        ['100 ROs or 60 days, whichever is fewer', '100 ROs or 60 days (fewer)', 'Same method with a 60-day window.'],
+        ['100 ROs or 90 days, dealer picks', '100 ROs or 90 days (dealer picks)', 'The dealer chooses which of the two samples to submit.'],
+        ['100 ROs or 90 days, whichever gives the higher rate', 'Higher of two samples', 'Texas: both samples are calculated and the higher rate is used.'],
+        ['All ROs from the prior month', 'Prior month\'s ROs', 'All qualifying customer-pay ROs from the month before the request.'],
+        ['100 sequential ROs', '100 ROs only', 'Illinois: 100 consecutive qualifying ROs, with no day window.'],
+        ['No labor sample in statute', 'No sample in statute', 'The statute doesn\'t say how to calculate the labor rate from ROs.']]},
+      {id: 'response', title: 'Manufacturer response deadline', q: 'How long does the manufacturer have to respond to a rate request?', key: r => daysKey(r.manufacturer_response.response_deadline_days), tip: r => responseShort(r), groups: daysGroups([30, 45, 60], 'The manufacturer has {n} days after the dealer\'s submission to approve, contest or ask for more information.', 'The statute sets no response deadline. Some of these states have no request process at all.')},
+      {id: 'silence', title: 'If the manufacturer doesn\'t respond', q: 'What happens if the manufacturer misses the deadline?', key: r => String(r.manufacturer_response.deemed_approved_if_no_response), tip: r => responseShort(r), groups: [
+        ['true', 'Rate takes effect', 'The dealer\'s rate is treated as approved or takes effect automatically. For Michigan this is an inference from the statute\'s wording.'],
+        ['false', 'Not automatic', 'Texas: the manufacturer must give a written decision; silence does not approve the rate.'],
+        ['null', 'Not stated', 'The statute doesn\'t say what happens if the manufacturer doesn\'t respond.']]},
+      {sec: 'Paid hours', id: 'hours', title: 'Paid hours (labor-time guide)', q: 'Which labor-time standard sets the hours paid?', key: r => hoursShort(r.state).id, tip: r => hoursShort(r.state).note, groups: [
+        ['factory', HOURS.factory, 'The manufacturer\'s own time allowances (OEM labor-time guide). Most states require them to be reasonable and adequate.'],
+        ['independent_guide', HOURS.independent_guide, 'The dealer\'s customer-pay guide or an independent (third-party) guide is used instead of, or as a floor over, OEM time.'],
+        ['multiplier', HOURS.multiplier, 'OEM time multiplied by a factor. See Labor-time multiplier.'],
+        ['actual_time', HOURS.actual_time, 'The technician\'s documented actual time.' + (riUp ? ' Rhode Island moves here on Oct 1, 2026.' : '')],
+        ['negotiated_other', HOURS.negotiated_other, 'Wisconsin: OEM hours are paid, and the retail time difference is built into the hourly rate.'],
+        ['silent', HOURS.silent, 'The statute sets no general standard for how many hours are paid.']]},
+      {id: 'multiplier', title: 'Labor-time multiplier', q: 'Does the statute multiply OEM time?', key: r => { const m = kf(r.state).multiplier || ''; return /^Yes/.test(m) ? 'yes' : /^No separate/.test(m) ? 'rate' : 'none'; }, groups: [
+        ['yes', 'Yes', 'Illinois: 1.5 × OEM time only when no guide is agreed or the guide omits the repair. New Jersey: dealer may elect a customer-billed ÷ OEM hours ratio.'],
+        ['rate', 'Built into the rate', 'Wisconsin: no separate multiplier; the time difference is in the hourly rate. Don\'t apply it twice.'],
+        ['none', 'None in statute', 'No labor-time multiplier in the reviewed statute.']]},
+      {sec: 'Parts', id: 'parts', title: 'Parts markup', q: 'How is the warranty parts price set?', key: r => kf(r.state).parts_type, tip: r => kf(r.state).parts, groups: [
+        ['retail', 'Dealer\'s retail markup', 'Parts are paid at dealer cost plus the dealer\'s own retail markup, usually the average markup on customer-pay parts in a sample of ROs. In some states the dealer must request or elect it.'],
+        ['floor', 'At least retail', 'The dealer\'s retail parts price or markup is a minimum; the statute sets no specific calculation.'],
+        ['agreed', 'Agreed markup first', 'An agreed markup controls. Without one, the dealer\'s retail markup or a statutory method applies.'],
+        ['reasonable', 'Reasonable, retail is a benchmark', 'The statute requires reasonable compensation, with the dealer\'s retail markup as a benchmark or primary factor.']]},
+      {sec: 'Service contracts and CPO', id: 'mfrsc', title: 'Manufacturer-backed service contract', q: 'Do the rate and time rules reach manufacturer-backed service contracts?', key: r => (cov(r.state, 'manufacturer_contract') || {}).applicability, groups: scGroups},
+      {id: 'cpo', title: 'CPO warranty', q: 'Do the rate and time rules reach CPO warranty repairs?', key: r => (cov(r.state, 'cpo') || {}).applicability, groups: scGroups},
+      {id: 'indsc', title: 'Independent service contract', q: 'Do the rules reach third-party service contracts?', key: r => (cov(r.state, 'independent_contract') || {}).applicability, groups: scGroups},
+      {sec: 'Claims and chargebacks', id: 'decision', title: 'Claim decision deadline', q: 'How long does the manufacturer have to approve or deny a claim?', key: r => daysKey(r.claims.decision_deadline_days), groups: daysGroups([30, 45, 60], 'The manufacturer must approve or deny a warranty claim within {n} days of receiving it.', 'The statute sets no decision deadline.')},
+      {id: 'late', title: 'Late claim decisions', q: 'Is a claim approved if the manufacturer decides late?', key: r => r.claims.deemed_approved_if_late === true ? 'yes' : 'no', groups: [
+        ['yes', 'Deemed approved', 'A claim not denied in time is treated as approved.'],
+        ['no', 'No deemed-approval rule', 'The statute doesn\'t say a late claim is approved.']]},
+      {id: 'payment', title: 'Claim payment deadline', q: 'How fast must an approved claim be paid?', key: r => daysKey(r.claims.payment_deadline_days), groups: daysGroups([30, 45, 60], 'Approved claims must be paid within {n} days (usually counted from approval).', 'The statute sets no payment deadline.')},
+      {id: 'filing', title: 'Dealer filing deadline', q: 'Does the statute limit how long a dealer has to file a claim?', key: r => r.claims.dealer_filing_deadline ? 'yes' : 'no', groups: [
+        ['yes', 'Yes', 'The statute sets a deadline for dealers to submit claims. See the state page for the period.'],
+        ['no', 'Not set in statute', 'No statutory filing deadline; the manufacturer\'s policy may set one.']]},
+      {id: 'chargeback', title: 'Audit and chargeback lookback', q: 'How far back can the manufacturer audit and charge back paid claims?', key: r => r.chargebacks.lookback_months == null ? 'none' : String(r.chargebacks.lookback_months), groups: [6, 9, 12].map(n => [String(n), n + ' months', 'Paid claims can be audited and charged back for ' + n + ' months. Fraud is usually excepted.']).concat([['none', 'Not set in statute', 'The statute sets no lookback limit.']])}
+    ].map(d => {
+      const gs = d.groups.map(([k, label, def]) => ({k, label, def, states: []}));
+      AUDIT.forEach(r => { const k = d.key(r); const g = gs.find(x => x.k === k); if (g) g.states.push(r); else gs.push({k, label: String(k), def: '', states: [r]}); });
+      return Object.assign(d, {gs});
     });
-    obs.observe(content, {childList: true});
+  }
+  function renderSummary() {
+    const D = dims();
+    const bars = d => '<ul class="xd-bars">' + d.gs.map(g => '<li><a href="#summary/' + d.id + '" title="' + esc(g.label + ': ' + (g.states.map(s => s.state).join(', ') || 'none')) + '"><span class="xd-lab">' + esc(g.label) + '</span><span class="xd-track" aria-hidden="true"><span class="xd-fill" style="width:' + (g.states.length * 2) + '%"></span></span><span class="xd-n">' + g.states.length + '</span></a></li>').join('') + '</ul>';
+    let tiles = '', lastSec = '';
+    D.forEach(d => {
+      if (d.sec && d.sec !== lastSec) { tiles += (lastSec ? '</div>' : '') + '<h3 class="xd-sec">' + esc(d.sec) + '</h3><div class="xd-grid">'; lastSec = d.sec; }
+      tiles += '<section class="xd-tile"><h4>' + esc(d.title) + '</h4><p class="xd-q">' + esc(d.q) + '</p>' + bars(d) + '<a class="xd-more" href="#summary/' + d.id + '">What each answer means, and which states ↓</a></section>';
+    });
+    tiles += '</div>';
+    const detail = D.map(d => '<section class="xs-card" id="xs-' + d.id + '"><h2>' + esc(d.title) + '</h2><p class="xs-note">' + esc(d.q) + (d.id === 'mfrsc' || d.id === 'cpo' ? ' ' + esc(PROGRAM_SCOPE) : '') + '</p><div class="xs-rows">' +
+      d.gs.map(g => '<div class="xs-row"><div class="xs-label"><strong>' + esc(g.label) + '</strong><span class="xs-count">' + g.states.length + (g.states.length === 1 ? ' state' : ' states') + '</span></div><div><p class="xs-def">' + esc(g.def) + '</p><div class="xs-chips">' + chips(g.states, d.tip) + '</div></div></div>').join('') +
+      '</div><p class="xs-top"><a href="#summary">↑ Back to the dashboard</a></p></section>').join('');
+    const changes = AUDIT.filter(r => nextChange(r));
+    const R = (window.REFERENCE || {}).rules || [], groups = [...new Set(R.map(x => x.group))];
+    const original = groups.map(gname => '<h3 class="xs-sub">' + esc(gname) + '</h3><div class="xs-rows">' + R.filter(x => x.group === gname).map(x => { const st = AUDIT.filter(r => ((REF[r.state] || {}).flags || {})[x.id] === true); return '<div class="xs-row"><div class="xs-label"><strong>' + esc(x.name) + '</strong><span class="xs-count">' + st.length + ' states</span></div><div><p class="xs-def">' + esc(trim(x.description, 220)) + '</p><div class="xs-chips">' + chips(st) + '</div></div></div>'; }).join('') + '</div>').join('');
+    $('x-summary').innerHTML = '<div class="xhead"><div><h2>Summary dashboard</h2><p>How the 50 states answer each question on the States table, based on the law in effect today (' + fmtDate(TODAY) + '). Each bar counts the states giving that answer. <strong>Click a tile</strong> for a plain-English definition of every answer and the states behind it; click a state code to open that state.</p></div><div class="xstamp">' + (changes.length ? 'Law changes coming up<br>' + changes.map(r => '<a href="#state/' + r.state + '"><strong>' + r.state + '</strong></a> ' + fmtDate(nextChange(r).effective)).join('<br>') : 'No scheduled law changes') + '</div></div>' +
+      '<div class="xd">' + tiles + '</div>' +
+      '<h2 class="xd-h">Definitions and states</h2>' + detail +
+      '<details class="xs-more"><summary>Original September 21 classification (20 rule features)</summary><p class="xs-note">The first-pass research classification. Where it differs from the state pages or the groups above, those are newer and control.</p>' + original + '</details>';
+  }
+  function scrollToSection(sec) {
+    const t = sec ? $('xs-' + sec) : null;
+    if (t) t.scrollIntoView({block: 'start'}); else window.scrollTo(0, 0);
   }
 
-  function init() { buildShell(); enrichDrawer(); route(); }
+  function init() { buildShell(); route(); }
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init); else init();
 })();
