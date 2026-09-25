@@ -1,17 +1,20 @@
-/* Warranty Atlas extras: Audit fields, Weekly checks, News, Downloads,
-   and law-date enrichment of the state drawer. Data lives in docs/data/*.json.
-   Independent of app.js; it only reads #stateTitle / #stateContent when the drawer opens. */
+/* Warranty Atlas front end: States (home) and state overview pages, Weekly checks,
+   News, Downloads, and the Research detail tab (the original matrix rendered by app.js).
+   Data: docs/data/*.json plus window.REFERENCE (data.js) and window.LABOR_COVERAGE (coverage.js).
+   Independent of app.js; it only reads #stateTitle / #stateContent when app.js opens its state drawer. */
 (() => {
   'use strict';
   const $ = id => document.getElementById(id);
-  const esc = v => String(v == null ? '' : v).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+  const esc = v => String(v == null ? '' : v).replace(/[&<>"']/g, c => ({'&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;'}[c]));
   const safeUrl = u => /^https?:\/\//i.test(String(u || '').trim()) ? String(u).trim().split(/\s+/)[0] : '';
   const link = (u, label) => { const s = safeUrl(u); return s ? '<a href="' + esc(s) + '" target="_blank" rel="noopener noreferrer">' + esc(label || 'Source') + ' ↗</a>' : ''; };
   const fmtDate = d => { if (!d) return ''; const m = /^(\d{4})-(\d{2})-(\d{2})/.exec(d); if (!m) return esc(d); const dt = new Date(+m[1], +m[2] - 1, +m[3]); return dt.toLocaleDateString('en-US', {month: 'short', day: 'numeric', year: 'numeric'}); };
-  const TABS = [
-    ['atlas', 'Rules atlas'], ['audit', 'Audit fields'],
-    ['weekly', 'Weekly checks'], ['news', 'News'], ['downloads', 'Downloads']
-  ];
+  const trim = (t, n) => { t = String(t || ''); return t.length > n ? t.slice(0, n - 1).trim() + '…' : t; };
+  const TODAY = (() => { try { return new Date().toLocaleDateString('en-CA', {timeZone: 'America/New_York'}); } catch (e) { return new Date().toISOString().slice(0, 10); } })();
+
+  const TABS = [['states', 'States'], ['weekly', 'Weekly checks'], ['news', 'News'], ['downloads', 'Downloads'], ['research', 'Research detail']];
+  const LEGACY = {atlas: 'research', audit: 'states', calculator: 'states'};
+  const RESEARCH_ONLY = ['.intro', '#coverage', '.date-bar', '.workspace', '#warrantyContext', '#laborContext', '.page-footer', '#shareBtn', '#xresearchnote'];
   const EXCL = {
     MAINT: 'Routine maintenance', TIRES: 'Tires', ALIGN: 'Alignments', INSPECT: 'State inspections',
     RECON: 'New-vehicle prep / used reconditioning', ACCESS: 'Accessory installation', BODY: 'Collision / body / glass',
@@ -20,168 +23,277 @@
     WARRANTY: 'Warranty / recall', INSURANCE: 'Insurance-paid', NO_CHARGE: 'No-charge', ENGINE_TRANS: 'Engine / transmission assembly',
     DETAIL: 'Detailing / washing', OTHER: 'Other statutory exclusion (read the text)'
   };
-  let AUDIT = [], WEEKLY = null, NEWS = null, loaded = false;
-  const byAbbr = {}, byName = {};
+  const COVS = [['manufacturer_contract', 'Manufacturer-backed service contract', 'Mfr service contract'], ['cpo', 'CPO warranty', 'CPO'], ['independent_contract', 'Independent service contract', 'Independent SC']];
+  const STATUS_SHORT = {yes: 'Yes', conditional: 'Conditional', no: 'Not covered', silent: 'Silent'};
+  const STATUS_LONG = {
+    yes: 'Yes. The state\'s warranty rate and time rules reach this coverage (research label: Required).',
+    conditional: 'Conditional. Covered only if the stated condition is met, usually who issues or pays for the contract.',
+    no: 'Not covered. Outside the statute by an express exclusion or a manufacturer-only limit (research label: Not reached).',
+    silent: 'Silent. The statute does not address this coverage (research label: Not addressed). Contracts or other law may still apply.'
+  };
+  const HOURS = {factory: 'Factory (OEM) time', independent_guide: 'Dealer\'s customer-pay or independent guide', multiplier: 'OEM time × multiplier', actual_time: 'Actual technician time', negotiated_other: 'OEM time (rate adjusted)', silent: 'Not set in statute', 'n/a': '—'};
+  const PROGRAM_SCOPE = 'Service-contract and CPO rules apply only to contracts the manufacturer, distributor or a qualifying affiliate actually issues or pays for. Branding such as "factory-backed" does not decide it. Check the obligor named in the contract.';
 
-  function yesNo(v, yes, no) { return v === true ? yes : v === false ? no : 'Silent'; }
+  let AUDIT = [], WEEKLY = null, NEWS = null, KEY = {states: {}}, loaded = false, loading = null;
+  const byAbbr = {}, byName = {}, REF = {};
+
+  /* ---------- helpers ---------- */
   function days(v) { return v == null ? '—' : v + ' days'; }
-  function sampleText(r) {
-    const c = r.calc || {}, s = (r.rate_submission || {}).sample || {};
-    if (c.mode === 'calendar_month') return 'Prior calendar month';
-    if (c.mode === 'none') return 'No labor sample';
-    if (c.mode === 'ro_only') return (c.ro_count || 100) + ' ROs';
-    const bits = (c.ro_count ? c.ro_count + ' ROs' : '') + (c.days ? ' / ' + c.days + ' days' : '');
-    const how = {fewer: 'fewer', greater_rate: 'higher rate', dealer_choice: 'dealer picks'}[c.mode] || '';
-    return bits + (how ? ' · ' + how : '') + (c.max_age_days ? ' · ≤' + c.max_age_days + 'd old' : '');
+  function sampleShort(r) {
+    const c = r.calc || {};
+    const w = (c.ro_count || 100) + ' ROs or ' + (c.days || 90) + ' days';
+    return ({calendar_month: 'All ROs from the prior month', none: 'No labor sample in statute', ro_only: (c.ro_count || 100) + ' sequential ROs',
+      fewer: w + ', whichever is fewer', dealer_choice: w + ', dealer picks', greater_rate: w + ', whichever gives the higher rate'})[c.mode] || 'See details';
   }
+  function sampleLong(r) { const c = r.calc || {}; return sampleShort(r) + (c.max_age_days ? '; ROs no older than ' + c.max_age_days + ' days' : ''); }
   function amended(r) {
     const d = r.law_dates || {};
     if (!d.last_amended_year) return 'Unknown';
     return d.last_amended_year + (d.last_amendment_effective ? ' (eff. ' + fmtDate(d.last_amendment_effective) + ')' : '');
   }
-  function nextChange(r) { const n = (r.law_dates || {}).next_scheduled_change; return n && n.effective ? n : null; }
-
-  /* ---------- shell ---------- */
-  function buildShell() {
-    const dateBar = document.querySelector('.date-bar');
-    if (!dateBar || $('xnav')) return;
-    const nav = document.createElement('nav');
-    nav.id = 'xnav'; nav.className = 'xnav'; nav.setAttribute('aria-label', 'Atlas sections');
-    nav.innerHTML = TABS.map(([id, label]) => '<a href="#' + id + '" data-tab="' + id + '">' + esc(label) + '</a>').join('');
-    dateBar.parentNode.insertBefore(nav, dateBar);
-    const host = document.createElement('div');
-    host.id = 'xpanels';
-    host.innerHTML = TABS.slice(1).map(([id, label]) => '<section id="x-' + id + '" class="xpanel" hidden aria-label="' + esc(label) + '"><div class="xloading">Loading…</div></section>').join('');
-    const ws = document.querySelector('.workspace');
-    ws.parentNode.insertBefore(host, ws);
-    const dlg = document.createElement('dialog');
-    dlg.id = 'auditDialog'; dlg.className = 'state-dialog'; dlg.setAttribute('aria-labelledby', 'auditTitle');
-    dlg.innerHTML = '<div class="dialog-top"><div><span class="eyebrow">AUDIT FIELDS</span><h2 id="auditTitle"></h2></div><button class="close-button" id="auditClose" aria-label="Close audit fields">×</button></div><div id="auditContent"></div>';
-    document.body.appendChild(dlg);
-    $('auditClose').addEventListener('click', () => dlg.close());
-    dlg.addEventListener('click', e => { if (e.target === dlg) dlg.close(); });
-    window.addEventListener('hashchange', route);
+  function nextChange(r) { const n = (r.law_dates || {}).next_scheduled_change; return n && n.effective && n.effective > TODAY ? n : null; }
+  function recentChange(r) { const n = (r.law_dates || {}).next_scheduled_change; return n && n.effective && n.effective <= TODAY ? n : null; }
+  function kf(abbr) { return (KEY.states || {})[abbr] || {}; }
+  function cov(abbr, id) { try { return window.LABOR_COVERAGE.record({abbr}, id, TODAY); } catch (e) { return null; } }
+  function responseShort(r) {
+    const o = kf(r.state).response; if (o) return o;
+    const m = r.manufacturer_response || {}, d = m.response_deadline_days, a = m.deemed_approved_if_no_response;
+    if (d != null) return d + ' days' + (a === true ? '; no response = approved' : '');
+    if (a === true) return 'No deadline; deemed approved';
+    return 'Not set in statute';
   }
-  function currentTab() { const h = (location.hash || '').replace(/^#/, '').split(/[?&]/)[0]; return TABS.some(t => t[0] === h) ? h : 'atlas'; }
-  function hashParam(k) { const m = new RegExp('[?&]' + k + '=([^&]+)').exec(location.hash); return m ? decodeURIComponent(m[1]) : ''; }
-  function route() {
-    const tab = currentTab();
-    document.querySelectorAll('#xnav a').forEach(a => { const on = a.dataset.tab === tab; a.setAttribute('aria-current', on ? 'page' : 'false'); });
-    const atlasOnly = ['.workspace', '#coverage', '.date-bar', '#warrantyContext', '#laborContext'];
-    atlasOnly.forEach(sel => document.querySelectorAll(sel).forEach(el => {
-      if (tab === 'atlas') { if (el.dataset.xhid) { el.hidden = el.dataset.xhid === 'was-hidden'; delete el.dataset.xhid; } }
-      else if (!el.dataset.xhid) { el.dataset.xhid = el.hidden ? 'was-hidden' : 'shown'; el.hidden = true; }
-    }));
-    TABS.slice(1).forEach(([id]) => { $('x-' + id).hidden = id !== tab; });
-    if (tab !== 'atlas') ensureData().then(() => render(tab));
+  function hoursShort(abbr) {
+    const f = cov(abbr, 'factory'); if (!f) return {label: '—', note: ''};
+    let note = kf(abbr).hours || '';
+    if (abbr === 'RI' && f.upcoming) note = 'Actual technician time from Oct 1, 2026';
+    return {label: f.notEstablished ? 'Not established' : (HOURS[f.paidHoursId] || f.paidHours), note, id: f.paidHoursId};
   }
-  function ensureData() {
-    if (loaded) return Promise.resolve();
-    const get = p => fetch(p + '?v=' + Date.now().toString(36).slice(0, 6)).then(r => { if (!r.ok) throw new Error(p + ' ' + r.status); return r.json(); });
-    return Promise.all([get('data/audit-fields.json'), get('data/weekly-checks.json'), get('data/news.json')]).then(([a, w, n]) => {
-      AUDIT = a; WEEKLY = w; NEWS = n; loaded = true;
-      AUDIT.forEach(r => { byAbbr[r.state] = r; byName[r.name.toLowerCase()] = r; });
-    }).catch(err => {
-      TABS.slice(1).forEach(([id]) => { $('x-' + id).innerHTML = '<p class="xerror">Could not load research data (' + esc(err.message) + '). Reload the page to try again.</p>'; });
-      throw err;
-    });
+  function multiplierText(abbr) { return kf(abbr).multiplier || 'None in statute'; }
+  function scList(abbr) { return COVS.map(([id, long, short]) => { const c = cov(abbr, id); return {id, long, short, c, status: c ? c.applicability : 'silent'}; }); }
+  function scShort(abbr) {
+    const on = scList(abbr).filter(x => x.status === 'yes' || x.status === 'conditional');
+    if (!on.length) return '<span class="ks-muted">Factory warranty only</span>';
+    return on.map(x => '<span class="ks-sc"><span class="ks-sc-name">' + esc(x.short) + ':</span> <strong>' + esc(STATUS_SHORT[x.status]) + '</strong>' + (x.c && x.c.notEstablished ? ' <span class="ks-muted">(no rate rule)</span>' : '') + '</span>').join('');
   }
-  const rendered = {};
-  function render(tab) {
-    if (tab === 'audit') renderAudit();
-    else if (!rendered[tab]) { rendered[tab] = true; ({weekly: renderWeekly, news: renderNews, downloads: renderDownloads})[tab](); }
-  }
-
-  /* ---------- Audit fields ---------- */
-  let auditBuilt = false;
-  function renderAudit() {
-    const p = $('x-audit');
-    if (!auditBuilt) {
-      auditBuilt = true;
-      p.innerHTML = '<div class="xhead"><div><h2>Audit fields · 50 states</h2><p>Claim deadlines, chargeback windows, rate-submission rules, manufacturer response and challenge rules, and penalties, taken from statute text. <strong>Blank or “Silent” means the statute says nothing</strong>; contracts or regulations may still apply.</p></div><div class="xstamp">Audit fields verified <strong>Sep 25, 2026</strong><br>Coverage cells verified <strong>Sep 24–25, 2026</strong></div></div>' +
-        '<div class="xtools"><label class="search"><span aria-hidden="true">⌕</span><input id="auditSearch" type="search" placeholder="Search a state…" aria-label="Search states"></label>' +
-        '<label>Late claims<select id="auditDeemed"><option value="">Any</option><option value="yes">Deemed approved</option><option value="none">No deemed-approval rule</option></select></label>' +
-        '<label>Rate sample<select id="auditSample"><option value="">Any</option><option value="fewer">Fewer of ROs/days</option><option value="dealer_choice">Dealer picks</option><option value="greater_rate">Higher rate</option><option value="calendar_month">Prior month</option><option value="ro_only">RO count only</option><option value="none">No labor sample</option></select></label>' +
-        '<label class="toggle-label"><input type="checkbox" id="auditUpcoming"> Scheduled change only</label>' +
-        '<button class="quiet" id="auditCsv">Download table (CSV) ↓</button></div>' +
-        '<p class="xcount" id="auditCount" aria-live="polite"></p>' +
-        '<div class="table-scroll xtable-scroll" tabindex="0" role="region" aria-label="Audit fields table"><table class="xtable" id="auditTable"><thead><tr>' +
-        ['State', 'Claim decision', 'Payment', 'Chargeback window', 'Rate resubmission', 'Rate sample', 'Mfr response to rate', 'Law last amended', 'Last verified'].map(h => '<th scope="col">' + h + '</th>').join('') +
-        '</tr></thead><tbody id="auditBody"></tbody></table></div><p class="xfoot">Click a state for statute quotes, pinpoint cites, challenge standards, penalties and notes. Deadlines count from receipt unless the detail says otherwise.</p>';
-      ['auditSearch', 'auditDeemed', 'auditSample', 'auditUpcoming'].forEach(id => $(id).addEventListener('input', drawAudit));
-      $('auditCsv').addEventListener('click', auditCsv);
-      $('auditBody').addEventListener('click', e => { const b = e.target.closest('[data-audit]'); if (b) openAudit(b.dataset.audit); });
-    }
-    drawAudit();
-    const s = hashParam('state'); if (s && byAbbr[s]) openAudit(s);
-  }
-  function auditRows() {
-    const q = ($('auditSearch').value || '').trim().toLowerCase(), dm = $('auditDeemed').value, sm = $('auditSample').value, up = $('auditUpcoming').checked;
-    return AUDIT.filter(r => {
-      if (q && !(r.name.toLowerCase().includes(q) || r.state.toLowerCase() === q)) return false;
-      const d = r.claims.deemed_approved_if_late;
-      if (dm === 'yes' && d !== true) return false;
-      if (dm === 'none' && d === true) return false;
-      if (sm && r.calc.mode !== sm) return false;
-      if (up && !nextChange(r)) return false;
-      return true;
-    });
-  }
-  function drawAudit() {
-    const rows = auditRows();
-    $('auditCount').textContent = rows.length + ' of 50 states shown';
-    $('auditBody').innerHTML = rows.map(r => {
-      const c = r.claims, cb = r.chargebacks, rs = r.rate_submission, mr = r.manufacturer_response, n = nextChange(r);
-      return '<tr><th scope="row"><button class="state-name" data-audit="' + r.state + '"><span class="state-text">' + esc(r.name) + '</span><span class="abbr">' + r.state + '</span></button>' + (r.confidence && r.confidence !== 'high' ? '<span class="xflag">Confidence: ' + esc(r.confidence) + '</span>' : '') + '</th>' +
-        '<td>' + days(c.decision_deadline_days) + '<small>' + esc((c.deemed_approved_if_late === true ? 'Late = deemed approved' : 'No deemed-approval rule')) + '</small></td>' +
-        '<td>' + days(c.payment_deadline_days) + (c.payment_deadline_trigger ? '<small>' + esc(c.payment_deadline_trigger) + '</small>' : '') + '</td>' +
-        '<td>' + (cb.lookback_months != null ? cb.lookback_months + ' months' : 'Silent') + (cb.fraud_extension ? '<small>Fraud: ' + esc(trim(cb.fraud_extension, 60)) + '</small>' : '') + '</td>' +
-        '<td>' + esc(rs.frequency_limit ? trim(rs.frequency_limit, 70) : 'Silent') + '</td>' +
-        '<td>' + esc(sampleText(r)) + '</td>' +
-        '<td>' + days(mr.response_deadline_days) + '<small>' + esc((mr.deemed_approved_if_no_response === true ? 'No response = approved' : 'No deemed-approval rule')) + '</small></td>' +
-        '<td>' + esc(amended(r)) + (n ? '<small class="xnext">Change eff. ' + fmtDate(n.effective) + '</small>' : '') + '</td>' +
-        '<td>' + fmtDate(r.verified.audit_fields) + (r.verified.last_change_check ? '<small>Checked for changes ' + fmtDate(r.verified.last_change_check) + '</small>' : '') + '</td></tr>';
-    }).join('') || '<tr><td colspan="9" class="xempty">No states match. Clear a filter.</td></tr>';
-  }
-  function trim(t, n) { t = String(t || ''); return t.length > n ? t.slice(0, n - 1).trim() + '…' : t; }
+  function scPlain(abbr) { return scList(abbr).map(x => x.short + ': ' + STATUS_SHORT[x.status] + (x.c && x.c.notEstablished ? ' (no rate rule)' : '')).join('; '); }
   function quoteBlock(b) {
     if (!b) return '';
     let h = b.quote ? '<blockquote class="statute-quote">' + esc(b.quote) + '</blockquote><p class="xpin">' + esc(b.pinpoint || '') + '</p>' : '';
     (b.more_quotes || []).forEach(m => { if (m && m.quote) h += '<blockquote class="statute-quote">' + esc(m.quote) + '</blockquote><p class="xpin">' + esc(m.pinpoint || '') + '</p>'; });
     return h;
   }
-  function kv(pairs) { return '<dl class="xkv">' + pairs.filter(p => p[1] != null && p[1] !== '').map(p => '<dt>' + esc(p[0]) + '</dt><dd>' + esc(p[1]) + '</dd>').join('') + '</dl>'; }
-  function openAudit(abbr) {
-    const r = byAbbr[abbr]; if (!r) return;
-    const c = r.claims, cb = r.chargebacks, rs = r.rate_submission, mr = r.manufacturer_response, pe = r.penalties, ld = r.law_dates || {}, n = nextChange(r);
-    $('auditTitle').textContent = r.name + ' · ' + r.state;
-    $('auditContent').innerHTML =
-      '<div class="state-summary"><div class="statute">' + esc((r.cites || []).join(' · ')) + '</div>' +
-      '<p><strong>Law last amended:</strong> ' + esc(amended(r)) + (ld.last_amending_act ? ' — ' + esc(ld.last_amending_act) : '') + (ld.originally_enacted_year ? '. Originally enacted ' + esc(ld.originally_enacted_year) + '.' : '') + '</p>' +
-      (n ? '<p class="xnextbox"><strong>Scheduled change · effective ' + fmtDate(n.effective) + ':</strong> ' + esc(n.act || '') + ' — ' + esc(n.summary || '') + '</p>' : '') +
-      '<p><strong>Last verified:</strong> audit fields ' + fmtDate(r.verified.audit_fields) + '; coverage cells ' + fmtDate(r.verified.coverage) + (r.verified.last_change_check ? '. Last weekly check for law changes: ' + fmtDate(r.verified.last_change_check) : '') + '. Source: ' + esc(r.source_quality) + '. Confidence: ' + esc(r.confidence) + '.</p>' +
-      '<div class="xbtns"><a class="quiet" href="downloads/state-pdfs/' + r.state + '.pdf" target="_blank" rel="noopener">Open one-page PDF ↗</a>' + link(r.official_url, 'Official text') + '</div></div>' +
-      '<div class="state-sections">' +
-      sec('Claims', kv([['Decision deadline', days(c.decision_deadline_days)], ['Late claims', c.deemed_approved_if_late === true ? 'Deemed approved' : 'No deemed-approval rule in statute'], ['Payment deadline', c.payment_deadline_days != null ? days(c.payment_deadline_days) + (c.payment_deadline_trigger ? ' (' + c.payment_deadline_trigger + ')' : '') : '—'], ['Dealer filing deadline', c.dealer_filing_deadline || 'Silent'], ['Resubmission', c.resubmission_rights], ['Denial requirements', c.denial_requirements]]) + quoteBlock(c)) +
-      sec('Audits and chargebacks', kv([['Lookback window', cb.lookback_months != null ? cb.lookback_months + ' months' : 'Silent'], ['Fraud', cb.fraud_extension], ['Limits', cb.limits]]) + quoteBlock(cb)) +
-      sec('Retail rate submission', kv([['Frequency', rs.frequency_limit || 'Silent'], ['Sample', sampleText(r)], ['Sample detail', (rs.sample || {}).other], ['Formula', rs.formula], ['Who selects ROs', rs.who_selects], ['Excluded from sample', (rs.exclusions || []).map(x => EXCL[x] || x).join('; ') || 'None listed'], ['Statute wording', rs.exclusions_text], ['New rate effective', rs.new_rate_effective], ['Note', r.calc.note]]) + quoteBlock(rs)) +
-      sec('Manufacturer response and challenge', kv([['Response deadline', days(mr.response_deadline_days)], ['No response', mr.deemed_approved_if_no_response === true ? 'Rate deemed approved' : 'No deemed-approval rule in statute'], ['Challenge standard', mr.challenge_standard], ['Challenge method', mr.challenge_method], ['Dispute forum', mr.dispute_forum]]) + quoteBlock(mr)) +
-      sec('Penalties and remedies', kv([['Private remedies', pe.private_remedies], ['Administrative sanctions', pe.admin_sanctions], ['Citations', pe.cite]])) +
-      sec('Notes', '<p>' + esc(r.notes) + '</p><p class="xpin">Law history source: ' + esc(ld.history_source || '') + '</p>') +
-      '</div>';
-    const d = $('auditDialog'); if (!d.open) d.showModal(); d.scrollTop = 0;
+  function firstSentence(t, n) { const m = String(t || '').split(/(?<=[.;])\s+(?=[A-Z])/)[0]; return trim(m, n || 200); }
+  function adds(full, short) { return full && full.length <= 200 && full.length > (short || '').length + 35 ? esc(full) : ''; }
+  function kv(pairs) { const p = pairs.filter(x => x[1] != null && x[1] !== ''); return p.length ? '<dl class="xkv">' + p.map(x => '<dt>' + esc(x[0]) + '</dt><dd>' + esc(x[1]) + '</dd>').join('') + '</dl>' : ''; }
+
+  /* ---------- shell and routing ---------- */
+  function buildShell() {
+    const intro = document.querySelector('.intro');
+    if (!intro || $('xnav')) return;
+    const nav = document.createElement('nav');
+    nav.id = 'xnav'; nav.className = 'xnav'; nav.setAttribute('aria-label', 'Atlas sections');
+    nav.innerHTML = TABS.map(([id, label]) => '<a href="#' + id + '" data-tab="' + id + '"' + (id === 'research' ? ' class="xnav-quiet"' : '') + '>' + esc(label) + '</a>').join('');
+    intro.parentNode.insertBefore(nav, intro);
+    const note = document.createElement('p');
+    note.id = 'xresearchnote'; note.className = 'xnote xresearch'; note.hidden = true;
+    note.innerHTML = '<strong>Research detail.</strong> The original 20-feature classification matrix and the coverage counts behind the States pages. Click a count to list those states. For everyday lookups, use <a href="#states">States</a>.';
+    intro.parentNode.insertBefore(note, intro);
+    const host = document.createElement('div');
+    host.id = 'xpanels';
+    host.innerHTML = TABS.filter(t => t[0] !== 'research').map(([id, label]) => '<section id="x-' + id + '" class="xpanel" hidden aria-label="' + esc(label) + '"><div class="xloading">Loading…</div></section>').join('');
+    const ws = document.querySelector('.workspace');
+    ws.parentNode.insertBefore(host, ws);
+    const about = $('aboutBtn'); if (about) about.textContent = 'About';
+    window.addEventListener('hashchange', route);
   }
-  function sec(label, body) { return '<section class="state-section"><div class="section-label">' + esc(label) + '</div>' + body + '</section>'; }
-  function csvCell(v) { v = v == null ? '' : String(v); return /[",\n]/.test(v) ? '"' + v.replace(/"/g, '""') + '"' : v; }
-  function download(name, text, type) { const b = new Blob([text], {type: type || 'text/csv'}); const a = document.createElement('a'); a.href = URL.createObjectURL(b); a.download = name; document.body.appendChild(a); a.click(); setTimeout(() => { URL.revokeObjectURL(a.href); a.remove(); }, 500); }
-  function auditCsv() {
-    const H = ['State', 'Name', 'Claim decision days', 'Late claim deemed approved', 'Payment days', 'Payment trigger', 'Dealer filing deadline', 'Chargeback months', 'Fraud extension', 'Rate frequency', 'Sample rule', 'Excluded from sample', 'Mfr response days', 'No response deemed approved', 'Challenge standard', 'Dispute forum', 'Private remedies', 'Admin sanctions', 'Law last amended', 'Amending act', 'Next scheduled change', 'Last verified', 'Primary cite', 'Official URL', 'Confidence'];
-    const L = [H.join(',')];
-    auditRows().forEach(r => {
-      const c = r.claims, cb = r.chargebacks, rs = r.rate_submission, mr = r.manufacturer_response, n = nextChange(r);
-      L.push([r.state, r.name, c.decision_deadline_days, yesNo(c.deemed_approved_if_late, 'Yes', 'No'), c.payment_deadline_days, c.payment_deadline_trigger, c.dealer_filing_deadline, cb.lookback_months, cb.fraud_extension, rs.frequency_limit, sampleText(r), (rs.exclusions || []).join('; '), mr.response_deadline_days, yesNo(mr.deemed_approved_if_no_response, 'Yes', 'No'), mr.challenge_standard, mr.dispute_forum, r.penalties.private_remedies, r.penalties.admin_sanctions, amended(r), (r.law_dates || {}).last_amending_act, n ? n.effective + ' ' + (n.act || '') : '', r.verified.audit_fields, (r.cites || [])[0], r.official_url, r.confidence].map(csvCell).join(','));
+  function hashParam(k) { const m = new RegExp('[?&]' + k + '=([^&]+)').exec(location.hash); return m ? decodeURIComponent(m[1]) : ''; }
+  function parseHash() {
+    const h = (location.hash || '').replace(/^#/, '');
+    const m = /^state\/([A-Za-z]{2})$/.exec(h);
+    if (m) return {tab: 'states', state: m[1].toUpperCase()};
+    const base = h.split(/[?&]/)[0];
+    if (base === 'audit') { const s = hashParam('state').toUpperCase(); return {tab: 'states', state: s, redirect: s ? '#state/' + s : '#states'}; }
+    if (LEGACY[base]) return {tab: LEGACY[base], state: '', redirect: '#' + LEGACY[base]};
+    return {tab: TABS.some(t => t[0] === base) ? base : 'states', state: ''};
+  }
+  function route() {
+    const r = parseHash();
+    if (r.redirect && history.replaceState) history.replaceState(null, '', location.pathname + location.search + r.redirect);
+    const tab = r.tab;
+    document.querySelectorAll('#xnav a').forEach(a => a.setAttribute('aria-current', a.dataset.tab === tab ? 'page' : 'false'));
+    RESEARCH_ONLY.forEach(sel => document.querySelectorAll(sel).forEach(el => {
+      if (tab === 'research') { if (el.dataset.xhid) { el.hidden = el.dataset.xhid === 'was-hidden'; delete el.dataset.xhid; } if (el.id === 'xresearchnote') el.hidden = false; }
+      else if (!el.dataset.xhid) { el.dataset.xhid = el.hidden ? 'was-hidden' : 'shown'; el.hidden = true; }
+    }));
+    TABS.forEach(([id]) => { const p = $('x-' + id); if (p) p.hidden = id !== tab; });
+    if (tab === 'research') { document.title = 'Research detail · Warranty Atlas'; return; }
+    ensureData().then(() => render(tab, r.state)).catch(() => {});
+  }
+  function ensureData() {
+    if (loaded) return Promise.resolve();
+    if (loading) return loading;
+    const get = p => fetch(p + '?v=' + Date.now().toString(36).slice(0, 6)).then(r => { if (!r.ok) throw new Error(p + ' ' + r.status); return r.json(); });
+    loading = Promise.all([get('data/audit-fields.json'), get('data/weekly-checks.json'), get('data/news.json'), get('data/key-facts.json')]).then(([a, w, n, k]) => {
+      AUDIT = a.slice().sort((x, y) => x.name.localeCompare(y.name)); WEEKLY = w; NEWS = n; KEY = k || {states: {}}; loaded = true;
+      AUDIT.forEach(r => { byAbbr[r.state] = r; byName[r.name.toLowerCase()] = r; });
+      ((window.REFERENCE || {}).states || []).forEach(s => { REF[s.abbr] = s; });
+    }).catch(err => {
+      loading = null;
+      TABS.forEach(([id]) => { const p = $('x-' + id); if (p) p.innerHTML = '<p class="xerror">Could not load research data (' + esc(err.message) + '). Reload the page to try again.</p>'; });
+      throw err;
     });
-    download('warranty-atlas-audit-fields.csv', L.join('\n'));
+    return loading;
+  }
+  const rendered = {};
+  function render(tab, state) {
+    if (tab === 'states') return state && byAbbr[state] ? renderState(state) : renderHome();
+    document.title = (TABS.find(t => t[0] === tab) || ['', ''])[1] + ' · Warranty Atlas';
+    if (!rendered[tab]) { rendered[tab] = true; ({weekly: renderWeekly, news: renderNews, downloads: renderDownloads})[tab](); }
+  }
+
+  /* ---------- States: home table ---------- */
+  let homeBuilt = false, stateOpen = false, homeScroll = 0;
+  function renderHome() {
+    buildHome();
+    document.title = 'Warranty Atlas · State warranty reimbursement rules';
+    $('ks-home').hidden = false; $('ks-state').hidden = true;
+    if (stateOpen) { stateOpen = false; window.scrollTo(0, homeScroll); }
+  }
+  function buildHome() {
+    const p = $('x-states');
+    if (!homeBuilt) {
+      homeBuilt = true;
+      p.innerHTML = '<div id="ks-home"><div class="xhead"><div><h1 class="ks-h1">Warranty reimbursement rules by state</h1><p>How each state sets the warranty labor rate, how often dealers can ask for an increase, which labor-time guide applies, parts markup, and whether service contracts and CPO are covered. <strong>Click a state</strong> for its key facts and the statute text behind them.</p></div><div class="xstamp">Last verified <strong>' + fmtDate(maxVerified()) + '</strong><br>Checked for law changes every Monday</div></div>' +
+        '<div class="xtools"><label class="search"><span aria-hidden="true">⌕</span><input id="ksSearch" type="search" placeholder="Search a state…" aria-label="Search states"></label>' +
+        '<label>Show<select id="ksFilter"><option value="">All 50 states</option><option value="sc">Service contracts or CPO covered</option><option value="guide">Uses a non-OEM guide, multiplier or actual time</option><option value="request">Has a rate-request frequency rule</option><option value="change">Law change coming up</option></select></label>' +
+        '<button type="button" class="quiet ks-csv" id="ksCsv">Download table (CSV) ↓</button></div>' +
+        '<p class="xcount" id="ksCount" aria-live="polite"></p>' +
+        '<div class="table-scroll xtable-scroll ks-scroll" tabindex="0" role="region" aria-label="State rules table"><table class="xtable ks-table"><thead><tr>' +
+        ['State', 'Labor rate', 'Rate increase requests', 'Manufacturer response', 'Paid hours (labor-time guide)', 'Parts markup', 'Service contracts & CPO'].map(h => '<th scope="col">' + h + '</th>').join('') +
+        '</tr></thead><tbody id="ksBody"></tbody></table></div>' +
+        '<p class="xfoot"><strong>Service contracts &amp; CPO:</strong> Yes = the state\'s warranty rate and time rules apply; Conditional = only if the stated condition is met (usually who issues or pays). "Factory warranty only" means the statute is silent on or does not cover those contracts. Summaries are short on purpose; the state page has the statute quotes and conditions.</p></div>' +
+        '<div id="ks-state" hidden></div>';
+      ['ksSearch', 'ksFilter'].forEach(id => $(id).addEventListener('input', drawHome));
+      $('ksCsv').addEventListener('click', () => homeCsv(homeRows()));
+      $('ksBody').addEventListener('click', e => { if (e.target.closest('a')) return; const tr = e.target.closest('tr[data-state]'); if (tr) location.hash = '#state/' + tr.dataset.state; });
+      drawHome();
+    }
+  }
+  function maxVerified() { return AUDIT.reduce((m, r) => { const v = (r.verified || {}).last_change_check || (r.verified || {}).audit_fields || ''; return v > m ? v : m; }, ''); }
+  function homeRows() {
+    const q = ($('ksSearch').value || '').trim().toLowerCase(), f = $('ksFilter').value;
+    return AUDIT.filter(r => {
+      if (q && !(r.name.toLowerCase().includes(q) || r.state.toLowerCase() === q)) return false;
+      if (f === 'sc' && !scList(r.state).some(x => x.status === 'yes' || x.status === 'conditional')) return false;
+      if (f === 'guide' && !['independent_guide', 'multiplier', 'actual_time', 'negotiated_other'].includes(hoursShort(r.state).id)) return false;
+      if (f === 'request' && !r.rate_submission.frequency_limit) return false;
+      if (f === 'change' && !nextChange(r)) return false;
+      return true;
+    });
+  }
+  function drawHome() {
+    const rows = homeRows();
+    $('ksCount').textContent = rows.length === 50 ? 'All 50 states' : rows.length + ' of 50 states';
+    $('ksBody').innerHTML = rows.map(r => {
+      const k = kf(r.state), h = hoursShort(r.state), n = nextChange(r);
+      return '<tr data-state="' + r.state + '"><th scope="row"><a class="ks-state" href="#state/' + r.state + '">' + esc(r.name) + ' <span class="abbr">' + r.state + '</span></a>' +
+        (n ? '<span class="ks-change">Change ' + fmtDate(n.effective) + '</span>' : '') + '</th>' +
+        '<td>' + esc(k.labor || '—') + '</td>' +
+        '<td>' + esc(k.requests || '—') + '<small>' + esc(sampleShort(r)) + '</small></td>' +
+        '<td>' + esc(responseShort(r)) + '</td>' +
+        '<td>' + esc(h.label) + (h.note ? '<small>' + esc(h.note) + '</small>' : '') + '</td>' +
+        '<td>' + esc(k.parts || '—') + '</td>' +
+        '<td>' + scShort(r.state) + '</td></tr>';
+    }).join('') || '<tr><td colspan="7" class="xempty">No states match. Clear the search or filter.</td></tr>';
+  }
+  function csvCell(v) { v = v == null ? '' : String(v); return /[",\n]/.test(v) ? '"' + v.replace(/"/g, '""') + '"' : v; }
+  function download(name, text) { const b = new Blob(['﻿' + text], {type: 'text/csv'}); const a = document.createElement('a'); a.href = URL.createObjectURL(b); a.download = name; document.body.appendChild(a); a.click(); setTimeout(() => { URL.revokeObjectURL(a.href); a.remove(); }, 500); }
+  function homeCsv(rows) {
+    const H = ['State', 'Name', 'Labor rate', 'Rate increase requests', 'Rate sample', 'Manufacturer response', 'Paid hours', 'Paid hours note', 'Labor-time multiplier', 'Parts markup', 'Mfr service contract', 'CPO', 'Independent service contract', 'Claim decision days', 'Late claims deemed approved', 'Claim payment days', 'Chargeback lookback months', 'Law last amended', 'Next scheduled change', 'Last verified', 'Primary cite', 'Official URL'];
+    const L = [H.join(',')];
+    rows.forEach(r => {
+      const k = kf(r.state), h = hoursShort(r.state), sc = scList(r.state), n = nextChange(r), c = r.claims;
+      L.push([r.state, r.name, k.labor, k.requests, sampleLong(r), responseShort(r), h.label, h.note, multiplierText(r.state), k.parts,
+        ...sc.map(x => STATUS_SHORT[x.status] + (x.c && x.c.notEstablished ? ' (no rate rule)' : '')),
+        c.decision_deadline_days, c.deemed_approved_if_late === true ? 'Yes' : 'No rule', c.payment_deadline_days, r.chargebacks.lookback_months,
+        amended(r), n ? n.effective + ' ' + (n.act || '') : '', (r.verified || {}).audit_fields, (r.cites || [])[0], r.official_url].map(csvCell).join(','));
+    });
+    download('warranty-atlas-states-' + TODAY + '.csv', L.join('\r\n'));
+  }
+
+  /* ---------- States: overview page ---------- */
+  function fact(label, answer, sub, details, id) {
+    return '<div class="kf-row"' + (id ? ' id="kf-' + id + '"' : '') + '><div class="kf-label">' + esc(label) + '</div><div class="kf-body"><div class="kf-answer">' + answer + '</div>' +
+      (sub ? '<div class="kf-sub">' + sub + '</div>' : '') +
+      (details ? '<details class="kf-more"><summary>Full details</summary><div class="kf-detail">' + details + '</div></details>' : '') + '</div></div>';
+  }
+  function renderState(abbr) {
+    buildHome();
+    if (!stateOpen && !$('x-states').hidden && !$('ks-home').hidden) homeScroll = window.scrollY;
+    stateOpen = true;
+    const r = byAbbr[abbr], s = REF[abbr] || {}, k = kf(abbr), f = cov(abbr, 'factory') || {};
+    const c = r.claims, cb = r.chargebacks, rs = r.rate_submission, mr = r.manufacturer_response, pe = r.penalties, ld = r.law_dates || {};
+    const n = nextChange(r), rc = recentChange(r), h = hoursShort(abbr), sc = scList(abbr);
+    const i = AUDIT.indexOf(r), prev = AUDIT[i - 1], next = AUDIT[i + 1];
+    document.title = r.name + ' · Warranty Atlas';
+
+    const laborDetail = kv([['Rule', s.labor], ['How the rate is set (v3 research)', f.stateHourlyRate !== s.labor ? f.stateHourlyRate : ''], ['Formula', rs.formula]]) + quoteBlock(rs);
+    const reqDetail = kv([['Frequency', rs.frequency_limit || 'No frequency limit stated'], ['Sample', sampleLong(r)], ['Sample detail', (rs.sample || {}).other], ['Who selects the ROs', rs.who_selects],
+      ['Excluded from the sample', (rs.exclusions || []).map(x => EXCL[x] || x).join('; ')], ['Statute wording on exclusions', rs.exclusions_text], ['New rate takes effect', rs.new_rate_effective], ['Note', (r.calc || {}).note]]);
+    const mrDetail = kv([['Response deadline', days(mr.response_deadline_days)], ['If no response', mr.deemed_approved_if_no_response === true ? 'Rate deemed approved' : 'No deemed-approval rule in statute'], ['Challenge standard', mr.challenge_standard], ['How to challenge', mr.challenge_method], ['Disputes go to', mr.dispute_forum]]) + quoteBlock(mr);
+    const hoursDetail = kv([['Classification', f.paidHours], ['What it means', f.hoursNote], ['Rule (original research)', s.time], ['Date note', f.dateNote]]) + (f.quote ? '<p class="xpin"><strong>Scope quote (factory warranty):</strong></p>' + quoteBlock({quote: f.quote, pinpoint: f.pinpoint}) : '');
+    const multDetail = abbr === 'IL' || abbr === 'NJ' || abbr === 'WI' ? kv([['Rule', multiplierText(abbr)], ['Paid-hours note', f.hoursNote]]) : '<p>No labor-time multiplier was found in the reviewed statute. Paid hours follow the rule above.</p>';
+    const partsDetail = kv([['Rule', s.parts], ['Rate sample (parts and labor)', s.sample], ['Statute', s.statute], ['Note', s.note], ['Also', s.additional], ['Source of this summary', s.basis], ['Source date', s.sourceDate]]) +
+      '<p class="xpin">' + [link(s.url, 'Summary source'), link((s.original || {}).url, 'Original text')].filter(Boolean).join(' · ') + '</p>';
+    const scDetail = '<p class="xnote">' + esc(PROGRAM_SCOPE) + '</p>' + sc.map(x => {
+      const cc = x.c || {};
+      return '<div class="kf-cov"><h4>' + esc(x.long) + ': ' + esc(STATUS_SHORT[x.status]) + '</h4><p>' + esc(cc.applicabilityNote || STATUS_LONG[x.status]) + '</p>' +
+        kv([['Hourly rate', (x.status === 'yes' || x.status === 'conditional') ? (cc.notEstablished ? cc.hourlyRate : 'Same method as factory warranty') : ''], ['Paid hours', (x.status === 'yes' || x.status === 'conditional') ? (cc.paidHours + (cc.hoursNote ? ' — ' + cc.hoursNote : '')) : ''], ['Date note', cc.dateNote]]) +
+        quoteBlock({quote: cc.quote, pinpoint: cc.pinpoint}) + '</div>';
+    }).join('');
+    const scAnswer = sc.map(x => '<span class="kf-sc"><span>' + esc(x.long) + '</span> <strong>' + esc(STATUS_SHORT[x.status]) + '</strong>' + (x.c && x.c.notEstablished ? ' <span class="ks-muted">(claim timing only; no rate rule)</span>' : '') + '</span>').join('');
+
+    const claimsDetail = kv([['Dealer filing deadline', c.dealer_filing_deadline || 'Not set in statute'], ['Payment', c.payment_deadline_days != null ? days(c.payment_deadline_days) + (c.payment_deadline_trigger ? ' ' + c.payment_deadline_trigger : '') : 'Not set in statute'], ['Resubmission', c.resubmission_rights], ['Denial requirements', c.denial_requirements]]) + quoteBlock(c);
+    const cbDetail = kv([['Lookback window', cb.lookback_months != null ? cb.lookback_months + ' months' : 'Not set in statute'], ['Fraud', cb.fraud_extension], ['Limits', cb.limits]]) + quoteBlock(cb);
+    const penDetail = kv([['Private remedies', pe.private_remedies], ['Administrative sanctions', pe.admin_sanctions], ['Citations', pe.cite]]);
+
+    const html = '<nav class="ks-crumbs" aria-label="State navigation"><a href="#states" class="ks-back">← All states</a><label class="ks-jump">Go to state <select id="ksJump">' + AUDIT.map(x => '<option value="' + x.state + '"' + (x.state === abbr ? ' selected' : '') + '>' + esc(x.name) + '</option>').join('') + '</select></label></nav>' +
+      '<header class="ks-head"><div><span class="eyebrow">STATE OVERVIEW</span><h1 class="ks-h1">' + esc(r.name) + ' <span class="abbr">' + abbr + '</span></h1>' +
+      '<p class="ks-cites">' + esc((r.cites || []).join(' · ')) + '</p>' +
+      '<p class="ks-dates"><span>Law last amended <strong>' + esc(amended(r)) + '</strong></span><span>Last verified <strong>' + fmtDate((r.verified || {}).audit_fields) + '</strong></span>' + ((r.verified || {}).last_change_check ? '<span>Checked for law changes <strong>' + fmtDate(r.verified.last_change_check) + '</strong></span>' : '') + '</p></div>' +
+      '<div class="ks-actions"><a class="xbtn-open" href="downloads/state-pdfs/' + abbr + '.pdf" target="_blank" rel="noopener">One-page PDF ↗</a>' + (safeUrl(r.official_url) ? '<a class="xbtn-save" href="' + esc(safeUrl(r.official_url)) + '" target="_blank" rel="noopener noreferrer">Official statute ↗</a>' : '') + '</div></header>' +
+      (n ? '<p class="xnextbox"><strong>Law change coming · effective ' + fmtDate(n.effective) + ':</strong> ' + esc(n.act || '') + (n.summary ? ' — ' + esc(n.summary) : '') + '</p>' : '') +
+      (rc ? '<p class="xnote"><strong>Recent change · effective ' + fmtDate(rc.effective) + ':</strong> ' + esc(rc.act || '') + (rc.summary ? ' — ' + esc(rc.summary) : '') + '</p>' : '') +
+      '<div class="ks-sectionhead"><h2>Key facts</h2><button type="button" class="quiet ks-expand" id="ksExpand" aria-pressed="false">Expand all details</button></div>' +
+      '<div class="kf">' +
+      fact('Labor rate', esc(k.labor || '—'), adds(s.labor, k.labor), laborDetail, 'labor') +
+      fact('Rate increase requests', esc(k.requests || '—'), esc(sampleLong(r)) + (rs.new_rate_effective ? '<br>New rate takes effect: ' + esc(trim(rs.new_rate_effective, 160)) : ''), reqDetail, 'requests') +
+      fact('Manufacturer response', esc(responseShort(r)), mr.challenge_standard ? esc(trim(mr.challenge_standard, 200)) : '', mrDetail, 'response') +
+      fact('Paid hours (labor-time guide)', esc(h.label), esc(h.note || (f.hoursNote && f.hoursNote.length <= 200 ? f.hoursNote : '')), hoursDetail, 'hours') +
+      fact('Labor-time multiplier', esc(multiplierText(abbr)), '', multDetail, 'multiplier') +
+      fact('Parts markup', esc(k.parts || '—'), adds(s.parts, k.parts), partsDetail, 'parts') +
+      fact('Service contracts & CPO', scAnswer, '', scDetail, 'sc') +
+      '</div>' +
+      '<div class="ks-sectionhead"><h2>Claims, audits and penalties</h2></div><div class="kf">' +
+      fact('Claim decision', esc(days(c.decision_deadline_days)) + (c.deemed_approved_if_late === true ? '; late = deemed approved' : ''), c.payment_deadline_days != null ? 'Payment ' + esc(days(c.payment_deadline_days) + (c.payment_deadline_trigger ? ' ' + c.payment_deadline_trigger : '')) : '', claimsDetail, 'claims') +
+      fact('Audits and chargebacks', cb.lookback_months != null ? esc(cb.lookback_months + '-month lookback') : 'No lookback limit in statute', cb.fraud_extension ? esc(trim(cb.fraud_extension, 180)) : '', cbDetail, 'chargebacks') +
+      fact('Penalties and remedies', '<span class="kf-plain">' + esc(firstSentence(pe.private_remedies) || 'See details') + '</span>', pe.admin_sanctions ? '<strong>Licensing / administrative:</strong> ' + esc(firstSentence(pe.admin_sanctions, 180)) : '', penDetail, 'penalties') +
+      '</div>' +
+      '<details class="ks-sources"><summary>Sources, confidence and research notes</summary><div class="kf-detail">' +
+      kv([['Citations', (r.cites || []).join(' · ')], ['Source quality', r.source_quality], ['Confidence', r.confidence], ['Coverage research cite', f.primaryCite], ['Definitions', f.definitionCite], ['Effective-date notes', f.effectiveNotes], ['Audit-field notes', r.notes], ['Coverage research notes', f.notes], ['Law history source', ld.history_source], ['Last amending act', ld.last_amending_act]]) +
+      '<p class="xpin">' + [link(r.official_url, 'Official text')].concat((f.urls || []).filter(u => u !== safeUrl(r.official_url)).slice(0, 4).map(u => link(u, 'Coverage source'))).filter(Boolean).join(' · ') + '</p></div></details>' +
+      '<nav class="ks-pager" aria-label="Previous and next state">' + (prev ? '<a href="#state/' + prev.state + '">← ' + esc(prev.name) + '</a>' : '<span></span>') + '<a href="#states">All states</a>' + (next ? '<a href="#state/' + next.state + '">' + esc(next.name) + ' →</a>' : '<span></span>') + '</nav>' +
+      '<p class="xfoot">Internal use only. Research summary, not legal advice. Verify against the cited statute before acting, and take disputes to Legal.</p>';
+
+    const box = $('ks-state');
+    box.innerHTML = html; box.hidden = false; $('ks-home').hidden = true;
+    $('ksJump').addEventListener('change', e => { location.hash = '#state/' + e.target.value; });
+    $('ksExpand').addEventListener('click', e => {
+      const open = e.currentTarget.getAttribute('aria-pressed') !== 'true';
+      box.querySelectorAll('details').forEach(d => { d.open = open; });
+      e.currentTarget.setAttribute('aria-pressed', String(open)); e.currentTarget.textContent = open ? 'Collapse all details' : 'Expand all details';
+    });
+    window.scrollTo(0, 0);
   }
 
   /* ---------- Weekly checks ---------- */
@@ -190,9 +302,9 @@
     const E = (WEEKLY.entries || []).slice().sort((a, b) => a.check_date < b.check_date ? 1 : -1);
     $('x-weekly').innerHTML = '<div class="xhead"><div><h2>Weekly checks</h2><p>Every Monday at 7 AM ET, Claude checks all 50 legislatures for enacted, effective and pending changes to warranty-reimbursement law, updates the Atlas when enacted law changes, and logs the result here. Pending bills are tracked but never loaded as law.</p></div><div class="xstamp">Last check <strong>' + fmtDate(E[0] && E[0].check_date) + '</strong><br>' + E.length + ' check' + (E.length === 1 ? '' : 's') + ' logged</div></div>' +
       E.map(e => '<article class="xweek"><header><time datetime="' + esc(e.check_date) + '">' + fmtDate(e.check_date) + '</time><span class="xbadge ' + (e.type === 'baseline' ? 'alt' : '') + '">' + esc((e.type || 'weekly').toUpperCase()) + '</span></header><h3>' + esc(e.headline) + '</h3><p>' + esc(e.summary) + '</p>' +
-        (e.items && e.items.length ? '<ul class="xitems">' + e.items.map(it => '<li><div class="xitem-top"><span class="xbadge ' + (it.category === 'pending' ? 'muted' : it.category === 'enacted_upcoming' ? '' : 'alt') + '">' + esc(CAT[it.category] || it.category) + '</span><strong>' + esc(it.state) + ' · ' + esc(it.bill) + '</strong>' + (it.effective ? '<span class="xpin">Effective ' + fmtDate(it.effective) + '</span>' : '') + '</div><p>' + esc(it.summary_short || it.summary) + '</p>' + (it.atlas_impact ? '<p class="xnote"><strong>Atlas impact:</strong> ' + esc(it.atlas_impact) + '</p>' : '') + '<p class="xpin">' + esc(it.status || '') + ' ' + link(it.source_url, 'Official source') + '</p>' + (it.summary && it.summary !== it.summary_short ? '<details><summary>Full summary</summary><p>' + esc(it.summary) + '</p></details>' : '') + '</li>').join('') + '</ul>' : '<p class="xnote">No enacted, effective or pending changes found this week.</p>') +
-        (e.site_changes && e.site_changes.length ? '<details open><summary>Site updates this week</summary><ul>' + e.site_changes.map(s => '<li>' + esc(s) + '</li>').join('') + '</ul></details>' : '') +
-        (e.gaps && e.gaps.length ? '<details><summary>Gaps and limits</summary><ul>' + e.gaps.map(s => '<li>' + esc(s) + '</li>').join('') + '</ul></details>' : '') +
+        (e.items && e.items.length ? '<ul class="xitems">' + e.items.map(it => '<li><div class="xitem-top"><span class="xbadge ' + (it.category === 'pending' ? 'muted' : it.category === 'enacted_upcoming' ? '' : 'alt') + '">' + esc(CAT[it.category] || it.category) + '</span><strong>' + esc(it.state) + ' · ' + esc(it.bill) + '</strong>' + (it.effective ? '<span class="xpin">Effective ' + fmtDate(it.effective) + '</span>' : '') + (byAbbr[it.state] ? '<a class="xpin" href="#state/' + esc(it.state) + '">State overview →</a>' : '') + '</div><p>' + esc(it.summary_short || it.summary) + '</p>' + (it.atlas_impact ? '<p class="xnote"><strong>Atlas impact:</strong> ' + esc(it.atlas_impact) + '</p>' : '') + '<p class="xpin">' + esc(it.status || '') + ' ' + link(it.source_url, 'Official source') + '</p>' + (it.summary && it.summary !== it.summary_short ? '<details><summary>Full summary</summary><p>' + esc(it.summary) + '</p></details>' : '') + '</li>').join('') + '</ul>' : '<p class="xnote">No enacted, effective or pending changes found this week.</p>') +
+        (e.site_changes && e.site_changes.length ? '<details open><summary>Site updates this week</summary><ul>' + e.site_changes.map(x => '<li>' + esc(x) + '</li>').join('') + '</ul></details>' : '') +
+        (e.gaps && e.gaps.length ? '<details><summary>Gaps and limits</summary><ul>' + e.gaps.map(x => '<li>' + esc(x) + '</li>').join('') + '</ul></details>' : '') +
         (e.method ? '<details><summary>How this check was run</summary><p>' + esc(e.method) + '</p></details>' : '') + '</article>').join('');
   }
 
@@ -200,7 +312,7 @@
   function renderNews() {
     const W = (NEWS.weeks || []).slice().sort((a, b) => a.week_of < b.week_of ? 1 : -1);
     $('x-news').innerHTML = '<div class="xhead"><div><h2>News · 3–5 items a week</h2><p>Only items directly about state warranty-reimbursement law: retail-rate and labor-time laws, service-contract and CPO reimbursement, claims and chargebacks, and board or court rulings. Each item is labeled by source type and perspective. Much of this coverage comes from dealer-side law firms and retail-rate vendors.</p></div></div>' +
-      W.map(w => '<section class="xnewsweek"><h3>Week of ' + fmtDate(w.week_of) + '</h3>' + (w.items || []).map(n => '<article class="xnews"><div class="xitem-top"><time>' + fmtDate(n.date) + '</time><span class="xbadge muted">' + esc(n.source_type || '') + '</span><span class="xbadge ' + (n.perspective === 'dealer-side' ? 'alt' : n.perspective === 'manufacturer-side' ? '' : 'muted') + '">' + esc((n.perspective || 'neutral').toUpperCase()) + '</span>' + (n.states || []).map(s => '<span class="xchip">' + esc(s) + '</span>').join('') + '</div><h4>' + (safeUrl(n.url) ? '<a href="' + esc(safeUrl(n.url)) + '" target="_blank" rel="noopener noreferrer">' + esc(n.title) + ' ↗</a>' : esc(n.title)) + '</h4><p class="xpin">' + esc(n.publisher) + '</p><p>' + esc(n.topic) + '</p><p class="xnote"><strong>Why it matters:</strong> ' + esc(n.why_it_matters) + '</p></article>').join('') + (w.items && w.items.length ? '' : '<p class="xnote">Nothing met the bar this week.</p>') + '</section>').join('');
+      W.map(w => '<section class="xnewsweek"><h3>Week of ' + fmtDate(w.week_of) + '</h3>' + (w.items || []).map(n => '<article class="xnews"><div class="xitem-top"><time>' + fmtDate(n.date) + '</time><span class="xbadge muted">' + esc(n.source_type || '') + '</span><span class="xbadge ' + (n.perspective === 'dealer-side' ? 'alt' : n.perspective === 'manufacturer-side' ? '' : 'muted') + '">' + esc((n.perspective || 'neutral').toUpperCase()) + '</span>' + (n.states || []).map(x => byAbbr[x] ? '<a class="xchip" href="#state/' + esc(x) + '">' + esc(x) + '</a>' : '<span class="xchip">' + esc(x) + '</span>').join('') + '</div><h4>' + (safeUrl(n.url) ? '<a href="' + esc(safeUrl(n.url)) + '" target="_blank" rel="noopener noreferrer">' + esc(n.title) + ' ↗</a>' : esc(n.title)) + '</h4><p class="xpin">' + esc(n.publisher) + '</p><p>' + esc(n.topic) + '</p><p class="xnote"><strong>Why it matters:</strong> ' + esc(n.why_it_matters) + '</p></article>').join('') + (w.items && w.items.length ? '' : '<p class="xnote">Nothing met the bar this week.</p>') + '</section>').join('');
   }
 
   /* ---------- Downloads ---------- */
@@ -215,13 +327,15 @@
       card('Excel workbook', 'Summary, coverage (200 cells), audit fields, rate-sample rules, law dates, statute quotes, weekly log and news.', openA(office, 'Open in browser') + saveA('downloads/warranty-atlas.xlsx', 'Save .xlsx')) +
       card('All states · PDF', '50 one-page state summaries in one file.', openA('downloads/warranty-atlas-all-states.pdf', 'Open') + saveA('downloads/warranty-atlas-all-states.pdf')) +
       card('State PDFs · ZIP', '50 separate one-page PDFs in one ZIP file.', saveA('downloads/state-pdfs.zip', 'Save .zip')) +
+      card('States table · CSV', 'The States table: key facts plus claim, chargeback and law-date fields for all 50 states.', '<button type="button" class="xbtn-save" id="dlCsv">Save .csv ↓</button>') +
       card('Audit fields · JSON', 'Full research records with quotes.', openA('data/audit-fields.json', 'Open') + saveA('data/audit-fields.json')) +
       card('Coverage · JSON', '200 coverage records (v3).', openA('research/labor-by-coverage-v3.json', 'Open') + saveA('research/labor-by-coverage-v3.json')) +
       '</div><p class="xfoot">The Excel "Open in browser" button uses Microsoft\'s free online viewer. The workbook is public research data; no SOA data is included.</p>' +
       '<h3 class="xsub">One-page PDF by state</h3><p class="xfoot">Click a state to open its PDF in a new tab. Use the viewer\'s download or print button to keep a copy.</p><div class="xstates">' + AUDIT.map(r => '<a href="downloads/state-pdfs/' + r.state + '.pdf" target="_blank" rel="noopener" title="Open ' + esc(r.name) + ' PDF">' + r.state + '</a>').join('') + '</div>';
+    $('dlCsv').addEventListener('click', () => homeCsv(AUDIT));
   }
 
-  /* ---------- State drawer enrichment ---------- */
+  /* ---------- Research detail: enrich app.js state drawer ---------- */
   function enrichDrawer() {
     const content = $('stateContent'), title = $('stateTitle'); if (!content || !title) return;
     const obs = new MutationObserver(() => {
@@ -231,7 +345,7 @@
         box.innerHTML = '<div><span class="section-label">Law last amended</span><strong>' + esc(amended(r)) + '</strong>' + ((r.law_dates || {}).last_amending_act ? '<small>' + esc(trim(r.law_dates.last_amending_act, 90)) + '</small>' : '') + '</div>' +
           '<div><span class="section-label">Next scheduled change</span><strong>' + (n ? fmtDate(n.effective) : 'None found') + '</strong>' + (n ? '<small>' + esc(trim(n.summary || n.act, 90)) + '</small>' : '') + '</div>' +
           '<div><span class="section-label">Last verified</span><strong>' + fmtDate(r.verified.audit_fields) + '</strong><small>Coverage cells ' + fmtDate(r.verified.coverage) + (r.verified.last_change_check ? ' · Checked for changes ' + fmtDate(r.verified.last_change_check) : '') + '</small></div>' +
-          '<div class="xbtns"><a class="quiet" href="#audit?state=' + r.state + '" data-xclose>Audit fields →</a><a class="quiet" href="downloads/state-pdfs/' + r.state + '.pdf" target="_blank" rel="noopener">Open one-page PDF ↗</a></div>';
+          '<div class="xbtns"><a class="quiet" href="#state/' + r.state + '" data-xclose>State overview →</a><a class="quiet" href="downloads/state-pdfs/' + r.state + '.pdf" target="_blank" rel="noopener">Open one-page PDF ↗</a></div>';
         const anchor = content.querySelector('.state-summary'); if (anchor) anchor.after(box); else content.prepend(box);
         box.querySelectorAll('[data-xclose]').forEach(a => a.addEventListener('click', () => { const d = $('stateDialog'); if (d.open) d.close(); }));
       };

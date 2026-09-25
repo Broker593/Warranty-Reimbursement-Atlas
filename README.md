@@ -40,20 +40,26 @@ Mississippi's qualified-technician benchmark is in Factory time, not individual 
 
 The original v3 JSON and Markdown are preserved verbatim under `docs/research/`. V2 remains there as a historical source and is not loaded by the current site. The adapter reconciles older narrative sentences in FL, IL, WI, ND and NJ with the final v3 cells. Original quotations and pinpoints are retained; the RI pre-effective-date drawer labels the enacted quotation as upcoming and also shows prior statutory text. PA's independent-contract drawer shows the claim-timing scope quotation separately from its supplied warranty-rate quotation.
 
-## Audit fields, weekly checks, news and downloads (September 25, 2026)
+## Site layout (September 25, 2026 redesign)
 
-New tabs sit above the date selector: **Audit fields**, **Weekly checks**, **News**, **Downloads**. They are rendered by `docs/extras.js` / `docs/extras.css` from:
+Tabs: **States** (home) · **Weekly checks** · **News** · **Downloads** · **Research detail**. Rendered by `docs/extras.js` / `docs/extras.css`.
+
+- **States** (`#states`): one row per state with plain-English columns: labor rate, rate increase requests (frequency and RO sample), manufacturer response, paid hours (labor-time guide), parts markup, and service contracts and CPO. Search, a "Show" filter and a CSV export.
+- **State overview** (`#state/XX`): key facts with "Full details" fold-outs (statute quotes, pinpoints, conditions), then claims, audits and chargebacks, penalties, and sources. Links to the one-page PDF and the official statute. It shows the law in effect today and flags scheduled changes.
+- **Research detail** (`#research`): the original 20-feature matrix, coverage counts and date selector (`docs/app.js`), unchanged.
+- Old links still work: `#atlas` → `#research`; `#audit` → `#states`; `#audit?state=XX` → `#state/XX`.
 
 | File | Contents |
 |---|---|
+| `docs/data/key-facts.json` | Short plain-English labels (labor rate, request frequency, parts markup, plus manufacturer-response, paid-hours and multiplier overrides where needed). Summaries only, no new research; update the state's entry whenever enacted law changes one of these rules. |
 | `docs/data/audit-fields.json` | 50 states: claim decision/payment deadlines, deemed approval, dealer filing deadlines, chargeback windows, rate-submission frequency and sample rules, exclusions, manufacturer response deadline and challenge standard, dispute forum, penalties, law dates (last amended, amending act, original enactment, next scheduled change), verification dates, and a `calc` block summarizing each state's retail-rate sample rule. Every block carries a verbatim quote (40 words max) and pinpoint. |
 | `docs/data/weekly-checks.json` | Weekly legislative check log (newest entry shown first). |
 | `docs/data/news.json` | 3–5 relevant items per week, labeled by source type and perspective. |
 | `docs/downloads/` | Excel workbook, one-page PDF per state, all-states PDF and ZIP. Built by `tools/build_exports.py`. |
 
-"Silent" / "No deemed-approval rule" means the reviewed statute says nothing; contracts, regulations or other law may still apply. The state drawer shows **Law last amended**, **Next scheduled change** and **Last verified** for every state.
+"Silent" / "Not set in statute" means the reviewed statute says nothing; contracts, regulations or other law may still apply.
 
-A retail-rate calculator was built and removed on September 25, 2026 pending a redesign; the sample rules remain in the Audit fields tab and the Excel workbook.
+A retail-rate calculator was built and removed on September 25, 2026 pending a redesign; the sample rules remain on each state page and in the Excel workbook.
 
 The weekly check runs Mondays at 7 AM ET and follows `tools/WEEKLY_CHECK.md`. Pending bills are logged, never loaded as law.
 

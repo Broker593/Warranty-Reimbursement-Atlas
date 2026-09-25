@@ -20,6 +20,7 @@ Goal: find anything **enacted, taking effect, or moving** that changes a state's
 - Read the enacted text (official site or enrolled act). Quote verbatim, 40 words max, with pinpoint.
 - Audit fields: update the state's record in `docs/data/audit-fields.json` (the changed block, `law_dates`, `verified.audit_fields` = check date). If the change is enacted but not yet effective, put it in `law_dates.next_scheduled_change` instead of changing current values.
 - Coverage cells (`docs/research/labor-by-coverage-v3.json`, mirrored in `docs/coverage-data.js` and adapted by `docs/coverage.js`): do **not** hand-edit unless the change is clear-cut and you update all three consistently and run `node --check`. Otherwise log "Coverage cell change needed" under `site_changes` so a person reviews it.
+- Key facts: if the change affects the labor rate, rate-request frequency, parts markup, manufacturer response, paid hours or multiplier, update that state's short label in `docs/data/key-facts.json` (plain English, summary only) and set its `updated` date.
 - For every state you scanned, set `verified.last_change_check` = check date.
 
 ## 3. News (3–5 items, zero is fine)
@@ -42,7 +43,7 @@ Headline format: `N enacted changes, N pending bills, N law-data updates`. If no
 ## 5. Rebuild, verify, publish
 - `python3 tools/build_exports.py --date <check date>` (must report 50 states; every state PDF must be one page).
 - `node --check docs/app.js docs/data.js docs/coverage.js docs/coverage-data.js docs/extras.js`
-- `python3 -c "import json;[json.load(open(p)) for p in ['docs/data/audit-fields.json','docs/data/weekly-checks.json','docs/data/news.json']]"`
+- `python3 -c "import json;[json.load(open(p)) for p in ['docs/data/audit-fields.json','docs/data/weekly-checks.json','docs/data/news.json','docs/data/key-facts.json']];k=json.load(open('docs/data/key-facts.json'))['states'];a=json.load(open('docs/data/audit-fields.json'));assert sorted(k)==sorted(r['state'] for r in a)"`
 - Commit to `main`: `Weekly check <date>: <headline>` and push. GitHub Pages publishes in a few minutes.
 - If the push is refused (no repository access), do not work around it: report that the repo must be added to the task's sources, and attach the changed JSON files to the run summary.
 

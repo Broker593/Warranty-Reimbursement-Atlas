@@ -3457,7 +3457,7 @@
    ],
    "denominator": "labor_hours",
    "multiplier": true,
-   "note": "New Jersey also allows an optional average retail labor-time multiplier (customer-billed hours ÷ OEM hours). Supply OEM hours to see it."
+   "note": "New Jersey also allows an optional labor-time multiplier: customer-billed hours ÷ OEM hours for the same sampled repairs, applied to OEM warranty times."
   },
   "verified": {
    "audit_fields": "2026-09-25",
@@ -5110,7 +5110,7 @@
    ],
    "denominator": "oem_hours",
    "multiplier": false,
-   "note": "Wisconsin divides customer labor charges by the hours the manufacturer's warranty time allowances would allow for the same repairs. Supply OEM hours for each RO."
+   "note": "Wisconsin divides customer labor charges by the hours the manufacturer's warranty time allowances would allow for the same repairs, so each sampled RO needs its OEM hours."
   },
   "verified": {
    "audit_fields": "2026-09-25",
