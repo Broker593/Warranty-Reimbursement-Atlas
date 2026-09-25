@@ -42,6 +42,14 @@ window.REFERENCE = {
       "example": "Florida’s no-agreement route offers the greater result under specified methods."
     },
     {
+      "id": "normalized_rate",
+      "group": "Hourly rate",
+      "name": "OEM-hour-normalized labor rate",
+      "short": "OEM-hour rate conversion",
+      "description": "Customer labor charges are divided by OEM-guide hours for the same repairs. The resulting effective rate is applied to OEM warranty hours, incorporating the time difference into the rate. This is an hourly-dollar-rate conversion. OEM warranty hours remain the paid-hours basis; do not apply a second time multiplier.",
+      "example": "Wisconsin. Do not apply a second time multiplier to duplicate the adjustment."
+    },
+    {
       "id": "independent_guide_floor",
       "group": "Paid hours",
       "name": "Independent-guide floor (unless agreed)",
@@ -88,14 +96,6 @@ window.REFERENCE = {
       "short": "OEM time multiplier",
       "description": "An express factor adjusts OEM labor-guide hours. This is a change to paid time, distinct from the nominal hourly rate.",
       "example": "Illinois: conditional 1.5 factor. New Jersey: dealer-derived ratio of customer-billed hours to OEM hours."
-    },
-    {
-      "id": "normalized_rate",
-      "group": "Hourly rate",
-      "name": "OEM-hour-normalized labor rate",
-      "short": "OEM-hour rate conversion",
-      "description": "Customer labor charges are divided by OEM-guide hours for the same repairs. The resulting effective rate is applied to OEM warranty hours, incorporating the time difference into the rate. This is an hourly-dollar-rate conversion. OEM warranty hours remain the paid-hours basis; do not apply a second time multiplier.",
-      "example": "Wisconsin. Do not apply a second time multiplier to duplicate the adjustment."
     },
     {
       "id": "actual_time",
