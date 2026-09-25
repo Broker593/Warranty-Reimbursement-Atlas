@@ -169,7 +169,7 @@
       '<p><strong>Law last amended:</strong> ' + esc(amended(r)) + (ld.last_amending_act ? ' — ' + esc(ld.last_amending_act) : '') + (ld.originally_enacted_year ? '. Originally enacted ' + esc(ld.originally_enacted_year) + '.' : '') + '</p>' +
       (n ? '<p class="xnextbox"><strong>Scheduled change · effective ' + fmtDate(n.effective) + ':</strong> ' + esc(n.act || '') + ' — ' + esc(n.summary || '') + '</p>' : '') +
       '<p><strong>Last verified:</strong> audit fields ' + fmtDate(r.verified.audit_fields) + '; coverage cells ' + fmtDate(r.verified.coverage) + (r.verified.last_change_check ? '. Last weekly check for law changes: ' + fmtDate(r.verified.last_change_check) : '') + '. Source: ' + esc(r.source_quality) + '. Confidence: ' + esc(r.confidence) + '.</p>' +
-      '<div class="xbtns"><a class="quiet" href="downloads/state-pdfs/' + r.state + '.pdf" download>One-page PDF ↓</a><a class="quiet" href="#calculator?state=' + r.state + '" data-goto="calc">Open in rate calculator →</a>' + link(r.official_url, 'Official text') + '</div></div>' +
+      '<div class="xbtns"><a class="quiet" href="downloads/state-pdfs/' + r.state + '.pdf" target="_blank" rel="noopener">Open one-page PDF ↗</a><a class="quiet" href="#calculator?state=' + r.state + '" data-goto="calc">Open in rate calculator →</a>' + link(r.official_url, 'Official text') + '</div></div>' +
       '<div class="state-sections">' +
       sec('Claims', kv([['Decision deadline', days(c.decision_deadline_days)], ['Late claims', c.deemed_approved_if_late === true ? 'Deemed approved' : 'No deemed-approval rule in statute'], ['Payment deadline', c.payment_deadline_days != null ? days(c.payment_deadline_days) + (c.payment_deadline_trigger ? ' (' + c.payment_deadline_trigger + ')' : '') : '—'], ['Dealer filing deadline', c.dealer_filing_deadline || 'Silent'], ['Resubmission', c.resubmission_rights], ['Denial requirements', c.denial_requirements]]) + quoteBlock(c)) +
       sec('Audits and chargebacks', kv([['Lookback window', cb.lookback_months != null ? cb.lookback_months + ' months' : 'Silent'], ['Fraud', cb.fraud_extension], ['Limits', cb.limits]]) + quoteBlock(cb)) +
@@ -356,14 +356,21 @@
 
   /* ---------- Downloads ---------- */
   function renderDownloads() {
-    $('x-downloads').innerHTML = '<div class="xhead"><div><h2>Downloads for workpapers</h2><p>Regenerated with every weekly check. Each file shows the date it was built.</p></div></div>' +
-      '<div class="xdl"><a class="xdl-card" href="downloads/warranty-atlas.xlsx" download><strong>Excel workbook ↓</strong><span>Summary, coverage (200 cells), audit fields, rate-sample rules, law dates, statute quotes, weekly log and news.</span></a>' +
-      '<a class="xdl-card" href="downloads/warranty-atlas-all-states.pdf" download><strong>All states · PDF ↓</strong><span>50 one-page state summaries in one file.</span></a>' +
-      '<a class="xdl-card" href="downloads/state-pdfs.zip" download><strong>State PDFs · ZIP ↓</strong><span>50 separate one-page PDFs.</span></a>' +
-      '<a class="xdl-card" href="calculator-template.csv" download><strong>Calculator template ↓</strong><span>CSV layout for the rate calculator.</span></a>' +
-      '<a class="xdl-card" href="data/audit-fields.json" download><strong>Audit fields · JSON ↓</strong><span>Full research records with quotes.</span></a>' +
-      '<a class="xdl-card" href="research/labor-by-coverage-v3.json" download><strong>Coverage · JSON ↓</strong><span>200 coverage records (v3).</span></a></div>' +
-      '<h3 class="xsub">One-page PDF by state</h3><div class="xstates">' + AUDIT.map(r => '<a href="downloads/state-pdfs/' + r.state + '.pdf" download title="' + esc(r.name) + '">' + r.state + '</a>').join('') + '</div>';
+    const abs = p => new URL(p, location.href).href;
+    const openA = (href, label) => '<a class="xbtn-open" href="' + href + '" target="_blank" rel="noopener">' + label + ' ↗</a>';
+    const saveA = (href, label) => '<a class="xbtn-save" href="' + href + '" download>' + (label || 'Save a copy') + ' ↓</a>';
+    const card = (title, desc, btns) => '<div class="xdl-card"><strong>' + title + '</strong><span>' + desc + '</span><div class="xdl-btns">' + btns + '</div></div>';
+    const office = 'https://view.officeapps.live.com/op/view.aspx?src=' + encodeURIComponent(abs('downloads/warranty-atlas.xlsx'));
+    $('x-downloads').innerHTML = '<div class="xhead"><div><h2>Downloads for workpapers</h2><p><strong>Open</strong> views the file in a new browser tab, where you can read, print or save it. <strong>Save a copy</strong> sends it straight to your Downloads folder. Files are rebuilt with every weekly check and show the date they were built.</p></div></div>' +
+      '<div class="xdl">' +
+      card('Excel workbook', 'Summary, coverage (200 cells), audit fields, rate-sample rules, law dates, statute quotes, weekly log and news.', openA(office, 'Open in browser') + saveA('downloads/warranty-atlas.xlsx', 'Save .xlsx')) +
+      card('All states · PDF', '50 one-page state summaries in one file.', openA('downloads/warranty-atlas-all-states.pdf', 'Open') + saveA('downloads/warranty-atlas-all-states.pdf')) +
+      card('State PDFs · ZIP', '50 separate one-page PDFs in one ZIP file.', saveA('downloads/state-pdfs.zip', 'Save .zip')) +
+      card('Calculator template', 'CSV layout for the rate calculator. Opens in Excel.', saveA('calculator-template.csv', 'Save .csv')) +
+      card('Audit fields · JSON', 'Full research records with quotes.', openA('data/audit-fields.json', 'Open') + saveA('data/audit-fields.json')) +
+      card('Coverage · JSON', '200 coverage records (v3).', openA('research/labor-by-coverage-v3.json', 'Open') + saveA('research/labor-by-coverage-v3.json')) +
+      '</div><p class="xfoot">The Excel "Open in browser" button uses Microsoft\'s free online viewer. The workbook is public research data; no SOA data is included.</p>' +
+      '<h3 class="xsub">One-page PDF by state</h3><p class="xfoot">Click a state to open its PDF in a new tab. Use the viewer\'s download or print button to keep a copy.</p><div class="xstates">' + AUDIT.map(r => '<a href="downloads/state-pdfs/' + r.state + '.pdf" target="_blank" rel="noopener" title="Open ' + esc(r.name) + ' PDF">' + r.state + '</a>').join('') + '</div>';
   }
 
   /* ---------- State drawer enrichment ---------- */
@@ -376,7 +383,7 @@
         box.innerHTML = '<div><span class="section-label">Law last amended</span><strong>' + esc(amended(r)) + '</strong>' + ((r.law_dates || {}).last_amending_act ? '<small>' + esc(trim(r.law_dates.last_amending_act, 90)) + '</small>' : '') + '</div>' +
           '<div><span class="section-label">Next scheduled change</span><strong>' + (n ? fmtDate(n.effective) : 'None found') + '</strong>' + (n ? '<small>' + esc(trim(n.summary || n.act, 90)) + '</small>' : '') + '</div>' +
           '<div><span class="section-label">Last verified</span><strong>' + fmtDate(r.verified.audit_fields) + '</strong><small>Coverage cells ' + fmtDate(r.verified.coverage) + (r.verified.last_change_check ? ' · Checked for changes ' + fmtDate(r.verified.last_change_check) : '') + '</small></div>' +
-          '<div class="xbtns"><a class="quiet" href="#audit?state=' + r.state + '" data-xclose>Audit fields →</a><a class="quiet" href="downloads/state-pdfs/' + r.state + '.pdf" download>One-page PDF ↓</a></div>';
+          '<div class="xbtns"><a class="quiet" href="#audit?state=' + r.state + '" data-xclose>Audit fields →</a><a class="quiet" href="downloads/state-pdfs/' + r.state + '.pdf" target="_blank" rel="noopener">Open one-page PDF ↗</a></div>';
         const anchor = content.querySelector('.state-summary'); if (anchor) anchor.after(box); else content.prepend(box);
         box.querySelectorAll('[data-xclose]').forEach(a => a.addEventListener('click', () => { const d = $('stateDialog'); if (d.open) d.close(); }));
       };
