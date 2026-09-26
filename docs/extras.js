@@ -106,7 +106,7 @@
     const h = (location.hash || '').replace(/^#/, '');
     const m = /^state\/([A-Za-z]{2})$/.exec(h);
     if (m) return {tab: 'states', state: m[1].toUpperCase()};
-    const sm = /^summary\/([a-z]+)$/.exec(h);
+    const sm = /^summary\/([a-z][a-z-]*)$/.exec(h);
     if (sm) return {tab: 'summary', state: '', section: sm[1]};
     const base = h.split(/[?&]/)[0];
     if (base === 'audit') { const s = hashParam('state').toUpperCase(); return {tab: 'states', state: s, redirect: s ? '#state/' + s : '#states'}; }
@@ -413,27 +413,37 @@
   }
   function renderSummary() {
     const D = dims();
-    const bars = d => '<ul class="xd-bars">' + d.gs.map(g => '<li><a href="#summary/' + d.id + '" title="' + esc(g.label + ': ' + (g.states.map(s => s.state).join(', ') || 'none')) + '"><span class="xd-lab">' + esc(g.label) + '</span><span class="xd-track" aria-hidden="true"><span class="xd-fill" style="width:' + (g.states.length * 2) + '%"></span></span><span class="xd-n">' + g.states.length + '</span></a></li>').join('') + '</ul>';
-    let tiles = '', lastSec = '';
+    const sectionInfo = {
+      labor: ['Labor rates', 'How rates are set, requested and approved.'],
+      hours: ['Paid hours', 'Time guides and multipliers used to calculate labor payment.'],
+      parts: ['Parts', 'How warranty parts prices and markups are set.'],
+      mfrsc: ['Service contracts & CPO', 'Which coverage types the warranty rules reach.'],
+      decision: ['Claims & chargebacks', 'Deadlines for filing, decisions, payment and recovery.']
+    };
+    const sections = [];
     D.forEach(d => {
-      if (d.sec && d.sec !== lastSec) { tiles += (lastSec ? '</div>' : '') + '<h3 class="xd-sec">' + esc(d.sec) + '</h3><div class="xd-grid">'; lastSec = d.sec; }
-      tiles += '<section class="xd-tile"><h4>' + esc(d.title) + '</h4><p class="xd-q">' + esc(d.q) + '</p>' + bars(d) + '<a class="xd-more" href="#summary/' + d.id + '">What each answer means, and which states ↓</a></section>';
+      if (d.sec) sections.push({id: d.id, title: d.sec, label: sectionInfo[d.id][0], description: sectionInfo[d.id][1], number: String(sections.length + 1).padStart(2, '0'), topics: []});
+      sections[sections.length - 1].topics.push(d);
     });
-    tiles += '</div>';
-    const detail = D.map(d => '<section class="xs-card" id="xs-' + d.id + '"><h2>' + esc(d.title) + '</h2><p class="xs-note">' + esc(d.q) + (d.id === 'mfrsc' || d.id === 'cpo' ? ' ' + esc(PROGRAM_SCOPE) : '') + '</p><div class="xs-rows">' +
+    const menu = '<nav class="xd-jump" aria-label="Summary sections"><span class="xd-jump-label">Jump to a section</span><ul>' + sections.map(g => '<li><a href="#summary/group-' + g.id + '"><span aria-hidden="true">' + g.number + '</span>' + esc(g.label) + '</a></li>').join('') + '<li><a class="xd-jump-definitions" href="#summary/definitions">Definitions & states ↓</a></li></ul></nav>';
+    const bars = d => '<ul class="xd-bars">' + d.gs.map(g => '<li><a href="#summary/' + d.id + '" aria-label="' + esc(g.label + ': ' + g.states.length + ' states. View definitions and states.') + '" title="' + esc(g.label + ': ' + (g.states.map(s => s.state).join(', ') || 'none')) + '"><span class="xd-lab">' + esc(g.label) + '</span><span class="xd-track" aria-hidden="true"><span class="xd-fill" style="width:' + (g.states.length * 2) + '%"></span></span><span class="xd-n">' + g.states.length + '</span></a></li>').join('') + '</ul>';
+    const tile = d => '<article class="xd-tile"><h3>' + esc(d.title) + '</h3><p class="xd-q">' + esc(d.q) + '</p><p class="xd-scale">States · out of 50</p>' + bars(d) + '<a class="xd-more" href="#summary/' + d.id + '">Definitions & states ↓</a></article>';
+    const tiles = sections.map(g => '<section class="xd-section" id="xs-group-' + g.id + '" tabindex="-1" aria-labelledby="xd-heading-' + g.id + '"><header class="xd-section-head"><span class="xd-section-number" aria-hidden="true">' + g.number + '</span><div><h2 id="xd-heading-' + g.id + '">' + esc(g.title) + '</h2><p>' + esc(g.description) + '</p></div><span class="xd-section-meta">' + g.topics.length + (g.topics.length === 1 ? ' question' : ' questions') + '</span></header><div class="xd-grid">' + g.topics.map(tile).join('') + '</div></section>').join('');
+    const detailCard = d => '<section class="xs-card" id="xs-' + d.id + '" tabindex="-1" aria-labelledby="xs-heading-' + d.id + '"><header class="xs-card-head"><h4 id="xs-heading-' + d.id + '">' + esc(d.title) + '</h4><p class="xs-note">' + esc(d.q) + (d.id === 'mfrsc' || d.id === 'cpo' ? ' ' + esc(PROGRAM_SCOPE) : '') + '</p></header><div class="xs-rows">' +
       d.gs.map(g => '<div class="xs-row"><div class="xs-label"><strong>' + esc(g.label) + '</strong><span class="xs-count">' + g.states.length + (g.states.length === 1 ? ' state' : ' states') + '</span></div><div><p class="xs-def">' + esc(g.def) + '</p><div class="xs-chips">' + chips(g.states, d.tip) + '</div></div></div>').join('') +
-      '</div><p class="xs-top"><a href="#summary">↑ Back to the dashboard</a></p></section>').join('');
+      '</div><p class="xs-top"><a href="#summary">↑ Back to the dashboard</a></p></section>';
+    const detail = sections.map(g => '<section class="xd-detail-group" aria-labelledby="xd-detail-' + g.id + '"><header class="xd-detail-head"><h3 id="xd-detail-' + g.id + '"><span aria-hidden="true">' + g.number + '</span>' + esc(g.title) + '</h3><a href="#summary/group-' + g.id + '">Back to these counts ↑</a></header>' + g.topics.map(detailCard).join('') + '</section>').join('');
     const changes = AUDIT.filter(r => nextChange(r));
     const R = (window.REFERENCE || {}).rules || [], groups = [...new Set(R.map(x => x.group))];
     const original = groups.map(gname => '<h3 class="xs-sub">' + esc(gname) + '</h3><div class="xs-rows">' + R.filter(x => x.group === gname).map(x => { const st = AUDIT.filter(r => ((REF[r.state] || {}).flags || {})[x.id] === true); return '<div class="xs-row"><div class="xs-label"><strong>' + esc(x.name) + '</strong><span class="xs-count">' + st.length + ' states</span></div><div><p class="xs-def">' + esc(trim(x.description, 220)) + '</p><div class="xs-chips">' + chips(st) + '</div></div></div>'; }).join('') + '</div>').join('');
-    $('x-summary').innerHTML = '<div class="xhead"><div><h2>Summary dashboard</h2><p>How the 50 states answer each question on the States table, based on the law in effect today (' + fmtDate(TODAY) + '). Each bar counts the states giving that answer. <strong>Click a tile</strong> for a plain-English definition of every answer and the states behind it; click a state code to open that state.</p></div><div class="xstamp">' + (changes.length ? 'Law changes coming up<br>' + changes.map(r => '<a href="#state/' + r.state + '"><strong>' + r.state + '</strong></a> ' + fmtDate(nextChange(r).effective)).join('<br>') : 'No scheduled law changes') + '</div></div>' +
-      '<div class="xd">' + tiles + '</div>' +
-      '<h2 class="xd-h">Definitions and states</h2>' + detail +
+    $('x-summary').innerHTML = '<div class="xhead xd-intro"><div><p class="xd-eyebrow">50-state comparison</p><h1 class="ks-h1">Summary dashboard</h1><p>Compare how the 50 states answer each question, based on the law in effect today (' + fmtDate(TODAY) + '). Choose a topic below to see its definitions and the states behind each count.</p></div><aside class="xstamp">' + (changes.length ? '<strong>Law changes coming up</strong><br>' + changes.map(r => '<a href="#state/' + r.state + '"><strong>' + r.state + '</strong></a> ' + fmtDate(nextChange(r).effective)).join('<br>') : 'No scheduled law changes') + '</aside></div>' +
+      menu + '<div class="xd">' + tiles + '</div>' +
+      '<section class="xd-definitions" aria-labelledby="xd-definitions-heading"><header class="xd-definitions-head" id="xs-definitions" tabindex="-1"><p class="xd-eyebrow">Behind the counts</p><h2 id="xd-definitions-heading">Definitions and states</h2><p>What each answer means, with links to every state in that group.</p></header>' + detail + '</section>' +
       '<details class="xs-more"><summary>Original September 21 classification (20 rule features)</summary><p class="xs-note">The first-pass research classification. Where it differs from the state pages or the groups above, those are newer and control.</p>' + original + '</details>';
   }
   function scrollToSection(sec) {
     const t = sec ? $('xs-' + sec) : null;
-    if (t) t.scrollIntoView({block: 'start'}); else window.scrollTo(0, 0);
+    if (t) { t.scrollIntoView({block: 'start'}); t.focus({preventScroll: true}); } else window.scrollTo(0, 0);
   }
 
   function init() { buildShell(); route(); }
