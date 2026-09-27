@@ -93,3 +93,5 @@ Earlier source availability and verification records remain separate from import
 - `docs/index.html`, `docs/extras.js`, `docs/extras.css`, `docs/styles.css`: the site shell and interface (high-contrast, text labels, never color alone).
 
 No build is required. Run `node --check` for each JavaScript file. Validate all 200 imported cells against v3; check exact totals on both sides of October 1; confirm 20 Conditional notes, NC/PA exceptions, separate guide flags, Wisconsin grouping, filters, comparisons, share URLs, source details and original-file byte identity.
+
+The Summary dashboard highlights tracked enacted changes effective within the trailing nine calendar months (inclusive, using America/New_York dates). It combines recorded amendment dates and enacted weekly-log entries, excludes pending proposals, and keeps future effective dates separate. The States filter and state overview callouts use the same window. Dates roll forward on page load; this does not perform a fresh legislative check.

@@ -51,8 +51,49 @@
     if (!d.last_amended_year) return 'Unknown';
     return d.last_amended_year + (d.last_amendment_effective ? ' (eff. ' + fmtDate(d.last_amendment_effective) + ')' : '');
   }
-  function nextChange(r) { const n = (r.law_dates || {}).next_scheduled_change; return n && n.effective && n.effective > TODAY ? n : null; }
-  function recentChange(r) { const n = (r.law_dates || {}).next_scheduled_change; return n && n.effective && n.effective <= TODAY ? n : null; }
+  // Nine calendar months, inclusive; clamp month-end rather than overflowing February.
+  function nineMonthsAgo(day) {
+    const [y, m, d] = day.split('-').map(Number);
+    const first = new Date(Date.UTC(y, m - 10, 1));
+    const last = new Date(Date.UTC(first.getUTCFullYear(), first.getUTCMonth() + 1, 0)).getUTCDate();
+    first.setUTCDate(Math.min(d, last));
+    return first.toISOString().slice(0, 10);
+  }
+  function validLawDate(day) {
+    return /^\d{4}-\d{2}-\d{2}$/.test(day || '') && !Number.isNaN(Date.parse(day)) && new Date(day).toISOString().slice(0, 10) === day;
+  }
+  function lawChanges() {
+    const events = new Map();
+    const add = e => { if (validLawDate(e.effective)) events.set(e.state + ':' + e.effective, e); };
+    AUDIT.forEach(r => {
+      const d = r.law_dates || {};
+      add({state: r.state, effective: d.last_amendment_effective, act: d.last_amending_act,
+        summary: 'Recorded amendment to ' + (d.section || 'the warranty reimbursement statute') + '.',
+        detail: d.history_source, source: r.official_url});
+      const n = d.next_scheduled_change;
+      if (n) add({state: r.state, effective: n.effective, act: n.act, summary: n.summary, detail: d.history_source, source: r.official_url});
+    });
+    // The latest enacted log entry wins; pending proposals never enter this list.
+    ((WEEKLY || {}).entries || []).slice().sort((a, b) => a.check_date.localeCompare(b.check_date)).forEach(entry => {
+      (entry.items || []).filter(i => ['enacted_recent', 'enacted_upcoming'].includes(i.category)).forEach(i => {
+        if (!AUDIT.some(r => r.state === i.state)) return;
+        add({state: i.state, effective: i.effective, act: i.bill, summary: i.summary_short || i.summary,
+          detail: i.summary, source: i.source_url});
+      });
+    });
+    return [...events.values()].sort((a, b) => b.effective.localeCompare(a.effective) || a.state.localeCompare(b.state));
+  }
+  function nextChange(r) { return lawChanges().filter(e => e.state === r.state && e.effective > TODAY).pop() || null; }
+  function recentChange(r) { return lawChanges().find(e => e.state === r.state && e.effective >= nineMonthsAgo(TODAY) && e.effective <= TODAY) || null; }
+  function recentLawsPanel() {
+    const events = lawChanges().filter(e => e.effective >= nineMonthsAgo(TODAY) && e.effective <= TODAY);
+    const count = new Set(events.map(e => e.state)).size;
+    return '<section class="xl-recent" id="xs-changes" tabindex="-1" aria-labelledby="xl-heading"><header><p class="xd-eyebrow">Rolling nine-month window</p><h2 id="xl-heading">Recent law changes <span>' + count + ' states</span></h2><p><strong>Effective ' + fmtDate(nineMonthsAgo(TODAY)) + ' – ' + fmtDate(TODAY) + '</strong></p><p>Uses effective dates, not enactment dates. These are changes tracked in the Atlas, not an exhaustive legislative history. Last recorded law-change check: ' + fmtDate(maxVerified()) + '. Upcoming changes are listed separately above.</p></header><div class="xl-grid">' +
+      (events.length ? events.map(e => {
+        const r = AUDIT.find(r => r.state === e.state);
+        return '<article class="xl-card"><p class="xl-date">Effective ' + fmtDate(e.effective) + '</p><h3><a href="#state/' + e.state + '">' + esc(r.name) + '</a></h3><p class="xl-act">' + esc(e.act || '') + '</p><p>' + esc(e.summary || '') + '</p>' + (e.detail ? '<details><summary>Scope and source notes</summary><p>' + esc(e.detail) + '</p></details>' : '') + '<p class="xl-links">' + link(e.source, 'Original source') + ' · <a href="#state/' + e.state + '">State overview →</a></p></article>';
+      }).join('') : '<p>No tracked changes took effect in this window.</p>') + '</div></section>';
+  }
   function kf(abbr) { return (KEY.states || {})[abbr] || {}; }
   function cov(abbr, id) { try { return window.LABOR_COVERAGE.record({abbr}, id, TODAY); } catch (e) { return null; } }
   function responseShort(r) {
@@ -158,7 +199,7 @@
       homeBuilt = true;
       p.innerHTML = '<div id="ks-home"><div class="xhead"><div><h1 class="ks-h1">Warranty reimbursement rules by state</h1><p>How each state sets the warranty labor rate, how often dealers can ask for an increase, which labor-time guide applies, parts markup, and whether service contracts and CPO are covered. <strong>Click a state</strong> for its key facts and the statute text behind them.</p></div><div class="xstamp">Last verified <strong>' + fmtDate(maxVerified()) + '</strong><br>Checked for law changes every Monday</div></div>' +
         '<div class="xtools"><label class="search"><span aria-hidden="true">⌕</span><input id="ksSearch" type="search" placeholder="Search a state…" aria-label="Search states"></label>' +
-        '<label>Show<select id="ksFilter"><option value="">All 50 states</option><option value="sc">Service contracts or CPO covered</option><option value="guide">Uses a non-OEM guide, multiplier or actual time</option><option value="request">Has a rate-request frequency rule</option><option value="change">Law change coming up</option></select></label>' +
+        '<label>Show<select id="ksFilter"><option value="">All 50 states</option><option value="sc">Service contracts or CPO covered</option><option value="guide">Uses a non-OEM guide, multiplier or actual time</option><option value="request">Has a rate-request frequency rule</option><option value="recent">Law changed in last 9 months</option><option value="change">Law change coming up</option></select></label>' +
         '<button type="button" class="quiet ks-csv" id="ksCsv">Download table (CSV) ↓</button></div>' +
         '<p class="xcount" id="ksCount" aria-live="polite"></p>' +
         '<p class="ks-defs"><strong>What the answers mean:</strong> ' + [['labor', 'Labor rate'], ['requests', 'Rate increase requests'], ['response', 'Manufacturer response'], ['hours', 'Paid hours'], ['parts', 'Parts markup'], ['mfrsc', 'Service contracts & CPO']].map(x => '<a href="#summary/' + x[0] + '">' + x[1] + '</a>').join(' · ') + ' · <a href="#summary">All counts</a></p>' +
@@ -181,6 +222,7 @@
       if (f === 'sc' && !scList(r.state).some(x => x.status === 'yes' || x.status === 'conditional')) return false;
       if (f === 'guide' && !['independent_guide', 'multiplier', 'actual_time', 'negotiated_other'].includes(hoursShort(r.state).id)) return false;
       if (f === 'request' && !r.rate_submission.frequency_limit) return false;
+      if (f === 'recent' && !recentChange(r)) return false;
       if (f === 'change' && !nextChange(r)) return false;
       return true;
     });
@@ -189,9 +231,10 @@
     const rows = homeRows();
     $('ksCount').textContent = rows.length === 50 ? 'All 50 states' : rows.length + ' of 50 states';
     $('ksBody').innerHTML = rows.map(r => {
-      const k = kf(r.state), h = hoursShort(r.state), n = nextChange(r);
+      const k = kf(r.state), h = hoursShort(r.state), n = nextChange(r), rc = recentChange(r);
       return '<tr data-state="' + r.state + '"><th scope="row"><a class="ks-state" href="#state/' + r.state + '">' + esc(r.name) + ' <span class="abbr">' + r.state + '</span></a>' +
-        (n ? '<span class="ks-change">Change ' + fmtDate(n.effective) + '</span>' : '') + '</th>' +
+        (rc ? '<span class="ks-change xl-badge">Changed ' + fmtDate(rc.effective) + ' · last 9 months</span>' : '') +
+        (n ? '<span class="ks-change">Upcoming ' + fmtDate(n.effective) + '</span>' : '') + '</th>' +
         '<td>' + esc(k.labor || '—') + '</td>' +
         '<td>' + esc(k.requests || '—') + '<small>' + esc(sampleShort(r)) + '</small></td>' +
         '<td>' + esc(responseShort(r)) + '</td>' +
@@ -257,7 +300,7 @@
       '<p class="ks-dates"><span>Law last amended <strong>' + esc(amended(r)) + '</strong></span><span>Last verified <strong>' + fmtDate((r.verified || {}).audit_fields) + '</strong></span>' + ((r.verified || {}).last_change_check ? '<span>Checked for law changes <strong>' + fmtDate(r.verified.last_change_check) + '</strong></span>' : '') + '</p></div>' +
       '<div class="ks-actions"><a class="xbtn-open" href="downloads/state-pdfs/' + abbr + '.pdf" target="_blank" rel="noopener">One-page PDF ↗</a>' + (safeUrl(r.official_url) ? '<a class="xbtn-save" href="' + esc(safeUrl(r.official_url)) + '" target="_blank" rel="noopener noreferrer">Official statute ↗</a>' : '') + '</div></header>' +
       (n ? '<p class="xnextbox"><strong>Law change coming · effective ' + fmtDate(n.effective) + ':</strong> ' + esc(n.act || '') + (n.summary ? ' — ' + esc(n.summary) : '') + '</p>' : '') +
-      (rc ? '<p class="xnote"><strong>Recent change · effective ' + fmtDate(rc.effective) + ':</strong> ' + esc(rc.act || '') + (rc.summary ? ' — ' + esc(rc.summary) : '') + '</p>' : '') +
+      (rc ? '<p class="xnote"><strong>Changed in last 9 months · effective ' + fmtDate(rc.effective) + ':</strong> ' + esc(rc.act || '') + (rc.summary ? ' — ' + esc(rc.summary) : '') + ' ' + link(rc.source, 'Original source') + '</p>' : '') +
       '<div class="ks-sectionhead"><h2>Key facts</h2><button type="button" class="quiet ks-expand" id="ksExpand" aria-pressed="false">Expand all details</button></div>' +
       '<div class="kf">' +
       fact('Labor rate', esc(k.labor || '—'), adds(s.labor, k.labor), laborDetail, 'labor') +
@@ -425,7 +468,7 @@
       if (d.sec) sections.push({id: d.id, title: d.sec, label: sectionInfo[d.id][0], description: sectionInfo[d.id][1], number: String(sections.length + 1).padStart(2, '0'), topics: []});
       sections[sections.length - 1].topics.push(d);
     });
-    const menu = '<nav class="xd-jump" aria-label="Summary sections"><span class="xd-jump-label">Jump to a section</span><ul>' + sections.map(g => '<li><a href="#summary/group-' + g.id + '"><span aria-hidden="true">' + g.number + '</span>' + esc(g.label) + '</a></li>').join('') + '<li><a class="xd-jump-definitions" href="#summary/definitions">Definitions & states ↓</a></li></ul></nav>';
+    const menu = '<nav class="xd-jump" aria-label="Summary sections"><span class="xd-jump-label">Jump to a section</span><ul><li><a href="#summary/changes">Recent law changes</a></li>' + sections.map(g => '<li><a href="#summary/group-' + g.id + '"><span aria-hidden="true">' + g.number + '</span>' + esc(g.label) + '</a></li>').join('') + '<li><a class="xd-jump-definitions" href="#summary/definitions">Definitions & states ↓</a></li></ul></nav>';
     const bars = d => '<ul class="xd-bars">' + d.gs.map(g => '<li><a href="#summary/' + d.id + '" aria-label="' + esc(g.label + ': ' + g.states.length + ' states. View definitions and states.') + '" title="' + esc(g.label + ': ' + (g.states.map(s => s.state).join(', ') || 'none')) + '"><span class="xd-lab">' + esc(g.label) + '</span><span class="xd-track" aria-hidden="true"><span class="xd-fill" style="width:' + (g.states.length * 2) + '%"></span></span><span class="xd-n">' + g.states.length + '</span></a></li>').join('') + '</ul>';
     const tile = d => '<article class="xd-tile"><h3>' + esc(d.title) + '</h3><p class="xd-q">' + esc(d.q) + '</p><p class="xd-scale">States · out of 50</p>' + bars(d) + '<a class="xd-more" href="#summary/' + d.id + '">Definitions & states ↓</a></article>';
     const tiles = sections.map(g => '<section class="xd-section" id="xs-group-' + g.id + '" tabindex="-1" aria-labelledby="xd-heading-' + g.id + '"><header class="xd-section-head"><span class="xd-section-number" aria-hidden="true">' + g.number + '</span><div><h2 id="xd-heading-' + g.id + '">' + esc(g.title) + '</h2><p>' + esc(g.description) + '</p></div><span class="xd-section-meta">' + g.topics.length + (g.topics.length === 1 ? ' question' : ' questions') + '</span></header><div class="xd-grid">' + g.topics.map(tile).join('') + '</div></section>').join('');
@@ -437,7 +480,7 @@
     const R = (window.REFERENCE || {}).rules || [], groups = [...new Set(R.map(x => x.group))];
     const original = groups.map(gname => '<h3 class="xs-sub">' + esc(gname) + '</h3><div class="xs-rows">' + R.filter(x => x.group === gname).map(x => { const st = AUDIT.filter(r => ((REF[r.state] || {}).flags || {})[x.id] === true); return '<div class="xs-row"><div class="xs-label"><strong>' + esc(x.name) + '</strong><span class="xs-count">' + st.length + ' states</span></div><div><p class="xs-def">' + esc(trim(x.description, 220)) + '</p><div class="xs-chips">' + chips(st) + '</div></div></div>'; }).join('') + '</div>').join('');
     $('x-summary').innerHTML = '<div class="xhead xd-intro"><div><p class="xd-eyebrow">50-state comparison</p><h1 class="ks-h1">Summary dashboard</h1><p>Compare how the 50 states answer each question, based on the law in effect today (' + fmtDate(TODAY) + '). Choose a topic below to see its definitions and the states behind each count.</p></div><aside class="xstamp">' + (changes.length ? '<strong>Law changes coming up</strong><br>' + changes.map(r => '<a href="#state/' + r.state + '"><strong>' + r.state + '</strong></a> ' + fmtDate(nextChange(r).effective)).join('<br>') : 'No scheduled law changes') + '</aside></div>' +
-      menu + '<div class="xd">' + tiles + '</div>' +
+      menu + recentLawsPanel() + '<div class="xd">' + tiles + '</div>' +
       '<section class="xd-definitions" aria-labelledby="xd-definitions-heading"><header class="xd-definitions-head" id="xs-definitions" tabindex="-1"><p class="xd-eyebrow">Behind the counts</p><h2 id="xd-definitions-heading">Definitions and states</h2><p>What each answer means, with links to every state in that group.</p></header>' + detail + '</section>' +
       '<details class="xs-more"><summary>Original September 21 classification (20 rule features)</summary><p class="xs-note">The first-pass research classification. Where it differs from the state pages or the groups above, those are newer and control.</p>' + original + '</details>';
   }
