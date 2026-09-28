@@ -14,4 +14,5 @@
 - `docs/data/key-facts.json` holds the short labels on the States table. Keep each label a faithful summary of the underlying record; when enacted law changes a rule, update the record and the label together.
 - After any data change run `python3 tools/build_exports.py` so the Excel and PDF downloads match the site. Each state PDF must stay one page.
 - The Monday weekly check follows `tools/WEEKLY_CHECK.md`. Never load pending bills as enacted law.
+- Link previews: `docs/index.html` has Open Graph tags with absolute URLs to `docs/og-card.png` (1200×630, brand mark centered so a square crop still works) and icons in `docs/icons/`. If the site moves to a custom domain, update those URLs and the hostname check in the analytics snippet.
 - `docs/index.html` loads Google Analytics 4 (measurement ID in the first `<script>` block) and the footer and About dialog disclose it with an opt-out. Keep all three. Page views are sent from `track()` in `docs/extras.js` (one per tab or state page); do not add a second page-view source.
