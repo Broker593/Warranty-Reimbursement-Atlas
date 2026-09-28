@@ -241,8 +241,8 @@
 .km-st{stroke:#ffffff;stroke-width:1;cursor:pointer;outline:none}
 .km-st:hover,.km-st:focus-visible{stroke:#000;stroke-width:3}
 .km-st.sel{stroke:#000;stroke-width:4}
-.km-dline{fill:none;stroke:#f2c14e;stroke-width:3;stroke-dasharray:7 4;pointer-events:none}
-.km-dpart{stroke-dasharray:2 4;stroke-width:3.5}
+.km-dline{fill:none;stroke:#f2c14e;stroke-width:3;pointer-events:none}
+.km-dpart{stroke-width:3}
 .km-lab{font:bold 11px Arial,sans-serif;text-anchor:middle;pointer-events:none}
 .km-num{font:10px Arial,sans-serif;text-anchor:middle;pointer-events:none}
 .km-lead{stroke:#5d6c80;stroke-width:1}
@@ -250,7 +250,7 @@
 .km-legend{display:flex;flex-wrap:wrap;gap:8px 16px;margin:10px 2px;font-size:13px;color:#1d2d44}
 .km-key{display:inline-flex;align-items:center;gap:6px}.km-key small{color:#3d4c60}
 .km-sw{display:inline-block;width:22px;height:14px;border-radius:3px;border:1px solid #0b1b30}
-.km-sw-dist{background:#fff;border:3px dashed #f2c14e;outline:1px solid #0b1b30}
+.km-sw-dist{background:#fff;border:3px solid #f2c14e;outline:1px solid #0b1b30}
 .km-panel{border:1px solid #c3cfdd;border-radius:10px;background:white;padding:14px 16px;position:sticky;top:12px}
 .km-panel h2{margin:0 0 6px;font-size:20px;color:#142943}.km-panel .abbr{display:inline;font-size:14px;color:#3d4c60}
 .km-hint{color:#3d4c60;font-size:14px;margin:0}.km-pd{font-size:13px;border:2px dashed #b8860b;background:#fffaf0;border-radius:6px;padding:6px 8px}

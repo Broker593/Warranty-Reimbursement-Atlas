@@ -12,7 +12,7 @@
   const trim = (t, n) => { t = String(t || ''); return t.length > n ? t.slice(0, n - 1).trim() + '…' : t; };
   const TODAY = (() => { try { return new Date().toLocaleDateString('en-CA', {timeZone: 'America/New_York'}); } catch (e) { return new Date().toISOString().slice(0, 10); } })();
 
-  const TABS = [['states', 'State Rules'], ['summary', 'Dashboard Overview'], ['map', 'Map: U.S. Audit Climate'], ['cases', 'Cases & Laws'], ['news', 'News'], ['downloads', 'Downloads'], ['updates', 'Update log']];
+  const TABS = [['map', 'Map: U.S. Audit Climate'], ['states', 'State-by-State Matrix'], ['summary', 'State Rules Dashboard'], ['cases', 'Cases & Laws'], ['news', 'News'], ['downloads', 'Downloads'], ['updates', 'Update log']];
   const QUIET = ['updates'];
   const LEGACY = {atlas: 'states', audit: 'states', calculator: 'states', weekly: 'updates', research: 'summary'};
   const EXCL = {
@@ -186,7 +186,7 @@
     const base = h.split(/[?&]/)[0];
     if (base === 'audit') { const s = hashParam('state').toUpperCase(); return {tab: 'states', state: s, redirect: s ? '#state/' + s : '#states'}; }
     if (LEGACY[base]) return {tab: LEGACY[base], state: '', redirect: '#' + LEGACY[base]};
-    return {tab: TABS.some(t => t[0] === base) ? base : 'states', state: ''};
+    return {tab: TABS.some(t => t[0] === base) ? base : 'map', state: ''};
   }
   function route() {
     const r = parseHash();
@@ -228,7 +228,7 @@
   let homeBuilt = false, stateOpen = false, homeScroll = 0;
   function renderHome() {
     buildHome();
-    document.title = 'Warranty Atlas · State warranty reimbursement rules';
+    document.title = 'State-by-State Matrix · Warranty Atlas';
     $('ks-home').hidden = false; $('ks-state').hidden = true;
     if (stateOpen) { stateOpen = false; window.scrollTo(0, homeScroll); }
   }
@@ -236,7 +236,7 @@
     const p = $('x-states');
     if (!homeBuilt) {
       homeBuilt = true;
-      p.innerHTML = '<div id="ks-home">' + intro({eyebrow: 'Warranty reimbursement by state', title: 'State Rules', lead: 'One row per state with the rules that decide what a dealer is paid for warranty labor and parts. <strong>Start here.</strong>',
+      p.innerHTML = '<div id="ks-home">' + intro({eyebrow: 'Warranty reimbursement by state', title: 'State-by-State Matrix', lead: 'One row per state with the rules that decide what a dealer is paid for warranty labor and parts.',
         here: ['How the labor rate is set, how often dealers can ask for an increase, and how fast the manufacturer must respond', 'Which labor-time guide sets paid hours, parts markup, and whether service contracts and CPO are covered', 'Flags for recent and upcoming law changes, distributor-franchised states, and each state\'s audit climate score'],
         use: ['Check a state\'s rules before reviewing a dealer\'s rate request, a warranty claim or a chargeback', 'Click any state for its key facts, audit procedures and the statute text behind them; everything here is also in the Excel workbook on the Downloads tab'],
         stamp: 'Last verified <strong>' + fmtDate(maxVerified()) + '</strong><br>Checked for law changes every Monday'}) +
@@ -556,7 +556,7 @@
     const changes = AUDIT.filter(r => nextChange(r));
     const R = (window.REFERENCE || {}).rules || [], groups = [...new Set(R.map(x => x.group))];
     const original = groups.map(gname => '<h3 class="xs-sub">' + esc(gname) + '</h3><div class="xs-rows">' + R.filter(x => x.group === gname).map(x => { const st = AUDIT.filter(r => ((REF[r.state] || {}).flags || {})[x.id] === true); return '<div class="xs-row"><div class="xs-label"><strong>' + esc(x.name) + '</strong><span class="xs-count">' + st.length + ' states</span></div><div><p class="xs-def">' + esc(trim(x.description, 220)) + '</p><div class="xs-chips">' + chips(st) + '</div></div></div>'; }).join('') + '</div>').join('');
-    $('x-summary').innerHTML = intro({cls: 'xd-intro', eyebrow: 'Rule counts across all 50 states', title: 'Dashboard Overview', lead: 'Rule counts by state: how many states give each answer, what each answer means, and which states they are. Based on the law in effect today (' + fmtDate(TODAY) + ').',
+    $('x-summary').innerHTML = intro({cls: 'xd-intro', eyebrow: 'Rule counts across all 50 states', title: 'State Rules Dashboard', lead: 'Rule counts by state: how many states give each answer, what each answer means, and which states they are. Based on the law in effect today (' + fmtDate(TODAY) + ').',
       here: ['Bar counts for every question: labor rates, paid hours, parts, service contracts and CPO, claims and chargebacks, audit procedures', 'A plain-English definition of every answer, with the states that give it', 'Recent (last nine months) and upcoming law changes'],
       use: ['See the national picture in seconds, for example how many states cover manufacturer-backed service contracts', 'Find every state that follows a given rule, then open any state for detail'],
       stamp: (changes.length ? '<strong>Law changes coming up</strong><br>' + changes.map(r => '<a href="#state/' + r.state + '"><strong>' + r.state + '</strong></a> ' + fmtDate(nextChange(r).effective)).join('<br>') : 'No scheduled law changes')}) +
@@ -668,7 +668,7 @@
     const box = $('x-map');
     box.innerHTML = intro({eyebrow: 'Audit climate score', title: 'Map: U.S. Audit Climate', lead: 'How restrictive each state\'s law is toward manufacturer warranty audits, chargebacks and retail-rate validation. <strong>Darker = more restrictive.</strong>',
       here: ['An audit climate score (0–100) built from 14 limits in state law, such as short lookback windows, chargebacks held during appeals and clerical-error protections', 'Hover a state for its score; click it for exactly how it was scored', 'Distributor-franchised states outlined, and every state ranked below the map'],
-      use: ['Compare states quickly when planning audits and chargeback reviews', 'Know where to expect more procedural steps and a higher bar before a chargeback sticks'],
+      use: ['Compare states quickly when planning audits and chargeback reviews', 'Know where to expect more procedural steps and a higher bar before a chargeback sticks', 'Open any state\'s full rules from its popup, or see every state side by side in the <a href="#states">State-by-State Matrix</a>'],
       note: 'Built from statute text only (' + fmtDate(IDX.checked) + '). Not legal advice and not an assessment of any company\'s audit program.'}) +
       '<div class="km-wrap"><div class="km-mapcol"><div class="km-mapbox"><div class="km-map" id="kmMap"><div class="xloading">Loading map…</div></div>' +
       '<label class="km-toggle"><input type="checkbox" id="kmDist" checked><span class="km-sw km-sw-dist" aria-hidden="true"></span><span>Outline distributor-franchised states<small>NJ: northern counties only</small></span></label></div>' +
