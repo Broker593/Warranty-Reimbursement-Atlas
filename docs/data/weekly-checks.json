@@ -280,7 +280,8 @@
     "Correction: Oregon's 1-year audit and chargeback limit applies to all franchises (an earlier note limited it to franchises from 2026 on).",
     "Every tab now opens with a plain-English summary (what's here, and what to use it for). Tabs renamed: State Rules, Dashboard Overview, Map: U.S. Audit Climate, Cases & Laws. The Dashboard Overview's section bar stays pinned while you scroll and highlights the current section, and the distributor-outline toggle sits on the map. Downloads trimmed to the Excel workbook, state PDFs and one research data file (CSV exports and the state-PDF ZIP retired).",
     "Added basic site analytics (Google Analytics): visits, pages viewed and downloads, never names or IP addresses. Disclosed in a footer and on About, with a one-click opt-out for your browser.",
-    "Map: U.S. Audit Climate is now the first tab and the page the site opens on. Tabs renamed State-by-State Matrix (was State Rules) and State Rules Dashboard (was Dashboard Overview). Distributor outlines on the map are now solid gold."
+    "Map: U.S. Audit Climate is now the first tab and the page the site opens on. Tabs renamed State-by-State Matrix (was State Rules) and State Rules Dashboard (was Dashboard Overview). Distributor outlines on the map are now solid gold.",
+    "Update log, News and Cases & Laws simplified: at-a-glance counts on the Update log, one compact row per item with a one-line \"why it matters\" or site impact, full summaries and sources under Details, older weeks collapsed, and cases grouped by topic with topic filter buttons."
    ],
    "no_change_states": [
     "AL",

@@ -367,36 +367,82 @@
     window.scrollTo(0, 0);
   }
 
-  /* ---------- Weekly checks ---------- */
-  const CAT = {enacted_upcoming: 'Enacted · takes effect soon', enacted_recent: 'Took effect recently', pending: 'Pending bill', dead_or_stalled: 'Dead or stalled', no_change: 'No change'};
+  /* ---------- shared: at-a-glance tiles and compact rows ---------- */
+  function glance(tiles) {
+    return '<div class="xg">' + tiles.map(t => '<div class="xg-tile"><p class="xg-k">' + esc(t.k) + '</p><p class="xg-v">' + t.v + '</p>' + (t.s ? '<p class="xg-s">' + t.s + '</p>' : '') + '</div>').join('') + '</div>';
+  }
+  function row(o) {
+    return '<article class="xr' + (o.cls ? ' ' + o.cls : '') + '"' + (o.id ? ' id="' + esc(o.id) + '" tabindex="-1"' : '') + '>' +
+      (o.flag ? '<p class="xr-flag">' + esc(o.flag) + '</p>' : '') +
+      '<div class="xr-top">' + (o.tag ? '<span class="xr-tag' + (o.outline ? ' xr-outline' : '') + '">' + esc(o.tag) + '</span>' : '') + (o.meta ? '<span class="xr-meta">' + o.meta + '</span>' : '') + '</div>' +
+      '<h4 class="xr-title">' + o.title + '</h4>' + (o.why ? '<p class="xr-why">' + o.why + '</p>' : '') +
+      (o.more ? '<details class="xr-more"><summary>' + (o.moreLabel || 'Details') + '</summary><div class="xr-body">' + o.more + '</div></details>' : '') + '</article>';
+  }
+  const stLink = x => byAbbr[x] ? '<a class="xchip" href="#state/' + esc(x) + '">' + esc(x) + '</a>' : '<span class="xchip">' + esc(x) + '</span>';
+  const extLink = (u, t) => safeUrl(u) ? '<a href="' + esc(safeUrl(u)) + '" target="_blank" rel="noopener noreferrer">' + esc(t) + ' ↗</a>' : esc(t);
+  const para = (label, t) => t ? '<p><strong>' + label + ':</strong> ' + esc(t) + '</p>' : '';
+  function lead(t, n) {
+    const f = String(t || '').split(/(?<=[.;])\s+(?=[A-Z])/)[0].replace(/;$/, '.');
+    if (f.length <= n) return f;
+    const cut = f.slice(0, n), sp = cut.lastIndexOf(' ');
+    return (sp > n * 0.6 ? cut.slice(0, sp) : cut).replace(/[,;:]$/, '') + '…';
+  }
+  const plural = (n, one, many) => n + ' ' + (n === 1 ? one : (many || one + 's'));
+
+  /* ---------- Update log ---------- */
+  const CAT = {enacted_upcoming: 'Takes effect soon', enacted_recent: 'Took effect recently', pending: 'Pending bill', dead_or_stalled: 'Dead or stalled', no_change: 'No change'};
+  const CAT_ORDER = ['enacted_upcoming', 'enacted_recent', 'pending', 'dead_or_stalled', 'no_change'];
   function renderWeekly() {
     const E = (WEEKLY.entries || []).slice().sort((a, b) => a.check_date < b.check_date ? 1 : -1);
+    const L = E[0] || {}, LI = L.items || [];
+    const by = c => LI.filter(x => x.category === c);
+    const soon = by('enacted_upcoming'), pend = by('pending'), recent = by('enacted_recent');
+    const soonDates = [...new Set(soon.map(x => x.effective))].sort();
+    const soonText = soonDates.map(d => fmtDate(d) + ': ' + soon.filter(x => x.effective === d).map(x => x.state).join(', ')).join('<br>');
+    const lawRow = it => row({tag: CAT[it.category] || it.category, outline: it.category !== 'enacted_upcoming' && it.category !== 'enacted_recent',
+      meta: stLink(it.state) + ' <span>' + esc((byAbbr[it.state] || {}).name || it.state) + '</span>' + (it.effective ? ' · <span>Effective ' + fmtDate(it.effective) + '</span>' : ''),
+      title: esc(it.summary_short || it.summary || it.bill), why: it.atlas_impact ? '<strong>Site impact:</strong> ' + esc(it.atlas_impact) : '',
+      more: para('Bill', it.bill) + para('Status', it.status) + (it.summary && it.summary !== it.summary_short ? para('Summary', it.summary) : '') +
+        '<p class="xpin">' + [link(it.source_url, 'Official source'), byAbbr[it.state] ? '<a href="#state/' + esc(it.state) + '">State page →</a>' : ''].filter(Boolean).join(' · ') + '</p>'});
+    const week = (e, open) => { const items = (e.items || []).slice().sort((a, b) => CAT_ORDER.indexOf(a.category) - CAT_ORDER.indexOf(b.category) || String(a.state).localeCompare(b.state));
+      return '<details class="xw"' + (open ? ' open' : '') + '><summary class="xw-sum"><span class="xw-date">' + fmtDate(e.check_date) + '</span><span class="xr-tag' + (e.type === 'baseline' ? ' xr-outline' : '') + '">' + (e.type === 'baseline' ? 'Baseline' : 'Weekly check') + '</span><span class="xw-head">' + esc(e.headline) + '</span></summary><div class="xw-body">' +
+        (e.summary ? '<p class="xw-summary">' + esc(e.summary) + '</p>' : '') +
+        (items.length ? '<h4 class="xw-h">Laws tracked (' + items.length + ')</h4><div class="xr-list">' + items.map(lawRow).join('') + '</div>' : '<p class="xnote">No enacted, effective or pending changes found this week.</p>') +
+        (e.site_changes && e.site_changes.length ? '<details class="xw-sub"><summary>Site updates (' + e.site_changes.length + ')</summary><ul>' + e.site_changes.map(x => '<li>' + esc(x) + '</li>').join('') + '</ul></details>' : '') +
+        (e.gaps && e.gaps.length ? '<details class="xw-sub"><summary>Gaps and limits (' + e.gaps.length + ')</summary><ul>' + e.gaps.map(x => '<li>' + esc(x) + '</li>').join('') + '</ul></details>' : '') +
+        (e.method ? '<details class="xw-sub"><summary>How this check was run</summary><p>' + esc(e.method) + '</p></details>' : '') + '</div></details>'; };
     $('x-updates').innerHTML = intro({title: 'Update log', lead: 'What the Monday law check found, and what changed on this site.',
       here: ['Each week\'s results: laws enacted, taking effect or pending, with official sources', 'Site updates and corrections, plus gaps and how each check was run'],
       use: ['Confirm the site is current before relying on it', 'See what changed since you last looked'],
       note: 'Every Monday at 7 AM ET, Claude checks all 50 legislatures and updates the site when enacted law changes. Pending bills are tracked here but never loaded as law.',
-      stamp: 'Last check <strong>' + fmtDate(E[0] && E[0].check_date) + '</strong><br>' + E.length + ' check' + (E.length === 1 ? '' : 's') + ' logged'}) +
-      E.map(e => '<article class="xweek"><header><time datetime="' + esc(e.check_date) + '">' + fmtDate(e.check_date) + '</time><span class="xbadge ' + (e.type === 'baseline' ? 'alt' : '') + '">' + esc((e.type || 'weekly').toUpperCase()) + '</span></header><h3>' + esc(e.headline) + '</h3><p>' + esc(e.summary) + '</p>' +
-        (e.items && e.items.length ? '<ul class="xitems">' + e.items.map(it => '<li><div class="xitem-top"><span class="xbadge ' + (it.category === 'pending' ? 'muted' : it.category === 'enacted_upcoming' ? '' : 'alt') + '">' + esc(CAT[it.category] || it.category) + '</span><strong>' + esc(it.state) + ' · ' + esc(it.bill) + '</strong>' + (it.effective ? '<span class="xpin">Effective ' + fmtDate(it.effective) + '</span>' : '') + (byAbbr[it.state] ? '<a class="xpin" href="#state/' + esc(it.state) + '">State overview →</a>' : '') + '</div><p>' + esc(it.summary_short || it.summary) + '</p>' + (it.atlas_impact ? '<p class="xnote"><strong>Atlas impact:</strong> ' + esc(it.atlas_impact) + '</p>' : '') + '<p class="xpin">' + esc(it.status || '') + ' ' + link(it.source_url, 'Official source') + '</p>' + (it.summary && it.summary !== it.summary_short ? '<details><summary>Full summary</summary><p>' + esc(it.summary) + '</p></details>' : '') + '</li>').join('') + '</ul>' : '<p class="xnote">No enacted, effective or pending changes found this week.</p>') +
-        (e.site_changes && e.site_changes.length ? '<details open><summary>Site updates this week</summary><ul>' + e.site_changes.map(x => '<li>' + esc(x) + '</li>').join('') + '</ul></details>' : '') +
-        (e.gaps && e.gaps.length ? '<details><summary>Gaps and limits</summary><ul>' + e.gaps.map(x => '<li>' + esc(x) + '</li>').join('') + '</ul></details>' : '') +
-        (e.method ? '<details><summary>How this check was run</summary><p>' + esc(e.method) + '</p></details>' : '') + '</article>').join('');
+      stamp: 'Last check <strong>' + fmtDate(L.check_date) + '</strong><br>' + plural(E.length, 'check') + ' logged'}) +
+      glance([
+        {k: 'Last check', v: fmtDate(L.check_date), s: esc(L.headline || '')},
+        {k: 'Taking effect soon', v: String(soon.length), s: soonText || 'None'},
+        {k: 'Pending bills watched', v: String(pend.length), s: pend.length ? esc(pend.map(x => x.state).join(', ')) + ' · never loaded as law' : 'None'},
+        {k: 'Site updates', v: String((L.site_changes || []).length), s: 'In the ' + fmtDate(L.check_date) + ' check'}
+      ].concat(recent.length ? [{k: 'Took effect recently', v: String(recent.length), s: esc(recent.map(x => x.state).join(', '))}] : [])) +
+      '<h3 class="xr-gh">Weekly checks <span>' + E.length + '</span></h3>' + E.map((e, i) => week(e, i === 0)).join('');
   }
 
   /* ---------- News ---------- */
   function renderNews() {
     const W = (NEWS.weeks || []).slice().sort((a, b) => a.week_of < b.week_of ? 1 : -1);
     const lim = NEWS.limits || {law: 5, commentary: 3};
-    const item = n => '<article class="xnews' + (n.kind === 'commentary' ? ' xnews-comm' : '') + '"><div class="xitem-top"><span class="xbadge' + (n.kind === 'commentary' ? ' alt' : '') + '">' + (n.kind === 'commentary' ? 'INDUSTRY COMMENTARY' : 'LAW OR RULING') + '</span><time>' + fmtDate(n.date) + '</time><span class="xbadge muted">' + esc(n.source_type || '') + '</span><span class="xbadge ' + (n.perspective === 'dealer-side' ? 'alt' : n.perspective === 'manufacturer-side' ? '' : 'muted') + '">' + esc((n.perspective || 'neutral').toUpperCase()) + '</span>' + (n.states || []).map(x => byAbbr[x] ? '<a class="xchip" href="#state/' + esc(x) + '">' + esc(x) + '</a>' : '<span class="xchip">' + esc(x) + '</span>').join('') + '</div><h4>' + (safeUrl(n.url) ? '<a href="' + esc(safeUrl(n.url)) + '" target="_blank" rel="noopener noreferrer">' + esc(n.title) + ' ↗</a>' : esc(n.title)) + '</h4><p class="xpin">' + esc(n.publisher) + '</p><p>' + esc(n.topic) + '</p><p class="xnote"><strong>Why it matters:</strong> ' + esc(n.why_it_matters) + '</p></article>';
-    const group = (items, label, none) => '<div class="xnews-group"><h4 class="xnews-gh">' + label + ' <span>' + items.length + '</span></h4>' + (items.length ? items.map(item).join('') : '<p class="xnote">' + none + '</p>') + '</div>';
+    const item = n => row({tag: n.kind === 'commentary' ? 'Commentary' : 'Law or ruling', outline: n.kind === 'commentary',
+      meta: '<span>' + fmtDate(n.date) + '</span> · <span>' + esc(n.publisher || '') + '</span> · <span>' + esc(n.perspective || 'neutral') + '</span>' + ((n.states || []).length ? ' ' + n.states.map(stLink).join(' ') : ''),
+      title: extLink(n.url, n.title), why: '<strong>Why it matters:</strong> ' + esc(lead(n.why_it_matters, 260)),
+      more: para('What it says', n.topic) + para('Why it matters', n.why_it_matters) + para('Source type', n.source_type) + '<p class="xpin">' + extLink(n.url, 'Read the source') + '</p>'});
     const src = NEWS.sources || [], groups = [...new Set(src.map(x => x.group))];
+    const count = it => { const l = it.filter(n => n.kind !== 'commentary').length, c = it.length - l; return plural(l, 'law or ruling', 'laws or rulings') + ' · ' + c + ' commentary'; };
     $('x-news').innerHTML = intro({title: 'News and industry commentary', lead: 'What changed this week, and what the industry is saying about it.',
-      here: ['<strong>Law or ruling</strong> (up to ' + lim.law + ' a week): new laws, bills and board or court decisions on warranty reimbursement, audits and chargebacks', '<strong>Industry commentary</strong> (up to ' + lim.commentary + ' a week): warranty cost trends and what dealers, vendors and manufacturers are saying', 'Every item labeled by source type and perspective (dealer-side, manufacturer-side or neutral)'],
+      here: ['<strong>Law or ruling</strong> (up to ' + lim.law + ' a week): new laws, bills and board or court decisions on warranty reimbursement, audits and chargebacks', '<strong>Commentary</strong> (up to ' + lim.commentary + ' a week): warranty cost trends and what dealers, vendors and manufacturers are saying', 'One line per item on why it matters; open Details for the full summary'],
       use: ['Catch new laws and rulings before they reach an audit', 'Understand the arguments dealers and rate vendors are making, and the cost pressures behind them'],
       note: 'Commentary is context, not law. Much dealer-side coverage comes from dealer law firms and retail-rate vendors.'}) +
-      (src.length ? '<details class="xs-more xnews-sources"><summary>Sources we check each week (' + src.length + ')</summary>' + groups.map(g => '<h4 class="xs-sub">' + esc(g) + '</h4><ul>' + src.filter(x => x.group === g).map(x => '<li>' + link(x.url, x.name) + ' <span class="xbadge muted">' + esc(x.type) + '</span><br><span class="xpin">' + esc(x.note || '') + '</span></li>').join('') + '</ul>').join('') + '</details>' : '') +
-      W.map(w => { const it = w.items || []; const law = it.filter(n => n.kind !== 'commentary'), com = it.filter(n => n.kind === 'commentary');
-        return '<section class="xnewsweek"><h3>Week of ' + fmtDate(w.week_of) + '</h3>' + group(law, 'Law changes and rulings', 'No law changes or rulings met the bar this week.') + group(com, 'Industry commentary', 'No commentary items this week.') + '</section>'; }).join('');
+      W.map((w, i) => { const it = (w.items || []).slice().sort((a, b) => (a.kind === 'commentary') - (b.kind === 'commentary') || (a.date < b.date ? 1 : -1));
+        return '<details class="xw"' + (i === 0 ? ' open' : '') + '><summary class="xw-sum"><span class="xw-date">Week of ' + fmtDate(w.week_of) + '</span><span class="xw-count">' + count(it) + '</span></summary><div class="xw-body">' +
+          (it.length ? '<div class="xr-list">' + it.map(item).join('') + '</div>' : '<p class="xnote">Nothing met the bar this week.</p>') + '</div></details>'; }).join('') +
+      (src.length ? '<details class="xs-more xnews-sources"><summary>Sources we check each week (' + src.length + ')</summary>' + groups.map(g => '<h4 class="xs-sub">' + esc(g) + '</h4><ul>' + src.filter(x => x.group === g).map(x => '<li>' + link(x.url, x.name) + ' <span class="xpin">(' + esc(x.type) + ')</span><br><span class="xpin">' + esc(x.note || '') + '</span></li>').join('') + '</ul>').join('') + '</details>' : '');
   }
 
   /* ---------- Downloads ---------- */
@@ -749,34 +795,51 @@
 
   /* ---------- Cases and laws ---------- */
   const TOPIC_LABEL = {'rate submission — labor': 'Rate submission · labor', 'rate submission — parts': 'Rate submission · parts', 'rate validation/audit': 'Rate validation', 'warranty audit/chargeback': 'Audit and chargeback', 'cost recovery/surcharge': 'Cost recovery / surcharge', 'constitutional/preemption': 'Constitutional challenge', 'legislation': 'Legislation'};
+  const TOPIC_ORDER = ['rate submission — labor', 'rate submission — parts', 'rate validation/audit', 'warranty audit/chargeback', 'legislation', 'cost recovery/surcharge', 'constitutional/preemption'];
   function verLabel(v) { v = String(v || ''); return /primary/.test(v) ? 'Primary source read' : /secondary/.test(v) ? 'Secondary sources only' : 'Partially verified'; }
+  let kcTopic = '';
   function renderCases() {
-    const I = CASES.items, topics = [...new Set(I.map(c => c.topic))], sts = [...new Set(I.flatMap(c => c.states || []))].sort();
+    const I = CASES.items, sts = [...new Set(I.flatMap(c => c.states || []))].sort();
+    const topics = [...new Set(I.map(c => c.topic))].sort((a, b) => (TOPIC_ORDER.indexOf(a) + 99) % 99 - (TOPIC_ORDER.indexOf(b) + 99) % 99);
+    const forumShort = f => String(f || '').split(' (')[0];
+    const caseRow = c => row({id: 'case-' + c.id, flag: c.featured ? 'Start here: ' + c.featured : '', tag: /primary/.test(String(c.verification)) ? '' : verLabel(c.verification), outline: true,
+      meta: (c.states || []).map(stLink).join(' ') + ' <span>' + esc([fmtDate(c.date), forumShort(c.forum), c.manufacturer].filter(Boolean).join(' · ')) + '</span>',
+      title: extLink(c.primary_url, c.title), why: '<strong>Why it matters:</strong> ' + esc(lead(c.why_it_matters, 260)),
+      more: para('Why it matters', c.why_it_matters) + para('What happened', c.summary) + (c.quote ? '<blockquote class="statute-quote">' + esc(c.quote) + '</blockquote>' : '') +
+        para('Forum', c.forum) + para('Docket or citation', c.docket) + para('Verification', verLabel(c.verification)) + para('Research notes', c.notes) +
+        '<p class="xpin">' + [safeUrl(c.primary_url) ? extLink(c.primary_url, 'Primary source') : ''].concat((c.secondary_urls || []).slice(0, 3).map((u, i) => link(u, 'Source ' + (i + 2)))).filter(Boolean).join(' · ') + '</p>'});
     $('x-cases').innerHTML = intro({eyebrow: 'Key decisions and legislation', title: 'Cases & Laws', lead: 'Leading decisions and statutes on rate submissions, rate validation, audits, chargebacks and cost recovery.',
-      here: ['Board decisions, court cases and statutes, each with a neutral summary and why it matters', 'How each item was verified (primary source read, or secondary sources only)', 'Filters by topic and state'],
+      here: ['Board decisions, court cases and statutes grouped by topic, with one line on why each matters', 'Open Details for the full summary, key quote and sources, and how each item was verified', 'Filters by topic and state'],
       use: ['Learn what boards and courts accept as evidence, for example Putnam Ford v. Ford on proving a rate request inaccurate', 'Point Legal to the right precedent when a rate or audit dispute comes up'],
       note: 'Research notes, not legal advice.', stamp: I.length + ' items<br>Checked <strong>' + fmtDate(CASES.checked) + '</strong>'}) +
-      '<div class="xtools"><label>Topic<select id="kcTopic"><option value="">All topics</option>' + topics.map(t => '<option value="' + esc(t) + '">' + esc(TOPIC_LABEL[t] || t) + '</option>').join('') + '</select></label><label>State<select id="kcState"><option value="">All states</option>' + sts.map(s => '<option value="' + s + '">' + esc((byAbbr[s] || {}).name || s) + '</option>').join('') + '</select></label></div>' +
+      '<div class="xtools kc-tools"><div class="xpills" role="group" aria-label="Filter by topic"><button type="button" class="xpill" data-topic="">All topics<span>' + I.length + '</span></button>' +
+      topics.map(t => '<button type="button" class="xpill" data-topic="' + esc(t) + '">' + esc(TOPIC_LABEL[t] || t) + '<span>' + I.filter(c => c.topic === t).length + '</span></button>').join('') + '</div>' +
+      '<label>State<select id="kcState"><option value="">All states</option>' + sts.map(s => '<option value="' + s + '">' + esc((byAbbr[s] || {}).name || s) + '</option>').join('') + '</select></label></div>' +
       '<p class="xcount" id="kcCount" aria-live="polite"></p><div id="kcList"></div>' +
-      (CASES.not_found && CASES.not_found.length ? '<details class="xs-more"><summary>What we looked for and could not verify</summary><ul>' + CASES.not_found.map(x => '<li>' + esc(x) + '</li>').join('') + '</ul></details>' : '');
+      (CASES.not_found && CASES.not_found.length ? '<details class="xs-more"><summary>What we looked for and could not verify (' + CASES.not_found.length + ')</summary><ul>' + CASES.not_found.map(x => '<li>' + esc(x) + '</li>').join('') + '</ul></details>' : '');
     const draw = () => {
-      const t = $('kcTopic').value, s = $('kcState').value;
-      const L = I.filter(c => (!t || c.topic === t) && (!s || (c.states || []).includes(s)));
-      $('kcCount').textContent = L.length + ' of ' + I.length + ' items';
-      $('kcList').innerHTML = L.map(c => '<article class="kc-card' + (c.featured ? ' kc-feat' : '') + '" id="case-' + esc(c.id) + '">' +
-        (c.featured ? '<p class="kc-flag">' + esc(c.featured) + '</p>' : '') +
-        '<div class="xitem-top"><span class="xbadge">' + esc(TOPIC_LABEL[c.topic] || c.topic) + '</span><span class="xbadge muted">' + esc(verLabel(c.verification)) + '</span>' + (c.states || []).map(x => byAbbr[x] ? '<a class="xchip" href="#state/' + x + '">' + x + '</a>' : '<span class="xchip">' + esc(x) + '</span>').join('') + '</div>' +
-        '<h3>' + (safeUrl(c.primary_url) ? '<a href="' + esc(safeUrl(c.primary_url)) + '" target="_blank" rel="noopener noreferrer">' + esc(c.title) + ' ↗</a>' : esc(c.title)) + '</h3>' +
-        '<p class="kc-meta">' + [c.forum, c.docket, c.date, c.manufacturer].filter(Boolean).map(esc).join(' · ') + '</p>' +
-        '<p>' + esc(c.summary) + '</p><p class="xnote"><strong>Why it matters:</strong> ' + esc(c.why_it_matters) + '</p>' +
-        (c.quote ? '<blockquote class="statute-quote">' + esc(c.quote) + '</blockquote>' : '') +
-        ((c.secondary_urls || []).length ? '<p class="xpin">More: ' + c.secondary_urls.slice(0, 3).map((u, i) => link(u, 'Source ' + (i + 1))).join(' · ') + '</p>' : '') +
-        (c.notes ? '<details><summary>Research notes</summary><p>' + esc(c.notes) + '</p></details>' : '') + '</article>').join('') || '<p class="xempty">No items match. Clear a filter.</p>';
+      const s = $('kcState').value;
+      document.querySelectorAll('#x-cases .xpill').forEach(b => b.setAttribute('aria-pressed', String(b.dataset.topic === kcTopic)));
+      const L = I.filter(c => (!kcTopic || c.topic === kcTopic) && (!s || (c.states || []).includes(s)));
+      $('kcCount').textContent = 'Showing ' + L.length + ' of ' + I.length + ' items';
+      $('kcList').innerHTML = topics.filter(t => L.some(c => c.topic === t)).map(t => {
+        const G = L.filter(c => c.topic === t).sort((a, b) => (b.featured ? 1 : 0) - (a.featured ? 1 : 0) || (a.date < b.date ? 1 : -1));
+        return '<section class="xr-group"><h3 class="xr-gh">' + esc(TOPIC_LABEL[t] || t) + ' <span>' + G.length + '</span></h3><div class="xr-list">' + G.map(caseRow).join('') + '</div></section>';
+      }).join('') || '<p class="xempty">No items match. Clear a filter.</p>';
     };
-    ['kcTopic', 'kcState'].forEach(id => $(id).addEventListener('input', draw));
+    document.querySelectorAll('#x-cases .xpill').forEach(b => b.addEventListener('click', () => { kcTopic = b.dataset.topic; draw(); }));
+    $('kcState').addEventListener('input', draw);
+    renderCases.draw = draw;
     draw();
   }
-  function focusCase(id) { const el = $('case-' + id); if (el) { el.scrollIntoView({block: 'start'}); el.classList.add('kc-hl'); setTimeout(() => el.classList.remove('kc-hl'), 2200); } }
+  function focusCase(id) {
+    let el = $('case-' + id);
+    if (!el && renderCases.draw) { kcTopic = ''; const s = $('kcState'); if (s) s.value = ''; renderCases.draw(); el = $('case-' + id); }
+    if (!el) return;
+    const d = el.querySelector('details'); if (d) d.open = true;
+    window.scrollTo(0, Math.max(0, el.getBoundingClientRect().top + window.scrollY - 12)); el.focus({preventScroll: true});
+    el.classList.add('kc-hl'); setTimeout(() => el.classList.remove('kc-hl'), 2200);
+  }
 
   function init() { buildShell(); route(); }
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init); else init();
