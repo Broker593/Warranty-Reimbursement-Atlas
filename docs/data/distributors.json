@@ -1,0 +1,419 @@
+{
+ "schema": 1,
+ "checked": "2026-09-28",
+ "distributors": {
+  "SNE": {
+   "name": "Subaru of New England, Inc.",
+   "hq": "Norwood, MA",
+   "area": "All six New England states"
+  },
+  "SDC": {
+   "name": "Subaru Distributors Corp.",
+   "hq": "Orangeburg, NY",
+   "area": "New York State and the 11 northern New Jersey counties"
+  },
+  "SH": {
+   "name": "SUBARU Hawaii",
+   "hq": "Honolulu, HI",
+   "area": "Hawaii",
+   "entity_note": "Operated by Servco (legal entity appears to be Servco Subaru Inc., a Servco Pacific Inc. affiliate; not confirmed)."
+  }
+ },
+ "summary": "In these states, Subaru dealers are franchised by an independent regional distributor rather than by the manufacturer's U.S. company. State dealer laws generally treat the distributor that grants the franchise as the franchisor.",
+ "impact": "What this means for the rules on this site: in these states the statute's warranty-reimbursement duties, retail-rate submission rules and audit and chargeback rights and limits generally run between the distributor and its dealers. The rules shown here still apply, but to the franchisor that holds the dealer's franchise. How an audit, rate review or chargeback program run by the manufacturer's U.S. company applies to distributor-franchised dealers is a question for Legal.",
+ "sources": [
+  "https://www.subaruofnewengland.com/",
+  "https://www.subaruofnewengland.com/locations-list.htm",
+  "https://media.subaru.com/newsrelease.do?id=1706",
+  "https://media.subaru.com/pressrelease/1594/1/subaru-america-partners-feeding-america-help-provide-50",
+  "https://cdn.subarunet.com/stis/doc/warrantyBooklet/2025_war-_and_maint_112823b.pdf",
+  "https://www.nhd.uscourts.gov/sites/default/files/Opinions/99/99PB046.pdf",
+  "https://www.nhd.uscourts.gov/sites/default/files/Opinions/01/01NH143.pdf",
+  "https://news.dealershipguy.com/p/how-subaru-took-over-northeast-lessons-dealers-distributor-ernie-boch-2025-05-21",
+  "https://cdn.subarunet.com/stis/doc/warrantyBooklet/2025_war-_and_maint_112823b.pdf (SOA 2025 Warranty & Maintenance Booklet, pp. 4, 10, 14, 20, 23, 25: Hawaii warranty made by SUBARU Hawaii; distributor list)",
+  "https://www.subaru.com/support/terms-and-conditions (SOA Conditions of Use, last updated June 28, 2024: \"Subaru distributes vehicles only in the United States (excluding Hawaii).\")",
+  "https://www.servco.com/about-us/history/ (2007: \"Servco acquires the Subaru distributorship for Hawaii.\")",
+  "https://www.servco.com/business-areas/automotive-distribution/ (imports/distributes Toyota, Lexus, Subaru vehicles and parts; warranty administration)"
+ ],
+ "uncertainties": [
+  "No 2026 primary confirmation of the territories. The latest SOA document found is the 2025 MY Warranty & Maintenance Booklet (file dated Nov. 2023). The press-release boilerplate dates from 2020-2021, and the court opinions are older (SDC 2005 and 1986; SNE 1999-2004).",
+  "New York: sources say 'throughout New York state' and list 'New York' without qualification. No contrary evidence was found, but no current SDC retailer list was available to confirm every county (e.g., western NY).",
+  "New Jersey: SDC serves only the 'northern eleven counties'. Which counties is not stated in any source found. The rest of NJ (and all of PA) appears to be SOA-direct, based on the absence of any distributor listing, not an affirmative statement.",
+  "SNE franchisor status rests on SNE's 'exclusive distributor ... to all Subaru retailers' statement and on D.N.H. opinions (1999, 2001) that took facts from the complaint and SNE's dealer agreement exhibit. SOA's releases say SNE 'markets & distributes' rather than 'franchises'. No current dealer agreement was reviewed.",
+  "Whether SOA is also a contracting party with distributor-territory dealers (tri-party agreements, SOA-run incentive or warranty-administration programs) is not publicly documented. SOA is the named warrantor (except Hawaii), and the statutes key several duties to who issues the warranty or is party to the franchise, so this matters for applying Part 2.",
+  "Retailer counts vary by source and date (SOA 2020/2021: SNE 64 and SDC 67; SNE site today: about 65, approximate).",
+  "SOA's 2020/2021 releases refer to 'two regional independent distributors', but the 2025 MY booklet also lists 'SUBARU Hawaii' as the distributor and warrantor for Hawaii. Hawaii is outside this scope.",
+  "New Jersey dealer law (N.J. Franchise Practices Act) applies to SDC's northern-NJ retailers but was not analyzed here.",
+  "Hawaii: Exact legal entity holding the Subaru distributorship and the Hawaii MVIL distributor license not confirmed: the manufacturer's U.S. company booklet says \"SUBARU Hawaii\"; website/privacy policy/2017 lawsuit name Servco Subaru Inc.; Servco history says \"Servco\" (Servco Pacific Inc.) acquired it. Hawaii business registry and PVL license search were inaccessible (403/portal migration).",
+  "Hawaii: Servco Subaru Inc.'s ownership relationship to Servco Pacific Inc. (e.g., wholly owned subsidiary) is not stated in any source read; only \"c/o Servco Pacific Inc.\" and shared branding/addresses.",
+  "Hawaii: Servco Subaru Inc. also appears to operate Servco retail stores (e.g., trade name \"servco subaru waialae\" in registry search index), so the distributor and several dealers may be affiliated; the statute has no affiliate/\"common entity\" rule for warranty or audit duties."
+ ],
+ "states": [
+  {
+   "state": "CT",
+   "distributor": "SNE",
+   "coverage": "statewide",
+   "area_note": "",
+   "distributor_covered": true,
+   "plain_english": "Connecticut writes every § 42-133s duty for the 'manufacturer or distributor' (P.A. 83-198 extended them to distributors). That covers warranty compensation, retail-rate submissions and rebuttal, claim timing, the 1-year audit/chargeback right and the clerical-error limits. A distributor that holds the franchise owes these to 'its dealers' and holds the audit/chargeback rights. Exception: the new stop-sale compensation duty effective Oct. 1, 2026 (P.A. 26-24 § 22) names only the 'manufacturer'.",
+   "duties_quote": "Each manufacturer or distributor shall specify in writing to each of its dealers licensed in this state, the dealer's obligations for predelivery preparation and warranty service on its products, and shall compensate the dealer for such preparation and service.",
+   "duties_pinpoint": "Conn. Gen. Stat. § 42-133s(a)",
+   "provisions": [
+    {
+     "summary": "Audit and chargeback right (1 year; longer for fraud) and its limits are granted to and imposed on the 'manufacturer or distributor'. P.A. 26-24 § 23 re-enacts (j) eff. Oct. 1, 2026 with the same wording and adds stop-sale claims.",
+     "quote": "provided manufacturers or distributors retain the right to audit such claims and to charge-back the dealer for false or unsubstantiated claims for a period of one year following payment.",
+     "pinpoint": "Conn. Gen. Stat. § 42-133s(j); P.A. 26-24 § 23"
+    },
+    {
+     "summary": "Retail-rate rebuttal (parts; labor is parallel in (c)) is a 'manufacturer or distributor' right, with burden of proof on it at a DMV hearing.",
+     "quote": "a manufacturer or distributor may, not later than thirty days after submission, rebut that presumption by reasonably substantiating that the rate is unfair and unreasonable",
+     "pinpoint": "Conn. Gen. Stat. § 42-133s(b), (c)"
+    },
+    {
+     "summary": "Official history note confirms the 1983 extension of § 42-133s (and §§ 42-133t, -u, -bb, -cc) to distributors.",
+     "quote": "History: P.A. 83-198 applied provisions to distributors;",
+     "pinpoint": "Conn. Gen. Stat. § 42-133s, history note"
+    },
+    {
+     "summary": "Warranty-reimbursement discrimination bar applies to 'manufacturer or distributor' (intro to § 42-133cc).",
+     "quote": "Unfairly discriminate among its new motor vehicle dealers with respect to warranty reimbursement;",
+     "pinpoint": "Conn. Gen. Stat. § 42-133cc(9)"
+    },
+    {
+     "summary": "Gap: the NEW used-vehicle stop-sale/do-not-drive compensation duty and its anti-chargeback-retaliation rule (P.A. 26-24 § 22, eff. Oct. 1, 2026) are written for the 'manufacturer' only; distributors are not named.",
+     "quote": "a new vehicle dealer that is franchised to sell and service new vehicles of the manufacturer is entitled to compensation from the manufacturer",
+     "pinpoint": "P.A. 26-24 § 22(b), (g) (approved May 27, 2026; eff. Oct. 1, 2026)"
+    },
+    {
+     "summary": "No general 'through an affiliate' anti-circumvention clause was found in §§ 42-133r to 42-133ee. The closest are the control prong of the 'distributor' definition and this warranty-facility ban.",
+     "quote": "Own, operate or control, either directly or indirectly, a facility for the performance of motor vehicle warranty service work.",
+     "pinpoint": "Conn. Gen. Stat. § 42-133cc(16)"
+    }
+   ],
+   "official_url": "https://www.cga.ct.gov/current/pub/chap_739.htm ; https://www.cga.ct.gov/2026/ACT/PA/PDF/2026PA-00024-R00SB-00413-PA.PDF",
+   "confidence": "high"
+  },
+  {
+   "state": "MA",
+   "distributor": "SNE",
+   "coverage": "statewide",
+   "area_note": "",
+   "distributor_covered": true,
+   "plain_english": "Massachusetts writes every § 9 warranty, retail-rate, claim, audit and chargeback rule for the 'manufacturer or distributor', and a 'franchise' can be granted by either. A distributor-franchisor therefore owes the reimbursement duties and holds the audit/chargeback rights, subject to the same limits: 1-year lookback, pre-chargeback meeting, no extrapolation and no retaliation. The 'distributor' definition also reaches a company that sells to a wholesaler who sells to Massachusetts dealers. The text does not say whether that upstream seller owes § 9 duties to dealers it did not franchise ('its dealers').",
+   "duties_quote": "A manufacturer or distributor shall specify in writing to each of its dealers the dealer's obligations for predelivery preparation and warranty service on its products and shall compensate the dealer for such preparation and service.",
+   "duties_pinpoint": "Mass. Gen. Laws ch. 93B, § 9(b)(1)",
+   "provisions": [
+    {
+     "summary": "Audit right (1 year, longer for fraud) granted to 'every manufacturer or distributor'.",
+     "quote": "Every manufacturer or distributor shall retain the right to audit claims submitted by a motor vehicle dealer and paid by the manufacturer or distributor for warranty service, parts recall service, and sales incentive, bonus, or other claims",
+     "pinpoint": "Mass. Gen. Laws ch. 93B, § 9(c); chargeback grounds § 9(d)-(e)"
+    },
+    {
+     "summary": "Pre-chargeback meeting, written explanation, 30-day response and no-shifting-basis limits bind the 'manufacturer or distributor'. No extrapolation (§ 9(g)), written results (§ 9(h)).",
+     "quote": "A manufacturer or distributor shall not chargeback a motor vehicle dealer subsequent to the payment of a claim unless a representative of the manufacturer or distributor first meets in person or by video or teleconference",
+     "pinpoint": "Mass. Gen. Laws ch. 93B, § 9(e) (second paragraph)"
+    },
+    {
+     "summary": "Retaliatory audits are a § 3(a) violation for a manufacturer or distributor.",
+     "quote": "It shall be a violation of subsection (a) of section 3 for any manufacturer or distributor to audit or examine any sales or service account or activity of a motor vehicle dealer as retribution",
+     "pinpoint": "Mass. Gen. Laws ch. 93B, § 9(i)"
+    },
+    {
+     "summary": "Anti-circumvention: acting through a parent, subsidiary or agent is a violation.",
+     "quote": "to act to accomplish, either directly or indirectly through any parent company, subsidiary, or agent, what would otherwise be prohibited under this chapter on the part of the manufacturer or distributor.",
+     "pinpoint": "Mass. Gen. Laws ch. 93B, § 4(c)(12)"
+    },
+    {
+     "summary": "Warranty scope includes plans issued by the manufacturer, distributor or its 'common entity' ('common entity' is not defined in § 1). Retail-rate submissions are made to the 'manufacturer or distributor' and audited by the 'franchisor'.",
+     "quote": "issued by the manufacturer or distributor or its common entity, unless issued by a common entity that is not a manufacturer",
+     "pinpoint": "Mass. Gen. Laws ch. 93B, § 9(b)(1); § 9(b)(2)(i)-(ii)"
+    }
+   ],
+   "official_url": "https://malegislature.gov/Laws/GeneralLaws/PartI/TitleXV/Chapter93B/Section1 ; https://malegislature.gov/Laws/GeneralLaws/PartI/TitleXV/Chapter93B/Section9 ; https://malegislature.gov/Laws/GeneralLaws/PartI/TitleXV/Chapter93B/Section4",
+   "confidence": "high"
+  },
+  {
+   "state": "ME",
+   "distributor": "SNE",
+   "coverage": "statewide",
+   "area_note": "",
+   "distributor_covered": true,
+   "plain_english": "Maine folds 'franchisor' and 'distributor' into 'manufacturer' and puts the § 1176 duties on the 'franchisor'. A distributor that grants the franchise is therefore the party the statute treats as owing retail-rate warranty reimbursement. It also holds the § 1176-A audit/chargeback rights, with the 12-month incentive-audit and clerical-error limits. Caveat: § 1176 is keyed to a warranty 'created by the franchisor', and the manufacturer's U.S. company is the named warrantor.",
+   "duties_quote": "If a motor vehicle franchisor requires or permits a motor vehicle franchisee to perform labor or provide parts in satisfaction of a warranty created by the franchisor, the franchisor shall properly and promptly fulfill its warranty obligations",
+   "duties_pinpoint": "10 M.R.S. § 1176 (first paragraph)",
+   "provisions": [
+    {
+     "summary": "Retail-rate (parts markup) submission goes to, and is audited by, the franchisor. Cost recovery is barred.",
+     "quote": "subject to audit of the submitted repair orders by the franchisor and adjustment of the average percentage markup based on that audit.",
+     "pinpoint": "10 M.R.S. § 1176 (first paragraph)"
+    },
+    {
+     "summary": "Audit of paid claims and incentive chargebacks is a 'manufacturer' right, which by § 1171(10) includes franchisor/distributor. Incentive audits are limited to 12 months. The clerical-error bar is imposed on the 'franchisor'.",
+     "quote": "A manufacturer may reasonably and periodically audit a new motor vehicle dealer to determine the validity of paid claims or any charge-backs for customer or dealer incentives.",
+     "pinpoint": "10 M.R.S. § 1176-A"
+    },
+    {
+     "summary": "Anti-circumvention: the franchisor may not use affiliates or any other person to do what it cannot do directly.",
+     "quote": "A franchisor may not use any subsidiary corporation, affiliated corporation, other corporation in which it owns or controls more than 5% of the stock or other corporation, partnership, association or person to accomplish",
+     "pinpoint": "10 M.R.S. § 1171-A"
+    },
+    {
+     "summary": "Stop-sale/do-not-drive compensation duty and chargeback-retaliation ban on the 'manufacturer' (includes distributor).",
+     "quote": "A manufacturer may not reduce compensation to a motor vehicle dealer, process a charge back to a dealer, reduce the amount that the manufacturer owes a dealer under an incentive program or remove a dealer from an incentive program",
+     "pinpoint": "10 M.R.S. § 1174(3)(C-4)(3)"
+    },
+    {
+     "summary": "Interpretive wrinkle, not resolved by the text: § 1176 is triggered by a warranty 'created by the franchisor'. The public 2025 Subaru Warranty & Maintenance Booklet says the warranties are made by Subaru of America, Inc. How § 1176 applies when the franchisor did not itself create the warranty is a question for counsel.",
+     "quote": "in satisfaction of a warranty created by the franchisor",
+     "pinpoint": "10 M.R.S. § 1176"
+    }
+   ],
+   "official_url": "https://legislature.maine.gov/statutes/10/title10sec1171.html ; https://legislature.maine.gov/statutes/10/title10sec1176.html ; https://legislature.maine.gov/statutes/10/title10sec1176-A.html ; https://legislature.maine.gov/statutes/10/title10sec1171-A.html ; https://legislature.maine.gov/statutes/10/title10sec1174.html",
+   "confidence": "high"
+  },
+  {
+   "state": "NH",
+   "distributor": "SNE",
+   "coverage": "statewide",
+   "area_note": "",
+   "distributor_covered": true,
+   "plain_english": "New Hampshire defines 'manufacturer' to include distributors and franchisors, and the 357-C:5 rules run to the 'franchisor' or to the 'manufacturer, distributor, branch, or division'. A distributor-franchisor is therefore covered for warranty pay, retail-rate floor and audits, the 9-month audit window, and the Board stay of protested chargebacks. Caveat: 357-C:5, II is triggered by a warranty 'issued by the franchisor', and II(b)(1)(A) extends duties only to a franchisor's parent, subsidiary, affiliate or agent that issues a plan. The text does not directly address a warranty issued by an unaffiliated upstream importer.",
+   "duties_quote": "If any franchisor shall require or permit franchisees to perform services or provide parts in satisfaction of a warranty issued by the franchisor:",
+   "duties_pinpoint": "RSA 357-C:5, II (lead-in to (a)-(e)); see also 357-C:5, I ('Every manufacturer, distributor, or branch or division thereof')",
+   "provisions": [
+    {
+     "summary": "Retail-rate floor applies to any manufacturer, component manufacturer or distributor.",
+     "quote": "any manufacturer, component manufacturer, or distributor pay its dealers an amount of money for warranty work that is less than that charged by the dealer to the retail customers of the dealer",
+     "pinpoint": "RSA 357-C:5, II(b)(1)"
+    },
+    {
+     "summary": "Franchisor duties extend to a parent, subsidiary, affiliate or agent that issues a warranty or service plan.",
+     "quote": "The obligations imposed on motor vehicle franchisors by this section shall apply to any parent, subsidiary, affiliate, or agent of the motor vehicle franchisor if a warranty or service or repair plan is issued by that person",
+     "pinpoint": "RSA 357-C:5, II(b)(1)(A)"
+    },
+    {
+     "summary": "Warranty audit/chargeback right (9 months; incentive audits 9 months in (d)(3)) is held by the 'manufacturer, distributor, branch, or division'.",
+     "quote": "A manufacturer, distributor, branch, or division shall retain the right to audit warranty claims for a period of 9 months after the date on which the claim is paid",
+     "pinpoint": "RSA 357-C:5, II(d)(2)-(3)"
+    },
+    {
+     "summary": "Protested chargebacks are stayed until a Motor Vehicle Industry Board final order. Fraud chargebacks are governed by (d)(6).",
+     "quote": "Any chargeback resulting from any audit shall not be made until a final order is issued by the New Hampshire motor vehicle industry board if a protest to the proposed chargeback is filed within 30 days",
+     "pinpoint": "RSA 357-C:5, II(d)(5)"
+    },
+    {
+     "summary": "Annual retail-rate audits may be run by a 'manufacturer or distributor'.",
+     "quote": "A manufacturer or distributor may perform annual audits to verify that a dealer's effective rates have not decreased and if they have may reduce the warranty reimbursement rate prospectively.",
+     "pinpoint": "RSA 357-C:5, II(b)(1)(B)(iv)"
+    }
+   ],
+   "official_url": "https://www.gencourt.state.nh.us/rsa/html/XXXI/357-C/357-C-1.htm ; https://www.gencourt.state.nh.us/rsa/html/XXXI/357-C/357-C-5.htm (also checked against https://gc.nh.gov/rsa/html/XXXI/357-C/357-C-mrg.htm)",
+   "confidence": "high"
+  },
+  {
+   "state": "RI",
+   "distributor": "SNE",
+   "coverage": "statewide",
+   "area_note": "",
+   "distributor_covered": "partly",
+   "plain_english": "Until Oct. 1, 2026, Rhode Island's core pay-for-warranty duty (§ 31-5.1-6(a)) and recall/stop-sale duty (§ 31-5.1-6.1) name only the 'manufacturer', which does not include a distributor. The retail-rate, claim-timing and 12-month chargeback rules in § 31-5.1-6(b)-(i) already say 'manufacturer or distributor', so a distributor-franchisor clearly holds the audit/chargeback rights and limits. From Oct. 1, 2026 (P.L. 2026, chs. 179-180), every § 31-5.1-6 and § 31-5.1-6.1 duty applies to the 'manufacturer, distributor, or factory branch'.",
+   "duties_quote": "Every manufacturer shall properly fulfill any warranty agreement and adequately and fairly compensate each of its motor vehicle dealers for labor and parts.",
+   "duties_pinpoint": "R.I. Gen. Laws § 31-5.1-6(a) (text in force through Sept. 30, 2026)",
+   "provisions": [
+    {
+     "summary": "Current law: retail-rate submission and rebuttal, claim timing and the 12-month chargeback right and limits in § 31-5.1-6(b)-(i) already say 'manufacturer or distributor'.",
+     "quote": "If a claim filed under this section is shown by the manufacturer or distributor to be false or unsubstantiated, the manufacturer or distributor may charge back the claim within twelve (12) months",
+     "pinpoint": "R.I. Gen. Laws § 31-5.1-6(i)(3)(i); see (b)-(h), (i)(1)-(2), (i)(3)(ii)-(iv)"
+    },
+    {
+     "summary": "Current law: recall and stop-sale compensation in § 31-5.1-6.1 is written for the 'manufacturer' only.",
+     "quote": "A manufacturer shall compensate its new motor vehicle dealers for all labor and parts required by the manufacturer to perform recall repairs.",
+     "pinpoint": "R.I. Gen. Laws § 31-5.1-6.1(a) (pre-10/1/2026 text)"
+    },
+    {
+     "summary": "EFFECTIVE OCT. 1, 2026: P.L. 2026, ch. 180 (S 2347 Sub A) and identical ch. 179 (H 8213 Sub A), enacted June 22, 2026, rewrite § 31-5.1-6(a) and § 31-5.1-6.1 to cover the 'manufacturer, distributor, or factory branch'. They also add labor at the non-warranty rate times actual technician time, and a 90-day claim window.",
+     "quote": "Every manufacturer, distributor, or factory branch shall properly fulfill any warranty agreement and adequately and fairly compensate each of its motor vehicle dealers for labor and parts.",
+     "pinpoint": "R.I. Gen. Laws § 31-5.1-6(a) as amended by P.L. 2026, ch. 180, § 1 and ch. 179, § 1 (eff. Oct. 1, 2026)"
+    },
+    {
+     "summary": "EFFECTIVE OCT. 1, 2026: new audit/chargeback reasonableness limit, with appeal to the Department of Revenue. It replaces the old (h), and (i)(4) adds 45-day written denial and resubmission rules.",
+     "quote": "A manufacturer, distributor, or factory branch shall not unreasonably subject a dealer to a warranty audit or chargeback.",
+     "pinpoint": "R.I. Gen. Laws § 31-5.1-6(h), (i)(4) as amended by P.L. 2026, chs. 179-180"
+    },
+    {
+     "summary": "Chapter applies to all agreements in which a distributor has a direct or indirect interest. The 2026 act also adds 'factory branch'. § 31-5.1-2 reaches anyone who engages 'directly or indirectly' in purposeful contacts in RI.",
+     "quote": "all other agreements in which the manufacturer, wholesaler, or distributor has any direct or indirect interest.",
+     "pinpoint": "R.I. Gen. Laws § 31-5.1-8; § 31-5.1-2"
+    }
+   ],
+   "official_url": "https://webserver.rilegislature.gov/Statutes/TITLE31/31-5.1/31-5.1-1.htm ; https://webserver.rilegislature.gov/Statutes/TITLE31/31-5.1/31-5.1-6.htm ; https://webserver.rilegislature.gov/Statutes/TITLE31/31-5.1/31-5.1-6.1.htm ; https://webserver.rilegislature.gov/Statutes/TITLE31/31-5.1/31-5.1-8.htm ; https://webserver.rilegislature.gov/PublicLaws/law26/law26180.htm ; https://webserver.rilegislature.gov/PublicLaws/law26/law26179.htm",
+   "confidence": "high"
+  },
+  {
+   "state": "VT",
+   "distributor": "SNE",
+   "coverage": "statewide",
+   "area_note": "",
+   "distributor_covered": true,
+   "plain_english": "Vermont's definition of 'manufacturer' expressly includes 'distributor', and a distributor that is party to the franchise is a 'franchisor'. The § 4086 duties therefore apply to a distributor-franchisor as the 'manufacturer'. That covers warranty pay at retail rates, the retail-rate audit, the audit windows (1 year for warranty, 18 months for incentives, 2 years for fraud) and the Board stay of protested chargebacks. Citation correction: the dealer act is 9 V.S.A. ch. 108 (ch. 107 covers equipment and machinery dealerships). Warranty is § 4086. § 4097 lists manufacturer violations and § 4098 covers new or relocated dealers.",
+   "duties_quote": "Each new motor vehicle manufacturer shall specify in writing to each of its new motor vehicle dealers licensed in this State the dealer’s obligations for predelivery preparation and warranty service on its products, shall compensate the new motor vehicle dealer",
+   "duties_pinpoint": "9 V.S.A. § 4086(a); rate rules § 4086(b)-(c)",
+   "provisions": [
+    {
+     "summary": "Warranty claim audits: 1 year. Chargeback for fraud: 2 years.",
+     "quote": "A manufacturer shall retain the right to audit warranty claims for a period of one year after the date on which the claim is paid.",
+     "pinpoint": "9 V.S.A. § 4086(f); see § 4086(e)"
+    },
+    {
+     "summary": "Incentive and reimbursement program audits and chargebacks: 18 months from payment or 1 year after program end.",
+     "quote": "A manufacturer shall retain the right to audit all incentive and reimbursement programs and charge back any amounts paid on claims that are false or unsubstantiated for a period of 18 months",
+     "pinpoint": "9 V.S.A. § 4086(g)"
+    },
+    {
+     "summary": "Protested chargebacks are stayed pending a Transportation Board final order. The manufacturer bears the burden of proof.",
+     "quote": "Any chargeback resulting from any audit shall not be made until a final order is issued by the Transportation Board if a protest to the proposed chargeback is filed within 30 days",
+     "pinpoint": "9 V.S.A. § 4086(h)"
+    },
+    {
+     "summary": "All written distributor-dealer agreements are subject to the chapter, and inconsistent terms are void.",
+     "quote": "All written agreements between a manufacturer or distributor and a new motor vehicle dealer shall be subject to the provisions of this chapter",
+     "pinpoint": "9 V.S.A. § 4100a(a)"
+    },
+    {
+     "summary": "Violations sections are framed on 'manufacturer' as defined in the chapter, which includes distributors. § 4097(9) bars warranty-reimbursement discrimination. § 4100 reaches anyone engaging 'directly or indirectly' in purposeful contacts in Vermont.",
+     "quote": "It shall be a violation of this chapter for any manufacturer defined under this chapter:",
+     "pinpoint": "9 V.S.A. § 4097 (intro) and (9); § 4096 (intro); § 4100"
+    }
+   ],
+   "official_url": "https://legislature.vermont.gov/statutes/fullchapter/09/108 (site notes it is an unofficial convenience copy reflecting the 2025 session)",
+   "confidence": "high"
+  },
+  {
+   "state": "NY",
+   "distributor": "SDC",
+   "coverage": "statewide",
+   "area_note": "",
+   "distributor_covered": true,
+   "plain_english": "New York puts the § 465 warranty, retail-rate, audit and chargeback rules on the 'franchisor'. That term includes a distributor (or importer) that is party to the franchise. Where a distributor holds the franchise, it owes reimbursement and holds the audit/chargeback rights: a 1-year lookback (5 years for fraud), subject to notice, meeting, burden-of-proof and litigation-stay limits. One wrinkle: the § 465(3) clerical-error bar is worded for the 'manufacturer'.",
+   "duties_quote": "Every franchisor shall properly fulfill any warranty agreement and/or franchisor’s service contract",
+   "duties_pinpoint": "N.Y. Veh. & Traf. Law § 465(1)",
+   "provisions": [
+    {
+     "summary": "Compensation duty and retail-rate declaration run to and from the 'franchisor'.",
+     "quote": "shall compensate each of its franchised motor vehicle dealers for all warranty, recall, diagnostic labor operations and parts where applicable in amounts which reflect reasonable compensation for such work.",
+     "pinpoint": "N.Y. Veh. & Traf. Law § 465(1)"
+    },
+    {
+     "summary": "Audit/chargeback lookback limit (1 year; 5 years for fraud) and notice requirement bind the 'franchisor'.",
+     "quote": "No franchisor shall conduct an audit or charge back any warranty payment, or any sales, advertising or marketing incentive payment (“incentive payments”) or otherwise hold a franchised motor vehicle dealer liable for charges more than one year",
+     "pinpoint": "N.Y. Veh. & Traf. Law § 465(3)"
+    },
+    {
+     "summary": "A pre-chargeback meeting or call is required. § 465(5)-(6) set the chargeback grounds, and § 465(7) stays a chargeback if the dealer sues within 30 days.",
+     "quote": "A franchisor shall not charge a dealer back subsequent to the payment of a warranty, sales, advertising or marketing incentive claim unless a representative of the franchisor has met in person at the dealership, or by telephone",
+     "pinpoint": "N.Y. Veh. & Traf. Law § 465(4)-(7)"
+    },
+    {
+     "summary": "Anti-circumvention: a franchisor may not act through affiliates or any other controlled person. § 463(1) also bars coercion 'directly or indirectly'.",
+     "quote": "To use any subsidiary corporation, affiliated corporation, captive finance source or any other controlled corporation, partnership, association or person to accomplish what would otherwise be unlawful conduct under this article on the part of the franchisor.",
+     "pinpoint": "N.Y. Veh. & Traf. Law § 463(2)(u); § 463(1)"
+    },
+    {
+     "summary": "Drafting wrinkle: the clerical-error bar in § 465(3) is phrased as a duty of the 'manufacturer', not the 'franchisor'. § 465(6) likewise refers to 'the manufacturer's reasonable procedures'.",
+     "quote": "A manufacturer shall not deny a claim submitted under this section based solely on a dealer’s incidental failure to comply with a specific claim processing requirement",
+     "pinpoint": "N.Y. Veh. & Traf. Law § 465(3) (last sentence), (6)"
+    }
+   ],
+   "official_url": "https://www.nysenate.gov/legislation/laws/VAT/462 ; https://www.nysenate.gov/legislation/laws/VAT/463 ; https://www.nysenate.gov/legislation/laws/VAT/465 (official Open Legislation pages; last updated 2014-09-22 for §§ 462-463 and 2024-09-06 for § 465)",
+   "confidence": "high"
+  },
+  {
+   "state": "NJ",
+   "distributor": "SDC",
+   "coverage": "partial",
+   "area_note": "Northern 11 counties only (counties not named in public sources); the rest of New Jersey is served directly.",
+   "distributor_covered": true,
+   "plain_english": "In New Jersey the 56:10-15 warranty duties run from the 'motor vehicle franchisor' to its dealer, and 56:10-13 defines that term to include the manufacturer 'and his motor vehicle distributors'. So where a distributor grants the dealer's franchise (Subaru Distributors Corp. in northern NJ), the distributor owes retail-rate reimbursement, receives the dealer's rate, markup and time-allowance submissions, and holds the sample-only audit, 12-month claim-audit and restricted chargeback rights. A parent, affiliate, agent or commonly controlled entity (such as the manufacturer's U.S. company) takes on the same duties only if it issues the warranty or service plan itself (56:10-15(g)). No NJ decision applying 'his motor vehicle distributors' to an independent distributor turned up in this check.",
+   "duties_quote": "the motor vehicle franchisor shall reimburse each motor vehicle franchisee for such labor services, including diagnostic work, as are rendered and for such parts as are supplied, in an amount equal to the prevailing retail price",
+   "duties_pinpoint": "N.J.S.A. 56:10-15(a) (as amended by P.L.2025, c.140, s.7, eff. 4/1/2026)",
+   "provisions": [
+    {
+     "summary": "Trigger and scope: applies whenever the franchise requires or permits dealers to do repair service that the motor vehicle franchisor offers and reimburses, including warranty, extended warranty, maintenance plan, service plan or recall.",
+     "quote": "perform labor services or provide parts in satisfaction of a repair service offered and reimbursed by the motor vehicle franchisor, including, but not limited to, a warranty, an extended warranty, a maintenance plan, a service-related plan, or a recall",
+     "pinpoint": "N.J.S.A. 56:10-15 (intro)"
+    },
+    {
+     "summary": "Retail-rate submission goes TO the motor vehicle franchisor: 100 sequential or 90 days of customer-pay ROs, whichever is less, no older than 180 days. Parts markup (d) and labor-time allowance (m) work the same way.",
+     "quote": "A motor vehicle franchisee may establish its average labor rate under this section by submitting to the motor vehicle franchisor 100 sequential customer paid service repair orders or 90 days of customer paid service repair orders, whichever is less",
+     "pinpoint": "N.J.S.A. 56:10-15(l); see also (d)(1), (m)"
+    },
+    {
+     "summary": "The franchisor's audit right over the declared rate is limited to the submitted sample. Any adjustment must rest only on that sample (same rule in (a), (d), (m)).",
+     "quote": "The average retail labor rate so declared shall go into effect 30 days following the declaration subject to audit by the motor vehicle franchisor only of the sample submitted by the motor vehicle franchisee.",
+     "pinpoint": "N.J.S.A. 56:10-15(l); (a); (d)(1); (m)"
+    },
+    {
+     "summary": "Claim audit lookback is 12 months after payment unless fraud is reasonably suspected. Paid claims may be charged back only for false/fraudulent claims, improper or unnecessary work, or failure to meet reasonable written requirements the dealer was told about in advance.",
+     "quote": "A motor vehicle franchisor shall not audit a claim after the expiration of 12 months following the payment of the claim unless the motor vehicle franchisor has reasonable grounds to believe that the claim was fraudulent",
+     "pinpoint": "N.J.S.A. 56:10-15(f)"
+    },
+    {
+     "summary": "Chargeback procedure: written notice within 30 days of the audit with the basis and selection methodology; final notice after internal dispute resolution; automatic stay without bond if suit is filed within 30 days. Franchisor bears the burden of proof. No chargebacks for administrative or scrivener's errors.",
+     "quote": "A motor vehicle franchisor shall not deny or charge back a claim paid for labor services and parts provided in the performance of an open recall, warranty, or other service agreement",
+     "pinpoint": "N.J.S.A. 56:10-15(p)"
+    },
+    {
+     "summary": "Affiliate extension (both directions): the 56:10-15 duties also bind any parent, subsidiary, affiliate, agent, commonly owned or controlled person, employee, or 1%+ owner of the motor vehicle franchisor...",
+     "quote": "the obligations imposed on motor vehicle franchisors by this section shall apply to any parent, subsidiary, affiliate, or agent of the motor vehicle franchisor, any person under common ownership or control",
+     "pinpoint": "N.J.S.A. 56:10-15(g)"
+    }
+   ],
+   "official_url": "https://pub.njleg.gov/statutes/STATUTES-TEXT.zip (NJ Legislature official statutes text, build dated 2026-09-26, includes the P.L.2025, c.140 amendments. Browse the same text at https://lis.njleg.state.nj.us). Enrolled act: https://pub.njleg.gov/Bills/2024/PL25/140_.PDF",
+   "confidence": "high (statutory text verified verbatim against the codified NJ Legislature text). Medium on application to an independent distributor: 'distributor' is undefined in 56:10-13 and no construing case was found, though the plain text and the parallel 56:10-16(e) and 56:10-26 definitions support coverage."
+  },
+  {
+   "state": "HI",
+   "distributor": "SH",
+   "coverage": "statewide",
+   "area_note": "",
+   "distributor_covered": true,
+   "plain_english": "Hawaii's statute puts the warranty labor-rate and parts-markup reimbursement duties, claim deadlines, the no-cost-recovery rule and the audit and chargeback limits on a 'manufacturer or distributor'. Where a distributor is the dealers' franchisor, it is the party the statute treats as owing those duties and holding the audit and chargeback rights (1-year lookback, burden of proof, 30-day notice and a stay while the dealer protests). Two wrinkles: the recall and stop-sale compensation section names only 'a manufacturer', and a distributor that is not a manufacturer is itself protected like a dealer against its own supplier (§ 437-28.5).",
+   "duties_quote": "(21) Being a manufacturer or distributor: ... (G) Has failed to adequately and fairly compensate its dealers for labor incurred by the dealer to perform under and comply with manufacturer's warranty agreements.",
+   "duties_pinpoint": "HRS § 437-28(a)(21)(G) (labor rate, claim timing); § 437-56(a)-(e) (parts markup, submission, timing, no cost recovery); § 437-57(a)-(c) (audits, chargebacks) -- all use \"manufacturer or distributor\"",
+   "provisions": [
+    {
+     "summary": "Warranty LABOR rate: manufacturer or distributor may not pay less than the dealer's retail labor rate (nor more). No statutory submission procedure for labor rate (unlike parts). Also says claims approved/disapproved within 30 days and paid within 30 days after approval.",
+     "quote": "In no event shall any manufacturer or distributor pay its dealers a labor rate per hour for warranty work that is less than that charged by the dealer to the retail customers of the dealer",
+     "pinpoint": "HRS § 437-28(a)(21)(G)"
+    },
+    {
+     "summary": "Warranty PARTS markup: manufacturer or distributor must pay at least the dealer's retail parts markup, if not unreasonable vs. same line-make Hawaii dealers.",
+     "quote": "In no event shall any manufacturer or distributor pay its dealers a markup on parts for warranty work that is less than that charged by the dealer to the retail customers of the dealer",
+     "pinpoint": "HRS § 437-56(a)"
+    },
+    {
+     "summary": "Retail parts-markup submission goes to the manufacturer OR distributor: 100 qualifying customer-pay ROs (or all ROs for 2 months if fewer); declared markup effective within 90 days, presumed fair and reasonable; reasonable requests for more info allowed; once per 12 months. Exclusions listed in § 437-56(c).",
+     "quote": "The retail markup charged by the dealer shall be established by submitting to the manufacturer or distributor a sufficient quantity of numerically consecutive repair orders from the most recent months to provide one hundred qualifying customer-paid repair orders.",
+     "pinpoint": "HRS § 437-56(b)-(c)"
+    },
+    {
+     "summary": "Claim timing: dealer has at least 30 days to submit; warranty claims decided and paid within 45 days of a properly completed claim; written reasons for denial; failure to disapprove in time = approval. (Differs from the 30/30-day timing in § 437-28(a)(21)(G).)",
+     "quote": "All claims made by the dealers for compensation for delivery, preparation, and warranty work shall be approved or disapproved and if approved, paid within forty-five days after receipt by a manufacturer or distributor of a properly completed claim.",
+     "pinpoint": "HRS § 437-56(d)"
+    },
+    {
+     "summary": "No recovery of warranty reimbursement costs from dealers (e.g., surcharges).",
+     "quote": "A manufacturer or distributor may not recover, or attempt to recover, from dealers its cost for reimbursing a dealer for warranty work as required by this section.",
+     "pinpoint": "HRS § 437-56(e)"
+    },
+    {
+     "summary": "Audit/chargeback lookback: one year from payment for warranty or incentive audits/chargebacks; does not apply to fraudulent claims.",
+     "quote": "No manufacturer or distributor shall conduct a warranty or incentive audit on previously paid claims or chargeback any warranty or incentive payment previously made more than one year after the date the manufacturer or distributor made the payment",
+     "pinpoint": "HRS § 437-57(a)"
+    }
+   ],
+   "official_url": "https://www.capitol.hawaii.gov/hrscurrent/Vol10_Ch0436-0474/HRS0437/ (text read from the Legislature's mirror https://data.capitol.hawaii.gov/hrscurrent/Vol10_Ch0436-0474/HRS0437/ because www.capitol.hawaii.gov returned a Cloudflare 403)",
+   "confidence": "high (statute); medium (distributor legal entity)"
+  }
+ ]
+}

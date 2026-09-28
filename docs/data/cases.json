@@ -1,0 +1,429 @@
+{
+ "schema": 1,
+ "checked": "2026-09-27",
+ "method": "Searched the web (WebSearch) for NMVB, state board, court and legislative sources on retail-rate submissions, audits, chargebacks and surcharges, then downloaded and read primary documents: NMVB Board decisions, ALJ proposed decisions and cover sheets; federal circuit and district opinions from court sites; Illinois and Pennsylvania appellate opinions; official statute text from leginfo.legislature.ca.gov, ncleg.gov, nebraskalegislature.gov and law.lis.virginia.gov; Texas bill histories. PDFs were extracted with pdftotext, and image-only Board signature pages were OCR'd or viewed. Quotes were taken only from documents read directly; items read only through a summarizing tool or secondary sources carry no quote and are marked partially verified. Law-firm and trade-press pieces (Seyfarth Shaw, Nelson Mullins, Burke Warren, Lavelle, Times Weekly) were used as secondary corroboration. CourtListener API was rate-limited; Automotive News returned 403.",
+ "not_found": [
+  "Named item 2 ('the case about ROs missing required elements') could not be pinned to one decision with certainty. No board or court decision was found that squarely holds a manufacturer may exclude ROs from a retail-rate submission because they lack complaint/cause/correction, customer signature or technician time. Best candidates: Mall Chevrolet v. GM (3d Cir. 2024; $98K+ chargeback for job cards lacking required information or authorized signature, unchallenged; holding rests on false claims); GM v. Darling's (1st Cir. 2006; claims missing VIN/date of service); Putnam Kia v. Kia (NMVB 2025; RO-level qualification rulings). The owner should confirm which one they meant.",
+  "Illinois MVRB decision on the VW/Audi surcharge (reported Aug. 2026): decision text, docket number and exact date not located; Automotive News coverage blocked (403). No Illinois MVRB retail-RATE rulings (as opposed to surcharge rulings) for VW/Audi in 2025–2026 were found.",
+  "Beck Chevrolet v. GM (NY DMV, FMD-201803) decision text not publicly available; only one secondary source (Seyfarth Shaw).",
+  "No verified board or court decisions on rate submissions or warranty-audit chargebacks were found for Florida, Texas, Georgia, Arizona or Michigan. Texas bills HB 4078 (88R, 2023), HB 3859 and SB 1917 (89R, 2025) died (official bill histories). Florida's Alliance of Auto. Mfrs. v. Jones challenge was withdrawn in July 2014 with no merits ruling (WANADA report; not listed as an item).",
+  "Official session-law text for North Dakota HB 1515, Ohio HB 96 and Wyoming SF 106 (2025) not read; described only by Nelson Mullins.",
+  "No writ petitions or judicial review of the three Putnam NMVB decisions (PR-2759-21, PR-2803-22, PR-2826-23) were found.",
+  "Chrysler/DaimlerChrysler v. Kolosso Auto Sales (Wisconsin surcharge) appeared in search results but was not verified and is excluded.",
+  "Reporter citations not confirmed for Mall Chevrolet (3d Cir. 2024), Liberty Lincoln-Mercury (3d Cir. 2012) and GM v. Pa. Board (Pa. 2019); dockets given instead.",
+  "'Ford Motor Warranty Cases' (Cal. Supreme Court, S279969, 2025) is a consumer lemon-law arbitration case, not a dealer rate case; excluded as a possible false match for 'Ford's California rate case'."
+ ],
+ "items": [
+  {
+   "id": "putnam-ford-v-ford-retail-labor-rate-2024",
+   "title": "KPAuto, LLC dba Putnam Ford of San Mateo v. Ford Motor Company (retail labor rate protest)",
+   "parties": "KPAuto, LLC dba Putnam Ford of San Mateo (protestant/franchisee) v. Ford Motor Company (respondent/franchisor)",
+   "forum": "California New Motor Vehicle Board (hearing by ALJ Wim van Rooyen, Office of Administrative Hearings)",
+   "docket": "Protest No. PR-2759-21; OAH Case No. 2023050701",
+   "date": "2024-06-28",
+   "states": [
+    "CA"
+   ],
+   "topic": "rate submission — labor",
+   "manufacturer": "Ford",
+   "summary": "Dealer used vendor FrogData to seek a warranty labor rate increase from $177 to $436.76 under Veh. Code § 3065.2; Ford requested supplemental ROs, contested the rate as materially inaccurate or fraudulent, and proposed $220. The ALJ found Ford proved material inaccuracy (impossible hourly rates, large actual-vs-sold-hour gaps, charges with zero hours, flat-rate charges), declined to decide fraud or whether 'hours' means actual or sold hours, declined to declare a rate, and overruled the protest; the Board adopted the decision with minor amendments on June 28, 2024.",
+   "why_it_matters": "Shows the kind of RO-level evidence (technician clock hours vs. sold hours, rate arithmetic, repair-line anomalies) a board accepted as proof of 'material inaccuracy,' and that later-developed support may be admitted only if it bolsters grounds stated in the single contest notice; a ground not raised in the contest letter (ROs opened vs. closed in the window) was not considered.",
+   "quote": "Respondent has shown by a preponderance of the evidence that protestant's Submission and determination of its retail labor rate are materially inaccurate.",
+   "primary_url": "https://nmvb.ca.gov/protest/2024/PR-2759-21_Decision_ADA.pdf",
+   "secondary_urls": [
+    "https://nmvb.ca.gov/agenda/2024/materials/062824g/PR-2759-21_Decision_Cover_Sheet.pdf",
+    "https://nmvb.ca.gov/agenda/2024/materials/062824g/PR-2579-21_Proposed_Decision.pdf",
+    "https://cirqueanalytics.com/blog/case-study/kpauto-llc-dba-putnam-ford-of-san-mateo-v-ford-motor-company/"
+   ],
+   "verification": "verified — primary source read",
+   "notes": "Most likely the 'Ford California rate case' the owner named. Board decision signed June 28, 2024 (Public Members); ALJ proposed decision dated May 30, 2024. Board struck the ALJ's last sentence of para. 25 (on Ford's request for reimbursement back to $177). Ford's request to reset the rate to $177 and recoup payments was denied; Ford's $220 proposed rate was presumably being paid. The NMVB agenda posting of the proposed decision is mislabeled 'PR-2579-21'. Cirque Analytics (Ford's expert firm) is an interested secondary source. No later writ petition located. Companion audit case: PR-2826-23 (see separate item).",
+   "featured": "The Ford California rate case"
+  },
+  {
+   "id": "putnam-kia-v-kia-actual-hours-2025",
+   "title": "KM3G Inc. dba Putnam Kia of Burlingame v. Kia America Inc. (retail labor rate protest; 'actual hours' ruling)",
+   "parties": "KM3G Inc. dba Putnam Kia of Burlingame (protestant) v. Kia America Inc. (respondent)",
+   "forum": "California New Motor Vehicle Board (ALJ Diana Woodward Hagle)",
+   "docket": "Protest No. PR-2803-22",
+   "date": "2025-08-01",
+   "states": [
+    "CA"
+   ],
+   "topic": "rate submission — labor",
+   "manufacturer": "Kia",
+   "summary": "Dealer priced customer-pay work at Kia labor-time-guide hours times $440 and submitted a FrogData-prepared § 3065.2 request based on 'sold hours'; Kia contested it as materially inaccurate. The ALJ held Kia complied with § 3065.2, that 'hours that generated those charges' means actual (technician) hours, and that the sold-hours submission was materially inaccurate. The first proposed decision (Oct. 15, 2024) also said the dealer's failure to conform its submission to the statute barred relief; the Board remanded on Nov. 5, 2024 for a rate declaration. On remand the ALJ ruled on disputed ROs (paired diagnostic/repair lines count toward total hours; diagnostic-only lines excluded; the RO 'Ready' date is the closing date) and declared $268.85/hour. The Board adopted that result Aug. 1, 2025, protest overruled.",
+   "why_it_matters": "This is the most detailed California ruling on how individual ROs are qualified, excluded or counted in a rate calculation (actual vs. sold hours, diagnostic-only lines, closing date). It also shows the Board expects a rate to be declared on remand even when a submission is flawed, rather than simply rejected.",
+   "quote": "Kia established that the phrase “actual hours” is the correct interpretation of the word “hours” in the statutory phrase “the total number of hours that generated those [labor] charges”",
+   "primary_url": "https://www.nmvb.ca.gov/protest/2025/PR-2803-22_Decision.pdf",
+   "secondary_urls": [
+    "https://nmvb.ca.gov/agenda/2025/materials/080125g/PR-2803-22-Proposed_Decision_Following_Remand_with_Addendum_and_Amendments_to_Proposed_Decision.pdf",
+    "https://nmvb.ca.gov/agenda/2024/materials/110124g/3_PR-2803-22_Proposed_Decision.pdf",
+    "https://nmvb.ca.gov/agenda/2025/materials/080125g/PR-2803-22_Decision_Cover_Sheet.pdf"
+   ],
+   "verification": "verified — primary source read",
+   "notes": "Remand paragraphs replaced the original 'burden' language with 'responsibility for accuracy' and revisited the equitable-estoppel/unclean-hands reasoning. On the one RO (#10581 A) that both parties had treated as qualified, the ALJ kept it in because both sides had agreed to include it. Kia's and Ford's forensic expert was the same person (Suzanne Heinemann). A plausible alternative match for the owner's 'ROs missing required elements' reference, because it is the leading decision on RO-level qualification in a rate submission.",
+   "featured": "Which ROs count in a rate submission"
+  },
+  {
+   "id": "il-mvrb-vw-audi-surcharge-2026",
+   "title": "Illinois MVRB protest by 33 VW/Audi dealers: Volkswagen warranty cost-recovery surcharge ruled unlawful",
+   "parties": "Abinion Motors of Crystal Lake LLC dba Fox Valley Volkswagen Crystal Lake, et al. (33 Illinois VW and Audi dealers) v. Volkswagen Group of America, Inc. (incl. Audi of America)",
+   "forum": "Illinois Motor Vehicle Review Board (after remand from N.D. Ill.)",
+   "docket": "MVRB docket not located; federal removal case No. 1:24-cv-09944 (N.D. Ill.)",
+   "date": "2026",
+   "states": [
+    "IL"
+   ],
+   "topic": "cost recovery/surcharge",
+   "manufacturer": "Volkswagen / Audi",
+   "summary": "After the Giannoulias ruling, VW told Illinois dealers (July 17, 2024) it would total quarterly multiplier costs, spread them across new vehicles wholesaled in Illinois, and charge each dealer's parts account. 33 dealers protested to the MVRB on Sept. 13, 2024; VW removed the case, and the district court remanded it on July 16, 2025, holding the Board is not a 'State court' and no federal question was presented. Trade reports in August–September 2026 say the MVRB ruled for the dealers, holding the surcharge violates § 6's ban on cost recovery fees or surcharges, with an appeal deadline of Sept. 24, 2026.",
+   "why_it_matters": "If confirmed, it shows that post-hoc account debits allocated by vehicle volume are treated as a prohibited surcharge rather than a permitted price increase, the line drawn in Giannoulias.",
+   "quote": "",
+   "primary_url": "https://business.cch.com/ald/AbinionMotorsofCrystalLakeLLCvVolkswagenGroupofAmericaInc7182025.pdf",
+   "secondary_urls": [
+    "https://thetimesweekly.com/2026/08/illinois-board-rules-in-favor-of-volkswagen-and-audi-dealers/",
+    "https://www.autonews.com/volkswagen/an-vw-audi-illinois-warranty-reimbursement-update-0921/",
+    "https://www.burkelaw.com/alert-federal-court-upholds-dealers-right-to-state-forum-in-franchise-dispute-against-volkswagen",
+    "https://illinoisdealers.com/legislative-legal/"
+   ],
+   "verification": "partially verified",
+   "notes": "The primary URL is the federal remand order (read), which verifies the background but not the MVRB ruling. The MVRB decision itself was not located. The Times Weekly article (Aug. 26, 2026, citing IADA) was read. The Automotive News article ('VW, Audi dealers: Illinois board rules surcharge violates law') returned 403 and was seen only as a search-result title. The Times Weekly dates VW's program to September 2025, but the federal order says it began Sept. 1, 2024, so treat the Times Weekly date as likely wrong. Whether VW appealed is unknown."
+  },
+  {
+   "id": "putnam-ford-v-ford-retaliatory-audit-2025",
+   "title": "KPAuto, LLC dba Putnam Ford of San Mateo v. Ford Motor Company (warranty audit / chargeback protest)",
+   "parties": "KPAuto, LLC dba Putnam Ford of San Mateo (protestant) v. Ford Motor Company (respondent)",
+   "forum": "California New Motor Vehicle Board (ALJ Dwight V. Nelsen)",
+   "docket": "Protest No. PR-2826-23",
+   "date": "2025-08-04",
+   "states": [
+    "CA"
+   ],
+   "topic": "warranty audit/chargeback",
+   "manufacturer": "Ford",
+   "summary": "After the dealer's § 3065.2 rate request and PR-2759-21 protest, Ford ran an allegation investigation, warranty study and audit and proposed chargebacks of about $502,821.56, roughly 80% tied to warranty repairs performed at an unauthorized facility. The ALJ found the audit itself was performed professionally and was well documented, but Ford failed to prove it did not select the dealer for audit in a punitive, retaliatory or unfairly discriminatory manner (§ 3065(e)(1)); the protest was sustained and the chargebacks barred. The Board adopted the decision (meeting July 31, 2025; order Aug. 4, 2025), adding that § 3065.2(i)(2)(G) claims cannot be pursued in a § 3065 protest.",
+   "why_it_matters": "Under § 3065(e) the franchisor bears the burden on both selection and performance of an audit; a well-executed audit can still fail if the selection decision, especially one close in time to a rate request or protest, is not documented as non-retaliatory.",
+   "quote": "the punitive, retaliatory, or unfairly discriminatory manner of selecting Protestant for the Audit made the Audit defective ab initio and violated Section 3065(e)(1).",
+   "primary_url": "https://www.nmvb.ca.gov/protest/2025/PR-2826-23_Decision.pdf",
+   "secondary_urls": [
+    "https://nmvb.ca.gov/agenda/2025/materials/073125g/PR-2826-23_Proposed_Decision.pdf"
+   ],
+   "verification": "verified — primary source read",
+   "notes": "The decision uses both 552 claims (issue statement) and 551 claims (conclusion) totaling $502,821.56. ALJ proposed decision dated June 18, 2025. Also relevant to § 3065.2(i)(2)(G), which bars nonroutine or nonrandom audits in response to a rate request; the Board held that claim belongs in a different protest type. No later writ petition located."
+  },
+  {
+   "id": "nc-sl-2025-41-gs-20-305-1",
+   "title": "North Carolina S.L. 2025-41: G.S. 20-305.1(a1) retail rate presumption and 'inaccurate' rebuttal standard",
+   "parties": "North Carolina General Assembly",
+   "forum": "North Carolina General Assembly",
+   "docket": "S.L. 2025-41, s. 8 (amending G.S. 20-305.1)",
+   "date": "2025-07-01",
+   "states": [
+    "NC"
+   ],
+   "topic": "legislation",
+   "manufacturer": "All manufacturers/distributors",
+   "summary": "The current G.S. 20-305.1(a1) presumes a dealer's declared parts markup and labor rate (100 sequential or 60 days of qualifying customer-pay ROs within 180 days) to be accurate. The manufacturer may rebut within 30 days only by reasonably substantiating that the submission is inaccurate, must propose an adjusted rate, and bears the burden by a preponderance at a Commissioner protest. Per Nelson Mullins, the 2025 amendment removed comparative-market analysis as a rebuttal ground. The section also regulates audits (including 'for cause' audits) and extrapolated adverse actions.",
+   "why_it_matters": "It narrows validation to accuracy of the dealer's own ROs rather than market comparisons, which changes what evidence a rate-review team can rely on in North Carolina.",
+   "quote": "a manufacturer or distributor may, not later than 30 days after submission, rebut that presumption by reasonably substantiating that the submission is inaccurate.",
+   "primary_url": "https://ncleg.gov/EnactedLegislation/Statutes/PDF/BySection/Chapter_20/GS_20-305.1.pdf",
+   "secondary_urls": [
+    "https://www.nelsonmullins.com/insights/blogs/driving-forward-developments-in-transportation-law-and-innovation/all/reasonableness-in-state-warranty-reimbursement-statutes-takes-a-hit-in-2025"
+   ],
+   "verification": "verified — primary source read",
+   "notes": "Statute history lists '2025-41, s. 8'. The July 1, 2025 effective date and the removal of comparative-market analysis come from Nelson Mullins (Dec. 1, 2025); the session-law text itself was not read."
+  },
+  {
+   "id": "multistate-2025-reasonableness-amendments",
+   "title": "2025 multistate amendments narrowing manufacturer rate validation (NE LB 667, ND HB 1515, OH HB 96, VA SB 1308, WY SF 106; plus NC)",
+   "parties": "State legislatures of Nebraska, North Dakota, Ohio, Virginia, Wyoming",
+   "forum": "State legislatures",
+   "docket": "Neb. Laws 2025, LB667 § 1 (Neb. Rev. Stat. § 60-1438); N.D. HB 1515 (§ 51-07-29); Ohio HB 96 (R.C. 4517.52); Va. 2025 Acts cc. 546, 558 (SB 1308) (§ 46.2-1571); Wyo. SF 106 (§ 31-16-117)",
+   "date": "2025",
+   "states": [
+    "NE",
+    "ND",
+    "OH",
+    "VA",
+    "WY"
+   ],
+   "topic": "legislation",
+   "manufacturer": "All manufacturers/distributors",
+   "summary": "Nelson Mullins reports that in 2025 several states removed 'reasonableness' or comparative-market rebuttal language and limited manufacturers to contesting materially inaccurate (or, in Wyoming, materially incomplete, inaccurate or unreasonable) submissions, often with the burden on the manufacturer. Official text confirms Nebraska's LB 667 amendment (compensation 'in no event' less than dealer retail rates; no denial for incidental claim-processing failures) and Virginia's 2025 amendments (claims not denied for failure to follow claim-processing requirements if reasonable documentation substantiates the claim; chargebacks limited to 6 months).",
+   "why_it_matters": "Validation criteria that were lawful before 2025 in these states (market comparisons, reasonableness) may no longer be available, so state-by-state playbooks need re-baselining.",
+   "quote": "in no event shall the compensation of the dealer for warranty parts and labor be less than the rates charged by the dealer",
+   "primary_url": "https://nebraskalegislature.gov/laws/statutes.php?statute=60-1438",
+   "secondary_urls": [
+    "https://law.lis.virginia.gov/vacode/title46.2/chapter15/section46.2-1571/",
+    "https://www.nelsonmullins.com/insights/blogs/driving-forward-developments-in-transportation-law-and-innovation/all/reasonableness-in-state-warranty-reimbursement-statutes-takes-a-hit-in-2025"
+   ],
+   "verification": "partially verified",
+   "notes": "NE and VA official statute text read (source notes list Laws 2025, LB667 § 1 and 2025 cc. 546, 558). The Nebraska section was further amended by Laws 2026, LB972 § 70 (operative Oct. 1, 2026). ND, OH and WY described only by Nelson Mullins (single secondary source); their official text was not read. Which Virginia sentences changed in 2025 was not isolated. Quote is from Neb. Rev. Stat. § 60-1438 as currently posted."
+  },
+  {
+   "id": "vw-v-giannoulias-nd-ill-2024",
+   "title": "Volkswagen Group of America, Inc. v. Giannoulias (Illinois 1.5x time-guide multiplier and recoupment bar upheld)",
+   "parties": "Volkswagen Group of America, Inc. v. Illinois Secretary of State Alexi Giannoulias, Illinois Attorney General, and members of the Motor Vehicle Review Board",
+   "forum": "U.S. District Court, N.D. Illinois (Judge John J. Tharp, Jr.)",
+   "docket": "No. 22-cv-7045; 732 F. Supp. 3d 914",
+   "date": "2024-05-06",
+   "states": [
+    "IL"
+   ],
+   "topic": "constitutional/preemption",
+   "manufacturer": "Volkswagen / Audi",
+   "summary": "VW challenged the 2022 amendment to 815 ILCS 710/6: a 1.5x multiplier on the manufacturer's time guide absent an agreed guide, and a bar on 'cost recovery fees or surcharges.' It raised due process, equal protection, First Amendment, Commerce Clause and Takings claims. The court dismissed. It read the recoupment bar narrowly (it bars differential surcharges on dealers without an agreed time guide, not across-the-board price increases), so VW lacked standing on several claims, and the multiplier survived rational-basis review.",
+   "why_it_matters": "It defines how far a manufacturer may recover retail-rate and multiplier costs in Illinois (general price increases rather than dealer-specific charges). This interpretation became the backdrop for the dealers' later MVRB protest.",
+   "quote": "the Recoupment Bar does not prohibit Volkswagen or other manufacturers from raising prices in Illinois to recover the cost of their vehicles",
+   "primary_url": "https://www.courtlistener.com/opinion/9683956/volkswagen-group-of-america-inc-v-white/",
+   "secondary_urls": [
+    "https://business.cch.com/ald/AbinionMotorsofCrystalLakeLLCvVolkswagenGroupofAmericaInc7182025.pdf",
+    "https://www.mondaq.com/unitedstates/franchising/1466420/federal-court-dismisses-oem-challenge-to-illinois-warranty-labor-time-guide-amendment",
+    "https://www.lavellelaw.com/legal-victory-for-auto-dealers-reaffirms-the-value-of-illinois-warranty-reimbursement-law"
+   ],
+   "verification": "verified — primary source read",
+   "notes": "The opinion was accessed on CourtListener through a summarizing fetch tool. The verbatim quote comes from the same court's July 16, 2025 Abinion order, which quotes Giannoulias, 732 F. Supp. 3d at 936. Dismissal was without prejudice with leave to amend (Seyfarth); no Seventh Circuit decision located."
+  },
+  {
+   "id": "mall-chevrolet-v-gm-3d-cir-2024",
+   "title": "Mall Chevrolet, Inc. v. General Motors LLC (job cards lacking required information; false warranty claims; chargebacks and termination)",
+   "parties": "Mall Chevrolet, Inc. (appellant/dealer) v. General Motors LLC (appellee)",
+   "forum": "U.S. Court of Appeals for the Third Circuit (precedential), on appeal from D.N.J.",
+   "docket": "No. 21-2283 (D.C. Civ. No. 1-18-cv-15077)",
+   "date": "2024-04-26",
+   "states": [
+    "NJ"
+   ],
+   "topic": "warranty audit/chargeback",
+   "manufacturer": "General Motors",
+   "summary": "GM's 2017 review charged back $114,178.60, including more than $98,000 for claims whose job cards lacked required information (e.g., customer concern details) or an authorized signature; the dealer did not challenge that chargeback. A later audit's Debit Deviation Report found 517 deviations, including claims on 'ghost vehicles,' and GM moved to terminate and charge back $656,033. The Third Circuit affirmed summary judgment for GM: the undisputed evidence showed false claims, which was good cause to terminate under the NJ Franchise Practices Act; a franchisor may rely on evidence acquired after the notice; and the dealer's failure to substantially comply barred its statutory unsubstantiated-chargeback claim (§ 56:10-9 defense).",
+   "why_it_matters": "Explains why complete job cards and ROs (customer concern, authorized signature, odometer, technician codes) are central to audit integrity, and shows how documentation deviations plus corroborating third-party evidence supported chargebacks and termination under a state franchise act.",
+   "quote": "GM identified warranty claims for over $98,000 that were invalid because the corresponding job cards lacked required information or an authorized signature.",
+   "primary_url": "https://www2.ca3.uscourts.gov/opinarch/212283p.pdf",
+   "secondary_urls": [
+    "https://caselaw.findlaw.com/court/us-3rd-circuit/116102632.html",
+    "https://www.courtlistener.com/opinion/9497359/mall-chevrolet-inc-v-general-motors-llc/"
+   ],
+   "verification": "verified — primary source read",
+   "notes": "Best-matching candidate for the owner's 'case about ROs missing required elements,' though the missing-element chargeback ($98K+) went unchallenged; the appellate holding rests on false claims (ghost vehicles). Reporter citation (F.4th) not confirmed; cite by docket. District court decisions: 2021 WL 426193 (D.N.J. Feb. 8, 2021); 2021 WL 2581665 (D.N.J. June 23, 2021), as cited in the opinion."
+  },
+  {
+   "id": "ca-veh-code-3065-audit-chargeback-rules",
+   "title": "Cal. Veh. Code § 3065(d)–(e): claim disapproval, documentation cure, audit selection, extrapolation and chargeback timing",
+   "parties": "California Legislature",
+   "forum": "California Vehicle Code (as amended by Stats. 2019, ch. 796 (AB 179))",
+   "docket": "Veh. Code § 3065",
+   "date": "2020-01-01",
+   "states": [
+    "CA"
+   ],
+   "topic": "legislation",
+   "manufacturer": "All franchisors",
+   "summary": "Claims (and, after audit, previously approved claims) may be disapproved or charged back only if false or fraudulent, improperly repaired, inappropriate due to the dealer's act or omission, or for 'material noncompliance with reasonable and nondiscriminatory documentation and administrative claims submission requirements.' The dealer gets at least 30 days to rebut and to cure documentation noncompliance. Audits are limited to 9 months after payment, one random audit per 9 months, and no punitive, retaliatory or discriminatory selection. Extrapolated chargebacks require a random sample and a statistically valid method. Chargebacks may be taken only between day 45 and day 90 after written notice, and are stayed if a protest is filed.",
+   "why_it_matters": "This is the California rule most directly relevant to charging back claims whose ROs lack required elements: only material noncompliance counts, and the dealer has a cure right. It also governs audit sampling, extrapolation and timing.",
+   "quote": "shall not disapprove or chargeback a claim based upon an extrapolation from a sample of claims, unless the sample of claims is selected randomly",
+   "primary_url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=VEH&sectionNum=3065",
+   "secondary_urls": [
+    "https://nmvb.ca.gov/publications/2026/2026_Guide_to_the_New_Motor_Vehicle_Board.pdf"
+   ],
+   "verification": "verified — primary source read",
+   "notes": "Current section history reads 'Amended by Stats. 2019, Ch. 796, Sec. 11 (AB 179).' Which specific audit provisions first appeared in AB 179 versus earlier bills (e.g., SB 155 (2013)) was not traced. Applied in PR-2826-23 (Putnam Ford)."
+  },
+  {
+   "id": "beck-chevrolet-v-gm-ny-dmv-2019",
+   "title": "Beck Chevrolet Co., Inc. v. General Motors LLC (NY warranty parts markup)",
+   "parties": "Beck Chevrolet Co., Inc. (dealer) v. General Motors LLC",
+   "forum": "New York DMV Administrative Law Judge; affirmed by DMV Administrative Appeals Board",
+   "docket": "FMD-201803",
+   "date": "2019-10-29",
+   "states": [
+    "NY"
+   ],
+   "topic": "rate submission — parts",
+   "manufacturer": "General Motors",
+   "summary": "As reported, Beck submitted 100 ROs declaring an 81.62% parts markup. GM showed Beck had omitted two qualifying transmission repairs and used an averaging method that inflated the markup, and it reduced the rate to 62.30%. The ALJ (Nov. 2018) and the Appeals Board (Oct. 29, 2019) upheld GM's total-markup-dollars ÷ total-cost method and found GM met its burden that the declared rate was unreasonable.",
+   "why_it_matters": "An example of a successful manufacturer rebuttal based on the dealer's RO selection (omitted qualifying repairs) and calculation method under a 'reasonable' standard. Several states have since removed or narrowed that standard (see 2025 legislation items).",
+   "quote": "",
+   "primary_url": "",
+   "secondary_urls": [
+    "https://www.seyfarth.com/news-insights/new-york-dmv-appeals-board-affirms-decision-rejecting-excessive-warranty-reimbursement-rate-demanded-by-dealer.html"
+   ],
+   "verification": "partially verified",
+   "notes": "Only one secondary source found (Seyfarth Shaw client alert, Dec. 19, 2019). Decision text not publicly located, so figures and dates depend on that alert. Do not confuse with the separate Beck Chevrolet v. GM sales-performance litigation (2d Cir. 2015; N.Y. 2016). NY Veh. & Traf. Law § 465 has been amended since."
+  },
+  {
+   "id": "ca-ab-179-2019-veh-code-3065-2",
+   "title": "California AB 179 (2019), Veh. Code §§ 3065.2 and 3065.4: retail labor/parts rate submission and contest procedure",
+   "parties": "California Legislature (Assemblymember Reyes)",
+   "forum": "California Legislature",
+   "docket": "AB 179 (2019–2020 Reg. Sess.), Stats. 2019, ch. 796",
+   "date": "2019-10-12",
+   "states": [
+    "CA"
+   ],
+   "topic": "legislation",
+   "manufacturer": "All franchisors",
+   "summary": "AB 179 was approved and chaptered Oct. 12, 2019, effective Jan. 1, 2020. It created the § 3065.2 retail-rate mechanism: 100 qualified ROs or 90 days of ROs from within 180 days, specified exclusions, one supplemental-RO request, and a single contest notice limited to 'materially inaccurate or fraudulent' with full explanation, calculations and a proposed rate. It bars outright denial, alternative methods (substitute samples, part-by-part calculations, financial statements), unilateral rates, and retaliation including nonrandom audits. Section 3065.4 gives the dealer a Board protest in which the franchisor bears the burden of proof.",
+   "why_it_matters": "Sets the outer boundaries of a manufacturer's validation program in California: a 30-day window, one notice that cannot later be expanded without justification, RO-based evidence only, and anti-retaliation limits on audits triggered by a rate request.",
+   "quote": "A franchisor shall not deny the franchisee’s submission for the retail labor rate, retail parts rate, or both, under subdivision (a).",
+   "primary_url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=VEH&sectionNum=3065.2",
+   "secondary_urls": [
+    "https://leginfo.legislature.ca.gov/faces/billStatusClient.xhtml?bill_id=201920200AB179",
+    "https://nmvb.ca.gov/publications/2026/2026_Guide_to_the_New_Motor_Vehicle_Board.pdf"
+   ],
+   "verification": "verified — primary source read",
+   "notes": "Current § 3065.2 text last amended by Stats. 2020, ch. 370 (SB 1371), per leginfo history note. The quoted sentence is in § 3065.2(d)(1). § 3065.2(j) defines 'qualified repair order'. An earlier version (AB 2107, 2018) had similar provisions; AB 179 is the enacted version."
+  },
+  {
+   "id": "gm-v-pa-board-budd-baer-2019",
+   "title": "General Motors, LLC v. Bureau of Professional & Occupational Affairs, State Board of Vehicle Manufacturers, Dealers & Salespersons (Appeal of Budd Baer Buick GMC)",
+   "parties": "General Motors, LLC v. Pa. State Board of Vehicle Manufacturers, Dealers and Salespersons; appeal of Budd Baer, Inc. dba Budd Baer Buick GMC",
+   "forum": "Supreme Court of Pennsylvania",
+   "docket": "No. 24 MAP 2018 (J-108-2018); appeal from Commonwealth Court No. 1075 C.D. 2016",
+   "date": "2019-07-17",
+   "states": [
+    "PA"
+   ],
+   "topic": "cost recovery/surcharge",
+   "manufacturer": "General Motors",
+   "summary": "Dealers elected statutory retail parts reimbursement. GM then removed them from its contractual CPI-based labor option ('Option C') and planned a cost-recovery surcharge. The Court affirmed that the Board of Vehicles Act § 9(a) does not bar GM from enforcing a preexisting contractual incentive program tied to parts reimbursement. It reversed on surcharges: under § 9(b.4)(1)(i), 'parts and labor' means both, so GM cannot surcharge a dealer that has not sought retail-rate reimbursement for both parts and labor.",
+   "why_it_matters": "Shows that eligibility for cost recovery can turn on precise statutory wording (parts 'and' labor). It also shows that contractual reimbursement options may lawfully be tied to a dealer's statutory elections.",
+   "quote": "a manufacturer cannot impose a surcharge on a dealer that does not apply for retail-rate reimbursement for both.",
+   "primary_url": "https://cases.justia.com/pennsylvania/supreme-court/2019-24-map-2018.pdf",
+   "secondary_urls": [
+    "https://www.cetient.com/case/general-motors-llc-v-bureau-of-professional-occupational-affairs-state-4418931",
+    "https://law.justia.com/cases/pennsylvania/supreme-court/2019/24-map-2018.html"
+   ],
+   "verification": "verified — primary source read",
+   "notes": "Opinion by Chief Justice Saylor; Justice Mundy concurred and dissented. Commonwealth Court below: 169 A.3d 681 (Pa. Cmwlth. 2017) (per secondary source). The Pa. Supreme Court reporter citation was not confirmed."
+  },
+  {
+   "id": "don-johnson-hayward-v-gm-ed-wis-2018",
+   "title": "Don Johnson Hayward Motors, Inc. v. General Motors LLC (Wisconsin warranty cost-recovery surcharge)",
+   "parties": "Don Johnson Hayward Motors, Inc., et al. (13 Wisconsin GM dealers) v. General Motors LLC",
+   "forum": "U.S. District Court, E.D. Wisconsin (Judge Pamela Pepper)",
+   "docket": "No. 16-cv-1350-pp",
+   "date": "2018-09-24",
+   "states": [
+    "WI"
+   ],
+   "topic": "cost recovery/surcharge",
+   "manufacturer": "General Motors",
+   "summary": "About 35 Wisconsin GM dealers had elected statutory retail parts (and most, labor) reimbursement under Wis. Stat. § 218.0125. GM planned a warranty cost-recovery surcharge on those dealers' new-vehicle purchases, and dealers sought declaratory and injunctive relief. On cross-motions, the court held the proposed surcharge does not violate the plain language of § 218.0125, granted GM summary judgment on those counts, and allowed an amended complaint on other theories.",
+   "why_it_matters": "Where a statute lacks an express recoupment bar, courts have read retail-rate mandates as not prohibiting price-based recovery. This contrasts with Illinois, Maine and Pennsylvania.",
+   "quote": "The court rules only on the claim that the plan violates §218.0125, and finds that it does not.",
+   "primary_url": "https://www.wied.uscourts.gov/sites/wied/files/documents/opinions/16cv1350%20Don%20Johnson%20Hayward%20Motors%2C%20et%20al%20v.%20General%20Motors.pdf",
+   "secondary_urls": [],
+   "verification": "verified — primary source read",
+   "notes": "Later history (amended complaint, settlement, any Wisconsin statutory response) not checked. Compare Chrysler/DaimlerChrysler v. Kolosso (Wisconsin), which appeared in searches but was not verified."
+  },
+  {
+   "id": "nissan-v-il-mvrb-2014",
+   "title": "Nissan North America, Inc. v. Motor Vehicle Review Board ('Warranty Supplemental Cost Recovery' surcharge invalid)",
+   "parties": "Nissan North America, Inc. (Infiniti Division) v. Illinois Motor Vehicle Review Board; M.E. Fields, Inc. dba Fields Infiniti; Yampa Valley Enterprises, Inc. dba Fields Infiniti of Lake County",
+   "forum": "Illinois Appellate Court, First District (on administrative review of MVRB decision)",
+   "docket": "2014 IL App (1st) 123795; No. 1-12-3795",
+   "date": "2014-02-20",
+   "states": [
+    "IL"
+   ],
+   "topic": "cost recovery/surcharge",
+   "manufacturer": "Nissan / Infiniti",
+   "summary": "Nissan paid Illinois Infiniti dealers retail-rate warranty reimbursement under § 6(b) and, from 2007, added a per-vehicle 'Warranty Supplemental Cost Recovery' line item ($90–$245) to wholesale invoices. The MVRB found the surcharge violated § 6 of the Motor Vehicle Franchise Act, and the circuit court and appellate court affirmed. The court read § 6(b) with § 6(g), which permits cost recovery only on stated conditions such as a majority-dealer agreement.",
+   "why_it_matters": "It is the leading Illinois appellate precedent that a manufacturer cannot recoup retail-rate warranty costs through a separate dealer surcharge, and it preceded the 2022 statutory 'recoupment bar'.",
+   "quote": "Nissan is trying to insert a loophole in the law that section 6(g) prevents, rendering its warranty surcharge a clear violation of section 6(b).",
+   "primary_url": "https://www.illinoiscourts.gov/Resources/d6282c0c-8ae5-495e-a5a6-6cc348a9fdd1/1123795.pdf",
+   "secondary_urls": [],
+   "verification": "verified — primary source read",
+   "notes": "Illinois § 6 has been amended since (2022 multiplier and recoupment bar), so the statutory framework discussed is the pre-2022 version."
+  },
+  {
+   "id": "alliance-v-currey-d-conn-2013",
+   "title": "Alliance of Automobile Manufacturers, Inc. v. Currey (Connecticut retail-rate reimbursement and recoupment bar)",
+   "parties": "Alliance of Automobile Manufacturers, Inc. v. Melody Currey, Commissioner, Connecticut Department of Motor Vehicles",
+   "forum": "U.S. District Court, D. Connecticut (Judge Janet C. Hall)",
+   "docket": "984 F. Supp. 2d 32",
+   "date": "2013-10-30",
+   "states": [
+    "CT"
+   ],
+   "topic": "constitutional/preemption",
+   "manufacturer": "Alliance members",
+   "summary": "The Alliance challenged Connecticut's 2009 amendments to Conn. Gen. Stat. § 42-133s: retail-based 'fair and reasonable' warranty compensation methods and a bar on recovering those costs from in-state dealers. Claims included the Contracts Clause, dormant Commerce Clause and due process. The court granted the State's motion to dismiss on all counts.",
+   "why_it_matters": "It adds to the line of federal decisions (Gwadosky, Giannoulias) rejecting constitutional attacks on retail-rate and anti-recoupment statutes. The Pennsylvania Supreme Court cited it for the point that over a dozen states have recoupment prohibitions.",
+   "quote": "",
+   "primary_url": "https://www.courtlistener.com/opinion/8729701/alliance-of-automobile-manufacturers-inc-v-currey/",
+   "secondary_urls": [
+    "https://cases.justia.com/pennsylvania/supreme-court/2019-24-map-2018.pdf"
+   ],
+   "verification": "partially verified",
+   "notes": "The opinion was reviewed only through a summarizing fetch of CourtListener, so no verbatim quote is given. The citation 984 F. Supp. 2d 32 (D. Conn. 2013) is confirmed by the Pa. Supreme Court's 2019 opinion. The docket number and any appeal were not confirmed."
+  },
+  {
+   "id": "liberty-lincoln-mercury-v-ford-3d-cir-2012",
+   "title": "Liberty Lincoln-Mercury, Inc. v. Ford Motor Co. (NJ statewide cost surcharge; written-claim requirement)",
+   "parties": "Liberty Lincoln-Mercury, Inc., et al. (New Jersey and Delaware Ford/Lincoln-Mercury dealers) v. Ford Motor Company",
+   "forum": "U.S. Court of Appeals for the Third Circuit (precedential)",
+   "docket": "Nos. 11-1258 and 11-1307 (D.C. No. 2-02-cv-04146)",
+   "date": "2012-04-09",
+   "states": [
+    "NJ"
+   ],
+   "topic": "cost recovery/surcharge",
+   "manufacturer": "Ford",
+   "summary": "Ford's earlier dealer-specific 'Dealer Parity Surcharge' was held unlawful in Liberty II (3d Cir. 1998). Ford replaced it with a flat 'New Jersey Cost Surcharge' spread across all wholesale vehicles in the state. The Third Circuit reversed the district court and held the NJCS does not violate the NJ Franchise Practices Act. It also held Ford could deny engine/transmission reimbursement where dealers did not file written claims, because § 56:10-15(f) allows reasonable written substantiation requirements.",
+   "why_it_matters": "It separates a lawful statewide price-type recovery from an unlawful dealer-specific clawback, and it confirms that reasonable, pre-announced written claim and documentation requirements can be enforced.",
+   "quote": "We hold that (1) the New Jersey Cost Surcharge does not violate the New Jersey Franchise Protection Act",
+   "primary_url": "https://cases.justia.com/federal/appellate-courts/ca3/11-1258/11-1258-2012-04-09.pdf",
+   "secondary_urls": [
+    "https://businesslawopinions.justia.com/2012/04/09/liberty-lincoln-mercury-inc-v-ford-motor-co"
+   ],
+   "verification": "verified — primary source read",
+   "notes": "Reporter citation not confirmed; cite by docket. Liberty II: 134 F.3d 557 (3d Cir. 1998), cited in the opinion. NJ law has since been amended."
+  },
+  {
+   "id": "gm-v-darlings-1st-cir-2006",
+   "title": "General Motors Corp. v. Darling's (Maine retail-rate supplemental claims, required claim data, audit and chargeback rights)",
+   "parties": "General Motors Corporation v. Darling's d/b/a Darling's Auto Mall",
+   "forum": "U.S. Court of Appeals for the First Circuit, on appeal from D. Me.",
+   "docket": "Nos. 04-2281, 04-2282; 444 F.3d 98",
+   "date": "2006-04-14",
+   "states": [
+    "ME"
+   ],
+   "topic": "warranty audit/chargeback",
+   "manufacturer": "General Motors",
+   "summary": "GM paid Maine retail-rate claims in two steps: a standard WINS claim, then a supplemental claim. It required each supplemental claim to include the VIN and date of service plus rate-support data, and it charged back claims for parts-retention violations. The First Circuit affirmed that GM may reasonably require the VIN and date of service and may refuse reimbursement where that data is withheld. It also held GM has a contractual right to audit and debit paid claims, but under Maine's statute (per Darling's v. Ford, Me. 2006) any chargebacks must occur within the statutory approval period. GM's refusal to raise the WINS labor rate to the posted rate, when 100 sequential ROs showed a lower effective rate of $51.58, did not violate the statute.",
+   "why_it_matters": "One of the few appellate rulings on whether a manufacturer can require specific data elements before paying claims under a retail-rate statute. It also shows how state approval deadlines can limit post-payment chargebacks even where the dealer agreement grants audit rights.",
+   "quote": "we hold that GM may reasonably require Darling's to furnish the VIN and date of service with each supplemental claim",
+   "primary_url": "https://www.ca1.uscourts.gov/sites/ca1/files/opnfiles/04-2281-01A.pdf",
+   "secondary_urls": [
+    "https://law.justia.com/cases/federal/appellate-courts/F3/444/98/546319/"
+   ],
+   "verification": "verified — primary source read",
+   "notes": "Reporter cite 444 F.3d 98 confirmed from the Justia listing title. The chargeback-timing holding relies on Darling's v. Ford Motor Co., 892 A.2d 461 (Me. 2006), cited in the opinion but not separately read. Maine law has since been amended, so the statute text here is historical."
+  },
+  {
+   "id": "alliance-v-gwadosky-1st-cir-2005",
+   "title": "Alliance of Automobile Manufacturers v. Gwadosky (Maine recoupment bar upheld)",
+   "parties": "Alliance of Automobile Manufacturers v. Dan A. Gwadosky (Maine Secretary of State) and G. Steven Rowe (Maine Attorney General)",
+   "forum": "U.S. Court of Appeals for the First Circuit",
+   "docket": "No. 05-1259; 430 F.3d 30",
+   "date": "2005-11-18",
+   "states": [
+    "ME"
+   ],
+   "topic": "constitutional/preemption",
+   "manufacturer": "Alliance members (BMW, DaimlerChrysler, Ford, GM, Mazda, Mitsubishi, Porsche, Toyota, VW)",
+   "summary": "After Ford imposed a Maine 'warranty parity surcharge' (upheld under prior law in Acadia Motors v. Ford, 1st Cir. 1995), Maine enacted L.D. 1294 (2003), barring manufacturers from otherwise recovering retail-rate reimbursement costs. The First Circuit affirmed summary judgment for the State, rejecting Commerce Clause and Contracts Clause challenges.",
+   "why_it_matters": "It is the leading federal appellate decision that state bans on recouping retail-rate warranty costs are constitutional, and it is often cited when OEMs challenge newer surcharge bans.",
+   "quote": "the legislature amended the state regulatory scheme to prohibit manufacturers from adding state-specific surcharges to wholesale motor vehicle prices",
+   "primary_url": "https://www.ca1.uscourts.gov/sites/ca1/files/opnfiles/05-1259-01A.pdf",
+   "secondary_urls": [
+    "https://law.resource.org/pub/us/case/reporter/F3/430/430.F3d.30.05-1259.html"
+   ],
+   "verification": "verified — primary source read",
+   "notes": "District court: 304 F. Supp. 2d 104 (D. Me. 2004). Acadia Motors v. Ford, 44 F.3d 1050 (1st Cir. 1995), is cited in the opinion but was not separately read."
+  }
+ ]
+}

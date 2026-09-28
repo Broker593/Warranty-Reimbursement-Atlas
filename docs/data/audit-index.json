@@ -1,0 +1,1172 @@
+{
+ "schema": 1,
+ "name": "Audit restrictiveness index",
+ "description": "How many statutory limits constrain a manufacturer's or distributor's warranty audits, chargebacks and retail-rate validation. Higher = more limits. Statute text only; not legal advice and not an assessment of any company's audit program.",
+ "checked": "2026-09-27",
+ "max": 100,
+ "factors": [
+  {
+   "id": "lookback",
+   "label": "Short audit and chargeback lookback",
+   "max": 15,
+   "how": "15 points if paid claims can be audited or charged back for 6 months or less, 10 for 9 months, 5 for 12 months, 0 if the statute sets no limit."
+  },
+  {
+   "id": "stay",
+   "label": "Chargeback held while the dealer appeals",
+   "max": 15,
+   "how": "The chargeback cannot be collected until the dealer's appeal, protest or hearing is resolved."
+  },
+  {
+   "id": "extrap",
+   "label": "Limits on extrapolating audit results",
+   "max": 10,
+   "how": "10 points if projecting sample results across claims is prohibited, 5 if restricted (e.g., only from a valid random sample)."
+  },
+  {
+   "id": "clerical",
+   "label": "No chargebacks for clerical or paperwork errors",
+   "max": 10,
+   "how": "Claims cannot be denied or charged back solely for clerical, administrative or technical errors when the work was done properly."
+  },
+  {
+   "id": "docs",
+   "label": "Limits on documentation requirements",
+   "max": 5,
+   "how": "Documentation demands are limited (e.g., only reasonable written requirements in effect when the claim was paid)."
+  },
+  {
+   "id": "written",
+   "label": "Written reasons required before a chargeback",
+   "max": 5,
+   "how": "The dealer must get written notice of the specific grounds for each chargeback."
+  },
+  {
+   "id": "response",
+   "label": "Dealer response or cure period",
+   "max": 5,
+   "how": "The dealer gets a set period to respond, rebut or cure before the chargeback."
+  },
+  {
+   "id": "appeal",
+   "label": "Internal appeal required",
+   "max": 5,
+   "how": "The manufacturer or distributor must offer an internal appeal or review."
+  },
+  {
+   "id": "selection",
+   "label": "Must tell the dealer why it was selected",
+   "max": 5,
+   "how": "The dealer must be told the basis for selecting it for audit (in some states only for certain audits)."
+  },
+  {
+   "id": "notice",
+   "label": "Advance written notice of audit",
+   "max": 5,
+   "how": "Written notice is required before an audit begins."
+  },
+  {
+   "id": "frequency",
+   "label": "Cap on how often audits can occur",
+   "max": 5,
+   "how": "The statute limits how often a dealer can be audited."
+  },
+  {
+   "id": "nofraud",
+   "label": "No fraud carve-out from the time limit",
+   "max": 5,
+   "how": "The lookback limit applies even to suspected fraud."
+  },
+  {
+   "id": "rate",
+   "label": "Rate validation limited to the dealer's submission",
+   "max": 5,
+   "how": "A retail-rate submission can be checked only against the dealer's own submitted ROs or by a single accuracy objection; no request for more ROs or outside data."
+  },
+  {
+   "id": "conseq",
+   "label": "Specific consequence for improper audits",
+   "max": 5,
+   "how": "The statute attaches a specific consequence to improper audits or chargebacks (void chargeback, violation finding, fines, interest or audit-cost reimbursement)."
+  }
+ ],
+ "tiers": [
+  {
+   "name": "Very high",
+   "min": 50,
+   "range": "50+"
+  },
+  {
+   "name": "High",
+   "min": 40,
+   "range": "40–49"
+  },
+  {
+   "name": "Elevated",
+   "min": 30,
+   "range": "30–39"
+  },
+  {
+   "name": "Moderate",
+   "min": 20,
+   "range": "20–29"
+  },
+  {
+   "name": "Low",
+   "min": 0,
+   "range": "under 20"
+  }
+ ],
+ "states": {
+  "AK": {
+   "score": 10,
+   "tier": "Low",
+   "points": {
+    "lookback": 5,
+    "stay": 0,
+    "extrap": 0,
+    "clerical": 0,
+    "docs": 0,
+    "written": 0,
+    "response": 0,
+    "appeal": 0,
+    "selection": 0,
+    "notice": 0,
+    "frequency": 5,
+    "nofraud": 0,
+    "rate": 0,
+    "conseq": 0
+   },
+   "rank": 44
+  },
+  "AL": {
+   "score": 25,
+   "tier": "Moderate",
+   "points": {
+    "lookback": 5,
+    "stay": 0,
+    "extrap": 0,
+    "clerical": 10,
+    "docs": 5,
+    "written": 0,
+    "response": 0,
+    "appeal": 0,
+    "selection": 0,
+    "notice": 0,
+    "frequency": 0,
+    "nofraud": 5,
+    "rate": 0,
+    "conseq": 0
+   },
+   "rank": 31
+  },
+  "AR": {
+   "score": 30,
+   "tier": "Elevated",
+   "points": {
+    "lookback": 5,
+    "stay": 15,
+    "extrap": 0,
+    "clerical": 10,
+    "docs": 0,
+    "written": 0,
+    "response": 0,
+    "appeal": 0,
+    "selection": 0,
+    "notice": 0,
+    "frequency": 0,
+    "nofraud": 0,
+    "rate": 0,
+    "conseq": 0
+   },
+   "rank": 22
+  },
+  "AZ": {
+   "score": 30,
+   "tier": "Elevated",
+   "points": {
+    "lookback": 5,
+    "stay": 15,
+    "extrap": 0,
+    "clerical": 10,
+    "docs": 0,
+    "written": 0,
+    "response": 0,
+    "appeal": 0,
+    "selection": 0,
+    "notice": 0,
+    "frequency": 0,
+    "nofraud": 0,
+    "rate": 0,
+    "conseq": 0
+   },
+   "rank": 23
+  },
+  "CA": {
+   "score": 75,
+   "tier": "Very high",
+   "points": {
+    "lookback": 10,
+    "stay": 15,
+    "extrap": 5,
+    "clerical": 10,
+    "docs": 5,
+    "written": 5,
+    "response": 5,
+    "appeal": 5,
+    "selection": 5,
+    "notice": 5,
+    "frequency": 5,
+    "nofraud": 0,
+    "rate": 0,
+    "conseq": 0
+   },
+   "rank": 1
+  },
+  "CO": {
+   "score": 35,
+   "tier": "Elevated",
+   "points": {
+    "lookback": 10,
+    "stay": 15,
+    "extrap": 0,
+    "clerical": 0,
+    "docs": 5,
+    "written": 0,
+    "response": 0,
+    "appeal": 0,
+    "selection": 0,
+    "notice": 0,
+    "frequency": 0,
+    "nofraud": 0,
+    "rate": 0,
+    "conseq": 5
+   },
+   "rank": 13
+  },
+  "CT": {
+   "score": 20,
+   "tier": "Moderate",
+   "points": {
+    "lookback": 5,
+    "stay": 0,
+    "extrap": 0,
+    "clerical": 10,
+    "docs": 0,
+    "written": 0,
+    "response": 5,
+    "appeal": 0,
+    "selection": 0,
+    "notice": 0,
+    "frequency": 0,
+    "nofraud": 0,
+    "rate": 0,
+    "conseq": 0
+   },
+   "rank": 38
+  },
+  "DE": {
+   "score": 30,
+   "tier": "Elevated",
+   "points": {
+    "lookback": 15,
+    "stay": 0,
+    "extrap": 0,
+    "clerical": 10,
+    "docs": 5,
+    "written": 0,
+    "response": 0,
+    "appeal": 0,
+    "selection": 0,
+    "notice": 0,
+    "frequency": 0,
+    "nofraud": 0,
+    "rate": 0,
+    "conseq": 0
+   },
+   "rank": 24
+  },
+  "FL": {
+   "score": 70,
+   "tier": "Very high",
+   "points": {
+    "lookback": 5,
+    "stay": 15,
+    "extrap": 0,
+    "clerical": 10,
+    "docs": 5,
+    "written": 5,
+    "response": 5,
+    "appeal": 0,
+    "selection": 5,
+    "notice": 0,
+    "frequency": 5,
+    "nofraud": 5,
+    "rate": 5,
+    "conseq": 5
+   },
+   "rank": 2
+  },
+  "GA": {
+   "score": 40,
+   "tier": "High",
+   "points": {
+    "lookback": 5,
+    "stay": 15,
+    "extrap": 0,
+    "clerical": 10,
+    "docs": 5,
+    "written": 0,
+    "response": 5,
+    "appeal": 0,
+    "selection": 0,
+    "notice": 0,
+    "frequency": 0,
+    "nofraud": 0,
+    "rate": 0,
+    "conseq": 0
+   },
+   "rank": 7
+  },
+  "HI": {
+   "score": 35,
+   "tier": "Elevated",
+   "points": {
+    "lookback": 5,
+    "stay": 15,
+    "extrap": 0,
+    "clerical": 0,
+    "docs": 5,
+    "written": 5,
+    "response": 5,
+    "appeal": 0,
+    "selection": 0,
+    "notice": 0,
+    "frequency": 0,
+    "nofraud": 0,
+    "rate": 0,
+    "conseq": 0
+   },
+   "rank": 14
+  },
+  "IA": {
+   "score": 25,
+   "tier": "Moderate",
+   "points": {
+    "lookback": 5,
+    "stay": 0,
+    "extrap": 0,
+    "clerical": 10,
+    "docs": 5,
+    "written": 0,
+    "response": 0,
+    "appeal": 0,
+    "selection": 0,
+    "notice": 0,
+    "frequency": 0,
+    "nofraud": 0,
+    "rate": 5,
+    "conseq": 0
+   },
+   "rank": 32
+  },
+  "ID": {
+   "score": 25,
+   "tier": "Moderate",
+   "points": {
+    "lookback": 5,
+    "stay": 0,
+    "extrap": 0,
+    "clerical": 10,
+    "docs": 5,
+    "written": 0,
+    "response": 5,
+    "appeal": 0,
+    "selection": 0,
+    "notice": 0,
+    "frequency": 0,
+    "nofraud": 0,
+    "rate": 0,
+    "conseq": 0
+   },
+   "rank": 33
+  },
+  "IL": {
+   "score": 25,
+   "tier": "Moderate",
+   "points": {
+    "lookback": 5,
+    "stay": 0,
+    "extrap": 0,
+    "clerical": 10,
+    "docs": 5,
+    "written": 0,
+    "response": 0,
+    "appeal": 0,
+    "selection": 0,
+    "notice": 0,
+    "frequency": 0,
+    "nofraud": 0,
+    "rate": 5,
+    "conseq": 0
+   },
+   "rank": 34
+  },
+  "IN": {
+   "score": 35,
+   "tier": "Elevated",
+   "points": {
+    "lookback": 5,
+    "stay": 0,
+    "extrap": 0,
+    "clerical": 10,
+    "docs": 5,
+    "written": 5,
+    "response": 5,
+    "appeal": 5,
+    "selection": 0,
+    "notice": 0,
+    "frequency": 0,
+    "nofraud": 0,
+    "rate": 0,
+    "conseq": 0
+   },
+   "rank": 15
+  },
+  "KS": {
+   "score": 40,
+   "tier": "High",
+   "points": {
+    "lookback": 5,
+    "stay": 15,
+    "extrap": 0,
+    "clerical": 10,
+    "docs": 5,
+    "written": 0,
+    "response": 0,
+    "appeal": 0,
+    "selection": 0,
+    "notice": 0,
+    "frequency": 0,
+    "nofraud": 0,
+    "rate": 5,
+    "conseq": 0
+   },
+   "rank": 8
+  },
+  "KY": {
+   "score": 30,
+   "tier": "Elevated",
+   "points": {
+    "lookback": 5,
+    "stay": 0,
+    "extrap": 0,
+    "clerical": 10,
+    "docs": 5,
+    "written": 5,
+    "response": 5,
+    "appeal": 0,
+    "selection": 0,
+    "notice": 0,
+    "frequency": 0,
+    "nofraud": 0,
+    "rate": 0,
+    "conseq": 0
+   },
+   "rank": 25
+  },
+  "LA": {
+   "score": 30,
+   "tier": "Elevated",
+   "points": {
+    "lookback": 5,
+    "stay": 0,
+    "extrap": 0,
+    "clerical": 10,
+    "docs": 5,
+    "written": 0,
+    "response": 0,
+    "appeal": 0,
+    "selection": 0,
+    "notice": 0,
+    "frequency": 5,
+    "nofraud": 0,
+    "rate": 0,
+    "conseq": 5
+   },
+   "rank": 26
+  },
+  "MA": {
+   "score": 40,
+   "tier": "High",
+   "points": {
+    "lookback": 5,
+    "stay": 0,
+    "extrap": 5,
+    "clerical": 0,
+    "docs": 5,
+    "written": 5,
+    "response": 5,
+    "appeal": 0,
+    "selection": 5,
+    "notice": 0,
+    "frequency": 0,
+    "nofraud": 0,
+    "rate": 5,
+    "conseq": 5
+   },
+   "rank": 9
+  },
+  "MD": {
+   "score": 30,
+   "tier": "Elevated",
+   "points": {
+    "lookback": 10,
+    "stay": 0,
+    "extrap": 0,
+    "clerical": 10,
+    "docs": 5,
+    "written": 0,
+    "response": 0,
+    "appeal": 0,
+    "selection": 0,
+    "notice": 0,
+    "frequency": 0,
+    "nofraud": 0,
+    "rate": 0,
+    "conseq": 5
+   },
+   "rank": 27
+  },
+  "ME": {
+   "score": 15,
+   "tier": "Low",
+   "points": {
+    "lookback": 0,
+    "stay": 0,
+    "extrap": 0,
+    "clerical": 10,
+    "docs": 0,
+    "written": 0,
+    "response": 0,
+    "appeal": 0,
+    "selection": 0,
+    "notice": 0,
+    "frequency": 0,
+    "nofraud": 0,
+    "rate": 5,
+    "conseq": 0
+   },
+   "rank": 43
+  },
+  "MI": {
+   "score": 35,
+   "tier": "Elevated",
+   "points": {
+    "lookback": 5,
+    "stay": 0,
+    "extrap": 0,
+    "clerical": 10,
+    "docs": 0,
+    "written": 5,
+    "response": 5,
+    "appeal": 5,
+    "selection": 5,
+    "notice": 0,
+    "frequency": 0,
+    "nofraud": 0,
+    "rate": 0,
+    "conseq": 0
+   },
+   "rank": 16
+  },
+  "MN": {
+   "score": 20,
+   "tier": "Moderate",
+   "points": {
+    "lookback": 5,
+    "stay": 0,
+    "extrap": 0,
+    "clerical": 10,
+    "docs": 0,
+    "written": 0,
+    "response": 5,
+    "appeal": 0,
+    "selection": 0,
+    "notice": 0,
+    "frequency": 0,
+    "nofraud": 0,
+    "rate": 0,
+    "conseq": 0
+   },
+   "rank": 39
+  },
+  "MO": {
+   "score": 35,
+   "tier": "Elevated",
+   "points": {
+    "lookback": 5,
+    "stay": 15,
+    "extrap": 0,
+    "clerical": 0,
+    "docs": 5,
+    "written": 5,
+    "response": 0,
+    "appeal": 0,
+    "selection": 0,
+    "notice": 0,
+    "frequency": 0,
+    "nofraud": 0,
+    "rate": 0,
+    "conseq": 5
+   },
+   "rank": 17
+  },
+  "MS": {
+   "score": 20,
+   "tier": "Moderate",
+   "points": {
+    "lookback": 5,
+    "stay": 0,
+    "extrap": 0,
+    "clerical": 10,
+    "docs": 5,
+    "written": 0,
+    "response": 0,
+    "appeal": 0,
+    "selection": 0,
+    "notice": 0,
+    "frequency": 0,
+    "nofraud": 0,
+    "rate": 0,
+    "conseq": 0
+   },
+   "rank": 40
+  },
+  "MT": {
+   "score": 30,
+   "tier": "Elevated",
+   "points": {
+    "lookback": 5,
+    "stay": 0,
+    "extrap": 0,
+    "clerical": 10,
+    "docs": 5,
+    "written": 0,
+    "response": 5,
+    "appeal": 0,
+    "selection": 0,
+    "notice": 0,
+    "frequency": 0,
+    "nofraud": 0,
+    "rate": 5,
+    "conseq": 0
+   },
+   "rank": 28
+  },
+  "NC": {
+   "score": 55,
+   "tier": "Very high",
+   "points": {
+    "lookback": 5,
+    "stay": 15,
+    "extrap": 0,
+    "clerical": 10,
+    "docs": 5,
+    "written": 0,
+    "response": 0,
+    "appeal": 0,
+    "selection": 5,
+    "notice": 5,
+    "frequency": 5,
+    "nofraud": 0,
+    "rate": 5,
+    "conseq": 0
+   },
+   "rank": 4
+  },
+  "ND": {
+   "score": 10,
+   "tier": "Low",
+   "points": {
+    "lookback": 5,
+    "stay": 0,
+    "extrap": 0,
+    "clerical": 0,
+    "docs": 5,
+    "written": 0,
+    "response": 0,
+    "appeal": 0,
+    "selection": 0,
+    "notice": 0,
+    "frequency": 0,
+    "nofraud": 0,
+    "rate": 0,
+    "conseq": 0
+   },
+   "rank": 45
+  },
+  "NE": {
+   "score": 35,
+   "tier": "Elevated",
+   "points": {
+    "lookback": 5,
+    "stay": 15,
+    "extrap": 0,
+    "clerical": 10,
+    "docs": 5,
+    "written": 0,
+    "response": 0,
+    "appeal": 0,
+    "selection": 0,
+    "notice": 0,
+    "frequency": 0,
+    "nofraud": 0,
+    "rate": 0,
+    "conseq": 0
+   },
+   "rank": 18
+  },
+  "NH": {
+   "score": 40,
+   "tier": "High",
+   "points": {
+    "lookback": 10,
+    "stay": 15,
+    "extrap": 0,
+    "clerical": 10,
+    "docs": 5,
+    "written": 0,
+    "response": 0,
+    "appeal": 0,
+    "selection": 0,
+    "notice": 0,
+    "frequency": 0,
+    "nofraud": 0,
+    "rate": 0,
+    "conseq": 0
+   },
+   "rank": 10
+  },
+  "NJ": {
+   "score": 50,
+   "tier": "Very high",
+   "points": {
+    "lookback": 5,
+    "stay": 15,
+    "extrap": 0,
+    "clerical": 10,
+    "docs": 5,
+    "written": 5,
+    "response": 0,
+    "appeal": 0,
+    "selection": 5,
+    "notice": 0,
+    "frequency": 0,
+    "nofraud": 0,
+    "rate": 5,
+    "conseq": 0
+   },
+   "rank": 5
+  },
+  "NM": {
+   "score": 35,
+   "tier": "Elevated",
+   "points": {
+    "lookback": 15,
+    "stay": 0,
+    "extrap": 0,
+    "clerical": 10,
+    "docs": 5,
+    "written": 0,
+    "response": 5,
+    "appeal": 0,
+    "selection": 0,
+    "notice": 0,
+    "frequency": 0,
+    "nofraud": 0,
+    "rate": 0,
+    "conseq": 0
+   },
+   "rank": 19
+  },
+  "NV": {
+   "score": 35,
+   "tier": "Elevated",
+   "points": {
+    "lookback": 10,
+    "stay": 0,
+    "extrap": 0,
+    "clerical": 10,
+    "docs": 5,
+    "written": 0,
+    "response": 5,
+    "appeal": 5,
+    "selection": 0,
+    "notice": 0,
+    "frequency": 0,
+    "nofraud": 0,
+    "rate": 0,
+    "conseq": 0
+   },
+   "rank": 20
+  },
+  "NY": {
+   "score": 40,
+   "tier": "High",
+   "points": {
+    "lookback": 5,
+    "stay": 15,
+    "extrap": 0,
+    "clerical": 10,
+    "docs": 5,
+    "written": 0,
+    "response": 0,
+    "appeal": 0,
+    "selection": 5,
+    "notice": 0,
+    "frequency": 0,
+    "nofraud": 0,
+    "rate": 0,
+    "conseq": 0
+   },
+   "rank": 11
+  },
+  "OH": {
+   "score": 40,
+   "tier": "High",
+   "points": {
+    "lookback": 5,
+    "stay": 15,
+    "extrap": 0,
+    "clerical": 10,
+    "docs": 5,
+    "written": 0,
+    "response": 0,
+    "appeal": 0,
+    "selection": 0,
+    "notice": 0,
+    "frequency": 0,
+    "nofraud": 0,
+    "rate": 0,
+    "conseq": 5
+   },
+   "rank": 12
+  },
+  "OK": {
+   "score": 30,
+   "tier": "Elevated",
+   "points": {
+    "lookback": 5,
+    "stay": 15,
+    "extrap": 0,
+    "clerical": 0,
+    "docs": 5,
+    "written": 5,
+    "response": 0,
+    "appeal": 0,
+    "selection": 0,
+    "notice": 0,
+    "frequency": 0,
+    "nofraud": 0,
+    "rate": 0,
+    "conseq": 0
+   },
+   "rank": 29
+  },
+  "OR": {
+   "score": 25,
+   "tier": "Moderate",
+   "points": {
+    "lookback": 5,
+    "stay": 0,
+    "extrap": 0,
+    "clerical": 10,
+    "docs": 5,
+    "written": 0,
+    "response": 5,
+    "appeal": 0,
+    "selection": 0,
+    "notice": 0,
+    "frequency": 0,
+    "nofraud": 0,
+    "rate": 0,
+    "conseq": 0
+   },
+   "rank": 35
+  },
+  "PA": {
+   "score": 35,
+   "tier": "Elevated",
+   "points": {
+    "lookback": 10,
+    "stay": 15,
+    "extrap": 0,
+    "clerical": 0,
+    "docs": 5,
+    "written": 5,
+    "response": 0,
+    "appeal": 0,
+    "selection": 0,
+    "notice": 0,
+    "frequency": 0,
+    "nofraud": 0,
+    "rate": 0,
+    "conseq": 0
+   },
+   "rank": 21
+  },
+  "RI": {
+   "score": 20,
+   "tier": "Moderate",
+   "points": {
+    "lookback": 5,
+    "stay": 0,
+    "extrap": 0,
+    "clerical": 10,
+    "docs": 0,
+    "written": 0,
+    "response": 5,
+    "appeal": 0,
+    "selection": 0,
+    "notice": 0,
+    "frequency": 0,
+    "nofraud": 0,
+    "rate": 0,
+    "conseq": 0
+   },
+   "rank": 41
+  },
+  "SC": {
+   "score": 25,
+   "tier": "Moderate",
+   "points": {
+    "lookback": 5,
+    "stay": 0,
+    "extrap": 0,
+    "clerical": 10,
+    "docs": 5,
+    "written": 0,
+    "response": 0,
+    "appeal": 0,
+    "selection": 0,
+    "notice": 0,
+    "frequency": 5,
+    "nofraud": 0,
+    "rate": 0,
+    "conseq": 0
+   },
+   "rank": 36
+  },
+  "SD": {
+   "score": 20,
+   "tier": "Moderate",
+   "points": {
+    "lookback": 5,
+    "stay": 0,
+    "extrap": 0,
+    "clerical": 10,
+    "docs": 5,
+    "written": 0,
+    "response": 0,
+    "appeal": 0,
+    "selection": 0,
+    "notice": 0,
+    "frequency": 0,
+    "nofraud": 0,
+    "rate": 0,
+    "conseq": 0
+   },
+   "rank": 42
+  },
+  "TN": {
+   "score": 0,
+   "tier": "Low",
+   "points": {
+    "lookback": 0,
+    "stay": 0,
+    "extrap": 0,
+    "clerical": 0,
+    "docs": 0,
+    "written": 0,
+    "response": 0,
+    "appeal": 0,
+    "selection": 0,
+    "notice": 0,
+    "frequency": 0,
+    "nofraud": 0,
+    "rate": 0,
+    "conseq": 0
+   },
+   "rank": 50
+  },
+  "TX": {
+   "score": 10,
+   "tier": "Low",
+   "points": {
+    "lookback": 5,
+    "stay": 0,
+    "extrap": 0,
+    "clerical": 0,
+    "docs": 5,
+    "written": 0,
+    "response": 0,
+    "appeal": 0,
+    "selection": 0,
+    "notice": 0,
+    "frequency": 0,
+    "nofraud": 0,
+    "rate": 0,
+    "conseq": 0
+   },
+   "rank": 46
+  },
+  "UT": {
+   "score": 65,
+   "tier": "Very high",
+   "points": {
+    "lookback": 15,
+    "stay": 15,
+    "extrap": 10,
+    "clerical": 10,
+    "docs": 5,
+    "written": 5,
+    "response": 5,
+    "appeal": 0,
+    "selection": 0,
+    "notice": 0,
+    "frequency": 0,
+    "nofraud": 0,
+    "rate": 0,
+    "conseq": 0
+   },
+   "rank": 3
+  },
+  "VA": {
+   "score": 45,
+   "tier": "High",
+   "points": {
+    "lookback": 15,
+    "stay": 15,
+    "extrap": 0,
+    "clerical": 10,
+    "docs": 5,
+    "written": 0,
+    "response": 0,
+    "appeal": 0,
+    "selection": 0,
+    "notice": 0,
+    "frequency": 0,
+    "nofraud": 0,
+    "rate": 0,
+    "conseq": 0
+   },
+   "rank": 6
+  },
+  "VT": {
+   "score": 25,
+   "tier": "Moderate",
+   "points": {
+    "lookback": 5,
+    "stay": 15,
+    "extrap": 0,
+    "clerical": 0,
+    "docs": 5,
+    "written": 0,
+    "response": 0,
+    "appeal": 0,
+    "selection": 0,
+    "notice": 0,
+    "frequency": 0,
+    "nofraud": 0,
+    "rate": 0,
+    "conseq": 0
+   },
+   "rank": 37
+  },
+  "WA": {
+   "score": 10,
+   "tier": "Low",
+   "points": {
+    "lookback": 10,
+    "stay": 0,
+    "extrap": 0,
+    "clerical": 0,
+    "docs": 0,
+    "written": 0,
+    "response": 0,
+    "appeal": 0,
+    "selection": 0,
+    "notice": 0,
+    "frequency": 0,
+    "nofraud": 0,
+    "rate": 0,
+    "conseq": 0
+   },
+   "rank": 47
+  },
+  "WI": {
+   "score": 5,
+   "tier": "Low",
+   "points": {
+    "lookback": 5,
+    "stay": 0,
+    "extrap": 0,
+    "clerical": 0,
+    "docs": 0,
+    "written": 0,
+    "response": 0,
+    "appeal": 0,
+    "selection": 0,
+    "notice": 0,
+    "frequency": 0,
+    "nofraud": 0,
+    "rate": 0,
+    "conseq": 0
+   },
+   "rank": 48
+  },
+  "WV": {
+   "score": 30,
+   "tier": "Elevated",
+   "points": {
+    "lookback": 5,
+    "stay": 0,
+    "extrap": 0,
+    "clerical": 10,
+    "docs": 5,
+    "written": 0,
+    "response": 5,
+    "appeal": 0,
+    "selection": 0,
+    "notice": 0,
+    "frequency": 0,
+    "nofraud": 0,
+    "rate": 0,
+    "conseq": 5
+   },
+   "rank": 30
+  },
+  "WY": {
+   "score": 5,
+   "tier": "Low",
+   "points": {
+    "lookback": 5,
+    "stay": 0,
+    "extrap": 0,
+    "clerical": 0,
+    "docs": 0,
+    "written": 0,
+    "response": 0,
+    "appeal": 0,
+    "selection": 0,
+    "notice": 0,
+    "frequency": 0,
+    "nofraud": 0,
+    "rate": 0,
+    "conseq": 0
+   },
+   "rank": 49
+  }
+ }
+}

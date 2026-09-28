@@ -98,7 +98,7 @@ def coverage_cell(state, key, cov, build_date):
 
 
 # ---------------------------------------------------------------- Excel
-def build_xlsx(audit, cov, weekly, news, build_date, path):
+def build_xlsx(audit, cov, weekly, news, build_date, path, procs=None, idx=None, dist=None):
     from openpyxl import Workbook
     from openpyxl.styles import Alignment, Border, Font, PatternFill, Side
     from openpyxl.utils import get_column_letter
@@ -134,7 +134,9 @@ def build_xlsx(audit, cov, weekly, news, build_date, path):
              ('Audit fields: claim deadlines, chargeback windows, rate submission, manufacturer response and challenge, penalties, with quotes.', F),
              ('Rate sample rules: each state\'s retail-rate sample, RO age limit and exclusions.', F),
              ('Law dates: last amendment, amending act, original enactment, next scheduled change.', F),
-             ('Weekly log and News: the Weekly checks and News tabs.', F), ('', F),
+             ('Audit procedures: notice, selection basis, frequency, written reasons, response period, appeal, chargeback holds, extrapolation, clerical errors, documentation limits, fraud carve-outs, rate validation and consequences, with quotes.', F),
+             ('Audit index: the audit restrictiveness index (0-100) with the points behind it, plus distributor-franchised states. Higher = more statutory limits on audits, chargebacks and rate validation. Statute text only.', F),
+             ('Weekly log and News: the Update log and News tabs.', F), ('', F),
              ('How to read it', FB),
              ('"Silent" / "Not addressed" means the reviewed statute says nothing. Contracts, regulations or other law may still apply.', F),
              ('"Conditional" coverage usually turns on who the legal obligor is, or whether the manufacturer pays for the work. Program branding does not establish the obligor.', F),
@@ -245,11 +247,46 @@ def build_xlsx(audit, cov, weekly, news, build_date, path):
                          ', '.join(n.get('states') or []), n.get('why_it_matters'), n.get('url')])
     sheet('News', ['Week of', 'Date', 'Title', 'Publisher', 'Source type', 'Perspective', 'States', 'Why it matters', 'URL'],
           nrow, [12, 12, 50, 30, 16, 16, 10, 60, 40])
+    if procs and idx:
+        P = {x['state']: x for x in procs['states']}
+        D = {x['state']: x for x in (dist or {}).get('states', [])}
+        DN = (dist or {}).get('distributors', {})
+        yes = lambda v: 'Yes' if v is True else ('No' if v is False else 'Not in statute')
+        prow = []
+        for a in audit:
+            x = P[a['state']]
+            g = lambda k, f='detail': (x.get(k) or {}).get(f)
+            prow.append([a['state'], a['name'], yes(g('advance_notice', 'required')), g('advance_notice', 'days'), yes(g('selection_basis_disclosed', 'required')),
+                         g('selection_basis_disclosed'), g('audit_frequency_limit', 'limit'), yes(g('written_reasons_before_chargeback', 'required')),
+                         g('dealer_response_period', 'days'), g('dealer_response_period'), yes(g('internal_appeal', 'required')),
+                         yes(g('chargeback_stayed_pending_appeal', 'required')), g('chargeback_stayed_pending_appeal'), g('extrapolation', 'rule'),
+                         yes(g('clerical_error_protection', 'required')), yes(g('documentation_limits', 'required')), yes(g('fraud_exception', 'exists')),
+                         'Yes' if g('rate_submission_audit', 'allowed') is True else 'No procedure', g('rate_submission_audit', 'limits'),
+                         'Limited to submission' if (x.get('classification') or {}).get('rate_validation_limited') else 'Broader',
+                         g('penalties_for_audit_violations'), x.get('confidence'), '; '.join(x.get('sources') or [])[:900], x.get('notes')])
+        sheet('Audit procedures', ['State', 'Name', 'Advance notice', 'Notice (days)', 'Selection basis disclosed', 'Selection detail', 'Audit frequency limit',
+                                   'Written reasons before chargeback', 'Response period (days)', 'Response detail', 'Internal appeal', 'Chargeback held pending appeal',
+                                   'Hold detail', 'Extrapolation', 'Clerical-error protection', 'Documentation limits', 'Fraud carve-out', 'Rate validation procedure',
+                                   'Rate validation limits', 'Rate validation scope', 'Consequences for improper audits', 'Confidence', 'Sources', 'Notes'],
+              prow, [7, 15, 11, 9, 12, 40, 26, 12, 10, 40, 10, 12, 40, 12, 12, 12, 11, 12, 50, 14, 40, 10, 40, 50])
+        F_ = [f['id'] for f in idx['factors']]
+        irow = []
+        for a in audit:
+            v = idx['states'][a['state']]; d = D.get(a['state'])
+            irow.append([a['state'], a['name'], v['score'], v['tier'], v['rank']] + [v['points'][f] for f in F_] +
+                        [(DN.get(d['distributor'], {}).get('name', '') + (' (northern counties only)' if d.get('coverage') == 'partial' else '')) if d else ''])
+        ws = sheet('Audit index', ['State', 'Name', 'Index (0-100)', 'Tier', 'Rank'] + [f['label'] + f" ({f['max']})" for f in idx['factors']] + ['Distributor-franchised'],
+                   irow, [7, 15, 10, 11, 7] + [12] * len(F_) + [34])
+        r0 = len(irow) + 3
+        ws.cell(row=r0, column=1, value='How the index is scored (higher = more statutory limits; statute text only, not legal advice)').font = FB
+        for i, f in enumerate(idx['factors'], 1):
+            ws.cell(row=r0 + i, column=1, value=f"{f['label']} ({f['max']} pts): {f['how']}").font = F
+        ws.cell(row=r0 + len(idx['factors']) + 1, column=1, value='Tiers: ' + '; '.join(f"{t['name']} {t['range']}" for t in idx['tiers'])).font = F
     wb.save(path)
 
 
 # ---------------------------------------------------------------- PDFs
-def build_pdf(a, c, build_date, path, scale=1.0):
+def build_pdf(a, c, build_date, path, scale=1.0, proc=None, ix=None, dist=None):
     from reportlab.lib import colors
     from reportlab.lib.enums import TA_LEFT
     from reportlab.lib.pagesizes import letter
@@ -276,6 +313,8 @@ def build_pdf(a, c, build_date, path, scale=1.0):
                  colWidths=[7.6 * inch])
     head.setStyle(TableStyle([('BACKGROUND', (0, 0), (-1, -1), navy), ('LEFTPADDING', (0, 0), (-1, -1), 8), ('TOPPADDING', (0, 0), (-1, -1), 5), ('BOTTOMPADDING', (0, 0), (-1, -1), 5)]))
     story += [head, Spacer(1, 4), P('Cites: ' + '; '.join(a.get('cites') or []), B)]
+    if dist:
+        story.append(P(f"Distributor-franchised state: dealers here are franchised by {dist['name']}{' (northern New Jersey counties only)' if dist.get('partial') else ''}, an independent regional distributor. The rules below apply to the franchisor that holds the dealer's franchise; confirm with Legal how they apply to programs run by the manufacturer's U.S. company.", BB))
 
     def grid(rows, widths, header=True):
         t = Table(rows, colWidths=[w * inch for w in widths], repeatRows=1 if header else 0)
@@ -303,6 +342,15 @@ def build_pdf(a, c, build_date, path, scale=1.0):
             [P('Rate resubmission', BB), P(f"{rs.get('frequency_limit') or 'Silent'}. Sample: {sample_text(a)}. Excluded: {', '.join(EXCL.get(x, x) for x in rs.get('exclusions') or []) or 'none listed'}."), P(trim(rs.get('pinpoint'), 60))],
             [P('Mfr response', BB), P(f"{d(mr.get('response_deadline_days'))}; no response = approved: {'Yes' if mr.get('deemed_approved_if_no_response') is True else 'no rule in statute'}. Challenge: " + trim(mr.get('challenge_standard'), L) + (f" Forum: {trim(mr.get('dispute_forum'), 70)}." if mr.get('dispute_forum') else '')), P(trim(mr.get('pinpoint'), 60))],
             [P('Penalties', BB), P(trim((pe.get('private_remedies') or '') + ' ' + (pe.get('admin_sanctions') or ''), int(L * 1.3))), P(trim(pe.get('cite'), 70))]]
+    if proc and ix:
+        yn_ = lambda k: 'yes' if (proc.get(k) or {}).get('required') is True else 'no'
+        rd = (proc.get('dealer_response_period') or {}).get('days')
+        txt = (f"Audit index {ix['score']}/100 ({ix['tier']}). Advance notice: {yn_('advance_notice')}; selection basis disclosed: {yn_('selection_basis_disclosed')}; "
+               f"frequency cap: {trim((proc.get('audit_frequency_limit') or {}).get('limit') or 'none', 50)}; written reasons: {yn_('written_reasons_before_chargeback')}; "
+               f"response period: {str(rd) + ' days' if rd else 'none'}; internal appeal: {yn_('internal_appeal')}; held pending appeal: {yn_('chargeback_stayed_pending_appeal')}; "
+               f"extrapolation: {(proc.get('extrapolation') or {}).get('rule') or 'silent'}; clerical-error protection: {yn_('clerical_error_protection')}; "
+               f"rate validation: {'limited to the submission' if (proc.get('classification') or {}).get('rate_validation_limited') else 'broader or no procedure'}.")
+        rows.append([P('Audit procedures', BB), P(txt), P('')])
     story.append(grid(rows, [1.15, 5.15, 1.3]))
 
     story.append(Paragraph('Statute quotes', H))
@@ -331,17 +379,23 @@ def main():
     build_date = ap.parse_args().date
     audit = load('data/audit-fields.json'); cov = load('research/labor-by-coverage-v3.json')
     weekly = load('data/weekly-checks.json'); news = load('data/news.json')
+    procs = load('data/audit-procedures.json'); dist = load('data/distributors.json')
+    sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+    import audit_index
+    idx = audit_index.write(audit_index.compute(audit, procs))
+    P_ = {x['state']: x for x in procs['states']}
+    DS = {x['state']: {'name': dist['distributors'][x['distributor']]['name'], 'partial': x.get('coverage') == 'partial'} for x in dist['states']}
     by = {r['state']: r for r in cov}
     missing = sorted(set(a['state'] for a in audit) ^ set(by))
     if missing: sys.exit(f'State mismatch between audit and coverage data: {missing}')
     os.makedirs(os.path.join(OUT, 'state-pdfs'), exist_ok=True)
-    build_xlsx(audit, cov, weekly, news, build_date, os.path.join(OUT, 'warranty-atlas.xlsx'))
+    build_xlsx(audit, cov, weekly, news, build_date, os.path.join(OUT, 'warranty-atlas.xlsx'), procs, idx, dist)
     from pypdf import PdfReader, PdfWriter
     allw = PdfWriter(); zbuf = io.BytesIO(); z = zipfile.ZipFile(zbuf, 'w', zipfile.ZIP_DEFLATED)
     for a in audit:
         p = os.path.join(OUT, 'state-pdfs', a['state'] + '.pdf')
         for scale in (1.0, 0.93, 0.86, 0.8, 0.74):
-            build_pdf(a, by[a['state']], build_date, p, scale)
+            build_pdf(a, by[a['state']], build_date, p, scale, P_.get(a['state']), idx['states'][a['state']], DS.get(a['state']))
             if pages(p) == 1: break
         else:
             sys.exit(f"{a['state']}: could not fit on one page")

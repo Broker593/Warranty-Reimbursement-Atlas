@@ -21,6 +21,8 @@ Goal: find anything **enacted, taking effect, or moving** that changes a state's
 - Audit fields: update the state's record in `docs/data/audit-fields.json` (the changed block, `law_dates`, `verified.audit_fields` = check date). If the change is enacted but not yet effective, put it in `law_dates.next_scheduled_change` instead of changing current values.
 - Coverage cells (`docs/research/labor-by-coverage-v3.json`, mirrored in `docs/coverage-data.js` and adapted by `docs/coverage.js`): do **not** hand-edit unless the change is clear-cut and you update all three consistently and run `node --check`. Otherwise log "Coverage cell change needed" under `site_changes` so a person reviews it.
 - Key facts: if the change affects the labor rate, rate-request frequency, parts markup, manufacturer response, paid hours or multiplier, update that state's short label in `docs/data/key-facts.json` (plain English, summary only), re-check its `labor_type` / `parts_type` category, and set the file's `updated` date.
+- Audit procedures: if enacted law changes audit, chargeback or rate-validation procedure, update that state in `docs/data/audit-procedures.json` (verbatim quote, 40 words max, and pinpoint) and re-check its `classification` (rate_validation_limited, audit_consequence) against the definitions in that file's `method`. The audit index (`docs/data/audit-index.json`) is recalculated automatically by `tools/build_exports.py`; note any tier change in the weekly entry.
+- Distributor-franchised states (`docs/data/distributors.json`): note in the weekly entry if a change affects how a state's statute treats distributors.
 - For every state you scanned, set `verified.last_change_check` = check date.
 
 ## 3. News (3–5 items, zero is fine)
@@ -28,6 +30,7 @@ Goal: find anything **enacted, taking effect, or moving** that changes a state's
 - Must be directly about state warranty-reimbursement law: retail-rate/labor-time laws, service-contract or CPO reimbursement, claims/chargebacks/audits, board or court rulings on these. No consumer lemon-law, recall or generic warranty stories. No vendor marketing unless it reports a concrete law change.
 - Prefer official sources, law-firm client alerts, state dealer associations, Automotive News.
 - Each item: `date, title, publisher, url, source_type, states, topic, why_it_matters (manufacturer-compliance view), perspective (dealer-side | manufacturer-side | neutral)`.
+- If a news item reports a new board or court decision on rate submissions, rate validation, audits, chargebacks or cost recovery, also add it to `docs/data/cases.json` with the same fields as existing items and an honest `verification` value ("verified — primary source read" only if you read the decision).
 - Append a new object to `docs/data/news.json` → `weeks` with `week_of` = Monday of the check week. Never more than 5 items.
 
 ## 4. Log the check
@@ -41,9 +44,9 @@ Append one object to `docs/data/weekly-checks.json` → `entries`:
 Headline format: `N enacted changes, N pending bills, N law-data updates`. If nothing changed, say so plainly.
 
 ## 5. Rebuild, verify, publish
-- `python3 tools/build_exports.py --date <check date>` (must report 50 states; every state PDF must be one page).
+- `python3 tools/build_exports.py --date <check date>` (must report 50 states; every state PDF must be one page). This also rewrites `docs/data/audit-index.json`.
 - `for f in data coverage coverage-data extras; do node --check docs/$f.js; done`
-- `python3 -c "import json;[json.load(open(p)) for p in ['docs/data/audit-fields.json','docs/data/weekly-checks.json','docs/data/news.json','docs/data/key-facts.json']];k=json.load(open('docs/data/key-facts.json'))['states'];a=json.load(open('docs/data/audit-fields.json'));assert sorted(k)==sorted(r['state'] for r in a)"`
+- `python3 -c "import json;[json.load(open(p)) for p in ['docs/data/audit-fields.json','docs/data/weekly-checks.json','docs/data/news.json','docs/data/key-facts.json','docs/data/audit-procedures.json','docs/data/distributors.json','docs/data/cases.json','docs/data/audit-index.json']];k=json.load(open('docs/data/key-facts.json'))['states'];a=json.load(open('docs/data/audit-fields.json'));assert sorted(k)==sorted(r['state'] for r in a)"`
 - Commit to `main`: `Weekly check <date>: <headline>` and push. GitHub Pages publishes in a few minutes.
 - If the push is refused (no repository access), do not work around it: report that the repo must be added to the task's sources, and attach the changed JSON files to the run summary.
 

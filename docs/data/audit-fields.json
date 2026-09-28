@@ -3982,10 +3982,10 @@
   },
   "chargebacks": {
    "lookback_months": 12,
-   "fraud_extension": null,
-   "limits": "ONLY for franchises entered or renewed on or after 1/1/2026 ((5), added 2025): audit within 1 year after payment, and charge back only unsubstantiated, false or fraudulent claims. No reductions based on national norms/averages ((6)(d)). Pre-2026 franchises have NO statutory audit or chargeback lookback, only the clerical-error rule.",
-   "quote": "Audit a dealer's claim under this section within one year after the date on which the manufacturer, distributor or importer paid the claim ... Charge back a dealer's claim under this section that is unsubstantiated, false or fraudulent.",
-   "pinpoint": "§ 650.158(5)(b)-(c) (2025 c.50; franchises entered/renewed on or after 1/1/2026)"
+   "fraud_extension": "The 1-year limit does not apply if the manufacturer has reasonable grounds to believe fraud; after 1 year only proven fraudulent amounts may be charged back.",
+   "limits": "Audits of paid warranty or incentive claims, and chargebacks for them, may not be started more than 1 year after payment unless the manufacturer has reasonable grounds to believe fraud; after 1 year only proven fraudulent amounts may be charged back, and permitted audits should conclude within 60 days (ORS 650.130(8)). For franchises entered or renewed on or after 1/1/2026, § 650.158(5)-(6) adds: charge back only unsubstantiated, false or fraudulent claims, and no reductions based on national norms or averages.",
+   "quote": "If a manufacturer ... initiates an audit more than one year following the date of payment, the manufacturer ... may charge back to the dealer only the amount of a claim that the manufacturer ... proves was fraudulent.",
+   "pinpoint": "Or. Rev. Stat. § 650.130(8)"
   },
   "rate_submission": {
    "frequency_limit": "Franchises entered or renewed on or after 1/1/2026: 'Not more than once per year' the manufacturer may verify and the dealer may propose an increase. Pre-2026 text: only the manufacturer's verification is limited to once per year.",
@@ -4024,7 +4024,7 @@
    "cite": "Or. Rev. Stat. § 650.170"
   },
   "confidence": "high",
-  "notes": "There are TWO REGIMES by franchise date. The 2025 c.50 amendments apply only to franchises entered or renewed on or after 1/1/2026. New for those franchises: (2)(b)(C), time allowances reasonable for a qualified technician, and no unreasonable denial of requests to modify or add time. Also new: (4)(c) 30-day resubmission, (5) the 1-year audit and chargeback grounds, (6)(c)-(e) limits on mileage-based denials, national-norm reductions and failure-rate repair caps, (7) markup on no-charge parts, and the dealer's once-per-year increase. Older franchises keep the 2023-edition text. Motor-home living-facility parts are excluded from parts reimbursement.",
+  "notes": "There are TWO REGIMES by franchise date. The 2025 c.50 amendments apply only to franchises entered or renewed on or after 1/1/2026. New for those franchises: (2)(b)(C), time allowances reasonable for a qualified technician, and no unreasonable denial of requests to modify or add time. Also new: (4)(c) 30-day resubmission, (5) the 1-year audit and chargeback grounds, (6)(c)-(e) limits on mileage-based denials, national-norm reductions and failure-rate repair caps, (7) markup on no-charge parts, and the dealer's once-per-year increase. Older franchises keep the 2023-edition text. Motor-home living-facility parts are excluded from parts reimbursement. Correction 2026-09-27: an earlier note said pre-2026 franchises had no statutory audit lookback; ORS 650.130(8) sets a 1-year limit for all franchises.",
   "name": "Oregon",
   "calc": {
    "mode": "fewer",
