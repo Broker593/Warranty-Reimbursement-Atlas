@@ -296,3 +296,15 @@
 @media(max-width:700px){.km-toggle{position:static;margin-top:8px}}
 @media(min-width:701px){#x-summary .xd-jump{display:flex;align-items:center;gap:12px;padding-top:8px;padding-bottom:8px}#x-summary .xd-jump-label{margin:0;white-space:nowrap;font-size:12px}#x-summary .xd-jump ul{gap:6px;flex-wrap:nowrap;min-width:0;overflow-x:auto;scrollbar-width:thin}#x-summary .xd-jump li{flex:0 0 auto}#x-summary .xd-jump a{min-height:38px;padding:6px 10px;font-size:13px;gap:6px;white-space:nowrap}#x-summary .xd-jump a span{padding-right:6px}}
 @media(min-width:701px) and (max-width:1399px){#x-summary .xd-jump-label{display:none}#x-summary .xd-jump a{padding:6px 8px}}
+
+/* site analytics disclosure */
+.xsitefoot{max-width:1800px;margin:0 auto;padding:4px 4% 28px;font-size:12px;line-height:1.5;color:#4a5a6e;display:flex;flex-wrap:wrap;gap:4px 10px;align-items:baseline}
+.xsitefoot-link{background:none;border:0;padding:0;color:#145798;text-decoration:underline;font-size:12px;cursor:pointer;min-height:24px}
+.xprivacy{margin-top:22px;border-top:1px solid var(--line);padding-top:4px}.xprivacy h3{margin:14px 0 6px}.xprivacy h3:focus{outline:none}
+.xprivacy-opt{display:flex;flex-wrap:wrap;align-items:center;gap:8px 14px}
+.xprivacy-btn{border:1px solid var(--navy);background:#fff;color:var(--navy);font-weight:bold;font-size:14px;border-radius:6px;padding:9px 14px;min-height:42px}
+.xprivacy-btn[aria-pressed=true]{background:var(--navy);color:#fff}
+#gaOptState{font-size:14px;color:var(--navy)}
+.about-copy .xprivacy-small{font-size:14px}
+@media(max-width:640px){.xsitefoot{padding:4px 12px 24px}}
+@media print{.xsitefoot{display:none}}

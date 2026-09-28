@@ -149,7 +149,30 @@
       dlg.addEventListener('click', e => { if (e.target === dlg) dlg.close(); });
     }
     document.querySelectorAll('[data-close]').forEach(b => b.addEventListener('click', () => { const d = $(b.dataset.close); if (d && d.open) d.close(); }));
+    bindPrivacy(dlg);
     window.addEventListener('hashchange', route);
+  }
+  /* ---------- site analytics (Google Analytics 4, loaded in index.html) ---------- */
+  const OPT_KEY = 'atlas-analytics-off';
+  function analyticsOff() { try { return localStorage.getItem(OPT_KEY) === '1'; } catch (e) { return false; } }
+  let lastView = '';
+  function track(path) {
+    if (path === lastView) return; lastView = path;
+    if (typeof window.gtag !== 'function' || analyticsOff()) return;
+    const base = location.origin + location.pathname.replace(/index\.html$/, '').replace(/\/?$/, '/');
+    window.gtag('event', 'page_view', {page_location: base + path, page_title: document.title});
+  }
+  function bindPrivacy(dlg) {
+    const opt = $('gaOptOut'), st = $('gaOptState'), link = $('privacyLink');
+    const paint = () => { if (!opt) return; const off = analyticsOff(); opt.textContent = off ? 'Count my visits again' : 'Don\'t count my visits on this browser'; opt.setAttribute('aria-pressed', off ? 'true' : 'false'); if (st) st.textContent = off ? 'Your visits on this browser are not counted.' : 'Your visits on this browser are counted.'; };
+    if (opt) opt.addEventListener('click', () => {
+      const off = !analyticsOff();
+      try { off ? localStorage.setItem(OPT_KEY, '1') : localStorage.removeItem(OPT_KEY); } catch (e) {}
+      if (window.ATLAS_GA_ID) window['ga-disable-' + window.ATLAS_GA_ID] = off;
+      paint();
+    });
+    if (link && dlg) link.addEventListener('click', () => { if (!dlg.open) dlg.showModal(); const h = $('privacyTitle'); if (h) { h.scrollIntoView({block: 'start'}); h.focus({preventScroll: true}); } });
+    paint();
   }
   function hashParam(k) { const m = new RegExp('[?&]' + k + '=([^&]+)').exec(location.hash); return m ? decodeURIComponent(m[1]) : ''; }
   function parseHash() {
@@ -192,8 +215,9 @@
   }
   const rendered = {};
   function render(tab, state, section) {
-    if (tab === 'states') return state && byAbbr[state] ? renderState(state) : renderHome();
+    if (tab === 'states') { const one = state && byAbbr[state]; one ? renderState(state) : renderHome(); track(one ? 'state/' + state : 'states'); return; }
     document.title = (TABS.find(t => t[0] === tab) || ['', ''])[1] + ' · Warranty Atlas';
+    track(tab);
     if (!rendered[tab]) { rendered[tab] = true; ({updates: renderWeekly, news: renderNews, downloads: renderDownloads, summary: renderSummary, map: renderMap, cases: renderCases})[tab](); }
     if (tab === 'summary') { bindJumpBar(); scrollToSection(section); }
     else if (tab === 'cases' && section) focusCase(section);

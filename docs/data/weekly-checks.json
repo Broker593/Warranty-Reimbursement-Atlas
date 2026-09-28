@@ -278,7 +278,8 @@
     "News now has two labeled streams, law changes and rulings plus industry commentary from reliable publications (starting with Warranty Week's mid-year U.S. auto warranty expense report), and shows the list of sources checked each Monday.",
     "Excel adds Audit procedures and Audit climate sheets and a News type column; state PDFs show the audit climate score and distributor status.",
     "Correction: Oregon's 1-year audit and chargeback limit applies to all franchises (an earlier note limited it to franchises from 2026 on).",
-    "Every tab now opens with a plain-English summary (what's here, and what to use it for). Tabs renamed: State Rules, Dashboard Overview, Map: U.S. Audit Climate, Cases & Laws. The Dashboard Overview's section bar stays pinned while you scroll and highlights the current section, and the distributor-outline toggle sits on the map. Downloads trimmed to the Excel workbook, state PDFs and one research data file (CSV exports and the state-PDF ZIP retired)."
+    "Every tab now opens with a plain-English summary (what's here, and what to use it for). Tabs renamed: State Rules, Dashboard Overview, Map: U.S. Audit Climate, Cases & Laws. The Dashboard Overview's section bar stays pinned while you scroll and highlights the current section, and the distributor-outline toggle sits on the map. Downloads trimmed to the Excel workbook, state PDFs and one research data file (CSV exports and the state-PDF ZIP retired).",
+    "Added basic site analytics (Google Analytics): visits, pages viewed and downloads, never names or IP addresses. Disclosed in a footer and on About, with a one-click opt-out for your browser."
    ],
    "no_change_states": [
     "AL",
