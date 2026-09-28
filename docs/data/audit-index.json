@@ -1,7 +1,7 @@
 {
  "schema": 1,
- "name": "Audit restrictiveness index",
- "description": "How many statutory limits constrain a manufacturer's or distributor's warranty audits, chargebacks and retail-rate validation. Higher = more limits. Statute text only; not legal advice and not an assessment of any company's audit program.",
+ "name": "Audit climate score",
+ "description": "How restrictive state law is toward a manufacturer's or distributor's warranty audits, chargebacks and retail-rate validation, from 14 statutory limits. Higher = more restrictive. Statute text only; not legal advice and not an assessment of any company's audit program.",
  "checked": "2026-09-27",
  "max": 100,
  "factors": [

@@ -6,7 +6,6 @@ Outputs (under docs/downloads/):
                                    Rate sample rules, Law dates, Weekly log, News
   state-pdfs/XX.pdf                one-page summary per state (citations + quotes)
   warranty-atlas-all-states.pdf    all 50 pages in one file
-  state-pdfs.zip                   the 50 PDFs zipped
 
 Inputs: docs/data/audit-fields.json, docs/research/labor-by-coverage-v3.json,
         docs/data/weekly-checks.json, docs/data/news.json
@@ -135,7 +134,7 @@ def build_xlsx(audit, cov, weekly, news, build_date, path, procs=None, idx=None,
              ('Rate sample rules: each state\'s retail-rate sample, RO age limit and exclusions.', F),
              ('Law dates: last amendment, amending act, original enactment, next scheduled change.', F),
              ('Audit procedures: notice, selection basis, frequency, written reasons, response period, appeal, chargeback holds, extrapolation, clerical errors, documentation limits, fraud carve-outs, rate validation and consequences, with quotes.', F),
-             ('Audit index: the audit restrictiveness index (0-100) with the points behind it, plus distributor-franchised states. Higher = more statutory limits on audits, chargebacks and rate validation. Statute text only.', F),
+             ('Audit climate: the audit climate score (0-100) behind the Map: U.S. Audit Climate tab, with the points behind it, plus distributor-franchised states. Higher = more restrictive toward audits, chargebacks and rate validation. Statute text only.', F),
              ('Weekly log and News: the Update log and News tabs.', F), ('', F),
              ('How to read it', FB),
              ('"Silent" / "Not addressed" means the reviewed statute says nothing. Contracts, regulations or other law may still apply.', F),
@@ -275,10 +274,10 @@ def build_xlsx(audit, cov, weekly, news, build_date, path, procs=None, idx=None,
             v = idx['states'][a['state']]; d = D.get(a['state'])
             irow.append([a['state'], a['name'], v['score'], v['tier'], v['rank']] + [v['points'][f] for f in F_] +
                         [(DN.get(d['distributor'], {}).get('name', '') + (' (northern counties only)' if d.get('coverage') == 'partial' else '')) if d else ''])
-        ws = sheet('Audit index', ['State', 'Name', 'Index (0-100)', 'Tier', 'Rank'] + [f['label'] + f" ({f['max']})" for f in idx['factors']] + ['Distributor-franchised'],
+        ws = sheet('Audit climate', ['State', 'Name', 'Score (0-100)', 'Tier', 'Rank'] + [f['label'] + f" ({f['max']})" for f in idx['factors']] + ['Distributor-franchised'],
                    irow, [7, 15, 10, 11, 7] + [12] * len(F_) + [34])
         r0 = len(irow) + 3
-        ws.cell(row=r0, column=1, value='How the index is scored (higher = more statutory limits; statute text only, not legal advice)').font = FB
+        ws.cell(row=r0, column=1, value='How the audit climate score is built (higher = more restrictive; statute text only, not legal advice)').font = FB
         for i, f in enumerate(idx['factors'], 1):
             ws.cell(row=r0 + i, column=1, value=f"{f['label']} ({f['max']} pts): {f['how']}").font = F
         ws.cell(row=r0 + len(idx['factors']) + 1, column=1, value='Tiers: ' + '; '.join(f"{t['name']} {t['range']}" for t in idx['tiers'])).font = F
@@ -345,7 +344,7 @@ def build_pdf(a, c, build_date, path, scale=1.0, proc=None, ix=None, dist=None):
     if proc and ix:
         yn_ = lambda k: 'yes' if (proc.get(k) or {}).get('required') is True else 'no'
         rd = (proc.get('dealer_response_period') or {}).get('days')
-        txt = (f"Audit index {ix['score']}/100 ({ix['tier']}). Advance notice: {yn_('advance_notice')}; selection basis disclosed: {yn_('selection_basis_disclosed')}; "
+        txt = (f"Audit climate score {ix['score']}/100 ({ix['tier']} restrictiveness). Advance notice: {yn_('advance_notice')}; selection basis disclosed: {yn_('selection_basis_disclosed')}; "
                f"frequency cap: {trim((proc.get('audit_frequency_limit') or {}).get('limit') or 'none', 50)}; written reasons: {yn_('written_reasons_before_chargeback')}; "
                f"response period: {str(rd) + ' days' if rd else 'none'}; internal appeal: {yn_('internal_appeal')}; held pending appeal: {yn_('chargeback_stayed_pending_appeal')}; "
                f"extrapolation: {(proc.get('extrapolation') or {}).get('rule') or 'silent'}; clerical-error protection: {yn_('clerical_error_protection')}; "
@@ -391,7 +390,7 @@ def main():
     os.makedirs(os.path.join(OUT, 'state-pdfs'), exist_ok=True)
     build_xlsx(audit, cov, weekly, news, build_date, os.path.join(OUT, 'warranty-atlas.xlsx'), procs, idx, dist)
     from pypdf import PdfReader, PdfWriter
-    allw = PdfWriter(); zbuf = io.BytesIO(); z = zipfile.ZipFile(zbuf, 'w', zipfile.ZIP_DEFLATED)
+    allw = PdfWriter()
     for a in audit:
         p = os.path.join(OUT, 'state-pdfs', a['state'] + '.pdf')
         for scale in (1.0, 0.93, 0.86, 0.8, 0.74):
@@ -399,12 +398,12 @@ def main():
             if pages(p) == 1: break
         else:
             sys.exit(f"{a['state']}: could not fit on one page")
-        allw.add_page(PdfReader(p).pages[0]); z.write(p, a['state'] + '.pdf')
+        allw.add_page(PdfReader(p).pages[0])
     with open(os.path.join(OUT, 'warranty-atlas-all-states.pdf'), 'wb') as f:
         allw.write(f)
-    z.close()
-    with open(os.path.join(OUT, 'state-pdfs.zip'), 'wb') as f:
-        f.write(zbuf.getvalue())
+    stale = os.path.join(OUT, 'state-pdfs.zip')
+    if os.path.exists(stale):
+        os.remove(stale)  # retired 2026-09-28: the per-state PDFs and all-states PDF cover it
     print(f'Built exports for {len(audit)} states ({build_date}).')
 
 

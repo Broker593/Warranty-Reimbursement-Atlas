@@ -1,5 +1,5 @@
-"""Audit restrictiveness index: how many statutory limits constrain a manufacturer's or
-distributor's warranty audits, chargebacks and retail-rate validation in each state.
+"""Audit climate score (shown on the "Map: U.S. Audit Climate" tab): how restrictive each state's
+law is toward a manufacturer's or distributor's warranty audits, chargebacks and retail-rate validation.
 
 Built only from docs/data/audit-fields.json and docs/data/audit-procedures.json. Higher = more
 statutory limits. It is a research summary, not legal advice and not an assessment of any
@@ -83,8 +83,8 @@ def compute(audit=None, procs=None):
         states[s]['rank'] = i
     return {
         'schema': 1,
-        'name': 'Audit restrictiveness index',
-        'description': 'How many statutory limits constrain a manufacturer\'s or distributor\'s warranty audits, chargebacks and retail-rate validation. Higher = more limits. Statute text only; not legal advice and not an assessment of any company\'s audit program.',
+        'name': 'Audit climate score',
+        'description': 'How restrictive state law is toward a manufacturer\'s or distributor\'s warranty audits, chargebacks and retail-rate validation, from 14 statutory limits. Higher = more restrictive. Statute text only; not legal advice and not an assessment of any company\'s audit program.',
         'checked': procs.get('checked'),
         'max': sum(f[2] for f in FACTORS),
         'factors': [{'id': i, 'label': l, 'max': m, 'how': h} for i, l, m, h in FACTORS],
@@ -103,4 +103,4 @@ def write(index=None):
 if __name__ == '__main__':
     idx = write()
     top = sorted(idx['states'].items(), key=lambda kv: kv[1]['rank'])
-    print('Audit index written for', len(top), 'states. Highest:', ', '.join(f"{s} {v['score']}" for s, v in top[:5]))
+    print('Audit climate scores written for', len(top), 'states. Highest:', ', '.join(f"{s} {v['score']}" for s, v in top[:5]))

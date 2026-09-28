@@ -12,7 +12,7 @@
   const trim = (t, n) => { t = String(t || ''); return t.length > n ? t.slice(0, n - 1).trim() + '…' : t; };
   const TODAY = (() => { try { return new Date().toLocaleDateString('en-CA', {timeZone: 'America/New_York'}); } catch (e) { return new Date().toISOString().slice(0, 10); } })();
 
-  const TABS = [['states', 'States'], ['summary', 'Summary'], ['map', 'Audit map'], ['cases', 'Cases & laws'], ['news', 'News'], ['downloads', 'Downloads'], ['updates', 'Update log']];
+  const TABS = [['states', 'State Rules'], ['summary', 'Dashboard Overview'], ['map', 'Map: U.S. Audit Climate'], ['cases', 'Cases & Laws'], ['news', 'News'], ['downloads', 'Downloads'], ['updates', 'Update log']];
   const QUIET = ['updates'];
   const LEGACY = {atlas: 'states', audit: 'states', calculator: 'states', weekly: 'updates', research: 'summary'};
   const EXCL = {
@@ -128,6 +128,14 @@
   function adds(full, short) { return full && full.length <= 200 && full.length > (short || '').length + 35 ? esc(full) : ''; }
   function kv(pairs) { const p = pairs.filter(x => x[1] != null && x[1] !== ''); return p.length ? '<dl class="xkv">' + p.map(x => '<dt>' + esc(x[0]) + '</dt><dd>' + esc(x[1]) + '</dd>').join('') + '</dl>' : ''; }
 
+  /* ---------- page intros: what's here, and how to use it ---------- */
+  function intro(o) {
+    const li = a => '<ul>' + a.map(x => '<li>' + x + '</li>').join('') + '</ul>';
+    return '<div class="xhead xi' + (o.cls ? ' ' + o.cls : '') + '"><div>' + (o.eyebrow ? '<p class="xd-eyebrow">' + esc(o.eyebrow) + '</p>' : '') + '<h1 class="ks-h1">' + esc(o.title) + '</h1><p class="xi-lead">' + o.lead + '</p>' +
+      '<div class="xi-cols"><div><p class="xi-h">What\'s here</p>' + li(o.here) + '</div><div><p class="xi-h">Use it to</p>' + li(o.use) + '</div></div>' + (o.note ? '<p class="xi-note">' + o.note + '</p>' : '') + '</div>' +
+      (o.stamp ? '<aside class="xstamp">' + o.stamp + '</aside>' : '') + '</div>';
+  }
+
   /* ---------- shell and routing ---------- */
   function buildShell() {
     const main = $('main') || document.querySelector('main');
@@ -187,7 +195,7 @@
     if (tab === 'states') return state && byAbbr[state] ? renderState(state) : renderHome();
     document.title = (TABS.find(t => t[0] === tab) || ['', ''])[1] + ' · Warranty Atlas';
     if (!rendered[tab]) { rendered[tab] = true; ({updates: renderWeekly, news: renderNews, downloads: renderDownloads, summary: renderSummary, map: renderMap, cases: renderCases})[tab](); }
-    if (tab === 'summary') scrollToSection(section);
+    if (tab === 'summary') { bindJumpBar(); scrollToSection(section); }
     else if (tab === 'cases' && section) focusCase(section);
     else window.scrollTo(0, 0);
   }
@@ -204,10 +212,13 @@
     const p = $('x-states');
     if (!homeBuilt) {
       homeBuilt = true;
-      p.innerHTML = '<div id="ks-home"><div class="xhead"><div><h1 class="ks-h1">Warranty reimbursement rules by state</h1><p>How each state sets the warranty labor rate, how often dealers can ask for an increase, which labor-time guide applies, parts markup, and whether service contracts and CPO are covered. <strong>Click a state</strong> for its key facts and the statute text behind them.</p></div><div class="xstamp">Last verified <strong>' + fmtDate(maxVerified()) + '</strong><br>Checked for law changes every Monday</div></div>' +
+      p.innerHTML = '<div id="ks-home">' + intro({eyebrow: 'Warranty reimbursement by state', title: 'State Rules', lead: 'One row per state with the rules that decide what a dealer is paid for warranty labor and parts. <strong>Start here.</strong>',
+        here: ['How the labor rate is set, how often dealers can ask for an increase, and how fast the manufacturer must respond', 'Which labor-time guide sets paid hours, parts markup, and whether service contracts and CPO are covered', 'Flags for recent and upcoming law changes, distributor-franchised states, and each state\'s audit climate score'],
+        use: ['Check a state\'s rules before reviewing a dealer\'s rate request, a warranty claim or a chargeback', 'Click any state for its key facts, audit procedures and the statute text behind them; everything here is also in the Excel workbook on the Downloads tab'],
+        stamp: 'Last verified <strong>' + fmtDate(maxVerified()) + '</strong><br>Checked for law changes every Monday'}) +
         '<div class="xtools"><label class="search"><span aria-hidden="true">⌕</span><input id="ksSearch" type="search" placeholder="Search a state…" aria-label="Search states"></label>' +
-        '<label>Show<select id="ksFilter"><option value="">All 50 states</option><option value="sc">Service contracts or CPO covered</option><option value="guide">Uses a non-OEM guide, multiplier or actual time</option><option value="request">Has a rate-request frequency rule</option><option value="recent">Law changed in last 9 months</option><option value="change">Law change coming up</option><option value="dist">Distributor-franchised states</option><option value="high">Audit index High or Very high</option></select></label>' +
-        '<button type="button" class="quiet ks-csv" id="ksCsv">Download table (CSV) ↓</button></div>' +
+        '<label>Show<select id="ksFilter"><option value="">All 50 states</option><option value="sc">Service contracts or CPO covered</option><option value="guide">Uses a non-OEM guide, multiplier or actual time</option><option value="request">Has a rate-request frequency rule</option><option value="recent">Law changed in last 9 months</option><option value="change">Law change coming up</option><option value="dist">Distributor-franchised states</option><option value="high">Audit climate High or Very high</option></select></label>' +
+        '<a class="quiet ks-csv" href="#downloads">Excel workbook →</a></div>' +
         '<p class="xcount" id="ksCount" aria-live="polite"></p>' +
         '<p class="ks-defs"><strong>What the answers mean:</strong> ' + [['labor', 'Labor rate'], ['requests', 'Rate increase requests'], ['response', 'Manufacturer response'], ['hours', 'Paid hours'], ['parts', 'Parts markup'], ['mfrsc', 'Service contracts & CPO'], ['auditindex', 'Audit procedures']].map(x => '<a href="#summary/' + x[0] + '">' + x[1] + '</a>').join(' · ') + ' · <a href="#summary">All counts</a></p>' +
         '<div class="table-scroll xtable-scroll ks-scroll" tabindex="0" role="region" aria-label="State rules table"><table class="xtable ks-table"><thead><tr>' +
@@ -216,7 +227,6 @@
         '<p class="xfoot"><strong>Service contracts &amp; CPO:</strong> Yes = the state\'s warranty rate and time rules apply; Conditional = only if the stated condition is met (usually who issues or pays). "Factory warranty only" means the statute is silent on or does not cover those contracts. Summaries are short on purpose; the state page has the statute quotes and conditions.</p></div>' +
         '<div id="ks-state" hidden></div>';
       ['ksSearch', 'ksFilter'].forEach(id => $(id).addEventListener('input', drawHome));
-      $('ksCsv').addEventListener('click', () => homeCsv(homeRows()));
       $('ksBody').addEventListener('click', e => { if (e.target.closest('a')) return; const tr = e.target.closest('tr[data-state]'); if (tr) location.hash = '#state/' + tr.dataset.state; });
       drawHome();
     }
@@ -246,7 +256,7 @@
         (rc ? '<span class="ks-change xl-badge">Changed ' + fmtDate(rc.effective) + ' · last 9 months</span>' : '') +
         (n ? '<span class="ks-change">Upcoming ' + fmtDate(n.effective) + '</span>' : '') +
         (d ? '<span class="ks-dist" title="' + esc(distName(d)) + '">Distributor' + (d.coverage === 'partial' ? ' (north)' : '') + '</span>' : '') +
-        (v ? '<small class="ks-idx">Audit index <strong>' + v.score + '</strong> · ' + esc(v.tier) + '</small>' : '') + '</th>' +
+        (v ? '<small class="ks-idx">Audit climate <strong>' + v.score + '</strong> · ' + esc(v.tier) + '</small>' : '') + '</th>' +
         '<td>' + esc(k.labor || '—') + '</td>' +
         '<td>' + esc(k.requests || '—') + '<small>' + esc(sampleShort(r)) + '</small></td>' +
         '<td>' + esc(responseShort(r)) + '</td>' +
@@ -255,21 +265,7 @@
         '<td>' + scShort(r.state) + '</td></tr>';
     }).join('') || '<tr><td colspan="7" class="xempty">No states match. Clear the search or filter.</td></tr>';
   }
-  function csvCell(v) { v = v == null ? '' : String(v); return /[",\n]/.test(v) ? '"' + v.replace(/"/g, '""') + '"' : v; }
-  function download(name, text) { const b = new Blob(['﻿' + text], {type: 'text/csv'}); const a = document.createElement('a'); a.href = URL.createObjectURL(b); a.download = name; document.body.appendChild(a); a.click(); setTimeout(() => { URL.revokeObjectURL(a.href); a.remove(); }, 500); }
-  function homeCsv(rows) {
-    const H = ['State', 'Name', 'Labor rate', 'Rate increase requests', 'Rate sample', 'Manufacturer response', 'Paid hours', 'Paid hours note', 'Labor-time multiplier', 'Parts markup', 'Mfr service contract', 'CPO', 'Independent service contract', 'Claim decision days', 'Late claims deemed approved', 'Claim payment days', 'Chargeback lookback months', 'Law last amended', 'Next scheduled change', 'Last verified', 'Audit index', 'Audit index tier', 'Distributor-franchised', 'Primary cite', 'Official URL'];
-    const L = [H.join(',')];
-    rows.forEach(r => {
-      const k = kf(r.state), h = hoursShort(r.state), sc = scList(r.state), n = nextChange(r), c = r.claims;
-      L.push([r.state, r.name, k.labor, k.requests, sampleLong(r), responseShort(r), h.label, h.note, multiplierText(r.state), k.parts,
-        ...sc.map(x => STATUS_SHORT[x.status] + (x.c && x.c.notEstablished ? ' (no rate rule)' : '')),
-        c.decision_deadline_days, c.deemed_approved_if_late === true ? 'Yes' : 'No rule', c.payment_deadline_days, r.chargebacks.lookback_months,
-        amended(r), n ? n.effective + ' ' + (n.act || '') : '', (r.verified || {}).audit_fields, (idxOf(r.state) || {}).score, (idxOf(r.state) || {}).tier,
-        distOf(r.state) ? distName(distOf(r.state)) + (distOf(r.state).coverage === 'partial' ? ' (northern counties)' : '') : '', (r.cites || [])[0], r.official_url].map(csvCell).join(','));
-    });
-    download('warranty-atlas-states-' + TODAY + '.csv', L.join('\r\n'));
-  }
+
 
   /* ---------- States: overview page ---------- */
   function fact(label, answer, sub, details, id) {
@@ -351,7 +347,11 @@
   const CAT = {enacted_upcoming: 'Enacted · takes effect soon', enacted_recent: 'Took effect recently', pending: 'Pending bill', dead_or_stalled: 'Dead or stalled', no_change: 'No change'};
   function renderWeekly() {
     const E = (WEEKLY.entries || []).slice().sort((a, b) => a.check_date < b.check_date ? 1 : -1);
-    $('x-updates').innerHTML = '<div class="xhead"><div><h2>Update log</h2><p>Every Monday at 7 AM ET, Claude checks all 50 legislatures for enacted, effective and pending changes to warranty-reimbursement law, updates the Atlas when enacted law changes, and logs the result here with any site changes. Pending bills are tracked but never loaded as law.</p></div><div class="xstamp">Last check <strong>' + fmtDate(E[0] && E[0].check_date) + '</strong><br>' + E.length + ' check' + (E.length === 1 ? '' : 's') + ' logged</div></div>' +
+    $('x-updates').innerHTML = intro({title: 'Update log', lead: 'What the Monday law check found, and what changed on this site.',
+      here: ['Each week\'s results: laws enacted, taking effect or pending, with official sources', 'Site updates and corrections, plus gaps and how each check was run'],
+      use: ['Confirm the site is current before relying on it', 'See what changed since you last looked'],
+      note: 'Every Monday at 7 AM ET, Claude checks all 50 legislatures and updates the site when enacted law changes. Pending bills are tracked here but never loaded as law.',
+      stamp: 'Last check <strong>' + fmtDate(E[0] && E[0].check_date) + '</strong><br>' + E.length + ' check' + (E.length === 1 ? '' : 's') + ' logged'}) +
       E.map(e => '<article class="xweek"><header><time datetime="' + esc(e.check_date) + '">' + fmtDate(e.check_date) + '</time><span class="xbadge ' + (e.type === 'baseline' ? 'alt' : '') + '">' + esc((e.type || 'weekly').toUpperCase()) + '</span></header><h3>' + esc(e.headline) + '</h3><p>' + esc(e.summary) + '</p>' +
         (e.items && e.items.length ? '<ul class="xitems">' + e.items.map(it => '<li><div class="xitem-top"><span class="xbadge ' + (it.category === 'pending' ? 'muted' : it.category === 'enacted_upcoming' ? '' : 'alt') + '">' + esc(CAT[it.category] || it.category) + '</span><strong>' + esc(it.state) + ' · ' + esc(it.bill) + '</strong>' + (it.effective ? '<span class="xpin">Effective ' + fmtDate(it.effective) + '</span>' : '') + (byAbbr[it.state] ? '<a class="xpin" href="#state/' + esc(it.state) + '">State overview →</a>' : '') + '</div><p>' + esc(it.summary_short || it.summary) + '</p>' + (it.atlas_impact ? '<p class="xnote"><strong>Atlas impact:</strong> ' + esc(it.atlas_impact) + '</p>' : '') + '<p class="xpin">' + esc(it.status || '') + ' ' + link(it.source_url, 'Official source') + '</p>' + (it.summary && it.summary !== it.summary_short ? '<details><summary>Full summary</summary><p>' + esc(it.summary) + '</p></details>' : '') + '</li>').join('') + '</ul>' : '<p class="xnote">No enacted, effective or pending changes found this week.</p>') +
         (e.site_changes && e.site_changes.length ? '<details open><summary>Site updates this week</summary><ul>' + e.site_changes.map(x => '<li>' + esc(x) + '</li>').join('') + '</ul></details>' : '') +
@@ -366,7 +366,10 @@
     const item = n => '<article class="xnews' + (n.kind === 'commentary' ? ' xnews-comm' : '') + '"><div class="xitem-top"><span class="xbadge' + (n.kind === 'commentary' ? ' alt' : '') + '">' + (n.kind === 'commentary' ? 'INDUSTRY COMMENTARY' : 'LAW OR RULING') + '</span><time>' + fmtDate(n.date) + '</time><span class="xbadge muted">' + esc(n.source_type || '') + '</span><span class="xbadge ' + (n.perspective === 'dealer-side' ? 'alt' : n.perspective === 'manufacturer-side' ? '' : 'muted') + '">' + esc((n.perspective || 'neutral').toUpperCase()) + '</span>' + (n.states || []).map(x => byAbbr[x] ? '<a class="xchip" href="#state/' + esc(x) + '">' + esc(x) + '</a>' : '<span class="xchip">' + esc(x) + '</span>').join('') + '</div><h4>' + (safeUrl(n.url) ? '<a href="' + esc(safeUrl(n.url)) + '" target="_blank" rel="noopener noreferrer">' + esc(n.title) + ' ↗</a>' : esc(n.title)) + '</h4><p class="xpin">' + esc(n.publisher) + '</p><p>' + esc(n.topic) + '</p><p class="xnote"><strong>Why it matters:</strong> ' + esc(n.why_it_matters) + '</p></article>';
     const group = (items, label, none) => '<div class="xnews-group"><h4 class="xnews-gh">' + label + ' <span>' + items.length + '</span></h4>' + (items.length ? items.map(item).join('') : '<p class="xnote">' + none + '</p>') + '</div>';
     const src = NEWS.sources || [], groups = [...new Set(src.map(x => x.group))];
-    $('x-news').innerHTML = '<div class="xhead"><div><h2>News and industry commentary</h2><p>Checked every Monday. <strong>Law or ruling</strong> items (up to ' + lim.law + ' a week) are new laws, bills and board or court decisions on warranty reimbursement, audits and chargebacks. <strong>Industry commentary</strong> (up to ' + lim.commentary + ' a week) is analysis from reliable trade and legal publications: warranty cost trends and what dealers, vendors and manufacturers are saying. Commentary is context, not law. Every item is labeled by source type and perspective; much dealer-side coverage comes from dealer law firms and retail-rate vendors.</p></div></div>' +
+    $('x-news').innerHTML = intro({title: 'News and industry commentary', lead: 'What changed this week, and what the industry is saying about it.',
+      here: ['<strong>Law or ruling</strong> (up to ' + lim.law + ' a week): new laws, bills and board or court decisions on warranty reimbursement, audits and chargebacks', '<strong>Industry commentary</strong> (up to ' + lim.commentary + ' a week): warranty cost trends and what dealers, vendors and manufacturers are saying', 'Every item labeled by source type and perspective (dealer-side, manufacturer-side or neutral)'],
+      use: ['Catch new laws and rulings before they reach an audit', 'Understand the arguments dealers and rate vendors are making, and the cost pressures behind them'],
+      note: 'Commentary is context, not law. Much dealer-side coverage comes from dealer law firms and retail-rate vendors.'}) +
       (src.length ? '<details class="xs-more xnews-sources"><summary>Sources we check each week (' + src.length + ')</summary>' + groups.map(g => '<h4 class="xs-sub">' + esc(g) + '</h4><ul>' + src.filter(x => x.group === g).map(x => '<li>' + link(x.url, x.name) + ' <span class="xbadge muted">' + esc(x.type) + '</span><br><span class="xpin">' + esc(x.note || '') + '</span></li>').join('') + '</ul>').join('') + '</details>' : '') +
       W.map(w => { const it = w.items || []; const law = it.filter(n => n.kind !== 'commentary'), com = it.filter(n => n.kind === 'commentary');
         return '<section class="xnewsweek"><h3>Week of ' + fmtDate(w.week_of) + '</h3>' + group(law, 'Law changes and rulings', 'No law changes or rulings met the bar this week.') + group(com, 'Industry commentary', 'No commentary items this week.') + '</section>'; }).join('');
@@ -379,19 +382,16 @@
     const saveA = (href, label) => '<a class="xbtn-save" href="' + href + '" download>' + (label || 'Save a copy') + ' ↓</a>';
     const card = (title, desc, btns) => '<div class="xdl-card"><strong>' + title + '</strong><span>' + desc + '</span><div class="xdl-btns">' + btns + '</div></div>';
     const office = 'https://view.officeapps.live.com/op/view.aspx?src=' + encodeURIComponent(abs('downloads/warranty-atlas.xlsx'));
-    $('x-downloads').innerHTML = '<div class="xhead"><div><h2>Downloads for workpapers</h2><p><strong>Open</strong> views the file in a new browser tab, where you can read, print or save it. <strong>Save a copy</strong> sends it straight to your Downloads folder. Files are rebuilt with every weekly check and show the date they were built.</p></div></div>' +
+    $('x-downloads').innerHTML = intro({title: 'Downloads for workpapers', lead: 'Everything on the site as files you can attach, filter or print. Rebuilt every Monday.',
+      here: ['Excel workbook with every state\'s rules, audit procedures, audit climate scores, law dates, statute quotes, the update log and news', 'A one-page PDF per state, or all 50 in one PDF', 'One research data file (JSON) for analysts'],
+      use: ['Attach a state\'s rules and statute quotes to audit workpapers', 'Filter and compare states in Excel'],
+      note: '<strong>Open</strong> views a file in a new browser tab; <strong>Save a copy</strong> sends it to your Downloads folder.'}) +
       '<div class="xdl">' +
-      card('Excel workbook', 'Summary, coverage (200 cells), audit fields, audit procedures, audit index, rate-sample rules, law dates, statute quotes, weekly log and news.', openA(office, 'Open in browser') + saveA('downloads/warranty-atlas.xlsx', 'Save .xlsx')) +
+      card('Excel workbook', 'Summary, coverage (200 cells), audit fields, audit procedures, audit climate scores, rate-sample rules, law dates, statute quotes, weekly log and news.', openA(office, 'Open in browser') + saveA('downloads/warranty-atlas.xlsx', 'Save .xlsx')) +
       card('All states · PDF', '50 one-page state summaries in one file.', openA('downloads/warranty-atlas-all-states.pdf', 'Open') + saveA('downloads/warranty-atlas-all-states.pdf')) +
-      card('State PDFs · ZIP', '50 separate one-page PDFs in one ZIP file.', saveA('downloads/state-pdfs.zip', 'Save .zip')) +
-      card('States table · CSV', 'The States table: key facts plus claim, chargeback and law-date fields for all 50 states.', '<button type="button" class="xbtn-save" id="dlCsv">Save .csv ↓</button>') +
-      card('Audit fields · JSON', 'Full research records with quotes.', openA('data/audit-fields.json', 'Open') + saveA('data/audit-fields.json')) +
-      card('Audit procedures and index · JSON', '50-state audit and chargeback procedures with quotes, and the audit restrictiveness index with its scoring.', openA('data/audit-procedures.json', 'Procedures') + openA('data/audit-index.json', 'Index')) +
-      card('Cases and laws · JSON', 'Key decisions and legislation on rate submissions, audits and chargebacks, with verification status.', openA('data/cases.json', 'Open') + saveA('data/cases.json')) +
-      card('Coverage · JSON', '200 coverage records (v3).', openA('research/labor-by-coverage-v3.json', 'Open') + saveA('research/labor-by-coverage-v3.json')) +
+      card('Research data · JSON', 'For analysts: every state\'s claim, chargeback, rate-submission, manufacturer-response and penalty rules with statute quotes, in one machine-readable file. Everything else is in the Excel workbook.', openA('data/audit-fields.json', 'Open') + saveA('data/audit-fields.json')) +
       '</div><p class="xfoot">The Excel "Open in browser" button uses Microsoft\'s free online viewer. The workbook is public research data; no SOA data is included.</p>' +
       '<h3 class="xsub">One-page PDF by state</h3><p class="xfoot">Click a state to open its PDF in a new tab. Use the viewer\'s download or print button to keep a copy.</p><div class="xstates">' + AUDIT.map(r => '<a href="downloads/state-pdfs/' + r.state + '.pdf" target="_blank" rel="noopener" title="Open ' + esc(r.name) + ' PDF">' + r.state + '</a>').join('') + '</div>';
-    $('dlCsv').addEventListener('click', () => homeCsv(AUDIT));
   }
 
   /* ---------- Summary dashboard: answer counts, definitions and states for every column ---------- */
@@ -470,7 +470,7 @@
         ['yes', 'Yes', 'The statute sets a deadline for dealers to submit claims. See the state page for the period.'],
         ['no', 'Not set in statute', 'No statutory filing deadline; the manufacturer\'s policy may set one.']]},
       {id: 'chargeback', title: 'Audit and chargeback lookback', q: 'How far back can the manufacturer audit and charge back paid claims?', key: r => r.chargebacks.lookback_months == null ? 'none' : String(r.chargebacks.lookback_months), groups: [6, 9, 12].map(n => [String(n), n + ' months', 'Paid claims can be audited and charged back for ' + n + ' months. Fraud is usually excepted.']).concat([['none', 'Not set in statute', 'The statute sets no lookback limit.']])},
-      {sec: 'Audit procedures', id: 'auditindex', title: 'Audit restrictiveness index', q: 'How many statutory limits constrain audits, chargebacks and rate validation?', key: r => (idxOf(r.state) || {}).tier, tip: r => { const v = idxOf(r.state); return v ? 'Index ' + v.score + ' of 100' : ''; }, groups: TIER_ORDER.map(t => [t, t + ' (' + ((IDX.tiers.find(x => x.name === t) || {}).range || '') + ')', {'Very high': 'The most statutory limits on audits and chargebacks: typically short lookbacks, chargebacks held during appeals and several procedural protections.', 'High': 'Many statutory limits, usually including a hold on chargebacks during appeals or a short lookback.', 'Elevated': 'Several limits, typically clerical-error and documentation protections plus one or two procedural rules.', 'Moderate': 'A few limits, usually a 12-month lookback with clerical-error or documentation protections.', 'Low': 'Few or no statutory limits beyond a lookback window.'}[t]])},
+      {sec: 'Audit procedures', id: 'auditindex', title: 'Audit climate score', q: 'How restrictive is state law toward audits, chargebacks and rate validation?', key: r => (idxOf(r.state) || {}).tier, tip: r => { const v = idxOf(r.state); return v ? 'Index ' + v.score + ' of 100' : ''; }, groups: TIER_ORDER.map(t => [t, t + ' (' + ((IDX.tiers.find(x => x.name === t) || {}).range || '') + ')', {'Very high': 'The most statutory limits on audits and chargebacks: typically short lookbacks, chargebacks held during appeals and several procedural protections.', 'High': 'Many statutory limits, usually including a hold on chargebacks during appeals or a short lookback.', 'Elevated': 'Several limits, typically clerical-error and documentation protections plus one or two procedural rules.', 'Moderate': 'A few limits, usually a 12-month lookback with clerical-error or documentation protections.', 'Low': 'Few or no statutory limits beyond a lookback window.'}[t]])},
       {id: 'selection', title: 'Selection basis disclosed', q: 'Must the dealer be told why it was selected for audit?', key: r => procAnswer(r.state, 'selection_basis_disclosed', 'req').on ? 'yes' : 'no', tip: r => procAnswer(r.state, 'selection_basis_disclosed', 'req').detail, groups: [
         ['yes', 'Yes', 'The dealer must be told the basis for selecting it (in some states only for certain audits, or at a meeting before chargebacks).'],
         ['no', 'Not in statute', 'The statute doesn\'t require disclosing why the dealer was selected.']]},
@@ -521,7 +521,7 @@
       if (d.sec) sections.push({id: d.id, title: d.sec, label: sectionInfo[d.id][0], description: sectionInfo[d.id][1], number: String(sections.length + 1).padStart(2, '0'), topics: []});
       sections[sections.length - 1].topics.push(d);
     });
-    const menu = '<nav class="xd-jump" aria-label="Summary sections"><span class="xd-jump-label">Jump to a section</span><ul><li><a href="#summary/changes">Recent law changes</a></li>' + sections.map(g => '<li><a href="#summary/group-' + g.id + '"><span aria-hidden="true">' + g.number + '</span>' + esc(g.label) + '</a></li>').join('') + '<li><a class="xd-jump-definitions" href="#summary/definitions">Definitions & states ↓</a></li></ul></nav>';
+    const menu = '<nav class="xd-jump" aria-label="Summary sections"><span class="xd-jump-label">Jump to a section</span><ul><li><a href="#summary/changes">Law changes</a></li>' + sections.map(g => '<li><a href="#summary/group-' + g.id + '"><span aria-hidden="true">' + g.number + '</span>' + esc(g.label) + '</a></li>').join('') + '<li><a class="xd-jump-definitions" href="#summary/definitions" title="Plain-English definitions and the states behind each count">Definitions ↓</a></li></ul></nav>';
     const bars = d => '<ul class="xd-bars">' + d.gs.map(g => '<li><a href="#summary/' + d.id + '" aria-label="' + esc(g.label + ': ' + g.states.length + ' states. View definitions and states.') + '" title="' + esc(g.label + ': ' + (g.states.map(s => s.state).join(', ') || 'none')) + '"><span class="xd-lab">' + esc(g.label) + '</span><span class="xd-track" aria-hidden="true"><span class="xd-fill" style="width:' + (g.states.length * 2) + '%"></span></span><span class="xd-n">' + g.states.length + '</span></a></li>').join('') + '</ul>';
     const tile = d => '<article class="xd-tile"><h3>' + esc(d.title) + '</h3><p class="xd-q">' + esc(d.q) + '</p><p class="xd-scale">States · out of 50</p>' + bars(d) + '<a class="xd-more" href="#summary/' + d.id + '">Definitions & states ↓</a></article>';
     const tiles = sections.map(g => '<section class="xd-section" id="xs-group-' + g.id + '" tabindex="-1" aria-labelledby="xd-heading-' + g.id + '"><header class="xd-section-head"><span class="xd-section-number" aria-hidden="true">' + g.number + '</span><div><h2 id="xd-heading-' + g.id + '">' + esc(g.title) + '</h2><p>' + esc(g.description) + '</p></div><span class="xd-section-meta">' + g.topics.length + (g.topics.length === 1 ? ' question' : ' questions') + '</span></header><div class="xd-grid">' + g.topics.map(tile).join('') + '</div></section>').join('');
@@ -532,14 +532,36 @@
     const changes = AUDIT.filter(r => nextChange(r));
     const R = (window.REFERENCE || {}).rules || [], groups = [...new Set(R.map(x => x.group))];
     const original = groups.map(gname => '<h3 class="xs-sub">' + esc(gname) + '</h3><div class="xs-rows">' + R.filter(x => x.group === gname).map(x => { const st = AUDIT.filter(r => ((REF[r.state] || {}).flags || {})[x.id] === true); return '<div class="xs-row"><div class="xs-label"><strong>' + esc(x.name) + '</strong><span class="xs-count">' + st.length + ' states</span></div><div><p class="xs-def">' + esc(trim(x.description, 220)) + '</p><div class="xs-chips">' + chips(st) + '</div></div></div>'; }).join('') + '</div>').join('');
-    $('x-summary').innerHTML = '<div class="xhead xd-intro"><div><p class="xd-eyebrow">50-state comparison</p><h1 class="ks-h1">Summary dashboard</h1><p>Compare how the 50 states answer each question, based on the law in effect today (' + fmtDate(TODAY) + '). Choose a topic below to see its definitions and the states behind each count.</p></div><aside class="xstamp">' + (changes.length ? '<strong>Law changes coming up</strong><br>' + changes.map(r => '<a href="#state/' + r.state + '"><strong>' + r.state + '</strong></a> ' + fmtDate(nextChange(r).effective)).join('<br>') : 'No scheduled law changes') + '</aside></div>' +
+    $('x-summary').innerHTML = intro({cls: 'xd-intro', eyebrow: 'Rule counts across all 50 states', title: 'Dashboard Overview', lead: 'Rule counts by state: how many states give each answer, what each answer means, and which states they are. Based on the law in effect today (' + fmtDate(TODAY) + ').',
+      here: ['Bar counts for every question: labor rates, paid hours, parts, service contracts and CPO, claims and chargebacks, audit procedures', 'A plain-English definition of every answer, with the states that give it', 'Recent (last nine months) and upcoming law changes'],
+      use: ['See the national picture in seconds, for example how many states cover manufacturer-backed service contracts', 'Find every state that follows a given rule, then open any state for detail'],
+      stamp: (changes.length ? '<strong>Law changes coming up</strong><br>' + changes.map(r => '<a href="#state/' + r.state + '"><strong>' + r.state + '</strong></a> ' + fmtDate(nextChange(r).effective)).join('<br>') : 'No scheduled law changes')}) +
       menu + recentLawsPanel() + '<div class="xd">' + tiles + '</div>' +
       '<section class="xd-definitions" aria-labelledby="xd-definitions-heading"><header class="xd-definitions-head" id="xs-definitions" tabindex="-1"><p class="xd-eyebrow">Behind the counts</p><h2 id="xd-definitions-heading">Definitions and states</h2><p>What each answer means, with links to every state in that group.</p></header>' + detail + '</section>' +
       '<details class="xs-more"><summary>Original September 21 classification (20 rule features)</summary><p class="xs-note">The first-pass research classification. Where it differs from the state pages or the groups above, those are newer and control.</p>' + original + '</details>';
   }
+  let jumpBound = false;
+  function bindJumpBar() {
+    if (jumpBound) return; jumpBound = true;
+    let ticking = false;
+    const update = () => {
+      ticking = false;
+      const bar = document.querySelector('#x-summary .xd-jump'); if (!bar || $('x-summary').hidden) return;
+      const links = [...bar.querySelectorAll('a[href^="#summary/"]')], h = bar.offsetHeight + 12;
+      bar.classList.toggle('stuck', bar.getBoundingClientRect().top <= 1);
+      let cur = null;
+      links.forEach(a => { const t = $('xs-' + a.getAttribute('href').split('/')[1]); if (t && t.getBoundingClientRect().top <= h + 4) cur = a; });
+      links.forEach(a => a.setAttribute('aria-current', a === cur ? 'true' : 'false'));
+      const ul = bar.querySelector('ul');
+      if (cur && ul && ul.scrollWidth > ul.clientWidth) { const r = cur.getBoundingClientRect(), u = ul.getBoundingClientRect(); if (r.left < u.left || r.right > u.right) ul.scrollLeft += r.left - u.left - 12; }
+    };
+    window.addEventListener('scroll', () => { if (!ticking) { ticking = true; requestAnimationFrame(update); } }, {passive: true});
+    window.addEventListener('resize', update);
+    setTimeout(update, 50);
+  }
   function scrollToSection(sec) {
     const t = sec ? $('xs-' + sec) : null;
-    if (t) { t.scrollIntoView({block: 'start'}); t.focus({preventScroll: true}); } else window.scrollTo(0, 0);
+    if (t) { const bar = document.querySelector('#x-summary .xd-jump'), off = bar ? bar.offsetHeight + 10 : 0; window.scrollTo(0, Math.max(0, t.getBoundingClientRect().top + window.scrollY - off)); t.focus({preventScroll: true}); } else window.scrollTo(0, 0);
   }
 
   /* ---------- Audit procedures, index, distributor layer ---------- */
@@ -608,23 +630,26 @@
       return '<tr><th scope="row">' + esc(label) + '</th><td><span class="kp-ans' + (a.on ? ' on' : '') + '">' + esc(a.ans) + '</span>' + (det ? '<details class="kf-more"><summary>Details</summary><div class="kf-detail">' + det + '</div></details>' : '') + '</td></tr>';
     }).join('');
     const p = procOf(abbr);
-    return '<div class="ks-sectionhead" id="kf-audit"><h2>Audit procedures</h2><a class="ks-maplink" href="#map">See all states on the audit map →</a></div>' +
-      (v ? '<div class="ki-card"><div class="ki-score"><span class="ki-num">' + v.score + '</span><span class="ki-of">/ ' + IDX.max + '</span></div><div class="ki-text"><p class="ki-title">Audit restrictiveness index ' + tierBadge(v.tier) + '</p><p class="xs-note">How many statutory limits constrain warranty audits, chargebacks and rate validation here. Rank ' + v.rank + ' of 50 (1 = most limits). Statute text only.</p>' + factorList(abbr, true) + indexMethod() + '</div></div>' : '') +
+    return '<div class="ks-sectionhead" id="kf-audit"><h2>Audit procedures</h2><a class="ks-maplink" href="#map">See all states on the audit climate map →</a></div>' +
+      (v ? '<div class="ki-card"><div class="ki-score"><span class="ki-num">' + v.score + '</span><span class="ki-of">/ ' + IDX.max + '</span></div><div class="ki-text"><p class="ki-title">Audit climate score ' + tierBadge(v.tier) + '</p><p class="xs-note">How restrictive state law is toward warranty audits, chargebacks and rate validation here (higher = more restrictive). Rank ' + v.rank + ' of 50 (1 = most restrictive). Statute text only.</p>' + factorList(abbr, true) + indexMethod() + '</div></div>' : '') +
       '<div class="table-scroll"><table class="xtable kp-table"><tbody>' + rows + '</tbody></table></div>' +
       '<p class="xpin">Confidence: ' + esc(p.confidence || '') + (p.notes ? '. ' + esc(trim(p.notes, 400)) : '') + '</p>' +
       (cases.length ? '<div class="ks-sectionhead"><h2>Cases and laws for this state</h2><a class="ks-maplink" href="#cases">All cases →</a></div><ul class="kc-mini">' + cases.map(c => '<li><a href="#cases/' + esc(c.id) + '">' + esc(c.title) + '</a><span class="xpin"> · ' + esc(c.forum) + ' · ' + esc(c.date) + '</span></li>').join('') + '</ul>' : '');
   }
 
-  /* ---------- Audit map ---------- */
+  /* ---------- Map: U.S. Audit Climate ---------- */
   let MAPGEO = null;
   const CALLOUTS = [['VT', 92], ['NH', 116], ['MA', 140], ['RI', 164], ['CT', 188], ['NJ', 214], ['DE', 240], ['MD', 266]];
   function renderMap() {
     const box = $('x-map');
-    box.innerHTML = '<div class="xhead"><div><p class="xd-eyebrow">Audit restrictiveness</p><h1 class="ks-h1">Audit map</h1><p>How many statutory limits constrain a manufacturer\'s or distributor\'s warranty audits, chargebacks and retail-rate validation in each state. <strong>Darker = more limits.</strong> Hover a state for its score; click it for the full breakdown. Statute text only (' + fmtDate(IDX.checked) + '); not legal advice and not an assessment of any company\'s audit program.</p></div></div>' +
-      '<div class="km-controls"><label class="toggle-label"><input type="checkbox" id="kmDist" checked> Outline distributor-franchised states</label></div>' +
-      '<div class="km-wrap"><div class="km-mapcol"><div class="km-map" id="kmMap"><div class="xloading">Loading map…</div></div>' +
+    box.innerHTML = intro({eyebrow: 'Audit climate score', title: 'Map: U.S. Audit Climate', lead: 'How restrictive each state\'s law is toward manufacturer warranty audits, chargebacks and retail-rate validation. <strong>Darker = more restrictive.</strong>',
+      here: ['An audit climate score (0–100) built from 14 limits in state law, such as short lookback windows, chargebacks held during appeals and clerical-error protections', 'Hover a state for its score; click it for exactly how it was scored', 'Distributor-franchised states outlined, and every state ranked below the map'],
+      use: ['Compare states quickly when planning audits and chargeback reviews', 'Know where to expect more procedural steps and a higher bar before a chargeback sticks'],
+      note: 'Built from statute text only (' + fmtDate(IDX.checked) + '). Not legal advice and not an assessment of any company\'s audit program.'}) +
+      '<div class="km-wrap"><div class="km-mapcol"><div class="km-mapbox"><div class="km-map" id="kmMap"><div class="xloading">Loading map…</div></div>' +
+      '<label class="km-toggle"><input type="checkbox" id="kmDist" checked><span class="km-sw km-sw-dist" aria-hidden="true"></span><span>Outline distributor-franchised states<small>NJ: northern counties only</small></span></label></div>' +
       '<div class="km-legend" aria-label="Legend">' + TIER_ORDER.slice().reverse().map(t => '<span class="km-key"><span class="km-sw" style="background:' + TIER_FILL[t] + '"></span>' + esc(t) + ' <small>' + esc((IDX.tiers.find(x => x.name === t) || {}).range || '') + '</small></span>').join('') +
-      '<span class="km-key"><span class="km-sw km-sw-dist"></span>Dashed gold outline = distributor-franchised (NJ: northern counties only)</span></div></div>' +
+      '</div></div>' +
       '<aside class="km-panel" id="kmPanel" aria-live="polite"><p class="km-hint">Click a state to see how it was scored.</p></aside></div>' +
       '<div class="km-tip" id="kmTip" hidden></div>' +
       '<div class="ks-sectionhead"><h2>All states, ranked</h2><div class="km-sort"><button type="button" class="quiet" data-sort="score" aria-pressed="true">Most limits first</button><button type="button" class="quiet" data-sort="name" aria-pressed="false">A–Z</button></div></div>' +
@@ -649,7 +674,7 @@
     let paths = '', labels = '', lines = '', dist = '';
     Object.keys(S).forEach(ab => {
       const v = idxOf(ab), r = byAbbr[ab]; if (!v || !r) return;
-      paths += '<path class="km-st" d="' + S[ab].d + '" fill="' + TIER_FILL[v.tier] + '" data-st="' + ab + '" tabindex="0" role="button" aria-label="' + esc(r.name + ': audit index ' + v.score + ', ' + v.tier) + '"></path>';
+      paths += '<path class="km-st" d="' + S[ab].d + '" fill="' + TIER_FILL[v.tier] + '" data-st="' + ab + '" tabindex="0" role="button" aria-label="' + esc(r.name + ': audit climate score ' + v.score + ', ' + v.tier) + '"></path>';
       if (distOf(ab)) dist += '<path class="km-dline' + (distOf(ab).coverage === 'partial' ? ' km-dpart' : '') + '" d="' + S[ab].d + '"></path>';
       if (!callout.has(ab)) {
         let x = S[ab].cx, y = S[ab].cy;
@@ -666,7 +691,7 @@
       lines += '<line class="km-lead" x1="' + s.cx + '" y1="' + s.cy + '" x2="982" y2="' + y + '"></line>';
       labels += '<g class="km-call" data-st="' + ab + '"><rect x="982" y="' + (y - 10) + '" width="66" height="20" rx="4" fill="' + TIER_FILL[v.tier] + '"></rect><text class="km-clab" x="1015" y="' + (y + 4) + '" fill="' + TIER_INK[v.tier] + '">' + ab + ' ' + v.score + '</text></g>';
     });
-    $('kmMap').innerHTML = '<svg viewBox="0 0 1056 610" class="km-svg" role="group" aria-label="U.S. map of the audit restrictiveness index by state">' +
+    $('kmMap').innerHTML = '<svg viewBox="0 0 1056 610" class="km-svg" role="group" aria-label="U.S. map of the audit climate score by state">' +
       '<g class="km-states">' + paths + '</g><g id="kmDistG" class="km-dist" aria-hidden="true">' + dist + '</g><g aria-hidden="true">' + lines + labels + '</g></svg>';
     const svg = $('kmMap').querySelector('svg'), tip = $('kmTip');
     const show = (ab, ev) => {
@@ -685,7 +710,7 @@
       svg.querySelectorAll('.km-st.sel').forEach(p => p.classList.remove('sel'));
       const el = svg.querySelector('.km-st[data-st="' + ab + '"]'); if (el) el.classList.add('sel');
       const v = idxOf(ab), r = byAbbr[ab], d = distOf(ab);
-      $('kmPanel').innerHTML = '<p class="xd-eyebrow">Selected state</p><h2>' + esc(r.name) + ' <span class="abbr">' + ab + '</span></h2><div class="ki-score"><span class="ki-num">' + v.score + '</span><span class="ki-of">/ ' + IDX.max + '</span></div>' + tierBadge(v.tier) + '<p class="xs-note">Rank ' + v.rank + ' of 50 (1 = most limits).</p>' +
+      $('kmPanel').innerHTML = '<p class="xd-eyebrow">Selected state</p><h2>' + esc(r.name) + ' <span class="abbr">' + ab + '</span></h2><div class="ki-score"><span class="ki-num">' + v.score + '</span><span class="ki-of">/ ' + IDX.max + '</span></div>' + tierBadge(v.tier) + '<p class="xs-note">Rank ' + v.rank + ' of 50 (1 = most restrictive).</p>' +
         (d ? '<p class="km-pd"><strong>Distributor-franchised' + (d.coverage === 'partial' ? ' (northern counties only)' : '') + ':</strong> ' + esc(distName(d).replace(/\.$/, '')) + '. The rules apply to the franchisor that holds the dealer\'s franchise.</p>' : '') +
         factorList(ab, false) + '<p><a class="xbtn-open" href="#state/' + ab + '">Open ' + esc(r.name) + ' →</a></p>';
       if (window.innerWidth < 900) $('kmPanel').scrollIntoView({behavior: 'smooth', block: 'nearest'});
@@ -703,7 +728,10 @@
   function verLabel(v) { v = String(v || ''); return /primary/.test(v) ? 'Primary source read' : /secondary/.test(v) ? 'Secondary sources only' : 'Partially verified'; }
   function renderCases() {
     const I = CASES.items, topics = [...new Set(I.map(c => c.topic))], sts = [...new Set(I.flatMap(c => c.states || []))].sort();
-    $('x-cases').innerHTML = '<div class="xhead"><div><p class="xd-eyebrow">Key decisions and legislation</p><h1 class="ks-h1">Cases and laws</h1><p>Leading board decisions, court cases and statutes on how manufacturers may audit, validate and challenge dealer retail-rate submissions (labor and parts), and on warranty audits, chargebacks and cost recovery. Each item shows how it was verified. Summaries are neutral research notes, not legal advice.</p></div><div class="xstamp">' + I.length + ' items<br>Checked <strong>' + fmtDate(CASES.checked) + '</strong></div></div>' +
+    $('x-cases').innerHTML = intro({eyebrow: 'Key decisions and legislation', title: 'Cases & Laws', lead: 'Leading decisions and statutes on rate submissions, rate validation, audits, chargebacks and cost recovery.',
+      here: ['Board decisions, court cases and statutes, each with a neutral summary and why it matters', 'How each item was verified (primary source read, or secondary sources only)', 'Filters by topic and state'],
+      use: ['Learn what boards and courts accept as evidence, for example Putnam Ford v. Ford on proving a rate request inaccurate', 'Point Legal to the right precedent when a rate or audit dispute comes up'],
+      note: 'Research notes, not legal advice.', stamp: I.length + ' items<br>Checked <strong>' + fmtDate(CASES.checked) + '</strong>'}) +
       '<div class="xtools"><label>Topic<select id="kcTopic"><option value="">All topics</option>' + topics.map(t => '<option value="' + esc(t) + '">' + esc(TOPIC_LABEL[t] || t) + '</option>').join('') + '</select></label><label>State<select id="kcState"><option value="">All states</option>' + sts.map(s => '<option value="' + s + '">' + esc((byAbbr[s] || {}).name || s) + '</option>').join('') + '</select></label></div>' +
       '<p class="xcount" id="kcCount" aria-live="polite"></p><div id="kcList"></div>' +
       (CASES.not_found && CASES.not_found.length ? '<details class="xs-more"><summary>What we looked for and could not verify</summary><ul>' + CASES.not_found.map(x => '<li>' + esc(x) + '</li>').join('') + '</ul></details>' : '');
