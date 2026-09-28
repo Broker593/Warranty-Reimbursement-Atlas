@@ -269,3 +269,7 @@
 .kc-flag{display:inline-block;margin:0 0 4px!important;font-size:12px!important;font-weight:bold;letter-spacing:.6px;background:#142943;color:#fff;border-radius:4px;padding:2px 8px}
 .kc-hl{outline:4px solid #c88c27;outline-offset:2px}
 @media(max-width:900px){.km-wrap{grid-template-columns:1fr}.km-panel{position:static}.ki-card{flex-direction:column}}
+.xnews-group{margin:10px 0 18px}.xnews-gh{font-size:15px;color:#142943;margin:12px 0 4px;padding-bottom:4px;border-bottom:1px solid #9fb0c5}
+.xnews-gh span{display:inline-block;margin-left:6px;font-size:12px;background:#142943;color:#fff;border-radius:4px;padding:1px 7px}
+.xnews-comm{border-left-style:dashed}
+.xnews-sources ul{margin:4px 0 10px;padding-left:20px}.xnews-sources li{margin:6px 0;font-size:14px;line-height:1.45}

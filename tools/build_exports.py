@@ -243,10 +243,10 @@ def build_xlsx(audit, cov, weekly, news, build_date, path, procs=None, idx=None,
     nrow = []
     for w in sorted(news.get('weeks', []), key=lambda x: x['week_of'], reverse=True):
         for n in w.get('items', []):
-            nrow.append([w['week_of'], n.get('date'), n.get('title'), n.get('publisher'), n.get('source_type'), n.get('perspective'),
+            nrow.append([w['week_of'], 'Industry commentary' if n.get('kind') == 'commentary' else 'Law or ruling', n.get('date'), n.get('title'), n.get('publisher'), n.get('source_type'), n.get('perspective'),
                          ', '.join(n.get('states') or []), n.get('why_it_matters'), n.get('url')])
-    sheet('News', ['Week of', 'Date', 'Title', 'Publisher', 'Source type', 'Perspective', 'States', 'Why it matters', 'URL'],
-          nrow, [12, 12, 50, 30, 16, 16, 10, 60, 40])
+    sheet('News', ['Week of', 'Type', 'Date', 'Title', 'Publisher', 'Source type', 'Perspective', 'States', 'Why it matters', 'URL'],
+          nrow, [12, 18, 12, 50, 30, 16, 16, 10, 60, 40])
     if procs and idx:
         P = {x['state']: x for x in procs['states']}
         D = {x['state']: x for x in (dist or {}).get('states', [])}

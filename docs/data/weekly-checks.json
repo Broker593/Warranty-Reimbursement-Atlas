@@ -271,7 +271,13 @@
     }
    ],
    "site_changes": [
-    "Added a distributor-franchised layer (New England, New York, northern New Jersey and Hawaii), 50-state audit procedures on every state page and the Summary, an audit restrictiveness index with a U.S. heat map (Audit map tab), and a Cases & laws tab. Corrected Oregon's audit lookback note (the 1-year limit applies to all franchises)."
+    "Distributor-franchised states flagged: CT, MA, ME, NH, RI and VT (Subaru of New England), NY and the 11 northern NJ counties (Subaru Distributors Corp.), and HI (SUBARU Hawaii). Each state page explains what the statute says about distributors; badges on the States table, dashed outlines on the map, notes in the PDFs and Excel.",
+    "Audit procedures added for all 50 states, with statute quotes: advance notice, telling the dealer why it was selected, audit frequency caps, written reasons, response or cure periods, internal appeals, chargeback holds during appeals, extrapolation, clerical-error and documentation limits, fraud carve-outs, rate-validation limits and consequences for improper audits. Ten new count tiles on the Summary tab.",
+    "New Audit map tab: an audit restrictiveness index (0–100) built from 14 statutory factors, on a U.S. heat map with hover and click breakdowns and a ranked table. An independent review of 16 states corrected 13 scoring inputs before publishing.",
+    "New Cases & laws tab: 18 decisions and statutes on rate submissions, rate validation, audits, chargebacks and cost recovery, each labeled with how it was verified, including Putnam Ford v. Ford and Putnam Kia v. Kia (California New Motor Vehicle Board).",
+    "News now has two labeled streams, law changes and rulings plus industry commentary from reliable publications (starting with Warranty Week's mid-year U.S. auto warranty expense report), and shows the list of sources checked each Monday.",
+    "Excel adds Audit procedures and Audit index sheets and a News type column; state PDFs show the index and distributor status.",
+    "Correction: Oregon's 1-year audit and chargeback limit applies to all franchises (an earlier note limited it to franchises from 2026 on)."
    ],
    "no_change_states": [
     "AL",

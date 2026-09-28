@@ -25,13 +25,17 @@ Goal: find anything **enacted, taking effect, or moving** that changes a state's
 - Distributor-franchised states (`docs/data/distributors.json`): note in the weekly entry if a change affects how a state's statute treats distributors.
 - For every state you scanned, set `verified.last_change_check` = check date.
 
-## 3. News (3–5 items, zero is fine)
+## 3. News and industry commentary (two labeled streams; zero is fine)
+Work through the source list in `docs/data/news.json` → `sources` (law firms, boards, bill trackers, dealer associations, Warranty Week, Automotive News, dealer trade press, the manufacturer trade group, retail-rate vendors). Also run general searches.
 - Window: published since the last check (about 7 days; up to 14 if the prior week was thin).
-- Must be directly about state warranty-reimbursement law: retail-rate/labor-time laws, service-contract or CPO reimbursement, claims/chargebacks/audits, board or court rulings on these. No consumer lemon-law, recall or generic warranty stories. No vendor marketing unless it reports a concrete law change.
-- Prefer official sources, law-firm client alerts, state dealer associations, Automotive News.
-- Each item: `date, title, publisher, url, source_type, states, topic, why_it_matters (manufacturer-compliance view), perspective (dealer-side | manufacturer-side | neutral)`.
-- If a news item reports a new board or court decision on rate submissions, rate validation, audits, chargebacks or cost recovery, also add it to `docs/data/cases.json` with the same fields as existing items and an honest `verification` value ("verified — primary source read" only if you read the decision).
-- Append a new object to `docs/data/news.json` → `weeks` with `week_of` = Monday of the check week. Never more than 5 items.
+- **Law or ruling** (`kind: "law"`, up to 5 a week): new laws, bills that moved, board or court decisions on state warranty reimbursement: retail-rate and labor-time laws, service-contract or CPO reimbursement, claims, audits and chargebacks. Prefer official sources and law-firm client alerts.
+- **Industry commentary** (`kind: "commentary"`, up to 3 a week): analysis or opinion from a named, reliable publication that helps the team understand the industry: manufacturer warranty cost and claims trends (e.g., Warranty Week reports), what dealers, rate vendors, dealer associations or manufacturers are saying about retail-rate reimbursement, labor time, audits, chargebacks, recalls or service-contract/CPO reimbursement, and dealer fixed-ops economics tied to warranty. Commentary is context, not law.
+- Not in either stream: consumer lemon-law, consumer warranty shopping advice, individual recalls, F&I product pricing, press releases that are pure marketing.
+- Vendor or advocacy content is allowed only when it signals a trend (for example, a push for rate filings after acquisitions). Label it: perspective `dealer-side` or `manufacturer-side`, and name the author's company in `publisher`.
+- Paywalled sources (Automotive News): include only what the headline and public summary support, and say so in `topic`.
+- Each item: `kind, date, title, publisher, url, source_type, states, topic (neutral summary with key numbers), why_it_matters (what it means for a manufacturer's warranty compliance or audit team), perspective (dealer-side | manufacturer-side | neutral)`.
+- If a law item reports a new board or court decision on rate submissions, rate validation, audits, chargebacks or cost recovery, also add it to `docs/data/cases.json` with the same fields as existing items and an honest `verification` value ("verified — primary source read" only if you read the decision).
+- Append one object to `docs/data/news.json` → `weeks` with `week_of` = Monday of the check week. Respect `limits` (law 5, commentary 3). If you find a reliable new source worth checking weekly, add it to `sources` and note it in `site_changes`.
 
 ## 4. Log the check
 Append one object to `docs/data/weekly-checks.json` → `entries`:
