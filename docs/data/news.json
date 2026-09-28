@@ -3,6 +3,11 @@
  "max_per_week": 5,
  "weeks": [
   {
+   "week_of": "2026-09-28",
+   "check_date": "2026-09-28",
+   "items": []
+  },
+  {
    "week_of": "2026-09-21",
    "check_date": "2026-09-25",
    "items": [
