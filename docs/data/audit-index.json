@@ -1,93 +1,239 @@
 {
- "schema": 1,
+ "schema": 2,
  "name": "Audit climate score",
- "description": "How restrictive state law is toward a manufacturer's or distributor's warranty audits, chargebacks and retail-rate validation, from 14 statutory limits. Higher = more restrictive. Statute text only; not legal advice and not an assessment of any company's audit program.",
+ "description": "How restrictive state law is toward a manufacturer's or distributor's warranty audits, chargebacks and retail-rate validation. Each of 14 statutory limits gets a level from 0 to 3; points = weight x level / 3; weights add up to 100, so scores run 0-100. Higher = more restrictive. Statute text only; not legal advice and not an assessment of any company's audit program.",
+ "formula": "Points = weight × level ÷ 3. Score = sum of points (0–100).",
+ "weights_note": "Weights are a judgment call about how much each limit constrains audits and chargebacks. Levels are read from the statute text.",
  "checked": "2026-09-27",
  "max": 100,
+ "subscores": [
+  {
+   "id": "limits",
+   "label": "Chargeback limits",
+   "about": "How far back, how much and on what grounds a chargeback can be made, and when it can be collected.",
+   "max_points": 74
+  },
+  {
+   "id": "process",
+   "label": "Process and oversight",
+   "about": "Steps the manufacturer must take before and after an audit, limits on rate validation, and consequences for improper audits.",
+   "max_points": 26.0
+  }
+ ],
+ "buckets": [
+  {
+   "id": "reach",
+   "label": "How far back and how much can be charged back",
+   "subscore": "limits",
+   "weight": 39
+  },
+  {
+   "id": "grounds",
+   "label": "What counts as a valid chargeback",
+   "subscore": "limits",
+   "weight": 20
+  },
+  {
+   "id": "collect",
+   "label": "When a chargeback can be collected",
+   "subscore": "limits",
+   "weight": 15
+  },
+  {
+   "id": "steps",
+   "label": "Audit process steps",
+   "subscore": "process",
+   "weight": 15.0
+  },
+  {
+   "id": "oversight",
+   "label": "Rate validation and consequences",
+   "subscore": "process",
+   "weight": 11
+  }
+ ],
  "factors": [
   {
    "id": "lookback",
    "label": "Short audit and chargeback lookback",
-   "max": 15,
-   "how": "15 points if paid claims can be audited or charged back for 6 months or less, 10 for 9 months, 5 for 12 months, 0 if the statute sets no limit."
-  },
-  {
-   "id": "stay",
-   "label": "Chargeback held while the dealer appeals",
-   "max": 15,
-   "how": "The chargeback cannot be collected until the dealer's appeal, protest or hearing is resolved."
+   "bucket": "reach",
+   "weight": 20,
+   "max": 20,
+   "levels": [
+    "No limit in statute, or over 12 months",
+    "12 months",
+    "9 months",
+    "6 months or less"
+   ]
   },
   {
    "id": "extrap",
    "label": "Limits on extrapolating audit results",
-   "max": 10,
-   "how": "10 points if projecting sample results across claims is prohibited, 5 if restricted (e.g., only from a valid random sample)."
-  },
-  {
-   "id": "clerical",
-   "label": "No chargebacks for clerical or paperwork errors",
-   "max": 10,
-   "how": "Claims cannot be denied or charged back solely for clerical, administrative or technical errors when the work was done properly."
-  },
-  {
-   "id": "docs",
-   "label": "Limits on documentation requirements",
-   "max": 5,
-   "how": "Documentation demands are limited (e.g., only reasonable written requirements in effect when the claim was paid)."
-  },
-  {
-   "id": "written",
-   "label": "Written reasons required before a chargeback",
-   "max": 5,
-   "how": "The dealer must get written notice of the specific grounds for each chargeback."
-  },
-  {
-   "id": "response",
-   "label": "Dealer response or cure period",
-   "max": 5,
-   "how": "The dealer gets a set period to respond, rebut or cure before the chargeback."
-  },
-  {
-   "id": "appeal",
-   "label": "Internal appeal required",
-   "max": 5,
-   "how": "The manufacturer or distributor must offer an internal appeal or review."
-  },
-  {
-   "id": "selection",
-   "label": "Must tell the dealer why it was selected",
-   "max": 5,
-   "how": "The dealer must be told the basis for selecting it for audit (in some states only for certain audits)."
-  },
-  {
-   "id": "notice",
-   "label": "Advance written notice of audit",
-   "max": 5,
-   "how": "Written notice is required before an audit begins."
-  },
-  {
-   "id": "frequency",
-   "label": "Cap on how often audits can occur",
-   "max": 5,
-   "how": "The statute limits how often a dealer can be audited."
+   "bucket": "reach",
+   "weight": 15,
+   "max": 15,
+   "levels": [
+    "Not addressed",
+    "",
+    "Restricted (e.g., only from a valid random sample)",
+    "Prohibited"
+   ]
   },
   {
    "id": "nofraud",
    "label": "No fraud carve-out from the time limit",
-   "max": 5,
-   "how": "The lookback limit applies even to suspected fraud."
+   "bucket": "reach",
+   "weight": 4,
+   "max": 4,
+   "levels": [
+    "Fraud is excepted, or not stated",
+    "",
+    "",
+    "The time limit applies even to suspected fraud"
+   ]
+  },
+  {
+   "id": "clerical",
+   "label": "No chargebacks for clerical or paperwork errors",
+   "bucket": "grounds",
+   "weight": 12,
+   "max": 12,
+   "levels": [
+    "Not in statute",
+    "",
+    "",
+    "Applies"
+   ]
+  },
+  {
+   "id": "docs",
+   "label": "Limits on documentation requirements",
+   "bucket": "grounds",
+   "weight": 8,
+   "max": 8,
+   "levels": [
+    "Not in statute",
+    "",
+    "",
+    "Applies"
+   ]
+  },
+  {
+   "id": "stay",
+   "label": "Chargeback held while the dealer appeals",
+   "bucket": "collect",
+   "weight": 15,
+   "max": 15,
+   "levels": [
+    "Not in statute",
+    "",
+    "",
+    "Applies"
+   ]
+  },
+  {
+   "id": "notice",
+   "label": "Advance written notice of audit",
+   "bucket": "steps",
+   "weight": 2.5,
+   "max": 2.5,
+   "levels": [
+    "Not in statute",
+    "",
+    "",
+    "Applies"
+   ]
+  },
+  {
+   "id": "selection",
+   "label": "Must tell the dealer why it was selected",
+   "bucket": "steps",
+   "weight": 2.5,
+   "max": 2.5,
+   "levels": [
+    "Not in statute",
+    "",
+    "",
+    "Applies"
+   ]
+  },
+  {
+   "id": "written",
+   "label": "Written reasons required before a chargeback",
+   "bucket": "steps",
+   "weight": 2.5,
+   "max": 2.5,
+   "levels": [
+    "Not in statute",
+    "",
+    "",
+    "Applies"
+   ]
+  },
+  {
+   "id": "response",
+   "label": "Dealer response or cure period",
+   "bucket": "steps",
+   "weight": 2.5,
+   "max": 2.5,
+   "levels": [
+    "None in statute",
+    "Under 30 days",
+    "30 to 59 days",
+    "60 days or more"
+   ]
+  },
+  {
+   "id": "appeal",
+   "label": "Internal appeal required",
+   "bucket": "steps",
+   "weight": 2.5,
+   "max": 2.5,
+   "levels": [
+    "Not in statute",
+    "",
+    "",
+    "Applies"
+   ]
+  },
+  {
+   "id": "frequency",
+   "label": "Cap on how often audits can occur",
+   "bucket": "steps",
+   "weight": 2.5,
+   "max": 2.5,
+   "levels": [
+    "No cap in statute",
+    "",
+    "Cap allows more than one audit a year (e.g., one per 9 months)",
+    "At most one audit per 12 months"
+   ]
   },
   {
    "id": "rate",
    "label": "Rate validation limited to the dealer's submission",
+   "bucket": "oversight",
+   "weight": 5,
    "max": 5,
-   "how": "A retail-rate submission can be checked only against the dealer's own submitted ROs or by a single accuracy objection; no request for more ROs or outside data."
+   "levels": [
+    "Not limited in statute",
+    "",
+    "",
+    "Only the dealer's own ROs or a single accuracy objection"
+   ]
   },
   {
    "id": "conseq",
    "label": "Specific consequence for improper audits",
-   "max": 5,
-   "how": "The statute attaches a specific consequence to improper audits or chargebacks (void chargeback, violation finding, fines, interest or audit-cost reimbursement)."
+   "bucket": "oversight",
+   "weight": 6,
+   "max": 6,
+   "levels": [
+    "None specific in statute",
+    "",
+    "",
+    "Void chargeback, violation finding, fines, interest or audit-cost reimbursement"
+   ]
   }
  ],
  "tiers": [
@@ -119,1052 +265,2102 @@
  ],
  "states": {
   "AK": {
-   "score": 10,
+   "score": 9,
+   "exact": 9.17,
    "tier": "Low",
-   "points": {
-    "lookback": 5,
-    "stay": 0,
+   "levels": {
+    "lookback": 1,
     "extrap": 0,
+    "nofraud": 0,
     "clerical": 0,
     "docs": 0,
+    "stay": 0,
+    "notice": 0,
+    "selection": 0,
     "written": 0,
     "response": 0,
     "appeal": 0,
-    "selection": 0,
-    "notice": 0,
-    "frequency": 5,
-    "nofraud": 0,
+    "frequency": 3,
     "rate": 0,
     "conseq": 0
    },
-   "rank": 44
+   "points": {
+    "lookback": 6.67,
+    "extrap": 0.0,
+    "nofraud": 0.0,
+    "clerical": 0.0,
+    "docs": 0.0,
+    "stay": 0.0,
+    "notice": 0.0,
+    "selection": 0.0,
+    "written": 0.0,
+    "response": 0.0,
+    "appeal": 0.0,
+    "frequency": 2.5,
+    "rate": 0.0,
+    "conseq": 0.0
+   },
+   "subscores": {
+    "limits": 9,
+    "process": 10
+   },
+   "rank": 47
   },
   "AL": {
-   "score": 25,
-   "tier": "Moderate",
-   "points": {
-    "lookback": 5,
-    "stay": 0,
+   "score": 31,
+   "exact": 30.67,
+   "tier": "Elevated",
+   "levels": {
+    "lookback": 1,
     "extrap": 0,
-    "clerical": 10,
-    "docs": 5,
+    "nofraud": 3,
+    "clerical": 3,
+    "docs": 3,
+    "stay": 0,
+    "notice": 0,
+    "selection": 0,
     "written": 0,
     "response": 0,
     "appeal": 0,
-    "selection": 0,
-    "notice": 0,
     "frequency": 0,
-    "nofraud": 5,
     "rate": 0,
     "conseq": 0
+   },
+   "points": {
+    "lookback": 6.67,
+    "extrap": 0.0,
+    "nofraud": 4.0,
+    "clerical": 12.0,
+    "docs": 8.0,
+    "stay": 0.0,
+    "notice": 0.0,
+    "selection": 0.0,
+    "written": 0.0,
+    "response": 0.0,
+    "appeal": 0.0,
+    "frequency": 0.0,
+    "rate": 0.0,
+    "conseq": 0.0
+   },
+   "subscores": {
+    "limits": 41,
+    "process": 0
    },
    "rank": 31
   },
   "AR": {
-   "score": 30,
+   "score": 34,
+   "exact": 33.67,
    "tier": "Elevated",
-   "points": {
-    "lookback": 5,
-    "stay": 15,
+   "levels": {
+    "lookback": 1,
     "extrap": 0,
-    "clerical": 10,
+    "nofraud": 0,
+    "clerical": 3,
     "docs": 0,
+    "stay": 3,
+    "notice": 0,
+    "selection": 0,
     "written": 0,
     "response": 0,
     "appeal": 0,
-    "selection": 0,
-    "notice": 0,
     "frequency": 0,
-    "nofraud": 0,
     "rate": 0,
     "conseq": 0
    },
-   "rank": 22
-  },
-  "AZ": {
-   "score": 30,
-   "tier": "Elevated",
    "points": {
-    "lookback": 5,
-    "stay": 15,
-    "extrap": 0,
-    "clerical": 10,
-    "docs": 0,
-    "written": 0,
-    "response": 0,
-    "appeal": 0,
-    "selection": 0,
-    "notice": 0,
-    "frequency": 0,
-    "nofraud": 0,
-    "rate": 0,
-    "conseq": 0
+    "lookback": 6.67,
+    "extrap": 0.0,
+    "nofraud": 0.0,
+    "clerical": 12.0,
+    "docs": 0.0,
+    "stay": 15.0,
+    "notice": 0.0,
+    "selection": 0.0,
+    "written": 0.0,
+    "response": 0.0,
+    "appeal": 0.0,
+    "frequency": 0.0,
+    "rate": 0.0,
+    "conseq": 0.0
    },
-   "rank": 23
-  },
-  "CA": {
-   "score": 75,
-   "tier": "Very high",
-   "points": {
-    "lookback": 10,
-    "stay": 15,
-    "extrap": 5,
-    "clerical": 10,
-    "docs": 5,
-    "written": 5,
-    "response": 5,
-    "appeal": 5,
-    "selection": 5,
-    "notice": 5,
-    "frequency": 5,
-    "nofraud": 0,
-    "rate": 0,
-    "conseq": 0
-   },
-   "rank": 1
-  },
-  "CO": {
-   "score": 35,
-   "tier": "Elevated",
-   "points": {
-    "lookback": 10,
-    "stay": 15,
-    "extrap": 0,
-    "clerical": 0,
-    "docs": 5,
-    "written": 0,
-    "response": 0,
-    "appeal": 0,
-    "selection": 0,
-    "notice": 0,
-    "frequency": 0,
-    "nofraud": 0,
-    "rate": 0,
-    "conseq": 5
-   },
-   "rank": 13
-  },
-  "CT": {
-   "score": 20,
-   "tier": "Moderate",
-   "points": {
-    "lookback": 5,
-    "stay": 0,
-    "extrap": 0,
-    "clerical": 10,
-    "docs": 0,
-    "written": 0,
-    "response": 5,
-    "appeal": 0,
-    "selection": 0,
-    "notice": 0,
-    "frequency": 0,
-    "nofraud": 0,
-    "rate": 0,
-    "conseq": 0
-   },
-   "rank": 38
-  },
-  "DE": {
-   "score": 30,
-   "tier": "Elevated",
-   "points": {
-    "lookback": 15,
-    "stay": 0,
-    "extrap": 0,
-    "clerical": 10,
-    "docs": 5,
-    "written": 0,
-    "response": 0,
-    "appeal": 0,
-    "selection": 0,
-    "notice": 0,
-    "frequency": 0,
-    "nofraud": 0,
-    "rate": 0,
-    "conseq": 0
-   },
-   "rank": 24
-  },
-  "FL": {
-   "score": 70,
-   "tier": "Very high",
-   "points": {
-    "lookback": 5,
-    "stay": 15,
-    "extrap": 0,
-    "clerical": 10,
-    "docs": 5,
-    "written": 5,
-    "response": 5,
-    "appeal": 0,
-    "selection": 5,
-    "notice": 0,
-    "frequency": 5,
-    "nofraud": 5,
-    "rate": 5,
-    "conseq": 5
-   },
-   "rank": 2
-  },
-  "GA": {
-   "score": 40,
-   "tier": "High",
-   "points": {
-    "lookback": 5,
-    "stay": 15,
-    "extrap": 0,
-    "clerical": 10,
-    "docs": 5,
-    "written": 0,
-    "response": 5,
-    "appeal": 0,
-    "selection": 0,
-    "notice": 0,
-    "frequency": 0,
-    "nofraud": 0,
-    "rate": 0,
-    "conseq": 0
-   },
-   "rank": 7
-  },
-  "HI": {
-   "score": 35,
-   "tier": "Elevated",
-   "points": {
-    "lookback": 5,
-    "stay": 15,
-    "extrap": 0,
-    "clerical": 0,
-    "docs": 5,
-    "written": 5,
-    "response": 5,
-    "appeal": 0,
-    "selection": 0,
-    "notice": 0,
-    "frequency": 0,
-    "nofraud": 0,
-    "rate": 0,
-    "conseq": 0
-   },
-   "rank": 14
-  },
-  "IA": {
-   "score": 25,
-   "tier": "Moderate",
-   "points": {
-    "lookback": 5,
-    "stay": 0,
-    "extrap": 0,
-    "clerical": 10,
-    "docs": 5,
-    "written": 0,
-    "response": 0,
-    "appeal": 0,
-    "selection": 0,
-    "notice": 0,
-    "frequency": 0,
-    "nofraud": 0,
-    "rate": 5,
-    "conseq": 0
-   },
-   "rank": 32
-  },
-  "ID": {
-   "score": 25,
-   "tier": "Moderate",
-   "points": {
-    "lookback": 5,
-    "stay": 0,
-    "extrap": 0,
-    "clerical": 10,
-    "docs": 5,
-    "written": 0,
-    "response": 5,
-    "appeal": 0,
-    "selection": 0,
-    "notice": 0,
-    "frequency": 0,
-    "nofraud": 0,
-    "rate": 0,
-    "conseq": 0
-   },
-   "rank": 33
-  },
-  "IL": {
-   "score": 25,
-   "tier": "Moderate",
-   "points": {
-    "lookback": 5,
-    "stay": 0,
-    "extrap": 0,
-    "clerical": 10,
-    "docs": 5,
-    "written": 0,
-    "response": 0,
-    "appeal": 0,
-    "selection": 0,
-    "notice": 0,
-    "frequency": 0,
-    "nofraud": 0,
-    "rate": 5,
-    "conseq": 0
-   },
-   "rank": 34
-  },
-  "IN": {
-   "score": 35,
-   "tier": "Elevated",
-   "points": {
-    "lookback": 5,
-    "stay": 0,
-    "extrap": 0,
-    "clerical": 10,
-    "docs": 5,
-    "written": 5,
-    "response": 5,
-    "appeal": 5,
-    "selection": 0,
-    "notice": 0,
-    "frequency": 0,
-    "nofraud": 0,
-    "rate": 0,
-    "conseq": 0
-   },
-   "rank": 15
-  },
-  "KS": {
-   "score": 40,
-   "tier": "High",
-   "points": {
-    "lookback": 5,
-    "stay": 15,
-    "extrap": 0,
-    "clerical": 10,
-    "docs": 5,
-    "written": 0,
-    "response": 0,
-    "appeal": 0,
-    "selection": 0,
-    "notice": 0,
-    "frequency": 0,
-    "nofraud": 0,
-    "rate": 5,
-    "conseq": 0
-   },
-   "rank": 8
-  },
-  "KY": {
-   "score": 30,
-   "tier": "Elevated",
-   "points": {
-    "lookback": 5,
-    "stay": 0,
-    "extrap": 0,
-    "clerical": 10,
-    "docs": 5,
-    "written": 5,
-    "response": 5,
-    "appeal": 0,
-    "selection": 0,
-    "notice": 0,
-    "frequency": 0,
-    "nofraud": 0,
-    "rate": 0,
-    "conseq": 0
+   "subscores": {
+    "limits": 46,
+    "process": 0
    },
    "rank": 25
   },
-  "LA": {
-   "score": 30,
+  "AZ": {
+   "score": 34,
+   "exact": 33.67,
    "tier": "Elevated",
-   "points": {
-    "lookback": 5,
-    "stay": 0,
+   "levels": {
+    "lookback": 1,
     "extrap": 0,
-    "clerical": 10,
-    "docs": 5,
+    "nofraud": 0,
+    "clerical": 3,
+    "docs": 0,
+    "stay": 3,
+    "notice": 0,
+    "selection": 0,
     "written": 0,
     "response": 0,
     "appeal": 0,
-    "selection": 0,
-    "notice": 0,
-    "frequency": 5,
-    "nofraud": 0,
+    "frequency": 0,
     "rate": 0,
-    "conseq": 5
+    "conseq": 0
+   },
+   "points": {
+    "lookback": 6.67,
+    "extrap": 0.0,
+    "nofraud": 0.0,
+    "clerical": 12.0,
+    "docs": 0.0,
+    "stay": 15.0,
+    "notice": 0.0,
+    "selection": 0.0,
+    "written": 0.0,
+    "response": 0.0,
+    "appeal": 0.0,
+    "frequency": 0.0,
+    "rate": 0.0,
+    "conseq": 0.0
+   },
+   "subscores": {
+    "limits": 46,
+    "process": 0
    },
    "rank": 26
   },
-  "MA": {
-   "score": 40,
-   "tier": "High",
-   "points": {
-    "lookback": 5,
-    "stay": 0,
-    "extrap": 5,
-    "clerical": 0,
-    "docs": 5,
-    "written": 5,
-    "response": 5,
-    "appeal": 0,
-    "selection": 5,
-    "notice": 0,
-    "frequency": 0,
+  "CA": {
+   "score": 72,
+   "exact": 71.67,
+   "tier": "Very high",
+   "levels": {
+    "lookback": 2,
+    "extrap": 2,
     "nofraud": 0,
-    "rate": 5,
-    "conseq": 5
+    "clerical": 3,
+    "docs": 3,
+    "stay": 3,
+    "notice": 3,
+    "selection": 3,
+    "written": 3,
+    "response": 2,
+    "appeal": 3,
+    "frequency": 2,
+    "rate": 0,
+    "conseq": 0
    },
-   "rank": 9
-  },
-  "MD": {
-   "score": 30,
-   "tier": "Elevated",
    "points": {
-    "lookback": 10,
-    "stay": 0,
+    "lookback": 13.33,
+    "extrap": 10.0,
+    "nofraud": 0.0,
+    "clerical": 12.0,
+    "docs": 8.0,
+    "stay": 15.0,
+    "notice": 2.5,
+    "selection": 2.5,
+    "written": 2.5,
+    "response": 1.67,
+    "appeal": 2.5,
+    "frequency": 1.67,
+    "rate": 0.0,
+    "conseq": 0.0
+   },
+   "subscores": {
+    "limits": 79,
+    "process": 51
+   },
+   "rank": 2
+  },
+  "CO": {
+   "score": 42,
+   "exact": 42.33,
+   "tier": "High",
+   "levels": {
+    "lookback": 2,
     "extrap": 0,
-    "clerical": 10,
-    "docs": 5,
+    "nofraud": 0,
+    "clerical": 0,
+    "docs": 3,
+    "stay": 3,
+    "notice": 0,
+    "selection": 0,
     "written": 0,
     "response": 0,
     "appeal": 0,
-    "selection": 0,
-    "notice": 0,
     "frequency": 0,
-    "nofraud": 0,
     "rate": 0,
-    "conseq": 5
+    "conseq": 3
+   },
+   "points": {
+    "lookback": 13.33,
+    "extrap": 0.0,
+    "nofraud": 0.0,
+    "clerical": 0.0,
+    "docs": 8.0,
+    "stay": 15.0,
+    "notice": 0.0,
+    "selection": 0.0,
+    "written": 0.0,
+    "response": 0.0,
+    "appeal": 0.0,
+    "frequency": 0.0,
+    "rate": 0.0,
+    "conseq": 6.0
+   },
+   "subscores": {
+    "limits": 49,
+    "process": 23
+   },
+   "rank": 14
+  },
+  "CT": {
+   "score": 20,
+   "exact": 20.34,
+   "tier": "Moderate",
+   "levels": {
+    "lookback": 1,
+    "extrap": 0,
+    "nofraud": 0,
+    "clerical": 3,
+    "docs": 0,
+    "stay": 0,
+    "notice": 0,
+    "selection": 0,
+    "written": 0,
+    "response": 2,
+    "appeal": 0,
+    "frequency": 0,
+    "rate": 0,
+    "conseq": 0
+   },
+   "points": {
+    "lookback": 6.67,
+    "extrap": 0.0,
+    "nofraud": 0.0,
+    "clerical": 12.0,
+    "docs": 0.0,
+    "stay": 0.0,
+    "notice": 0.0,
+    "selection": 0.0,
+    "written": 0.0,
+    "response": 1.67,
+    "appeal": 0.0,
+    "frequency": 0.0,
+    "rate": 0.0,
+    "conseq": 0.0
+   },
+   "subscores": {
+    "limits": 25,
+    "process": 6
+   },
+   "rank": 41
+  },
+  "DE": {
+   "score": 40,
+   "exact": 40.0,
+   "tier": "High",
+   "levels": {
+    "lookback": 3,
+    "extrap": 0,
+    "nofraud": 0,
+    "clerical": 3,
+    "docs": 3,
+    "stay": 0,
+    "notice": 0,
+    "selection": 0,
+    "written": 0,
+    "response": 0,
+    "appeal": 0,
+    "frequency": 0,
+    "rate": 0,
+    "conseq": 0
+   },
+   "points": {
+    "lookback": 20.0,
+    "extrap": 0.0,
+    "nofraud": 0.0,
+    "clerical": 12.0,
+    "docs": 8.0,
+    "stay": 0.0,
+    "notice": 0.0,
+    "selection": 0.0,
+    "written": 0.0,
+    "response": 0.0,
+    "appeal": 0.0,
+    "frequency": 0.0,
+    "rate": 0.0,
+    "conseq": 0.0
+   },
+   "subscores": {
+    "limits": 54,
+    "process": 0
+   },
+   "rank": 16
+  },
+  "FL": {
+   "score": 66,
+   "exact": 65.84,
+   "tier": "Very high",
+   "levels": {
+    "lookback": 1,
+    "extrap": 0,
+    "nofraud": 3,
+    "clerical": 3,
+    "docs": 3,
+    "stay": 3,
+    "notice": 0,
+    "selection": 3,
+    "written": 3,
+    "response": 2,
+    "appeal": 0,
+    "frequency": 3,
+    "rate": 3,
+    "conseq": 3
+   },
+   "points": {
+    "lookback": 6.67,
+    "extrap": 0.0,
+    "nofraud": 4.0,
+    "clerical": 12.0,
+    "docs": 8.0,
+    "stay": 15.0,
+    "notice": 0.0,
+    "selection": 2.5,
+    "written": 2.5,
+    "response": 1.67,
+    "appeal": 0.0,
+    "frequency": 2.5,
+    "rate": 5.0,
+    "conseq": 6.0
+   },
+   "subscores": {
+    "limits": 62,
+    "process": 78
+   },
+   "rank": 3
+  },
+  "GA": {
+   "score": 43,
+   "exact": 43.34,
+   "tier": "High",
+   "levels": {
+    "lookback": 1,
+    "extrap": 0,
+    "nofraud": 0,
+    "clerical": 3,
+    "docs": 3,
+    "stay": 3,
+    "notice": 0,
+    "selection": 0,
+    "written": 0,
+    "response": 2,
+    "appeal": 0,
+    "frequency": 0,
+    "rate": 0,
+    "conseq": 0
+   },
+   "points": {
+    "lookback": 6.67,
+    "extrap": 0.0,
+    "nofraud": 0.0,
+    "clerical": 12.0,
+    "docs": 8.0,
+    "stay": 15.0,
+    "notice": 0.0,
+    "selection": 0.0,
+    "written": 0.0,
+    "response": 1.67,
+    "appeal": 0.0,
+    "frequency": 0.0,
+    "rate": 0.0,
+    "conseq": 0.0
+   },
+   "subscores": {
+    "limits": 56,
+    "process": 6
+   },
+   "rank": 11
+  },
+  "HI": {
+   "score": 34,
+   "exact": 33.84,
+   "tier": "Elevated",
+   "levels": {
+    "lookback": 1,
+    "extrap": 0,
+    "nofraud": 0,
+    "clerical": 0,
+    "docs": 3,
+    "stay": 3,
+    "notice": 0,
+    "selection": 0,
+    "written": 3,
+    "response": 2,
+    "appeal": 0,
+    "frequency": 0,
+    "rate": 0,
+    "conseq": 0
+   },
+   "points": {
+    "lookback": 6.67,
+    "extrap": 0.0,
+    "nofraud": 0.0,
+    "clerical": 0.0,
+    "docs": 8.0,
+    "stay": 15.0,
+    "notice": 0.0,
+    "selection": 0.0,
+    "written": 2.5,
+    "response": 1.67,
+    "appeal": 0.0,
+    "frequency": 0.0,
+    "rate": 0.0,
+    "conseq": 0.0
+   },
+   "subscores": {
+    "limits": 40,
+    "process": 16
+   },
+   "rank": 24
+  },
+  "IA": {
+   "score": 32,
+   "exact": 31.67,
+   "tier": "Elevated",
+   "levels": {
+    "lookback": 1,
+    "extrap": 0,
+    "nofraud": 0,
+    "clerical": 3,
+    "docs": 3,
+    "stay": 0,
+    "notice": 0,
+    "selection": 0,
+    "written": 0,
+    "response": 0,
+    "appeal": 0,
+    "frequency": 0,
+    "rate": 3,
+    "conseq": 0
+   },
+   "points": {
+    "lookback": 6.67,
+    "extrap": 0.0,
+    "nofraud": 0.0,
+    "clerical": 12.0,
+    "docs": 8.0,
+    "stay": 0.0,
+    "notice": 0.0,
+    "selection": 0.0,
+    "written": 0.0,
+    "response": 0.0,
+    "appeal": 0.0,
+    "frequency": 0.0,
+    "rate": 5.0,
+    "conseq": 0.0
+   },
+   "subscores": {
+    "limits": 36,
+    "process": 19
+   },
+   "rank": 29
+  },
+  "ID": {
+   "score": 28,
+   "exact": 28.34,
+   "tier": "Moderate",
+   "levels": {
+    "lookback": 1,
+    "extrap": 0,
+    "nofraud": 0,
+    "clerical": 3,
+    "docs": 3,
+    "stay": 0,
+    "notice": 0,
+    "selection": 0,
+    "written": 0,
+    "response": 2,
+    "appeal": 0,
+    "frequency": 0,
+    "rate": 0,
+    "conseq": 0
+   },
+   "points": {
+    "lookback": 6.67,
+    "extrap": 0.0,
+    "nofraud": 0.0,
+    "clerical": 12.0,
+    "docs": 8.0,
+    "stay": 0.0,
+    "notice": 0.0,
+    "selection": 0.0,
+    "written": 0.0,
+    "response": 1.67,
+    "appeal": 0.0,
+    "frequency": 0.0,
+    "rate": 0.0,
+    "conseq": 0.0
+   },
+   "subscores": {
+    "limits": 36,
+    "process": 6
+   },
+   "rank": 35
+  },
+  "IL": {
+   "score": 32,
+   "exact": 31.67,
+   "tier": "Elevated",
+   "levels": {
+    "lookback": 1,
+    "extrap": 0,
+    "nofraud": 0,
+    "clerical": 3,
+    "docs": 3,
+    "stay": 0,
+    "notice": 0,
+    "selection": 0,
+    "written": 0,
+    "response": 0,
+    "appeal": 0,
+    "frequency": 0,
+    "rate": 3,
+    "conseq": 0
+   },
+   "points": {
+    "lookback": 6.67,
+    "extrap": 0.0,
+    "nofraud": 0.0,
+    "clerical": 12.0,
+    "docs": 8.0,
+    "stay": 0.0,
+    "notice": 0.0,
+    "selection": 0.0,
+    "written": 0.0,
+    "response": 0.0,
+    "appeal": 0.0,
+    "frequency": 0.0,
+    "rate": 5.0,
+    "conseq": 0.0
+   },
+   "subscores": {
+    "limits": 36,
+    "process": 19
+   },
+   "rank": 30
+  },
+  "IN": {
+   "score": 33,
+   "exact": 33.34,
+   "tier": "Elevated",
+   "levels": {
+    "lookback": 1,
+    "extrap": 0,
+    "nofraud": 0,
+    "clerical": 3,
+    "docs": 3,
+    "stay": 0,
+    "notice": 0,
+    "selection": 0,
+    "written": 3,
+    "response": 2,
+    "appeal": 3,
+    "frequency": 0,
+    "rate": 0,
+    "conseq": 0
+   },
+   "points": {
+    "lookback": 6.67,
+    "extrap": 0.0,
+    "nofraud": 0.0,
+    "clerical": 12.0,
+    "docs": 8.0,
+    "stay": 0.0,
+    "notice": 0.0,
+    "selection": 0.0,
+    "written": 2.5,
+    "response": 1.67,
+    "appeal": 2.5,
+    "frequency": 0.0,
+    "rate": 0.0,
+    "conseq": 0.0
+   },
+   "subscores": {
+    "limits": 36,
+    "process": 26
    },
    "rank": 27
   },
-  "ME": {
-   "score": 15,
-   "tier": "Low",
-   "points": {
-    "lookback": 0,
-    "stay": 0,
+  "KS": {
+   "score": 47,
+   "exact": 46.67,
+   "tier": "High",
+   "levels": {
+    "lookback": 1,
     "extrap": 0,
-    "clerical": 10,
-    "docs": 0,
+    "nofraud": 0,
+    "clerical": 3,
+    "docs": 3,
+    "stay": 3,
+    "notice": 0,
+    "selection": 0,
     "written": 0,
     "response": 0,
     "appeal": 0,
-    "selection": 0,
-    "notice": 0,
     "frequency": 0,
-    "nofraud": 0,
-    "rate": 5,
+    "rate": 3,
     "conseq": 0
+   },
+   "points": {
+    "lookback": 6.67,
+    "extrap": 0.0,
+    "nofraud": 0.0,
+    "clerical": 12.0,
+    "docs": 8.0,
+    "stay": 15.0,
+    "notice": 0.0,
+    "selection": 0.0,
+    "written": 0.0,
+    "response": 0.0,
+    "appeal": 0.0,
+    "frequency": 0.0,
+    "rate": 5.0,
+    "conseq": 0.0
+   },
+   "subscores": {
+    "limits": 56,
+    "process": 19
+   },
+   "rank": 9
+  },
+  "KY": {
+   "score": 30,
+   "exact": 30.0,
+   "tier": "Elevated",
+   "levels": {
+    "lookback": 1,
+    "extrap": 0,
+    "nofraud": 0,
+    "clerical": 3,
+    "docs": 3,
+    "stay": 0,
+    "notice": 0,
+    "selection": 0,
+    "written": 3,
+    "response": 1,
+    "appeal": 0,
+    "frequency": 0,
+    "rate": 0,
+    "conseq": 0
+   },
+   "points": {
+    "lookback": 6.67,
+    "extrap": 0.0,
+    "nofraud": 0.0,
+    "clerical": 12.0,
+    "docs": 8.0,
+    "stay": 0.0,
+    "notice": 0.0,
+    "selection": 0.0,
+    "written": 2.5,
+    "response": 0.83,
+    "appeal": 0.0,
+    "frequency": 0.0,
+    "rate": 0.0,
+    "conseq": 0.0
+   },
+   "subscores": {
+    "limits": 36,
+    "process": 13
+   },
+   "rank": 32
+  },
+  "LA": {
+   "score": 34,
+   "exact": 34.34,
+   "tier": "Elevated",
+   "levels": {
+    "lookback": 1,
+    "extrap": 0,
+    "nofraud": 0,
+    "clerical": 3,
+    "docs": 3,
+    "stay": 0,
+    "notice": 0,
+    "selection": 0,
+    "written": 0,
+    "response": 0,
+    "appeal": 0,
+    "frequency": 2,
+    "rate": 0,
+    "conseq": 3
+   },
+   "points": {
+    "lookback": 6.67,
+    "extrap": 0.0,
+    "nofraud": 0.0,
+    "clerical": 12.0,
+    "docs": 8.0,
+    "stay": 0.0,
+    "notice": 0.0,
+    "selection": 0.0,
+    "written": 0.0,
+    "response": 0.0,
+    "appeal": 0.0,
+    "frequency": 1.67,
+    "rate": 0.0,
+    "conseq": 6.0
+   },
+   "subscores": {
+    "limits": 36,
+    "process": 30
+   },
+   "rank": 21
+  },
+  "MA": {
+   "score": 42,
+   "exact": 42.34,
+   "tier": "High",
+   "levels": {
+    "lookback": 1,
+    "extrap": 2,
+    "nofraud": 0,
+    "clerical": 0,
+    "docs": 3,
+    "stay": 0,
+    "notice": 0,
+    "selection": 3,
+    "written": 3,
+    "response": 2,
+    "appeal": 0,
+    "frequency": 0,
+    "rate": 3,
+    "conseq": 3
+   },
+   "points": {
+    "lookback": 6.67,
+    "extrap": 10.0,
+    "nofraud": 0.0,
+    "clerical": 0.0,
+    "docs": 8.0,
+    "stay": 0.0,
+    "notice": 0.0,
+    "selection": 2.5,
+    "written": 2.5,
+    "response": 1.67,
+    "appeal": 0.0,
+    "frequency": 0.0,
+    "rate": 5.0,
+    "conseq": 6.0
+   },
+   "subscores": {
+    "limits": 33,
+    "process": 68
+   },
+   "rank": 13
+  },
+  "MD": {
+   "score": 39,
+   "exact": 39.33,
+   "tier": "Elevated",
+   "levels": {
+    "lookback": 2,
+    "extrap": 0,
+    "nofraud": 0,
+    "clerical": 3,
+    "docs": 3,
+    "stay": 0,
+    "notice": 0,
+    "selection": 0,
+    "written": 0,
+    "response": 0,
+    "appeal": 0,
+    "frequency": 0,
+    "rate": 0,
+    "conseq": 3
+   },
+   "points": {
+    "lookback": 13.33,
+    "extrap": 0.0,
+    "nofraud": 0.0,
+    "clerical": 12.0,
+    "docs": 8.0,
+    "stay": 0.0,
+    "notice": 0.0,
+    "selection": 0.0,
+    "written": 0.0,
+    "response": 0.0,
+    "appeal": 0.0,
+    "frequency": 0.0,
+    "rate": 0.0,
+    "conseq": 6.0
+   },
+   "subscores": {
+    "limits": 45,
+    "process": 23
+   },
+   "rank": 17
+  },
+  "ME": {
+   "score": 17,
+   "exact": 17.0,
+   "tier": "Low",
+   "levels": {
+    "lookback": 0,
+    "extrap": 0,
+    "nofraud": 0,
+    "clerical": 3,
+    "docs": 0,
+    "stay": 0,
+    "notice": 0,
+    "selection": 0,
+    "written": 0,
+    "response": 0,
+    "appeal": 0,
+    "frequency": 0,
+    "rate": 3,
+    "conseq": 0
+   },
+   "points": {
+    "lookback": 0.0,
+    "extrap": 0.0,
+    "nofraud": 0.0,
+    "clerical": 12.0,
+    "docs": 0.0,
+    "stay": 0.0,
+    "notice": 0.0,
+    "selection": 0.0,
+    "written": 0.0,
+    "response": 0.0,
+    "appeal": 0.0,
+    "frequency": 0.0,
+    "rate": 5.0,
+    "conseq": 0.0
+   },
+   "subscores": {
+    "limits": 16,
+    "process": 19
    },
    "rank": 43
   },
   "MI": {
-   "score": 35,
-   "tier": "Elevated",
-   "points": {
-    "lookback": 5,
-    "stay": 0,
+   "score": 28,
+   "exact": 27.84,
+   "tier": "Moderate",
+   "levels": {
+    "lookback": 1,
     "extrap": 0,
-    "clerical": 10,
-    "docs": 0,
-    "written": 5,
-    "response": 5,
-    "appeal": 5,
-    "selection": 5,
-    "notice": 0,
-    "frequency": 0,
     "nofraud": 0,
+    "clerical": 3,
+    "docs": 0,
+    "stay": 0,
+    "notice": 0,
+    "selection": 3,
+    "written": 3,
+    "response": 2,
+    "appeal": 3,
+    "frequency": 0,
     "rate": 0,
     "conseq": 0
    },
-   "rank": 16
+   "points": {
+    "lookback": 6.67,
+    "extrap": 0.0,
+    "nofraud": 0.0,
+    "clerical": 12.0,
+    "docs": 0.0,
+    "stay": 0.0,
+    "notice": 0.0,
+    "selection": 2.5,
+    "written": 2.5,
+    "response": 1.67,
+    "appeal": 2.5,
+    "frequency": 0.0,
+    "rate": 0.0,
+    "conseq": 0.0
+   },
+   "subscores": {
+    "limits": 25,
+    "process": 35
+   },
+   "rank": 37
   },
   "MN": {
    "score": 20,
+   "exact": 20.34,
    "tier": "Moderate",
-   "points": {
-    "lookback": 5,
-    "stay": 0,
+   "levels": {
+    "lookback": 1,
     "extrap": 0,
-    "clerical": 10,
+    "nofraud": 0,
+    "clerical": 3,
     "docs": 0,
-    "written": 0,
-    "response": 5,
-    "appeal": 0,
-    "selection": 0,
-    "notice": 0,
-    "frequency": 0,
-    "nofraud": 0,
-    "rate": 0,
-    "conseq": 0
-   },
-   "rank": 39
-  },
-  "MO": {
-   "score": 35,
-   "tier": "Elevated",
-   "points": {
-    "lookback": 5,
-    "stay": 15,
-    "extrap": 0,
-    "clerical": 0,
-    "docs": 5,
-    "written": 5,
-    "response": 0,
-    "appeal": 0,
-    "selection": 0,
-    "notice": 0,
-    "frequency": 0,
-    "nofraud": 0,
-    "rate": 0,
-    "conseq": 5
-   },
-   "rank": 17
-  },
-  "MS": {
-   "score": 20,
-   "tier": "Moderate",
-   "points": {
-    "lookback": 5,
     "stay": 0,
-    "extrap": 0,
-    "clerical": 10,
-    "docs": 5,
-    "written": 0,
-    "response": 0,
-    "appeal": 0,
-    "selection": 0,
     "notice": 0,
+    "selection": 0,
+    "written": 0,
+    "response": 2,
+    "appeal": 0,
     "frequency": 0,
-    "nofraud": 0,
     "rate": 0,
     "conseq": 0
    },
-   "rank": 40
-  },
-  "MT": {
-   "score": 30,
-   "tier": "Elevated",
    "points": {
-    "lookback": 5,
-    "stay": 0,
-    "extrap": 0,
-    "clerical": 10,
-    "docs": 5,
-    "written": 0,
-    "response": 5,
-    "appeal": 0,
-    "selection": 0,
-    "notice": 0,
-    "frequency": 0,
-    "nofraud": 0,
-    "rate": 5,
-    "conseq": 0
+    "lookback": 6.67,
+    "extrap": 0.0,
+    "nofraud": 0.0,
+    "clerical": 12.0,
+    "docs": 0.0,
+    "stay": 0.0,
+    "notice": 0.0,
+    "selection": 0.0,
+    "written": 0.0,
+    "response": 1.67,
+    "appeal": 0.0,
+    "frequency": 0.0,
+    "rate": 0.0,
+    "conseq": 0.0
    },
-   "rank": 28
-  },
-  "NC": {
-   "score": 55,
-   "tier": "Very high",
-   "points": {
-    "lookback": 5,
-    "stay": 15,
-    "extrap": 0,
-    "clerical": 10,
-    "docs": 5,
-    "written": 0,
-    "response": 0,
-    "appeal": 0,
-    "selection": 5,
-    "notice": 5,
-    "frequency": 5,
-    "nofraud": 0,
-    "rate": 5,
-    "conseq": 0
-   },
-   "rank": 4
-  },
-  "ND": {
-   "score": 10,
-   "tier": "Low",
-   "points": {
-    "lookback": 5,
-    "stay": 0,
-    "extrap": 0,
-    "clerical": 0,
-    "docs": 5,
-    "written": 0,
-    "response": 0,
-    "appeal": 0,
-    "selection": 0,
-    "notice": 0,
-    "frequency": 0,
-    "nofraud": 0,
-    "rate": 0,
-    "conseq": 0
-   },
-   "rank": 45
-  },
-  "NE": {
-   "score": 35,
-   "tier": "Elevated",
-   "points": {
-    "lookback": 5,
-    "stay": 15,
-    "extrap": 0,
-    "clerical": 10,
-    "docs": 5,
-    "written": 0,
-    "response": 0,
-    "appeal": 0,
-    "selection": 0,
-    "notice": 0,
-    "frequency": 0,
-    "nofraud": 0,
-    "rate": 0,
-    "conseq": 0
-   },
-   "rank": 18
-  },
-  "NH": {
-   "score": 40,
-   "tier": "High",
-   "points": {
-    "lookback": 10,
-    "stay": 15,
-    "extrap": 0,
-    "clerical": 10,
-    "docs": 5,
-    "written": 0,
-    "response": 0,
-    "appeal": 0,
-    "selection": 0,
-    "notice": 0,
-    "frequency": 0,
-    "nofraud": 0,
-    "rate": 0,
-    "conseq": 0
-   },
-   "rank": 10
-  },
-  "NJ": {
-   "score": 50,
-   "tier": "Very high",
-   "points": {
-    "lookback": 5,
-    "stay": 15,
-    "extrap": 0,
-    "clerical": 10,
-    "docs": 5,
-    "written": 5,
-    "response": 0,
-    "appeal": 0,
-    "selection": 5,
-    "notice": 0,
-    "frequency": 0,
-    "nofraud": 0,
-    "rate": 5,
-    "conseq": 0
-   },
-   "rank": 5
-  },
-  "NM": {
-   "score": 35,
-   "tier": "Elevated",
-   "points": {
-    "lookback": 15,
-    "stay": 0,
-    "extrap": 0,
-    "clerical": 10,
-    "docs": 5,
-    "written": 0,
-    "response": 5,
-    "appeal": 0,
-    "selection": 0,
-    "notice": 0,
-    "frequency": 0,
-    "nofraud": 0,
-    "rate": 0,
-    "conseq": 0
-   },
-   "rank": 19
-  },
-  "NV": {
-   "score": 35,
-   "tier": "Elevated",
-   "points": {
-    "lookback": 10,
-    "stay": 0,
-    "extrap": 0,
-    "clerical": 10,
-    "docs": 5,
-    "written": 0,
-    "response": 5,
-    "appeal": 5,
-    "selection": 0,
-    "notice": 0,
-    "frequency": 0,
-    "nofraud": 0,
-    "rate": 0,
-    "conseq": 0
-   },
-   "rank": 20
-  },
-  "NY": {
-   "score": 40,
-   "tier": "High",
-   "points": {
-    "lookback": 5,
-    "stay": 15,
-    "extrap": 0,
-    "clerical": 10,
-    "docs": 5,
-    "written": 0,
-    "response": 0,
-    "appeal": 0,
-    "selection": 5,
-    "notice": 0,
-    "frequency": 0,
-    "nofraud": 0,
-    "rate": 0,
-    "conseq": 0
-   },
-   "rank": 11
-  },
-  "OH": {
-   "score": 40,
-   "tier": "High",
-   "points": {
-    "lookback": 5,
-    "stay": 15,
-    "extrap": 0,
-    "clerical": 10,
-    "docs": 5,
-    "written": 0,
-    "response": 0,
-    "appeal": 0,
-    "selection": 0,
-    "notice": 0,
-    "frequency": 0,
-    "nofraud": 0,
-    "rate": 0,
-    "conseq": 5
-   },
-   "rank": 12
-  },
-  "OK": {
-   "score": 30,
-   "tier": "Elevated",
-   "points": {
-    "lookback": 5,
-    "stay": 15,
-    "extrap": 0,
-    "clerical": 0,
-    "docs": 5,
-    "written": 5,
-    "response": 0,
-    "appeal": 0,
-    "selection": 0,
-    "notice": 0,
-    "frequency": 0,
-    "nofraud": 0,
-    "rate": 0,
-    "conseq": 0
-   },
-   "rank": 29
-  },
-  "OR": {
-   "score": 25,
-   "tier": "Moderate",
-   "points": {
-    "lookback": 5,
-    "stay": 0,
-    "extrap": 0,
-    "clerical": 10,
-    "docs": 5,
-    "written": 0,
-    "response": 5,
-    "appeal": 0,
-    "selection": 0,
-    "notice": 0,
-    "frequency": 0,
-    "nofraud": 0,
-    "rate": 0,
-    "conseq": 0
-   },
-   "rank": 35
-  },
-  "PA": {
-   "score": 35,
-   "tier": "Elevated",
-   "points": {
-    "lookback": 10,
-    "stay": 15,
-    "extrap": 0,
-    "clerical": 0,
-    "docs": 5,
-    "written": 5,
-    "response": 0,
-    "appeal": 0,
-    "selection": 0,
-    "notice": 0,
-    "frequency": 0,
-    "nofraud": 0,
-    "rate": 0,
-    "conseq": 0
-   },
-   "rank": 21
-  },
-  "RI": {
-   "score": 20,
-   "tier": "Moderate",
-   "points": {
-    "lookback": 5,
-    "stay": 0,
-    "extrap": 0,
-    "clerical": 10,
-    "docs": 0,
-    "written": 0,
-    "response": 5,
-    "appeal": 0,
-    "selection": 0,
-    "notice": 0,
-    "frequency": 0,
-    "nofraud": 0,
-    "rate": 0,
-    "conseq": 0
-   },
-   "rank": 41
-  },
-  "SC": {
-   "score": 25,
-   "tier": "Moderate",
-   "points": {
-    "lookback": 5,
-    "stay": 0,
-    "extrap": 0,
-    "clerical": 10,
-    "docs": 5,
-    "written": 0,
-    "response": 0,
-    "appeal": 0,
-    "selection": 0,
-    "notice": 0,
-    "frequency": 5,
-    "nofraud": 0,
-    "rate": 0,
-    "conseq": 0
-   },
-   "rank": 36
-  },
-  "SD": {
-   "score": 20,
-   "tier": "Moderate",
-   "points": {
-    "lookback": 5,
-    "stay": 0,
-    "extrap": 0,
-    "clerical": 10,
-    "docs": 5,
-    "written": 0,
-    "response": 0,
-    "appeal": 0,
-    "selection": 0,
-    "notice": 0,
-    "frequency": 0,
-    "nofraud": 0,
-    "rate": 0,
-    "conseq": 0
+   "subscores": {
+    "limits": 25,
+    "process": 6
    },
    "rank": 42
   },
-  "TN": {
-   "score": 0,
-   "tier": "Low",
-   "points": {
-    "lookback": 0,
-    "stay": 0,
+  "MO": {
+   "score": 38,
+   "exact": 38.17,
+   "tier": "Elevated",
+   "levels": {
+    "lookback": 1,
     "extrap": 0,
+    "nofraud": 0,
     "clerical": 0,
-    "docs": 0,
+    "docs": 3,
+    "stay": 3,
+    "notice": 0,
+    "selection": 0,
+    "written": 3,
+    "response": 0,
+    "appeal": 0,
+    "frequency": 0,
+    "rate": 0,
+    "conseq": 3
+   },
+   "points": {
+    "lookback": 6.67,
+    "extrap": 0.0,
+    "nofraud": 0.0,
+    "clerical": 0.0,
+    "docs": 8.0,
+    "stay": 15.0,
+    "notice": 0.0,
+    "selection": 0.0,
+    "written": 2.5,
+    "response": 0.0,
+    "appeal": 0.0,
+    "frequency": 0.0,
+    "rate": 0.0,
+    "conseq": 6.0
+   },
+   "subscores": {
+    "limits": 40,
+    "process": 33
+   },
+   "rank": 20
+  },
+  "MS": {
+   "score": 27,
+   "exact": 26.67,
+   "tier": "Moderate",
+   "levels": {
+    "lookback": 1,
+    "extrap": 0,
+    "nofraud": 0,
+    "clerical": 3,
+    "docs": 3,
+    "stay": 0,
+    "notice": 0,
+    "selection": 0,
     "written": 0,
     "response": 0,
     "appeal": 0,
-    "selection": 0,
-    "notice": 0,
     "frequency": 0,
-    "nofraud": 0,
     "rate": 0,
     "conseq": 0
+   },
+   "points": {
+    "lookback": 6.67,
+    "extrap": 0.0,
+    "nofraud": 0.0,
+    "clerical": 12.0,
+    "docs": 8.0,
+    "stay": 0.0,
+    "notice": 0.0,
+    "selection": 0.0,
+    "written": 0.0,
+    "response": 0.0,
+    "appeal": 0.0,
+    "frequency": 0.0,
+    "rate": 0.0,
+    "conseq": 0.0
+   },
+   "subscores": {
+    "limits": 36,
+    "process": 0
+   },
+   "rank": 38
+  },
+  "MT": {
+   "score": 34,
+   "exact": 34.17,
+   "tier": "Elevated",
+   "levels": {
+    "lookback": 1,
+    "extrap": 0,
+    "nofraud": 0,
+    "clerical": 3,
+    "docs": 3,
+    "stay": 0,
+    "notice": 0,
+    "selection": 0,
+    "written": 0,
+    "response": 3,
+    "appeal": 0,
+    "frequency": 0,
+    "rate": 3,
+    "conseq": 0
+   },
+   "points": {
+    "lookback": 6.67,
+    "extrap": 0.0,
+    "nofraud": 0.0,
+    "clerical": 12.0,
+    "docs": 8.0,
+    "stay": 0.0,
+    "notice": 0.0,
+    "selection": 0.0,
+    "written": 0.0,
+    "response": 2.5,
+    "appeal": 0.0,
+    "frequency": 0.0,
+    "rate": 5.0,
+    "conseq": 0.0
+   },
+   "subscores": {
+    "limits": 36,
+    "process": 29
+   },
+   "rank": 23
+  },
+  "NC": {
+   "score": 54,
+   "exact": 54.17,
+   "tier": "Very high",
+   "levels": {
+    "lookback": 1,
+    "extrap": 0,
+    "nofraud": 0,
+    "clerical": 3,
+    "docs": 3,
+    "stay": 3,
+    "notice": 3,
+    "selection": 3,
+    "written": 0,
+    "response": 0,
+    "appeal": 0,
+    "frequency": 3,
+    "rate": 3,
+    "conseq": 0
+   },
+   "points": {
+    "lookback": 6.67,
+    "extrap": 0.0,
+    "nofraud": 0.0,
+    "clerical": 12.0,
+    "docs": 8.0,
+    "stay": 15.0,
+    "notice": 2.5,
+    "selection": 2.5,
+    "written": 0.0,
+    "response": 0.0,
+    "appeal": 0.0,
+    "frequency": 2.5,
+    "rate": 5.0,
+    "conseq": 0.0
+   },
+   "subscores": {
+    "limits": 56,
+    "process": 48
+   },
+   "rank": 5
+  },
+  "ND": {
+   "score": 15,
+   "exact": 14.67,
+   "tier": "Low",
+   "levels": {
+    "lookback": 1,
+    "extrap": 0,
+    "nofraud": 0,
+    "clerical": 0,
+    "docs": 3,
+    "stay": 0,
+    "notice": 0,
+    "selection": 0,
+    "written": 0,
+    "response": 0,
+    "appeal": 0,
+    "frequency": 0,
+    "rate": 0,
+    "conseq": 0
+   },
+   "points": {
+    "lookback": 6.67,
+    "extrap": 0.0,
+    "nofraud": 0.0,
+    "clerical": 0.0,
+    "docs": 8.0,
+    "stay": 0.0,
+    "notice": 0.0,
+    "selection": 0.0,
+    "written": 0.0,
+    "response": 0.0,
+    "appeal": 0.0,
+    "frequency": 0.0,
+    "rate": 0.0,
+    "conseq": 0.0
+   },
+   "subscores": {
+    "limits": 20,
+    "process": 0
+   },
+   "rank": 44
+  },
+  "NE": {
+   "score": 42,
+   "exact": 41.67,
+   "tier": "High",
+   "levels": {
+    "lookback": 1,
+    "extrap": 0,
+    "nofraud": 0,
+    "clerical": 3,
+    "docs": 3,
+    "stay": 3,
+    "notice": 0,
+    "selection": 0,
+    "written": 0,
+    "response": 0,
+    "appeal": 0,
+    "frequency": 0,
+    "rate": 0,
+    "conseq": 0
+   },
+   "points": {
+    "lookback": 6.67,
+    "extrap": 0.0,
+    "nofraud": 0.0,
+    "clerical": 12.0,
+    "docs": 8.0,
+    "stay": 15.0,
+    "notice": 0.0,
+    "selection": 0.0,
+    "written": 0.0,
+    "response": 0.0,
+    "appeal": 0.0,
+    "frequency": 0.0,
+    "rate": 0.0,
+    "conseq": 0.0
+   },
+   "subscores": {
+    "limits": 56,
+    "process": 0
+   },
+   "rank": 15
+  },
+  "NH": {
+   "score": 48,
+   "exact": 48.33,
+   "tier": "High",
+   "levels": {
+    "lookback": 2,
+    "extrap": 0,
+    "nofraud": 0,
+    "clerical": 3,
+    "docs": 3,
+    "stay": 3,
+    "notice": 0,
+    "selection": 0,
+    "written": 0,
+    "response": 0,
+    "appeal": 0,
+    "frequency": 0,
+    "rate": 0,
+    "conseq": 0
+   },
+   "points": {
+    "lookback": 13.33,
+    "extrap": 0.0,
+    "nofraud": 0.0,
+    "clerical": 12.0,
+    "docs": 8.0,
+    "stay": 15.0,
+    "notice": 0.0,
+    "selection": 0.0,
+    "written": 0.0,
+    "response": 0.0,
+    "appeal": 0.0,
+    "frequency": 0.0,
+    "rate": 0.0,
+    "conseq": 0.0
+   },
+   "subscores": {
+    "limits": 65,
+    "process": 0
+   },
+   "rank": 7
+  },
+  "NJ": {
+   "score": 52,
+   "exact": 51.67,
+   "tier": "Very high",
+   "levels": {
+    "lookback": 1,
+    "extrap": 0,
+    "nofraud": 0,
+    "clerical": 3,
+    "docs": 3,
+    "stay": 3,
+    "notice": 0,
+    "selection": 3,
+    "written": 3,
+    "response": 0,
+    "appeal": 0,
+    "frequency": 0,
+    "rate": 3,
+    "conseq": 0
+   },
+   "points": {
+    "lookback": 6.67,
+    "extrap": 0.0,
+    "nofraud": 0.0,
+    "clerical": 12.0,
+    "docs": 8.0,
+    "stay": 15.0,
+    "notice": 0.0,
+    "selection": 2.5,
+    "written": 2.5,
+    "response": 0.0,
+    "appeal": 0.0,
+    "frequency": 0.0,
+    "rate": 5.0,
+    "conseq": 0.0
+   },
+   "subscores": {
+    "limits": 56,
+    "process": 38
+   },
+   "rank": 6
+  },
+  "NM": {
+   "score": 43,
+   "exact": 42.5,
+   "tier": "High",
+   "levels": {
+    "lookback": 3,
+    "extrap": 0,
+    "nofraud": 0,
+    "clerical": 3,
+    "docs": 3,
+    "stay": 0,
+    "notice": 0,
+    "selection": 0,
+    "written": 0,
+    "response": 3,
+    "appeal": 0,
+    "frequency": 0,
+    "rate": 0,
+    "conseq": 0
+   },
+   "points": {
+    "lookback": 20.0,
+    "extrap": 0.0,
+    "nofraud": 0.0,
+    "clerical": 12.0,
+    "docs": 8.0,
+    "stay": 0.0,
+    "notice": 0.0,
+    "selection": 0.0,
+    "written": 0.0,
+    "response": 2.5,
+    "appeal": 0.0,
+    "frequency": 0.0,
+    "rate": 0.0,
+    "conseq": 0.0
+   },
+   "subscores": {
+    "limits": 54,
+    "process": 10
+   },
+   "rank": 12
+  },
+  "NV": {
+   "score": 38,
+   "exact": 38.33,
+   "tier": "Elevated",
+   "levels": {
+    "lookback": 2,
+    "extrap": 0,
+    "nofraud": 0,
+    "clerical": 3,
+    "docs": 3,
+    "stay": 0,
+    "notice": 0,
+    "selection": 0,
+    "written": 0,
+    "response": 3,
+    "appeal": 3,
+    "frequency": 0,
+    "rate": 0,
+    "conseq": 0
+   },
+   "points": {
+    "lookback": 13.33,
+    "extrap": 0.0,
+    "nofraud": 0.0,
+    "clerical": 12.0,
+    "docs": 8.0,
+    "stay": 0.0,
+    "notice": 0.0,
+    "selection": 0.0,
+    "written": 0.0,
+    "response": 2.5,
+    "appeal": 2.5,
+    "frequency": 0.0,
+    "rate": 0.0,
+    "conseq": 0.0
+   },
+   "subscores": {
+    "limits": 45,
+    "process": 19
+   },
+   "rank": 19
+  },
+  "NY": {
+   "score": 44,
+   "exact": 44.17,
+   "tier": "High",
+   "levels": {
+    "lookback": 1,
+    "extrap": 0,
+    "nofraud": 0,
+    "clerical": 3,
+    "docs": 3,
+    "stay": 3,
+    "notice": 0,
+    "selection": 3,
+    "written": 0,
+    "response": 0,
+    "appeal": 0,
+    "frequency": 0,
+    "rate": 0,
+    "conseq": 0
+   },
+   "points": {
+    "lookback": 6.67,
+    "extrap": 0.0,
+    "nofraud": 0.0,
+    "clerical": 12.0,
+    "docs": 8.0,
+    "stay": 15.0,
+    "notice": 0.0,
+    "selection": 2.5,
+    "written": 0.0,
+    "response": 0.0,
+    "appeal": 0.0,
+    "frequency": 0.0,
+    "rate": 0.0,
+    "conseq": 0.0
+   },
+   "subscores": {
+    "limits": 56,
+    "process": 10
+   },
+   "rank": 10
+  },
+  "OH": {
+   "score": 48,
+   "exact": 47.67,
+   "tier": "High",
+   "levels": {
+    "lookback": 1,
+    "extrap": 0,
+    "nofraud": 0,
+    "clerical": 3,
+    "docs": 3,
+    "stay": 3,
+    "notice": 0,
+    "selection": 0,
+    "written": 0,
+    "response": 0,
+    "appeal": 0,
+    "frequency": 0,
+    "rate": 0,
+    "conseq": 3
+   },
+   "points": {
+    "lookback": 6.67,
+    "extrap": 0.0,
+    "nofraud": 0.0,
+    "clerical": 12.0,
+    "docs": 8.0,
+    "stay": 15.0,
+    "notice": 0.0,
+    "selection": 0.0,
+    "written": 0.0,
+    "response": 0.0,
+    "appeal": 0.0,
+    "frequency": 0.0,
+    "rate": 0.0,
+    "conseq": 6.0
+   },
+   "subscores": {
+    "limits": 56,
+    "process": 23
+   },
+   "rank": 8
+  },
+  "OK": {
+   "score": 32,
+   "exact": 32.17,
+   "tier": "Elevated",
+   "levels": {
+    "lookback": 1,
+    "extrap": 0,
+    "nofraud": 0,
+    "clerical": 0,
+    "docs": 3,
+    "stay": 3,
+    "notice": 0,
+    "selection": 0,
+    "written": 3,
+    "response": 0,
+    "appeal": 0,
+    "frequency": 0,
+    "rate": 0,
+    "conseq": 0
+   },
+   "points": {
+    "lookback": 6.67,
+    "extrap": 0.0,
+    "nofraud": 0.0,
+    "clerical": 0.0,
+    "docs": 8.0,
+    "stay": 15.0,
+    "notice": 0.0,
+    "selection": 0.0,
+    "written": 2.5,
+    "response": 0.0,
+    "appeal": 0.0,
+    "frequency": 0.0,
+    "rate": 0.0,
+    "conseq": 0.0
+   },
+   "subscores": {
+    "limits": 40,
+    "process": 10
+   },
+   "rank": 28
+  },
+  "OR": {
+   "score": 28,
+   "exact": 28.34,
+   "tier": "Moderate",
+   "levels": {
+    "lookback": 1,
+    "extrap": 0,
+    "nofraud": 0,
+    "clerical": 3,
+    "docs": 3,
+    "stay": 0,
+    "notice": 0,
+    "selection": 0,
+    "written": 0,
+    "response": 2,
+    "appeal": 0,
+    "frequency": 0,
+    "rate": 0,
+    "conseq": 0
+   },
+   "points": {
+    "lookback": 6.67,
+    "extrap": 0.0,
+    "nofraud": 0.0,
+    "clerical": 12.0,
+    "docs": 8.0,
+    "stay": 0.0,
+    "notice": 0.0,
+    "selection": 0.0,
+    "written": 0.0,
+    "response": 1.67,
+    "appeal": 0.0,
+    "frequency": 0.0,
+    "rate": 0.0,
+    "conseq": 0.0
+   },
+   "subscores": {
+    "limits": 36,
+    "process": 6
+   },
+   "rank": 36
+  },
+  "PA": {
+   "score": 39,
+   "exact": 38.83,
+   "tier": "Elevated",
+   "levels": {
+    "lookback": 2,
+    "extrap": 0,
+    "nofraud": 0,
+    "clerical": 0,
+    "docs": 3,
+    "stay": 3,
+    "notice": 0,
+    "selection": 0,
+    "written": 3,
+    "response": 0,
+    "appeal": 0,
+    "frequency": 0,
+    "rate": 0,
+    "conseq": 0
+   },
+   "points": {
+    "lookback": 13.33,
+    "extrap": 0.0,
+    "nofraud": 0.0,
+    "clerical": 0.0,
+    "docs": 8.0,
+    "stay": 15.0,
+    "notice": 0.0,
+    "selection": 0.0,
+    "written": 2.5,
+    "response": 0.0,
+    "appeal": 0.0,
+    "frequency": 0.0,
+    "rate": 0.0,
+    "conseq": 0.0
+   },
+   "subscores": {
+    "limits": 49,
+    "process": 10
+   },
+   "rank": 18
+  },
+  "RI": {
+   "score": 21,
+   "exact": 21.17,
+   "tier": "Moderate",
+   "levels": {
+    "lookback": 1,
+    "extrap": 0,
+    "nofraud": 0,
+    "clerical": 3,
+    "docs": 0,
+    "stay": 0,
+    "notice": 0,
+    "selection": 0,
+    "written": 0,
+    "response": 3,
+    "appeal": 0,
+    "frequency": 0,
+    "rate": 0,
+    "conseq": 0
+   },
+   "points": {
+    "lookback": 6.67,
+    "extrap": 0.0,
+    "nofraud": 0.0,
+    "clerical": 12.0,
+    "docs": 0.0,
+    "stay": 0.0,
+    "notice": 0.0,
+    "selection": 0.0,
+    "written": 0.0,
+    "response": 2.5,
+    "appeal": 0.0,
+    "frequency": 0.0,
+    "rate": 0.0,
+    "conseq": 0.0
+   },
+   "subscores": {
+    "limits": 25,
+    "process": 10
+   },
+   "rank": 40
+  },
+  "SC": {
+   "score": 29,
+   "exact": 29.17,
+   "tier": "Moderate",
+   "levels": {
+    "lookback": 1,
+    "extrap": 0,
+    "nofraud": 0,
+    "clerical": 3,
+    "docs": 3,
+    "stay": 0,
+    "notice": 0,
+    "selection": 0,
+    "written": 0,
+    "response": 0,
+    "appeal": 0,
+    "frequency": 3,
+    "rate": 0,
+    "conseq": 0
+   },
+   "points": {
+    "lookback": 6.67,
+    "extrap": 0.0,
+    "nofraud": 0.0,
+    "clerical": 12.0,
+    "docs": 8.0,
+    "stay": 0.0,
+    "notice": 0.0,
+    "selection": 0.0,
+    "written": 0.0,
+    "response": 0.0,
+    "appeal": 0.0,
+    "frequency": 2.5,
+    "rate": 0.0,
+    "conseq": 0.0
+   },
+   "subscores": {
+    "limits": 36,
+    "process": 10
+   },
+   "rank": 34
+  },
+  "SD": {
+   "score": 27,
+   "exact": 26.67,
+   "tier": "Moderate",
+   "levels": {
+    "lookback": 1,
+    "extrap": 0,
+    "nofraud": 0,
+    "clerical": 3,
+    "docs": 3,
+    "stay": 0,
+    "notice": 0,
+    "selection": 0,
+    "written": 0,
+    "response": 0,
+    "appeal": 0,
+    "frequency": 0,
+    "rate": 0,
+    "conseq": 0
+   },
+   "points": {
+    "lookback": 6.67,
+    "extrap": 0.0,
+    "nofraud": 0.0,
+    "clerical": 12.0,
+    "docs": 8.0,
+    "stay": 0.0,
+    "notice": 0.0,
+    "selection": 0.0,
+    "written": 0.0,
+    "response": 0.0,
+    "appeal": 0.0,
+    "frequency": 0.0,
+    "rate": 0.0,
+    "conseq": 0.0
+   },
+   "subscores": {
+    "limits": 36,
+    "process": 0
+   },
+   "rank": 39
+  },
+  "TN": {
+   "score": 0,
+   "exact": 0.0,
+   "tier": "Low",
+   "levels": {
+    "lookback": 0,
+    "extrap": 0,
+    "nofraud": 0,
+    "clerical": 0,
+    "docs": 0,
+    "stay": 0,
+    "notice": 0,
+    "selection": 0,
+    "written": 0,
+    "response": 0,
+    "appeal": 0,
+    "frequency": 0,
+    "rate": 0,
+    "conseq": 0
+   },
+   "points": {
+    "lookback": 0.0,
+    "extrap": 0.0,
+    "nofraud": 0.0,
+    "clerical": 0.0,
+    "docs": 0.0,
+    "stay": 0.0,
+    "notice": 0.0,
+    "selection": 0.0,
+    "written": 0.0,
+    "response": 0.0,
+    "appeal": 0.0,
+    "frequency": 0.0,
+    "rate": 0.0,
+    "conseq": 0.0
+   },
+   "subscores": {
+    "limits": 0,
+    "process": 0
    },
    "rank": 50
   },
   "TX": {
-   "score": 10,
+   "score": 15,
+   "exact": 14.67,
    "tier": "Low",
-   "points": {
-    "lookback": 5,
-    "stay": 0,
+   "levels": {
+    "lookback": 1,
     "extrap": 0,
+    "nofraud": 0,
     "clerical": 0,
-    "docs": 5,
+    "docs": 3,
+    "stay": 0,
+    "notice": 0,
+    "selection": 0,
     "written": 0,
     "response": 0,
     "appeal": 0,
-    "selection": 0,
-    "notice": 0,
     "frequency": 0,
-    "nofraud": 0,
     "rate": 0,
     "conseq": 0
+   },
+   "points": {
+    "lookback": 6.67,
+    "extrap": 0.0,
+    "nofraud": 0.0,
+    "clerical": 0.0,
+    "docs": 8.0,
+    "stay": 0.0,
+    "notice": 0.0,
+    "selection": 0.0,
+    "written": 0.0,
+    "response": 0.0,
+    "appeal": 0.0,
+    "frequency": 0.0,
+    "rate": 0.0,
+    "conseq": 0.0
+   },
+   "subscores": {
+    "limits": 20,
+    "process": 0
+   },
+   "rank": 45
+  },
+  "UT": {
+   "score": 74,
+   "exact": 74.17,
+   "tier": "Very high",
+   "levels": {
+    "lookback": 3,
+    "extrap": 3,
+    "nofraud": 0,
+    "clerical": 3,
+    "docs": 3,
+    "stay": 3,
+    "notice": 0,
+    "selection": 0,
+    "written": 3,
+    "response": 2,
+    "appeal": 0,
+    "frequency": 0,
+    "rate": 0,
+    "conseq": 0
+   },
+   "points": {
+    "lookback": 20.0,
+    "extrap": 15.0,
+    "nofraud": 0.0,
+    "clerical": 12.0,
+    "docs": 8.0,
+    "stay": 15.0,
+    "notice": 0.0,
+    "selection": 0.0,
+    "written": 2.5,
+    "response": 1.67,
+    "appeal": 0.0,
+    "frequency": 0.0,
+    "rate": 0.0,
+    "conseq": 0.0
+   },
+   "subscores": {
+    "limits": 95,
+    "process": 16
+   },
+   "rank": 1
+  },
+  "VA": {
+   "score": 55,
+   "exact": 55.0,
+   "tier": "Very high",
+   "levels": {
+    "lookback": 3,
+    "extrap": 0,
+    "nofraud": 0,
+    "clerical": 3,
+    "docs": 3,
+    "stay": 3,
+    "notice": 0,
+    "selection": 0,
+    "written": 0,
+    "response": 0,
+    "appeal": 0,
+    "frequency": 0,
+    "rate": 0,
+    "conseq": 0
+   },
+   "points": {
+    "lookback": 20.0,
+    "extrap": 0.0,
+    "nofraud": 0.0,
+    "clerical": 12.0,
+    "docs": 8.0,
+    "stay": 15.0,
+    "notice": 0.0,
+    "selection": 0.0,
+    "written": 0.0,
+    "response": 0.0,
+    "appeal": 0.0,
+    "frequency": 0.0,
+    "rate": 0.0,
+    "conseq": 0.0
+   },
+   "subscores": {
+    "limits": 74,
+    "process": 0
+   },
+   "rank": 4
+  },
+  "VT": {
+   "score": 30,
+   "exact": 29.67,
+   "tier": "Elevated",
+   "levels": {
+    "lookback": 1,
+    "extrap": 0,
+    "nofraud": 0,
+    "clerical": 0,
+    "docs": 3,
+    "stay": 3,
+    "notice": 0,
+    "selection": 0,
+    "written": 0,
+    "response": 0,
+    "appeal": 0,
+    "frequency": 0,
+    "rate": 0,
+    "conseq": 0
+   },
+   "points": {
+    "lookback": 6.67,
+    "extrap": 0.0,
+    "nofraud": 0.0,
+    "clerical": 0.0,
+    "docs": 8.0,
+    "stay": 15.0,
+    "notice": 0.0,
+    "selection": 0.0,
+    "written": 0.0,
+    "response": 0.0,
+    "appeal": 0.0,
+    "frequency": 0.0,
+    "rate": 0.0,
+    "conseq": 0.0
+   },
+   "subscores": {
+    "limits": 40,
+    "process": 0
+   },
+   "rank": 33
+  },
+  "WA": {
+   "score": 13,
+   "exact": 13.33,
+   "tier": "Low",
+   "levels": {
+    "lookback": 2,
+    "extrap": 0,
+    "nofraud": 0,
+    "clerical": 0,
+    "docs": 0,
+    "stay": 0,
+    "notice": 0,
+    "selection": 0,
+    "written": 0,
+    "response": 0,
+    "appeal": 0,
+    "frequency": 0,
+    "rate": 0,
+    "conseq": 0
+   },
+   "points": {
+    "lookback": 13.33,
+    "extrap": 0.0,
+    "nofraud": 0.0,
+    "clerical": 0.0,
+    "docs": 0.0,
+    "stay": 0.0,
+    "notice": 0.0,
+    "selection": 0.0,
+    "written": 0.0,
+    "response": 0.0,
+    "appeal": 0.0,
+    "frequency": 0.0,
+    "rate": 0.0,
+    "conseq": 0.0
+   },
+   "subscores": {
+    "limits": 18,
+    "process": 0
    },
    "rank": 46
   },
-  "UT": {
-   "score": 65,
-   "tier": "Very high",
-   "points": {
-    "lookback": 15,
-    "stay": 15,
-    "extrap": 10,
-    "clerical": 10,
-    "docs": 5,
-    "written": 5,
-    "response": 5,
-    "appeal": 0,
-    "selection": 0,
-    "notice": 0,
-    "frequency": 0,
-    "nofraud": 0,
-    "rate": 0,
-    "conseq": 0
-   },
-   "rank": 3
-  },
-  "VA": {
-   "score": 45,
-   "tier": "High",
-   "points": {
-    "lookback": 15,
-    "stay": 15,
-    "extrap": 0,
-    "clerical": 10,
-    "docs": 5,
-    "written": 0,
-    "response": 0,
-    "appeal": 0,
-    "selection": 0,
-    "notice": 0,
-    "frequency": 0,
-    "nofraud": 0,
-    "rate": 0,
-    "conseq": 0
-   },
-   "rank": 6
-  },
-  "VT": {
-   "score": 25,
-   "tier": "Moderate",
-   "points": {
-    "lookback": 5,
-    "stay": 15,
-    "extrap": 0,
-    "clerical": 0,
-    "docs": 5,
-    "written": 0,
-    "response": 0,
-    "appeal": 0,
-    "selection": 0,
-    "notice": 0,
-    "frequency": 0,
-    "nofraud": 0,
-    "rate": 0,
-    "conseq": 0
-   },
-   "rank": 37
-  },
-  "WA": {
-   "score": 10,
-   "tier": "Low",
-   "points": {
-    "lookback": 10,
-    "stay": 0,
-    "extrap": 0,
-    "clerical": 0,
-    "docs": 0,
-    "written": 0,
-    "response": 0,
-    "appeal": 0,
-    "selection": 0,
-    "notice": 0,
-    "frequency": 0,
-    "nofraud": 0,
-    "rate": 0,
-    "conseq": 0
-   },
-   "rank": 47
-  },
   "WI": {
-   "score": 5,
+   "score": 7,
+   "exact": 6.67,
    "tier": "Low",
-   "points": {
-    "lookback": 5,
-    "stay": 0,
+   "levels": {
+    "lookback": 1,
     "extrap": 0,
+    "nofraud": 0,
     "clerical": 0,
     "docs": 0,
+    "stay": 0,
+    "notice": 0,
+    "selection": 0,
     "written": 0,
     "response": 0,
     "appeal": 0,
-    "selection": 0,
-    "notice": 0,
     "frequency": 0,
-    "nofraud": 0,
     "rate": 0,
     "conseq": 0
+   },
+   "points": {
+    "lookback": 6.67,
+    "extrap": 0.0,
+    "nofraud": 0.0,
+    "clerical": 0.0,
+    "docs": 0.0,
+    "stay": 0.0,
+    "notice": 0.0,
+    "selection": 0.0,
+    "written": 0.0,
+    "response": 0.0,
+    "appeal": 0.0,
+    "frequency": 0.0,
+    "rate": 0.0,
+    "conseq": 0.0
+   },
+   "subscores": {
+    "limits": 9,
+    "process": 0
    },
    "rank": 48
   },
   "WV": {
-   "score": 30,
+   "score": 34,
+   "exact": 34.34,
    "tier": "Elevated",
-   "points": {
-    "lookback": 5,
-    "stay": 0,
+   "levels": {
+    "lookback": 1,
     "extrap": 0,
-    "clerical": 10,
-    "docs": 5,
-    "written": 0,
-    "response": 5,
-    "appeal": 0,
-    "selection": 0,
-    "notice": 0,
-    "frequency": 0,
     "nofraud": 0,
+    "clerical": 3,
+    "docs": 3,
+    "stay": 0,
+    "notice": 0,
+    "selection": 0,
+    "written": 0,
+    "response": 2,
+    "appeal": 0,
+    "frequency": 0,
     "rate": 0,
-    "conseq": 5
+    "conseq": 3
    },
-   "rank": 30
+   "points": {
+    "lookback": 6.67,
+    "extrap": 0.0,
+    "nofraud": 0.0,
+    "clerical": 12.0,
+    "docs": 8.0,
+    "stay": 0.0,
+    "notice": 0.0,
+    "selection": 0.0,
+    "written": 0.0,
+    "response": 1.67,
+    "appeal": 0.0,
+    "frequency": 0.0,
+    "rate": 0.0,
+    "conseq": 6.0
+   },
+   "subscores": {
+    "limits": 36,
+    "process": 30
+   },
+   "rank": 22
   },
   "WY": {
-   "score": 5,
+   "score": 7,
+   "exact": 6.67,
    "tier": "Low",
-   "points": {
-    "lookback": 5,
-    "stay": 0,
+   "levels": {
+    "lookback": 1,
     "extrap": 0,
+    "nofraud": 0,
     "clerical": 0,
     "docs": 0,
+    "stay": 0,
+    "notice": 0,
+    "selection": 0,
     "written": 0,
     "response": 0,
     "appeal": 0,
-    "selection": 0,
-    "notice": 0,
     "frequency": 0,
-    "nofraud": 0,
     "rate": 0,
     "conseq": 0
+   },
+   "points": {
+    "lookback": 6.67,
+    "extrap": 0.0,
+    "nofraud": 0.0,
+    "clerical": 0.0,
+    "docs": 0.0,
+    "stay": 0.0,
+    "notice": 0.0,
+    "selection": 0.0,
+    "written": 0.0,
+    "response": 0.0,
+    "appeal": 0.0,
+    "frequency": 0.0,
+    "rate": 0.0,
+    "conseq": 0.0
+   },
+   "subscores": {
+    "limits": 9,
+    "process": 0
    },
    "rank": 49
   }
