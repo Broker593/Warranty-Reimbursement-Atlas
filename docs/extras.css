@@ -239,8 +239,9 @@
 .km-map{border:1px solid #c3cfdd;border-radius:10px;background:white;padding:6px}
 .km-svg{width:100%;height:auto;display:block}
 .km-st{stroke:#ffffff;stroke-width:1;cursor:pointer;outline:none}
-.km-st:hover,.km-st:focus-visible{stroke:#000;stroke-width:3}
-.km-st.sel{stroke:#000;stroke-width:4}
+.km-hl path{fill:none;pointer-events:none;stroke-linejoin:round;stroke-linecap:round}
+.km-hov-o{stroke:#0b1b30;stroke-width:4.5}.km-hov-i{stroke:#fff;stroke-width:1.5}
+.km-sel-o{stroke:#0b1b30;stroke-width:6.5}.km-sel-i{stroke:#fff;stroke-width:2.5}
 .km-dline{fill:none;stroke:#f2c14e;stroke-width:3;pointer-events:none}
 .km-dpart{stroke-width:3}
 .km-lab{font:bold 11px Arial,sans-serif;text-anchor:middle;pointer-events:none}
@@ -345,3 +346,37 @@
 .xpill span{font-weight:normal;margin-left:6px}
 @media(max-width:640px){.xr{padding:12px}.xw-sum{padding:12px}.xw-body{padding:0 12px 12px}.xg-v{font-size:21px}}
 @media print{.xw,.xr-more{break-inside:avoid}}
+
+/* compare states */
+.ks-cmp{display:inline-flex;align-items:center;justify-content:center;width:30px;height:30px;margin:-4px 4px -4px -6px;vertical-align:middle;cursor:pointer}
+.ks-cmp input{width:18px;height:18px;accent-color:#142943;cursor:pointer}
+.ks-table thead .ks-cmphint{display:block;margin-top:3px;font-weight:bold;font-size:11px;color:#fff;letter-spacing:.3px;text-transform:none;opacity:1}
+.xcmp-btn[aria-pressed=true]{background:#142943;color:#fff}
+.km-acts{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+.xcmpbar{position:fixed;left:0;right:0;bottom:0;z-index:60;background:#142943;color:#fff;box-shadow:0 -6px 18px #0b1b3044}
+.xcmp-in{max-width:1800px;margin:0 auto;padding:10px 4%;display:flex;flex-wrap:wrap;gap:8px 12px;align-items:center}
+.xcmp-k{font-weight:bold}.xcmp-k span{font-weight:normal;font-size:13px;opacity:.85;margin-left:4px}
+.xcmp-list{display:flex;flex-wrap:wrap;gap:6px}
+.xcmp-chip{background:#fff;color:#142943;border:0;border-radius:14px;padding:5px 10px;font-weight:bold;font-size:13px;min-height:32px}
+.xcmp-chip span{margin-left:2px}
+.xcmp-go{background:#eab65b!important;color:#142943!important;border-color:#eab65b!important;margin-left:auto}
+.xcmp-hint{margin-left:auto;font-size:14px}
+.xcmp-clear{background:transparent;color:#fff;border:1px solid #fff;border-radius:6px;padding:6px 12px;font-weight:bold;min-height:36px}
+body.has-cmpbar{padding-bottom:72px}
+.xc-head{margin:6px 0 10px}.xc-tools{align-items:center}
+.xc-add{flex-direction:column}
+.xc-scroll{max-height:78vh}
+.xc-table{min-width:720px;table-layout:fixed}
+.xc-table th,.xc-table td{vertical-align:top;font-size:14px;line-height:1.45;padding:10px 12px;border-bottom:1px solid #dce3ec;text-align:left}
+.xc-table thead th{position:sticky;top:0;z-index:3;background:#142943;color:#fff;width:210px;white-space:normal}
+.xc-table thead th a{color:#fff;font-size:15px}.xc-table thead .abbr{color:#dbe5f0}
+.xc-table thead .xc-x{display:block;margin-top:4px;font-size:12px;font-weight:normal;color:#dbe5f0}
+.xc-table .xc-corner{left:0;z-index:4;width:220px}
+.xc-table tbody th[scope=row]{position:sticky;left:0;z-index:2;background:#f7f9fc;color:#142943;width:220px}
+.xc-table tbody td{background:#fff}
+.xc-group th{background:#e3eaf3!important;color:#142943;font-size:13px;letter-spacing:.8px;text-transform:uppercase;position:sticky;left:0}
+.xc-dmark{display:inline-block;margin-left:4px;font-size:10px;font-weight:bold;letter-spacing:.5px;text-transform:uppercase;border:1.5px solid #142943;border-radius:3px;padding:0 4px;color:#142943;background:#fff}
+.xc-table.only-diff tr.xc-same{display:none}
+@media(max-width:640px){.xcmp-in{padding:8px 12px}.xcmp-go{margin-left:0}.xc-table thead th,.xc-table tbody th[scope=row]{width:150px}.xc-table .xc-corner{width:150px}body.has-cmpbar{padding-bottom:120px}}
+@media print{.xcmpbar,.xc-tools{display:none!important}.xc-scroll{max-height:none;overflow:visible}.xc-table thead th,.xc-table tbody th[scope=row]{position:static}}
+.xc-table thead tr:first-child th{text-transform:none;letter-spacing:0;font-size:14px}.xc-table thead tr:first-child .xc-corner{text-transform:uppercase;letter-spacing:1px;font-size:12px}

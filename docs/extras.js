@@ -150,6 +150,7 @@
     }
     document.querySelectorAll('[data-close]').forEach(b => b.addEventListener('click', () => { const d = $(b.dataset.close); if (d && d.open) d.close(); }));
     bindPrivacy(dlg);
+    bindCompare();
     window.addEventListener('hashchange', route);
   }
   /* ---------- site analytics (Google Analytics 4, loaded in index.html) ---------- */
@@ -179,6 +180,8 @@
     const h = (location.hash || '').replace(/^#/, '');
     const m = /^state\/([A-Za-z]{2})$/.exec(h);
     if (m) return {tab: 'states', state: m[1].toUpperCase()};
+    const cp = /^compare(?:\/([A-Za-z,]*))?$/.exec(h);
+    if (cp) return {tab: 'states', state: '', compare: (cp[1] || '').split(',').filter(Boolean)};
     const sm = /^summary\/([a-z][a-z-]*)$/.exec(h);
     if (sm) return {tab: 'summary', state: '', section: sm[1]};
     const cm = /^cases\/([a-z0-9-]+)$/.exec(h);
@@ -194,7 +197,7 @@
     const tab = r.tab;
     document.querySelectorAll('#xnav a').forEach(a => a.setAttribute('aria-current', a.dataset.tab === tab ? 'page' : 'false'));
     TABS.forEach(([id]) => { const p = $('x-' + id); if (p) p.hidden = id !== tab; });
-    ensureData().then(() => render(tab, r.state, r.section)).catch(() => {});
+    ensureData().then(() => { render(tab, r.state, r.section, r.compare); cmpUI(); }).catch(() => {});
   }
   function ensureData() {
     if (loaded) return Promise.resolve();
@@ -214,7 +217,8 @@
     return loading;
   }
   const rendered = {};
-  function render(tab, state, section) {
+  function render(tab, state, section, compare) {
+    if (tab === 'states' && compare) { renderCompare(compare); track('compare'); return; }
     if (tab === 'states') { const one = state && byAbbr[state]; one ? renderState(state) : renderHome(); track(one ? 'state/' + state : 'states'); return; }
     document.title = (TABS.find(t => t[0] === tab) || ['', ''])[1] + ' · Warranty Atlas';
     track(tab);
@@ -229,7 +233,7 @@
   function renderHome() {
     buildHome();
     document.title = 'State-by-State Matrix · Warranty Atlas';
-    $('ks-home').hidden = false; $('ks-state').hidden = true;
+    $('ks-home').hidden = false; $('ks-state').hidden = true; $('ks-compare').hidden = true;
     if (stateOpen) { stateOpen = false; window.scrollTo(0, homeScroll); }
   }
   function buildHome() {
@@ -238,7 +242,7 @@
       homeBuilt = true;
       p.innerHTML = '<div id="ks-home">' + intro({eyebrow: 'Warranty reimbursement by state', title: 'State-by-State Matrix', lead: 'One row per state with the rules that decide what a dealer is paid for warranty labor and parts.',
         here: ['How the labor rate is set, how often dealers can ask for an increase, and how fast the manufacturer must respond', 'Which labor-time guide sets paid hours, parts markup, and whether service contracts and CPO are covered', 'Flags for recent and upcoming law changes, distributor-franchised states, and each state\'s audit climate score'],
-        use: ['Check a state\'s rules before reviewing a dealer\'s rate request, a warranty claim or a chargeback', 'Click any state for its key facts, audit procedures and the statute text behind them; everything here is also in the Excel workbook on the Downloads tab'],
+        use: ['Check a state\'s rules before reviewing a dealer\'s rate request, a warranty claim or a chargeback', 'Click any state for its key facts, audit procedures and the statute text behind them', 'Tick 2 to 6 states, then press <strong>Compare</strong> to see them side by side'],
         stamp: 'Last verified <strong>' + fmtDate(maxVerified()) + '</strong><br>Checked for law changes every Monday'}) +
         '<div class="xtools"><label class="search"><span aria-hidden="true">⌕</span><input id="ksSearch" type="search" placeholder="Search a state…" aria-label="Search states"></label>' +
         '<label>Show<select id="ksFilter"><option value="">All 50 states</option><option value="sc">Service contracts or CPO covered</option><option value="guide">Uses a non-OEM guide, multiplier or actual time</option><option value="request">Has a rate-request frequency rule</option><option value="recent">Law changed in last 9 months</option><option value="change">Law change coming up</option><option value="dist">Distributor-franchised states</option><option value="high">Audit climate High or Very high</option></select></label>' +
@@ -246,12 +250,12 @@
         '<p class="xcount" id="ksCount" aria-live="polite"></p>' +
         '<p class="ks-defs"><strong>What the answers mean:</strong> ' + [['labor', 'Labor rate'], ['requests', 'Rate increase requests'], ['response', 'Manufacturer response'], ['hours', 'Paid hours'], ['parts', 'Parts markup'], ['mfrsc', 'Service contracts & CPO'], ['auditindex', 'Audit procedures']].map(x => '<a href="#summary/' + x[0] + '">' + x[1] + '</a>').join(' · ') + ' · <a href="#summary">All counts</a></p>' +
         '<div class="table-scroll xtable-scroll ks-scroll" tabindex="0" role="region" aria-label="State rules table"><table class="xtable ks-table"><thead><tr>' +
-        ['State', 'Labor rate', 'Rate increase requests', 'Manufacturer response', 'Paid hours (labor-time guide)', 'Parts markup', 'Service contracts & CPO'].map(h => '<th scope="col">' + h + '</th>').join('') +
+        ['State <small class="ks-cmphint">Tick boxes to compare</small>', 'Labor rate', 'Rate increase requests', 'Manufacturer response', 'Paid hours (labor-time guide)', 'Parts markup', 'Service contracts & CPO'].map(h => '<th scope="col">' + h + '</th>').join('') +
         '</tr></thead><tbody id="ksBody"></tbody></table></div>' +
         '<p class="xfoot"><strong>Service contracts &amp; CPO:</strong> Yes = the state\'s warranty rate and time rules apply; Conditional = only if the stated condition is met (usually who issues or pays). "Factory warranty only" means the statute is silent on or does not cover those contracts. Summaries are short on purpose; the state page has the statute quotes and conditions.</p></div>' +
-        '<div id="ks-state" hidden></div>';
+        '<div id="ks-state" hidden></div><div id="ks-compare" hidden></div>';
       ['ksSearch', 'ksFilter'].forEach(id => $(id).addEventListener('input', drawHome));
-      $('ksBody').addEventListener('click', e => { if (e.target.closest('a')) return; const tr = e.target.closest('tr[data-state]'); if (tr) location.hash = '#state/' + tr.dataset.state; });
+      $('ksBody').addEventListener('click', e => { if (e.target.closest('a,label,input')) return; const tr = e.target.closest('tr[data-state]'); if (tr) location.hash = '#state/' + tr.dataset.state; });
       drawHome();
     }
   }
@@ -276,7 +280,7 @@
     $('ksBody').innerHTML = rows.map(r => {
       const k = kf(r.state), h = hoursShort(r.state), n = nextChange(r), rc = recentChange(r);
       const d = distOf(r.state), v = idxOf(r.state);
-      return '<tr data-state="' + r.state + '"><th scope="row"><a class="ks-state" href="#state/' + r.state + '">' + esc(r.name) + ' <span class="abbr">' + r.state + '</span></a>' +
+      return '<tr data-state="' + r.state + '"><th scope="row"><label class="ks-cmp" title="Add to compare"><input type="checkbox" data-cmp="' + r.state + '"' + (CMP.includes(r.state) ? ' checked' : '') + (!CMP.includes(r.state) && CMP.length >= MAXC ? ' disabled' : '') + '><span class="sr-only">Compare ' + esc(r.name) + '</span></label><a class="ks-state" href="#state/' + r.state + '">' + esc(r.name) + ' <span class="abbr">' + r.state + '</span></a>' +
         (rc ? '<span class="ks-change xl-badge">Changed ' + fmtDate(rc.effective) + ' · last 9 months</span>' : '') +
         (n ? '<span class="ks-change">Upcoming ' + fmtDate(n.effective) + '</span>' : '') +
         (d ? '<span class="ks-dist" title="' + esc(distName(d)) + '">Distributor' + (d.coverage === 'partial' ? ' (north)' : '') + '</span>' : '') +
@@ -331,7 +335,7 @@
       '<header class="ks-head"><div><span class="eyebrow">STATE OVERVIEW</span><h1 class="ks-h1">' + esc(r.name) + ' <span class="abbr">' + abbr + '</span></h1>' +
       '<p class="ks-cites">' + esc((r.cites || []).join(' · ')) + '</p>' +
       '<p class="ks-dates"><span>Law last amended <strong>' + esc(amended(r)) + '</strong></span><span>Last verified <strong>' + fmtDate((r.verified || {}).audit_fields) + '</strong></span>' + ((r.verified || {}).last_change_check ? '<span>Checked for law changes <strong>' + fmtDate(r.verified.last_change_check) + '</strong></span>' : '') + '</p></div>' +
-      '<div class="ks-actions"><a class="xbtn-open" href="downloads/state-pdfs/' + abbr + '.pdf" target="_blank" rel="noopener">One-page PDF ↗</a>' + (safeUrl(r.official_url) ? '<a class="xbtn-save" href="' + esc(safeUrl(r.official_url)) + '" target="_blank" rel="noopener noreferrer">Official statute ↗</a>' : '') + '</div></header>' +
+      '<div class="ks-actions"><button type="button" class="xbtn-save xcmp-btn" data-cmp-toggle="' + abbr + '">+ Add to compare</button><a class="xbtn-open" href="downloads/state-pdfs/' + abbr + '.pdf" target="_blank" rel="noopener">One-page PDF ↗</a>' + (safeUrl(r.official_url) ? '<a class="xbtn-save" href="' + esc(safeUrl(r.official_url)) + '" target="_blank" rel="noopener noreferrer">Official statute ↗</a>' : '') + '</div></header>' +
       (n ? '<p class="xnextbox"><strong>Law change coming · effective ' + fmtDate(n.effective) + ':</strong> ' + esc(n.act || '') + (n.summary ? ' — ' + esc(n.summary) : '') + '</p>' : '') +
       (rc ? '<p class="xnote"><strong>Changed in last 9 months · effective ' + fmtDate(rc.effective) + ':</strong> ' + esc(rc.act || '') + (rc.summary ? ' — ' + esc(rc.summary) : '') + ' ' + link(rc.source, 'Original source') + '</p>' : '') +
       distBox(abbr) +
@@ -357,13 +361,114 @@
       '<p class="xfoot">Internal use only. Research summary, not legal advice. Verify against the cited statute before acting, and take disputes to Legal.</p>';
 
     const box = $('ks-state');
-    box.innerHTML = html; box.hidden = false; $('ks-home').hidden = true;
+    box.innerHTML = html; box.hidden = false; $('ks-home').hidden = true; $('ks-compare').hidden = true;
     $('ksJump').addEventListener('change', e => { location.hash = '#state/' + e.target.value; });
     $('ksExpand').addEventListener('click', e => {
       const open = e.currentTarget.getAttribute('aria-pressed') !== 'true';
       box.querySelectorAll('details').forEach(d => { d.open = open; });
       e.currentTarget.setAttribute('aria-pressed', String(open)); e.currentTarget.textContent = open ? 'Collapse all details' : 'Expand all details';
     });
+    window.scrollTo(0, 0);
+  }
+
+  /* ---------- Compare states side by side ---------- */
+  const MAXC = 6;
+  let CMP = [];
+  function cmpToggle(ab, on) {
+    ab = String(ab || '').toUpperCase(); if (!byAbbr[ab]) return;
+    const has = CMP.includes(ab), want = on == null ? !has : on;
+    if (want && !has) { if (CMP.length >= MAXC) { cmpUI(); return; } CMP.push(ab); }
+    if (!want && has) CMP = CMP.filter(x => x !== ab);
+    cmpUI();
+  }
+  function cmpUI() {
+    document.querySelectorAll('input[data-cmp]').forEach(i => { const on = CMP.includes(i.dataset.cmp); i.checked = on; i.disabled = !on && CMP.length >= MAXC; });
+    document.querySelectorAll('[data-cmp-toggle]').forEach(b => { const on = CMP.includes(b.dataset.cmpToggle); b.setAttribute('aria-pressed', String(on)); b.textContent = on ? '✓ In compare list' : '+ Add to compare'; b.disabled = !on && CMP.length >= MAXC; });
+    const bar = $('xcmpbar'); if (!bar) return;
+    const onCompare = /^#compare/.test(location.hash);
+    bar.hidden = !CMP.length || onCompare;
+    document.body.classList.toggle('has-cmpbar', !bar.hidden);
+    if (bar.hidden) return;
+    bar.innerHTML = '<div class="xcmp-in"><span class="xcmp-k">Compare <span>' + CMP.length + ' of ' + MAXC + ' max</span></span><span class="xcmp-list">' +
+      CMP.map(ab => '<button type="button" class="xcmp-chip" data-cmp-remove="' + ab + '" aria-label="Remove ' + esc(byAbbr[ab].name) + ' from compare">' + ab + ' <span aria-hidden="true">×</span></button>').join('') + '</span>' +
+      (CMP.length >= 2 ? '<a class="xbtn-open xcmp-go" href="#compare/' + CMP.join(',') + '">Compare ' + CMP.length + ' states →</a>' : '<span class="xcmp-hint">Pick at least one more state</span>') +
+      '<button type="button" class="xcmp-clear" data-cmp-clear>Clear</button></div>';
+  }
+  function bindCompare() {
+    const bar = document.createElement('div'); bar.id = 'xcmpbar'; bar.className = 'xcmpbar'; bar.hidden = true; bar.setAttribute('role', 'region'); bar.setAttribute('aria-label', 'States to compare');
+    document.body.appendChild(bar);
+    document.addEventListener('change', e => { const i = e.target.closest && e.target.closest('input[data-cmp]'); if (i) cmpToggle(i.dataset.cmp, i.checked); });
+    document.addEventListener('click', e => {
+      const t = e.target.closest && e.target.closest('[data-cmp-toggle],[data-cmp-remove],[data-cmp-clear]'); if (!t) return;
+      if (t.dataset.cmpToggle) cmpToggle(t.dataset.cmpToggle);
+      else if (t.dataset.cmpRemove) cmpToggle(t.dataset.cmpRemove, false);
+      else { CMP = []; cmpUI(); }
+    });
+  }
+  const cmpCell = v => typeof v === 'object' && v ? v : {h: esc(v == null || v === '' ? '—' : v), t: String(v == null || v === '' ? '—' : v)};
+  function cmpRows() {
+    const val = (ab, fn) => cmpCell(fn(ab, byAbbr[ab]));
+    return [
+      ['Overview', [
+        ['Audit climate score', (ab) => { const v = idxOf(ab); return v ? {h: tierBadge(v.tier, v.score) + '<br><span class="xpin">Rank ' + v.rank + ' of 50</span>', t: v.score + v.tier} : '—'; }],
+        ['Distributor-franchised', (ab) => { const d = distOf(ab); return d ? 'Yes' + (d.coverage === 'partial' ? ', northern counties only' : '') + ' (' + distName(d).replace(/\.$/, '') + ')' : 'No'; }],
+        ['Law last amended', (ab, r) => amended(r)],
+        ['Upcoming law change', (ab, r) => { const n = nextChange(r); return n ? fmtDate(n.effective) + ': ' + (n.act || '') : 'None tracked'; }],
+        ['Changed in last 9 months', (ab, r) => { const c = recentChange(r); return c ? fmtDate(c.effective) + ': ' + (c.act || '') : 'No'; }]
+      ]],
+      ['Labor and parts', [
+        ['Labor rate', ab => kf(ab).labor || '—'],
+        ['Rate increase requests', (ab, r) => (kf(ab).requests || '—') + ' · ' + sampleLong(r)],
+        ['Manufacturer response', (ab, r) => responseShort(r)],
+        ['Paid hours (labor-time guide)', ab => { const h = hoursShort(ab); return h.label + (h.note ? ' · ' + h.note : ''); }],
+        ['Labor-time multiplier', ab => multiplierText(ab)],
+        ['Parts markup', ab => kf(ab).parts || '—'],
+        ['Service contracts & CPO', ab => scPlain(ab)]
+      ]],
+      ['Claims and chargebacks', [
+        ['Claim decision deadline', (ab, r) => days(r.claims.decision_deadline_days) + (r.claims.deemed_approved_if_late === true ? '; late = deemed approved' : '')],
+        ['Payment deadline', (ab, r) => r.claims.payment_deadline_days != null ? days(r.claims.payment_deadline_days) + (r.claims.payment_deadline_trigger ? ' ' + r.claims.payment_deadline_trigger : '') : 'Not set in statute'],
+        ['Audit and chargeback lookback', (ab, r) => r.chargebacks.lookback_months != null ? r.chargebacks.lookback_months + ' months' : 'No limit in statute'],
+        ['Fraud extension', (ab, r) => r.chargebacks.fraud_extension ? trim(r.chargebacks.fraud_extension, 160) : 'Not stated']
+      ]],
+      ['Audit procedures', PROC_ROWS.map(([k, label, kind]) => [label, ab => procAnswer(ab, k, kind).ans])]
+    ].map(([g, rows]) => [g, rows.map(([label, fn]) => [label, fn, val])]);
+  }
+  function renderCompare(list) {
+    buildHome();
+    if (!stateOpen && !$('ks-home').hidden) homeScroll = window.scrollY;
+    stateOpen = true;
+    list = [...new Set((list || []).map(x => String(x).toUpperCase()).filter(x => byAbbr[x]))].slice(0, MAXC);
+    CMP = list.slice();
+    document.title = 'Compare ' + (list.join(', ') || 'states') + ' · Warranty Atlas';
+    const box = $('ks-compare'), link = ab => '#compare/' + list.filter(x => x !== ab).join(',');
+    const add = '<label class="xc-add">Add a state<select id="xcAdd"' + (list.length >= MAXC ? ' disabled' : '') + '><option value="">Choose…</option>' + AUDIT.filter(r => !list.includes(r.state)).map(r => '<option value="' + r.state + '">' + esc(r.name) + '</option>').join('') + '</select></label>';
+    let body = '';
+    if (list.length < 2) body = '<p class="xnote">Pick at least two states to compare. Use <strong>Add a state</strong> above, or tick states on the <a href="#states">State-by-State Matrix</a> or the <a href="#map">map</a>.</p>';
+    else {
+      const groups = cmpRows();
+      body = '<div class="table-scroll xc-scroll" tabindex="0" role="region" aria-label="State comparison table"><table class="xtable xc-table"><thead><tr><th scope="col" class="xc-corner">Rule</th>' +
+        list.map(ab => { const r = byAbbr[ab]; return '<th scope="col"><a href="#state/' + ab + '">' + esc(r.name) + '</a> <span class="abbr">' + ab + '</span><a class="xc-x" href="' + link(ab) + '" aria-label="Remove ' + esc(r.name) + '">Remove ×</a></th>'; }).join('') + '</tr></thead>' +
+        groups.map(([g, rows]) => '<tbody><tr class="xc-group"><th scope="rowgroup" colspan="' + (list.length + 1) + '">' + esc(g) + '</th></tr>' + rows.map(([label, fn, val]) => {
+          const cells = list.map(ab => val(ab, fn)), diff = new Set(cells.map(c => c.t)).size > 1;
+          return '<tr class="' + (diff ? 'xc-diff' : 'xc-same') + '"><th scope="row">' + esc(label) + (diff ? ' <span class="xc-dmark">Differs</span>' : '') + '</th>' + cells.map(c => '<td>' + c.h + '</td>').join('') + '</tr>';
+        }).join('') + '</tbody>').join('') +
+        '<tbody><tr class="xc-group"><th scope="rowgroup" colspan="' + (list.length + 1) + '">Sources</th></tr><tr><th scope="row">Links</th>' + list.map(ab => { const r = byAbbr[ab]; return '<td><a href="#state/' + ab + '">State page →</a><br><a href="downloads/state-pdfs/' + ab + '.pdf" target="_blank" rel="noopener">One-page PDF ↗</a>' + (safeUrl(r.official_url) ? '<br><a href="' + esc(safeUrl(r.official_url)) + '" target="_blank" rel="noopener noreferrer">Official statute ↗</a>' : '') + '</td>'; }).join('') + '</tr></tbody></table></div>';
+    }
+    box.innerHTML = '<nav class="ks-crumbs" aria-label="Compare navigation"><a href="#states" class="ks-back">← State-by-State Matrix</a></nav>' +
+      '<header class="xc-head"><div><span class="eyebrow">COMPARE STATES</span><h1 class="ks-h1">' + (list.length ? list.map(ab => esc(byAbbr[ab].name)).join(' · ') : 'Compare states') + '</h1>' +
+      '<p class="xpin">Side by side, up to ' + MAXC + ' states. Rows marked <strong>Differs</strong> are where the states give different answers. Open a state for the statute quotes behind each answer.</p></div></header>' +
+      '<div class="xtools xc-tools">' + add + (list.length >= 2 ? '<label class="toggle-label"><input type="checkbox" id="xcOnlyDiff"> Only show rows that differ</label><button type="button" class="quiet xc-copy" id="xcCopy">Copy link to this comparison</button>' : '') + '<span id="xcMsg" class="xpin" role="status"></span></div>' + body +
+      '<p class="xfoot">Internal use only. Research summary, not legal advice. Verify against the cited statute before acting.</p>';
+    box.hidden = false; $('ks-home').hidden = true; $('ks-state').hidden = true;
+    $('xcAdd').addEventListener('change', e => { if (e.target.value) location.hash = '#compare/' + list.concat(e.target.value).join(','); });
+    const od = $('xcOnlyDiff'); if (od) od.addEventListener('change', () => box.querySelector('.xc-table').classList.toggle('only-diff', od.checked));
+    const cp = $('xcCopy'); if (cp) cp.addEventListener('click', () => {
+      const url = location.href; let ok = false;
+      try { navigator.clipboard.writeText(url).then(() => { $('xcMsg').textContent = 'Link copied.'; }, () => { $('xcMsg').textContent = url; }); ok = true; } catch (e) {}
+      if (!ok) $('xcMsg').textContent = url;
+    });
+    cmpUI();
     window.scrollTo(0, 0);
   }
 
@@ -762,7 +867,9 @@
       labels += '<g class="km-call" data-st="' + ab + '"><rect x="982" y="' + (y - 10) + '" width="66" height="20" rx="4" fill="' + TIER_FILL[v.tier] + '"></rect><text class="km-clab" x="1015" y="' + (y + 4) + '" fill="' + TIER_INK[v.tier] + '">' + ab + ' ' + v.score + '</text></g>';
     });
     $('kmMap').innerHTML = '<svg viewBox="0 0 1056 610" class="km-svg" role="group" aria-label="U.S. map of the audit climate score by state">' +
-      '<g class="km-states">' + paths + '</g><g id="kmDistG" class="km-dist" aria-hidden="true">' + dist + '</g><g aria-hidden="true">' + lines + labels + '</g></svg>';
+      '<g class="km-states">' + paths + '</g><g id="kmDistG" class="km-dist" aria-hidden="true">' + dist + '</g>' +
+      '<g class="km-hl" aria-hidden="true"><path id="kmSelO" class="km-sel-o" d=""></path><path id="kmSelI" class="km-sel-i" d=""></path><path id="kmHovO" class="km-hov-o" d=""></path><path id="kmHovI" class="km-hov-i" d=""></path></g>' +
+      '<g aria-hidden="true">' + lines + labels + '</g></svg>';
     const svg = $('kmMap').querySelector('svg'), tip = $('kmTip');
     const show = (ab, ev) => {
       const v = idxOf(ab), r = byAbbr[ab]; if (!v) return;
@@ -775,20 +882,26 @@
       const w = tip.offsetWidth; if (x + w > wrap.width) x = Math.max(8, x - w - 32);
       tip.style.left = x + 'px'; tip.style.top = y + 'px';
     };
-    const hide = () => { tip.hidden = true; };
+    /* Outlines are drawn on a layer above every state, so neighbours can't paint over them. */
+    const outline = (o, i, ab) => { const d = ab && S[ab] ? S[ab].d : ''; $(o).setAttribute('d', d); $(i).setAttribute('d', d); };
+    let hovered = '';
+    const hover = ab => { if (ab === hovered) return; hovered = ab || ''; outline('kmHovO', 'kmHovI', hovered); };
+    const hide = () => { tip.hidden = true; hover(''); };
     const pick = ab => {
       svg.querySelectorAll('.km-st.sel').forEach(p => p.classList.remove('sel'));
       const el = svg.querySelector('.km-st[data-st="' + ab + '"]'); if (el) el.classList.add('sel');
+      outline('kmSelO', 'kmSelI', ab);
       const v = idxOf(ab), r = byAbbr[ab], d = distOf(ab);
       $('kmPanel').innerHTML = '<p class="xd-eyebrow">Selected state</p><h2>' + esc(r.name) + ' <span class="abbr">' + ab + '</span></h2><div class="ki-score"><span class="ki-num">' + v.score + '</span><span class="ki-of">/ ' + IDX.max + '</span></div>' + tierBadge(v.tier) + '<p class="xs-note">Rank ' + v.rank + ' of 50 (1 = most restrictive).</p>' +
         (d ? '<p class="km-pd"><strong>Distributor-franchised' + (d.coverage === 'partial' ? ' (northern counties only)' : '') + ':</strong> ' + esc(distName(d).replace(/\.$/, '')) + '. The rules apply to the franchisor that holds the dealer\'s franchise.</p>' : '') +
-        factorList(ab, false) + '<p><a class="xbtn-open" href="#state/' + ab + '">Open ' + esc(r.name) + ' →</a></p>';
+        factorList(ab, false) + '<p class="km-acts"><a class="xbtn-open" href="#state/' + ab + '">Open ' + esc(r.name) + ' →</a><button type="button" class="xbtn-save xcmp-btn" data-cmp-toggle="' + ab + '">+ Add to compare</button></p>';
+      cmpUI();
       if (window.innerWidth < 900) $('kmPanel').scrollIntoView({behavior: 'smooth', block: 'nearest'});
     };
-    svg.addEventListener('mousemove', e => { const t = e.target.closest('[data-st]'); if (t) show(t.dataset.st, e); else hide(); });
+    svg.addEventListener('mousemove', e => { const t = e.target.closest('[data-st]'); if (t) { hover(t.dataset.st); show(t.dataset.st, e); } else hide(); });
     svg.addEventListener('mouseleave', hide);
     svg.addEventListener('click', e => { const t = e.target.closest('[data-st]'); if (t) { hide(); pick(t.dataset.st); } });
-    svg.addEventListener('focusin', e => { const t = e.target.closest('[data-st]'); if (t) show(t.dataset.st, e); });
+    svg.addEventListener('focusin', e => { const t = e.target.closest('[data-st]'); if (t) { hover(t.dataset.st); show(t.dataset.st, e); } });
     svg.addEventListener('focusout', hide);
     svg.addEventListener('keydown', e => { if ((e.key === 'Enter' || e.key === ' ') && e.target.dataset.st) { e.preventDefault(); hide(); pick(e.target.dataset.st); } });
   }
