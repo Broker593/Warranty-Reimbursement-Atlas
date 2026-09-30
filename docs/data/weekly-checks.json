@@ -284,7 +284,9 @@
     "Update log, News and Cases & Laws simplified: at-a-glance counts on the Update log, one compact row per item with a one-line \"why it matters\" or site impact, full summaries and sources under Details, older weeks collapsed, and cases grouped by topic with topic filter buttons.",
     "Compare states: tick 2 to 6 states on the State-by-State Matrix (or use \"Add to compare\" on the map or a state page), then press Compare to see them side by side, with rows that differ marked and a shareable link.",
     "Map hover and selection outlines now wrap the whole state (drawn on top of neighboring states).",
-    "Audit climate score rebuilt (draft for owner review): each of the 14 limits now gets a level from 0 to 3 and a separate weight (weights add up to 100), so scores still run 0–100. Two sub-scores added: Chargeback limits and Process and oversight. Process steps now carry 15 points instead of 30; lookback, extrapolation and clerical-error limits carry more. \"How the score works\" shows the full levels-and-weights table."
+    "Audit climate score rebuilt (draft for owner review): each of the 14 limits now gets a level from 0 to 3 and a whole-number weight (weights add up to 100), so scores still run 0–100. Two sub-scores add up to the score: Chargeback limits (75%) and Process and oversight (25%). Process steps now carry 18 points instead of 30; lookback, extrapolation and clerical-error limits carry more. \"How the score works\" shows the full levels-and-weights table.",
+    "Cases & Laws, News, Downloads and the Update log now sit to the right as smaller secondary tabs; the three main tabs (map, matrix, dashboard) stay on the left.",
+    "Main tabs renamed: Map: U.S. Audit Climate, Matrix: State-by-State Rules (was State-by-State Matrix), Dashboard: Overview of Rule Types (was State Rules Dashboard)."
    ],
    "no_change_states": [
     "AL",

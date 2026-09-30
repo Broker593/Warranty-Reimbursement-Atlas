@@ -9,7 +9,8 @@ Method (schema 2, 2026-09-29):
   2. Weight: each limit has a weight; the 14 weights add up to 100. Weights are a judgment call and live
      only in FACTORS below, so they can be changed without re-doing any research.
   3. Points = weight x level / 3. The state's score is the sum of points (0-100), rounded to a whole number.
-  4. Two sub-scores, each rescaled to 0-100: "Chargeback limits" and "Process and oversight".
+  4. Two sub-scores that add up to the score: "Chargeback limits" (75 of the 100 points) and "Process and oversight" (25).
+     Weights are whole numbers, and graded limits use multiples of 3, so every score and sub-score is a whole number.
 
 Research summary, not legal advice and not an assessment of any company's audit program. Run directly, or via
 tools/build_exports.py, to write docs/data/audit-index.json (the site and the Excel export both read that file).
@@ -35,24 +36,25 @@ BUCKETS = [
 YES = ['Not in statute', '', '', 'Applies']
 # (id, label, bucket, weight, level descriptions for 0..3). Weights add up to 100.
 FACTORS = [
-    ('lookback', 'Short audit and chargeback lookback', 'reach', 20, ['No limit in statute, or over 12 months', '12 months', '9 months', '6 months or less']),
+    ('lookback', 'Short audit and chargeback lookback', 'reach', 21, ['No limit in statute, or over 12 months', '12 months', '9 months', '6 months or less']),
     ('extrap', 'Limits on extrapolating audit results', 'reach', 15, ['Not addressed', '', 'Restricted (e.g., only from a valid random sample)', 'Prohibited']),
     ('nofraud', 'No fraud carve-out from the time limit', 'reach', 4, ['Fraud is excepted, or not stated', '', '', 'The time limit applies even to suspected fraud']),
     ('clerical', 'No chargebacks for clerical or paperwork errors', 'grounds', 12, YES),
     ('docs', 'Limits on documentation requirements', 'grounds', 8, YES),
     ('stay', 'Chargeback held while the dealer appeals', 'collect', 15, YES),
-    ('notice', 'Advance written notice of audit', 'steps', 2.5, YES),
-    ('selection', 'Must tell the dealer why it was selected', 'steps', 2.5, YES),
-    ('written', 'Written reasons required before a chargeback', 'steps', 2.5, YES),
-    ('response', 'Dealer response or cure period', 'steps', 2.5, ['None in statute', 'Under 30 days', '30 to 59 days', '60 days or more']),
-    ('appeal', 'Internal appeal required', 'steps', 2.5, YES),
-    ('frequency', 'Cap on how often audits can occur', 'steps', 2.5, ['No cap in statute', '', 'Cap allows more than one audit a year (e.g., one per 9 months)', 'At most one audit per 12 months']),
-    ('rate', 'Rate validation limited to the dealer\'s submission', 'oversight', 5, ['Not limited in statute', '', '', 'Only the dealer\'s own ROs or a single accuracy objection']),
-    ('conseq', 'Specific consequence for improper audits', 'oversight', 6, ['None specific in statute', '', '', 'Void chargeback, violation finding, fines, interest or audit-cost reimbursement']),
+    ('notice', 'Advance written notice of audit', 'steps', 3, YES),
+    ('selection', 'Must tell the dealer why it was selected', 'steps', 3, YES),
+    ('written', 'Written reasons required before a chargeback', 'steps', 3, YES),
+    ('response', 'Dealer response or cure period', 'steps', 3, ['None in statute', 'Under 30 days', '30 to 59 days', '60 days or more']),
+    ('appeal', 'Internal appeal required', 'steps', 3, YES),
+    ('frequency', 'Cap on how often audits can occur', 'steps', 3, ['No cap in statute', '', 'Cap allows more than one audit a year (e.g., one per 9 months)', 'At most one audit per 12 months']),
+    ('rate', 'Rate validation limited to the dealer\'s submission', 'oversight', 3, ['Not limited in statute', '', '', 'Only the dealer\'s own ROs or a single accuracy objection']),
+    ('conseq', 'Specific consequence for improper audits', 'oversight', 4, ['None specific in statute', '', '', 'Void chargeback, violation finding, fines, interest or audit-cost reimbursement']),
 ]
 TIERS = [(50, 'Very high'), (40, 'High'), (30, 'Elevated'), (20, 'Moderate'), (0, 'Low')]
 TIER_RANGES = {'Very high': '50+', 'High': '40–49', 'Elevated': '30–39', 'Moderate': '20–29', 'Low': 'under 20'}
-assert abs(sum(f[3] for f in FACTORS) - 100) < 1e-9, 'weights must add up to 100'
+assert sum(f[3] for f in FACTORS) == 100, 'weights must add up to 100'
+assert all(f[3] % 3 == 0 for f in FACTORS if any(f[4][1:3])), 'graded limits need weights divisible by 3 so points stay whole numbers'
 
 
 def _load(name):
@@ -113,10 +115,10 @@ def compute(audit=None, procs=None):
         if s not in P:
             raise SystemExit(f'audit-procedures.json is missing {s}')
         L = levels(a, P[s])
-        pts = {fid: round(w * L[fid] / 3, 2) for fid, _, _, w, _ in FACTORS}
+        pts = {fid: w * L[fid] // 3 for fid, _, _, w, _ in FACTORS}
         exact = sum(pts.values())
         score = int(exact + 0.5)
-        subs = {sid: int(sum(pts[f[0]] for f in FACTORS if bucket_sub[f[2]] == sid) / sub_max[sid] * 100 + 0.5) for sid, _, _ in SUBSCORES}
+        subs = {sid: int(sum(pts[f[0]] for f in FACTORS if bucket_sub[f[2]] == sid) + 0.5) for sid, _, _ in SUBSCORES}
         states[s] = {'score': score, 'exact': round(exact, 2), 'tier': tier(score), 'levels': L, 'points': pts, 'subscores': subs}
     ranked = sorted(states, key=lambda s: (-states[s]['exact'], s))
     for i, s in enumerate(ranked, 1):
@@ -129,7 +131,7 @@ def compute(audit=None, procs=None):
         'weights_note': 'Weights are a judgment call about how much each limit constrains audits and chargebacks. Levels are read from the statute text.',
         'checked': procs.get('checked'),
         'max': 100,
-        'subscores': [{'id': i, 'label': l, 'about': t, 'max_points': sub_max[i]} for i, l, t in SUBSCORES],
+        'subscores': [{'id': i, 'label': l, 'about': t, 'max_points': sub_max[i], 'share': f'{sub_max[i]}%'} for i, l, t in SUBSCORES],
         'buckets': [{'id': i, 'label': l, 'subscore': s, 'weight': sum(f[3] for f in FACTORS if f[2] == i)} for i, l, s in BUCKETS],
         'factors': [{'id': i, 'label': l, 'bucket': b, 'weight': w, 'max': w, 'levels': lv} for i, l, b, w, lv in FACTORS],
         'tiers': [{'name': n, 'min': f, 'range': TIER_RANGES[n]} for f, n in TIERS],

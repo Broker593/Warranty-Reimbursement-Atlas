@@ -274,7 +274,7 @@ def build_xlsx(audit, cov, weekly, news, build_date, path, procs=None, idx=None,
             v = idx['states'][a['state']]; d = D.get(a['state'])
             irow.append([a['state'], a['name'], v['score'], v['tier'], v['rank'], v['subscores']['limits'], v['subscores']['process']] + [v['levels'][f] for f in F_] +
                         [(DN.get(d['distributor'], {}).get('name', '') + (' (northern counties only)' if d.get('coverage') == 'partial' else '')) if d else ''])
-        ws = sheet('Audit climate', ['State', 'Name', 'Score (0-100)', 'Tier', 'Rank', 'Chargeback limits (0-100)', 'Process and oversight (0-100)'] + [f"{f['label']}: level 0-3 (weight {f['weight']:g})" for f in idx['factors']] + ['Distributor-franchised'],
+        ws = sheet('Audit climate', ['State', 'Name', 'Score (0-100)', 'Tier', 'Rank', 'Chargeback limits (75%, of 75)', 'Process and oversight (25%, of 25)'] + [f"{f['label']}: level 0-3 (weight {f['weight']})" for f in idx['factors']] + ['Distributor-franchised'],
                    irow, [7, 15, 10, 11, 7, 12, 12] + [12] * len(F_) + [34])
         r0 = len(irow) + 3
         ws.cell(row=r0, column=1, value='How the audit climate score is built (higher = more restrictive; statute text only, not legal advice)').font = FB
@@ -282,7 +282,7 @@ def build_xlsx(audit, cov, weekly, news, build_date, path, procs=None, idx=None,
         BL = {b['id']: b['label'] for b in idx.get('buckets', [])}
         for i, f in enumerate(idx['factors'], 2):
             lv = '; '.join(f"level {n}: {t}" for n, t in zip((3, 2, 1, 0), (f['levels'][3], f['levels'][2], f['levels'][1], f['levels'][0])) if t)
-            ws.cell(row=r0 + i, column=1, value=f"{f['label']} (weight {f['weight']:g}; {BL.get(f['bucket'], '')}): {lv}").font = F
+            ws.cell(row=r0 + i, column=1, value=f"{f['label']} (weight {f['weight']}; {BL.get(f['bucket'], '')}): {lv}").font = F
         ws.cell(row=r0 + len(idx['factors']) + 1, column=1, value='Tiers: ' + '; '.join(f"{t['name']} {t['range']}" for t in idx['tiers'])).font = F
     wb.save(path)
 
@@ -347,7 +347,7 @@ def build_pdf(a, c, build_date, path, scale=1.0, proc=None, ix=None, dist=None):
     if proc and ix:
         yn_ = lambda k: 'yes' if (proc.get(k) or {}).get('required') is True else 'no'
         rd = (proc.get('dealer_response_period') or {}).get('days')
-        txt = (f"Audit climate score {ix['score']}/100 ({ix['tier']} restrictiveness; chargeback limits {ix['subscores']['limits']}/100, process and oversight {ix['subscores']['process']}/100). Advance notice: {yn_('advance_notice')}; selection basis disclosed: {yn_('selection_basis_disclosed')}; "
+        txt = (f"Audit climate score {ix['score']}/100 ({ix['tier']} restrictiveness; chargeback limits {ix['subscores']['limits']}/75 + process and oversight {ix['subscores']['process']}/25). Advance notice: {yn_('advance_notice')}; selection basis disclosed: {yn_('selection_basis_disclosed')}; "
                f"frequency cap: {trim((proc.get('audit_frequency_limit') or {}).get('limit') or 'none', 50)}; written reasons: {yn_('written_reasons_before_chargeback')}; "
                f"response period: {str(rd) + ' days' if rd else 'none'}; internal appeal: {yn_('internal_appeal')}; held pending appeal: {yn_('chargeback_stayed_pending_appeal')}; "
                f"extrapolation: {(proc.get('extrapolation') or {}).get('rule') or 'silent'}; clerical-error protection: {yn_('clerical_error_protection')}; "

@@ -12,8 +12,8 @@
   const trim = (t, n) => { t = String(t || ''); return t.length > n ? t.slice(0, n - 1).trim() + '…' : t; };
   const TODAY = (() => { try { return new Date().toLocaleDateString('en-CA', {timeZone: 'America/New_York'}); } catch (e) { return new Date().toISOString().slice(0, 10); } })();
 
-  const TABS = [['map', 'Map: U.S. Audit Climate'], ['states', 'State-by-State Matrix'], ['summary', 'State Rules Dashboard'], ['cases', 'Cases & Laws'], ['news', 'News'], ['downloads', 'Downloads'], ['updates', 'Update log']];
-  const QUIET = ['updates'];
+  const TABS = [['map', 'Map: U.S. Audit Climate'], ['states', 'Matrix: State-by-State Rules'], ['summary', 'Dashboard: Overview of Rule Types'], ['cases', 'Cases & Laws'], ['news', 'News'], ['downloads', 'Downloads'], ['updates', 'Update log']];
+  const QUIET = ['cases', 'news', 'downloads', 'updates'];
   const LEGACY = {atlas: 'states', audit: 'states', calculator: 'states', weekly: 'updates', research: 'summary'};
   const EXCL = {
     MAINT: 'Routine maintenance', TIRES: 'Tires', ALIGN: 'Alignments', INSPECT: 'State inspections',
@@ -140,7 +140,7 @@
   function buildShell() {
     const main = $('main') || document.querySelector('main');
     if (!main || $('xnav')) return;
-    main.innerHTML = '<nav id="xnav" class="xnav" aria-label="Atlas sections">' + TABS.map(([id, label]) => '<a href="#' + id + '" data-tab="' + id + '"' + (QUIET.includes(id) ? ' class="xnav-quiet"' : '') + '>' + esc(label) + '</a>').join('') + '</nav>' +
+    main.innerHTML = '<nav id="xnav" class="xnav" aria-label="Atlas sections">' + TABS.map(([id, label]) => (id === QUIET[0] ? '<span class="xnav-break" aria-hidden="true"></span>' : '') + '<a href="#' + id + '" data-tab="' + id + '"' + (QUIET.includes(id) ? ' class="xnav-quiet"' : '') + '>' + esc(label) + '</a>').join('') + '</nav>' +
       '<div id="xpanels">' + TABS.map(([id, label]) => '<section id="x-' + id + '" class="xpanel" hidden aria-label="' + esc(label) + '"><div class="xloading">Loading…</div></section>').join('') + '</div>';
     const about = $('aboutBtn'), dlg = $('aboutDialog');
     if (about && dlg) {
@@ -232,7 +232,7 @@
   let homeBuilt = false, stateOpen = false, homeScroll = 0;
   function renderHome() {
     buildHome();
-    document.title = 'State-by-State Matrix · Warranty Atlas';
+    document.title = 'Matrix: State-by-State Rules · Warranty Atlas';
     $('ks-home').hidden = false; $('ks-state').hidden = true; $('ks-compare').hidden = true;
     if (stateOpen) { stateOpen = false; window.scrollTo(0, homeScroll); }
   }
@@ -240,7 +240,7 @@
     const p = $('x-states');
     if (!homeBuilt) {
       homeBuilt = true;
-      p.innerHTML = '<div id="ks-home">' + intro({eyebrow: 'Warranty reimbursement by state', title: 'State-by-State Matrix', lead: 'One row per state with the rules that decide what a dealer is paid for warranty labor and parts.',
+      p.innerHTML = '<div id="ks-home">' + intro({eyebrow: 'Warranty reimbursement by state', title: 'Matrix: State-by-State Rules', lead: 'One row per state with the rules that decide what a dealer is paid for warranty labor and parts.',
         here: ['How the labor rate is set, how often dealers can ask for an increase, and how fast the manufacturer must respond', 'Which labor-time guide sets paid hours, parts markup, and whether service contracts and CPO are covered', 'Flags for recent and upcoming law changes, distributor-franchised states, and each state\'s audit climate score'],
         use: ['Check a state\'s rules before reviewing a dealer\'s rate request, a warranty claim or a chargeback', 'Click any state for its key facts, audit procedures and the statute text behind them', 'Tick 2 to 6 states, then press <strong>Compare</strong> to see them side by side'],
         stamp: 'Last verified <strong>' + fmtDate(maxVerified()) + '</strong><br>Checked for law changes every Monday'}) +
@@ -411,8 +411,8 @@
     return [
       ['Overview', [
         ['Audit climate score', (ab) => { const v = idxOf(ab); return v ? {h: tierBadge(v.tier, v.score) + '<br><span class="xpin">Rank ' + v.rank + ' of 50</span>', t: v.score + v.tier} : '—'; }],
-        ['Chargeback limits (sub-score)', ab => { const v = idxOf(ab); return v && v.subscores ? v.subscores.limits + ' / 100' : '—'; }],
-        ['Process and oversight (sub-score)', ab => { const v = idxOf(ab); return v && v.subscores ? v.subscores.process + ' / 100' : '—'; }],
+        [subHead('limits'), ab => { const v = idxOf(ab); return v && v.subscores ? v.subscores.limits + ' / ' + (IDX.subscores[0] || {}).max_points : '—'; }],
+        [subHead('process'), ab => { const v = idxOf(ab); return v && v.subscores ? v.subscores.process + ' / ' + (IDX.subscores[1] || {}).max_points : '—'; }],
         ['Distributor-franchised', (ab) => { const d = distOf(ab); return d ? 'Yes' + (d.coverage === 'partial' ? ', northern counties only' : '') + ' (' + distName(d).replace(/\.$/, '') + ')' : 'No'; }],
         ['Law last amended', (ab, r) => amended(r)],
         ['Upcoming law change', (ab, r) => { const n = nextChange(r); return n ? fmtDate(n.effective) + ': ' + (n.act || '') : 'None tracked'; }],
@@ -446,7 +446,7 @@
     const box = $('ks-compare'), link = ab => '#compare/' + list.filter(x => x !== ab).join(',');
     const add = '<label class="xc-add">Add a state<select id="xcAdd"' + (list.length >= MAXC ? ' disabled' : '') + '><option value="">Choose…</option>' + AUDIT.filter(r => !list.includes(r.state)).map(r => '<option value="' + r.state + '">' + esc(r.name) + '</option>').join('') + '</select></label>';
     let body = '';
-    if (list.length < 2) body = '<p class="xnote">Pick at least two states to compare. Use <strong>Add a state</strong> above, or tick states on the <a href="#states">State-by-State Matrix</a> or the <a href="#map">map</a>.</p>';
+    if (list.length < 2) body = '<p class="xnote">Pick at least two states to compare. Use <strong>Add a state</strong> above, or tick states on the <a href="#states">Matrix: State-by-State Rules</a> or the <a href="#map">map</a>.</p>';
     else {
       const groups = cmpRows();
       body = '<div class="table-scroll xc-scroll" tabindex="0" role="region" aria-label="State comparison table"><table class="xtable xc-table"><thead><tr><th scope="col" class="xc-corner">Rule</th>' +
@@ -457,7 +457,7 @@
         }).join('') + '</tbody>').join('') +
         '<tbody><tr class="xc-group"><th scope="rowgroup" colspan="' + (list.length + 1) + '">Sources</th></tr><tr><th scope="row">Links</th>' + list.map(ab => { const r = byAbbr[ab]; return '<td><a href="#state/' + ab + '">State page →</a><br><a href="downloads/state-pdfs/' + ab + '.pdf" target="_blank" rel="noopener">One-page PDF ↗</a>' + (safeUrl(r.official_url) ? '<br><a href="' + esc(safeUrl(r.official_url)) + '" target="_blank" rel="noopener noreferrer">Official statute ↗</a>' : '') + '</td>'; }).join('') + '</tr></tbody></table></div>';
     }
-    box.innerHTML = '<nav class="ks-crumbs" aria-label="Compare navigation"><a href="#states" class="ks-back">← State-by-State Matrix</a></nav>' +
+    box.innerHTML = '<nav class="ks-crumbs" aria-label="Compare navigation"><a href="#states" class="ks-back">← Matrix: State-by-State Rules</a></nav>' +
       '<header class="xc-head"><div><span class="eyebrow">COMPARE STATES</span><h1 class="ks-h1">' + (list.length ? list.map(ab => esc(byAbbr[ab].name)).join(' · ') : 'Compare states') + '</h1>' +
       '<p class="xpin">Side by side, up to ' + MAXC + ' states. Rows marked <strong>Differs</strong> are where the states give different answers. Open a state for the statute quotes behind each answer.</p></div></header>' +
       '<div class="xtools xc-tools">' + add + (list.length >= 2 ? '<label class="toggle-label"><input type="checkbox" id="xcOnlyDiff"> Only show rows that differ</label><button type="button" class="quiet xc-copy" id="xcCopy">Copy link to this comparison</button>' : '') + '<span id="xcMsg" class="xpin" role="status"></span></div>' + body +
@@ -709,7 +709,7 @@
     const changes = AUDIT.filter(r => nextChange(r));
     const R = (window.REFERENCE || {}).rules || [], groups = [...new Set(R.map(x => x.group))];
     const original = groups.map(gname => '<h3 class="xs-sub">' + esc(gname) + '</h3><div class="xs-rows">' + R.filter(x => x.group === gname).map(x => { const st = AUDIT.filter(r => ((REF[r.state] || {}).flags || {})[x.id] === true); return '<div class="xs-row"><div class="xs-label"><strong>' + esc(x.name) + '</strong><span class="xs-count">' + st.length + ' states</span></div><div><p class="xs-def">' + esc(trim(x.description, 220)) + '</p><div class="xs-chips">' + chips(st) + '</div></div></div>'; }).join('') + '</div>').join('');
-    $('x-summary').innerHTML = intro({cls: 'xd-intro', eyebrow: 'Rule counts across all 50 states', title: 'State Rules Dashboard', lead: 'Rule counts by state: how many states give each answer, what each answer means, and which states they are. Based on the law in effect today (' + fmtDate(TODAY) + ').',
+    $('x-summary').innerHTML = intro({cls: 'xd-intro', eyebrow: 'Rule counts across all 50 states', title: 'Dashboard: Overview of Rule Types', lead: 'Rule counts by state: how many states give each answer, what each answer means, and which states they are. Based on the law in effect today (' + fmtDate(TODAY) + ').',
       here: ['Bar counts for every question: labor rates, paid hours, parts, service contracts and CPO, claims and chargebacks, audit procedures', 'A plain-English definition of every answer, with the states that give it', 'Recent (last nine months) and upcoming law changes'],
       use: ['See the national picture in seconds, for example how many states cover manufacturer-backed service contracts', 'Find every state that follows a given rule, then open any state for detail'],
       stamp: (changes.length ? '<strong>Law changes coming up</strong><br>' + changes.map(r => '<a href="#state/' + r.state + '"><strong>' + r.state + '</strong></a> ' + fmtDate(nextChange(r).effective)).join('<br>') : 'No scheduled law changes')}) +
@@ -780,9 +780,11 @@
   function tierBadge(t, score) { return '<span class="ki-badge" style="background:' + TIER_FILL[t] + ';color:' + TIER_INK[t] + '">' + (score != null ? score + ' · ' : '') + esc(t) + '</span>'; }
   const fmtPts = x => { x = Math.round(x * 10) / 10; return Number.isInteger(x) ? String(x) : x.toFixed(1); };
   const dots = lv => '<span class="ki-dots" aria-label="level ' + lv + ' of 3">' + '●'.repeat(lv) + '○'.repeat(3 - lv) + '</span>';
+  const subName = x => x.label + ' (' + x.max_points + '%)';
+  const subHead = id => { const x = (IDX && IDX.subscores || []).find(y => y.id === id); return x ? subName(x) : id; };
   function subLine(v) {
     if (!v || !v.subscores || !IDX.subscores) return '';
-    return '<p class="ki-subs">' + IDX.subscores.map(x => '<span><span class="ki-subl">' + esc(x.label) + '</span> <strong>' + v.subscores[x.id] + '</strong><span class="ki-of">/100</span></span>').join('') + '</p>';
+    return '<p class="ki-subs">' + IDX.subscores.map(x => '<span><span class="ki-subl">' + esc(subName(x)) + '</span> <strong>' + v.subscores[x.id] + '</strong><span class="ki-of">/' + x.max_points + '</span></span>').join('') + '</p>';
   }
   function factorList(abbr, compact) {
     const v = idxOf(abbr); if (!v || !IDX) return '';
@@ -798,10 +800,10 @@
     const cell = t => t ? esc(t) : '<span class="ks-muted" aria-label="not used">—</span>';
     return '<details class="ki-method"><summary>How the score works</summary><div class="km-how">' +
       '<p class="km-how-lead">Each of ' + IDX.factors.length + ' limits in state law gets a <strong>level from 0 to 3</strong> (0 = not in the statute, 3 = strongest form). Each limit also has a <strong>weight</strong>; the weights add up to 100.</p>' +
-      '<p class="km-formula"><strong>Points = weight × level ÷ 3.</strong> A state\'s score is the sum of its points, from 0 to 100. <strong>Higher = more restrictive.</strong></p>' +
+      '<p class="km-formula"><strong>Points = weight × level ÷ 3.</strong> A state\'s score is the sum of its points, from 0 to 100: ' + SUB.map(x => esc(x.label) + ' (up to ' + x.max_points + ')').join(' + ') + '. <strong>Higher = more restrictive.</strong></p>' +
       '<div class="km-tiers" role="list" aria-label="Score tiers">' + tiers.map(t => '<span role="listitem" class="km-tier" style="background:' + TIER_FILL[t.name] + ';color:' + TIER_INK[t.name] + '"><strong>' + esc(t.name) + '</strong> ' + esc(t.range) + '</span>').join('') + '</div>' +
       '<div class="table-scroll km-fscroll"><table class="km-ftable km-ftable2"><thead><tr><th scope="col">Limit in state law</th><th scope="col">Weight</th><th scope="col">Level 3 (full weight)</th><th scope="col">Level 2 (⅔)</th><th scope="col">Level 1 (⅓)</th><th scope="col">Level 0 (none)</th></tr></thead>' +
-      SUB.map(sb => '<tbody><tr class="km-fsub"><th scope="rowgroup" colspan="6">Sub-score: ' + esc(sb.label) + ' · ' + fmtPts(sb.max_points) + ' of 100 points<span>' + esc(sb.about) + '</span></th></tr>' +
+      SUB.map(sb => '<tbody><tr class="km-fsub"><th scope="rowgroup" colspan="6">Sub-score: ' + esc(subName(sb)) + ' · ' + fmtPts(sb.max_points) + ' of the 100 points<span>' + esc(sb.about) + '</span></th></tr>' +
         B.filter(b => b.subscore === sb.id).map(b => '<tr class="km-fgroup"><th scope="rowgroup" colspan="6">' + esc(b.label) + ' · ' + fmtPts(b.weight) + ' points</th></tr>' +
           IDX.factors.filter(f => f.bucket === b.id).map(f => '<tr><th scope="row">' + esc(f.label) + '</th><td class="km-pts"><span>' + fmtPts(f.weight) + '</span></td>' + [3, 2, 1, 0].map(i => '<td>' + cell(f.levels[i]) + '</td>').join('') + '</tr>').join('')).join('') + '</tbody>').join('') +
       '</table></div><p class="xpin">' + esc(IDX.weights_note || '') + ' A dash means that level isn\'t used for that limit yet. Statute text only; not legal advice and not an assessment of any company\'s audit program.</p></div></details>';
@@ -837,7 +839,7 @@
     const box = $('x-map');
     box.innerHTML = intro({eyebrow: 'Audit climate score', title: 'Map: U.S. Audit Climate', lead: 'How restrictive each state\'s law is toward manufacturer warranty audits, chargebacks and retail-rate validation. <strong>Darker = more restrictive.</strong>',
       here: ['An audit climate score (0–100) built from 14 limits in state law, such as short lookback windows, chargebacks held during appeals and clerical-error protections', 'Hover a state for its score; click it for exactly how it was scored', 'Distributor-franchised states outlined, and every state ranked below the map'],
-      use: ['Compare states quickly when planning audits and chargeback reviews', 'Know where to expect more procedural steps and a higher bar before a chargeback sticks', 'Open any state\'s full rules from its popup, or see every state side by side in the <a href="#states">State-by-State Matrix</a>'],
+      use: ['Compare states quickly when planning audits and chargeback reviews', 'Know where to expect more procedural steps and a higher bar before a chargeback sticks', 'Open any state\'s full rules from its popup, or see every state side by side in the <a href="#states">Matrix: State-by-State Rules</a>'],
       note: 'Built from statute text only (' + fmtDate(IDX.checked) + '). Not legal advice and not an assessment of any company\'s audit program.'}) +
       '<div class="km-wrap"><div class="km-mapcol"><div class="km-mapbox"><div class="km-map" id="kmMap"><div class="xloading">Loading map…</div></div>' +
       '<label class="km-toggle"><input type="checkbox" id="kmDist" checked><span class="km-sw km-sw-dist" aria-hidden="true"></span><span>Outline distributor-franchised states<small>NJ: northern counties only</small></span></label></div>' +
@@ -846,7 +848,7 @@
       '<aside class="km-panel" id="kmPanel" aria-live="polite"><p class="km-hint">Click a state to see how it was scored.</p></aside></div>' +
       '<div class="km-tip" id="kmTip" hidden></div>' +
       '<div class="ks-sectionhead"><h2>All states, ranked</h2><div class="km-sort"><button type="button" class="quiet" data-sort="score" aria-pressed="true">Most limits first</button><button type="button" class="quiet" data-sort="name" aria-pressed="false">A–Z</button></div></div>' +
-      '<div class="table-scroll xtable-scroll"><table class="xtable km-table"><thead><tr><th scope="col">Rank</th><th scope="col">State</th><th scope="col">Score</th><th scope="col">Chargeback limits</th><th scope="col">Process and oversight</th><th scope="col">Limits that earned points</th></tr></thead><tbody id="kmBody"></tbody></table></div>' +
+      '<div class="table-scroll xtable-scroll"><table class="xtable km-table"><thead><tr><th scope="col">Rank</th><th scope="col">State</th><th scope="col">Score</th><th scope="col">' + esc(subHead('limits')) + '</th><th scope="col">' + esc(subHead('process')) + '</th><th scope="col">Limits that earned points</th></tr></thead><tbody id="kmBody"></tbody></table></div>' +
       indexMethod();
     drawRank('score');
     box.querySelectorAll('[data-sort]').forEach(b => b.addEventListener('click', () => { box.querySelectorAll('[data-sort]').forEach(x => x.setAttribute('aria-pressed', String(x === b))); drawRank(b.dataset.sort); }));
