@@ -132,7 +132,7 @@
   function intro(o) {
     const li = a => '<ul>' + a.map(x => '<li>' + x + '</li>').join('') + '</ul>';
     return '<div class="xhead xi' + (o.cls ? ' ' + o.cls : '') + '"><div>' + (o.eyebrow ? '<p class="xd-eyebrow">' + esc(o.eyebrow) + '</p>' : '') + '<h1 class="ks-h1">' + esc(o.title) + '</h1><p class="xi-lead">' + o.lead + '</p>' +
-      '<div class="xi-cols"><div><p class="xi-h">What\'s here</p>' + li(o.here) + '</div><div><p class="xi-h">Use it to</p>' + li(o.use) + '</div></div>' + (o.note ? '<p class="xi-note">' + o.note + '</p>' : '') + '</div>' +
+      '<div class="xi-cols"><section class="xi-card"><h2 class="xi-h">What\'s here</h2>' + li(o.here) + '</section><section class="xi-card xi-card-use"><h2 class="xi-h">Use it to</h2>' + li(o.use) + '</section></div>' + (o.note ? '<p class="xi-note"><span class="xi-i" aria-hidden="true">i</span><span>' + o.note + '</span></p>' : '') + '</div>' +
       (o.stamp ? '<aside class="xstamp">' + o.stamp + '</aside>' : '') + '</div>';
   }
 
@@ -794,19 +794,33 @@
       return '<li class="' + (pts > 0 ? 'on' : 'off') + '">' + dots(L) + '<span class="ki-flab">' + esc(f.label) + (L && f.levels && f.levels[L] && f.levels[L] !== 'Applies' && !compact ? '<small>' + esc(f.levels[L]) + '</small>' : '') + '</span><span class="ki-pts">' + fmtPts(pts) + ' / ' + fmtPts(f.weight || f.max) + '</span></li>';
     }).join('') + '</ul>';
   }
-  function indexMethod() {
-    if (!IDX) return '';
-    const tiers = IDX.tiers.slice().sort((x, y) => x.min - y.min), B = IDX.buckets || [], SUB = IDX.subscores || [];
-    const cell = t => t ? esc(t) : '<span class="ks-muted" aria-label="not used">—</span>';
-    return '<details class="ki-method"><summary>How the score works</summary><div class="km-how">' +
-      '<p class="km-how-lead">Each of ' + IDX.factors.length + ' limits in state law gets a <strong>level from 0 to 3</strong> (0 = not in the statute, 3 = strongest form). Each limit also has a <strong>weight</strong>; the weights add up to 100.</p>' +
+  function howLead() {
+    const SUB = IDX.subscores || [], tiers = IDX.tiers.slice().sort((x, y) => x.min - y.min);
+    return '<p class="km-how-lead">Each of ' + IDX.factors.length + ' limits in state law gets a <strong>level from 0 to 3</strong> (0 = not in the statute, 3 = strongest form). Each limit also has a <strong>weight</strong>; the weights add up to 100.</p>' +
       '<p class="km-formula"><strong>Points = weight × level ÷ 3.</strong> A state\'s score is the sum of its points, from 0 to 100: ' + SUB.map(x => esc(x.label) + ' (up to ' + x.max_points + ')').join(' + ') + '. <strong>Higher = more restrictive.</strong></p>' +
-      '<div class="km-tiers" role="list" aria-label="Score tiers">' + tiers.map(t => '<span role="listitem" class="km-tier" style="background:' + TIER_FILL[t.name] + ';color:' + TIER_INK[t.name] + '"><strong>' + esc(t.name) + '</strong> ' + esc(t.range) + '</span>').join('') + '</div>' +
-      '<div class="table-scroll km-fscroll"><table class="km-ftable km-ftable2"><thead><tr><th scope="col">Limit in state law</th><th scope="col">Weight</th><th scope="col">Level 3 (full weight)</th><th scope="col">Level 2 (⅔)</th><th scope="col">Level 1 (⅓)</th><th scope="col">Level 0 (none)</th></tr></thead>' +
+      '<div class="km-tiers" role="list" aria-label="Score tiers">' + tiers.map(t => '<span role="listitem" class="km-tier" style="background:' + TIER_FILL[t.name] + ';color:' + TIER_INK[t.name] + '"><strong>' + esc(t.name) + '</strong> ' + esc(t.range) + '</span>').join('') + '</div>';
+  }
+  function howTable() {
+    const B = IDX.buckets || [], SUB = IDX.subscores || [];
+    const cell = t => t ? esc(t) : '<span class="ks-muted" aria-label="not used">—</span>';
+    return '<div class="table-scroll km-fscroll"><table class="km-ftable km-ftable2"><thead><tr><th scope="col">Limit in state law</th><th scope="col">Weight</th><th scope="col">Level 3 (full weight)</th><th scope="col">Level 2 (⅔)</th><th scope="col">Level 1 (⅓)</th><th scope="col">Level 0 (none)</th></tr></thead>' +
       SUB.map(sb => '<tbody><tr class="km-fsub"><th scope="rowgroup" colspan="6">Sub-score: ' + esc(subName(sb)) + ' · ' + fmtPts(sb.max_points) + ' of the 100 points<span>' + esc(sb.about) + '</span></th></tr>' +
         B.filter(b => b.subscore === sb.id).map(b => '<tr class="km-fgroup"><th scope="rowgroup" colspan="6">' + esc(b.label) + ' · ' + fmtPts(b.weight) + ' points</th></tr>' +
           IDX.factors.filter(f => f.bucket === b.id).map(f => '<tr><th scope="row">' + esc(f.label) + '</th><td class="km-pts"><span>' + fmtPts(f.weight) + '</span></td>' + [3, 2, 1, 0].map(i => '<td>' + cell(f.levels[i]) + '</td>').join('') + '</tr>').join('')).join('') + '</tbody>').join('') +
-      '</table></div><p class="xpin">' + esc(IDX.weights_note || '') + ' A dash means that level isn\'t used for that limit yet. Statute text only; not legal advice and not an assessment of any company\'s audit program.</p></div></details>';
+      '</table></div><p class="xpin">' + esc(IDX.weights_note || '') + ' A dash means that level isn\'t used for that limit yet. Statute text only; not legal advice and not an assessment of any company\'s audit program.</p>';
+  }
+  /* collapsed version, used on state pages */
+  function indexMethod() {
+    if (!IDX) return '';
+    return '<details class="ki-method"><summary>How the score works</summary><div class="km-how">' + howLead() + howTable() + '</div></details>';
+  }
+  /* prominent version, between the map and the ranking */
+  function howSection() {
+    if (!IDX) return '';
+    const cards = (IDX.subscores || []).map(sb => '<div class="km-sc"><p class="km-sc-k">' + esc(sb.label) + '</p><p class="km-sc-v">' + sb.max_points + '%<span>of the score</span></p><p class="km-sc-a">' + esc(sb.about) + '</p><ul>' +
+      (IDX.buckets || []).filter(b => b.subscore === sb.id).map(b => '<li><strong>' + esc(b.label) + ' · ' + fmtPts(b.weight) + ' pts</strong><span>' + IDX.factors.filter(f => f.bucket === b.id).map(f => esc(f.label) + ' ' + fmtPts(f.weight)).join(' · ') + '</span></li>').join('') + '</ul></div>').join('');
+    return '<section class="km-how-sec" id="km-how" aria-labelledby="kmHowH"><h2 id="kmHowH">How the score works</h2>' + howLead() + '<div class="km-scs">' + cards + '</div>' +
+      '<details class="km-howmore"><summary>See every limit, its weight and what earns each level (0–3)</summary>' + howTable() + '</details></section>';
   }
   function distBox(abbr) {
     const d = distOf(abbr); if (!d) return '';
@@ -837,9 +851,9 @@
   const CALLOUTS = [['VT', 92], ['NH', 116], ['MA', 140], ['RI', 164], ['CT', 188], ['NJ', 214], ['DE', 240], ['MD', 266]];
   function renderMap() {
     const box = $('x-map');
-    box.innerHTML = intro({eyebrow: 'Audit climate score', title: 'Map: U.S. Audit Climate', lead: 'How restrictive each state\'s law is toward manufacturer warranty audits, chargebacks and retail-rate validation. <strong>Darker = more restrictive.</strong>',
-      here: ['An audit climate score (0–100) built from 14 limits in state law, such as short lookback windows, chargebacks held during appeals and clerical-error protections', 'Hover a state for its score; click it for exactly how it was scored', 'Distributor-franchised states outlined, and every state ranked below the map'],
-      use: ['Compare states quickly when planning audits and chargeback reviews', 'Know where to expect more procedural steps and a higher bar before a chargeback sticks', 'Open any state\'s full rules from its popup, or see every state side by side in the <a href="#states">Matrix: State-by-State Rules</a>'],
+    box.innerHTML = intro({eyebrow: 'Audit climate score', title: 'Map: U.S. Audit Climate', lead: 'How restrictive each state\'s law is toward manufacturer warranty audits, chargebacks and retail-rate validation. <strong class="xi-nw">Darker = more restrictive.</strong>',
+      here: ['A 0–100 score for every state, built from 14 limits in state law', 'Hover a state for its score; click it for the full breakdown', 'Distributor-franchised states outlined, with every state ranked below'],
+      use: ['Compare states when planning audits and chargeback reviews', 'See where more process steps and a higher bar for chargebacks apply', 'Open a state\'s full rules from its popup, or compare states in the <a href="#states">Matrix</a>'],
       note: 'Built from statute text only (' + fmtDate(IDX.checked) + '). Not legal advice and not an assessment of any company\'s audit program.'}) +
       '<div class="km-wrap"><div class="km-mapcol"><div class="km-mapbox"><div class="km-map" id="kmMap"><div class="xloading">Loading map…</div></div>' +
       '<label class="km-toggle"><input type="checkbox" id="kmDist" checked><span class="km-sw km-sw-dist" aria-hidden="true"></span><span>Outline distributor-franchised states<small>NJ: northern counties only</small></span></label></div>' +
@@ -847,9 +861,9 @@
       '</div></div>' +
       '<aside class="km-panel" id="kmPanel" aria-live="polite"><p class="km-hint">Click a state to see how it was scored.</p></aside></div>' +
       '<div class="km-tip" id="kmTip" hidden></div>' +
+      howSection() +
       '<div class="ks-sectionhead"><h2>All states, ranked</h2><div class="km-sort"><button type="button" class="quiet" data-sort="score" aria-pressed="true">Most limits first</button><button type="button" class="quiet" data-sort="name" aria-pressed="false">A–Z</button></div></div>' +
-      '<div class="table-scroll xtable-scroll"><table class="xtable km-table"><thead><tr><th scope="col">Rank</th><th scope="col">State</th><th scope="col">Score</th><th scope="col">' + esc(subHead('limits')) + '</th><th scope="col">' + esc(subHead('process')) + '</th><th scope="col">Limits that earned points</th></tr></thead><tbody id="kmBody"></tbody></table></div>' +
-      indexMethod();
+      '<div class="table-scroll xtable-scroll"><table class="xtable km-table"><thead><tr><th scope="col">Rank</th><th scope="col">State</th><th scope="col">Score</th><th scope="col">' + esc(subHead('limits')) + '</th><th scope="col">' + esc(subHead('process')) + '</th><th scope="col">Limits that earned points</th></tr></thead><tbody id="kmBody"></tbody></table></div>';
     drawRank('score');
     box.querySelectorAll('[data-sort]').forEach(b => b.addEventListener('click', () => { box.querySelectorAll('[data-sort]').forEach(x => x.setAttribute('aria-pressed', String(x === b))); drawRank(b.dataset.sort); }));
     $('kmDist').addEventListener('change', e => { const g = $('kmDistG'); if (g) g.style.display = e.target.checked ? '' : 'none'; });

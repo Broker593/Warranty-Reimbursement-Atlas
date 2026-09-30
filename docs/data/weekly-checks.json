@@ -286,7 +286,9 @@
     "Map hover and selection outlines now wrap the whole state (drawn on top of neighboring states).",
     "Audit climate score rebuilt (draft for owner review): each of the 14 limits now gets a level from 0 to 3 and a whole-number weight (weights add up to 100), so scores still run 0–100. Two sub-scores add up to the score: Chargeback limits (75%) and Process and oversight (25%). Process steps now carry 18 points instead of 30; lookback, extrapolation and clerical-error limits carry more. \"How the score works\" shows the full levels-and-weights table.",
     "Cases & Laws, News, Downloads and the Update log now sit to the right as smaller secondary tabs; the three main tabs (map, matrix, dashboard) stay on the left.",
-    "Main tabs renamed: Map: U.S. Audit Climate, Matrix: State-by-State Rules (was State-by-State Matrix), Dashboard: Overview of Rule Types (was State Rules Dashboard)."
+    "Main tabs renamed: Map: U.S. Audit Climate, Matrix: State-by-State Rules (was State-by-State Matrix), Dashboard: Overview of Rule Types (was State Rules Dashboard).",
+    "\"How the score works\" now sits between the map and the ranking, with the 75/25 split, point totals by group and the full levels-and-weights table one click away.",
+    "Page intros restyled as two cards (\"What's here\" and \"Use it to\") with tighter wording."
    ],
    "no_change_states": [
     "AL",
