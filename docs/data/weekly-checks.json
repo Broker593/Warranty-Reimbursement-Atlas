@@ -288,7 +288,10 @@
     "Cases & Laws, News, Downloads and the Update log now sit to the right as smaller secondary tabs; the three main tabs (map, matrix, dashboard) stay on the left.",
     "Main tabs renamed: Map: U.S. Audit Climate, Matrix: State-by-State Rules (was State-by-State Matrix), Dashboard: Overview of Rule Types (was State Rules Dashboard).",
     "\"How the score works\" now sits between the map and the ranking, with the 75/25 split, point totals by group and the full levels-and-weights table one click away.",
-    "Page intros restyled as two cards (\"What's here\" and \"Use it to\") with tighter wording."
+    "Page intros restyled as two cards (\"What's here\" and \"Use it to\") with tighter wording.",
+    "The Matrix now shows upcoming law changes (with links to each state) beside \"Last verified\", like the Dashboard.",
+    "The Matrix adds an Audits & chargebacks column: lookback window, whether a chargeback is held during an appeal, and the audit climate score.",
+    "The Matrix has a Detailed view (#states/detailed): 36 fields in 8 categories, each column sortable and filterable, categories you can show or hide, and compare checkboxes."
    ],
    "no_change_states": [
     "AL",

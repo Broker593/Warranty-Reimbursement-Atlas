@@ -47,6 +47,10 @@
       fewer: w + ', whichever is fewer', dealer_choice: w + ', dealer picks', greater_rate: w + ', whichever gives the higher rate'})[c.mode] || 'See details';
   }
   function sampleLong(r) { const c = r.calc || {}; return sampleShort(r) + (c.max_age_days ? '; ROs no older than ' + c.max_age_days + ' days' : ''); }
+  function lookbackShort(r) {
+    const m = (r.chargebacks || {}).lookback_months;
+    return m != null ? m + '-month lookback' : 'No lookback limit';
+  }
   function amended(r) {
     const d = r.law_dates || {};
     if (!d.last_amended_year) return 'Unknown';
@@ -62,6 +66,10 @@
   }
   function validLawDate(day) {
     return /^\d{4}-\d{2}-\d{2}$/.test(day || '') && !Number.isNaN(Date.parse(day)) && new Date(day).toISOString().slice(0, 10) === day;
+  }
+  function upcomingHtml() {
+    const ch = AUDIT.filter(r => nextChange(r));
+    return ch.length ? '<strong>Law changes coming up</strong><br>' + ch.map(r => '<a href="#state/' + r.state + '"><strong>' + r.state + '</strong></a> ' + fmtDate(nextChange(r).effective)).join('<br>') : 'No scheduled law changes';
   }
   function lawChanges() {
     const events = new Map();
@@ -180,6 +188,7 @@
     const h = (location.hash || '').replace(/^#/, '');
     const m = /^state\/([A-Za-z]{2})$/.exec(h);
     if (m) return {tab: 'states', state: m[1].toUpperCase()};
+    if (h === 'states/detailed') return {tab: 'states', state: '', section: 'detailed'};
     const cp = /^compare(?:\/([A-Za-z,]*))?$/.exec(h);
     if (cp) return {tab: 'states', state: '', compare: (cp[1] || '').split(',').filter(Boolean)};
     const sm = /^summary\/([a-z][a-z-]*)$/.exec(h);
@@ -219,7 +228,7 @@
   const rendered = {};
   function render(tab, state, section, compare) {
     if (tab === 'states' && compare) { renderCompare(compare); track('compare'); return; }
-    if (tab === 'states') { const one = state && byAbbr[state]; one ? renderState(state) : renderHome(); track(one ? 'state/' + state : 'states'); return; }
+    if (tab === 'states') { const one = state && byAbbr[state]; one ? renderState(state) : renderHome(section); track(one ? 'state/' + state : section === 'detailed' ? 'states/detailed' : 'states'); return; }
     document.title = (TABS.find(t => t[0] === tab) || ['', ''])[1] + ' · Warranty Atlas';
     track(tab);
     if (!rendered[tab]) { rendered[tab] = true; ({updates: renderWeekly, news: renderNews, downloads: renderDownloads, summary: renderSummary, map: renderMap, cases: renderCases})[tab](); }
@@ -230,8 +239,9 @@
 
   /* ---------- States: home table ---------- */
   let homeBuilt = false, stateOpen = false, homeScroll = 0;
-  function renderHome() {
+  function renderHome(section) {
     buildHome();
+    setMatrixView(section === 'detailed' ? 'detailed' : 'summary');
     document.title = 'Matrix: State-by-State Rules · Warranty Atlas';
     $('ks-home').hidden = false; $('ks-state').hidden = true; $('ks-compare').hidden = true;
     if (stateOpen) { stateOpen = false; window.scrollTo(0, homeScroll); }
@@ -241,20 +251,22 @@
     if (!homeBuilt) {
       homeBuilt = true;
       p.innerHTML = '<div id="ks-home">' + intro({eyebrow: 'Warranty reimbursement by state', title: 'Matrix: State-by-State Rules', lead: 'One row per state with the rules that decide what a dealer is paid for warranty labor and parts.',
-        here: ['How the labor rate is set, how often dealers can ask for an increase, and how fast the manufacturer must respond', 'Which labor-time guide sets paid hours, parts markup, and whether service contracts and CPO are covered', 'Flags for recent and upcoming law changes, distributor-franchised states, and each state\'s audit climate score'],
+        here: ['How the labor rate is set, how often dealers can ask for an increase, and how fast the manufacturer must respond', 'Which labor-time guide sets paid hours, parts markup, and whether service contracts and CPO are covered', 'Audits and chargebacks: the lookback window, whether a chargeback is held during an appeal, and the audit climate score', 'Flags for recent and upcoming law changes and distributor-franchised states'],
         use: ['Check a state\'s rules before reviewing a dealer\'s rate request, a warranty claim or a chargeback', 'Click any state for its key facts, audit procedures and the statute text behind them', 'Tick 2 to 6 states, then press <strong>Compare</strong> to see them side by side'],
-        stamp: 'Last verified <strong>' + fmtDate(maxVerified()) + '</strong><br>Checked for law changes every Monday'}) +
-        '<div class="xtools"><label class="search"><span aria-hidden="true">⌕</span><input id="ksSearch" type="search" placeholder="Search a state…" aria-label="Search states"></label>' +
+        stamp: 'Last verified <strong>' + fmtDate(maxVerified()) + '</strong><br>Checked for law changes every Monday<span class="xstamp-sep"></span>' + upcomingHtml()}) +
+        '<div class="ks-viewbar" role="group" aria-label="Table view"><span class="ks-viewlab">View</span><button type="button" data-view="summary" aria-pressed="true">Summary</button><button type="button" data-view="detailed" aria-pressed="false">Detailed: every field, sortable</button></div>' +
+        '<div id="ks-sum"><div class="xtools"><label class="search"><span aria-hidden="true">⌕</span><input id="ksSearch" type="search" placeholder="Search a state…" aria-label="Search states"></label>' +
         '<label>Show<select id="ksFilter"><option value="">All 50 states</option><option value="sc">Service contracts or CPO covered</option><option value="guide">Uses a non-OEM guide, multiplier or actual time</option><option value="request">Has a rate-request frequency rule</option><option value="recent">Law changed in last 9 months</option><option value="change">Law change coming up</option><option value="dist">Distributor-franchised states</option><option value="high">Audit climate High or Very high</option></select></label>' +
         '<a class="quiet ks-csv" href="#downloads">Excel workbook →</a></div>' +
         '<p class="xcount" id="ksCount" aria-live="polite"></p>' +
         '<p class="ks-defs"><strong>What the answers mean:</strong> ' + [['labor', 'Labor rate'], ['requests', 'Rate increase requests'], ['response', 'Manufacturer response'], ['hours', 'Paid hours'], ['parts', 'Parts markup'], ['mfrsc', 'Service contracts & CPO'], ['auditindex', 'Audit procedures']].map(x => '<a href="#summary/' + x[0] + '">' + x[1] + '</a>').join(' · ') + ' · <a href="#summary">All counts</a></p>' +
         '<div class="table-scroll xtable-scroll ks-scroll" tabindex="0" role="region" aria-label="State rules table"><table class="xtable ks-table"><thead><tr>' +
-        ['State <small class="ks-cmphint">Tick boxes to compare</small>', 'Labor rate', 'Rate increase requests', 'Manufacturer response', 'Paid hours (labor-time guide)', 'Parts markup', 'Service contracts & CPO'].map(h => '<th scope="col">' + h + '</th>').join('') +
+        ['State <small class="ks-cmphint">Tick boxes to compare</small>', 'Labor rate', 'Rate increase requests', 'Manufacturer response', 'Paid hours (labor-time guide)', 'Parts markup', 'Service contracts & CPO', 'Audits & chargebacks'].map(h => '<th scope="col">' + h + '</th>').join('') +
         '</tr></thead><tbody id="ksBody"></tbody></table></div>' +
-        '<p class="xfoot"><strong>Service contracts &amp; CPO:</strong> Yes = the state\'s warranty rate and time rules apply; Conditional = only if the stated condition is met (usually who issues or pays). "Factory warranty only" means the statute is silent on or does not cover those contracts. Summaries are short on purpose; the state page has the statute quotes and conditions.</p></div>' +
+        '<p class="xfoot"><strong>Service contracts &amp; CPO:</strong> Yes = the state\'s warranty rate and time rules apply; Conditional = only if the stated condition is met (usually who issues or pays). "Factory warranty only" means the statute is silent on or does not cover those contracts. Summaries are short on purpose; the state page has the statute quotes and conditions.</p></div><div id="ks-det" hidden></div></div>' +
         '<div id="ks-state" hidden></div><div id="ks-compare" hidden></div>';
       ['ksSearch', 'ksFilter'].forEach(id => $(id).addEventListener('input', drawHome));
+      p.querySelectorAll('[data-view]').forEach(b => b.addEventListener('click', () => { location.hash = b.dataset.view === 'detailed' ? '#states/detailed' : '#states'; }));
       $('ksBody').addEventListener('click', e => { if (e.target.closest('a,label,input')) return; const tr = e.target.closest('tr[data-state]'); if (tr) location.hash = '#state/' + tr.dataset.state; });
       drawHome();
     }
@@ -284,14 +296,16 @@
         (rc ? '<span class="ks-change xl-badge">Changed ' + fmtDate(rc.effective) + ' · last 9 months</span>' : '') +
         (n ? '<span class="ks-change">Upcoming ' + fmtDate(n.effective) + '</span>' : '') +
         (d ? '<span class="ks-dist" title="' + esc(distName(d)) + '">Distributor' + (d.coverage === 'partial' ? ' (north)' : '') + '</span>' : '') +
-        (v ? '<small class="ks-idx">Audit climate <strong>' + v.score + '</strong> · ' + esc(v.tier) + '</small>' : '') + '</th>' +
+        '</th>' +
         '<td>' + esc(k.labor || '—') + '</td>' +
         '<td>' + esc(k.requests || '—') + '<small>' + esc(sampleShort(r)) + '</small></td>' +
         '<td>' + esc(responseShort(r)) + '</td>' +
         '<td>' + esc(h.label) + (h.note ? '<small>' + esc(h.note) + '</small>' : '') + '</td>' +
         '<td>' + esc(k.parts || '—') + '</td>' +
-        '<td>' + scShort(r.state) + '</td></tr>';
-    }).join('') || '<tr><td colspan="7" class="xempty">No states match. Clear the search or filter.</td></tr>';
+        '<td>' + scShort(r.state) + '</td>' +
+        '<td>' + esc(lookbackShort(r)) + '<small>Chargeback held during appeal: ' + esc(procAnswer(r.state, 'chargeback_stayed_pending_appeal', 'req').ans === 'Yes' ? 'Yes' : 'Not in statute') + '</small>' +
+        (v ? '<small class="ks-idx">Audit climate <strong>' + v.score + '</strong> · ' + esc(v.tier) + '</small>' : '') + '</td></tr>';
+    }).join('') || '<tr><td colspan="8" class="xempty">No states match. Clear the search or filter.</td></tr>';
   }
 
 
@@ -369,6 +383,112 @@
       e.currentTarget.setAttribute('aria-pressed', String(open)); e.currentTarget.textContent = open ? 'Collapse all details' : 'Expand all details';
     });
     window.scrollTo(0, 0);
+  }
+
+  /* ---------- Matrix: detailed view (every field, grouped, sortable, filterable) ---------- */
+  const NONE_VALUES = new Set(['—', '', 'None', 'Not in statute', 'Not set in statute', 'Not addressed', 'Not stated', 'No', 'Silent', 'None in statute', 'No lookback limit', 'None specific', 'No validation procedure in statute', 'None tracked', 'Unknown']);
+  const TIER_RANK = {'Low': 1, 'Moderate': 2, 'Elevated': 3, 'High': 4, 'Very high': 5};
+  function detGroups() {
+    const idx = ab => idxOf(ab) || {};
+    return [
+      {g: 'Labor rate', cols: [
+        ['labor', 'Rate method', r => kf(r.state).labor || '—'],
+        ['requests', 'Rate increase requests', r => kf(r.state).requests || '—'],
+        ['sample', 'RO sample', r => sampleShort(r)],
+        ['response', 'Manufacturer response', r => responseShort(r)]]},
+      {g: 'Paid hours', cols: [
+        ['hours', 'Labor-time guide', r => hoursShort(r.state).label],
+        ['mult', 'Time multiplier', r => multiplierText(r.state)]]},
+      {g: 'Parts', cols: [['parts', 'Parts markup', r => kf(r.state).parts || '—']]},
+      {g: 'Service contracts & CPO', cols: COVS.map(([id, long, short]) => ['cov_' + id, long, r => { const x = scList(r.state).find(y => y.id === id) || {}; return (STATUS_SHORT[x.status] || '—') + (x.c && x.c.notEstablished ? ' (no rate rule)' : ''); }])},
+      {g: 'Claims', cols: [
+        ['decision', 'Claim decision deadline', r => days(r.claims.decision_deadline_days), r => r.claims.decision_deadline_days],
+        ['late', 'Late decision = approved', r => r.claims.deemed_approved_if_late === true ? 'Yes' : 'No'],
+        ['payment', 'Payment deadline', r => r.claims.payment_deadline_days != null ? days(r.claims.payment_deadline_days) : 'Not set in statute', r => r.claims.payment_deadline_days]]},
+      {g: 'Audits & chargebacks', cols: [['lookback', 'Audit and chargeback lookback', r => r.chargebacks.lookback_months != null ? r.chargebacks.lookback_months + ' months' : 'No lookback limit', r => r.chargebacks.lookback_months]]
+        .concat(PROC_ROWS.map(([k, label, kind]) => ['p_' + k, label, k === 'audit_frequency_limit' ? r => (['No cap in statute', 'Cap in statute', 'More than one a year allowed', 'At most one per 12 months'])[((idx(r.state).levels || {}).frequency) || 0] : r => procAnswer(r.state, k, kind).ans]))},
+      {g: 'Audit climate score', cols: [
+        ['score', 'Score (0–100)', r => String(idx(r.state).score ?? '—'), r => idx(r.state).score],
+        ['limits', 'Chargeback limits (75%)', r => String((idx(r.state).subscores || {}).limits ?? '—'), r => (idx(r.state).subscores || {}).limits],
+        ['process', 'Process and oversight (25%)', r => String((idx(r.state).subscores || {}).process ?? '—'), r => (idx(r.state).subscores || {}).process],
+        ['tier', 'Tier', r => idx(r.state).tier || '—', r => TIER_RANK[idx(r.state).tier]],
+        ['rank', 'Rank (1 = most restrictive)', r => String(idx(r.state).rank ?? '—'), r => idx(r.state).rank]]},
+      {g: 'Law dates and franchise', cols: [
+        ['amended', 'Law last amended', r => amended(r), r => (r.law_dates || {}).last_amended_year],
+        ['next', 'Next scheduled change', r => { const n = nextChange(r); return n ? fmtDate(n.effective) : 'None'; }],
+        ['recent', 'Changed in last 9 months', r => { const c = recentChange(r); return c ? fmtDate(c.effective) : 'No'; }],
+        ['dist', 'Distributor-franchised', r => { const d = distOf(r.state); return d ? (d.coverage === 'partial' ? 'Northern counties' : 'Yes') : 'No'; }]]}
+    ];
+  }
+  const DET = {built: false, sort: {col: '', dir: 1}, filters: {}, hidden: new Set(['Law dates and franchise']), groups: null, rows: null};
+  function detCols() { return DET.groups.filter(g => !DET.hidden.has(g.g)).flatMap(g => g.cols.map(c => ({id: c[0], label: c[1], text: c[2], num: c[3], g: g.g}))); }
+  function buildDetail() {
+    if (DET.built) return; DET.built = true;
+    DET.groups = detGroups();
+    DET.rows = AUDIT.map(r => { const o = {r}; DET.groups.forEach(g => g.cols.forEach(c => { o[c[0]] = String(c[2](r)); if (c[3]) o[c[0] + '#'] = c[3](r); })); return o; });
+    const total = DET.groups.reduce((n, g) => n + g.cols.length, 0);
+    $('ks-det').innerHTML = '<div class="kd-tools"><label class="search"><span aria-hidden="true">⌕</span><input id="kdSearch" type="search" placeholder="Search a state…" aria-label="Search states"></label>' +
+      '<button type="button" class="quiet kd-clear" id="kdClear">Clear sorting and filters</button><span class="xcount" id="kdCount" aria-live="polite"></span></div>' +
+      '<fieldset class="kd-groups"><legend>Show categories (' + total + ' fields in all)</legend>' + DET.groups.map((g, i) => '<label><input type="checkbox" data-group="' + esc(g.g) + '"' + (DET.hidden.has(g.g) ? '' : ' checked') + '> ' + esc(g.g) + ' <small>' + g.cols.length + '</small></label>').join('') + '</fieldset>' +
+      '<div class="table-scroll kd-scroll" tabindex="0" role="region" aria-label="Detailed state table"><table class="kd-table" id="kdTable"></table></div>' +
+      '<p class="xfoot">Click a column name to sort; click again to reverse. Use the box under a column name to filter. Dashes and "Not in statute" sort last. Every field here is also in the Excel workbook on the Downloads tab, with statute quotes.</p>';
+    $('kdSearch').addEventListener('input', drawDetailRows);
+    $('kdClear').addEventListener('click', () => { DET.sort = {col: '', dir: 1}; DET.filters = {}; $('kdSearch').value = ''; drawDetailHead(); });
+    $('ks-det').querySelector('.kd-groups').addEventListener('change', e => {
+      const g = e.target.dataset.group; if (!g) return;
+      if (e.target.checked) DET.hidden.delete(g);
+      else { DET.hidden.add(g); (DET.groups.find(x => x.g === g) || {cols: []}).cols.forEach(c => { delete DET.filters[c[0]]; if (DET.sort.col === c[0]) DET.sort = {col: '', dir: 1}; }); }
+      drawDetailHead();
+    });
+    drawDetailHead();
+  }
+  function drawDetailHead() {
+    const cols = detCols(), vis = DET.groups.filter(g => !DET.hidden.has(g.g));
+    const filterCtl = c => {
+      const vals = [...new Set(DET.rows.map(o => o[c.id]))];
+      const cur = DET.filters[c.id] || '';
+      if (vals.length <= 16) {
+        const counts = {}; DET.rows.forEach(o => { counts[o[c.id]] = (counts[o[c.id]] || 0) + 1; });
+        const sorted = vals.sort((a, b) => c.num ? ((DET.rows.find(o => o[c.id] === a) || {})[c.id + '#'] ?? 1e9) - ((DET.rows.find(o => o[c.id] === b) || {})[c.id + '#'] ?? 1e9) : a.localeCompare(b, undefined, {numeric: true}));
+        return '<select class="kd-f" data-col="' + c.id + '" aria-label="Filter ' + esc(c.label) + '"><option value="">All</option>' + sorted.map(v => '<option value="=' + esc(v) + '"' + (cur === '=' + v ? ' selected' : '') + '>' + esc(trim(v, 40)) + ' (' + counts[v] + ')</option>').join('') + '</select>';
+      }
+      if (c.num) return '<input class="kd-f" type="number" data-col="' + c.id + '" placeholder="At least…" aria-label="Show ' + esc(c.label) + ' of at least" value="' + esc(cur.replace(/^>/, '')) + '">';
+      return '<input class="kd-f" type="search" data-col="' + c.id + '" placeholder="Contains…" aria-label="Filter ' + esc(c.label) + '" value="' + esc(cur.replace(/^~/, '')) + '">';
+    };
+    let first = '';
+    $('kdTable').innerHTML = '<thead><tr class="kd-g"><th scope="col" rowspan="2" class="kd-corner">State<small>Tick to compare</small></th>' +
+      vis.map((g, i) => '<th scope="colgroup" colspan="' + g.cols.length + '" class="kd-gh kd-gh' + (i % 2) + '">' + esc(g.g) + '</th>').join('') + '</tr>' +
+      '<tr class="kd-c">' + cols.map(c => { const start = c.g !== first; first = c.g; const s = DET.sort.col === c.id ? (DET.sort.dir > 0 ? 'ascending' : 'descending') : 'none';
+        return '<th scope="col" aria-sort="' + s + '"' + (start ? ' class="kd-start"' : '') + '><button type="button" class="kd-sort" data-col="' + c.id + '">' + esc(c.label) + '<span class="kd-arrow" aria-hidden="true">' + (s === 'ascending' ? ' ▲' : s === 'descending' ? ' ▼' : ' ↕') + '</span></button>' + filterCtl(c) + '</th>'; }).join('') + '</tr></thead><tbody id="kdBody"></tbody>';
+    const t = $('kdTable');
+    t.querySelectorAll('.kd-sort').forEach(b => b.addEventListener('click', () => { const id = b.dataset.col; DET.sort = DET.sort.col === id ? {col: id, dir: -DET.sort.dir} : {col: id, dir: ['score', 'limits', 'process', 'tier'].includes(id) ? -1 : 1}; drawDetailHead(); }));
+    t.querySelectorAll('select.kd-f').forEach(s => s.addEventListener('change', () => { s.value ? DET.filters[s.dataset.col] = s.value : delete DET.filters[s.dataset.col]; drawDetailRows(); }));
+    t.querySelectorAll('input.kd-f').forEach(s => s.addEventListener('input', () => { s.value.trim() ? DET.filters[s.dataset.col] = (s.type === 'number' ? '>' : '~') + s.value.trim() : delete DET.filters[s.dataset.col]; drawDetailRows(); }));
+    drawDetailRows();
+  }
+  function drawDetailRows() {
+    const cols = detCols(), q = ($('kdSearch').value || '').trim().toLowerCase();
+    let L = DET.rows.filter(o => (!q || o.r.name.toLowerCase().includes(q) || o.r.state.toLowerCase() === q) &&
+      Object.entries(DET.filters).every(([id, f]) => o[id] === undefined || (f[0] === '=' ? o[id] === f.slice(1) : f[0] === '>' ? (o[id + '#'] != null && o[id + '#'] >= Number(f.slice(1))) : o[id].toLowerCase().includes(f.slice(1).toLowerCase()))));
+    const sc = cols.find(c => c.id === DET.sort.col);
+    if (sc) {
+      const d = DET.sort.dir, key = o => sc.num ? o[sc.id + '#'] : o[sc.id], empty = o => sc.num ? key(o) == null : NONE_VALUES.has(o[sc.id]);
+      L = L.slice().sort((a, b) => (empty(a) - empty(b)) || (sc.num ? (key(a) - key(b)) * d : String(key(a)).localeCompare(String(key(b)), undefined, {numeric: true}) * d) || a.r.name.localeCompare(b.r.name));
+    }
+    let first = '';
+    const starts = cols.map(c => { const s = c.g !== first; first = c.g; return s; });
+    $('kdBody').innerHTML = L.map(o => { const r = o.r;
+      return '<tr><th scope="row"><label class="ks-cmp" title="Add to compare"><input type="checkbox" data-cmp="' + r.state + '"' + (CMP.includes(r.state) ? ' checked' : '') + (!CMP.includes(r.state) && CMP.length >= MAXC ? ' disabled' : '') + '><span class="sr-only">Compare ' + esc(r.name) + '</span></label><a class="ks-state" href="#state/' + r.state + '">' + esc(r.name) + '</a> <span class="abbr">' + r.state + '</span></th>' +
+        cols.map((c, i) => '<td' + (starts[i] ? ' class="kd-start"' : '') + (NONE_VALUES.has(o[c.id]) ? ' data-none' : '') + '>' + esc(o[c.id]) + '</td>').join('') + '</tr>'; }).join('') ||
+      '<tr><td colspan="' + (cols.length + 1) + '" class="xempty">No states match. Clear the search or a filter.</td></tr>';
+    const nf = Object.keys(DET.filters).length;
+    $('kdCount').textContent = 'Showing ' + L.length + ' of 50 states · ' + cols.length + ' columns' + (nf ? ' · ' + nf + ' filter' + (nf > 1 ? 's' : '') : '') + (sc ? ' · sorted by ' + sc.label + (sc.num ? (DET.sort.dir > 0 ? ', lowest first' : ', highest first') : (DET.sort.dir > 0 ? ', A–Z' : ', Z–A')) : '');
+  }
+  function setMatrixView(v) {
+    const det = v === 'detailed';
+    $('ks-sum').hidden = det; $('ks-det').hidden = !det;
+    document.querySelectorAll('#ks-home [data-view]').forEach(b => b.setAttribute('aria-pressed', String(b.dataset.view === v)));
+    if (det) buildDetail();
   }
 
   /* ---------- Compare states side by side ---------- */
