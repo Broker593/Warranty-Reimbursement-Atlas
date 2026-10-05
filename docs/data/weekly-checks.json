@@ -345,6 +345,108 @@
     "Automotive News remains paywalled."
    ],
    "method": "Re-checked PA SB1182, NY A8773/S8360 and IL SB1939 via nyassembly.gov (direct) and search-indexed secondary sources for PA/IL (direct fetch blocked). Searched for injunctions or repeal efforts against the RI/NE/CT/MD 10/1/2026 laws (none found). Searched broadly for new 2026 enacted or pending state warranty-reimbursement legislation and for an Ohio bill (last week's gap): found only a 2016 Ohio law (SB 242), not a live bill. Searched for news items published since 9/21/2026 on official/law-firm/dealer-association/Automotive News sources; nothing found met the recency and sourcing bar beyond what was already logged in the prior week's news entry."
+  },
+  {
+   "check_date": "2026-10-05",
+   "type": "weekly",
+   "run_by": "Claude (scheduled)",
+   "headline": "0 enacted changes, 3 pending bills (1 moved earlier than logged), 0 law-data updates; 4 laws reached 10/1/2026 effective date",
+   "summary": "Four laws logged as upcoming reached their 10/1/2026 effective date: RI actual-time warranty labor (S 2347/H 8213), NE LB972 Sec. 70, CT PA 26-24 and MD SB 345. The site's date selector and DATE_GATED already apply them. No lawsuit or injunction against any of them found in searches. NY A8773 official record shows it passed the Assembly 06/01/2026 and sits in Senate Rules (last week's log said only 'referred'). PA SB 1182 and IL SB1939 not re-verifiable beyond prior status this run. KY HB 648 (Ch. 83, effective 7/15/2026) is already loaded. No new enacted or pending 2026 warranty-reimbursement bills found in other states. No news item met the sourcing and recency bar.",
+   "items": [
+    {
+     "category": "enacted_recent",
+     "state": "RI",
+     "bill": "2026 S 2347 Sub A (P.L. 2026, ch. 180) / H 8213 Sub A (P.L. 2026, ch. 179)",
+     "effective": "2026-10-01",
+     "status": "Effective 10/01/2026 reached; no lawsuit or injunction found in search.",
+     "last_action_date": "2026-06-22",
+     "summary_short": "Actual-technician-time warranty labor rule; no change since baseline.",
+     "summary": "No new developments. Effective date not yet reached; the site's date selector already applies actual-time and CPO-required for RI on 10/1/2026.",
+     "source_url": "https://webserver.rilegislature.gov/PublicLaws/law26/law26180.htm",
+     "atlas_impact": "Now in effect; site date selector applies it automatically. No data change."
+    },
+    {
+     "category": "enacted_recent",
+     "state": "NE",
+     "bill": "LB972 (2026), Sec. 70",
+     "effective": "2026-10-01",
+     "status": "Effective 10/01/2026 reached; no lawsuit or injunction found in search.",
+     "last_action_date": "2026-04-14",
+     "summary_short": "RV scope carve-out; no change since baseline.",
+     "summary": "No new developments found.",
+     "source_url": "https://nebraskalegislature.gov/FloorDocs/109/PDF/Slip/LB972.pdf",
+     "atlas_impact": "Now in effect; site date selector applies it automatically. No data change."
+    },
+    {
+     "category": "enacted_recent",
+     "state": "CT",
+     "bill": "Public Act 26-24 (sSB 413), §§ 20-25",
+     "effective": "2026-10-01",
+     "status": "Effective 10/01/2026 reached; no lawsuit or injunction found in search.",
+     "last_action_date": "2026-05-27",
+     "summary_short": "Stop-sale/recall inventory compensation; no change since baseline.",
+     "summary": "No new developments found.",
+     "source_url": "https://www.cga.ct.gov/2026/ACT/PA/PDF/2026PA-00024-R00SB-00413-PA.PDF",
+     "atlas_impact": "Now in effect; site date selector applies it automatically. No data change."
+    },
+    {
+     "category": "enacted_recent",
+     "state": "MD",
+     "bill": "2026 SB 345 (Chapter 463; cross-filed HB 1214)",
+     "effective": "2026-10-01",
+     "status": "Effective 10/01/2026 reached; no lawsuit or injunction found in search.",
+     "last_action_date": "2026-05-12",
+     "summary_short": "MVA hearing route for association disputes; no change since baseline.",
+     "summary": "No new developments found.",
+     "source_url": "https://mgaleg.maryland.gov/mgawebsite/Legislation/Details/sb0345?ys=2026RS",
+     "atlas_impact": "Now in effect; site date selector applies it automatically. No data change."
+    },
+    {
+     "category": "pending",
+     "state": "PA",
+     "bill": "SB 1182 (2025-26), PN 1866",
+     "effective": null,
+     "status": "No new action found in search this run (not re-verified on the official site; prior status carried forward).",
+     "last_action_date": "2026-07-01",
+     "summary_short": "No committee action since referral; still pending.",
+     "summary": "No change since baseline. Session ends 11/30/2026.",
+     "source_url": "https://www.palegis.us/legislation/bills/2025/sb1182",
+     "atlas_impact": "Watch only, unchanged."
+    },
+    {
+     "category": "pending",
+     "state": "NY",
+     "bill": "A8773 (Magnarelli) / S8360 (Cooney), 2025-26",
+     "effective": null,
+     "status": "Official record: passed Assembly 06/01/2026, delivered to Senate, referred to Rules. No Senate action since.",
+     "last_action_date": "2026-06-01",
+     "summary_short": "No Senate action since referral; still pending.",
+     "summary": "No change since baseline. Bills die 12/31/2026.",
+     "source_url": "https://nyassembly.gov/leg/?default_fld=&leg_video=&bn=A08773&term=2025&Summary=Y&Actions=Y",
+     "atlas_impact": "Watch only, unchanged."
+    },
+    {
+     "category": "pending",
+     "state": "IL",
+     "bill": "SB1939 (104th GA), as amended by Senate Floor Amendments 1-2",
+     "effective": null,
+     "status": "No new action found in search this run (not re-verified on the official site; prior status carried forward).",
+     "last_action_date": "2026-03-20",
+     "summary_short": "No House action since Rules re-assignment; still pending.",
+     "summary": "No change since baseline. Could move in the Nov/Dec 2026 veto or lame-duck session.",
+     "source_url": "https://www.ilga.gov/Legislation/BillStatus?DocNum=1939&GAID=18&DocTypeID=SB&SessionID=114",
+     "atlas_impact": "Watch only, unchanged."
+    }
+   ],
+   "site_changes": [],
+   "no_change_states": [
+    "All 50 states: no new enacted law changing warranty-reimbursement rules found"
+   ],
+   "gaps": [
+    "PA palegis.us and IL ilga.gov bill pages not re-fetched this run; status carried from 09-28 check.",
+    "No dedicated search of every state legislature site; broad web searches only."
+   ],
+   "method": "Web searches plus official-site fetches (nyassembly.gov, Kentucky LRC); pending bills not loaded as law."
   }
  ]
 }
