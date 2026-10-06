@@ -66,7 +66,7 @@ Tabs: **Map: U.S. Audit Climate** (home) · **Matrix: State-by-State Rules** · 
 | `docs/data/news.json` | 3–5 relevant items per week, labeled by source type and perspective. |
 | `docs/downloads/` | Excel workbook, one-page PDF per state and an all-states PDF. Built by `tools/build_exports.py`. (The state-PDF ZIP and CSV exports were retired 2026-09-28.) |
 
-"Silent" / "Not set in statute" means the reviewed statute says nothing; contracts, regulations or other law may still apply.
+"Silent" / "Not set in statute" means the reviewed statute says nothing and no state agency rule was found (all 50 states' rules checked 2026-10-06); contracts or other law may still apply. Where an agency rule sets a limit (Tennessee), the Atlas records it with the rule citation.
 
 A retail-rate calculator was built and removed on September 25, 2026 pending a redesign; the sample rules remain on each state page and in the Excel workbook.
 

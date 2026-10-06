@@ -191,7 +191,7 @@ window.COVERAGE_V3 = [
   "definition_cite": "C.R.S. § 44-20-141.5(1) (in-section definitions incl. (1)(g) 'warranty obligation', (1)(a) 'manufacturer' includes distributor)",
   "official_url": "Mirror read: https://law.justia.com/codes/colorado/title-44/automobiles/article-20/part-1/section-44-20-141-5/ (2025 C.R.S.). Official: enrolled SB 23-078 at https://content.leg.colorado.gov/sites/default/files/2023a_078_signed.pdf; official C.R.S. portal via leg.colorado.gov (LexisNexis-hosted).",
   "source_quality": "mirror",
-  "effective_notes": "SB 23-078 (L. 2023, ch. 51), eff. Aug. 7, 2023, for warranty repairs on or after that date. It removed the requirement that rates be 'reasonable and consistent' before payment is owed, and it dropped 'substantially different from similarly situated dealers' as a ground to contest. Now the only contest ground is 'materially inaccurate'. No 2024–2026 amendments to § 44-20-141.5 found (the 2026 session was not exhaustively checked).",
+  "effective_notes": "SB 23-078 (L. 2023, ch. 51), eff. Aug. 7, 2023, for warranty repairs on or after that date. It removed the requirement that rates be 'reasonable and consistent' before payment is owed, and it dropped 'substantially different from similarly situated dealers' as a ground to contest. Now the only contest ground is 'materially inaccurate'. No 2024–2026 amendments to § 44-20-141.5 (Justia 2025 C.R.S. source note; 2026 session laws reviewed).",
   "hourly_rate_method": "At the dealer's request, the retail labor rate: the dealer's choice of 100 sequential nonwarranty ROs or all nonwarranty ROs over 90 consecutive days (from the last 90 days); nonwarranty labor sales ÷ hours. Effective 45 days after submission unless contested as materially inaccurate; court or executive-director determination, retroactive. ≤1 increase request per year.",
   "coverage": {
    "factory_warranty": {
@@ -524,7 +524,7 @@ window.COVERAGE_V3 = [
   "definition_cite": "Ind. Code art. 9-13-2 and ch. 9-32-13 checked. No definition of 'warranty'. A full-text search of the 2026 Title 9 for 'service contract', 'extended warrant', 'certified pre-owned', and 'maintenance plan' found only § 9-32-13-30.1 (sales coercion) and § 9-32-19-19 (RV 'warrantor' excludes service contracts).",
   "official_url": "https://iga.in.gov/ic/2026/Title_9.pdf (official Indiana Code 2026, Title 9; § 9-32-13-15.5 at 'Compensation for warranty services')",
   "source_quality": "official",
-  "effective_notes": "P.L.92-2025, SEC.4 amended § 9-32-13-15.5. Comparing the 2024 and 2026 code shows it only deleted the sentence 'On or before filing a complaint, a dealer must serve a demand for mediation upon the manufacturer or distributor.' That is procedural, with no change to rate, hours, or scope. I did not confirm the act's exact effective date; 2025 acts are typically July 1, 2025. § 9-32-13-15 was last amended by P.L.167-2016.",
+  "effective_notes": "P.L.92-2025, SEC.4 amended § 9-32-13-15.5. Comparing the 2024 and 2026 code shows it only deleted the sentence 'On or before filing a complaint, a dealer must serve a demand for mediation upon the manufacturer or distributor.' That is procedural, with no change to rate, hours, or scope. P.L.92-2025, SECTION 4 is effective July 1, 2025. § 9-32-13-15 was last amended by P.L.167-2016.",
   "hourly_rate_method": "Dealer's retail labor rate = total labor sales for warranty-like repairs ÷ hours that generated them, using the lesser of 100 sequential customer-paid ROs or 90 consecutive days (ROs within 180 days). Takes effect automatically if the manufacturer does not rebut within 60 days. Applies 'unless otherwise agreed'. At most one declaration per 12 months. The dealer may revert to the nonretail rate at most once per 12 months.",
   "coverage": {
    "factory_warranty": {
@@ -746,7 +746,7 @@ window.COVERAGE_V3 = [
   "definition_cite": "Me. Rev. Stat. tit. 10, § 1171 (no definition of 'warranty' or 'service contract'). § 1171-A bars using affiliates to accomplish prohibited conduct.",
   "official_url": "https://legislature.maine.gov/statutes/10/title10sec1176.html",
   "source_quality": "official",
-  "effective_notes": "None found. § 1176 was last amended by PL 2013, c. 534, § 7. The revisor page data was extracted 10/20/2025, so it covers 2025 sessions. Searches found no 2026 amendment, but post-extraction changes are not independently confirmed.",
+  "effective_notes": "None found. § 1176 was last amended by PL 2013, c. 534, § 7 (eff. 8/1/2014). Revisor data extracted 10/20/2025 cover 2025; the 2026 session was checked through committee bill-disposition digests and made no change.",
   "hourly_rate_method": "The 'retail rate customarily charged by that franchisee for the same labor when not performed in satisfaction of a warranty', as long as the nonwarranty labor rate is 'routinely posted in a place conspicuous to its service customer'. The statute has no RO-sample method for labor; the 100-RO / 60-day method is for parts markup only.",
   "coverage": {
    "factory_warranty": {
@@ -931,7 +931,7 @@ window.COVERAGE_V3 = [
   "definition_cite": "Mont. Code Ann. § 61-4-213(13) (section-specific definitions incl. 'warranty', 'qualified repair', 'repair order'); § 61-4-201 checked",
   "official_url": "https://mca.legmt.gov/bills/mca/title_0610/chapter_0040/part_0020/section_0130/0610-0040-0020-0130.html",
   "source_quality": "official",
-  "effective_notes": "2025 Mont. Laws ch. 47, § 28 was a Title 61 clarity and cleanup bill (interim draft PD 0061) that reorganized definitions. The time-guide and 'warranty' wording is unchanged; its effective date was not checked. The dealer time-guide election and CPO language come from earlier law: enacted 2019 ch. 283, amended 2021 ch. 389.",
+  "effective_notes": "2025 Mont. Laws ch. 47 (HB 99, signed 4/3/2025), § 28 was a Title 61 clarity and cleanup bill that restyled the definitions lead-in. The time-guide and 'warranty' wording is unchanged. Effective 10/1/2025 under the MCA 1-2-201(1)(a) default (no special effective date seen; enrolled text read only through § 21). The dealer time-guide election and CPO language come from earlier law: enacted 2019 ch. 283, amended 2021 ch. 389.",
   "hourly_rate_method": "Prevailing retail labor rate: total labor charges on qualified repairs divided by total hours charged. The sample is all consecutive ROs containing 100 sequential qualified-repair ROs, or 90 consecutive days, whichever gives fewer, no older than 180 days. The rate takes effect 30 days after the franchisor receives notice unless it objects once, with full substantiation, that the rate is 'materially inaccurate'. The franchisor bears the burden, and any resolution is retroactive. One submission per 12 months.",
   "coverage": {
    "factory_warranty": {
@@ -968,7 +968,7 @@ window.COVERAGE_V3 = [
   "definition_cite": "N.C. Gen. Stat. § 20-286 (no definition of 'warranty', 'service contract' or CPO)",
   "official_url": "https://www.ncleg.gov/EnactedLegislation/Statutes/HTML/BySection/Chapter_20/GS_20-305.1.html",
   "source_quality": "official",
-  "effective_notes": "S.L. 2025-41 (SB 295) § 8, approved 7/1/2025 and effective on becoming law, for current and future franchises. It struck the sentence requiring time allowances to be 'reasonable and adequate' and the 'competitive with ... other franchised dealers' proviso on the retail rate. It changed the rebuttal standard to 'inaccurate' and added (a5), which covers dealer requests to modify time allowances. S.L. 2023-116 (HB 447) § 5, effective 9/1/2023, revised the (a2) exclusions from the rate calculation. S.L. 2025-25 § 29(5) also appears in the history (not reviewed, presumably technical).",
+  "effective_notes": "S.L. 2025-41 (SB 295) § 8, approved 7/1/2025 and effective on becoming law, for current and future franchises. It struck the sentence requiring time allowances to be 'reasonable and adequate' and the 'competitive with ... other franchised dealers' proviso on the retail rate. It changed the rebuttal standard to 'inaccurate' and added (a5), which covers dealer requests to modify time allowances. S.L. 2023-116 (HB 447) § 5, effective 9/1/2023, revised the (a2) exclusions from the rate calculation. S.L. 2025-25 (HB 40, Various GSC Recommendations, signed 6/26/2025) § 29(5) is a Revisor terminology change ('website') that touches only (b3)(5); no substantive effect.",
   "hourly_rate_method": "Not less than the dealer's 'current retail labor rate'. Dealer may declare it from 100 sequential non-warranty customer-paid ROs containing warranty-like parts or 60 consecutive days of such ROs, whichever is less (within 180 days). Presumed accurate. Manufacturer may rebut within 30 days by substantiating inaccuracy. Protest goes to the DMV Commissioner.",
   "coverage": {
    "factory_warranty": {
@@ -1042,7 +1042,7 @@ window.COVERAGE_V3 = [
   "definition_cite": "Neb. Rev. Stat. §§ 60-1401.02 to 60-1401.43 (no 'warranty' or 'service contract' definition; 60-1401.10 'consumer care')",
   "official_url": "https://nebraskalegislature.gov/laws/statutes.php?statute=60-1438",
   "source_quality": "official",
-  "effective_notes": "LB667 (2025), approved 5/15/2025, operative 9/3/2025 (general effective date; no emergency clause). It replaced 'reasonable and adequate for the work to be performed' with 'adequate for a qualified technician', added dealer requests to change uniform time or add time, and struck 'as long as such rates are reasonable'. It also added the no-cost-parts markup rule and the manufacturer's right to request 100 additional ROs. LB972 (2026) § 70, operative 10/1/2026, adds subsection (7), 'This section does not apply to recreational vehicles'; RVs move to the new Recreational Vehicle Industry Regulation Act, §§ 60-1442 et seq. As of 9/24/2026 the website text did not yet show (7).",
+  "effective_notes": "LB667 (2025), approved 5/15/2025, operative 9/3/2025 (general effective date; no emergency clause). It replaced 'reasonable and adequate for the work to be performed' with 'adequate for a qualified technician', added dealer requests to change uniform time or add time, and struck 'as long as such rates are reasonable'. It also added the no-cost-parts markup rule and the manufacturer's right to request 100 additional ROs. LB972 (2026) § 70 amended § 60-1438, operative 10/1/2026. The codified text (checked 10/6/2026) shows no subsection (7). The RV carve-out is § 60-1419.01 (LB972 § 72): §§ 60-1420 to 60-1440 do not apply to new-RV manufacturers, distributors or sellers, who move to the Recreational Vehicle Industry Regulation Act (§§ 60-1442 et seq.). Passenger-vehicle text unchanged.",
   "hourly_rate_method": "Principal factor: 'the prevailing wage rates being paid by dealers in the community'. The floor is the dealer's own rates for like service to retail or fleet customers, excluding listed maintenance work. There is no statutory labor-rate declaration formula; the 100 ROs/90 days/180-day method is written for parts markup. The manufacturer may request up to 100 additional ROs from a 90-day window to test the declared 'retail labor rate' and may adjust if the dealer's retail rates are lower. Negotiated rates are allowed.",
   "coverage": {
    "factory_warranty": {
@@ -1151,8 +1151,8 @@ window.COVERAGE_V3 = [
   "state": "NM",
   "primary_cite": "N.M. Stat. Ann. § 57-16-7 (NMSA 1978)",
   "definition_cite": "N.M. Stat. Ann. § 57-16-3 (no definition of 'warranty', 'service contract', 'extended warranty' or 'certified pre-owned')",
-  "official_url": "https://law.justia.com/codes/new-mexico/chapter-57/article-16/section-57-16-7/ (2025 NM Statutes mirror; cross-checked against Armatus text https://www.dealeruplift.com/state-retail-warranty-reimbursement-laws/new-mexico-warranty-reimbursement-law/). Official portal NMOneSource (nmonesource.com) returned HTTP 403.",
-  "source_quality": "mirror",
+  "official_url": "https://nmonesource.com/nmos/nmsa/en/4423/1/document.do (official NMSA 1978 Ch. 57, read 9/25/2026); mirror: https://law.justia.com/codes/new-mexico/chapter-57/article-16/section-57-16-7/ (re-checked 10/6/2026)",
+  "source_quality": "official",
   "effective_notes": "none found. Section history ends at Laws 2018, ch. 28, § 3 (2025 NM Statutes edition). 2026 SB 22 (manufacturer-dealer licensing) amends §§ 57-16-3 and 57-16-5 only, not § 57-16-7.",
   "hourly_rate_method": "Retail customer rate for labor and diagnostic work: dealer declares its average customer-pay labor rate from the lesser of 100 sequential customer-paid ROs or 90 days of customer-paid ROs (repairs within 180 days). Manufacturer may refuse if miscalculated or it 'unreasonably exceed[s]' all other same-line dealers in the relevant market area. No more than 2 increases per calendar year.",
   "coverage": {
@@ -1181,7 +1181,7 @@ window.COVERAGE_V3 = [
     "pinpoint": "§ 57-16-7(A)"
    }
   },
-  "notes": "Section has no time-allowance language: the only 'time' words are 'time-consuming' in (C). Hours are therefore 'silent'. § 57-16-6 (predelivery) requires only 'reasonable' compensation for delivery and preparation work. Scope is 'recall or warranty' work 'required of the dealer by the manufacturer'. No definition in § 57-16-3 or text in § 57-16-5 mentions service contracts or CPO. (K) excludes recreational travel trailers and motor-home living systems. Claims are deemed approved if not disapproved within 30 days. Manufacturer cost recovery or surcharges are barred by (I). I could not read the official NMOneSource text (403); the text of both mirrors matches.",
+  "notes": "Section has no time-allowance language: the only 'time' words are 'time-consuming' in (C). Hours are therefore 'silent'. § 57-16-6 (predelivery) requires only 'reasonable' compensation for delivery and preparation work. Scope is 'recall or warranty' work 'required of the dealer by the manufacturer'. No definition in § 57-16-3 or text in § 57-16-5 mentions service contracts or CPO. (K) excludes recreational travel trailers and motor-home living systems. Claims are deemed approved if not disapproved within 30 days. Manufacturer cost recovery or surcharges are barred by (I). Text matched to the official NMOneSource NMSA Ch. 57 PDF (9/25/2026) and re-checked on Justia 2025 (10/6/2026).",
   "confidence": "medium"
  },
  {
@@ -1412,7 +1412,7 @@ window.COVERAGE_V3 = [
   "definition_cite": "R.I. Gen. Laws § 31-5.1-1 (no 'warranty' or 'service contract' definition; not amended by S 2347 Sub A)",
   "official_url": "https://webserver.rilegislature.gov/BillText/BillText26/SenateText26/S2347A.pdf (enacted Sub A text; strike and underline markup read from the PDF). Pre-amendment codified text: https://webserver.rilegislature.gov/Statutes/TITLE31/31-5.1/31-5.1-6.htm",
   "source_quality": "enrolled_act",
-  "effective_notes": "2026 S 2347 Sub A was signed 6/22/2026 and takes effect 10/1/2026. Identical companion H 8213 Sub A was also signed 6/22/2026 (per LegiScan and Nelson Mullins; public-law chapter number not located). It pays warranty labor at the non-warranty rate x the technician's actual punched time, adds CPO warranty 'issued by the manufacturer ... common entity, or agent' to retail-rate reimbursement, and extends the duties to distributors and factory branches. It also allows 90 days for claims and puts the burden of proof on the manufacturer for time-based disapprovals. The official codified statute still shows the pre-amendment text (P.L. 2018).",
+  "effective_notes": "2026 S 2347 Sub A was signed 6/22/2026 and takes effect 10/1/2026. Identical companion H 8213 Sub A was also signed 6/22/2026 enacted as P.L. 2026, ch. 179 (H 8213 Sub A) and ch. 180 (S 2347 Sub A), 6/22/2026; in effect since 10/1/2026. It pays warranty labor at the non-warranty rate x the technician's actual punched time, adds CPO warranty 'issued by the manufacturer ... common entity, or agent' to retail-rate reimbursement, and extends the duties to distributors and factory branches. It also allows 90 days for claims and puts the burden of proof on the manufacturer for time-based disapprovals. The official codified statute still shows the pre-amendment text (P.L. 2018).",
   "hourly_rate_method": "Dealer retail rate: total labor sales ÷ total labor hours from all non-warranty customer-paid ROs for the month before submission. Presumed fair. Manufacturer may rebut within 30 days as unfair and unreasonable versus same line-make dealers in the vicinity. Protest goes to the Department. At most twice per calendar year. Unchanged by S 2347A except for adding 'non-warranty' and distributors and factory branches.",
   "coverage": {
    "factory_warranty": {
@@ -1520,7 +1520,7 @@ window.COVERAGE_V3 = [
  {
   "state": "TN",
   "primary_cite": "Tenn. Code Ann. § 55-17-121",
-  "definition_cite": "Tenn. Code Ann. § 55-17-102 (defines manufacturer, distributor, franchise; no definition of 'warranty' or 'service contract' — per Justia 2025 mirror)",
+  "definition_cite": "Tenn. Code Ann. § 55-17-102 (no warranty/service-contract definition); Tenn. Comp. R. & Regs. 0960-01-.01(4) defines 'warranty repairs or servicing' as work under 'a valid, new car manufacturer's warranty', including reasonable diagnostic time",
   "official_url": "Mirror: https://law.justia.com/codes/tennessee/2025/title-55/chapter-17/part-1/section-55-17-121/ (checked against FindLaw, current as of Jan. 2, 2024). The official T.C.A. is published only by LexisNexis (https://www.lexisnexis.com/hottopics/tncode/), and its session-law PDF returned 403.",
   "source_quality": "mirror",
   "effective_notes": "No 2023–2026 amendment to § 55-17-121 was found. The last amendment was 2021 Pub. Ch. 277, effective July 1, 2021, which added subsection (d). The GA 114 (2025–26) motor-vehicle bill index shows no warranty-rate bill. 2024 Pub. Chs. 585 and 1017 amended §§ 55-17-102 and 55-17-114; I did not review what they changed, but they do not touch § 55-17-121.",
@@ -1528,9 +1528,9 @@ window.COVERAGE_V3 = [
   "coverage": {
    "factory_warranty": {
     "applies": "yes",
-    "paid_hours": "silent",
+    "paid_hours": "factory",
     "quote": "In no event shall a manufacturer or distributor pay to its dealers a labor rate per hour for warranty repairs or servicing less than the dealer's retail labor rate for similar repairs",
-    "pinpoint": "§ 55-17-121(b)"
+    "pinpoint": "§ 55-17-121(b); paid hours: Tenn. Comp. R. & Regs. 0960-01-.04"
    },
    "mfr_service_contract": {
     "applies": "silent",
@@ -1551,7 +1551,7 @@ window.COVERAGE_V3 = [
     "pinpoint": "§ 55-17-121(c)"
    }
   },
-  "notes": "The section never mentions time allowances, labor hours or service contracts; FindLaw's copy confirms this. § 55-17-114(c) adds a ground for license action when a manufacturer unfairly discriminates among franchisees in warranty reimbursement, and another for failing to pay a valid claim within a reasonable time. I did not fully read § 55-17-114(c): the mirror summary listed 25 items and may be incomplete. Quotes come from the Justia 2025 text through a fetch tool and matched across two mirrors, but they were not checked against the Lexis official code.",
+  "notes": "The section never mentions time allowances, labor hours or service contracts; FindLaw's copy confirms this. § 55-17-114(c) (all 25 items read 10/6/2026) adds a license-action ground when a manufacturer unfairly discriminates among franchisees in warranty reimbursement ((c)(18)); (c)(12)'s 'reasonable time' payment rule covers prior-model-year inventory payments only, not warranty claims. Paid hours come from Motor Vehicle Commission Rule 0960-01-.04: hours allotted in the manufacturer's manual plus actual diagnostic hours, times the labor rate. Statute quotes come from the Justia 2025 text matched across two publishers; the Lexis official code was not read.",
   "confidence": "medium"
  },
  {
@@ -1634,7 +1634,7 @@ window.COVERAGE_V3 = [
   "definition_cite": "Va. Code Ann. § 46.2-1500 (no 'warranty' or 'service contract' definition)",
   "official_url": "https://law.lis.virginia.gov/vacode/title46.2/chapter15/section46.2-1571/",
   "source_quality": "official",
-  "effective_notes": "2025 Acts chs. 546 (HB 1683) and 558 (SB 1308), approved Mar. 24, 2025, effective July 1, 2025 (VA default). I compared the ch. 558 enrolled PDF with the current code. The acts struck the clause saying compensation under the section 'shall be deemed reasonable due to the substantial number of repair orders reviewed, unless the manufacturer can show that the amounts are not reasonable'. A LegiScan summary says they also changed diagnostic-time, rental-reimbursement and over-the-air provisions; I did not verify which of those came in 2023 and which in 2025. 2023 chs. 310/311 also amended the section; I did not review their content.",
+  "effective_notes": "2025 Acts chs. 546 (HB 1683) and 558 (SB 1308), eff. July 1, 2025, struck the 'deemed reasonable' clause. They also added: diagnostic work includes technician time communicating with manufacturer technical assistance; rental-reimbursement claims in 30-day increments with a 6-month audit/chargeback from payment of the related repair claim; and recall-part pricing at the highest price in the prior 12 months (verified by comparing the 2023 and current code text). 2023 chs. 310/311 added over-the-air provisions and did not change claims, audits or chargebacks.",
   "hourly_rate_method": "Compensation must be at least 'the amounts charged by the dealer ... to retail customers for nonwarranty service'. Increases are requested in writing and based on 100 consecutive ROs or all ROs over a 90-day period, 'whichever occurs first'. Only retail ROs count; menu pricing, internal work, group or special-event discounts and insurance repairs are excluded.",
   "coverage": {
    "factory_warranty": {

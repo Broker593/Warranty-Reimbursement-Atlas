@@ -126,9 +126,9 @@ def compute(audit=None, procs=None):
     return {
         'schema': 2,
         'name': 'Audit climate score',
-        'description': 'How restrictive state law is toward a manufacturer\'s or distributor\'s warranty audits, chargebacks and retail-rate validation. Each of 14 statutory limits gets a level from 0 to 3; points = weight x level / 3; weights add up to 100, so scores run 0-100. Higher = more restrictive. Statute text only; not legal advice and not an assessment of any company\'s audit program.',
+        'description': 'How restrictive state law is toward a manufacturer\'s or distributor\'s warranty audits, chargebacks and retail-rate validation. Each of 14 statutory limits gets a level from 0 to 3; points = weight x level / 3; weights add up to 100, so scores run 0-100. Higher = more restrictive. Statute text, plus state agency rules where they set a limit (all 50 states\' rules checked 2026-10-06); not legal advice and not an assessment of any company\'s audit program.',
         'formula': 'Points = weight × level ÷ 3. Score = sum of points (0–100).',
-        'weights_note': 'Weights are a judgment call about how much each limit constrains audits and chargebacks. Levels are read from the statute text.',
+        'weights_note': 'Weights are a judgment call about how much each limit constrains audits and chargebacks. Levels are read from the statute text and, where a state agency rule sets the limit, from that rule.',
         'checked': procs.get('checked'),
         'max': 100,
         'subscores': [{'id': i, 'label': l, 'about': t, 'max_points': sub_max[i], 'share': f'{sub_max[i]}%'} for i, l, t in SUBSCORES],

@@ -15,7 +15,7 @@
    "last_amendment_effective": "2024-10-27",
    "originally_enacted_year": 2018,
    "next_scheduled_change": null,
-   "history_source": "akleg Bill History for HB 233 (33rd Leg.): 'SIGNED INTO LAW 7/29 CHAPTER 20 SLA 24' and 'EFFECTIVE DATE(S) OF LAW 10/27/24'. HB 136 (30th Leg.): 'CHAPTER 50 SLA 18', effective 9/30/18. HB 136 added §§ 45.25.200-.210 and repealed former AS 45.25.320 (the 2002 18-month claim-audit limit). The 2025 Alaska Statutes print was read; 34th Legislature (2025-26) bills were not exhaustively searched."
+   "history_source": "akleg Bill History for HB 233 (33rd Leg.): 'SIGNED INTO LAW 7/29 CHAPTER 20 SLA 24' and 'EFFECTIVE DATE(S) OF LAW 10/27/24'. HB 136 (30th Leg.): 'CHAPTER 50 SLA 18', effective 9/30/18. HB 136 added §§ 45.25.200-.210 and repealed former AS 45.25.320 (the 2002 18-month claim-audit limit). The 2025 Alaska Statutes print was read. 34th Legislature checked 10/2026 (2025 Summary of Legislation, 2026 weekly bill status, LegiScan completed-bill list): no act amends AS 45.25.200-.210."
   },
   "claims": {
    "dealer_filing_deadline": "within 90 days after the dealer completes the work",
@@ -94,10 +94,11 @@
    "note": ""
   },
   "verified": {
-   "audit_fields": "2026-09-25",
+   "audit_fields": "2026-10-06",
    "coverage": "2026-09-24",
    "method": "Claude research against statute text; quotes machine-checked against saved source text",
-   "last_change_check": "2026-09-25"
+   "last_change_check": "2026-10-06",
+   "regulations": "2026-10-06"
   }
  },
  {
@@ -171,7 +172,7 @@
    "response_deadline_days": 45,
    "deemed_approved_if_no_response": true,
    "challenge_standard": "Within 45 days the warrantor must reasonably substantiate that the submission is materially incomplete, materially inaccurate, or materially unreasonable. One relevant factor is the prevailing wage rates paid by similarly situated dealers in the state ((f)(8)).",
-   "challenge_method": "One rebuttal only, with a full explanation, evidence for each reason, a copy of all calculations and a proposed adjusted rate. The rebuttal cannot be expanded later except for new information. If the rate is substantially higher or lower than the rate on record, the warrantor may request ROs for 60 days before or after the submitted period, and then has 45 days from receiving them to rebut.",
+   "challenge_method": "One rebuttal only, with a full explanation, evidence for each reason, a copy of all calculations and a proposed adjusted rate. The rebuttal cannot be expanded later except for information the warrantor did not have at the time, or information used to answer the dealer's response to the rebuttal. If the rate is substantially higher or lower than the rate on record, the warrantor may request ROs for 60 days before or after the submitted period, and then has 45 days from receiving them to rebut.",
    "dispute_forum": "Court action by the dealer within 120 days of the written rejection. The warrantor bears the burden by a preponderance. A dealer win is retroactive to 45 days after the original submission.",
    "quote": "The submitted parts markup or labor rate shall go into effect 45 days after the warrantor’s receipt of its submission, unless, within that period, the warrantor reasonably substantiates that the submission is materially incomplete, materially inaccurate, or is materially unreasonable",
    "pinpoint": "§ 8-20-7(f)(6)a.; see (f)(6)b., (f)(7), (f)(8)"
@@ -209,10 +210,11 @@
    "note": ""
   },
   "verified": {
-   "audit_fields": "2026-09-25",
+   "audit_fields": "2026-10-06",
    "coverage": "2026-09-24",
    "method": "Claude research against statute text; quotes machine-checked against saved source text",
-   "last_change_check": "2026-09-25"
+   "last_change_check": "2026-10-06",
+   "regulations": "2026-10-06"
   }
  },
  {
@@ -231,7 +233,7 @@
    "last_amendment_effective": "2023-08-01",
    "originally_enacted_year": 1997,
    "next_scheduled_change": null,
-   "history_source": "Justia 2025 Ark. Code history (mirror; the official code is Lexis-hosted): 'Amended by Act 2023, No. 515, § 2, eff. 8/1/2023 ... Acts 1997, No. 1154, § 2'. Enrolled Act 515 was approved 4/10/23 with no emergency clause. § 23-112-310(d) was last amended by Act 1077 of 2021, § 4 (history: '2021, No. 1077, § 4'). No 2025 amendment to §§ 310 or 313 was found."
+   "history_source": "Justia 2025 Ark. Code history (mirror; the official code is Lexis-hosted): 'Amended by Act 2023, No. 515, § 2, eff. 8/1/2023 ... Acts 1997, No. 1154, § 2'. Enrolled Act 515 was approved 4/10/23 with no emergency clause. § 23-112-310(d) was last amended by Act 1077 of 2021, § 4 (history: '2021, No. 1077, § 4'). No 2025 amendment to §§ 310 or 313 (Justia 2025 histories; 2025 AMVC-related acts were only Act 233 (§ 302) and Act 816 (§ 308(a)(25)))."
   },
   "claims": {
    "dealer_filing_deadline": null,
@@ -287,7 +289,7 @@
    "cite": "Ark. Code Ann. §§ 23-112-105, 23-112-308, 23-112-309"
   },
   "confidence": "medium",
-  "notes": "Current text comes from Justia's 2025 code (mirror). Every quote was matched to an official enrolled act or edition: Act 756/2009 § 12 (rewrote § 313(e)), Act 1077/2021 §§ 4, 6 (§ 310(d)(1), § 313(c)), Act 515/2023, and the 2011 Official Edition PDF on labor.arkansas.gov (§§ 23-112-105, -308, -310(d)(2)). § 313(e)(1) literally reads claims 'shall be either approved or disapproved within thirty (30) days following their approval or disapproval', a drafting glitch; the operative clocks are (e)(2)(B) and § 310(d)(2). Justia marks § 23-112-308 as 'Effective until August 5, 2025'; the post-8/5/2025 version was not read. Motorcycles/ATVs have a separate floor (§ 310(d)(1)(C)). Motor-home/RV warrantor rules are in subchapter 10 (e.g., § 23-112-1016). No frequency limit on rate requests was found.",
+  "notes": "Current text comes from Justia's 2025 code (mirror). Every quote was matched to an official enrolled act or edition: Act 756/2009 § 12 (rewrote § 313(e)), Act 1077/2021 §§ 4, 6 (§ 310(d)(1), § 313(c)), Act 515/2023, and the 2011 Official Edition PDF on labor.arkansas.gov (§§ 23-112-105, -308, -310(d)(2)). § 313(e)(1) literally reads claims 'shall be either approved or disapproved within thirty (30) days following their approval or disapproval', a drafting glitch; the operative clocks are (e)(2)(B) and § 310(d)(2). § 23-112-308 was amended by Act 816 of 2025 (eff. 8/5/2025) only in (a)(25) (temporary tags, dealer extra plates); the warranty ground in (a)(18) is unchanged. Motorcycles/ATVs have a separate floor (§ 310(d)(1)(C)). Motor-home/RV warrantor rules are in subchapter 10 (e.g., § 23-112-1016). No frequency limit on rate requests was found.",
   "name": "Arkansas",
   "calc": {
    "mode": "fewer",
@@ -304,10 +306,11 @@
    "note": ""
   },
   "verified": {
-   "audit_fields": "2026-09-25",
+   "audit_fields": "2026-10-06",
    "coverage": "2026-09-24",
    "method": "Claude research against statute text; quotes machine-checked against saved source text",
-   "last_change_check": "2026-09-25"
+   "last_change_check": "2026-10-06",
+   "regulations": "2026-10-06"
   }
  },
  {
@@ -406,7 +409,8 @@
    "audit_fields": "2026-09-25",
    "coverage": "2026-09-24",
    "method": "Claude research against statute text; quotes machine-checked against saved source text",
-   "last_change_check": "2026-09-25"
+   "last_change_check": "2026-10-06",
+   "regulations": "2026-10-06"
   }
  },
  {
@@ -425,7 +429,7 @@
    "last_amendment_effective": "2020-01-01",
    "originally_enacted_year": null,
    "next_scheduled_change": null,
-   "history_source": "leginfo credit lines: § 3065 '(Amended by Stats. 2019, Ch. 796, Sec. 11. (AB 179) Effective January 1, 2020.)'. § 3065.2 '(Amended by Stats. 2020, Ch. 370, Sec. 265. (SB 1371) Effective January 1, 2021.)'. § 3065.4 was added by Stats. 2019, ch. 796, § 15. leginfo shows only the latest credit, so the original enactment year is not given. 2026 bills awaiting signature (deadline 9/30/2026, effective 1/1/2027) were not exhaustively checked."
+   "history_source": "leginfo credit lines: § 3065 '(Amended by Stats. 2019, Ch. 796, Sec. 11. (AB 179) Effective January 1, 2020.)'. § 3065.2 '(Amended by Stats. 2020, Ch. 370, Sec. 265. (SB 1371) Effective January 1, 2021.)'. § 3065.4 was added by Stats. 2019, ch. 796, § 15. leginfo shows only the latest credit, so the original enactment year is not given. 2026 session checked 10/2026 (all Assembly and Senate Transportation 2026 bill-hearing agendas; AB 2788 omnibus, ch. 223): no 2026 bill amends §§ 3065, 3065.1, 3065.2, 3065.4 or 11713.13."
   },
   "claims": {
    "dealer_filing_deadline": null,
@@ -488,11 +492,11 @@
   },
   "penalties": {
    "private_remedies": "Board protests (§§ 3065(d)(6), (e)(6), 3065.4). Superior-court action to enforce a Board rate determination, with injunctive relief and actual reasonable expenses (§ 3065.4(c)). Damages, reasonable attorney fees and injunctive relief for pecuniary loss from a licensee's willful failure to comply with Art. 1, Ch. 4, Div. 5 or a Board decision (§ 11726).",
-   "admin_sanctions": "DMV may suspend or revoke a manufacturer's or distributor's license for willful violation of § 3065 (§ 11705(a)(7)).",
+   "admin_sanctions": "DMV may suspend or revoke a manufacturer's or distributor's license for willful violation of § 3065 (§ 11705(a)(7)). Failure to file required schedules with the Board can lead it to order DMV license action (13 CCR § 593.3).",
    "cite": "Cal. Veh. Code §§ 3065.4, 11705(a)(7), 11726"
   },
   "confidence": "high",
-  "notes": "'Warranty' includes new-vehicle warranty, CPO warranty, TSB and customer-service-campaign repairs during the warranty period, and federal recalls (§ 3065.25(b)). Rates other than retail are allowed only by a voluntary signed agreement that adequately and fairly compensates (§ 3065(b)). Time-allowance change requests may not be unreasonably denied (§ 3065(a)(1)). Retaliation for seeking retail rates is barred (§ 3065.2(i)). Failure to approve or pay on time for reasons beyond the franchisor's reasonable control is not a violation (§ 3065(d)(5)).",
+  "notes": "'Warranty' includes new-vehicle warranty, CPO warranty, TSB and customer-service-campaign repairs during the warranty period, and federal recalls (§ 3065.25(b)). Rates other than retail are allowed only by a voluntary signed agreement that adequately and fairly compensates (§ 3065(b)). Time-allowance change requests may not be unreasonably denied (§ 3065(a)(1)). Retaliation for seeking retail rates is barred (§ 3065.2(i)). Failure to approve or pay on time for reasons beyond the franchisor's reasonable control is not a violation (§ 3065(d)(5)). Franchisors must file warranty reimbursement schedules with the New Motor Vehicle Board within 30 days after license issuance or renewal, and any change on or before its effective date (13 CCR § 586(b)-(c)).",
   "name": "California",
   "calc": {
    "mode": "fewer",
@@ -520,10 +524,11 @@
    "note": ""
   },
   "verified": {
-   "audit_fields": "2026-09-25",
+   "audit_fields": "2026-10-06",
    "coverage": "2026-09-24",
    "method": "Claude research against statute text; quotes machine-checked against saved source text",
-   "last_change_check": "2026-09-25"
+   "last_change_check": "2026-10-06",
+   "regulations": "2026-10-06"
   }
  },
  {
@@ -542,7 +547,7 @@
    "last_amendment_effective": "2023-08-07",
    "originally_enacted_year": 2018,
    "next_scheduled_change": null,
-   "history_source": "Justia 2025 C.R.S. source note (mirror; the official C.R.S. is Lexis-hosted): 'L. 2018: Entire section added,(SB 18-219), ch. 330, p. 1974, § 2, effective October 1. L. 2023: (2), IP(6)(a)(I), (6)(a)(I)(A), and (6)(a)(II) amended,(SB 23-078), ch. 51, p. 182, § 1, effective August 7.' Checked against enrolled SB 23-078. § 44-20-135: 'L. 2018: Entire article added with relocations,(SB 18-030)'. No 2024-2026 amendment was found by web search; the 2026 session was not exhaustively checked."
+   "history_source": "Justia 2025 C.R.S. source note (mirror; the official C.R.S. is Lexis-hosted): 'L. 2018: Entire section added,(SB 18-219), ch. 330, p. 1974, § 2, effective October 1. L. 2023: (2), IP(6)(a)(I), (6)(a)(I)(A), and (6)(a)(II) amended,(SB 23-078), ch. 51, p. 182, § 1, effective August 7.' Checked against enrolled SB 23-078. § 44-20-135: 'L. 2018: Entire article added with relocations,(SB 18-030)'. No 2024-2026 amendment: Justia 2025 C.R.S. source notes; all 437 2026 session laws reviewed by title, with the omnibus/technical acts (HB26-1216, SB26-169, HB26-1295, HB26-1053, SB26-137) read in full."
   },
   "claims": {
    "dealer_filing_deadline": "9 months after making the sale or providing the service",
@@ -631,10 +636,11 @@
    "note": ""
   },
   "verified": {
-   "audit_fields": "2026-09-25",
+   "audit_fields": "2026-10-06",
    "coverage": "2026-09-24",
    "method": "Claude research against statute text; quotes machine-checked against saved source text",
-   "last_change_check": "2026-09-25"
+   "last_change_check": "2026-10-06",
+   "regulations": "2026-10-06"
   }
  },
  {
@@ -648,16 +654,12 @@
   "source_quality": "official",
   "law_dates": {
    "section": "Conn. Gen. Stat. § 42-133s",
-   "last_amended_year": 2015,
-   "last_amending_act": "P.A. 15-191, § 1 (HB 6820)",
-   "last_amendment_effective": "2015-10-01",
+   "last_amended_year": 2026,
+   "last_amending_act": "P.A. 26-24 (sSB 413), § 23 (approved May 27, 2026)",
+   "last_amendment_effective": "2026-10-01",
    "originally_enacted_year": 1982,
-   "next_scheduled_change": {
-    "effective": "2026-10-01",
-    "act": "P.A. 26-24 (sSB 413), § 23 (approved May 27, 2026)",
-    "summary": "Rewrites § 42-133s(j) so the 30-day approve/pay, 1-year audit/chargeback and 30-day resubmission rules also cover the new § 22 stop-sale/do-not-drive used-vehicle recall compensation claims. The labor-rate text in (c), (d) and (f) is unchanged."
-   },
-   "history_source": "Official 2025-revision source note: '(P.A. 82-445, S. 2, 15; P.A. 83-198, S. 2, 11; P.A. 95-245, S. 1, 3; P.A. 09-50, S. 1; P.A. 15-191, S. 1.)'. P.A. 15-191 § 1 says '(Effective October 1, 2015)' and was approved July 2, 2015. The 2026 Supplement's Title 42 index lists no ch. 739 changes. P.A. 26-24 PDF was read."
+   "next_scheduled_change": null,
+   "history_source": "Official 2025-revision source note: '(P.A. 82-445, S. 2, 15; P.A. 83-198, S. 2, 11; P.A. 95-245, S. 1, 3; P.A. 09-50, S. 1; P.A. 15-191, S. 1.)'. P.A. 15-191 § 1 says '(Effective October 1, 2015)' and was approved July 2, 2015. The 2026 Supplement's Title 42 index lists no ch. 739 changes. P.A. 26-24 PDF was read. P.A. 26-24 § 23 (effective 10/1/2026) rewrote § 42-133s(j) so the 30-day approve/pay, 1-year audit/chargeback and 30-day resubmission rules also cover the new § 22 stop-sale/do-not-drive used-vehicle recall compensation claims; the labor-rate text in (c), (d) and (f) is unchanged."
   },
   "claims": {
    "dealer_filing_deadline": null,
@@ -673,7 +675,7 @@
   "chargebacks": {
    "lookback_months": 12,
    "fraud_extension": "If there is evidence of fraud, the one-year limit does not restrict longer audits or charge-back of any fraudulent claim.",
-   "limits": "Charge-back only for false or unsubstantiated claims, within one year after payment. No charge-back after a timely audit based solely on processing, clerical or administrative technicalities.",
+   "limits": "Charge-back only for false or unsubstantiated claims, within one year after payment. No charge-back after a timely audit based solely on processing, clerical or administrative technicalities. From Oct. 1, 2026, no offset or charge-back of used-vehicle stop-sale compensation because the dealer filed a claim, unless applied uniformly to all same line-make dealers in the state (P.A. 26-24 § 22(g)).",
    "quote": "manufacturers or distributors retain the right to audit such claims and to charge-back the dealer for false or unsubstantiated claims for a period of one year following payment.",
    "pinpoint": "§ 42-133s(j)"
   },
@@ -716,7 +718,7 @@
    "cite": "Conn. Gen. Stat. §§ 42-133ee, 14-67c"
   },
   "confidence": "high",
-  "notes": "Time allowances must be 'reasonable and adequate' ((h)). No cost recovery through surcharges ((g)). No-cost parts are paid at the average markup ((e)). The labor sample is a full prior month of customer-pay ROs, which is unusual. P.A. 26-24 (effective 10/1/2026) also replaces the § 42-133r definitions (§ 20) and amends §§ 42-133bb and 42-133cc (facility rules). § 20 was not reviewed for effects on warranty scope.",
+  "notes": "Time allowances must be 'reasonable and adequate' ((h)). No cost recovery through surcharges ((g)). No-cost parts are paid at the average markup ((e)). The labor sample is a full prior month of customer-pay ROs, which is unusual. P.A. 26-24 (effective 10/1/2026) also replaces the § 42-133r definitions (§ 20) and amends §§ 42-133bb and 42-133cc (facility rules). P.A. 26-24 § 20 re-enacts the § 42-133r definitions unchanged and adds only facility (substantial alteration) and consumer-data definitions; no effect on warranty scope, audits, chargebacks or rates.",
   "name": "Connecticut",
   "calc": {
    "mode": "calendar_month",
@@ -736,10 +738,11 @@
    "note": ""
   },
   "verified": {
-   "audit_fields": "2026-09-25",
+   "audit_fields": "2026-10-06",
    "coverage": "2026-09-24",
    "method": "Claude research against statute text; quotes machine-checked against saved source text",
-   "last_change_check": "2026-09-25"
+   "last_change_check": "2026-10-06",
+   "regulations": "2026-10-06"
   }
  },
  {
@@ -850,7 +853,8 @@
    "audit_fields": "2026-09-25",
    "coverage": "2026-09-24",
    "method": "Claude research against statute text; quotes machine-checked against saved source text",
-   "last_change_check": "2026-09-25"
+   "last_change_check": "2026-10-06",
+   "regulations": "2026-10-06"
   }
  },
  {
@@ -957,7 +961,8 @@
    "audit_fields": "2026-09-25",
    "coverage": "2026-09-24",
    "method": "Claude research against statute text; quotes machine-checked against saved source text",
-   "last_change_check": "2026-09-25"
+   "last_change_check": "2026-10-06",
+   "regulations": "2026-10-06"
   }
  },
  {
@@ -1056,7 +1061,8 @@
    "audit_fields": "2026-09-25",
    "coverage": "2026-09-24",
    "method": "Claude research against statute text; quotes machine-checked against saved source text",
-   "last_change_check": "2026-09-25"
+   "last_change_check": "2026-10-06",
+   "regulations": "2026-10-06"
   }
  },
  {
@@ -1169,7 +1175,8 @@
    "audit_fields": "2026-09-25",
    "coverage": "2026-09-24",
    "method": "Claude research against statute text; quotes machine-checked against saved source text",
-   "last_change_check": "2026-09-25"
+   "last_change_check": "2026-10-06",
+   "regulations": "2026-10-06"
   }
  },
  {
@@ -1298,7 +1305,8 @@
    "audit_fields": "2026-09-25",
    "coverage": "2026-09-24",
    "method": "Claude research against statute text; quotes machine-checked against saved source text",
-   "last_change_check": "2026-09-25"
+   "last_change_check": "2026-10-06",
+   "regulations": "2026-10-06"
   }
  },
  {
@@ -1394,7 +1402,7 @@
    "deemed_approved_if_no_response": true,
    "challenge_standard": "Rate presumed fair and reasonable. The retail-rate floor applies only if the rate is 'not unreasonable when compared with other motor vehicle franchises from the same or competitive lines ... in the geographic area' (§ 49-1626(11))",
    "challenge_method": "Within 30 days, the mfr may make reasonable requests for additional supporting information (not unduly burdensome); otherwise it must implement the rate within 90 days. The statute has no rebuttal or rejection procedure; the rate takes effect by operation of law",
-   "dispute_forum": "After mediation (§ 49-1617A), protest to the Idaho Transportation Department, heard as a contested case by the office of administrative hearings (§ 49-1617(1)(e), (4)); or a civil action (§ 49-1617B)",
+   "dispute_forum": "After mediation (§ 49-1617A), protest to the Idaho Transportation Department, heard as a contested case by a hearing officer appointed by the office of administrative hearings (§ 49-1617(1)(e), (4)); dealer deposits a $2,000 hearing fee (IDAPA 39.02.04.100.02); or a civil action (§ 49-1617B)",
    "quote": "shall take effect within ninety (90) days after the initial submission … and shall be presumed to be fair and reasonable. However, within thirty (30) days following receipt of the declared schedule … may make reasonable requests for additional information",
    "pinpoint": "§ 49-1626(11)(b)"
   },
@@ -1428,10 +1436,11 @@
    "note": ""
   },
   "verified": {
-   "audit_fields": "2026-09-25",
+   "audit_fields": "2026-10-06",
    "coverage": "2026-09-24",
    "method": "Claude research against statute text; quotes machine-checked against saved source text",
-   "last_change_check": "2026-09-25"
+   "last_change_check": "2026-10-06",
+   "regulations": "2026-10-06"
   }
  },
  {
@@ -1440,7 +1449,9 @@
    "815 ILCS 710/6",
    "815 ILCS 710/12",
    "815 ILCS 710/13",
-   "815 ILCS 710/29"
+   "815 ILCS 710/29",
+   "625 ILCS 5/5-103(a)",
+   "92 Ill. Adm. Code 1001.790"
   ],
   "official_url": "https://www.ilga.gov/Documents/legislation/ilcs/documents/081507100K6.htm (full Act: https://www.ilga.gov/legislation/ilcs/ilcs3.asp?ActID=2382&ChapterID=67)",
   "source_quality": "official",
@@ -1526,12 +1537,12 @@
    "pinpoint": "710/29"
   },
   "penalties": {
-   "private_remedies": "Damages and equitable relief incl. an injunction; treble damages if willful or wanton; mandatory reasonable attorney's fees, expert fees and costs to a dealer that substantially prevails (Sec. 13). MVRB protest or agreed arbitration (Sec. 12). 4-year limitations period (Sec. 14)",
-   "admin_sanctions": null,
+   "private_remedies": "Damages and equitable relief incl. an injunction; treble damages if willful or wanton; mandatory reasonable attorney's fees, expert fees and costs to a dealer that substantially prevails (Sec. 13). MVRB protest or agreed arbitration (Sec. 12); MVRB protest costs: $250 processing fee and refundable $2,500 deposit per party, with Board expenses, attorney's and expert fees assessed against the party that has not substantially prevailed (92 Ill. Adm. Code 1001.790). 4-year limitations period (Sec. 14)",
+   "admin_sanctions": "None for manufacturers. They hold no Vehicle Code license and pay only an annual $1,500 fee (625 ILCS 5/5-109(c)); license sanctions under 5/5-501 reach ch. 5 licensees such as dealers.",
    "cite": "815 ILCS 710/12, 710/13, 710/14, 710/29"
   },
   "confidence": "high",
-  "notes": "Sec. 6 gives no mfr response window, rebuttal standard or effective date for a labor-rate request; the only rate mechanics are the 100-RO 'same effective labor rate' sentence and the once-per-calendar-year limit on increase requests. Baseline: pay 'no less than the amount the retail customer pays for the same services with regard to rate and time'. Time: an agreed time guide for extended-warranty repairs may replace actual time. With no agreed guide, or where the guide does not define the operation, the mfr guide x 1.5 applies. Diagnostic time and TAC/engineering communication time (incl. hold time) are paid. No cost-recovery fees or surcharges. Sec. 6(f) extends duties to affiliates issuing a 'warranty or service or repair plan'. Sec. 6 has two overlapping claims paragraphs, both 30/30 with deemed approval. No administrative license sanction appears in the Franchise Act; the Vehicle Code was not reviewed.",
+  "notes": "Sec. 6 gives no mfr response window, rebuttal standard or effective date for a labor-rate request; the only rate mechanics are the 100-RO 'same effective labor rate' sentence and the once-per-calendar-year limit on increase requests. Baseline: pay 'no less than the amount the retail customer pays for the same services with regard to rate and time'. Time: an agreed time guide for extended-warranty repairs may replace actual time. With no agreed guide, or where the guide does not define the operation, the mfr guide x 1.5 applies. Diagnostic time and TAC/engineering communication time (incl. hold time) are paid. No cost-recovery fees or surcharges. Sec. 6(f) extends duties to affiliates issuing a 'warranty or service or repair plan'. Sec. 6 has two overlapping claims paragraphs, both 30/30 with deemed approval. No administrative license sanction appears in the Franchise Act. Vehicle Code reviewed: 625 ILCS 5/5-103(a) adds a general duty to reasonably compensate warranty repairs; manufacturers pay a fee (5/5-109) but hold no Vehicle Code license, and 5/5-501 sanctions do not reference the Franchise Act.",
   "name": "Illinois",
   "calc": {
    "mode": "ro_only",
@@ -1546,10 +1557,11 @@
    "note": "Illinois: 100 sequential ROs chosen by the dealer, less simple-maintenance ROs. No day window or age limit stated."
   },
   "verified": {
-   "audit_fields": "2026-09-25",
+   "audit_fields": "2026-10-06",
    "coverage": "2026-09-24",
    "method": "Claude research against statute text; quotes machine-checked against saved source text",
-   "last_change_check": "2026-09-25"
+   "last_change_check": "2026-10-06",
+   "regulations": "2026-10-06"
   }
  },
  {
@@ -1682,7 +1694,8 @@
    "audit_fields": "2026-09-25",
    "coverage": "2026-09-24",
    "method": "Claude research against statute text; quotes machine-checked against saved source text",
-   "last_change_check": "2026-09-25"
+   "last_change_check": "2026-10-06",
+   "regulations": "2026-10-06"
   }
  },
  {
@@ -1702,7 +1715,7 @@
    "last_amendment_effective": "2019-07-01",
    "originally_enacted_year": 1980,
    "next_scheduled_change": null,
-   "history_source": "Revisor history: 'L. 1980, ch. 36, § 15; L. 1994, ch. 302, § 7; L. 2010, ch. 71, § 5; L. 2019, ch. 5, § 1; July 1.' KS Legislature SB 39 (2019), 'Compensation for warranty services...': approved by the Governor March 20, 2019; law effective July 1, 2019. The revisor's 2023 and 2026 composite KSA lists show no 8-24xx entry (the 2024 list shows only 8-2408). The 2025 list could not be retrieved (connection resets)."
+   "history_source": "Revisor history: 'L. 1980, ch. 36, § 15; L. 1994, ch. 302, § 7; L. 2010, ch. 71, § 5; L. 2019, ch. 5, § 1; July 1.' KS Legislature SB 39 (2019), 'Compensation for warranty services...': approved by the Governor March 20, 2019; law effective July 1, 2019. The revisor's 2023 and 2026 composite KSA lists show no 8-24xx entry (the 2024 list shows only 8-2408). The 2025 composite list shows only new K.S.A. 8-2447 (L. 2025, ch. 58, HB 2030, eff. 7/1/2025), a trailer-dealer exemption; 8-2401 and 8-2415 were not amended."
   },
   "claims": {
    "dealer_filing_deadline": "Compensation may not be reduced or disallowed because the claim was submitted fewer than 60 days after the work was completed (8-2415(d)); no maximum stated",
@@ -1813,10 +1826,11 @@
    "note": ""
   },
   "verified": {
-   "audit_fields": "2026-09-25",
+   "audit_fields": "2026-10-06",
    "coverage": "2026-09-24",
    "method": "Claude research against statute text; quotes machine-checked against saved source text",
-   "last_change_check": "2026-09-25"
+   "last_change_check": "2026-10-06",
+   "regulations": "2026-10-06"
   }
  },
  {
@@ -1922,7 +1936,8 @@
    "audit_fields": "2026-09-25",
    "coverage": "2026-09-24",
    "method": "Claude research against statute text; quotes machine-checked against saved source text",
-   "last_change_check": "2026-09-25"
+   "last_change_check": "2026-10-06",
+   "regulations": "2026-10-06"
   }
  },
  {
@@ -2025,7 +2040,7 @@
    "response_deadline_days": 45,
    "deemed_approved_if_no_response": true,
    "challenge_standard": "Reasonably substantiate that the submission is materially inaccurate. The rebuttal needs a full explanation, evidence validating each reason, a copy of all calculations, and a proposed adjusted rate based on the dealer's qualifying ROs",
-   "challenge_method": "One rebuttal only; it may not be expanded later except for information that was not and could not have been known. If the calculated rate is substantially higher or lower than the rate on record, the mfr may, within 45 days, request additional ROs covering 30 days before or after the submitted period. It then has 45 days from receipt to rebut",
+   "challenge_method": "One rebuttal only; it may not be expanded later except on discovery of relevant information that was not known or could not have been known when the rebuttal was issued. If the calculated rate is substantially higher or lower than the rate on record, the mfr may, within 45 days, request additional ROs covering 30 days before or after the submitted period. It then has 45 days from receipt to rebut",
    "dispute_forum": "Protest to the Louisiana Motor Vehicle Commission within 60 days of receiving the mfr's rejection and proposal. The mfr bears the burden (preponderance) of proving material inaccuracy",
    "quote": "The submitted parts mark-up or labor rate shall be presumed accurate, and shall go into effect forty-five days after the manufacturer … receives the submission unless, within the forty-five-day period, the manufacturer … rebuts the presumption.",
    "pinpoint": "R.S. 32:1262(A)(9)(a)",
@@ -2074,10 +2089,11 @@
    "note": ""
   },
   "verified": {
-   "audit_fields": "2026-09-25",
+   "audit_fields": "2026-10-06",
    "coverage": "2026-09-24",
    "method": "Claude research against statute text; quotes machine-checked against saved source text",
-   "last_change_check": "2026-09-25"
+   "last_change_check": "2026-10-06",
+   "regulations": "2026-10-06"
   }
  },
  {
@@ -2174,7 +2190,8 @@
    "audit_fields": "2026-09-25",
    "coverage": "2026-09-24",
    "method": "Claude research against statute text; quotes machine-checked against saved source text",
-   "last_change_check": "2026-09-25"
+   "last_change_check": "2026-10-06",
+   "regulations": "2026-10-06"
   }
  },
  {
@@ -2312,7 +2329,8 @@
    "audit_fields": "2026-09-25",
    "coverage": "2026-09-24",
    "method": "Claude research against statute text; quotes machine-checked against saved source text",
-   "last_change_check": "2026-09-25"
+   "last_change_check": "2026-10-06",
+   "regulations": "2026-10-06"
   }
  },
  {
@@ -2331,10 +2349,10 @@
    "section": "10 M.R.S. § 1176",
    "last_amended_year": 2013,
    "last_amending_act": "PL 2013, c. 534, § 7 (added the clerical-error paragraph)",
-   "last_amendment_effective": null,
+   "last_amendment_effective": "2014-08-01",
    "originally_enacted_year": 1975,
    "next_scheduled_change": null,
-   "history_source": "Revisor section history: 'PL 1975, c. 573 (NEW) ... PL 2003, c. 356, §10 (AMD). PL 2013, c. 534, §7 (AMD).' § 1176-A last amended PL 2017, c. 217, § 8. Revisor data were extracted 10/20/2025, so any 2026 laws (132nd Legislature, 2nd Regular Session) are not reflected, and none were found or ruled out. The effective date of PL 2013, c. 534 was not confirmed."
+   "history_source": "Revisor section history: 'PL 1975, c. 573 (NEW) ... PL 2003, c. 356, §10 (AMD). PL 2013, c. 534, §7 (AMD).' § 1176-A last amended PL 2017, c. 217, § 8. Revisor data were extracted 10/20/2025. 2026 session checked through committee bill-disposition digests (May 2026): only PL 2025 cc. 592, 637 and 660 touched dealer or vehicle law, and none amended §§ 1176/1176-A. PL 2013, c. 534 took effect 8/1/2014 (general effective date, 126th 2nd Regular Session)."
   },
   "claims": {
    "dealer_filing_deadline": "A claim may be submitted within 90 days after the services are performed",
@@ -2382,7 +2400,7 @@
    "deemed_approved_if_no_response": null,
    "challenge_standard": null,
    "challenge_method": null,
-   "dispute_forum": "Complaint to the Maine Motor Vehicle Franchise Board (§ 1188), or a court action (§ 1173). A dealer who wins a suit on a disapproved claim recovers costs and reasonable attorney fees (§ 1176)",
+   "dispute_forum": "Complaint to the Maine Motor Vehicle Franchise Board (§ 1188; Board rules set a hearing within 120 days and a $1,500 filing fee, 29-250 C.M.R. ch. 14, § 3), or a court action (§ 1173). A dealer who wins a suit on a disapproved claim recovers costs and reasonable attorney fees (§ 1176)",
    "quote": "Shall review written complaints filed with the board by persons complaining of conduct governed by this chapter",
    "pinpoint": "10 M.R.S. § 1188(1)"
   },
@@ -2391,8 +2409,8 @@
    "admin_sanctions": "Franchise Board civil penalty of $1,000-$10,000 per violation; multiple transactions within 60 days count as one violation (§ 1171-B(3); § 1188(3)). A violation of the chapter (other than § 1174-D) is a Class E crime (§ 1186)",
    "cite": "10 M.R.S. §§ 1171-B(3), 1173(1), 1176, 1186, 1188"
   },
-  "confidence": "medium",
-  "notes": "Parts: vehicles over 10,000 lb GVWR get only 'adequately and fairly compensate'; all others get the retail markup. The GVWR split does not apply to labor. Motor-home living components are excluded from retail parts pricing. No cost recovery. The franchisor may not restrict labor or parts in ways that impair warranty service. Recall labor and parts claims are processed and paid like § 1176 warranty claims (§ 1174(3)(C-3)). No denial of a warranty or recall claim discovered during a separate customer repair (§ 1174(5)). The statute has no time-allowance rule. Confidence is medium only because 2026-session currency is unverified.",
+  "confidence": "high",
+  "notes": "Parts: vehicles over 10,000 lb GVWR get only 'adequately and fairly compensate'; all others get the retail markup. The GVWR split does not apply to labor. Motor-home living components are excluded from retail parts pricing. No cost recovery. The franchisor may not restrict labor or parts in ways that impair warranty service. Recall labor and parts claims are processed and paid like § 1176 warranty claims (§ 1174(3)(C-3)). No denial of a warranty or recall claim discovered during a separate customer repair (§ 1174(5)). The statute has no time-allowance rule.",
   "name": "Maine",
   "calc": {
    "mode": "none",
@@ -2405,10 +2423,11 @@
    "note": ""
   },
   "verified": {
-   "audit_fields": "2026-09-25",
+   "audit_fields": "2026-10-06",
    "coverage": "2026-09-24",
    "method": "Claude research against statute text; quotes machine-checked against saved source text",
-   "last_change_check": "2026-09-25"
+   "last_change_check": "2026-10-06",
+   "regulations": "2026-10-06"
   }
  },
  {
@@ -2517,7 +2536,8 @@
    "audit_fields": "2026-09-25",
    "coverage": "2026-09-24",
    "method": "Claude research against statute text; quotes machine-checked against saved source text",
-   "last_change_check": "2026-09-25"
+   "last_change_check": "2026-10-06",
+   "regulations": "2026-10-06"
   }
  },
  {
@@ -2620,7 +2640,8 @@
    "audit_fields": "2026-09-25",
    "coverage": "2026-09-24",
    "method": "Claude research against statute text; quotes machine-checked against saved source text",
-   "last_change_check": "2026-09-25"
+   "last_change_check": "2026-10-06",
+   "regulations": "2026-10-06"
   }
  },
  {
@@ -2721,7 +2742,8 @@
    "audit_fields": "2026-09-25",
    "coverage": "2026-09-24",
    "method": "Claude research against statute text; quotes machine-checked against saved source text",
-   "last_change_check": "2026-09-25"
+   "last_change_check": "2026-10-06",
+   "regulations": "2026-10-06"
   }
  },
  {
@@ -2805,7 +2827,7 @@
    "admin_sanctions": "§ 63-17-85(j)-(k): Motor Vehicle Commission may deny, suspend or revoke the manufacturer's license. In lieu of revocation, a civil penalty up to $10,000. In lieu of suspension, $50-$500 per day, capped at $7,500 total. Unpaid penalties lead to automatic revocation.",
    "cite": "Miss. Code Ann. §§ 63-17-85, 63-17-101, 63-17-119"
   },
-  "confidence": "medium",
+  "confidence": "high",
   "notes": "The official Mississippi Code is Lexis-only. Text comes from the enrolled 2021 HB 746 and matches the Justia 2025 mirror; the codified § 63-17-85(j) drops 'incidental expenses'. The statute has no deemed-approval rule for warranty claims. The payment clock runs only from approval. Dealers may not charge the manufacturer a labor rate 'in excess of the rate charged to its retail customers'. Time allowances must be 'reasonable and adequate' using 'the actual time required by a qualified technician of ordinary skill'. 'Warranty work' covers new-vehicle warranty, recall and CPO warranty, not service contracts. Recall and stop-sale claims follow the same § 63-17-85(j) limits (§ 63-17-73(4)(f)). The MMVC agency website still shows pre-2021 text.",
   "name": "Mississippi",
   "calc": {
@@ -2833,10 +2855,11 @@
    "note": ""
   },
   "verified": {
-   "audit_fields": "2026-09-25",
+   "audit_fields": "2026-10-06",
    "coverage": "2026-09-24",
    "method": "Claude research against statute text; quotes machine-checked against saved source text",
-   "last_change_check": "2026-09-25"
+   "last_change_check": "2026-10-06",
+   "regulations": "2026-10-06"
   }
  },
  {
@@ -2953,7 +2976,8 @@
    "audit_fields": "2026-09-25",
    "coverage": "2026-09-24",
    "method": "Claude research against statute text; quotes machine-checked against saved source text",
-   "last_change_check": "2026-09-25"
+   "last_change_check": "2026-10-06",
+   "regulations": "2026-10-06"
   }
  },
  {
@@ -3058,7 +3082,8 @@
    "audit_fields": "2026-09-25",
    "coverage": "2026-09-24",
    "method": "Claude research against statute text; quotes machine-checked against saved source text",
-   "last_change_check": "2026-09-25"
+   "last_change_check": "2026-10-06",
+   "regulations": "2026-10-06"
   }
  },
  {
@@ -3162,7 +3187,8 @@
    "audit_fields": "2026-09-25",
    "coverage": "2026-09-24",
    "method": "Claude research against statute text; quotes machine-checked against saved source text",
-   "last_change_check": "2026-09-25"
+   "last_change_check": "2026-10-06",
+   "regulations": "2026-10-06"
   }
  },
  {
@@ -3176,16 +3202,12 @@
   "source_quality": "official",
   "law_dates": {
    "section": "Neb. Rev. Stat. § 60-1438",
-   "last_amended_year": 2025,
-   "last_amending_act": "Laws 2025, LB 667, § 1",
-   "last_amendment_effective": "2025-09-03",
+   "last_amended_year": 2026,
+   "last_amending_act": "Laws 2026, LB 972, § 70",
+   "last_amendment_effective": "2026-10-01",
    "originally_enacted_year": 1984,
-   "next_scheduled_change": {
-    "effective": "2026-10-01",
-    "act": "Laws 2026, LB 972, § 70 (approved 4/14/2026)",
-    "summary": "Adds subsection (7), 'This section does not apply to recreational vehicles'. RV warranty terms move to the new Recreational Vehicle Industry Regulation Act (§§ 60-1442 et seq.)."
-   },
-   "history_source": "Official source note: 'Laws 1984, LB 825, § 21; ... Laws 2013, LB165, § 1; Laws 2025, LB667, § 1; Laws 2026, LB972, § 70. Operative Date: October 1, 2026'. LB 667 was approved 5/15/2025 with no emergency clause or operative date; it took effect on the 2025 general effective date, 9/3/2025, 3 calendar months after the 6/2/2025 adjournment (Nebraska Examiner, 6/2/2025). LB 972 § 84 makes § 70 operative 10/1/2026. As of 9/24/2026 the website text did not yet show (7)."
+   "next_scheduled_change": null,
+   "history_source": "Official source note: 'Laws 1984, LB 825, § 21; ... Laws 2013, LB165, § 1; Laws 2025, LB667, § 1; Laws 2026, LB972, § 70. Operative Date: October 1, 2026'. LB 667 was approved 5/15/2025 with no emergency clause or operative date; it took effect on the 2025 general effective date, 9/3/2025, 3 calendar months after the 6/2/2025 adjournment (Nebraska Examiner, 6/2/2025). LB 972 (approved 4/14/2026) § 70 amended § 60-1438, operative 10/1/2026. On 10/6/2026 the official page shows the LB 972 version but no subsection (7). The RV exclusion is codified at § 60-1419.01 (LB 972 § 72): §§ 60-1420 to 60-1440 do not apply to new-RV manufacturers, distributors or sellers."
   },
   "claims": {
    "dealer_filing_deadline": "within 6 months after completing the work",
@@ -3258,10 +3280,11 @@
    "note": ""
   },
   "verified": {
-   "audit_fields": "2026-09-25",
+   "audit_fields": "2026-10-06",
    "coverage": "2026-09-24",
    "method": "Claude research against statute text; quotes machine-checked against saved source text",
-   "last_change_check": "2026-09-25"
+   "last_change_check": "2026-10-06",
+   "regulations": "2026-10-06"
   }
  },
  {
@@ -3348,7 +3371,8 @@
    "audit_fields": "2026-09-25",
    "coverage": "2026-09-24",
    "method": "Claude research against statute text; quotes machine-checked against saved source text",
-   "last_change_check": "2026-09-25"
+   "last_change_check": "2026-10-06",
+   "regulations": "2026-10-06"
   }
  },
  {
@@ -3433,7 +3457,7 @@
    "cite": "N.J. Stat. Ann. §§ 56:10-10, 56:10-34"
   },
   "confidence": "high",
-  "notes": "DATE-SENSITIVE: the text above took effect 4/1/2026 and applies to franchise agreements in effect on or after that date. Earlier causes of action are governed by prior law. The rate takes effect automatically at 30 days, and the statute sets no deadline for the franchisor's audit or adjustment. Optional labor-time multiplier ((m)): hours billed on 100 sequential (or 90 days of) customer-pay ROs divided by franchisor-guide hours for the same repairs, applied to the franchisor time guide. Dealers must pass labor pay through to factory-certified flat-rate technicians. Scope covers repair service 'offered and reimbursed by the motor vehicle franchisor', including warranty, extended warranty, maintenance plan, service-related plan and recall. It reaches affiliates and 1%+ owners ((g)) and franchisor-administered plans in the four (h) situations. EV propulsion batteries and whole engine and transmission assemblies are paid at 30% ((e)(2)). Franchisor cost recovery is barred ((o)). The FPA has no administrative penalty. Source is the enrolled chapter law, not official codified text.",
+  "notes": "DATE-SENSITIVE: the text above took effect 4/1/2026 and applies to franchise agreements in effect on or after that date. Earlier causes of action are governed by prior law. The rate takes effect automatically at 30 days, and the statute sets no deadline for the franchisor's audit or adjustment. Optional labor-time multiplier ((m)): hours billed on 100 sequential (or 90 days of) customer-pay ROs divided by franchisor-guide hours for the same repairs, applied to the franchisor time guide. Dealers must pass labor pay through to factory-certified flat-rate technicians. Scope covers repair service 'offered and reimbursed by the motor vehicle franchisor', including warranty, extended warranty, maintenance plan, service-related plan and recall. It reaches affiliates and 1%+ owners ((g)) and franchisor-administered plans in the four (h) situations. When the franchisor supplies EV propulsion batteries or entire engine or transmission assemblies, the (e)(1) supplied-part markup rule does not apply. The dealer instead gets 30% of what it would have paid the franchisor for the part ((e)(2)). Franchisor cost recovery is barred ((o)). The FPA has no administrative penalty. Source is the enrolled chapter law, not official codified text.",
   "name": "New Jersey",
   "calc": {
    "mode": "fewer",
@@ -3460,10 +3484,11 @@
    "note": "New Jersey also allows an optional labor-time multiplier: customer-billed hours ÷ OEM hours for the same sampled repairs, applied to OEM warranty times."
   },
   "verified": {
-   "audit_fields": "2026-09-25",
+   "audit_fields": "2026-10-06",
    "coverage": "2026-09-24",
    "method": "Claude research against statute text; quotes machine-checked against saved source text",
-   "last_change_check": "2026-09-25"
+   "last_change_check": "2026-10-06",
+   "regulations": "2026-10-06"
   }
  },
  {
@@ -3550,7 +3575,8 @@
    "audit_fields": "2026-09-25",
    "coverage": "2026-09-24",
    "method": "Claude research against statute text; quotes machine-checked against saved source text",
-   "last_change_check": "2026-09-25"
+   "last_change_check": "2026-10-06",
+   "regulations": "2026-10-06"
   }
  },
  {
@@ -3637,7 +3663,8 @@
    "audit_fields": "2026-09-25",
    "coverage": "2026-09-24",
    "method": "Claude research against statute text; quotes machine-checked against saved source text",
-   "last_change_check": "2026-09-25"
+   "last_change_check": "2026-10-06",
+   "regulations": "2026-10-06"
   }
  },
  {
@@ -3648,15 +3675,15 @@
    "N.Y. Veh. & Traf. Law § 471-a (adjudicatory proceedings; penalties)"
   ],
   "official_url": "https://www.nysenate.gov/legislation/laws/VAT/465 (official; Cloudflare blocks scripted fetch). Text read at https://newyork.public.law/laws/n.y._vehicle_and_traffic_law_section_465 (sourced from nysenate.gov, 'last modified Sep. 6, 2024', verified 9/19/2026). 2024 amendment checked against A4066-B on https://assembly.state.ny.us/leg/?bn=A04066&term=2023",
-  "source_quality": "mirror",
+  "source_quality": "official",
   "law_dates": {
    "section": "N.Y. Veh. & Traf. Law § 465",
    "last_amended_year": 2024,
    "last_amending_act": "L.2024, ch. 301 (A4066-B / S5085-C)",
    "last_amendment_effective": "2024-09-04",
-   "originally_enacted_year": null,
+   "originally_enacted_year": 1983,
    "next_scheduled_change": null,
-   "history_source": "Assembly bill history: '09/04/2024 signed chap.301'; bill § 2 'shall take effect immediately'. nysenate.gov and the mirror show no history note, so the enactment year of Art. 17-A (believed 1983) is unverified. PENDING, NOT LAW: 2025-26 A8773 (passed Assembly 6/1/2026) / S8360 (Senate Transportation)."
+   "history_source": "Assembly bill history: '09/04/2024 signed chap.301'; bill § 2 'shall take effect immediately'. nysenate.gov shows no history note; Art. 17-A was enacted by L.1983, ch. 815 (Court of Appeals, Beck Chevrolet v GM, 2016, citing the bill jacket). A8773 passed the Assembly 6/1/2026 and is in Senate Rules (status checked 10/6/2026); S8360 pending; not law. PENDING, NOT LAW: 2025-26 A8773 (passed Assembly 6/1/2026) / S8360 (Senate Transportation)."
   },
   "claims": {
    "dealer_filing_deadline": null,
@@ -3703,7 +3730,7 @@
    "deemed_approved_if_no_response": true,
    "challenge_standard": "Rate is unreasonable in light of the practices of all other franchised dealers in the vicinity offering the same line make; franchisor bears burden",
    "challenge_method": "No deadline to rebut the initial declaration. If rejecting for a submission error, the franchisor must identify the reason and the errors with specificity. The dealer may resubmit within 60 days and the franchisor must respond within 60 days.",
-   "dispute_forum": "DMV Commissioner adjudicatory proceeding (§ 471-a) or court (§ 469)",
+   "dispute_forum": "DMV Commissioner adjudicatory proceeding (§ 471-a; hearing procedure in 15 NYCRR § 127.13) or court (§ 469)",
    "quote": "a franchisor may rebut such presumption by showing that such rate so established is unreasonable in light of the practices of all other franchised motor vehicle dealers in the vicinity offering the same line make",
    "pinpoint": "§ 465(1)"
   },
@@ -3731,10 +3758,11 @@
    "note": ""
   },
   "verified": {
-   "audit_fields": "2026-09-25",
+   "audit_fields": "2026-10-06",
    "coverage": "2026-09-24",
    "method": "Claude research against statute text; quotes machine-checked against saved source text",
-   "last_change_check": "2026-09-25"
+   "last_change_check": "2026-10-06",
+   "regulations": "2026-10-06"
   }
  },
  {
@@ -3845,7 +3873,8 @@
    "audit_fields": "2026-09-25",
    "coverage": "2026-09-24",
    "method": "Claude research against statute text; quotes machine-checked against saved source text",
-   "last_change_check": "2026-09-25"
+   "last_change_check": "2026-10-06",
+   "regulations": "2026-10-06"
   }
  },
  {
@@ -3854,16 +3883,16 @@
    "Okla. Stat. tit. 47, § 565(A)(9)(b)",
    "Okla. Stat. tit. 47, § 565(A) (license denial/revocation/suspension; fines)"
   ],
-  "official_url": "https://oklegislature.gov/cf_pdf/2025-26%20ENR/hB/HB2160%20ENR.PDF (also HB2158 ENR). OSCN codified text is behind a Cloudflare Turnstile check and was not accessed.",
+  "official_url": "Codified: https://law.justia.com/codes/oklahoma/title-47/section-47-565v1/ and .../section-47-565v2/ (2025 Okla. Stat.); enrolled HB2158/HB2160 on oklegislature.gov. OSCN not accessible.",
   "source_quality": "enrolled_act",
   "law_dates": {
    "section": "Okla. Stat. tit. 47, § 565(A)(9)(b)",
    "last_amended_year": 2025,
-   "last_amending_act": "2025 HB 2158 and HB 2160 (became law without Governor's signature 5/8/2025 and 5/29/2025)",
+   "last_amending_act": "Laws 2025, c. 119, § 4 (HB 2158) and Laws 2025, c. 448, § 6 (HB 2160), both eff. Nov. 1, 2025; codified as two versions (565v1, 565v2)",
    "last_amendment_effective": "2025-11-01",
-   "originally_enacted_year": null,
+   "originally_enacted_year": 1953,
    "next_scheduled_change": null,
-   "history_source": "Enrolled act titles ('Section 565, as last amended by Section 7, Chapter 240, O.S.L. 2024') and effective-date sections (HB 2158 § 5, HB 2160 § 9: 'This act shall become effective November 1, 2025'). Bill status pages were checked. The original enactment year was not verified (OSCN blocked). 2026 SB 604 (approved 5/20/2026) amended only §§ 562 and 565.2."
+   "history_source": "Enrolled act titles ('Section 565, as last amended by Section 7, Chapter 240, O.S.L. 2024') and effective-date sections (HB 2158 § 5, HB 2160 § 9: 'This act shall become effective November 1, 2025'). Bill status pages were checked. Codified history note (Justia 2025 Okla. Stat., 565v1/565v2): added Laws 1953, p. 182, § 5; last amended Laws 2025 c. 119 § 4 and c. 448 § 6, eff. 11/1/2025. Year the warranty paragraph was first added not identified. 2026 SB 604 (approved 5/20/2026, eff. 11/1/2026) amends/merges only §§ 562 and 565.2."
   },
   "claims": {
    "dealer_filing_deadline": null,
@@ -3919,9 +3948,9 @@
    "pinpoint": "§ 565(A)(9)(b)"
   },
   "penalties": {
-   "private_remedies": "None identified in the enrolled § 565 text read. Other Title 47 remedy sections could not be read (OSCN blocked).",
+   "private_remedies": "Dealer damages action (may be brought in the dealer's county) plus injunctive relief, including TROs, for any violation of §§ 565 through 566 (47 O.S. § 572). The Commission may also sue to enjoin violations (§ 567).",
    "admin_sanctions": "Commission may deny, revoke or suspend a license, or fine up to $10,000 per occurrence, for violations of §§ 561-567 et al., including ¶ 9(b) (§ 565(A))",
-   "cite": "Okla. Stat. tit. 47, § 565(A)"
+   "cite": "Okla. Stat. tit. 47, §§ 565(A), 567, 572"
   },
   "confidence": "high",
   "notes": "The 11/1/2025 acts gave manufacturers 45 days (was 30) to rebut and propose an adjustment. HB 2160 extended ¶ 9(b) to new powersports dealers. Both acts rewrote § 565 from the same 2024 base with the same substantive ¶ 9(b) text, so OSCN may carry two merged versions. Warranty claims have no deemed-approval rule. Time allowances must be 'reasonable and adequate'. Diagnostic work and OTA-related customer assistance are included. Cost-recovery surcharges are barred.",
@@ -3946,10 +3975,11 @@
    "note": ""
   },
   "verified": {
-   "audit_fields": "2026-09-25",
+   "audit_fields": "2026-10-06",
    "coverage": "2026-09-24",
    "method": "Claude research against statute text; quotes machine-checked against saved source text",
-   "last_change_check": "2026-09-25"
+   "last_change_check": "2026-10-06",
+   "regulations": "2026-10-06"
   }
  },
  {
@@ -4045,7 +4075,8 @@
    "audit_fields": "2026-09-25",
    "coverage": "2026-09-24",
    "method": "Claude research against statute text; quotes machine-checked against saved source text",
-   "last_change_check": "2026-09-25"
+   "last_change_check": "2026-10-06",
+   "regulations": "2026-10-06"
   }
  },
  {
@@ -4055,7 +4086,7 @@
    "BOVA § 318, 63 P.S. § 818.318 (discipline)",
    "BOVA §§ 328-329, 63 P.S. §§ 818.328-818.329 (penalties; civil actions)"
   ],
-  "official_url": "https://www.legis.state.pa.us/WU01/LI/LI/US/HTM/1983/0/0084..HTM (official unconsolidated statute, current through Act 51 of 2026)",
+  "official_url": "https://www.legis.state.pa.us/WU01/LI/LI/US/HTM/1983/0/0084..HTM (official unconsolidated statute; § 307 last amended by Act 134 of 2018; page as fetched 10/6/2026 shows no 2026 amendment notes)",
   "source_quality": "official",
   "law_dates": {
    "section": "BOVA § 307, 63 P.S. § 818.307",
@@ -4064,7 +4095,7 @@
    "last_amendment_effective": "2019-10-24",
    "originally_enacted_year": 1983,
    "next_scheduled_change": null,
-   "history_source": "Official in-text notes: '((4) amended Oct. 24, 2018, P.L.816, No.134)', '((ii) amended Oct. 24, 2018 ...)', '((g) added Oct. 24, 2018 ...)', '(307 renumbered from 9 ...)'. Act 134 § 25: 'This act shall take effect in 365 days' (approved 10/24/2018). Originally § 9 of Act 84 of 1983 (Dec. 22, 1983, P.L. 306). Act 51 of 2026 did not touch § 307. SB 1182 (2025-26) is pending, not law."
+   "history_source": "Official in-text notes: '((4) amended Oct. 24, 2018, P.L.816, No.134)', '((ii) amended Oct. 24, 2018 ...)', '((g) added Oct. 24, 2018 ...)', '(307 renumbered from 9 ...)'. Act 134 § 25: 'This act shall take effect in 365 days' (approved 10/24/2018). Originally § 9 of Act 84 of 1983 (Dec. 22, 1983, P.L. 306). Act 51 of 2026 (SB 1353, approved 7/20/2026, effective immediately) amended §§ 102, 310(d), 311(b), 326(b)(4) only, not § 307. SB 1182 (2025-26) is pending in House Commerce (hearing listed 10/5/2026); not law."
   },
   "claims": {
    "dealer_filing_deadline": null,
@@ -4141,10 +4172,11 @@
    "note": ""
   },
   "verified": {
-   "audit_fields": "2026-09-25",
+   "audit_fields": "2026-10-06",
    "coverage": "2026-09-24",
    "method": "Claude research against statute text; quotes machine-checked against saved source text",
-   "last_change_check": "2026-09-25"
+   "last_change_check": "2026-10-06",
+   "regulations": "2026-10-06"
   }
  },
  {
@@ -4158,27 +4190,23 @@
   "source_quality": "official",
   "law_dates": {
    "section": "R.I. Gen. Laws § 31-5.1-6",
-   "last_amended_year": 2018,
-   "last_amending_act": "P.L. 2018, ch. 127 (H 7129) and ch. 266 (S 2754)",
-   "last_amendment_effective": "2018-07-02",
+   "last_amended_year": 2026,
+   "last_amending_act": "P.L. 2026, ch. 179 (H 8213 Sub A) and ch. 180 (S 2347 Sub A), enacted 6/22/2026",
+   "last_amendment_effective": "2026-10-01",
    "originally_enacted_year": 1974,
-   "next_scheduled_change": {
-    "effective": "2026-10-01",
-    "act": "P.L. 2026, ch. 180 (S 2347 Sub A) and ch. 179 (H 8213 Sub A), enacted 6/22/2026",
-    "summary": "Warranty labor = non-warranty rate x technician's actual punched time. Other changes: CPO warranty added, 90+ days to submit claims, written denial with reasons within 45 days and 45 days to resubmit, burden on the OEM for time-based denials, no unreasonable audits/chargebacks, and distributors and factory branches covered."
-   },
+   "next_scheduled_change": null,
    "history_source": "Official history note: 'P.L. 1974, ch. 292, § 1; ... P.L. 2014, ch. 397, § 1; P.L. 2018, ch. 127, § 1; P.L. 2018, ch. 266, § 1.' Public-law pages: ch. 127 and ch. 266 'Enacted 07/02/2018', 'take effect upon passage'. 2026 ch. 179/180: 'Enacted 06/22/2026', 'take effect on October 1, 2026'."
   },
   "claims": {
-   "dealer_filing_deadline": null,
+   "dealer_filing_deadline": "Manufacturer must allow at least 90 days for dealers to submit claims",
    "decision_deadline_days": 30,
    "deemed_approved_if_late": true,
    "payment_deadline_days": 30,
    "payment_deadline_trigger": "after approval",
-   "resubmission_rights": "At least 60 days from notice of a chargeback to resubmit a claim denied for an incidental failure (clerical error or administrative technicality)",
-   "denial_requirements": null,
+   "resubmission_rights": "45 days from receipt of a disapproval to resubmit a corrected claim. The OEM may protest a corrected claim to the Department within 30 days and bears the burden. Incidental-failure chargebacks: at least 60 days from written notice identifying the violated procedure.",
+   "denial_requirements": "Written notice within 45 days with a detailed explanation of the reasons for disapproval. For time-based denials the OEM must provide evidence that the technician did not spend the time or that the submission did not comply.",
    "quote": "A claim not approved or disapproved within thirty (30) days of receipt shall be deemed approved. ... Payment of, or credit issued on, a claim filed under this section shall be made within thirty (30) days of approval.",
-   "pinpoint": "§ 31-5.1-6(i)(2)(i)-(iii) (current text to 9/30/2026); resubmission right at (i)(3)(iii)"
+   "pinpoint": "§ 31-5.1-6(a), (i)(2)(i)-(iii), (i)(3)(iii), (i)(4) as amended eff. 10/1/2026. (i)(2) 30-day deemed approval retained; conflicts with (i)(4) 45-day written-notice window."
   },
   "chargebacks": {
    "lookback_months": 12,
@@ -4226,7 +4254,7 @@
    "cite": "R.I. Gen. Laws §§ 31-5.1-12, 31-5.1-13"
   },
   "confidence": "high",
-  "notes": "Fields show the rules in force through 9/30/2026. FROM 10/1/2026 (P.L. 2026 ch. 179/180, identical text; enacted text checked against law26180): (a) dealers get at least 90 days to submit claims, and retail-rate reimbursement extends to CPO warranty or recall issued by the manufacturer, distributor, factory branch, common entity or agent. (c) warranty labor = non-warranty labor rate x the technician's actual time, shown by time punch including diagnostic and OEM tech-assist time, with a dealer attestation. (h) no unreasonable audits or chargebacks, and technicians must meet reasonable qualifications; either party may appeal to the Department. (i)(4) written denial with a detailed explanation 'within forty-five (45) days', 45 days to resubmit, OEM bears the burden on time-based denials, and the OEM may protest a corrected claim to the Department within 30 days. CONFLICT: (i)(2) still says approve/disapprove in 30 days or deemed approved, while (i)(4) allows written denial within 45 days. Unreconciled; treat 30 days as the safe deadline. Claims under § 31-5.1-6.1 (recall) follow the same (i) rules from 10/1.",
+  "notes": "Fields show the rules in force since 10/1/2026 (P.L. 2026 ch. 179/180, identical text; enacted text checked against law26180). The codified site still showed pre-amendment text on 2026-10-06. What changed on 10/1/2026: (a) dealers get at least 90 days to submit claims, and retail-rate reimbursement extends to CPO warranty or recall issued by the manufacturer, distributor, factory branch, common entity or agent. (c) warranty labor = non-warranty labor rate x the technician's actual time, shown by time punch including diagnostic and OEM tech-assist time, with a dealer attestation. (h) no unreasonable audits or chargebacks, and technicians must meet reasonable qualifications; either party may appeal to the Department. (i)(4) written denial with a detailed explanation 'within forty-five (45) days', 45 days to resubmit, OEM bears the burden on time-based denials, and the OEM may protest a corrected claim to the Department within 30 days. CONFLICT: (i)(2) still says approve/disapprove in 30 days or deemed approved, while (i)(4) allows written denial within 45 days. Unreconciled; treat 30 days as the safe deadline. Claims under § 31-5.1-6.1 (recall) follow the same (i) rules from 10/1.",
   "name": "Rhode Island",
   "calc": {
    "mode": "calendar_month",
@@ -4246,10 +4274,11 @@
    "note": ""
   },
   "verified": {
-   "audit_fields": "2026-09-25",
+   "audit_fields": "2026-10-06",
    "coverage": "2026-09-24",
    "method": "Claude research against statute text; quotes machine-checked against saved source text",
-   "last_change_check": "2026-09-25"
+   "last_change_check": "2026-10-06",
+   "regulations": "2026-10-06"
   }
  },
  {
@@ -4353,7 +4382,8 @@
    "audit_fields": "2026-09-25",
    "coverage": "2026-09-24",
    "method": "Claude research against statute text; quotes machine-checked against saved source text",
-   "last_change_check": "2026-09-25"
+   "last_change_check": "2026-10-06",
+   "regulations": "2026-10-06"
   }
  },
  {
@@ -4442,7 +4472,8 @@
    "audit_fields": "2026-09-25",
    "coverage": "2026-09-24",
    "method": "Claude research against statute text; quotes machine-checked against saved source text",
-   "last_change_check": "2026-09-25"
+   "last_change_check": "2026-10-06",
+   "regulations": "2026-10-06"
   }
  },
  {
@@ -4450,7 +4481,10 @@
   "cites": [
    "Tenn. Code Ann. § 55-17-121",
    "Tenn. Code Ann. § 55-17-114(c)(18) (license ground)",
-   "Tenn. Code Ann. § 55-17-117 (civil penalty, injunction)"
+   "Tenn. Code Ann. § 55-17-117 (civil penalty, injunction)",
+   "Tenn. Comp. R. & Regs. 0960-01-.03 (claims, audits, parts retention)",
+   "Tenn. Comp. R. & Regs. 0960-01-.04 (computation of warranty charges)",
+   "Tenn. Comp. R. & Regs. 0960-01-.05 (labor-rate request response)"
   ],
   "official_url": "https://law.justia.com/codes/tennessee/2025/title-55/chapter-17/part-1/section-55-17-121/ (mirror; official T.C.A. is LexisNexis-only)",
   "source_quality": "mirror",
@@ -4464,22 +4498,22 @@
    "history_source": "History line on Justia 2025 mirror ('Acts 1977, ch. 162, § 28; T.C.A., § 59-1722; Acts 2021, ch. 277, § 1'); effective date from official TN General Assembly bill page for SB1615 (GA 112: 'Effective date(s) 07/01/2021'). GA 114 (2025-26) Motor Vehicles subject index shows no bill amending § 55-17-121; 2026 Pub. Ch. 885 amended § 55-17-114 (delivery-failure grounds, eff. 5/5/2026), not warranty."
   },
   "claims": {
-   "dealer_filing_deadline": null,
-   "decision_deadline_days": null,
-   "deemed_approved_if_late": null,
+   "dealer_filing_deadline": "Within 30 days after the warranty repair or service is completed",
+   "decision_deadline_days": 60,
+   "deemed_approved_if_late": true,
    "payment_deadline_days": null,
    "payment_deadline_trigger": null,
    "resubmission_rights": null,
-   "denial_requirements": null,
-   "quote": null,
-   "pinpoint": null
+   "denial_requirements": "Written notice to the dealer, within 60 days of receipt, that the claim is rejected and the reason. Approved or deemed-approved claims must be paid 'promptly' (no day count).",
+   "quote": "All such claims for warranty repairs or servicing properly submitted shall be deemed approved and shall be promptly paid, unless within sixty (60) days after such claims are received",
+   "pinpoint": "Tenn. Comp. R. & Regs. 0960-01-.03(1)(a)"
   },
   "chargebacks": {
-   "lookback_months": null,
-   "fraud_extension": null,
-   "limits": null,
-   "quote": null,
-   "pinpoint": null
+   "lookback_months": 12,
+   "fraud_extension": "None stated (rule has no fraud exception)",
+   "limits": "MVC rule (not statute): warranty and sales-incentive claims may be reviewed, audited and disallowed only within 12 months after payment and only for good cause. After a 'full and fair' incentive audit, the chargeback is reduced by any different payment or benefit the dealer qualified for on the audited sale. Dealer must keep replaced warranty parts 30 days after submitting the claim unless the franchise agreement says otherwise.",
+   "quote": "may, within twelve (12) months after the payment of a warranty claim, review its action, audit the submitting dealer's records and disallow the claim for good cause.",
+   "pinpoint": "Tenn. Comp. R. & Regs. 0960-01-.03(1)(a)-(b)"
   },
   "rate_submission": {
    "frequency_limit": null,
@@ -4499,10 +4533,10 @@
    "pinpoint": "§ 55-17-121(b); see (a), (c), (d)(2)(C)"
   },
   "manufacturer_response": {
-   "response_deadline_days": null,
+   "response_deadline_days": 30,
    "deemed_approved_if_no_response": null,
    "challenge_standard": "Manufacturer must show the Commission the dealer's retail labor rate is 'improper in light of all economic circumstances'.",
-   "challenge_method": "Showing before the Motor Vehicle Commission (no timeline stated). (Parts markup only: 30-day approve/deny, appeal to Commission, manufacturer bears burden.)",
+   "challenge_method": "Labor: written approval or disapproval of a rate-adjustment request within 30 days (MVC Rule 0960-01-.05; no deemed approval stated). Paying below the retail rate requires a showing to the Motor Vehicle Commission ((b)). Parts markup: 30-day approve/deny, appeal to the Commission, manufacturer bears the burden ((d)(2)(C)(ii)).",
    "dispute_forum": "Tennessee Motor Vehicle Commission",
    "quote": "unless the manufacturer or distributor can show to the commission that the dealer's retail labor rate is improper in light of all economic circumstances.",
    "pinpoint": "§ 55-17-121(b)"
@@ -4513,7 +4547,7 @@
    "cite": "Tenn. Code Ann. §§ 55-17-114(c)(18), 55-17-117"
   },
   "confidence": "medium",
-  "notes": "Official code is Lexis-only; text read from Justia 2025 mirror (history line confirms no amendment after 2021). No statutory claim-processing deadlines, deemed approval, audit window or chargeback limits in Title 55, ch. 17, part 1 (checked §§ 55-17-114, -117, -121 and part TOC); § 55-17-114(c)(12)'s 'reasonable time' payment rule covers prior-model-year inventory payments, not warranty. TN MVC rules (Ch. 0960-01) not checked (site returned 403). No time-allowance standard.",
+  "notes": "Official code is Lexis-only; statute text read from Justia 2025 (history line confirms no amendment after 2021). The statute has no claim deadlines, deemed approval, audit window or chargeback limits; those come from Motor Vehicle Commission Rule 0960-01-.03 (claims, 12-month audit window, parts retention). Rule .04 sets paid hours (manual hours plus actual diagnostic hours) and Rule .05 a 30-day written response to labor-rate requests. Rules read on Cornell LII and Justia (current through 6/26/2025); the official SOS rules PDF (rev. 9/15/2025) returned 403, and the notice for that revision cites only rule .14 (license fees). § 55-17-114(c)(12)'s 'reasonable time' rule covers prior-model-year inventory payments only.",
   "name": "Tennessee",
   "calc": {
    "mode": "none",
@@ -4526,10 +4560,11 @@
    "note": ""
   },
   "verified": {
-   "audit_fields": "2026-09-25",
+   "audit_fields": "2026-10-06",
    "coverage": "2026-09-24",
    "method": "Claude research against statute text; quotes machine-checked against saved source text",
-   "last_change_check": "2026-09-25"
+   "last_change_check": "2026-10-06",
+   "regulations": "2026-10-06"
   }
  },
  {
@@ -4594,7 +4629,7 @@
    "deemed_approved_if_no_response": false,
    "challenge_standard": "On protest, Board may uphold disapproval or non-response only if manufacturer proves by a preponderance that it was reasonable; otherwise Board orders the requested rate.",
    "challenge_method": "Written notice of approval/disapproval within 60 days; disapproval must state reasons.",
-   "dispute_forum": "Protest to the Board of the Texas Department of Motor Vehicles (§ 2301.403(c)-(e))",
+   "dispute_forum": "Protest to the Board of the Texas Department of Motor Vehicles (§ 2301.403(c)-(e)). Under 43 TAC ch. 224 subch. C the parties must mediate with the department before referral to SOAH (§ 224.90).",
    "quote": "Not later than the 60th day after the date of receipt of a request under this section, the manufacturer or distributor shall provide written notice to the requesting dealer of the approval or disapproval of the request.",
    "pinpoint": "§ 2301.403(b); protest and burden § 2301.403(c)-(e)"
   },
@@ -4619,10 +4654,11 @@
    "note": "Texas uses the GREATER rate of the two samples, both from the preceding six months."
   },
   "verified": {
-   "audit_fields": "2026-09-25",
+   "audit_fields": "2026-10-06",
    "coverage": "2026-09-24",
    "method": "Claude research against statute text; quotes machine-checked against saved source text",
-   "last_change_check": "2026-09-25"
+   "last_change_check": "2026-10-06",
+   "regulations": "2026-10-06"
   }
  },
  {
@@ -4698,7 +4734,7 @@
    "deemed_approved_if_no_response": true,
    "challenge_standard": "Written objection to the 'material accuracy' of the rate; or, if submission is 'substantially higher' than current warranty rate, request supplemental ROs (30 days before/after) and propose an adjusted rate using the same rules, formula and exclusions.",
    "challenge_method": "Within 30 days: written objection or written request for all ROs from the 30 days before/after (clocks suspended until supplied); then within 30 days of supplemental ROs, propose adjusted rate from any set of the dealer's qualified ROs.",
-   "dispute_forum": "Not specified in § 204; request for agency action before the Department of Commerce executive director (§ 13-14-107) or private action (§ 13-14-308)",
+   "dispute_forum": "Not specified in § 204. Request for agency action before the Department of Commerce executive director (§ 13-14-107), an informal proceeding decided on written submissions without an evidentiary hearing (Utah Admin. Code R151-14-3(1), (7)); or private action (§ 13-14-308).",
    "quote": "unless, within 30 days after receiving the franchisee's submission, the franchisor delivers to the franchisee: (A) a written objection to the material accuracy of the retail labor rate or retail parts markup",
    "pinpoint": "§ 13-14-204(3)(e)"
   },
@@ -4736,10 +4772,11 @@
    "note": ""
   },
   "verified": {
-   "audit_fields": "2026-09-25",
+   "audit_fields": "2026-10-06",
    "coverage": "2026-09-24",
    "method": "Claude research against statute text; quotes machine-checked against saved source text",
-   "last_change_check": "2026-09-25"
+   "last_change_check": "2026-10-06",
+   "regulations": "2026-10-06"
   }
  },
  {
@@ -4835,7 +4872,8 @@
    "audit_fields": "2026-09-25",
    "coverage": "2026-09-24",
    "method": "Claude research against statute text; quotes machine-checked against saved source text",
-   "last_change_check": "2026-09-25"
+   "last_change_check": "2026-10-06",
+   "regulations": "2026-10-06"
   }
  },
  {
@@ -4922,7 +4960,8 @@
    "audit_fields": "2026-09-25",
    "coverage": "2026-09-24",
    "method": "Claude research against statute text; quotes machine-checked against saved source text",
-   "last_change_check": "2026-09-25"
+   "last_change_check": "2026-10-06",
+   "regulations": "2026-10-06"
   }
  },
  {
@@ -4990,7 +5029,7 @@
    "deemed_approved_if_no_response": null,
    "challenge_standard": "Manufacturer must demonstrate the rates 'unreasonably exceed those of all other' franchised dealers in the same relevant market area offering the same or a competitive line.",
    "challenge_method": "If manufacturer need not honor the proposed increase, the dealer may resubmit a new proposed rate (no deadlines stated).",
-   "dispute_forum": "Department of Licensing adjudicative proceeding (ch. 34.05 RCW) or court (RCW 46.96.260)",
+   "dispute_forum": "Department of Licensing adjudicative proceeding (ch. 34.05 RCW; $500 petition fee, WAC 308-67-010) or court (RCW 46.96.260)",
    "quote": "If a manufacturer can demonstrate that the rates unreasonably exceed those of all other franchised motor vehicle dealers in the same relevant market area offering the same or a competitive motor vehicle line",
    "pinpoint": "§ 46.96.105(1)(b)"
   },
@@ -5000,7 +5039,7 @@
    "cite": "RCW 46.96.260; RCW 46.70.101(2)(j)"
   },
   "confidence": "high",
-  "notes": "Only state in this group with a statutory dealer filing deadline (90 days). Schedule of compensation may not fall below an existing dealer's schedule as of June 10, 2010. 2014 c 214 (latest amendment) applies to franchises amended, renewed or entered after June 12, 2014 (2014 c 214 s 9). No time-allowance standard. Recall pay (RCW 46.96.095) uses § 105 rates.",
+  "notes": "Only state in this group with a statutory dealer filing deadline (90 days). Schedule of compensation may not fall below an existing dealer's schedule as of June 10, 2010. 2014 c 214 (latest amendment) applies to franchises amended, renewed or entered after June 12, 2014 (2014 c 214 s 9). No time-allowance standard. Recall pay (RCW 46.96.095) uses § 105 rates. Where the warranty agreement requires prior approval, the manufacturer must give it within a reasonable time and no later than 10 days, except in life, health or safety emergencies (WAC 308-66-150(2)).",
   "name": "Washington",
   "calc": {
    "mode": "none",
@@ -5020,10 +5059,11 @@
    "note": ""
   },
   "verified": {
-   "audit_fields": "2026-09-25",
+   "audit_fields": "2026-10-06",
    "coverage": "2026-09-24",
    "method": "Claude research against statute text; quotes machine-checked against saved source text",
-   "last_change_check": "2026-09-25"
+   "last_change_check": "2026-10-06",
+   "regulations": "2026-10-06"
   }
  },
  {
@@ -5093,7 +5133,7 @@
   },
   "penalties": {
    "private_remedies": "Licensee may sue for pecuniary loss plus actual costs incl. reasonable attorney fees for violations of § 218.0116(1)(km), without exhausting administrative remedies; treble damages if willful.",
-   "admin_sanctions": "License may be denied, suspended or revoked for a manufacturer, importer or distributor violating § 218.0125.",
+   "admin_sanctions": "License may be denied, suspended or revoked for a manufacturer, importer or distributor violating § 218.0125. DOT determinations or licensing actions on a warranty labor reimbursement complaint must rest on information the parties submit (Trans 139.06(9)).",
    "cite": "Wis. Stat. §§ 218.0116(1)(km), 218.0163(1)(a), (1m)"
   },
   "confidence": "high",
@@ -5113,10 +5153,11 @@
    "note": "Wisconsin divides customer labor charges by the hours the manufacturer's warranty time allowances would allow for the same repairs, so each sampled RO needs its OEM hours."
   },
   "verified": {
-   "audit_fields": "2026-09-25",
+   "audit_fields": "2026-10-06",
    "coverage": "2026-09-24",
    "method": "Claude research against statute text; quotes machine-checked against saved source text",
-   "last_change_check": "2026-09-25"
+   "last_change_check": "2026-10-06",
+   "regulations": "2026-10-06"
   }
  },
  {
@@ -5189,11 +5230,11 @@
   },
   "penalties": {
    "private_remedies": "Dealer action for damages and equitable relief; prevailing dealer may recover up to treble damages plus reasonable attorney's fees; declaratory judgment; dealer-association standing; injunction without bond.",
-   "admin_sanctions": null,
+   "admin_sanctions": "None. Manufacturers are not licensed under ch. 17A art. 6 (§ 17A-6-3), and DMV license sanctions (§ 17A-6-18) contain no warranty ground. Art. 6A is enforced only by dealer civil action (§§ 17A-6A-16, -17).",
    "cite": "W. Va. Code §§ 17A-6A-16, 17A-6A-17"
   },
   "confidence": "high",
-  "notes": "Bars paying on a 'flat-rate figure that is less than what the dealer charges for retail work' ((b)(3)). Dealer's written request to modify a time allowance is 'presumed reasonable' and may not be unreasonably denied ((a)(3), (e)); diagnostic allowance includes time communicating with the manufacturer (2024). Trucks/buses over 26,001 lb GVW: actual retrieval/return time at retail rate, $50 minimum per electronic-tool operation, +3 hours per 24-hour manufacturer-caused hold ((j)). OTA customer-assistance compensation required ((a)(4)). No 'deemed approved' rule for warranty claims (only for rate submissions). Article 6A has no administrative penalty provision (licensing sanctions under ch. 17A art. 6 not reviewed).",
+  "notes": "Bars paying on a 'flat-rate figure that is less than what the dealer charges for retail work' ((b)(3)). Dealer's written request to modify a time allowance is 'presumed reasonable' and may not be unreasonably denied ((a)(3), (e)); diagnostic allowance includes time communicating with the manufacturer (2024). Trucks/buses over 26,001 lb GVW: actual retrieval/return time at retail rate, $50 minimum per electronic-tool operation, +3 hours per 24-hour manufacturer-caused hold ((j)). OTA customer-assistance compensation required ((a)(4)). No 'deemed approved' rule for warranty claims (only for rate submissions). Article 6A has no administrative penalty provision. Ch. 17A art. 6 licenses dealers, not manufacturers, and its sanctions (§ 17A-6-18) have no warranty ground. 91 CSR has no warranty, audit or chargeback rules.",
   "name": "West Virginia",
   "calc": {
    "mode": "dealer_choice",
@@ -5212,10 +5253,11 @@
    "note": ""
   },
   "verified": {
-   "audit_fields": "2026-09-25",
+   "audit_fields": "2026-10-06",
    "coverage": "2026-09-24",
    "method": "Claude research against statute text; quotes machine-checked against saved source text",
-   "last_change_check": "2026-09-25"
+   "last_change_check": "2026-10-06",
+   "regulations": "2026-10-06"
   }
  },
  {
@@ -5323,7 +5365,8 @@
    "audit_fields": "2026-09-25",
    "coverage": "2026-09-24",
    "method": "Claude research against statute text; quotes machine-checked against saved source text",
-   "last_change_check": "2026-09-25"
+   "last_change_check": "2026-10-06",
+   "regulations": "2026-10-06"
   }
  }
 ]

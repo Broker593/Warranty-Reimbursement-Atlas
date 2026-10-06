@@ -1,10 +1,10 @@
 {
  "schema": 2,
  "name": "Audit climate score",
- "description": "How restrictive state law is toward a manufacturer's or distributor's warranty audits, chargebacks and retail-rate validation. Each of 14 statutory limits gets a level from 0 to 3; points = weight x level / 3; weights add up to 100, so scores run 0-100. Higher = more restrictive. Statute text only; not legal advice and not an assessment of any company's audit program.",
+ "description": "How restrictive state law is toward a manufacturer's or distributor's warranty audits, chargebacks and retail-rate validation. Each of 14 statutory limits gets a level from 0 to 3; points = weight x level / 3; weights add up to 100, so scores run 0-100. Higher = more restrictive. Statute text, plus state agency rules where they set a limit (all 50 states' rules checked 2026-10-06); not legal advice and not an assessment of any company's audit program.",
  "formula": "Points = weight × level ÷ 3. Score = sum of points (0–100).",
- "weights_note": "Weights are a judgment call about how much each limit constrains audits and chargebacks. Levels are read from the statute text.",
- "checked": "2026-09-27",
+ "weights_note": "Weights are a judgment call about how much each limit constrains audits and chargebacks. Levels are read from the statute text and, where a state agency rule sets the limit, from that rule.",
+ "checked": "2026-10-06",
  "max": 100,
  "subscores": [
   {
@@ -1863,8 +1863,8 @@
    "rank": 18
   },
   "RI": {
-   "score": 22,
-   "exact": 22,
+   "score": 25,
+   "exact": 25,
    "tier": "Moderate",
    "levels": {
     "lookback": 1,
@@ -1875,7 +1875,7 @@
     "stay": 0,
     "notice": 0,
     "selection": 0,
-    "written": 0,
+    "written": 3,
     "response": 3,
     "appeal": 0,
     "frequency": 0,
@@ -1891,7 +1891,7 @@
     "stay": 0,
     "notice": 0,
     "selection": 0,
-    "written": 0,
+    "written": 3,
     "response": 3,
     "appeal": 0,
     "frequency": 0,
@@ -1900,7 +1900,7 @@
    },
    "subscores": {
     "limits": 19,
-    "process": 3
+    "process": 6
    },
    "rank": 40
   },
@@ -1989,11 +1989,11 @@
    "rank": 39
   },
   "TN": {
-   "score": 0,
-   "exact": 0,
+   "score": 7,
+   "exact": 7,
    "tier": "Low",
    "levels": {
-    "lookback": 0,
+    "lookback": 1,
     "extrap": 0,
     "nofraud": 0,
     "clerical": 0,
@@ -2009,7 +2009,7 @@
     "conseq": 0
    },
    "points": {
-    "lookback": 0,
+    "lookback": 7,
     "extrap": 0,
     "nofraud": 0,
     "clerical": 0,
@@ -2025,10 +2025,10 @@
     "conseq": 0
    },
    "subscores": {
-    "limits": 0,
+    "limits": 7,
     "process": 0
    },
-   "rank": 50
+   "rank": 48
   },
   "TX": {
    "score": 15,
@@ -2280,7 +2280,7 @@
     "limits": 7,
     "process": 0
    },
-   "rank": 48
+   "rank": 49
   },
   "WV": {
    "score": 33,
@@ -2364,7 +2364,7 @@
     "limits": 7,
     "process": 0
    },
-   "rank": 49
+   "rank": 50
   }
  }
 }

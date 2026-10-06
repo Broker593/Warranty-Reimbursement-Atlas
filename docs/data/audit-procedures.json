@@ -1,7 +1,7 @@
 {
  "schema": 1,
- "checked": "2026-09-27",
- "method": "Official statute text read for each state (quotes machine-checked verbatim, 40 words max). true = the statute imposes the requirement or protection; null = silent; false = the statute expressly provides otherwise. The two classification fields are editorial judgments made from the recorded limits and penalties text. Revised 2026-09-27 after an independent review: frequency caps count only numeric limits; response periods count only time to respond, cure or resubmit to the manufacturer (not windows to sue or protest to a board); rate validation is \"limited\" only when the manufacturer has no right to request additional ROs or re-verify periodically and no comparison with other dealers.",
+ "checked": "2026-10-06",
+ "method": "Official statute text read for each state; state administrative rules checked for all 50 states on 2026-10-06 and used where a state agency rule sets the limit (Tennessee) (quotes machine-checked verbatim, 40 words max). true = the statute imposes the requirement or protection; null = silent; false = the statute expressly provides otherwise. The two classification fields are editorial judgments made from the recorded limits and penalties text. Revised 2026-09-27 after an independent review: frequency caps count only numeric limits; response periods count only time to respond, cure or resubmit to the manufacturer (not windows to sue or protest to a board); rate validation is \"limited\" only when the manufacturer has no right to request additional ROs or re-verify periodically and no comparison with other dealers.",
  "states": [
   {
    "state": "AK",
@@ -166,7 +166,7 @@
    },
    "rate_submission_audit": {
     "allowed": true,
-    "limits": "Within 45 days the warrantor may rebut once by reasonably substantiating that the submission is materially incomplete, inaccurate or unreasonable, with a full explanation, evidence for each reason, all calculations and a proposed adjusted rate. It may not later expand the rebuttal except for information it did not have. If the calculated rate is substantially higher or lower than the rate on record, it may request additional ROs for 60 days before or after the submitted period, then has 45 days from receipt to rebut. Submissions are limited to once per 12 months.",
+    "limits": "Within 45 days the warrantor may rebut once by reasonably substantiating that the submission is materially incomplete, inaccurate or unreasonable, with a full explanation, evidence for each reason, all calculations and a proposed adjusted rate. It may not later add to or change the rebuttal unless it did not have the information at the time, or it uses the information to answer the dealer's response to the rebuttal. If the calculated rate is substantially higher or lower than the rate on record, it may request additional ROs for 60 days before or after the submitted period, then has 45 days from receipt to rebut. Submissions are limited to once per 12 months.",
     "quote": "the warrantor, in accordance with this subsection, may request additional repair orders for a period of 60 days prior to or 60 days subsequent to the time period for which the repair orders were submitted",
     "pinpoint": "§ 8-20-7(f)(6)b.; see (f)(6)a., (f)(4)"
    },
@@ -575,7 +575,7 @@
     "https://colorado.public.law/statutes/crs_44-20-135"
    ],
    "confidence": "high",
-   "notes": "One rule set covers warranty, sales and incentive claims. The 9-month audit and chargeback window runs from claim SUBMISSION, not payment. Text was read from the 2024 C.R.S. print on leg.colorado.gov (OLLS, uncertified printout; the official C.R.S. is Lexis-hosted). colorado.public.law, current through Fall 2025, shows identical § 44-20-135 text. No 2025-2026 amendment was found; SB 25-160 amended other part 1 sections. Watch item: part 1 of article 20 is set to repeal September 1, 2027, subject to sunset review (§ 44-20-142).",
+   "notes": "One rule set covers warranty, sales and incentive claims. The 9-month audit and chargeback window runs from claim SUBMISSION, not payment. Text was read from the 2024 C.R.S. print on leg.colorado.gov (OLLS, uncertified printout; the official C.R.S. is Lexis-hosted). colorado.public.law, current through Fall 2025, shows identical § 44-20-135 text. No 2025-2026 amendment was found. SB 25-160 (manufacturer affiliates) did not become law; it was postponed indefinitely in House Business Affairs & Labor on 4/24/2025. Watch item: part 1 of article 20 is set to repeal September 1, 2027, subject to sunset review (§ 44-20-142).",
    "classification": {
     "rate_validation_limited": false,
     "rate_validation_basis": "Not limited: the statute lets the manufacturer request additional ROs or information, re-verify rates periodically, or rebut by comparison with other dealers (for example 'similarly situated' or 'in the vicinity'), or it sets no validation procedure.",
@@ -1569,7 +1569,7 @@
     "https://ksrevisor.gov/statutes/chapters/ch08/008_024_0015.html"
    ],
    "confidence": "high",
-   "notes": "Warranty vs incentive: two parallel but identical 1-year audit rights, each running from payment, with chargeback only for \"false or unsubstantiated\" claims (8-2415(e)). The 90-day presentment, setoff stay and fraud extension apply to both. The mfr's reimbursement claim must be presented within 90 days of the audit of the item: \"A claim for reimbursement by the first or second stage manufacturer or distributor of sums due following an audit must be presented to the dealer within 90 days of the audit of the item subject to the claim.\" No notice-before-audit, selection, frequency, written-grounds, response-period, appeal-process or extrapolation rules. History: L. 1980 ch. 36 § 15 ... L. 2019 ch. 5 § 1 (SB 39), eff. 7/1/2019. Per prior research, no 2025-2026 amendment was found.",
+   "notes": "Warranty vs incentive: two parallel but identical 1-year audit rights, each running from payment, with chargeback only for \"false or unsubstantiated\" claims (8-2415(e)). The 90-day presentment, setoff stay and fraud extension apply to both. The mfr's reimbursement claim must be presented within 90 days of the audit of the item: \"A claim for reimbursement by the first or second stage manufacturer or distributor of sums due following an audit must be presented to the dealer within 90 days of the audit of the item subject to the claim.\" No notice-before-audit, selection, frequency, written-grounds, response-period, appeal-process or extrapolation rules. History: L. 1980 ch. 36 § 15 ... L. 2019 ch. 5 § 1 (SB 39), eff. 7/1/2019. Per prior research, no 2025-2026 amendment was found. Separately, K.S.A. 8-2446(d) makes it a violation to cut compensation or retaliate \"through a chargeback\" solely because the dealer submitted a recall or stop-sale compensation claim. It reaches only that retaliation, so it is not counted as a consequence for improper audits.",
    "classification": {
     "rate_validation_limited": true,
     "rate_validation_basis": "Limited: the manufacturer may check the rate only against the dealer's own submitted ROs (or has no rebuttal right at all), with no right to request additional ROs or run periodic re-verification, and no comparison with other dealers' rates.",
@@ -1666,7 +1666,7 @@
     "https://apps.legislature.ky.gov/record/26rs/hb648.html"
    ],
    "confidence": "high",
-   "notes": "Audit window: 12 months after payment or the end of a program of 1 year or less, whichever is later (7)(a). Warranty vs incentive: one procedure. (7) expressly covers \"warranty, recall, sales, or incentive claims\", and the documentation cutoff, pre-chargeback notice and fraud rule apply equally. No notice-before-audit, selection-basis, frequency, appeal, stay or extrapolation rules. Amendments: the official page shows the version effective 7/15/2026, from 2026 Ky. Acts ch. 83 (HB 648). Per the LRC enacted summary, that act rewrote only the Class 7+ heavy-truck compensation rules in (2)(d) (including a 90-day minimum claim-submission window) and did not address audits. No audit-specific penalty. General fine for violating KRS 190.010-190.080: $25-$500 (KRS 190.990(1)).",
+   "notes": "Audit window: 12 months after payment or the end of a program of 1 year or less, whichever is later (7)(a). Warranty vs incentive: one procedure. (7) expressly covers \"warranty, recall, sales, or incentive claims\", and the documentation cutoff, pre-chargeback notice and fraud rule apply equally. No notice-before-audit, selection-basis, frequency, appeal, stay or extrapolation rules. Amendments: the official page shows the version effective 7/15/2026, from 2026 Ky. Acts ch. 83 (HB 648). Per the enacted act, it rewrote the Class 7+ heavy-truck compensation rules in (2)(d) (incl. a 90-day minimum warranty-claim window for Class 7+), raised the minimum incentive-claim submission window in (5)(a) from 30 to 90 days, and left the audit rules in (6)-(7) unchanged. No audit-specific penalty. General fine for violating KRS 190.010-190.080: $25-$500 (KRS 190.990(1)).",
    "classification": {
     "rate_validation_limited": false,
     "rate_validation_basis": "Not limited: the statute lets the manufacturer request additional ROs or information, re-verify rates periodically, or rebut by comparison with other dealers (for example 'similarly situated' or 'in the vicinity'), or it sets no validation procedure.",
@@ -1756,7 +1756,7 @@
    },
    "rate_submission_audit": {
     "allowed": true,
-    "limits": "The submitted rate is presumed accurate and takes effect 45 days after receipt unless rebutted within 45 days. If the calculated rate is substantially higher or lower than the rate on record, the mfr may request in writing, within 45 days, additional ROs for the 30 days before or after the submitted period. It then has 45 days from receipt to rebut, using the same RO rules and exclusions. A rebuttal must reasonably substantiate material inaccuracy, explain every reason with evidence, include all calculations, and propose an adjusted rate based on the dealer's qualifying ROs. Only one rebuttal is allowed, with no later changes unless new information could not have been known. The dealer may protest to the Louisiana Motor Vehicle Commission within 60 days; the mfr must prove material inaccuracy by a preponderance. A dealer win is retroactive to day 45. The dealer may submit at most once per 12 months.",
+    "limits": "The submitted rate is presumed accurate and takes effect 45 days after receipt unless rebutted within 45 days. If the calculated rate is substantially higher or lower than the rate on record, the mfr may request in writing, within 45 days, additional ROs for the 30 days before or after the submitted period. It then has 45 days from receipt to rebut, using the same RO rules and exclusions. A rebuttal must reasonably substantiate material inaccuracy, explain every reason with evidence, include all calculations, and propose an adjusted rate based on the dealer's qualifying ROs. Only one rebuttal is allowed, with no later changes unless relevant information is discovered that was not known or could not have been known when the rebuttal was issued. The dealer may protest to the Louisiana Motor Vehicle Commission within 60 days; the mfr must prove material inaccuracy by a preponderance. A dealer win is retroactive to day 45. The dealer may submit at most once per 12 months.",
     "quote": "may request in writing, within forty-five days of receipt of the submitted parts mark-up or labor rate, additional repair orders for a period of either thirty days prior to or thirty days subsequent to the time",
     "pinpoint": "La. R.S. 32:1262(A)(9)(b)",
     "more_quotes": [
@@ -2099,7 +2099,7 @@
     "https://legislature.maine.gov/legis/bills/getPDF.asp?paper=HP1419&item=3&snum=132"
    ],
    "confidence": "high",
-   "notes": "Maine sets NO lookback for warranty paid-claim audits. The only express time limit is the 12-month lookback for incentive-payment audits, counted back from the audit-notice date (§ 1176-A). Warranty vs incentive: the same \"reasonably and periodically\" audit right and clerical-error rule cover both; only incentive audits have the 12-month lookback. No selection, written-grounds, response, appeal, stay, extrapolation or documentation rules. § 1176 awards costs and attorney fees when a dealer successfully sues to collect a disapproved claim. § 1174(3)(C-4)(3) bars chargebacks or incentive reductions in response to stop-sale/do-not-drive used-vehicle compensation claims. The Revisor text is current through data extracted 10/20/2025; § 1176-A was last amended by PL 2017, c. 217, § 8. 2026 check: PL 2025, c. 592 (LD 2104, signed 3/23/2026) rewrote 10 M.R.S. § 1248 for personal sports mobile dealers (a separate chapter, with no audit text) and did not touch §§ 1176/1176-A. No other 2026 change was found, but the 2026 session was not searched exhaustively.",
+   "notes": "Maine sets NO lookback for warranty paid-claim audits. The only express time limit is the 12-month lookback for incentive-payment audits, counted back from the audit-notice date (§ 1176-A). Warranty vs incentive: the same \"reasonably and periodically\" audit right and clerical-error rule cover both; only incentive audits have the 12-month lookback. No selection, written-grounds, response, appeal, stay, extrapolation or documentation rules. § 1176 awards costs and attorney fees when a dealer successfully sues to collect a disapproved claim. § 1174(3)(C-4)(3) bars chargebacks or incentive reductions in response to stop-sale/do-not-drive used-vehicle compensation claims. The Revisor text is current through data extracted 10/20/2025; § 1176-A was last amended by PL 2017, c. 217, § 8. 2026 check: PL 2025, c. 592 (LD 2104, signed 3/23/2026) rewrote 10 M.R.S. § 1248 for personal sports mobile dealers (a separate chapter, with no audit text) and did not touch §§ 1176/1176-A. The 2026 session (132nd Legislature, 2nd Regular Session) enacted no change to §§ 1176/1176-A; only PL 2025 cc. 592, 637 and 660 touched dealer or vehicle law. No Maine rule adds a warranty audit lookback (Franchise Board rules, 29-250 C.M.R. ch. 14, are procedural).",
    "classification": {
     "rate_validation_limited": true,
     "rate_validation_basis": "Limited: the manufacturer may check the rate only against the dealer's own submitted ROs (or has no rebuttal right at all), with no right to request additional ROs or run periodic re-verification, and no comparison with other dealers' rates.",
@@ -2459,7 +2459,7 @@
    "clerical_error_protection": {
     "required": true,
     "detail": "No denial based solely on an incidental failure to meet a specific claim-processing requirement, such as a clerical error or administrative technicality that does not question the legitimacy of a claim.",
-    "quote": "deny a claim based solely on a motor vehicle dealer's incidental failure to comply with a specific claim processing requirement … such as a clerical error or other administrative technicality",
+    "quote": "deny a claim based solely on a motor vehicle dealer's incidental failure to comply with a specific claim processing requirement such as a clerical error or other administrative technicality",
     "pinpoint": "Miss. Code Ann. § 63-17-117(3)"
    },
    "documentation_limits": {
@@ -2502,8 +2502,8 @@
     "https://billstatus.ls.state.ms.us/documents/2021/html/HB/0700-0799/HB0746SG.htm",
     "https://billstatus.ls.state.ms.us/documents/2019/pdf/HB/0800-0899/HB0872SG.pdf"
    ],
-   "confidence": "medium",
-   "notes": "Warranty audit window: within the 12 months immediately after payment of the disputed claim. Incentive audit window: within 12 months after payment of the disputed claim or the end of the program, whichever is later (§ 63-17-117(1)). Chargeback grounds (2): false or fraudulent, improper or unnecessary repairs under accepted workmanship standards, or failure to substantiate under a reasonable written claim requirement, all proven by a preponderance. Warranty vs incentive: separate windows. The 60-day amended/supplemental claim right is incentive-only. The clerical rule, preponderance standard and fraud carve-out apply to both. No notice, selection, frequency, written-grounds, response, appeal, stay or extrapolation rules. § 63-17-73(4)(e) (2019 HB 872) bars chargebacks or incentive reductions solely because a dealer filed a recall/stop-sale claim, unless applied uniformly. Source caveat (hence medium confidence): Mississippi's official code is published only through LexisNexis, so the § 63-17-117 text is the enrolled 2014 HB 581 (Laws 2014, ch. 349, § 4, eff. 7/1/2014), whose \"* * *\" deletion marks were removed here. Codified punctuation was not verified because the Justia and FindLaw mirrors were blocked. The Legislature's all-measures lists for 2015-2026 show no other enacted bill touching § 63-17-117. The only other dealer-law acts were 2019 HB 872 (§ 63-17-73), 2021 HB 746 (§§ 63-17-55, -85, -86) and 2023 HB 401. No audit-specific penalty. General Motor Vehicle Commission license sanctions and civil penalties apply (§ 63-17-85).",
+   "confidence": "high",
+   "notes": "Warranty audit window: within the 12 months immediately after payment of the disputed claim. Incentive audit window: within 12 months after payment of the disputed claim or the end of the program, whichever is later (§ 63-17-117(1)). Chargeback grounds (2): false or fraudulent, improper or unnecessary repairs under accepted workmanship standards, or failure to substantiate under a reasonable written claim requirement, all proven by a preponderance. Warranty vs incentive: separate windows. The 60-day amended/supplemental claim right is incentive-only. The clerical rule, preponderance standard and fraud carve-out apply to both. No notice, selection, frequency, written-grounds, response, appeal, stay or extrapolation rules. § 63-17-73(4)(e) (2019 HB 872) bars chargebacks or incentive reductions solely because a dealer filed a recall/stop-sale claim, unless applied uniformly. Source caveat (hence medium confidence): Mississippi's official code is published only through LexisNexis, so the § 63-17-117 text is the enrolled 2014 HB 581 (Laws 2014, ch. 349, § 4, eff. 7/1/2014), whose \"* * *\" deletion marks were removed here. Codified § 63-17-117(1)-(4) verified 10/6/2026 on Justia (2025 Code); (1) also matched on FindLaw (current as of 1/1/2025). MMVC Rule 30-1301:12 (export-sale chargebacks only) adds a pre-chargeback meeting, a 30-90 day response, a protest that bars adverse action, and a manufacturer burden; it does not reach warranty audits. The Legislature's all-measures lists for 2015-2026 show no other enacted bill touching § 63-17-117. The only other dealer-law acts were 2019 HB 872 (§ 63-17-73), 2021 HB 746 (§§ 63-17-55, -85, -86) and 2023 HB 401. No audit-specific penalty. General Motor Vehicle Commission license sanctions and civil penalties apply (§ 63-17-85).",
    "classification": {
     "rate_validation_limited": false,
     "rate_validation_basis": "Not limited: the statute lets the manufacturer request additional ROs or information, re-verify rates periodically, or rebut by comparison with other dealers (for example 'similarly situated' or 'in the vicinity'), or it sets no validation procedure.",
@@ -2874,7 +2874,7 @@
     "https://nebraskalegislature.gov/laws/statutes.php?statute=60-1441"
    ],
    "confidence": "high",
-   "notes": "Warranty audits are in § 60-1438(5): 1 year after payment, or 4 years with reasonable cause to believe intentional fraud. Incentive audits are in § 60-1437(10)-(11): 12 months after payment or after the program ends, unless the claim is fraudulent. For incentives, any claim for sums due after an audit must be presented to the dealer within 90 days after that item's audit is completed, and no setoff is allowed until a final decision. 'Notice' before chargeback is required, but the statute does not specify its form or content, or require advance audit notice, selection basis, audit frequency or extrapolation limits. § 60-1441(5), subject to § 60-1438(5) audits, bars chargebacks made solely because a dealer filed a used-vehicle recall/stop-sale claim. The official pages now show the Laws 2026, LB 972 versions (§§ 69-70, operative 10/1/2026), and those versions are the text quoted. LB 972 moves RVs to a separate Act; the operative § 60-1438 page does not display an RV subsection, so check it after 10/1/2026.",
+   "notes": "Warranty audits are in § 60-1438(5): 1 year after payment, or 4 years with reasonable cause to believe intentional fraud. Incentive audits are in § 60-1437(10)-(11): 12 months after payment or after the program ends, unless the claim is fraudulent. For incentives, any claim for sums due after an audit must be presented to the dealer within 90 days after that item's audit is completed, and no setoff is allowed until a final decision. 'Notice' before chargeback is required, but the statute does not specify its form or content, or require advance audit notice, selection basis, audit frequency or extrapolation limits. § 60-1441(5), subject to § 60-1438(5) audits, bars chargebacks made solely because a dealer filed a used-vehicle recall/stop-sale claim. The official pages now show the Laws 2026, LB 972 versions (§§ 69-70, operative 10/1/2026), and those versions are the text quoted. LB 972 moves RVs to a separate Act. Checked 10/6/2026: the operative § 60-1438 page shows no RV subsection, and the RV exclusion is codified at § 60-1419.01. The § 60-1437(10)-(11) and § 60-1438(5) quotes match the operative text.",
    "classification": {
     "rate_validation_limited": false,
     "rate_validation_basis": "Not limited: the statute lets the manufacturer request additional ROs or information, re-verify rates periodically, or rebut by comparison with other dealers (for example 'similarly situated' or 'in the vicinity'), or it sets no validation procedure.",
@@ -3056,7 +3056,7 @@
     "https://pub.njleg.gov/Bills/2024/PL25/140_.PDF"
    ],
    "confidence": "high",
-   "notes": "Text is P.L.2025, c.140, § 7, approved 9/11/2025. Per § 8 it takes effect on the first day of the seventh month after enactment (4/1/2026), applies to franchise agreements in effect on or after that date, and is not retroactive to earlier causes of action. It was read from the enrolled law on pub.njleg.gov; the codified text on the NJ statutes site was not checked. Warranty-type claims ((f)) cover warranty, extended warranty, maintenance and service-related plans: 12-month audit window after payment (fraud excepted), and chargeback only if false or fraudulent, labor not properly performed, work unnecessary, or not reasonably substantiated. Incentive, bonus, sales and performance claims ((i)): 12-month audit window, with no fraud exception stated. The (p) rules apply to both: written notice with the selection methodology within 30 days, final notice, stay without bond, franchisor's burden of proof, and no chargeback for scrivener's error. Disapprovals need written grounds ((f), (i)). The statute is silent on advance notice, audit frequency and extrapolation.",
+   "notes": "Text is P.L.2025, c.140, § 7, approved 9/11/2025. Per § 8 it takes effect on the first day of the seventh month after enactment (4/1/2026), applies to franchise agreements in effect on or after that date, and is not retroactive to earlier causes of action. It was read from the enrolled law on pub.njleg.gov; codified text checked on Justia 2025 N.J. Rev. Stat. § 56:10-15 (history through 2025, c.140, s.7); it matches the enrolled law. The official lis.njleg NXT site could not be fetched. Warranty-type claims ((f)) cover warranty, extended warranty, maintenance and service-related plans: 12-month audit window after payment (fraud excepted), and chargeback only if false or fraudulent, labor not properly performed, work unnecessary, or not reasonably substantiated. Incentive, bonus, sales and performance claims ((i)): 12-month audit window, with no fraud exception stated. The (p) rules apply to both: written notice with the selection methodology within 30 days, final notice, stay without bond, franchisor's burden of proof, and no chargeback for scrivener's error. Disapprovals need written grounds ((f), (i)). The statute is silent on advance notice, audit frequency and extrapolation.",
    "classification": {
     "rate_validation_limited": true,
     "rate_validation_basis": "Limited: the manufacturer may check the rate only against the dealer's own submitted ROs (or has no rebuttal right at all), with no right to request additional ROs or run periodic re-verification, and no comparison with other dealers' rates.",
@@ -3330,7 +3330,7 @@
     "https://www.nysenate.gov/legislation/laws/VAT/465",
     "https://newyork.public.law/laws/n.y._vehicle_and_traffic_law_section_465"
    ],
-   "confidence": "medium",
+   "confidence": "high",
    "notes": "SOURCE CAVEAT: nysenate.gov returns a Cloudflare challenge to scripted requests, and the Open Legislation API requires a key. Text was read from newyork.public.law, which reproduces nysenate.gov (last modified 9/6/2024, verified 9/26/2026 per that page). § 465(3) is oddly drafted: it bars audits or chargebacks more than 1 year (5 for fraud) after payment 'without providing a notice ... or a mechanism' giving the dealer information on the errors or issues involved. Read here as a 1-year/5-year window plus a duty to share that information; no advance-notice timing is stated. The meeting, selection-basis, final-notice, 30-day no-debit and stay procedures apply to both warranty and sales/advertising/marketing incentive chargebacks. Chargeback grounds differ: (5) for warranty, (6) for incentives. Disapprovals of submitted claims need written specific grounds (§ 465(2)). The statute is silent on audit frequency and extrapolation.",
    "classification": {
     "rate_validation_limited": false,
@@ -3516,7 +3516,7 @@
     "https://oklegislature.gov/cf_pdf/2025-26%20ENR/hB/HB2158%20ENR.PDF"
    ],
    "confidence": "medium",
-   "notes": "SOURCE CAVEAT: the codified text on OSCN is behind a Cloudflare Turnstile check and could not be read. Text was read from two enrolled 2025 acts on oklegislature.gov, HB 2158 and HB 2160, both amending 47 O.S. § 565 and effective 11/1/2025. Their audit and chargeback text is the same in substance; HB 2160 adds new powersports dealers. Paragraph lettering (A)(9)(b) is taken from the enrolled acts. Warranty and incentive audits share the 1-year-after-payment window and the suspected-fraud exception. The notice, 30-day protest and no-debit rules apply to any chargeback that results from an audit. Disapprovals of submitted claims need written grounds. The statute is silent on advance audit notice, selection basis, internal appeal, clerical errors and extrapolation.",
+   "notes": "Codified 2025 text exists in two versions (565v1 HB 2158; 565v2 HB 2160), read on Justia and matched to the enrolled acts; OSCN not accessible. Text was read from two enrolled 2025 acts on oklegislature.gov, HB 2158 and HB 2160, both amending 47 O.S. § 565 and effective 11/1/2025. Their audit and chargeback text is the same in substance; HB 2160 adds new powersports dealers. Paragraph lettering (A)(9)(b) is taken from the enrolled acts. Warranty and incentive audits share the 1-year-after-payment window and the suspected-fraud exception. The notice, 30-day protest and no-debit rules apply to any chargeback that results from an audit. Disapprovals of submitted claims need written grounds. The statute is silent on advance audit notice, selection basis, internal appeal, clerical errors and extrapolation.",
    "classification": {
     "rate_validation_limited": false,
     "rate_validation_basis": "Not limited: the statute lets the manufacturer request additional ROs or information, re-verify rates periodically, or rebut by comparison with other dealers (for example 'similarly situated' or 'in the vicinity'), or it sets no validation procedure.",
@@ -3657,7 +3657,7 @@
    },
    "chargeback_stayed_pending_appeal": {
     "required": true,
-    "detail": "If the dealer files a Board protest within the 30-day window, the manufacturer may not charge back until the Board holds a hearing, and may not charge back at all if the Board finds good cause to bar it. In dealer protests the manufacturer bears the burden of proving no violation (§ 306(d)(3)).",
+    "detail": "If the dealer files a Board protest within the 30-day window, the manufacturer may not charge back until the Board holds a hearing, and may not charge back at all if the Board finds good cause to bar it. In dealer protests the manufacturer bears the burden of proving no violation (§ 306(d)(3)). A Board protest must be accompanied by a written mediation demand served on the manufacturer before or with the filing (BOVA § 309(a); 49 Pa. Code § 19.32(a)(1)).",
     "quote": "the manufacturer or distributor shall not charge back the new vehicle dealer: (A) until the board has held a hearing; or",
     "pinpoint": "63 P.S. § 818.307(e)(3)(ii)(A)-(B); § 818.306(d)(3)-(4)"
    },
@@ -3724,19 +3724,21 @@
     "pinpoint": null
    },
    "audit_frequency_limit": {
-    "limit": null,
-    "quote": null,
-    "pinpoint": null
+    "limit": "No 'unreasonable' warranty audit or chargeback (qualitative standard, no numeric cap). Either party may appeal to the Department.",
+    "quote": "A manufacturer, distributor, or factory branch shall not unreasonably subject a dealer to a warranty audit or chargeback.",
+    "pinpoint": "R.I. Gen. Laws § 31-5.1-6(h) (as amended eff. 10/1/2026)",
+    "score_level": 0,
+    "score_level_reason": "A qualitative \"not unreasonably\" standard with no numeric cap; frequency caps count only numeric limits."
    },
    "written_reasons_before_chargeback": {
-    "required": null,
-    "detail": "Current text (through 9/30/2026) mentions only 'notification' of a chargeback and does not specify its content. From 10/1/2026, for incidental-failure chargebacks, the notice must be written and identify the specific claim documentation procedure(s) violated. See changes_effective_2026_10_01.",
-    "quote": null,
-    "pinpoint": "R.I. Gen. Laws § 31-5.1-6(i)(3)(iii)"
+    "required": true,
+    "detail": "For incidental-failure chargebacks: written notification of the PROPOSED chargeback identifying the specific claim documentation procedure(s) violated. The 60-day resubmission period runs from that written notice. The words 'whether the chargeback was a direct or an indirect transaction' are struck from § 31-5.1-6 but remain in § 31-5.1-21.",
+    "quote": "no less than sixty (60) days from the date of written notification by a manufacturer, distributor, or factory branch or distributor of a proposed charge back identifying the specific claim documentation procedure or procedures violated by the dealer",
+    "pinpoint": "R.I. Gen. Laws § 31-5.1-6(i)(3)(iii) (as amended eff. 10/1/2026)"
    },
    "dealer_response_period": {
     "days": 60,
-    "detail": "Applies only to chargebacks for an 'incidental failure' (clerical error or administrative technicality). The dealer has at least 60 days from notification to resubmit, and a properly resubmitted claim cannot then be charged back. No general rebuttal period applies to other chargebacks. The same 60 days applies to incentive claims (§ 31-5.1-21(c)(1)(ii)).",
+    "detail": "Applies only to chargebacks for an 'incidental failure' (clerical error or administrative technicality). The dealer has at least 60 days from the written notice of the proposed chargeback to resubmit, and a properly resubmitted claim cannot then be charged back. No general rebuttal period applies to other chargebacks. The same 60 days applies to incentive claims (§ 31-5.1-21(c)(1)(ii)).",
     "quote": "A dealer shall have no less than sixty (60) days from the date of notification by a manufacturer or distributor of a charge back to the dealer to resubmit a claim for payment or compensation",
     "pinpoint": "R.I. Gen. Laws § 31-5.1-6(i)(3)(iii)"
    },
@@ -3783,29 +3785,9 @@
     "pinpoint": "R.I. Gen. Laws § 31-5.1-6(b), (c), (f)"
    },
    "penalties_for_audit_violations": {
-    "detail": null,
-    "quote": null,
-    "pinpoint": null
-   },
-   "changes_effective_2026_10_01": {
-    "act": "P.L. 2026, ch. 179 (H 8213 Sub A) and ch. 180 (S 2347 Sub A), identical text, enacted 6/22/2026, effective 10/1/2026",
-    "audit_frequency_limit": {
-     "limit": "No 'unreasonable' warranty audit or chargeback (qualitative standard, no numeric cap). Either party may appeal to the Department.",
-     "quote": "A manufacturer, distributor, or factory branch shall not unreasonably subject a dealer to a warranty audit or chargeback.",
-     "pinpoint": "R.I. Gen. Laws § 31-5.1-6(h) as amended by P.L. 2026, ch. 180, § 1"
-    },
-    "written_reasons_before_chargeback": {
-     "required": true,
-     "detail": "For incidental-failure chargebacks: written notification of the PROPOSED chargeback identifying the specific claim documentation procedure(s) violated. The 60-day resubmission period runs from that written notice. The words 'whether the chargeback was a direct or an indirect transaction' are struck from § 31-5.1-6 but remain in § 31-5.1-21.",
-     "quote": "no less than sixty (60) days from the date of written notification by a manufacturer, distributor, or factory branch or distributor of a proposed charge back identifying the specific claim documentation procedure or procedures violated by the dealer",
-     "pinpoint": "R.I. Gen. Laws § 31-5.1-6(i)(3)(iii) as amended by P.L. 2026, ch. 180, § 1"
-    },
-    "penalties_for_audit_violations": {
-     "detail": "Disputes under new (h) (unreasonable audits or chargebacks; technician qualifications) may be appealed by either party to 'the department' (the agency defined in ch. 31-5.1).",
-     "quote": "Either party may appeal provisions of this subsection to the department.",
-     "pinpoint": "R.I. Gen. Laws § 31-5.1-6(h) as amended by P.L. 2026, ch. 180, § 1"
-    },
-    "other": "New (i)(4): written disapproval with detailed reasons within 45 days, and the dealer gets 45 days to resubmit. For time-based denials, the burden is on the manufacturer to prove the technician did not spend the submitted time. The manufacturer may protest a corrected claim to the Department within 30 days and bears the burden. Warranty labor is now paid on technician time-punch plus a dealer attestation ((c)). § 31-5.1-6(i) now also covers § 31-5.1-6.1 recall claims. 'Factory branch' is added throughout. Dealers get at least 90 days to submit claims ((a))."
+    "detail": "Disputes under (h), including unreasonable audits or chargebacks, may be appealed by either party to the Department of Revenue, which acts through the Dealers' License and Hearing Board (280-RICR-30-20-1.3).",
+    "quote": "Either party may appeal provisions of this subsection to the department.",
+    "pinpoint": "R.I. Gen. Laws § 31-5.1-6(h) (as amended eff. 10/1/2026); 280-RICR-30-20-1.3"
    },
    "sources": [
     "https://webserver.rilegislature.gov/Statutes/TITLE31/31-5.1/31-5.1-6.htm",
@@ -3814,7 +3796,7 @@
     "https://webserver.rilegislature.gov/PublicLaws/law26/law26179.htm"
    ],
    "confidence": "high",
-   "notes": "Main fields reflect the codified text in force through 9/30/2026. changes_effective_2026_10_01 shows the field values from 10/1/2026, taken from the enacted public-law text with struck language removed. Warranty chargebacks: only claims 'shown by the manufacturer or distributor to be false or unsubstantiated', within 12 months of payment or credit. INCENTIVE claims (§ 31-5.1-21) follow a different window: 1 year from payment or credit, or 1 year from the end of a program lasting no more than 1 year, whichever is later. Incentive claims get the same clerical-error, 60-day resubmission and fraud rules. The 2026 act adds 'factory branch' to § 31-5.1-21 but keeps plain 'notification' there (not written notice identifying procedures), and new (h) (no unreasonable audits) is in § 31-5.1-6 only. So from 10/1/2026 warranty and incentive procedures diverge. No advance-notice, selection-basis, extrapolation or stay rules in either version. Caution: the official public-law HTML shows struck text with line-through styling. A plain-text scrape merges struck and added words (for example, the garbled '(i)(3)(iii) ... charge back to the identifying ...'). Quotes here were taken after removing the struck spans.",
+   "notes": "Fields reflect the law in force since 10/1/2026 (P.L. 2026 ch. 179/180), taken from the enacted public-law text with struck language removed; the codified site still showed the old text on 10/6/2026. Also new on 10/1/2026: written claim denials with a detailed explanation within 45 days and 45 days to resubmit; for time-based denials the manufacturer must provide evidence that the technician did not spend the submitted time or that the submission did not comply; the manufacturer may protest a corrected claim to the Department within 30 days; labor is paid on technician time-punch with a dealer attestation; at least 90 days to submit claims. Warranty chargebacks: only claims 'shown by the manufacturer or distributor to be false or unsubstantiated', within 12 months of payment or credit. INCENTIVE claims (§ 31-5.1-21) follow a different window: 1 year from payment or credit, or 1 year from the end of a program lasting no more than 1 year, whichever is later. Incentive claims get the same clerical-error, 60-day resubmission and fraud rules. The 2026 act adds 'factory branch' to § 31-5.1-21 but keeps plain 'notification' there (not written notice identifying procedures), and new (h) (no unreasonable audits) is in § 31-5.1-6 only. So from 10/1/2026 warranty and incentive procedures diverge. No advance-notice, selection-basis, extrapolation or stay rules in either version. Caution: the official public-law HTML shows struck text with line-through styling. A plain-text scrape merges struck and added words (for example, the garbled '(i)(3)(iii) ... charge back to the identifying ...'). Quotes here were taken after removing the struck spans.",
    "classification": {
     "rate_validation_limited": false,
     "rate_validation_basis": "Not limited: the statute lets the manufacturer request additional ROs or information, re-verify rates periodically, or rebut by comparison with other dealers (for example 'similarly situated' or 'in the vicinity'), or it sets no validation procedure.",
@@ -4076,7 +4058,7 @@
    },
    "fraud_exception": {
     "exists": null,
-    "detail": null,
+    "detail": "Silent: the MVC rule's 12-month audit window has no fraud exception in its text.",
     "quote": null,
     "pinpoint": null
    },
@@ -4094,10 +4076,12 @@
    "sources": [
     "https://publications.tnsosfiles.com/acts/112/pub/pc0277.pdf",
     "https://law.justia.com/codes/tennessee/title-55/chapter-17/part-1/section-55-17-121/",
-    "https://law.justia.com/codes/tennessee/title-55/chapter-17/part-1/section-55-17-114/"
+    "https://law.justia.com/codes/tennessee/title-55/chapter-17/part-1/section-55-17-114/",
+    "https://www.law.cornell.edu/regulations/tennessee/Tenn-Comp-R-Regs-0960-01-.03",
+    "https://regulations.justia.com/states/tennessee/title-0960/chapter-0960-01/section-0960-01-03"
    ],
    "confidence": "medium",
-   "notes": "Tennessee's dealer statute (T.C.A. Title 55, ch. 17, part 1) has NO warranty or incentive audit window, chargeback limits, audit notice, clerical-error, extrapolation or fraud rules. §§ 55-17-114 and -121 were checked, and § 55-17-114 has no audit or chargeback provisions. Warranty reimbursement is otherwise policed only through § 55-17-114(c)(18) (unfair discrimination among franchisees) and the § 55-17-117 civil penalty. The official T.C.A. is published only by LexisNexis. § 55-17-121(d) was read in the official 2021 Public Chapter 277. (a)-(c) and § 55-17-114 were read on the Justia mirror (2025 code, history ends 2021 ch. 277 for -121 and 2024 ch. 1017 for -114). Motor Vehicle Commission rules (Ch. 0960-01, rev. Sept. 2025) could not be retrieved (403). RV warranty claims (§ 55-28-107) were not reviewed. No 2025-26 amendment to § 55-17-121 was found.",
+   "notes": "The statute has no audit rules, but Motor Vehicle Commission Rule 0960-01-.03 does. Warranty and sales-incentive claims may be reviewed, audited and disallowed only within 12 months after PAYMENT and only for good cause. Incentive chargebacks after a 'full and fair' audit are reduced by any other payment the dealer qualified for. There are no notice, response, appeal, stay, extrapolation, clerical-error or fraud terms. The dealer keeps replaced parts 30 days after submitting the claim unless the franchise agreement says otherwise. Statute: §§ 55-17-114 (all of (c) read) and -121 read on Justia 2025; the official T.C.A. is Lexis-only. Rules read on Cornell LII and Justia (current through 6/26/2025).",
    "classification": {
     "rate_validation_limited": false,
     "rate_validation_basis": "Not limited: the statute lets the manufacturer request additional ROs or information, re-verify rates periodically, or rebut by comparison with other dealers (for example 'similarly situated' or 'in the vicinity'), or it sets no validation procedure.",
@@ -4424,7 +4408,7 @@
    },
    "chargeback_stayed_pending_appeal": {
     "required": true,
-    "detail": "Any chargeback resulting from any audit (warranty or incentive) is stayed until the Transportation Board issues a final order, if the dealer protests within 30 days.",
+    "detail": "Any chargeback resulting from any audit (warranty or incentive) is stayed until the Transportation Board issues a final order, if the dealer protests within 30 days. Board rules set a hearing within 120 days after the complaint is received and accepted, with no deadline for the decision (CVR 14-010-020 § 7).",
     "quote": "Any chargeback resulting from any audit shall not be made until a final order is issued by the Transportation Board if a protest to the proposed chargeback is filed",
     "pinpoint": "9 V.S.A. § 4086(h)"
    },

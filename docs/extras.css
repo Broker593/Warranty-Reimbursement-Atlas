@@ -478,3 +478,22 @@ th[aria-sort=ascending] .kd-sort,th[aria-sort=descending] .kd-sort{text-decorati
 .kd-table td[data-none]{color:#5d6c80}
 .kd-table .kd-start{border-left:2px solid #142943}
 .kd-table thead tr.kd-g th.kd-corner small{color:#3d4c60;text-transform:none;letter-spacing:0}
+/* Who governs (Dashboard) */
+.xgv{margin:28px 0 8px;padding:22px 24px;border:1px solid #c3cfdd;border-radius:10px;background:#fff}
+.xgv-head h2{margin:2px 0 8px;color:var(--navy);font-size:24px}.xgv-head p{max-width:900px;color:#3d4c60;line-height:1.5;margin:0 0 14px}
+.xgv .xpills{margin:4px 0 14px}
+.xgv-wrap{border:1px solid #dce3ec;border-radius:8px;overflow:hidden}
+.xgv-table{width:100%;border-collapse:collapse;table-layout:fixed}
+.xgv-cap{position:absolute;left:-9999px}
+#x-summary .xgv-table thead tr:first-child th,.xgv-table thead th{background:#142943;color:#fff;text-transform:none;letter-spacing:0;font-size:14px;text-align:left;padding:10px 12px;height:auto}
+.xgv-table thead th:nth-child(1){width:17%}.xgv-table thead th:nth-child(2){width:33%}.xgv-table thead th:nth-child(3){width:25%}.xgv-table thead th:nth-child(4){width:25%}
+.xgv-table tbody th,.xgv-table tbody td{vertical-align:top;text-align:left;font-size:14px;line-height:1.45;padding:9px 12px;border-bottom:1px solid #dce3ec;height:auto;font-weight:normal}
+.xgv-table tbody tr:nth-child(even) th,.xgv-table tbody tr:nth-child(even) td{background:#f7f9fc}
+.xgv-table tbody th a{font-weight:bold;color:var(--navy)}.xgv-abbr{color:#5d6c80;font-size:12px}
+.xgv-table small{display:block;margin-top:3px;color:#3d4c60;font-size:12.5px;line-height:1.4}
+.xgv-table strong{color:#142943}
+.xgv-tag{display:inline-block;margin:0 6px 4px 0;padding:1px 7px;border:1px solid #142943;border-radius:10px;font-size:12px;font-weight:bold;color:#142943;background:#fff}
+@media(max-width:700px){.xgv{padding:16px 12px}.xgv-head h2{font-size:20px}
+.xgv-table thead{display:none}.xgv-table,.xgv-table tbody,.xgv-table tr,.xgv-table th,.xgv-table td{display:block;width:auto}
+.xgv-table tbody tr{border-bottom:2px solid #c3cfdd;padding:6px 0}.xgv-table tbody th,.xgv-table tbody td{border-bottom:none;padding:5px 12px}
+.xgv-table tbody td::before{content:attr(data-label);display:block;font-size:12px;font-weight:bold;color:#5d6c80}}

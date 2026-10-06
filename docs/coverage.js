@@ -54,7 +54,8 @@
   OR:'Additional-time protections apply to new or renewed franchises from January 1, 2026.',
   PA:'Factory time, no statutory standard: § 307 requires disclosure of the time allowance but sets no reasonableness standard.',
   CT:'Diagnosis and warranty-service time allowances must be reasonable and adequate for the work to be performed.',
-  VA:'No general repair-time standard; diagnostic work includes manufacturer technical-assistance communications.'
+  VA:'No general repair-time standard; diagnostic work includes manufacturer technical-assistance communications.',
+  TN:'Statute silent. Motor Vehicle Commission Rule 0960-01-.04: hours allotted in the manufacturer’s manual plus actual diagnostic hours, times the labor rate.'
  };
  const sourceNames={official:'Official statute',enrolled_act:'Enacted-law text',mirror:'Code reproduction'};
  const byState=new Map(window.COVERAGE_V3.map(r=>[r.state,r]));

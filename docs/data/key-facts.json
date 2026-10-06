@@ -1,6 +1,6 @@
 {
   "schema": 1,
-  "updated": "2026-09-25",
+  "updated": "2026-10-06",
   "about": "Short plain-English labels for the States table and state overview pages. Every label summarizes a rule already recorded in docs/data/audit-fields.json, docs/data.js or the v3 coverage research; nothing here is new research. Fields: labor_type and parts_type = answer category shown on the Summary dashboard (see docs/extras.js SUMMARY definitions); labor = how the warranty hourly rate is set; requests = how often a dealer may ask for a new rate; parts = parts markup rule; response = manufacturer response (only when the structured fields need a plain-English override); hours = paid-hours note (only when it adds something); multiplier = labor-time multiplier (omitted = none in statute). Update the state's entry whenever enacted law changes one of these rules.",
   "states": {
     "AL": {"labor": "Retail rate from customer-pay ROs", "requests": "1 per 12 months", "parts": "Retail markup", "labor_type": "retail", "parts_type": "retail"},
@@ -24,7 +24,7 @@
     "ME": {"labor": "Retail rate, if conspicuously posted", "requests": "No labor-rate request process (parts markup: 2 per calendar year)", "parts": "Customary retail markup", "labor_type": "posted", "parts_type": "retail"},
     "MD": {"labor": "At least current retail rate", "requests": "1 per year", "parts": "Retail markup", "labor_type": "floor", "parts_type": "retail"},
     "MA": {"labor": "Effective retail rate", "requests": "1 per calendar year", "parts": "Agreed or average retail markup", "labor_type": "retail", "parts_type": "agreed"},
-    "MI": {"labor": "Reasonable, using retail rate", "requests": "1 per calendar year", "parts": "Reasonable, using retail markup", "response": "45 days to approve or contest; deemed approval for labor is an inference", "labor_type": "reasonable", "parts_type": "reasonable"},
+    "MI": {"labor": "Reasonable; comparable same-brand Michigan dealers' rates are the main test", "requests": "1 per calendar year", "parts": "Reasonable; comparable same-brand Michigan dealers' prices are the main test", "response": "45 days to approve or contest; deemed approval for labor is an inference", "labor_type": "reasonable", "parts_type": "reasonable"},
     "MN": {"labor": "Effective retail rate, at dealer's election (otherwise reasonable)", "requests": "1 per year", "parts": "Cost plus reasonable markup, or retail method at dealer's election", "hours": "Customer-pay guide; actual-time fallback", "labor_type": "retail", "parts_type": "retail"},
     "MS": {"labor": "Retail rate, on dealer's written request", "requests": "1 per 12 months", "parts": "Retail markup", "hours": "Benchmarked to a qualified technician, not the dealer's clock", "labor_type": "retail", "parts_type": "retail"},
     "MO": {"labor": "Reasonable; retail rate is a primary factor", "requests": "2 per calendar year", "parts": "Reasonable; retail parts charges are a primary factor", "labor_type": "reasonable", "parts_type": "reasonable"},
@@ -41,10 +41,10 @@
     "OK": {"labor": "At least retail rate", "requests": "1 per 12 months", "parts": "Retail markup", "response": "45 days to rebut", "labor_type": "floor", "parts_type": "retail"},
     "OR": {"labor": "At least retail rate", "requests": "1 per year (franchises entered or renewed from Jan 1, 2026)", "parts": "Retail markup, subject to reasonableness", "labor_type": "floor", "parts_type": "retail"},
     "PA": {"labor": "Retail rate (declared average)", "requests": "1 per calendar year", "parts": "Retail markup, including major assemblies", "hours": "Factory time; statute sets no reasonableness standard", "labor_type": "retail", "parts_type": "retail"},
-    "RI": {"labor": "Retail rate from prior month's ROs", "requests": "2 per calendar year", "parts": "Retail markup", "labor_type": "retail", "parts_type": "retail"},
+    "RI": {"labor": "Retail rate from prior month's ROs", "requests": "2 per calendar year", "parts": "Retail markup", "hours": "Actual technician time, from time punches (since Oct 1, 2026)", "labor_type": "retail", "parts_type": "retail"},
     "SC": {"labor": "Effective retail rate, on request", "requests": "1 per 12 months", "parts": "Cost plus retail markup, on request", "response": "May request documents within 30 days; no decision deadline", "labor_type": "retail", "parts_type": "retail"},
     "SD": {"labor": "At least retail rate", "requests": "No request frequency or sample in statute", "parts": "At least retail parts compensation", "labor_type": "floor", "parts_type": "floor"},
-    "TN": {"labor": "At least retail rate; capped at posted rate", "requests": "No labor-rate request process (sworn rate filed with Commission)", "parts": "Retail markup (statutory sample)", "response": "Must show the Commission the rate is improper; no deadline", "labor_type": "floor", "parts_type": "retail"},
+    "TN": {"labor": "At least retail rate; capped at posted rate", "requests": "Labor-rate adjustment requests allowed, no frequency limit (Commission rule); parts markup 1 per year", "parts": "Retail markup (statutory sample)", "response": "30 days to approve or deny a labor-rate request in writing (Commission rule)", "hours": "Manufacturer's manual hours plus actual diagnostic time (Commission rule)", "labor_type": "floor", "parts_type": "retail"},
     "TX": {"labor": "Comparable retail rate; floor is the greater of two averages", "requests": "1 per year, unless agreed", "parts": "Retail floor; no fixed markup stated", "response": "60 days; written decision with reasons", "labor_type": "other", "parts_type": "floor"},
     "UT": {"labor": "Retail rate", "requests": "1 per 12 months (labor and parts each)", "parts": "Retail markup", "labor_type": "retail", "parts_type": "retail"},
     "VT": {"labor": "Retail rate, conspicuously posted", "requests": "No labor-rate request process (parts markup: 2 per calendar year)", "parts": "Customary retail markup", "response": "No deadline in statute", "labor_type": "posted", "parts_type": "retail"},
@@ -52,6 +52,6 @@
     "WA": {"labor": "Retail rate for similar work", "requests": "1 increase per calendar year (labor and parts each)", "parts": "Retail markup", "response": "No deadline in statute", "labor_type": "retail", "parts_type": "retail"},
     "WV": {"labor": "Retail-equivalent rate", "requests": "Not within 12 months of the last declaration", "parts": "Retail markup", "labor_type": "retail", "parts_type": "retail"},
     "WI": {"labor": "Retail labor sales ÷ OEM hours (normalized rate)", "requests": "No frequency limit stated", "parts": "Cost × retail parts ratio", "response": "30 days; must start paying the substantiated rate", "hours": "OEM time; retail difference is built into the rate", "multiplier": "No separate multiplier: the retail-to-OEM time difference is built into the hourly rate. Do not apply it twice.", "labor_type": "other", "parts_type": "retail"},
-    "WY": {"labor": "Dealer submission or agreement; may not exceed retail", "requests": "1 per 12 months, unless agreed", "parts": "Retail markup", "labor_type": "other", "parts_type": "retail"}
+    "WY": {"labor": "Dealer submission or agreement; may not exceed retail", "requests": "1 per 12 months, unless agreed", "parts": "Retail markup (engine/transmission assemblies at cost + 40%)", "labor_type": "other", "parts_type": "retail"}
   }
 }

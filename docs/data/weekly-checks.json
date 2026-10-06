@@ -447,6 +447,73 @@
     "No dedicated search of every state legislature site; broad web searches only."
    ],
    "method": "Web searches plus official-site fetches (nyassembly.gov, Kentucky LRC); pending bills not loaded as law."
+  },
+  {
+   "check_date": "2026-10-06",
+   "type": "review",
+   "run_by": "Claude (source review requested by owner)",
+   "headline": "Source review: all 50 states' agency rules checked; Tennessee limits added from Commission rules; Rhode Island 10/1 law moved into current data; 23 matrix fields updated",
+   "summary": "Every state's administrative rules were searched for warranty claim, audit, chargeback and rate rules, and every note saying a source was not checked, blocked or secondary was re-verified. Only Tennessee's agency rules set substantive limits the statute lacks: a 12-month good-cause audit window for warranty and incentive claims, 30-day claim filing, 60-day deemed approval with written reasons, paid hours and a 30-day labor-rate response (Tenn. Comp. R. & Regs. 0960-01-.03 to -.05). Tennessee's audit climate score moves from 0 to 7. Rhode Island's 10/1/2026 amendments are now in the current fields (score 22 to 25). Matrix rows that relied on a secondary reproduction were checked against statute text; 23 fields were updated and source labels now point to the statute.",
+   "items": [
+    {
+     "category": "pending",
+     "state": "PA",
+     "bill": "SB 1182 (2025-26), PN 1866",
+     "effective": null,
+     "status": "Pending in House Commerce (hearing listed 10/5/2026); not law.",
+     "last_action_date": "2026-07-01",
+     "summary_short": "No committee action since referral; still pending.",
+     "summary": "No change since baseline. Session ends 11/30/2026.",
+     "source_url": "https://www.palegis.us/legislation/bills/2025/sb1182",
+     "atlas_impact": "Watch only, unchanged."
+    },
+    {
+     "category": "pending",
+     "state": "NY",
+     "bill": "A8773 (Magnarelli) / S8360 (Cooney), 2025-26",
+     "effective": null,
+     "status": "Passed Assembly 06/01/2026; in Senate Rules. No Senate action (official record checked 10/6/2026).",
+     "last_action_date": "2026-06-01",
+     "summary_short": "No Senate action since referral; still pending.",
+     "summary": "No change since baseline. Bills die 12/31/2026.",
+     "source_url": "https://nyassembly.gov/leg/?default_fld=&leg_video=&bn=A08773&term=2025&Summary=Y&Actions=Y",
+     "atlas_impact": "Watch only, unchanged."
+    },
+    {
+     "category": "pending",
+     "state": "IL",
+     "bill": "SB1939 (104th GA), as amended by Senate Floor Amendments 1-2",
+     "effective": null,
+     "status": "No new action found in search this run (not re-verified on the official site; prior status carried forward). Still pending as of 10/6/2026 (HB5197, introduced 2/10/2026, also in House Rules).",
+     "last_action_date": "2026-03-20",
+     "summary_short": "No House action since Rules re-assignment; still pending.",
+     "summary": "No change since baseline. Could move in the Nov/Dec 2026 veto or lame-duck session.",
+     "source_url": "https://www.ilga.gov/Legislation/BillStatus?DocNum=1939&GAID=18&DocTypeID=SB&SessionID=114",
+     "atlas_impact": "Watch only, unchanged."
+    }
+   ],
+   "site_changes": [
+    "TN: added Motor Vehicle Commission Rule 0960-01-.03 (12-month warranty and incentive audit window for good cause; 30-day claim filing; 60-day deemed approval unless rejected in writing with reasons; 30-day parts retention), Rule .04 (paid hours = manufacturer's manual hours + actual diagnostic hours) and Rule .05 (30-day written response to labor-rate requests). Audit climate score 0 -> 7.",
+    "RI: P.L. 2026 ch. 179/180 (in force 10/1/2026) moved from 'scheduled' into the current fields: 90-day claim window, written denials with reasons within 45 days, 45 days to resubmit, OEM burden on time-based denials, written chargeback notice naming the procedure violated, no unreasonable audits or chargebacks (appeal to the Department), actual technician time for labor. Score 22 -> 25.",
+    "CT: P.A. 26-24 § 23 now in force (claims and audit rules also cover stop-sale compensation claims); § 22(g) limit on stop-sale chargebacks added. NE: LB 972 now in force; the RV exclusion is § 60-1419.01.",
+    "Matrix corrections: CA rate sample is whichever RO set is fewer (not the dealer's choice); MI labor and parts benchmark is comparable same-brand Michigan dealers; IN paid hours and sample; WY parts carve-outs (engine/transmission assemblies at cost + 40%; EV battery handling fee); paid-hours text corrected for KS, KY, NV, OH, OR, RI, SD, TN, VT and WA.",
+    "Other fixes: AL and LA rate-rebuttal exception wording; OK dealer damages action (§ 572) and Commission injunctions (§ 567); WV has no administrative sanction for manufacturers; WA 10-day prior-approval rule (WAC 308-66-150(2)); CA franchisor schedule filing with the New Motor Vehicle Board (13 CCR § 586); dispute-procedure details from agency rules for ID, IL, ME, NY, PA, TX, UT, VT and WA.",
+    "Source labels: matrix rows that cited a secondary reproduction now cite the statute checked on 2026-10-06; open 'not checked / not exhaustively searched' notes were resolved and reworded in AK, AR, CA, CO, CT, IL, KS, ME, MS, NJ, NM, NY, OK, PA, TN and WV.",
+    "Method: the audit climate score and audit fields now use state agency rules where a rule sets the limit; 'Not in statute' also means no agency rule was found.",
+    "Dashboard: new 'Who governs' section (statute vs agency rule, the agency, and where disputes go, for all 50 states; filters for agency-rule states, agency forums and court-only states). Also a 'Who governs' sheet in the Excel workbook."
+   ],
+   "no_change_states": [
+    "FL",
+    "HI",
+    "MN",
+    "ND"
+   ],
+   "gaps": [
+    "Official codes that are Lexis-only (e.g., AR, CO, GA, MS, TN) or blocked to automated reading (OK OSCN, PA Code, NH, UT) were read on Justia, FindLaw or Cornell LII and matched to enacted text where possible.",
+    "Tennessee rules read on Cornell LII and Justia (current through 6/26/2025); the official rules PDF (rev. 9/15/2025) returned 403, and that revision's notice cites only rule .14.",
+    "The shared web-search budget ran out near the end, so final 2026-session sweeps for MS, NV, NM, SC, TN, UT and WY rest on the earlier recorded checks."
+   ],
+   "method": "Ten parallel research passes, one per five states: administrative-code search for each state's dealer regulator, re-check of every flagged source note, and field-by-field comparison of matrix rows with statute text. Quotes verbatim, 40 words max."
   }
  ]
 }

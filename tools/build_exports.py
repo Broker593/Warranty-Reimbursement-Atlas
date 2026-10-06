@@ -133,13 +133,14 @@ def build_xlsx(audit, cov, weekly, news, build_date, path, procs=None, idx=None,
              ('Audit fields: claim deadlines, chargeback windows, rate submission, manufacturer response and challenge, penalties, with quotes.', F),
              ('Rate sample rules: each state\'s retail-rate sample, RO age limit and exclusions.', F),
              ('Law dates: last amendment, amending act, original enactment, next scheduled change.', F),
+             ('Who governs: whether the rules come from the statute alone or also an agency rule, the agency, and where a dealer takes a dispute.', F),
              ('Audit procedures: notice, selection basis, frequency, written reasons, response period, appeal, chargeback holds, extrapolation, clerical errors, documentation limits, fraud carve-outs, rate validation and consequences, with quotes.', F),
              ('Audit climate: the audit climate score (0-100) behind the Map: U.S. Audit Climate tab, its two sub-scores and each limit\'s level (0-3), with the weights, plus distributor-franchised states. Higher = more restrictive toward audits, chargebacks and rate validation. Statute text only.', F),
              ('Weekly log and News: the Update log and News tabs.', F), ('', F),
              ('How to read it', FB),
-             ('"Silent" / "Not addressed" means the reviewed statute says nothing. Contracts, regulations or other law may still apply.', F),
+             ('"Silent" / "Not addressed" means the reviewed statute says nothing and no state agency rule was found (all 50 states checked 2026-10-06). Contracts or other law may still apply.', F),
              ('"Conditional" coverage usually turns on who the legal obligor is, or whether the manufacturer pays for the work. Program branding does not establish the obligor.', F),
-             ('Rhode Island: enacted changes take effect 10/1/2026. Cells show the rule in force on the build date and name the upcoming change.', F), ('', F),
+             ('Rhode Island: the 2026 amendments took effect 10/1/2026 and are shown as current law.', F), ('', F),
              ('Limits', FB),
              ('Public-source research summary for audit planning. It is not legal advice and does not contain SOA-approved rates or dealer payment data. Confirm against the cited statute before relying on a specific rule; escalate disputes to Legal.', F),
              ('Sources: official legislature/revisor text unless the record says enrolled act or mirror. Quotes were machine-checked against saved source text during research.', F)]
@@ -231,6 +232,18 @@ def build_xlsx(audit, cov, weekly, news, build_date, path, procs=None, idx=None,
                         'Next change act', 'Next change summary', 'Audit fields verified', 'Coverage verified', 'History source'],
           lrow, [7, 15, 26, 12, 34, 14, 12, 14, 30, 50, 13, 13, 60])
 
+    try:
+        gov = load('data/governance.json').get('states', {})
+    except FileNotFoundError:
+        gov = {}
+    if gov:
+        LAWK = {'statute': 'Statute', 'statute_rules': 'Statute + agency rule'}
+        FORK = {'agency': 'Agency', 'agency_or_court': 'Agency or court', 'court': 'Court'}
+        grow = [[a['state'], a['name'], LAWK.get(gov[a['state']]['law'], ''), (a.get('law_dates') or {}).get('section'), gov[a['state']].get('rule_note') or '',
+                 gov[a['state']]['agency'], FORK.get(gov[a['state']]['forum_kind'], ''), gov[a['state']]['forum']] for a in audit if a['state'] in gov]
+        sheet('Who governs', ['State', 'Name', 'Rules come from', 'Statute', 'Agency rule that adds a warranty rule', 'Agency', 'Dispute forum type', 'Where disputes go'],
+              grow, [7, 15, 20, 26, 60, 40, 16, 40])
+
     wrow = []
     for e in sorted(weekly.get('entries', []), key=lambda x: x['check_date'], reverse=True):
         for it in e.get('items') or [{}]:
@@ -277,7 +290,7 @@ def build_xlsx(audit, cov, weekly, news, build_date, path, procs=None, idx=None,
         ws = sheet('Audit climate', ['State', 'Name', 'Score (0-100)', 'Tier', 'Rank', 'Chargeback limits (75%, of 75)', 'Process and oversight (25%, of 25)'] + [f"{f['label']}: level 0-3 (weight {f['weight']})" for f in idx['factors']] + ['Distributor-franchised'],
                    irow, [7, 15, 10, 11, 7, 12, 12] + [12] * len(F_) + [34])
         r0 = len(irow) + 3
-        ws.cell(row=r0, column=1, value='How the audit climate score is built (higher = more restrictive; statute text only, not legal advice)').font = FB
+        ws.cell(row=r0, column=1, value='How the audit climate score is built (higher = more restrictive; statute and agency-rule text, not legal advice)').font = FB
         ws.cell(row=r0 + 1, column=1, value=idx.get('formula', '') + ' ' + idx.get('weights_note', '')).font = F
         BL = {b['id']: b['label'] for b in idx.get('buckets', [])}
         for i, f in enumerate(idx['factors'], 2):

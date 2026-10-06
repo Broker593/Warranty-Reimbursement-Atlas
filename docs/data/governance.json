@@ -1,0 +1,366 @@
+{
+ "schema": 1,
+ "checked": "2026-10-06",
+ "about": "Who sets and enforces each state's warranty reimbursement rules. Built from the 2026-10-06 source review: every state's statute plus a search of its administrative code. \"statute_rules\" means a state agency rule adds a substantive warranty rule; agencies whose rules cover only hearing procedure are not counted. Forum = where a dealer takes a rate, claim or chargeback dispute.",
+ "law_kinds": {
+  "statute": "Statute only. Agency rules, if any, cover licensing or hearing procedure.",
+  "statute_rules": "Statute plus a state agency rule that adds a warranty rule."
+ },
+ "forum_kinds": {
+  "agency": "A state agency, board or commission hears the dispute.",
+  "agency_or_court": "The dealer can go to an agency or to court.",
+  "court": "No agency forum: disputes go to court (sometimes after mediation or the franchisor's own process)."
+ },
+ "states": {
+  "AK": {
+   "law": "statute",
+   "rule_note": null,
+   "agency": "None for franchise matters (DMV licenses dealers)",
+   "forum": "Court",
+   "forum_kind": "court"
+  },
+  "AL": {
+   "law": "statute",
+   "rule_note": null,
+   "agency": "None for franchise matters (Dept. of Revenue licenses dealers)",
+   "forum": "Court",
+   "forum_kind": "court"
+  },
+  "AR": {
+   "law": "statute",
+   "rule_note": null,
+   "agency": "Motor Vehicle Commission",
+   "forum": "Commission (chargeback appeals) or court",
+   "forum_kind": "agency_or_court"
+  },
+  "AZ": {
+   "law": "statute",
+   "rule_note": null,
+   "agency": "ADOT Motor Vehicle Division",
+   "forum": "ADOT director (administrative law judge hearing)",
+   "forum_kind": "agency"
+  },
+  "CA": {
+   "law": "statute_rules",
+   "rule_note": "New Motor Vehicle Board rule: franchisors must file warranty reimbursement schedules and changes with the Board (13 CCR § 586(b)-(c)).",
+   "agency": "New Motor Vehicle Board (DMV licenses)",
+   "forum": "New Motor Vehicle Board",
+   "forum_kind": "agency"
+  },
+  "CO": {
+   "law": "statute",
+   "rule_note": null,
+   "agency": "Dept. of Revenue (Executive Director)",
+   "forum": "DOR executive director or court",
+   "forum_kind": "agency_or_court"
+  },
+  "CT": {
+   "law": "statute",
+   "rule_note": null,
+   "agency": "DMV Commissioner",
+   "forum": "DMV Commissioner",
+   "forum_kind": "agency"
+  },
+  "DE": {
+   "law": "statute",
+   "rule_note": null,
+   "agency": "Public Service Commission (DMV licenses dealers)",
+   "forum": "Public Service Commission",
+   "forum_kind": "agency"
+  },
+  "FL": {
+   "law": "statute",
+   "rule_note": null,
+   "agency": "Dept. of Highway Safety and Motor Vehicles",
+   "forum": "DHSMV proceeding or court",
+   "forum_kind": "agency_or_court"
+  },
+  "GA": {
+   "law": "statute",
+   "rule_note": null,
+   "agency": "Dept. of Revenue (state revenue commissioner)",
+   "forum": "Revenue commissioner",
+   "forum_kind": "agency"
+  },
+  "HI": {
+   "law": "statute",
+   "rule_note": null,
+   "agency": "Motor Vehicle Industry Licensing Board (DCCA)",
+   "forum": "DCCA administrative hearing",
+   "forum_kind": "agency"
+  },
+  "IA": {
+   "law": "statute",
+   "rule_note": null,
+   "agency": "Iowa DOT, Motor Vehicle Division",
+   "forum": "DOT contested case",
+   "forum_kind": "agency"
+  },
+  "ID": {
+   "law": "statute",
+   "rule_note": null,
+   "agency": "Idaho Transportation Department",
+   "forum": "ITD contested case (after mediation) or court",
+   "forum_kind": "agency_or_court"
+  },
+  "IL": {
+   "law": "statute",
+   "rule_note": null,
+   "agency": "Motor Vehicle Review Board (Secretary of State)",
+   "forum": "Review Board, arbitration or court",
+   "forum_kind": "agency_or_court"
+  },
+  "IN": {
+   "law": "statute",
+   "rule_note": null,
+   "agency": "Secretary of State, Auto Dealer Services",
+   "forum": "Secretary of State",
+   "forum_kind": "agency"
+  },
+  "KS": {
+   "law": "statute",
+   "rule_note": null,
+   "agency": "Dept. of Revenue, Director of Vehicles",
+   "forum": "Director of Vehicles",
+   "forum_kind": "agency"
+  },
+  "KY": {
+   "law": "statute",
+   "rule_note": null,
+   "agency": "Motor Vehicle Commission",
+   "forum": "Commission hearing",
+   "forum_kind": "agency"
+  },
+  "LA": {
+   "law": "statute",
+   "rule_note": null,
+   "agency": "Motor Vehicle Commission",
+   "forum": "Commission",
+   "forum_kind": "agency"
+  },
+  "MA": {
+   "law": "statute",
+   "rule_note": null,
+   "agency": "None (enforced by dealer lawsuits)",
+   "forum": "Court",
+   "forum_kind": "court"
+  },
+  "MD": {
+   "law": "statute",
+   "rule_note": null,
+   "agency": "Motor Vehicle Administration",
+   "forum": "MVA or court",
+   "forum_kind": "agency_or_court"
+  },
+  "ME": {
+   "law": "statute",
+   "rule_note": null,
+   "agency": "Motor Vehicle Franchise Board",
+   "forum": "Franchise Board or court",
+   "forum_kind": "agency_or_court"
+  },
+  "MI": {
+   "law": "statute",
+   "rule_note": null,
+   "agency": "None (enforced by dealer lawsuits)",
+   "forum": "Court",
+   "forum_kind": "court"
+  },
+  "MN": {
+   "law": "statute",
+   "rule_note": null,
+   "agency": "Attorney General (fines through a civil action)",
+   "forum": "Court",
+   "forum_kind": "court"
+  },
+  "MO": {
+   "law": "statute",
+   "rule_note": null,
+   "agency": "Dept. of Revenue (licensing)",
+   "forum": "Administrative Hearing Commission",
+   "forum_kind": "agency"
+  },
+  "MS": {
+   "law": "statute",
+   "rule_note": null,
+   "agency": "Motor Vehicle Commission",
+   "forum": "Commission",
+   "forum_kind": "agency"
+  },
+  "MT": {
+   "law": "statute",
+   "rule_note": null,
+   "agency": "Dept. of Justice, Motor Vehicle Division",
+   "forum": "Department or court",
+   "forum_kind": "agency_or_court"
+  },
+  "NC": {
+   "law": "statute",
+   "rule_note": null,
+   "agency": "DMV Commissioner",
+   "forum": "DMV Commissioner",
+   "forum_kind": "agency"
+  },
+  "ND": {
+   "law": "statute",
+   "rule_note": null,
+   "agency": "None for franchise matters (DOT licenses dealers)",
+   "forum": "Court",
+   "forum_kind": "court"
+  },
+  "NE": {
+   "law": "statute",
+   "rule_note": null,
+   "agency": "Motor Vehicle Industry Licensing Board",
+   "forum": "Board",
+   "forum_kind": "agency"
+  },
+  "NH": {
+   "law": "statute",
+   "rule_note": null,
+   "agency": "Motor Vehicle Industry Board",
+   "forum": "Board",
+   "forum_kind": "agency"
+  },
+  "NJ": {
+   "law": "statute",
+   "rule_note": null,
+   "agency": "None (enforced by dealer lawsuits)",
+   "forum": "Superior Court",
+   "forum_kind": "court"
+  },
+  "NM": {
+   "law": "statute",
+   "rule_note": null,
+   "agency": "None (enforced by dealer lawsuits)",
+   "forum": "Court",
+   "forum_kind": "court"
+  },
+  "NV": {
+   "law": "statute",
+   "rule_note": null,
+   "agency": "DMV (licensing); Attorney General (civil penalties)",
+   "forum": "Court",
+   "forum_kind": "court"
+  },
+  "NY": {
+   "law": "statute",
+   "rule_note": null,
+   "agency": "DMV Commissioner",
+   "forum": "DMV Commissioner or court",
+   "forum_kind": "agency_or_court"
+  },
+  "OH": {
+   "law": "statute",
+   "rule_note": null,
+   "agency": "Motor Vehicle Dealers Board (not for warranty disputes)",
+   "forum": "Franchisor's internal process, then court",
+   "forum_kind": "court"
+  },
+  "OK": {
+   "law": "statute",
+   "rule_note": null,
+   "agency": "New Motor Vehicle Commission",
+   "forum": "Commission",
+   "forum_kind": "agency"
+  },
+  "OR": {
+   "law": "statute",
+   "rule_note": null,
+   "agency": "None (enforced by dealer lawsuits)",
+   "forum": "Court",
+   "forum_kind": "court"
+  },
+  "PA": {
+   "law": "statute",
+   "rule_note": null,
+   "agency": "State Board of Vehicle Manufacturers, Dealers and Salespersons",
+   "forum": "Board (with a mediation demand)",
+   "forum_kind": "agency"
+  },
+  "RI": {
+   "law": "statute",
+   "rule_note": null,
+   "agency": "Dept. of Revenue (Dealers' License and Hearing Board)",
+   "forum": "Department",
+   "forum_kind": "agency"
+  },
+  "SC": {
+   "law": "statute",
+   "rule_note": null,
+   "agency": "None (enforced by dealer lawsuits)",
+   "forum": "Court",
+   "forum_kind": "court"
+  },
+  "SD": {
+   "law": "statute",
+   "rule_note": null,
+   "agency": "Dept. of Revenue (licensing; may seek injunctions)",
+   "forum": "Court",
+   "forum_kind": "court"
+  },
+  "TN": {
+   "law": "statute_rules",
+   "rule_note": "Motor Vehicle Commission rules set the claim deadlines, the 12-month audit window, paid hours and a 30-day answer to labor-rate requests (Tenn. Comp. R. & Regs. 0960-01-.03 to -.05).",
+   "agency": "Motor Vehicle Commission",
+   "forum": "Commission",
+   "forum_kind": "agency"
+  },
+  "TX": {
+   "law": "statute",
+   "rule_note": null,
+   "agency": "Texas DMV Board",
+   "forum": "TxDMV (mediation first), then State Office of Administrative Hearings",
+   "forum_kind": "agency"
+  },
+  "UT": {
+   "law": "statute",
+   "rule_note": null,
+   "agency": "Dept. of Commerce",
+   "forum": "Commerce (informal proceeding) or court",
+   "forum_kind": "agency_or_court"
+  },
+  "VA": {
+   "law": "statute",
+   "rule_note": null,
+   "agency": "DMV Commissioner (Dealer Board licenses dealers)",
+   "forum": "DMV Commissioner",
+   "forum_kind": "agency"
+  },
+  "VT": {
+   "law": "statute",
+   "rule_note": null,
+   "agency": "Transportation Board",
+   "forum": "Board or court",
+   "forum_kind": "agency_or_court"
+  },
+  "WA": {
+   "law": "statute_rules",
+   "rule_note": "Dept. of Licensing rule: where the warranty requires prior approval, the manufacturer must give it within 10 days, except in emergencies (WAC 308-66-150(2)).",
+   "agency": "Dept. of Licensing",
+   "forum": "DOL proceeding or court",
+   "forum_kind": "agency_or_court"
+  },
+  "WI": {
+   "law": "statute",
+   "rule_note": null,
+   "agency": "Dept. of Transportation",
+   "forum": "Court or DOT licensing case",
+   "forum_kind": "agency_or_court"
+  },
+  "WV": {
+   "law": "statute",
+   "rule_note": null,
+   "agency": "None for manufacturers (DMV licenses dealers)",
+   "forum": "Court",
+   "forum_kind": "court"
+  },
+  "WY": {
+   "law": "statute",
+   "rule_note": null,
+   "agency": "None for franchise matters (WYDOT licenses dealers)",
+   "forum": "Mediation, then court",
+   "forum_kind": "court"
+  }
+ }
+}

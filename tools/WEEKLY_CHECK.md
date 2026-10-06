@@ -15,6 +15,8 @@ Goal: find anything **enacted, taking effect, or moving** that changes a state's
 2. Effective dates reached since the last check: note them (e.g., Rhode Island 10/1/2026). The site's date selector and `tools/build_exports.py` `DATE_GATED` handle date-gated cells automatically; confirm they still match.
 3. Search for new bills and new acts in each state touching the sections in `docs/data/audit-fields.json` → `cites` (search terms: "warranty reimbursement", "retail labor rate", "time allowance", "labor time guide", "chargeback", "certified pre-owned", "service contract" + "dealer"/"franchise"). Prioritize legislatures in session. Confirm every item on an official site before listing it.
 4. Pending bills are **never** loaded into the data as law. List them only in the weekly entry.
+5. Agency rules count too. Tennessee's claim, audit and paid-hours limits come from Motor Vehicle Commission rules (Tenn. Comp. R. & Regs. 0960-01-.03 to -.05), not the statute. Watch for rulemaking notices from state dealer regulators (motor vehicle commissions/boards, DMVs) on warranty claims, audits, chargebacks or rate submissions, and treat an adopted rule like enacted law.
+6. When an `enacted_upcoming` change reaches its effective date, move it into the current fields (and clear `law_dates.next_scheduled_change`) in the same run.
 
 ## 2. When enacted law changes a rule
 - Read the enacted text (official site or enrolled act). Quote verbatim, 40 words max, with pinpoint.
