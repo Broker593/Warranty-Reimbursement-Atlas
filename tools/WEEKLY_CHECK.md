@@ -51,6 +51,8 @@ Headline format: `N enacted changes, N pending bills, N law-data updates`. If no
 
 ## 5. Rebuild, verify, publish
 - `python3 tools/build_exports.py --date <check date>` (must report 50 states; every state PDF must be one page). This also rewrites `docs/data/audit-index.json`.
+- The build runs `tools/check_consistency.py` first and stops on any FAIL: a short label that contradicts the verified research, a scheduled law change whose effective date has passed but is still marked upcoming, a stale-source label, or an agency-rule cite missing from `docs/data/governance.json`. Fix the data and rebuild. Never weaken or skip the check to get a build through; if a rule is wrong, say so in the run summary.
+- If an agency, board or commission changes (renamed, new website, new rule), update `docs/data/governance.json` (agency, agency_url, forum, and `law: statute_rules` with a `rule_note` when a rule adds a warranty requirement).
 - `for f in data coverage coverage-data extras; do node --check docs/$f.js; done`
 - `python3 -c "import json;[json.load(open(p)) for p in ['docs/data/audit-fields.json','docs/data/weekly-checks.json','docs/data/news.json','docs/data/key-facts.json','docs/data/audit-procedures.json','docs/data/distributors.json','docs/data/cases.json','docs/data/audit-index.json']];k=json.load(open('docs/data/key-facts.json'))['states'];a=json.load(open('docs/data/audit-fields.json'));assert sorted(k)==sorted(r['state'] for r in a)"`
 - Commit to `main`: `Weekly check <date>: <headline>` and push. GitHub Pages publishes in a few minutes.

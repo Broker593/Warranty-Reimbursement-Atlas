@@ -1,6 +1,6 @@
 /* Warranty Atlas front end: States (home) and state overview pages, Summary dashboard
    (answer counts, definitions and states for every column), News, Downloads and Update log (weekly checks).
-   Data: docs/data/*.json plus window.REFERENCE (data.js) and window.LABOR_COVERAGE (coverage.js).
+   Data: docs/data/*.json plus window.REFERENCE (data.js: per-state labor/parts summaries and sources) and window.LABOR_COVERAGE (coverage.js).
    The original matrix UI (app.js) was retired on September 25, 2026; it remains in git history. */
 (() => {
   'use strict';
@@ -12,8 +12,8 @@
   const trim = (t, n) => { t = String(t || ''); return t.length > n ? t.slice(0, n - 1).trim() + '…' : t; };
   const TODAY = (() => { try { return new Date().toLocaleDateString('en-CA', {timeZone: 'America/New_York'}); } catch (e) { return new Date().toISOString().slice(0, 10); } })();
 
-  const TABS = [['map', 'Map: U.S. Audit Climate'], ['states', 'Matrix: State-by-State Rules'], ['summary', 'Dashboard: Overview of Rule Types'], ['cases', 'Cases & Laws'], ['news', 'News'], ['downloads', 'Downloads'], ['updates', 'Update log']];
-  const QUIET = ['cases', 'news', 'downloads', 'updates'];
+  const TABS = [['map', 'Map: U.S. Audit Climate'], ['states', 'Matrix: State-by-State Rules'], ['summary', 'Dashboard: Overview of Rule Types'], ['governing', 'Governing Bodies'], ['cases', 'Cases & Laws'], ['news', 'News'], ['downloads', 'Downloads'], ['updates', 'Update log']];
+  const QUIET = ['governing', 'cases', 'news', 'downloads', 'updates'];
   const LEGACY = {atlas: 'states', audit: 'states', calculator: 'states', weekly: 'updates', research: 'summary'};
   const EXCL = {
     MAINT: 'Routine maintenance', TIRES: 'Tires', ALIGN: 'Alignments', INSPECT: 'State inspections',
@@ -192,6 +192,7 @@
     const cp = /^compare(?:\/([A-Za-z,]*))?$/.exec(h);
     if (cp) return {tab: 'states', state: '', compare: (cp[1] || '').split(',').filter(Boolean)};
     const sm = /^summary\/([a-z][a-z-]*)$/.exec(h);
+    if (sm && sm[1] === 'governance') return {tab: 'governing', state: '', redirect: '#governing'};
     if (sm) return {tab: 'summary', state: '', section: sm[1]};
     const cm = /^cases\/([a-z0-9-]+)$/.exec(h);
     if (cm) return {tab: 'cases', state: '', section: cm[1]};
@@ -231,8 +232,9 @@
     if (tab === 'states') { const one = state && byAbbr[state]; one ? renderState(state) : renderHome(section); track(one ? 'state/' + state : section === 'detailed' ? 'states/detailed' : 'states'); return; }
     document.title = (TABS.find(t => t[0] === tab) || ['', ''])[1] + ' · Warranty Atlas';
     track(tab);
-    if (!rendered[tab]) { rendered[tab] = true; ({updates: renderWeekly, news: renderNews, downloads: renderDownloads, summary: renderSummary, map: renderMap, cases: renderCases})[tab](); }
-    if (tab === 'summary') { bindJumpBar(); bindGov(); scrollToSection(section); }
+    if (!rendered[tab]) { rendered[tab] = true; ({updates: renderWeekly, news: renderNews, downloads: renderDownloads, summary: renderSummary, map: renderMap, cases: renderCases, governing: renderGoverning})[tab](); }
+    if (tab === 'summary') { bindJumpBar(); scrollToSection(section); }
+    else if (tab === 'governing') { bindGov(); window.scrollTo(0, 0); }
     else if (tab === 'cases' && section) focusCase(section);
     else window.scrollTo(0, 0);
   }
@@ -325,13 +327,13 @@
     const i = AUDIT.indexOf(r), prev = AUDIT[i - 1], next = AUDIT[i + 1];
     document.title = r.name + ' · Warranty Atlas';
 
-    const laborDetail = kv([['Rule', s.labor], ['How the rate is set (v3 research)', f.stateHourlyRate !== s.labor ? f.stateHourlyRate : ''], ['Formula', rs.formula]]) + quoteBlock(rs);
+    const laborDetail = kv([['Rule', f.stateHourlyRate || s.labor], ['Formula', rs.formula]]) + quoteBlock(rs);
     const reqDetail = kv([['Frequency', rs.frequency_limit || 'No frequency limit stated'], ['Sample', sampleLong(r)], ['Sample detail', (rs.sample || {}).other], ['Who selects the ROs', rs.who_selects],
       ['Excluded from the sample', (rs.exclusions || []).map(x => EXCL[x] || x).join('; ')], ['Statute wording on exclusions', rs.exclusions_text], ['New rate takes effect', rs.new_rate_effective], ['Note', (r.calc || {}).note]]);
     const mrDetail = kv([['Response deadline', days(mr.response_deadline_days)], ['If no response', mr.deemed_approved_if_no_response === true ? 'Rate deemed approved' : 'No deemed-approval rule in statute'], ['Challenge standard', mr.challenge_standard], ['How to challenge', mr.challenge_method], ['Disputes go to', mr.dispute_forum]]) + quoteBlock(mr);
-    const hoursDetail = kv([['Classification', f.paidHours], ['What it means', f.hoursNote], ['Rule (original research)', s.time], ['Date note', f.dateNote]]) + (f.quote ? '<p class="xpin"><strong>Scope quote (factory warranty):</strong></p>' + quoteBlock({quote: f.quote, pinpoint: f.pinpoint}) : '');
+    const hoursDetail = kv([['Classification', f.paidHours], ['What it means', f.hoursNote], ['Date note', f.dateNote]]) + (f.quote ? '<p class="xpin"><strong>Scope quote (factory warranty):</strong></p>' + quoteBlock({quote: f.quote, pinpoint: f.pinpoint}) : '');
     const multDetail = abbr === 'IL' || abbr === 'NJ' || abbr === 'WI' ? kv([['Rule', multiplierText(abbr)], ['Paid-hours note', f.hoursNote]]) : '<p>No labor-time multiplier was found in the reviewed statute. Paid hours follow the rule above.</p>';
-    const partsDetail = kv([['Rule', s.parts], ['Rate sample (parts and labor)', s.sample], ['Statute', s.statute], ['Note', s.note], ['Also', s.additional], ['Source of this summary', s.basis], ['Source date', s.sourceDate]]) +
+    const partsDetail = kv([['Rule', s.parts], ['Rate sample', 'See Rate increase requests above'], ['Statute', s.statute], ['Note', s.note], ['Also', s.additional], ['Source of this summary', s.basis], ['Source date', s.sourceDate]]) +
       '<p class="xpin">' + [link(s.url, 'Summary source'), link((s.original || {}).url, 'Original text')].filter(Boolean).join(' · ') + '</p>';
     const scDetail = '<p class="xnote">' + esc(PROGRAM_SCOPE) + '</p>' + sc.map(x => {
       const cc = x.c || {};
@@ -355,7 +357,7 @@
       distBox(abbr) +
       '<div class="ks-sectionhead"><h2>Key facts</h2><button type="button" class="quiet ks-expand" id="ksExpand" aria-pressed="false">Expand all details</button></div>' +
       '<div class="kf">' +
-      fact('Labor rate', esc(k.labor || '—'), adds(s.labor, k.labor), laborDetail, 'labor') +
+      fact('Labor rate', esc(k.labor || '—'), adds(f.stateHourlyRate, k.labor), laborDetail, 'labor') +
       fact('Rate increase requests', esc(k.requests || '—'), esc(sampleLong(r)) + (rs.new_rate_effective ? '<br>New rate takes effect: ' + esc(trim(rs.new_rate_effective, 160)) : ''), reqDetail, 'requests') +
       fact('Manufacturer response', esc(responseShort(r)), mr.challenge_standard ? esc(trim(mr.challenge_standard, 200)) : '', mrDetail, 'response') +
       fact('Paid hours (labor-time guide)', esc(h.label), esc(h.note || (f.hoursNote && f.hoursNote.length <= 200 ? f.hoursNote : '')), hoursDetail, 'hours') +
@@ -684,7 +686,7 @@
       use: ['Attach a state\'s rules and statute quotes to audit workpapers', 'Filter and compare states in Excel'],
       note: '<strong>Open</strong> views a file in a new browser tab; <strong>Save a copy</strong> sends it to your Downloads folder.'}) +
       '<div class="xdl">' +
-      card('Excel workbook', 'Summary, coverage (200 cells), audit fields, audit procedures, audit climate scores, rate-sample rules, law dates, who governs each state, statute quotes, weekly log and news.', openA(office, 'Open in browser') + saveA('downloads/warranty-atlas.xlsx', 'Save .xlsx')) +
+      card('Excel workbook', 'Summary, coverage (200 cells), audit fields, audit procedures, audit climate scores, rate-sample rules, law dates, governing bodies, statute quotes, weekly log and news.', openA(office, 'Open in browser') + saveA('downloads/warranty-atlas.xlsx', 'Save .xlsx')) +
       card('All states · PDF', '50 one-page state summaries in one file.', openA('downloads/warranty-atlas-all-states.pdf', 'Open') + saveA('downloads/warranty-atlas-all-states.pdf')) +
       card('Research data · JSON', 'For analysts: every state\'s claim, chargeback, rate-submission, manufacturer-response and penalty rules with statute quotes, in one machine-readable file. Everything else is in the Excel workbook.', openA('data/audit-fields.json', 'Open') + saveA('data/audit-fields.json')) +
       '</div><p class="xfoot">The Excel "Open in browser" button uses Microsoft\'s free online viewer. The workbook is public research data; no SOA data is included.</p>' +
@@ -818,7 +820,7 @@
       if (d.sec) sections.push({id: d.id, title: d.sec, label: sectionInfo[d.id][0], description: sectionInfo[d.id][1], number: String(sections.length + 1).padStart(2, '0'), topics: []});
       sections[sections.length - 1].topics.push(d);
     });
-    const menu = '<nav class="xd-jump" aria-label="Summary sections"><span class="xd-jump-label">Jump to a section</span><ul><li><a href="#summary/changes">Law changes</a></li>' + sections.map(g => '<li><a href="#summary/group-' + g.id + '"><span aria-hidden="true">' + g.number + '</span>' + esc(g.label) + '</a></li>').join('') + '<li><a href="#summary/governance">Who governs</a></li><li><a class="xd-jump-definitions" href="#summary/definitions" title="Plain-English definitions and the states behind each count">Definitions ↓</a></li></ul></nav>';
+    const menu = '<nav class="xd-jump" aria-label="Summary sections"><span class="xd-jump-label">Jump to a section</span><ul><li><a href="#summary/changes">Law changes</a></li>' + sections.map(g => '<li><a href="#summary/group-' + g.id + '"><span aria-hidden="true">' + g.number + '</span>' + esc(g.label) + '</a></li>').join('') + '<li><a class="xd-jump-definitions" href="#summary/definitions" title="Plain-English definitions and the states behind each count">Definitions ↓</a></li></ul></nav>';
     const bars = d => '<ul class="xd-bars">' + d.gs.map(g => '<li><a href="#summary/' + d.id + '" aria-label="' + esc(g.label + ': ' + g.states.length + ' states. View definitions and states.') + '" title="' + esc(g.label + ': ' + (g.states.map(s => s.state).join(', ') || 'none')) + '"><span class="xd-lab">' + esc(g.label) + '</span><span class="xd-track" aria-hidden="true"><span class="xd-fill" style="width:' + (g.states.length * 2) + '%"></span></span><span class="xd-n">' + g.states.length + '</span></a></li>').join('') + '</ul>';
     const tile = d => '<article class="xd-tile"><h3>' + esc(d.title) + '</h3><p class="xd-q">' + esc(d.q) + '</p><p class="xd-scale">States · out of 50</p>' + bars(d) + '<a class="xd-more" href="#summary/' + d.id + '">Definitions & states ↓</a></article>';
     const tiles = sections.map(g => '<section class="xd-section" id="xs-group-' + g.id + '" tabindex="-1" aria-labelledby="xd-heading-' + g.id + '"><header class="xd-section-head"><span class="xd-section-number" aria-hidden="true">' + g.number + '</span><div><h2 id="xd-heading-' + g.id + '">' + esc(g.title) + '</h2><p>' + esc(g.description) + '</p></div><span class="xd-section-meta">' + g.topics.length + (g.topics.length === 1 ? ' question' : ' questions') + '</span></header><div class="xd-grid">' + g.topics.map(tile).join('') + '</div></section>').join('');
@@ -827,36 +829,37 @@
       '</div><p class="xs-top"><a href="#summary">↑ Back to the dashboard</a></p></section>';
     const detail = sections.map(g => '<section class="xd-detail-group" aria-labelledby="xd-detail-' + g.id + '"><header class="xd-detail-head"><h3 id="xd-detail-' + g.id + '"><span aria-hidden="true">' + g.number + '</span>' + esc(g.title) + '</h3><a href="#summary/group-' + g.id + '">Back to these counts ↑</a></header>' + g.topics.map(detailCard).join('') + '</section>').join('');
     const changes = AUDIT.filter(r => nextChange(r));
-    const R = (window.REFERENCE || {}).rules || [], groups = [...new Set(R.map(x => x.group))];
-    const original = groups.map(gname => '<h3 class="xs-sub">' + esc(gname) + '</h3><div class="xs-rows">' + R.filter(x => x.group === gname).map(x => { const st = AUDIT.filter(r => ((REF[r.state] || {}).flags || {})[x.id] === true); return '<div class="xs-row"><div class="xs-label"><strong>' + esc(x.name) + '</strong><span class="xs-count">' + st.length + ' states</span></div><div><p class="xs-def">' + esc(trim(x.description, 220)) + '</p><div class="xs-chips">' + chips(st) + '</div></div></div>'; }).join('') + '</div>').join('');
     $('x-summary').innerHTML = intro({cls: 'xd-intro', eyebrow: 'Rule counts across all 50 states', title: 'Dashboard: Overview of Rule Types', lead: 'Rule counts by state: how many states give each answer, what each answer means, and which states they are. Based on the law in effect today (' + fmtDate(TODAY) + ').',
-      here: ['Bar counts for every question: labor rates, paid hours, parts, service contracts and CPO, claims and chargebacks, audit procedures', 'A plain-English definition of every answer, with the states that give it', 'Recent (last nine months) and upcoming law changes', 'Who governs each state\'s rules: statute or agency rule, the agency, and where disputes go'],
+      here: ['Bar counts for every question: labor rates, paid hours, parts, service contracts and CPO, claims and chargebacks, audit procedures', 'A plain-English definition of every answer, with the states that give it', 'Recent (last nine months) and upcoming law changes'],
       use: ['See the national picture in seconds, for example how many states cover manufacturer-backed service contracts', 'Find every state that follows a given rule, then open any state for detail'],
       stamp: (changes.length ? '<strong>Law changes coming up</strong><br>' + changes.map(r => '<a href="#state/' + r.state + '"><strong>' + r.state + '</strong></a> ' + fmtDate(nextChange(r).effective)).join('<br>') : 'No scheduled law changes')}) +
-      menu + recentLawsPanel() + '<div class="xd">' + tiles + '</div>' + govSection() +
-      '<section class="xd-definitions" aria-labelledby="xd-definitions-heading"><header class="xd-definitions-head" id="xs-definitions" tabindex="-1"><p class="xd-eyebrow">Behind the counts</p><h2 id="xd-definitions-heading">Definitions and states</h2><p>What each answer means, with links to every state in that group.</p></header>' + detail + '</section>' +
-      '<details class="xs-more"><summary>Original September 21 classification (20 rule features)</summary><p class="xs-note">The first-pass research classification. Where it differs from the state pages or the groups above, those are newer and control.</p>' + original + '</details>';
+      menu + recentLawsPanel() + '<div class="xd">' + tiles + '</div>' +
+      '<section class="xd-definitions" aria-labelledby="xd-definitions-heading"><header class="xd-definitions-head" id="xs-definitions" tabindex="-1"><p class="xd-eyebrow">Behind the counts</p><h2 id="xd-definitions-heading">Definitions and states</h2><p>What each answer means, with links to every state in that group.</p></header>' + detail + '</section>' ;
   }
   /* Who governs: statute vs agency rules, the agency, and where disputes go (docs/data/governance.json) */
   const GOV_FORUM = {agency: 'Agency', agency_or_court: 'Agency or court', court: 'Court'};
   let govFilter = '';
-  function govSection() {
+  function renderGoverning() {
     const G = GOV.states || {};
-    if (!Object.keys(G).length) return '';
     const st = AUDIT.filter(r => G[r.state]);
     const n = f => st.filter(f).length;
-    const pills = [['', 'All states', st.length], ['rules', 'Agency rules add a warranty rule', n(r => G[r.state].law === 'statute_rules')],
+    const pills = [['', 'All states', st.length], ['rules', 'Agency rule adds a warranty rule', n(r => G[r.state].law === 'statute_rules')],
       ['agency', 'Agency hears disputes', n(r => G[r.state].forum_kind !== 'court')], ['court', 'Court only (no agency forum)', n(r => G[r.state].forum_kind === 'court')]];
     const rows = st.map(r => {
-      const g = G[r.state], sec = (r.law_dates || {}).section || '';
-      const law = g.law === 'statute_rules' ? '<strong>Statute + agency rule</strong><small>' + esc(g.rule_note || '') + '</small>' : 'Statute<small>' + esc(sec) + '</small>';
-      return '<tr data-law="' + esc(g.law) + '" data-forum="' + esc(g.forum_kind) + '"><th scope="row"><a href="#state/' + r.state + '">' + esc(r.name) + '</a> <span class="xgv-abbr">' + r.state + '</span></th><td data-label="Where the rules come from">' + law + '</td><td data-label="Agency">' + esc(g.agency) + '</td><td data-label="Where disputes go"><span class="xgv-tag">' + esc(GOV_FORUM[g.forum_kind] || '') + '</span>' + esc(g.forum) + '</td></tr>';
+      const g = G[r.state], sec = (r.law_dates || {}).section || '', su = safeUrl(r.official_url);
+      const statute = su ? '<a href="' + esc(su) + '" target="_blank" rel="noopener noreferrer">' + esc(sec || 'Statute') + ' ↗</a>' : esc(sec);
+      const law = g.law === 'statute_rules' ? '<strong>Statute + agency rule</strong><small>' + statute + '</small><small>' + esc(g.rule_note || '') + '</small>' : 'Statute<small>' + statute + '</small>';
+      const site = safeUrl(g.agency_url) ? '<small><a href="' + esc(safeUrl(g.agency_url)) + '" target="_blank" rel="noopener noreferrer">Agency website ↗</a></small>' : '<small>No agency website: enforced through the courts</small>';
+      const forumSite = safeUrl(g.forum_url) ? '<small><a href="' + esc(safeUrl(g.forum_url)) + '" target="_blank" rel="noopener noreferrer">Forum website ↗</a></small>' : '';
+      return '<tr data-law="' + esc(g.law) + '" data-forum="' + esc(g.forum_kind) + '"><th scope="row"><a href="#state/' + r.state + '">' + esc(r.name) + '</a> <span class="xgv-abbr">' + r.state + '</span></th><td data-label="Where the rules come from">' + law + '</td><td data-label="Agency">' + esc(g.agency) + site + '</td><td data-label="Where disputes go"><span class="xgv-tag">' + esc(GOV_FORUM[g.forum_kind] || '') + '</span>' + esc(g.forum) + forumSite + '</td></tr>';
     }).join('');
-    return '<section class="xgv" id="xs-governance" tabindex="-1" aria-labelledby="xgv-heading"><header class="xgv-head"><p class="xd-eyebrow">Behind the rules</p><h2 id="xgv-heading">Who governs warranty reimbursement</h2>' +
-      '<p>Every state\'s rules come from its statute. In ' + pills[1][2] + ' states a state agency rule adds a warranty rule too (Tennessee\'s are the most extensive). The agency column is who licenses or enforces; the last column is where a dealer takes a rate, claim or chargeback dispute. All 50 states\' administrative rules were checked on ' + esc(fmtDate(GOV.checked)) + '; agency rules that cover only hearing procedure are not counted.</p></header>' +
-      '<div class="xpills" role="group" aria-label="Filter states">' + pills.map(p => '<button type="button" class="xpill" data-gov="' + p[0] + '" aria-pressed="' + (p[0] === govFilter) + '">' + esc(p[1]) + '<span>' + p[2] + '</span></button>').join('') + '</div>' +
-      '<div class="xgv-wrap"><table class="xgv-table"><caption class="xgv-cap">State, source of the rules, agency and dispute forum</caption><thead><tr><th scope="col">State</th><th scope="col">Where the rules come from</th><th scope="col">Agency</th><th scope="col">Where disputes go</th></tr></thead><tbody>' + rows + '</tbody></table></div>' +
-      '<p class="xs-top"><a href="#summary">↑ Back to the dashboard</a></p></section>';
+    $('x-governing').innerHTML = intro({eyebrow: 'Who sets and enforces the rules', title: 'Governing Bodies',
+      lead: 'Every state\'s warranty reimbursement rules come from its statute. In ' + pills[1][2] + ' states a state agency rule adds a warranty rule too. This page shows each state\'s statute, the agency that licenses or enforces, a link to that agency\'s website, and where a dealer takes a rate, claim or chargeback dispute.',
+      here: ['All 50 states: the statute (linked), any agency rule that adds a warranty rule, the agency and its website, and the dispute forum', 'Filters for states with agency rules, states where an agency hears disputes, and court-only states'],
+      use: ['Find the right agency before contacting a regulator or reviewing a dealer protest', 'See which states can bring a dispute before a board or commission and which go straight to court'],
+      note: 'All 50 states\' administrative rules were checked on ' + esc(fmtDate(GOV.checked)) + '. Agency rules that cover only hearing procedure are not counted as adding a warranty rule. Agency links go to each agency\'s official site, checked on the same date.'}) +
+      '<section class="xgv" id="xs-governance" aria-label="Governing bodies by state"><div class="xpills" role="group" aria-label="Filter states">' + pills.map(p => '<button type="button" class="xpill" data-gov="' + p[0] + '" aria-pressed="' + (p[0] === govFilter) + '">' + esc(p[1]) + '<span>' + p[2] + '</span></button>').join('') + '</div>' +
+      '<div class="xgv-wrap"><table class="xgv-table"><caption class="xgv-cap">State, source of the rules, agency and dispute forum</caption><thead><tr><th scope="col">State</th><th scope="col">Where the rules come from</th><th scope="col">Agency</th><th scope="col">Where disputes go</th></tr></thead><tbody>' + rows + '</tbody></table></div></section>';
   }
   function bindGov() {
     const box = $('xs-governance'); if (!box || box.dataset.bound) return; box.dataset.bound = '1';

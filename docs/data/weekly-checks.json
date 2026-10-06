@@ -500,7 +500,9 @@
     "Other fixes: AL and LA rate-rebuttal exception wording; OK dealer damages action (§ 572) and Commission injunctions (§ 567); WV has no administrative sanction for manufacturers; WA 10-day prior-approval rule (WAC 308-66-150(2)); CA franchisor schedule filing with the New Motor Vehicle Board (13 CCR § 586); dispute-procedure details from agency rules for ID, IL, ME, NY, PA, TX, UT, VT and WA.",
     "Source labels: matrix rows that cited a secondary reproduction now cite the statute checked on 2026-10-06; open 'not checked / not exhaustively searched' notes were resolved and reworded in AK, AR, CA, CO, CT, IL, KS, ME, MS, NJ, NM, NY, OK, PA, TN and WV.",
     "Method: the audit climate score and audit fields now use state agency rules where a rule sets the limit; 'Not in statute' also means no agency rule was found.",
-    "Dashboard: new 'Who governs' section (statute vs agency rule, the agency, and where disputes go, for all 50 states; filters for agency-rule states, agency forums and court-only states). Also a 'Who governs' sheet in the Excel workbook."
+    "New Governing Bodies tab: for all 50 states, the statute (linked), any agency rule that adds a warranty rule, the agency with a link to its official website, and where a dealer takes a dispute. Filters for agency-rule states, agency forums and court-only states. Also a 'Governing bodies' sheet in the Excel workbook.",
+    "State pages now show each fact from one source: removed the September first-pass paid-hours line, the duplicate rate-sample line under Parts and the first-pass labor rule (replaced by the verified rate method). The superseded September 21 classification on the Dashboard was removed.",
+    "New build gate (tools/check_consistency.py): the build stops if a short label contradicts the verified research, a scheduled law change has passed its effective date without being moved into current law, a stale-source label remains, or an agency-rule citation is missing from the governing-bodies data. Its first run also fixed Kentucky's parts text, which now states the statute's reasonable-compensation standard."
    ],
    "no_change_states": [
     "FL",

@@ -133,7 +133,7 @@ def build_xlsx(audit, cov, weekly, news, build_date, path, procs=None, idx=None,
              ('Audit fields: claim deadlines, chargeback windows, rate submission, manufacturer response and challenge, penalties, with quotes.', F),
              ('Rate sample rules: each state\'s retail-rate sample, RO age limit and exclusions.', F),
              ('Law dates: last amendment, amending act, original enactment, next scheduled change.', F),
-             ('Who governs: whether the rules come from the statute alone or also an agency rule, the agency, and where a dealer takes a dispute.', F),
+             ('Governing bodies: whether the rules come from the statute alone or also an agency rule, the agency and its website, and where a dealer takes a dispute.', F),
              ('Audit procedures: notice, selection basis, frequency, written reasons, response period, appeal, chargeback holds, extrapolation, clerical errors, documentation limits, fraud carve-outs, rate validation and consequences, with quotes.', F),
              ('Audit climate: the audit climate score (0-100) behind the Map: U.S. Audit Climate tab, its two sub-scores and each limit\'s level (0-3), with the weights, plus distributor-franchised states. Higher = more restrictive toward audits, chargebacks and rate validation. Statute text only.', F),
              ('Weekly log and News: the Update log and News tabs.', F), ('', F),
@@ -240,9 +240,10 @@ def build_xlsx(audit, cov, weekly, news, build_date, path, procs=None, idx=None,
         LAWK = {'statute': 'Statute', 'statute_rules': 'Statute + agency rule'}
         FORK = {'agency': 'Agency', 'agency_or_court': 'Agency or court', 'court': 'Court'}
         grow = [[a['state'], a['name'], LAWK.get(gov[a['state']]['law'], ''), (a.get('law_dates') or {}).get('section'), gov[a['state']].get('rule_note') or '',
-                 gov[a['state']]['agency'], FORK.get(gov[a['state']]['forum_kind'], ''), gov[a['state']]['forum']] for a in audit if a['state'] in gov]
-        sheet('Who governs', ['State', 'Name', 'Rules come from', 'Statute', 'Agency rule that adds a warranty rule', 'Agency', 'Dispute forum type', 'Where disputes go'],
-              grow, [7, 15, 20, 26, 60, 40, 16, 40])
+                 gov[a['state']]['agency'], gov[a['state']].get('agency_url') or '', FORK.get(gov[a['state']]['forum_kind'], ''), gov[a['state']]['forum'],
+                 a.get('official_url') or ''] for a in audit if a['state'] in gov]
+        sheet('Governing bodies', ['State', 'Name', 'Rules come from', 'Statute', 'Agency rule that adds a warranty rule', 'Agency', 'Agency website', 'Dispute forum type', 'Where disputes go', 'Statute source'],
+              grow, [7, 15, 20, 26, 60, 40, 40, 16, 40, 50])
 
     wrow = []
     for e in sorted(weekly.get('entries', []), key=lambda x: x['check_date'], reverse=True):
@@ -392,6 +393,15 @@ def pages(path):
 def main():
     ap = argparse.ArgumentParser(); ap.add_argument('--date', default=dt.date.today().isoformat())
     build_date = ap.parse_args().date
+    sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+    import check_consistency  # stops the build when site labels contradict the verified research
+    fails, warns = check_consistency.run(build_date)
+    for w in warns:
+        print('WARN', w)
+    if fails:
+        for f in fails:
+            print('FAIL', f)
+        sys.exit(f'Consistency check failed ({len(fails)}). Fix the data before building; see tools/check_consistency.py.')
     audit = load('data/audit-fields.json'); cov = load('research/labor-by-coverage-v3.json')
     weekly = load('data/weekly-checks.json'); news = load('data/news.json')
     procs = load('data/audit-procedures.json'); dist = load('data/distributors.json')
