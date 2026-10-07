@@ -295,7 +295,7 @@ def build_xlsx(audit, cov, weekly, news, build_date, path, procs=None, idx=None,
         ws.cell(row=r0 + 1, column=1, value=idx.get('formula', '') + ' ' + idx.get('weights_note', '')).font = F
         BL = {b['id']: b['label'] for b in idx.get('buckets', [])}
         for i, f in enumerate(idx['factors'], 2):
-            lv = '; '.join(f"level {n}: {t}" for n, t in zip((3, 2, 1, 0), (f['levels'][3], f['levels'][2], f['levels'][1], f['levels'][0])) if t)
+            lv = '; '.join(f"level {n}: {t}" for n, t in zip((0, 1, 2, 3), (f['levels'][0], f['levels'][1], f['levels'][2], f['levels'][3])) if t)
             ws.cell(row=r0 + i, column=1, value=f"{f['label']} (weight {f['weight']}; {BL.get(f['bucket'], '')}): {lv}").font = F
         ws.cell(row=r0 + len(idx['factors']) + 1, column=1, value='Tiers: ' + '; '.join(f"{t['name']} {t['range']}" for t in idx['tiers'])).font = F
     wb.save(path)
@@ -361,7 +361,7 @@ def build_pdf(a, c, build_date, path, scale=1.0, proc=None, ix=None, dist=None):
     if proc and ix:
         yn_ = lambda k: 'yes' if (proc.get(k) or {}).get('required') is True else 'no'
         rd = (proc.get('dealer_response_period') or {}).get('days')
-        txt = (f"Audit climate score {ix['score']}/100 ({ix['tier']} restrictiveness; chargeback limits {ix['subscores']['limits']}/75 + process and oversight {ix['subscores']['process']}/25). Advance notice: {yn_('advance_notice')}; selection basis disclosed: {yn_('selection_basis_disclosed')}; "
+        txt = (f"Audit climate score {ix['score']}/100 ({ix['tier']} restrictiveness; chargeback limits {ix['subscores']['limits']}/75 + process and oversight {ix['subscores']['process']}/25; measures how strict the law is, not how likely a dispute is; weights in draft). Advance notice: {yn_('advance_notice')}; selection basis disclosed: {yn_('selection_basis_disclosed')}; "
                f"frequency cap: {trim((proc.get('audit_frequency_limit') or {}).get('limit') or 'none', 50)}; written reasons: {yn_('written_reasons_before_chargeback')}; "
                f"response period: {str(rd) + ' days' if rd else 'none'}; internal appeal: {yn_('internal_appeal')}; held pending appeal: {yn_('chargeback_stayed_pending_appeal')}; "
                f"extrapolation: {(proc.get('extrapolation') or {}).get('rule') or 'silent'}; clerical-error protection: {yn_('clerical_error_protection')}; "

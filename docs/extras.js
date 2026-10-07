@@ -120,17 +120,61 @@
   }
   function multiplierText(abbr) { return kf(abbr).multiplier || 'None in statute'; }
   function scList(abbr) { return COVS.map(([id, long, short]) => { const c = cov(abbr, id); return {id, long, short, c, status: c ? c.applicability : 'silent'}; }); }
+  /* Short form of each verified condition (full wording: coverage.js conditions, shown on the state page). */
+  const COND_SHORT = {
+    FL: {all: 'if manufacturer-issued'},
+    GA: {all: 'unsettled: must fit the warranty definition'},
+    IL: {manufacturer_contract: 'if manufacturer- or affiliate-issued', cpo: 'if manufacturer-issued and paid; CPO not named'},
+    MA: {all: 'if manufacturer- or distributor-issued'},
+    MS: {all: 'interpretive: CPO named only for parts'},
+    NC: {all: 'no rate or hours rule set'},
+    ND: {independent_contract: 'if manufacturer sponsors, issues or requires it'},
+    NJ: {all: 'if the franchisor offers and reimburses it'},
+    NY: {all: 'if within the franchisor\'s own warranty'},
+    PA: {all: 'claim payment timing only; no rate rule'},
+    VA: {all: 'if the manufacturer or distributor pays'},
+    WI: {all: 'if the manufacturer requires, approves or pays'}
+  };
+  function condShort(abbr, x) { if (x.status !== 'conditional') return ''; const c = COND_SHORT[abbr] || {}; return c[x.id] || c.all || ''; }
   function scShort(abbr) {
-    const on = scList(abbr).filter(x => x.status === 'yes' || x.status === 'conditional');
-    if (!on.length) return '<span class="ks-muted">Factory warranty only</span>';
-    return on.map(x => '<span class="ks-sc"><span class="ks-sc-name">' + esc(x.short) + ':</span> <strong>' + esc(STATUS_SHORT[x.status]) + '</strong>' + (x.c && x.c.notEstablished ? ' <span class="ks-muted">(no rate rule)</span>' : '') + '</span>').join('');
+    const all = scList(abbr), on = all.filter(x => x.status === 'yes' || x.status === 'conditional');
+    if (!on.length) {
+      if (!all.some(x => x.status === 'no')) return '<span class="ks-muted">Silent: statute doesn\'t address service contracts or CPO</span>';
+      return all.map(x => '<span class="ks-sc"><span class="ks-sc-name">' + esc(x.short) + ':</span> ' + (x.status === 'no' ? '<strong>Not covered</strong>' : 'Silent') + '</span>').join('');
+    }
+    return on.map(x => { const cd = condShort(abbr, x);
+      return '<span class="ks-sc"><span class="ks-sc-name">' + esc(x.short) + ':</span> <strong>' + esc(STATUS_SHORT[x.status]) + '</strong>' + (x.c && x.c.notEstablished && !cd ? ' <span class="ks-muted">(no rate rule)</span>' : '') + (cd ? '<span class="ks-sc-cond">' + esc(cd) + '</span>' : '') + '</span>'; }).join('');
   }
-  function scPlain(abbr) { return scList(abbr).map(x => x.short + ': ' + STATUS_SHORT[x.status] + (x.c && x.c.notEstablished ? ' (no rate rule)' : '')).join('; '); }
+  function scPlain(abbr) { return scList(abbr).map(x => { const cd = condShort(abbr, x); return x.short + ': ' + STATUS_SHORT[x.status] + (cd ? ' (' + cd + ')' : x.c && x.c.notEstablished ? ' (no rate rule)' : ''); }).join('; '); }
   function quoteBlock(b) {
     if (!b) return '';
-    let h = b.quote ? '<blockquote class="statute-quote">' + esc(b.quote) + '</blockquote><p class="xpin">' + esc(b.pinpoint || '') + '</p>' : '';
-    (b.more_quotes || []).forEach(m => { if (m && m.quote) h += '<blockquote class="statute-quote">' + esc(m.quote) + '</blockquote><p class="xpin">' + esc(m.pinpoint || '') + '</p>'; });
+    const one = (q, pin) => '<blockquote class="statute-quote">' + esc(q) + '</blockquote><p class="xpin xpin-q"><span class="xpin-c">' + esc(pin || '') + '</span><button type="button" class="xcopyq">Copy quote + cite</button></p>';
+    let h = b.quote ? one(b.quote, b.pinpoint) : '';
+    (b.more_quotes || []).forEach(m => { if (m && m.quote) h += one(m.quote, m.pinpoint); });
     return h;
+  }
+  /* "Copy quote + cite": puts the verbatim quote, its pinpoint cite, the state's main statute and source link on the clipboard for workpapers */
+  function firstUrl(t) { const m = /https?:\/\/[^\s<>"')]+/.exec(String(t || '')); return m ? m[0].replace(/[.,;]+$/, '') : ''; }
+  function copyText(t) {
+    if (navigator.clipboard && window.isSecureContext) return navigator.clipboard.writeText(t);
+    return new Promise((ok, no) => { const ta = document.createElement('textarea'); ta.value = t; ta.setAttribute('readonly', ''); ta.style.cssText = 'position:fixed;top:0;left:0;opacity:0'; document.body.appendChild(ta); ta.select(); let r = false; try { r = document.execCommand('copy'); } catch (e) {} ta.remove(); r ? ok() : no(); });
+  }
+  function bindCopyQuote() {
+    let live = $('xCopyMsg');
+    if (!live) { live = document.createElement('div'); live.id = 'xCopyMsg'; live.setAttribute('role', 'status'); live.style.cssText = 'position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap'; document.body.appendChild(live); }
+    document.addEventListener('click', e => {
+      const b = e.target.closest ? e.target.closest('.xcopyq') : null; if (!b) return;
+      const pin = b.closest('.xpin-q'), bq = pin && pin.previousElementSibling;
+      const quote = bq && bq.tagName === 'BLOCKQUOTE' ? bq.textContent.trim() : '';
+      const cite = ((pin && pin.querySelector('.xpin-c')) || {}).textContent || '';
+      const m = /^#state\/([A-Za-z]{2})/.exec(location.hash), r = m ? byAbbr[m[1].toUpperCase()] : null;
+      const lines = ['"' + quote + '"'];
+      if (cite.trim()) lines.push(cite.trim());
+      if (r) { const c0 = (r.cites || [])[0]; if (c0) lines.push(r.name + ', main statute: ' + c0); const u = firstUrl(r.official_url); if (u) lines.push('Source: ' + u); }
+      lines.push('Warranty Atlas' + (r && r.verified && r.verified.audit_fields ? ', last verified ' + fmtDate(r.verified.audit_fields) : '') + '. Research summary, not legal advice.');
+      const done = msg => { b.textContent = msg; live.textContent = msg === 'Copied' ? 'Quote and cite copied.' : 'Copy failed. Select the text instead.'; clearTimeout(b._t); b._t = setTimeout(() => { b.textContent = 'Copy quote + cite'; }, 2000); };
+      copyText(lines.join('\n')).then(() => done('Copied'), () => done('Copy failed'));
+    });
   }
   function firstSentence(t, n) { const m = String(t || '').split(/(?<=[.;])\s+(?=[A-Z])/)[0]; return trim(m, n || 200); }
   function adds(full, short) { return full && full.length <= 200 && full.length > (short || '').length + 35 ? esc(full) : ''; }
@@ -159,6 +203,7 @@
     document.querySelectorAll('[data-close]').forEach(b => b.addEventListener('click', () => { const d = $(b.dataset.close); if (d && d.open) d.close(); }));
     bindPrivacy(dlg);
     bindCompare();
+    bindCopyQuote();
     window.addEventListener('hashchange', route);
   }
   /* ---------- site analytics (Google Analytics 4, loaded in index.html) ---------- */
@@ -207,7 +252,17 @@
     const tab = r.tab;
     document.querySelectorAll('#xnav a').forEach(a => a.setAttribute('aria-current', a.dataset.tab === tab ? 'page' : 'false'));
     TABS.forEach(([id]) => { const p = $('x-' + id); if (p) p.hidden = id !== tab; });
-    ensureData().then(() => { render(tab, r.state, r.section, r.compare); cmpUI(); }).catch(() => {});
+    ensureData().then(() => { fillJump(r.state); render(tab, r.state, r.section, r.compare); cmpUI(); }).catch(() => {});
+  }
+  /* header "Go to state" picker: works from every tab */
+  function fillJump(cur) {
+    const sel = $('xJump'); if (!sel) return;
+    if (!sel.dataset.ready) {
+      sel.insertAdjacentHTML('beforeend', AUDIT.map(x => '<option value="' + x.state + '">' + esc(x.name) + '</option>').join(''));
+      sel.addEventListener('change', () => { if (sel.value) location.hash = '#state/' + sel.value; });
+      sel.dataset.ready = '1';
+    }
+    sel.value = cur && byAbbr[cur] ? cur : '';
   }
   function ensureData() {
     if (loaded) return Promise.resolve();
@@ -265,7 +320,7 @@
         '<div class="table-scroll xtable-scroll ks-scroll" tabindex="0" role="region" aria-label="State rules table"><table class="xtable ks-table"><thead><tr>' +
         ['State <small class="ks-cmphint">Tick boxes to compare</small>', 'Labor rate', 'Rate increase requests', 'Manufacturer response', 'Paid hours (labor-time guide)', 'Parts markup', 'Service contracts & CPO', 'Audits & chargebacks'].map(h => '<th scope="col">' + h + '</th>').join('') +
         '</tr></thead><tbody id="ksBody"></tbody></table></div>' +
-        '<p class="xfoot"><strong>Service contracts &amp; CPO:</strong> Yes = the state\'s warranty rate and time rules apply; Conditional = only if the stated condition is met (usually who issues or pays). "Factory warranty only" means the statute is silent on or does not cover those contracts. Summaries are short on purpose; the state page has the statute quotes and conditions.</p></div><div id="ks-det" hidden></div></div>' +
+        '<p class="xfoot"><strong>Service contracts &amp; CPO:</strong> Yes = the state\'s warranty rate and time rules apply. Conditional = only if the condition shown under it is met (usually who issues or pays). Not covered = the statute expressly leaves it out. Silent = the statute doesn\'t address it, which is not the same as excluded. Summaries are short on purpose. The state page has the statute quotes and the full conditions.</p></div><div id="ks-det" hidden></div></div>' +
         '<div id="ks-state" hidden></div><div id="ks-compare" hidden></div>';
       ['ksSearch', 'ksFilter'].forEach(id => $(id).addEventListener('input', drawHome));
       p.querySelectorAll('[data-view]').forEach(b => b.addEventListener('click', () => { location.hash = b.dataset.view === 'detailed' ? '#states/detailed' : '#states'; }));
@@ -347,7 +402,7 @@
     const cbDetail = kv([['Lookback window', cb.lookback_months != null ? cb.lookback_months + ' months' : 'Not set in statute'], ['Fraud', cb.fraud_extension], ['Limits', cb.limits]]) + quoteBlock(cb);
     const penDetail = kv([['Private remedies', pe.private_remedies], ['Administrative sanctions', pe.admin_sanctions], ['Citations', pe.cite]]);
 
-    const html = '<nav class="ks-crumbs" aria-label="State navigation"><a href="#states" class="ks-back">← All states</a><label class="ks-jump">Go to state <select id="ksJump">' + AUDIT.map(x => '<option value="' + x.state + '"' + (x.state === abbr ? ' selected' : '') + '>' + esc(x.name) + '</option>').join('') + '</select></label></nav>' +
+    const html = '<nav class="ks-crumbs" aria-label="State navigation"><a href="#states" class="ks-back">← All states</a></nav>' +
       '<header class="ks-head"><div><span class="eyebrow">STATE OVERVIEW</span><h1 class="ks-h1">' + esc(r.name) + ' <span class="abbr">' + abbr + '</span></h1>' +
       '<p class="ks-cites">' + esc((r.cites || []).join(' · ')) + '</p>' +
       '<p class="ks-dates"><span>Law last amended <strong>' + esc(amended(r)) + '</strong></span><span>Last verified <strong>' + fmtDate((r.verified || {}).audit_fields) + '</strong></span>' + ((r.verified || {}).last_change_check ? '<span>Checked for law changes <strong>' + fmtDate(r.verified.last_change_check) + '</strong></span>' : '') + '</p></div>' +
@@ -378,7 +433,6 @@
 
     const box = $('ks-state');
     box.innerHTML = html; box.hidden = false; $('ks-home').hidden = true; $('ks-compare').hidden = true;
-    $('ksJump').addEventListener('change', e => { location.hash = '#state/' + e.target.value; });
     $('ksExpand').addEventListener('click', e => {
       const open = e.currentTarget.getAttribute('aria-pressed') !== 'true';
       box.querySelectorAll('details').forEach(d => { d.open = open; });
@@ -959,10 +1013,10 @@
   function howTable() {
     const B = IDX.buckets || [], SUB = IDX.subscores || [];
     const cell = t => t ? esc(t) : '<span class="ks-muted" aria-label="not used">—</span>';
-    return '<div class="table-scroll km-fscroll"><table class="km-ftable km-ftable2"><thead><tr><th scope="col">Limit in state law</th><th scope="col">Weight</th><th scope="col">Level 3 (full weight)</th><th scope="col">Level 2 (⅔)</th><th scope="col">Level 1 (⅓)</th><th scope="col">Level 0 (none)</th></tr></thead>' +
+    return '<div class="table-scroll km-fscroll"><table class="km-ftable km-ftable2"><thead><tr><th scope="col">Limit in state law</th><th scope="col">Weight</th><th scope="col">Level 0 (none)</th><th scope="col">Level 1 (⅓)</th><th scope="col">Level 2 (⅔)</th><th scope="col">Level 3 (full weight)</th></tr></thead>' +
       SUB.map(sb => '<tbody><tr class="km-fsub"><th scope="rowgroup" colspan="6">Sub-score: ' + esc(subName(sb)) + ' · ' + fmtPts(sb.max_points) + ' of the 100 points<span>' + esc(sb.about) + '</span></th></tr>' +
         B.filter(b => b.subscore === sb.id).map(b => '<tr class="km-fgroup"><th scope="rowgroup" colspan="6">' + esc(b.label) + ' · ' + fmtPts(b.weight) + ' points</th></tr>' +
-          IDX.factors.filter(f => f.bucket === b.id).map(f => '<tr><th scope="row">' + esc(f.label) + '</th><td class="km-pts"><span>' + fmtPts(f.weight) + '</span></td>' + [3, 2, 1, 0].map(i => '<td>' + cell(f.levels[i]) + '</td>').join('') + '</tr>').join('')).join('') + '</tbody>').join('') +
+          IDX.factors.filter(f => f.bucket === b.id).map(f => '<tr><th scope="row">' + esc(f.label) + '</th><td class="km-pts"><span>' + fmtPts(f.weight) + '</span></td>' + [0, 1, 2, 3].map(i => '<td>' + cell(f.levels[i]) + '</td>').join('') + '</tr>').join('')).join('') + '</tbody>').join('') +
       '</table></div><p class="xpin">' + esc(IDX.weights_note || '') + ' A dash means that level isn\'t used for that limit yet. "Not in statute" also means no state agency rule was found (all 50 states\' rules checked Oct 6, 2026). Statute text, plus agency rules where they set a limit (Tennessee); not legal advice and not an assessment of any company\'s audit program.</p>';
   }
   /* collapsed version, used on state pages */
@@ -1010,7 +1064,7 @@
     box.innerHTML = intro({eyebrow: 'Audit climate score', title: 'Map: U.S. Audit Climate', lead: 'How restrictive each state\'s law is toward manufacturer warranty audits, chargebacks and retail-rate validation. <strong class="xi-nw">Darker = more restrictive.</strong>',
       here: ['A 0–100 score for every state, built from 14 limits in state law', 'Hover a state for its score; click it for the full breakdown', 'Distributor-franchised states outlined, with every state ranked below'],
       use: ['Compare states when planning audits and chargeback reviews', 'See where more process steps and a higher bar for chargebacks apply', 'Open a state\'s full rules from its popup, or compare states in the <a href="#states">Matrix</a>'],
-      note: 'Built from statute text and state agency rules (' + fmtDate(IDX.checked) + '). Not legal advice and not an assessment of any company\'s audit program.'}) +
+      note: 'Built from statute text and state agency rules (' + fmtDate(IDX.checked) + '). The score measures how strict each state\'s law is, not how likely an audit dispute is. The weights are a draft pending S&amp;Q and Legal review. Not legal advice and not an assessment of any company\'s audit program.'}) +
       '<div class="km-wrap"><div class="km-mapcol"><div class="km-mapbox"><div class="km-map" id="kmMap"><div class="xloading">Loading map…</div></div>' +
       '<label class="km-toggle"><input type="checkbox" id="kmDist" checked><span class="km-sw km-sw-dist" aria-hidden="true"></span><span>Outline distributor-franchised states<small>NJ: northern counties only</small></span></label></div>' +
       '<div class="km-legend" aria-label="Legend">' + TIER_ORDER.slice().reverse().map(t => '<span class="km-key"><span class="km-sw" style="background:' + TIER_FILL[t] + '"></span>' + esc(t) + ' <small>' + esc((IDX.tiers.find(x => x.name === t) || {}).range || '') + '</small></span>').join('') +

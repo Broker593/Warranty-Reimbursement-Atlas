@@ -53,6 +53,12 @@ def run(build_date):
     cov = {c['state']: c for c in covr}
     ref = {r['abbr']: r for r in load_js('data.js', 'window.REFERENCE = ')['states']}
     gov = load('data/governance.json')['states']
+    js = open(os.path.join(DOCS, 'extras.js'), encoding='utf-8').read()
+    blk = js[js.index('const COND_SHORT = {'):]
+    blk = blk[:blk.index('\n  };')]
+    cond_short = {m.group(1): set(re.findall(r'(\w+):\s*\'', m.group(2))) for m in re.finditer(r'^\s+([A-Z]{2}): \{(.*)\},?$', blk, re.M)}
+    if len(cond_short) < 5:
+        F('ALL', 'could not read COND_SHORT from extras.js')
 
     # coverage-data.js must mirror the research file exactly
     if load_js('coverage-data.js', 'window.COVERAGE_V3 = ') != covr:
@@ -137,6 +143,17 @@ def run(build_date):
             for path, q in quotes(obj):
                 if len(q.split()) > 40:
                     W(s, f'{src}{path} quote is {len(q.split())} words (limit 40)')
+
+        # 11. every Conditional service-contract/CPO cell needs a short condition for the matrix (extras.js COND_SHORT), and no stale ones
+        for cid, ck in (('manufacturer_contract', 'mfr_service_contract'), ('cpo', 'cpo'), ('independent_contract', 'independent_service_contract')):
+            is_cond = ((c.get('coverage') or {}).get(ck) or {}).get('applies') == 'conditional'
+            has = cid in cond_short.get(s, {}) or 'all' in cond_short.get(s, {})
+            if is_cond and not has:
+                F(s, f'{ck} is Conditional but extras.js COND_SHORT has no short condition for it')
+            if cid in cond_short.get(s, {}) and not is_cond:
+                F(s, f'extras.js COND_SHORT gives a condition for {ck}, which is no longer Conditional')
+        if s in cond_short and not any(((c.get('coverage') or {}).get(k) or {}).get('applies') == 'conditional' for k in ('mfr_service_contract', 'cpo', 'independent_service_contract')):
+            F(s, 'extras.js COND_SHORT lists this state, but none of its service-contract/CPO cells is Conditional')
 
         # open research caveats are listed, not blocking
         for src, txt in (('audit-fields notes', a.get('notes')), ('audit-procedures notes', p.get('notes')), ('coverage notes', c.get('notes'))):
