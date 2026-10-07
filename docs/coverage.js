@@ -1,10 +1,10 @@
 /* Presentation adapter for supplied v3 research. Effective-date overrides do not alter the source JSON. */
 (() => {
  'use strict';
- const programScope="Required/Conditional applies only to contracts the manufacturer, distributor or qualifying affiliate actually issues or reimburses. Program branding (e.g., 'Subaru-backed', 'factory-backed') does not establish the legal obligor — check the obligor named in the state-specific contract.";
+ const programScope="Required/Conditional applies only to contracts the manufacturer, distributor or qualifying affiliate actually issues or reimburses. Program branding (e.g., 'factory-backed') does not establish the legal obligor — check the obligor named in the state-specific contract.";
  const types=[
   {id:'factory',key:'factory_warranty',name:'Factory warranty',note:'Manufacturer warranty repairs. Required describes statutory scope; time-guide elections, waivers and fallback conditions still apply.'},
-  {id:'manufacturer_contract',key:'mfr_service_contract',name:'Mfr-backed service contract',note:'Includes programs such as Subaru Added Security only when the issuer, obligor, affiliation and payment conditions are met.',programScope},
+  {id:'manufacturer_contract',key:'mfr_service_contract',name:'Mfr-backed service contract',note:'Includes manufacturer-branded programs only when the issuer, obligor, affiliation and payment conditions are met.',programScope},
   {id:'cpo',key:'cpo',name:'CPO warranty',note:'CPO warranty claims, separate from certification inspections, reconditioning and separately purchased contracts.',programScope},
   {id:'independent_contract',key:'independent_service_contract',name:'Independent service contract',note:'NJ, ND and PA are Conditional only through the stated manufacturer connection; PA addresses claim timing only. A truly independent contract is not covered on its own terms. Independent contract obligors differ from independent guide publishers.'}
  ];

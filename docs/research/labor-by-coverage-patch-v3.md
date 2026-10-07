@@ -11,7 +11,7 @@ Prepared by Claude. 50 of 50 states researched against statute text (official le
 5. Update the summary counts to match the Tallies section below exactly.
 6. Apply the Corrections section to the existing warranty view.
 7. Keep the Rhode Island date selector: through 9/30/2026 show RI factory hours as "Statute silent on time" and RI CPO as "Not addressed"; from 10/1/2026 show actual technician time and CPO Required. Count RI in the actual-time bucket only in the 10/1 view.
-8. Add program-scope notes on the two nonfactory manufacturer columns: "Required/Conditional applies only to contracts the manufacturer, distributor or qualifying affiliate actually issues or reimburses. Program branding (e.g., 'Subaru-backed', 'factory-backed') does not establish the legal obligor — check the obligor named in the state-specific contract."
+8. Add program-scope notes on the two nonfactory manufacturer columns: "Required/Conditional applies only to contracts the manufacturer, distributor or qualifying affiliate actually issues or reimburses. Program branding (e.g., 'factory-backed') does not establish the legal obligor — check the obligor named in the state-specific contract."
 9. Use high-contrast styling and text labels for every status (the site owner is color blind — never let color alone carry meaning).
 10. Deploy, then reply with: live URL, the four coverage counts, and the paid-hours counts as they display on the site.
 
@@ -32,7 +32,7 @@ Prepared by Claude. 50 of 50 states researched against statute text (official le
 
 Plain-English read: every state's law reaches factory warranty. 13 states reach manufacturer-backed service contracts (4 expressly, 9 conditionally). 17 reach CPO (9 expressly, 8 conditionally). **No state reaches a truly independent third-party service contract on its own terms.** NJ, ND and PA reach one only if the manufacturer offers and reimburses it (NJ), sponsors, issues or requires it (ND), or the claim is filed with the manufacturer — and PA's rule covers claim timing only. Six states limit scope to OEM-issued work (AK and GA exclude separately sold contracts outright). Where a statute is silent, reimbursement for that coverage is set by contract, not state law.
 
-Conditional usually turns on **who the legal obligor is** (FL and MA exclude products issued by a non-manufacturer common entity; IL reaches plans issued by the franchiser's affiliates) or on **whether the manufacturer pays for the work** (GA, NC, PA, VA, WI). For any manufacturer-branded service contract, such as Subaru Added Security, the obligor named on the contract decides whether these states' rules apply.
+Conditional usually turns on **who the legal obligor is** (FL and MA exclude products issued by a non-manufacturer common entity; IL reaches plans issued by the franchiser's affiliates) or on **whether the manufacturer pays for the work** (GA, NC, PA, VA, WI). For any manufacturer-branded service contract, the obligor named on the contract decides whether these states' rules apply.
 
 ### Paid-hours method for factory warranty work
 
@@ -93,9 +93,9 @@ ChatGPT Deep Research (full package reviewed 9/25). It re-researched service-con
 | NC, PA service-contract rate & hours | Not established | Adopted (changed in v3) | Scope named, but factory rate/time rules not clearly extended |
 | RI | Future law until 10/1 | Adopted | Date selector (instruction 7) |
 
-ChatGPT DR's Subaru point is adopted: Subaru's own Added Security page separates the "obligor" from the "administrator," and calling Added Security "Subaru-backed" does not prove SOA is the obligor. Obtain the state-specific agreement before treating it as manufacturer-issued in issuer-sensitive states.
+ChatGPT DR's point is adopted: a manufacturer's own service-contract page can separate the "obligor" from the "administrator," and calling a program "factory-backed" does not prove the manufacturer is the obligor. Obtain the state-specific agreement before treating it as manufacturer-issued in issuer-sensitive states.
 
-Grok also cited a historical Subaru claims manual (NHTSA-hosted copy) describing Added Security breakdown labor as retail rate × Subaru time guide + 25%. That is contract policy, not law, and the copy is dated. Do not put it on the site as a rate; if shown at all, label it "historical program document — confirm current manual."
+Grok also cited a historical manufacturer claims manual (NHTSA-hosted copy) describing service-contract breakdown labor as retail rate × the manufacturer time guide + 25%. That is contract policy, not law, and the copy is dated. Do not put it on the site as a rate; if shown at all, label it "historical program document — confirm current manual."
 
 ## Corrections to the existing warranty view
 
@@ -108,7 +108,7 @@ Grok also cited a historical Subaru claims manual (NHTSA-hosted copy) describing
 - **Virginia — note.** 2025 chs. 546/558 (eff. 7/1/2025) struck the "deemed reasonable … unless the manufacturer can show" clause.
 - **Hawaii — note.** The rate is both a floor and a cap (no more than retail rates).
 - **Maine — note.** Retail rate applies only if the dealer posts it where service customers can see it.
-- **Remove any "SOA-approved rate" wording** anywhere on the site. Nothing here establishes one.
+- **Remove any "approved rate" wording for a specific manufacturer** anywhere on the site. Nothing here establishes one.
 - **Taxonomy fix (from ChatGPT DR):** in `data.js`, move `normalized_rate` from the "Paid hours" group to "Hourly rate" to match `coverage.js`. Add: "This is an hourly-dollar-rate conversion. OEM warranty hours remain the paid-hours basis; do not apply a second time multiplier."
 - **Split the combined guide flag:** AK = independent-guide floor (unless agreed); IL = agreed guide, else OEM × 1.5; MN = dealer retail guide + actual-time fallback; MT = dealer elects OEM or retail guide; NY = dealer retail guide; ND = dealer retail guide + actual-time fallback.
 

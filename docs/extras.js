@@ -269,7 +269,7 @@
     if (loading) return loading;
     const get = p => fetch(p + '?v=' + Date.now().toString(36).slice(0, 6)).then(r => { if (!r.ok) throw new Error(p + ' ' + r.status); return r.json(); });
     loading = Promise.all([get('data/audit-fields.json'), get('data/weekly-checks.json'), get('data/news.json'), get('data/key-facts.json'),
-      get('data/audit-procedures.json'), get('data/distributors.json'), get('data/cases.json'), get('data/audit-index.json'), get('data/governance.json').catch(() => ({states: {}}))]).then(([a, w, n, k, pr, di, ca, ix, gv]) => {
+      get('data/audit-procedures.json'), get('data/flagged-states.json'), get('data/cases.json'), get('data/audit-index.json'), get('data/governance.json').catch(() => ({states: {}}))]).then(([a, w, n, k, pr, di, ca, ix, gv]) => {
       AUDIT = a.slice().sort((x, y) => x.name.localeCompare(y.name)); WEEKLY = w; NEWS = n; KEY = k || {states: {}}; loaded = true;
       (pr.states || []).forEach(x => { PROC[x.state] = x; }); DIST = di || {states: []}; CASES = ca || {items: []}; IDX = ix; GOV = gv || {states: {}};
       AUDIT.forEach(r => { byAbbr[r.state] = r; byName[r.name.toLowerCase()] = r; });
@@ -308,12 +308,12 @@
     if (!homeBuilt) {
       homeBuilt = true;
       p.innerHTML = '<div id="ks-home">' + intro({eyebrow: 'Warranty reimbursement by state', title: 'Matrix: State-by-State Rules', lead: 'One row per state with the rules that decide what a dealer is paid for warranty labor and parts.',
-        here: ['How the labor rate is set, how often dealers can ask for an increase, and how fast the manufacturer must respond', 'Which labor-time guide sets paid hours, parts markup, and whether service contracts and CPO are covered', 'Audits and chargebacks: the lookback window, whether a chargeback is held during an appeal, and the audit climate score', 'Flags for recent and upcoming law changes and distributor-franchised states'],
+        here: ['How the labor rate is set, how often dealers can ask for an increase, and how fast the manufacturer must respond', 'Which labor-time guide sets paid hours, parts markup, and whether service contracts and CPO are covered', 'Audits and chargebacks: the lookback window, whether a chargeback is held during an appeal, and the audit climate score', 'Flags for recent and upcoming law changes and flagged states'],
         use: ['Check a state\'s rules before reviewing a dealer\'s rate request, a warranty claim or a chargeback', 'Click any state for its key facts, audit procedures and the statute text behind them', 'Tick 2 to 6 states, then press <strong>Compare</strong> to see them side by side'],
         stamp: 'Last verified <strong>' + fmtDate(maxVerified()) + '</strong><br>Checked for law changes every Monday<span class="xstamp-sep"></span>' + upcomingHtml()}) +
         '<div class="ks-viewbar" role="group" aria-label="Table view"><span class="ks-viewlab">View</span><button type="button" data-view="summary" aria-pressed="true">Summary</button><button type="button" data-view="detailed" aria-pressed="false">Detailed: every field, sortable</button></div>' +
         '<div id="ks-sum"><div class="xtools"><label class="search"><span aria-hidden="true">⌕</span><input id="ksSearch" type="search" placeholder="Search a state…" aria-label="Search states"></label>' +
-        '<label>Show<select id="ksFilter"><option value="">All 50 states</option><option value="sc">Service contracts or CPO covered</option><option value="guide">Uses a non-OEM guide, multiplier or actual time</option><option value="request">Has a rate-request frequency rule</option><option value="recent">Law changed in last 9 months</option><option value="change">Law change coming up</option><option value="dist">Distributor-franchised states</option><option value="high">Audit climate High or Very high</option></select></label>' +
+        '<label>Show<select id="ksFilter"><option value="">All 50 states</option><option value="sc">Service contracts or CPO covered</option><option value="guide">Uses a non-OEM guide, multiplier or actual time</option><option value="request">Has a rate-request frequency rule</option><option value="recent">Law changed in last 9 months</option><option value="change">Law change coming up</option><option value="dist">Flagged states</option><option value="high">Audit climate High or Very high</option></select></label>' +
         '<a class="quiet ks-csv" href="#downloads">Excel workbook →</a></div>' +
         '<p class="xcount" id="ksCount" aria-live="polite"></p>' +
         '<p class="ks-defs"><strong>What the answers mean:</strong> ' + [['labor', 'Labor rate'], ['requests', 'Rate increase requests'], ['response', 'Manufacturer response'], ['hours', 'Paid hours'], ['parts', 'Parts markup'], ['mfrsc', 'Service contracts & CPO'], ['auditindex', 'Audit procedures']].map(x => '<a href="#summary/' + x[0] + '">' + x[1] + '</a>').join(' · ') + ' · <a href="#summary">All counts</a></p>' +
@@ -352,7 +352,7 @@
       return '<tr data-state="' + r.state + '"><th scope="row"><label class="ks-cmp" title="Add to compare"><input type="checkbox" data-cmp="' + r.state + '"' + (CMP.includes(r.state) ? ' checked' : '') + (!CMP.includes(r.state) && CMP.length >= MAXC ? ' disabled' : '') + '><span class="sr-only">Compare ' + esc(r.name) + '</span></label><a class="ks-state" href="#state/' + r.state + '">' + esc(r.name) + ' <span class="abbr">' + r.state + '</span></a>' +
         (rc ? '<span class="ks-change xl-badge">Changed ' + fmtDate(rc.effective) + ' · last 9 months</span>' : '') +
         (n ? '<span class="ks-change">Upcoming ' + fmtDate(n.effective) + '</span>' : '') +
-        (d ? '<span class="ks-dist" title="' + esc(distName(d)) + '">Distributor' + (d.coverage === 'partial' ? ' (north)' : '') + '</span>' : '') +
+        (d ? '<span class="ks-dist">Flagged' + (d.coverage === 'partial' ? ' (north)' : '') + '</span>' : '') +
         '</th>' +
         '<td>' + esc(k.labor || '—') + '</td>' +
         '<td>' + esc(k.requests || '—') + '<small>' + esc(sampleShort(r)) + '</small></td>' +
@@ -469,14 +469,14 @@
         ['process', 'Process and oversight (25%)', r => String((idx(r.state).subscores || {}).process ?? '—'), r => (idx(r.state).subscores || {}).process],
         ['tier', 'Tier', r => idx(r.state).tier || '—', r => TIER_RANK[idx(r.state).tier]],
         ['rank', 'Rank (1 = most restrictive)', r => String(idx(r.state).rank ?? '—'), r => idx(r.state).rank]]},
-      {g: 'Law dates and franchise', cols: [
+      {g: 'Law dates and flags', cols: [
         ['amended', 'Law last amended', r => amended(r), r => (r.law_dates || {}).last_amended_year],
         ['next', 'Next scheduled change', r => { const n = nextChange(r); return n ? fmtDate(n.effective) : 'None'; }],
         ['recent', 'Changed in last 9 months', r => { const c = recentChange(r); return c ? fmtDate(c.effective) : 'No'; }],
-        ['dist', 'Distributor-franchised', r => { const d = distOf(r.state); return d ? (d.coverage === 'partial' ? 'Northern counties' : 'Yes') : 'No'; }]]}
+        ['dist', 'Flagged', r => { const d = distOf(r.state); return d ? (d.coverage === 'partial' ? 'Northern counties' : 'Yes') : 'No'; }]]}
     ];
   }
-  const DET = {built: false, sort: {col: '', dir: 1}, filters: {}, hidden: new Set(['Law dates and franchise']), groups: null, rows: null};
+  const DET = {built: false, sort: {col: '', dir: 1}, filters: {}, hidden: new Set(['Law dates and flags']), groups: null, rows: null};
   function detCols() { return DET.groups.filter(g => !DET.hidden.has(g.g)).flatMap(g => g.cols.map(c => ({id: c[0], label: c[1], text: c[2], num: c[3], g: g.g}))); }
   function buildDetail() {
     if (DET.built) return; DET.built = true;
@@ -589,7 +589,7 @@
         ['Audit climate score', (ab) => { const v = idxOf(ab); return v ? {h: tierBadge(v.tier, v.score) + '<br><span class="xpin">Rank ' + v.rank + ' of 50</span>', t: v.score + v.tier} : '—'; }],
         [subHead('limits'), ab => { const v = idxOf(ab); return v && v.subscores ? v.subscores.limits + ' / ' + (IDX.subscores[0] || {}).max_points : '—'; }],
         [subHead('process'), ab => { const v = idxOf(ab); return v && v.subscores ? v.subscores.process + ' / ' + (IDX.subscores[1] || {}).max_points : '—'; }],
-        ['Distributor-franchised', (ab) => { const d = distOf(ab); return d ? 'Yes' + (d.coverage === 'partial' ? ', northern counties only' : '') + ' (' + distName(d).replace(/\.$/, '') + ')' : 'No'; }],
+        ['Flagged state', (ab) => { const d = distOf(ab); return d ? 'Yes' + (d.coverage === 'partial' ? ', northern counties only' : '') : 'No'; }],
         ['Law last amended', (ab, r) => amended(r)],
         ['Upcoming law change', (ab, r) => { const n = nextChange(r); return n ? fmtDate(n.effective) + ': ' + (n.act || '') : 'None tracked'; }],
         ['Changed in last 9 months', (ab, r) => { const c = recentChange(r); return c ? fmtDate(c.effective) + ': ' + (c.act || '') : 'No'; }]
@@ -743,7 +743,7 @@
       card('Excel workbook', 'Summary, coverage (200 cells), audit fields, audit procedures, audit climate scores, rate-sample rules, law dates, governing bodies, statute quotes, weekly log and news.', openA(office, 'Open in browser') + saveA('downloads/warranty-atlas.xlsx', 'Save .xlsx')) +
       card('All states · PDF', '50 one-page state summaries in one file.', openA('downloads/warranty-atlas-all-states.pdf', 'Open') + saveA('downloads/warranty-atlas-all-states.pdf')) +
       card('Research data · JSON', 'For analysts: every state\'s claim, chargeback, rate-submission, manufacturer-response and penalty rules with statute quotes, in one machine-readable file. Everything else is in the Excel workbook.', openA('data/audit-fields.json', 'Open') + saveA('data/audit-fields.json')) +
-      '</div><p class="xfoot">The Excel "Open in browser" button uses Microsoft\'s free online viewer. The workbook is public research data; no SOA data is included.</p>' +
+      '</div><p class="xfoot">The Excel "Open in browser" button uses Microsoft\'s free online viewer. The workbook is public research data; no company data is included.</p>' +
       '<h3 class="xsub">One-page PDF by state</h3><p class="xfoot">Click a state to open its PDF in a new tab. Use the viewer\'s download or print button to keep a copy.</p><div class="xstates">' + AUDIT.map(r => '<a href="downloads/state-pdfs/' + r.state + '.pdf" target="_blank" rel="noopener" title="Open ' + esc(r.name) + ' PDF">' + r.state + '</a>').join('') + '</div>';
   }
 
@@ -951,7 +951,7 @@
     if (t) { const bar = document.querySelector('#x-summary .xd-jump'), off = bar ? bar.offsetHeight + 10 : 0; window.scrollTo(0, Math.max(0, t.getBoundingClientRect().top + window.scrollY - off)); t.focus({preventScroll: true}); } else window.scrollTo(0, 0);
   }
 
-  /* ---------- Audit procedures, index, distributor layer ---------- */
+  /* ---------- Audit procedures, index, flagged states ---------- */
   const TIER_FILL = {'Low': '#86b6ef', 'Moderate': '#3987e5', 'Elevated': '#256abf', 'High': '#184f95', 'Very high': '#0d366b'};
   const TIER_INK = {'Low': '#0b1b30', 'Moderate': '#0b1b30', 'Elevated': '#ffffff', 'High': '#ffffff', 'Very high': '#ffffff'};
   const TIER_ORDER = ['Very high', 'High', 'Elevated', 'Moderate', 'Low'];
@@ -973,7 +973,6 @@
   function procOf(abbr) { return PROC[abbr] || {}; }
   function idxOf(abbr) { return (IDX && IDX.states && IDX.states[abbr]) || null; }
   function distOf(abbr) { return (DIST.states || []).find(x => x.state === abbr) || null; }
-  function distName(d) { return d ? ((DIST.distributors || {})[d.distributor] || {}).name || d.distributor : ''; }
   function procAnswer(abbr, key, kind) {
     const p = procOf(abbr), v = p[key] || {}, cls = p.classification || {};
     let ans = 'Not in statute', on = false;
@@ -1034,12 +1033,7 @@
   }
   function distBox(abbr) {
     const d = distOf(abbr); if (!d) return '';
-    const provs = (d.provisions || []).slice(0, 4);
-    return '<section class="kd-box" aria-label="Distributor-franchised state"><p class="kd-flag">DISTRIBUTOR-FRANCHISED STATE' + (d.coverage === 'partial' ? ' · NORTHERN COUNTIES ONLY' : '') + '</p>' +
-      '<p><strong>' + esc(distName(d)) + '</strong> (' + esc(((DIST.distributors || {})[d.distributor] || {}).hq || '') + ') franchises Subaru dealers ' + (d.coverage === 'partial' ? 'in the 11 northern New Jersey counties' : 'in this state') + ', not the manufacturer\'s U.S. company. ' + esc(d.area_note || '') + ' ' + esc(((DIST.distributors || {})[d.distributor] || {}).entity_note || '') + '</p>' +
-      '<p>' + esc(d.plain_english) + '</p><p class="kd-impact">' + esc(DIST.impact || '') + '</p>' +
-      '<details class="kf-more"><summary>Statute text on distributors</summary><div class="kf-detail">' + (d.duties_quote ? quoteBlock({quote: d.duties_quote, pinpoint: d.duties_pinpoint}) : '') +
-      provs.map(o => '<p>' + esc(o.summary) + '</p>' + (o.quote ? quoteBlock(o) : '')).join('') + '<p class="xpin">Confidence: ' + esc(d.confidence) + (safeUrl(d.official_url) ? ' · ' + link(d.official_url, 'Official text') : '') + '</p></div></details></section>';
+    return '<p class="kd-flagline"><span class="ks-dist">Flagged state</span>' + (d.coverage === 'partial' ? ' <span>' + esc(d.area_note || 'Northern counties only') + '</span>' : '') + '</p>';
   }
   function auditSection(abbr) {
     const v = idxOf(abbr), cases = CASES ? CASES.items.filter(c => (c.states || []).includes(abbr)) : [];
@@ -1062,11 +1056,11 @@
   function renderMap() {
     const box = $('x-map');
     box.innerHTML = intro({eyebrow: 'Audit climate score', title: 'Map: U.S. Audit Climate', lead: 'How restrictive each state\'s law is toward manufacturer warranty audits, chargebacks and retail-rate validation. <strong class="xi-nw">Darker = more restrictive.</strong>',
-      here: ['A 0–100 score for every state, built from 14 limits in state law', 'Hover a state for its score; click it for the full breakdown', 'Distributor-franchised states outlined, with every state ranked below'],
+      here: ['A 0–100 score for every state, built from 14 limits in state law', 'Hover a state for its score; click it for the full breakdown', 'Flagged states outlined in gold, with every state ranked below'],
       use: ['Compare states when planning audits and chargeback reviews', 'See where more process steps and a higher bar for chargebacks apply', 'Open a state\'s full rules from its popup, or compare states in the <a href="#states">Matrix</a>'],
-      note: 'Built from statute text and state agency rules (' + fmtDate(IDX.checked) + '). The score measures how strict each state\'s law is, not how likely an audit dispute is. The weights are a draft pending S&amp;Q and Legal review. Not legal advice and not an assessment of any company\'s audit program.'}) +
+      note: 'Built from statute text and state agency rules (' + fmtDate(IDX.checked) + '). The score measures how strict each state\'s law is, not how likely an audit dispute is. The weights are a draft and may change. Not legal advice and not an assessment of any company\'s audit program.'}) +
       '<div class="km-wrap"><div class="km-mapcol"><div class="km-mapbox"><div class="km-map" id="kmMap"><div class="xloading">Loading map…</div></div>' +
-      '<label class="km-toggle"><input type="checkbox" id="kmDist" checked><span class="km-sw km-sw-dist" aria-hidden="true"></span><span>Outline distributor-franchised states<small>NJ: northern counties only</small></span></label></div>' +
+      '<label class="km-toggle"><input type="checkbox" id="kmDist" checked><span class="km-sw km-sw-dist" aria-hidden="true"></span><span>Outline flagged states<small>NJ: northern counties only</small></span></label></div>' +
       '<div class="km-legend" aria-label="Legend">' + TIER_ORDER.slice().reverse().map(t => '<span class="km-key"><span class="km-sw" style="background:' + TIER_FILL[t] + '"></span>' + esc(t) + ' <small>' + esc((IDX.tiers.find(x => x.name === t) || {}).range || '') + '</small></span>').join('') +
       '</div></div>' +
       '<aside class="km-panel" id="kmPanel" aria-live="polite"><p class="km-hint">Click a state to see how it was scored.</p></aside></div>' +
@@ -1085,7 +1079,7 @@
     $('kmBody').innerHTML = rows.map(r => {
       const v = idxOf(r.state), d = distOf(r.state);
       const earned = IDX.factors.filter(f => v.points[f.id] > 0).map(f => f.label);
-      return '<tr><td>' + v.rank + '</td><th scope="row"><a class="ks-state" href="#state/' + r.state + '">' + esc(r.name) + ' <span class="abbr">' + r.state + '</span></a>' + (d ? '<span class="ks-dist">Distributor' + (d.coverage === 'partial' ? ' (north)' : '') + '</span>' : '') + '</th><td>' + tierBadge(v.tier, v.score) + '</td><td class="km-sub">' + (v.subscores ? v.subscores.limits : '') + '</td><td class="km-sub">' + (v.subscores ? v.subscores.process : '') + '</td><td>' + (earned.length ? esc(earned.join(' · ')) : '<span class="ks-muted">None</span>') + '</td></tr>';
+      return '<tr><td>' + v.rank + '</td><th scope="row"><a class="ks-state" href="#state/' + r.state + '">' + esc(r.name) + ' <span class="abbr">' + r.state + '</span></a>' + (d ? '<span class="ks-dist">Flagged' + (d.coverage === 'partial' ? ' (north)' : '') + '</span>' : '') + '</th><td>' + tierBadge(v.tier, v.score) + '</td><td class="km-sub">' + (v.subscores ? v.subscores.limits : '') + '</td><td class="km-sub">' + (v.subscores ? v.subscores.process : '') + '</td><td>' + (earned.length ? esc(earned.join(' · ')) : '<span class="ks-muted">None</span>') + '</td></tr>';
     }).join('');
   }
   function drawMap() {
@@ -1117,7 +1111,7 @@
     const svg = $('kmMap').querySelector('svg'), tip = $('kmTip');
     const show = (ab, ev) => {
       const v = idxOf(ab), r = byAbbr[ab]; if (!v) return;
-      tip.innerHTML = '<strong>' + esc(r.name) + '</strong> ' + tierBadge(v.tier, v.score) + (distOf(ab) ? '<span class="km-tipd">Distributor-franchised' + (distOf(ab).coverage === 'partial' ? ' (northern counties)' : '') + '</span>' : '') + factorList(ab, true) + '<span class="km-tiphint">Click for full breakdown</span>';
+      tip.innerHTML = '<strong>' + esc(r.name) + '</strong> ' + tierBadge(v.tier, v.score) + (distOf(ab) ? '<span class="km-tipd">Flagged' + (distOf(ab).coverage === 'partial' ? ' (northern counties)' : '') + '</span>' : '') + factorList(ab, true) + '<span class="km-tiphint">Click for full breakdown</span>';
       tip.hidden = false;
       const wrap = $('x-map').getBoundingClientRect();
       let x, y;
@@ -1137,7 +1131,7 @@
       outline('kmSelO', 'kmSelI', ab);
       const v = idxOf(ab), r = byAbbr[ab], d = distOf(ab);
       $('kmPanel').innerHTML = '<p class="xd-eyebrow">Selected state</p><h2>' + esc(r.name) + ' <span class="abbr">' + ab + '</span></h2><div class="ki-score"><span class="ki-num">' + v.score + '</span><span class="ki-of">/ ' + IDX.max + '</span></div>' + tierBadge(v.tier) + '<p class="xs-note">Rank ' + v.rank + ' of 50 (1 = most restrictive).</p>' + subLine(v) +
-        (d ? '<p class="km-pd"><strong>Distributor-franchised' + (d.coverage === 'partial' ? ' (northern counties only)' : '') + ':</strong> ' + esc(distName(d).replace(/\.$/, '')) + '. The rules apply to the franchisor that holds the dealer\'s franchise.</p>' : '') +
+        (d ? '<p class="km-pd"><strong>Flagged state' + (d.coverage === 'partial' ? ' (northern counties only)' : '') + '</strong></p>' : '') +
         factorList(ab, false) + '<p class="km-acts"><a class="xbtn-open" href="#state/' + ab + '">Open ' + esc(r.name) + ' →</a><button type="button" class="xbtn-save xcmp-btn" data-cmp-toggle="' + ab + '">+ Add to compare</button></p>';
       cmpUI();
       if (window.innerWidth < 900) $('kmPanel').scrollIntoView({behavior: 'smooth', block: 'nearest'});

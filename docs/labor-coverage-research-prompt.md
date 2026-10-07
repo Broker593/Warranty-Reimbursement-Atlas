@@ -1,6 +1,6 @@
 # Deep research: labor reimbursement by state and coverage
 
-Independently research labor reimbursement protections for franchised passenger-vehicle dealers in all 50 U.S. states, with particular attention to Subaru of America (SOA). Produce evidence that can update this public reference:
+Independently research labor reimbursement protections for franchised passenger-vehicle dealers in all 50 U.S. states. Produce evidence that can update this public reference:
 
 - Website: https://broker593.github.io/Warranty-Reimbursement-Atlas/?view=labor
 - Repository: https://github.com/Broker593/Warranty-Reimbursement-Atlas
@@ -15,11 +15,11 @@ Read the repository files directly if you cannot render the website. Treat its c
 Research each state separately for:
 
 1. **Factory warranty** — original manufacturer warranty repair claims.
-2. **Manufacturer-backed service contracts** — including Subaru Added Security; distinguish issuer, legal obligor, administrator and affiliated companies.
+2. **Manufacturer-backed service contracts** — including manufacturer-branded programs; distinguish issuer, legal obligor, administrator and affiliated companies.
 3. **CPO warranty** — repairs under certified pre-owned warranty coverage, separately from certification inspections, reconditioning and separately purchased service contracts.
 4. **Independent service contracts** — contracts with independent obligors, even when sold by a franchised dealer.
 
-Do not assume that a branded program falls within a statute. Trace definitions of warranty, manufacturer, affiliate, distributor, service contract, extended warranty and covered vehicle. If treatment varies by program or obligor within one category, record conditional subcases. Distinguish general state-law coverage from whether a specific Subaru contract qualifies. Identify the internal program documents needed to resolve any remaining Subaru questions.
+Do not assume that a branded program falls within a statute. Trace definitions of warranty, manufacturer, affiliate, distributor, service contract, extended warranty and covered vehicle. If treatment varies by program or obligor within one category, record conditional subcases. Distinguish general state-law coverage from whether a specific manufacturer contract qualifies. Identify the internal program documents needed to resolve any remaining manufacturer-specific questions.
 
 Use the actual research date as the as-of date. Include enacted future changes with separate effective and applicability dates. Keep passenger vehicles separate from RVs and heavy trucks.
 
@@ -49,7 +49,7 @@ Recheck high-risk existing distinctions, including Illinois's conditional multip
 2. **Count tables by coverage and method:** identified states, mandatory/elected/conditional/fallback subsets, expressly excluded states, and unverified states. List state names behind every count. Count each state once within a bucket; explain overlap across buckets. Keep explicit exclusion separate from “not identified after a described search.”
 3. **A claim-level evidence ledger** and link-check report, including stale text, portal-only access, amendment conflicts and sources still needed.
 4. **Exact proposed site-data patches** with affected records, replacement wording, evidence and date logic. Resolve the existing combined-guide bucket into supported subtypes; never report its count as the third-party-guide count.
-5. **A short findings and gaps memo**, prioritizing conclusions that could change reimbursement and identifying the SOA rate approvals, policy manuals, Added Security/CPO contracts or claims data needed for actual-payment analysis.
+5. **A short findings and gaps memo**, prioritizing conclusions that could change reimbursement and identifying the manufacturer rate approvals, policy manuals, service-contract/CPO contracts or claims data needed for actual-payment analysis.
 
 Do not claim “all 50 states verified” merely because all records have links. State exactly which claims were verified, through which source types, and which coverage questions remain unresolved.
 

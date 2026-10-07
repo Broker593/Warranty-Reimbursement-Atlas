@@ -30,7 +30,7 @@ Prepared by Claude. 50 of 50 states researched against statute text (official le
 
 Plain-English read: every state's law reaches factory warranty. 13 states reach manufacturer-backed service contracts (4 expressly, 9 conditionally). 17 reach CPO (9 expressly, 8 conditionally). **No state** reaches independent/third-party service contracts; 8 limit scope to OEM-issued or sponsored work (AK and GA exclude separately sold contracts outright). Where a statute is silent, reimbursement for that coverage is set by contract, not state law.
 
-Conditional usually turns on **who the legal obligor is** (FL and MA exclude products issued by a non-manufacturer common entity; IL reaches plans issued by the franchiser's affiliates) or on **whether the manufacturer pays for the work** (GA, NC, PA, VA, WI). For any manufacturer-branded service contract, such as Subaru Added Security, the obligor named on the contract decides whether these states' rules apply.
+Conditional usually turns on **who the legal obligor is** (FL and MA exclude products issued by a non-manufacturer common entity; IL reaches plans issued by the franchiser's affiliates) or on **whether the manufacturer pays for the work** (GA, NC, PA, VA, WI). For any manufacturer-branded service contract, the obligor named on the contract decides whether these states' rules apply.
 
 ### Paid-hours method for factory warranty work
 
@@ -75,7 +75,7 @@ Where Grok differs, and how this patch resolves it (each re-checked against stat
 
 ChatGPT Deep Research: its package kept most service-contract and CPO cells "unverified" by design and flagged the same obligor problem for manufacturer-branded contracts. It does not contradict any cell above.
 
-Grok also cited a historical Subaru claims manual (NHTSA-hosted copy) describing Added Security breakdown labor as retail rate × Subaru time guide + 25%. That is contract policy, not law, and the copy is dated. Do not put it on the site as a rate; if shown at all, label it "historical program document — confirm current manual."
+Grok also cited a historical manufacturer claims manual (NHTSA-hosted copy) describing service-contract breakdown labor as retail rate × the manufacturer time guide + 25%. That is contract policy, not law, and the copy is dated. Do not put it on the site as a rate; if shown at all, label it "historical program document — confirm current manual."
 
 ## Corrections to the existing warranty view
 
@@ -88,7 +88,7 @@ Grok also cited a historical Subaru claims manual (NHTSA-hosted copy) describing
 - **Virginia — note.** 2025 chs. 546/558 (eff. 7/1/2025) struck the "deemed reasonable … unless the manufacturer can show" clause.
 - **Hawaii — note.** The rate is both a floor and a cap (no more than retail rates).
 - **Maine — note.** Retail rate applies only if the dealer posts it where service customers can see it.
-- **Remove any "SOA-approved rate" wording** anywhere on the site. Nothing here establishes one.
+- **Remove any "approved rate" wording for a specific manufacturer** anywhere on the site. Nothing here establishes one.
 
 ## Pending legislation (show as "watch," not law)
 

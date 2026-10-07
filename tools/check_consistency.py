@@ -159,6 +159,17 @@ def run(build_date):
         for src, txt in (('audit-fields notes', a.get('notes')), ('audit-procedures notes', p.get('notes')), ('coverage notes', c.get('notes'))):
             if txt and re.search(r'not (?:been )?(?:checked|verified|read|reviewed)|could not|blocked', txt, re.I):
                 W(s, f'{src} mention an unchecked source')
+    # 12. no company-specific names in anything the site or repo publishes (flagged states stay labeled "Flagged" only)
+    root = os.path.join(DOCS, '..')
+    banned = re.compile(r'subaru|\bSOA\b|\bS&(?:amp;)?Q\b|distributor-franchised|Distributors Corp|Servco|regional distributor', re.I)
+    scan = [os.path.join(root, f) for f in ('README.md', 'AGENTS.md')] + [os.path.join(HERE, f) for f in os.listdir(HERE) if f.endswith(('.md', '.py')) and f != 'check_consistency.py']
+    for dp, _, fs in os.walk(DOCS):
+        scan += [os.path.join(dp, f) for f in fs if f.endswith(('.html', '.js', '.json', '.md', '.css', '.txt', '.csv'))]
+    for fp in scan:
+        if not os.path.exists(fp):
+            continue
+        for m in banned.finditer(open(fp, encoding='utf-8', errors='ignore').read()):
+            F(os.path.relpath(fp, root), f'company-specific reference "{m.group(0)}" must not be published')
     return fails, warns
 
 

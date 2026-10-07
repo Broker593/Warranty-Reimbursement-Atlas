@@ -6,7 +6,7 @@
    "type": "baseline",
    "run_by": "Claude (manual baseline)",
    "headline": "Baseline: 4 enacted changes take effect Oct 1, 2026 (RI, NE, CT, MD); 3 bills still pending (PA, NY, IL)",
-   "summary": "First check. Only Rhode Island's 10/1 law changes a warranty labor rule for Subaru-line passenger vehicles, and the site already applies it through the date selector. Nebraska, Connecticut and Maryland changes are scope or procedure. Kentucky's July law affects Class 7+ heavy trucks only. Pennsylvania SB 1182 is the one to watch: it would bring service contracts and CPO into Pennsylvania's reimbursement rules if the House acts before the session ends 11/30/2026.",
+   "summary": "First check. Only Rhode Island's 10/1 law changes a warranty labor rule for passenger vehicles, and the site already applies it through the date selector. Nebraska, Connecticut and Maryland changes are scope or procedure. Kentucky's July law affects Class 7+ heavy trucks only. Pennsylvania SB 1182 is the one to watch: it would bring service contracts and CPO into Pennsylvania's reimbursement rules if the House acts before the session ends 11/30/2026.",
    "items": [
     {
      "category": "enacted_upcoming",
@@ -28,7 +28,7 @@
      "status": "Passed 48-1-0 on 04/10/2026; approved by Governor 04/14/2026. Sec. 84 makes Sec. 70 operative 10/01/2026.",
      "last_action_date": null,
      "summary_short": "Sec. 70 adds § 60-1438(7): 'This section does not apply to recreational vehicles.' RVs move to the new Recreational Vehicle Industry Regulation Act. A word diff of Sec.",
-     "summary": "Sec. 70 adds § 60-1438(7): 'This section does not apply to recreational vehicles.' RVs move to the new Recreational Vehicle Industry Regulation Act. A word diff of Sec. 70 against the current § 60-1438 text on nebraskalegislature.gov found no other change, so the passenger-car warranty rules from LB667 (2025) stay the same. For Subaru this is scope housekeeping, not a change in substance.",
+     "summary": "Sec. 70 adds § 60-1438(7): 'This section does not apply to recreational vehicles.' RVs move to the new Recreational Vehicle Industry Regulation Act. A word diff of Sec. 70 against the current § 60-1438 text on nebraskalegislature.gov found no other change, so the passenger-car warranty rules from LB667 (2025) stay the same. For passenger vehicles this is scope housekeeping, not a change in substance.",
      "source_url": "https://nebraskalegislature.gov/FloorDocs/109/PDF/Slip/LB972.pdf",
      "atlas_impact": "Scope only (RVs removed). No change to passenger-vehicle cells."
     },
@@ -64,7 +64,7 @@
      "status": "Signed by Governor 04/10/2026 (Acts Ch. 83); the official KRS 190.046 page shows 'Effective: July 15, 2026'",
      "last_action_date": null,
      "summary_short": "Rewrites KRS 190.046(2)(d) for vehicles in Class 7 and above (49 C.F.R. 565.15, heavy trucks) and makes component manufacturers liable. Parts are paid at acquisition cost plus a 30% gross margin.",
-     "summary": "Rewrites KRS 190.046(2)(d) for vehicles in Class 7 and above (49 C.F.R. 565.15, heavy trucks) and makes component manufacturers liable. Parts are paid at acquisition cost plus a 30% gross margin. Labor hours actually incurred by a trained or certified technician are the basis of compensation unless the manufacturer proves by clear and convincing evidence that they were unreasonable; labor guides alone are not enough. It also reimburses training, warranty administration, and diagnostic tools and special tools, and sets a minimum 90-day claim-submission window for Class 7+. For all line-makes, § 190.046(5)(a) now bars requiring claims for sales or service promotion events sooner than 90 days after eligibility. Light-duty warranty rules are unchanged, so for Subaru the only live change is the promotion-claim window.",
+     "summary": "Rewrites KRS 190.046(2)(d) for vehicles in Class 7 and above (49 C.F.R. 565.15, heavy trucks) and makes component manufacturers liable. Parts are paid at acquisition cost plus a 30% gross margin. Labor hours actually incurred by a trained or certified technician are the basis of compensation unless the manufacturer proves by clear and convincing evidence that they were unreasonable; labor guides alone are not enough. It also reimburses training, warranty administration, and diagnostic tools and special tools, and sets a minimum 90-day claim-submission window for Class 7+. For all line-makes, § 190.046(5)(a) now bars requiring claims for sales or service promotion events sooner than 90 days after eligibility. Light-duty warranty rules are unchanged, so for passenger vehicles the only live change is the promotion-claim window.",
      "source_url": "https://apps.legislature.ky.gov/record/26rs/hb648.html",
      "atlas_impact": "Class 7+ heavy trucks only; noted in KY record. Light-duty cells unchanged."
     },
@@ -271,16 +271,16 @@
     }
    ],
    "site_changes": [
-    "Distributor-franchised states flagged: CT, MA, ME, NH, RI and VT (Subaru of New England), NY and the 11 northern NJ counties (Subaru Distributors Corp.), and HI (SUBARU Hawaii). Each state page explains what the statute says about distributors; badges on the States table, dashed outlines on the map, notes in the PDFs and Excel.",
+    "Flagged states: CT, MA, ME, NH, RI, VT, NY, northern NJ and HI, with badges on the States table, outlines on the map and notes in the PDFs and Excel.",
     "Audit procedures added for all 50 states, with statute quotes: advance notice, telling the dealer why it was selected, audit frequency caps, written reasons, response or cure periods, internal appeals, chargeback holds during appeals, extrapolation, clerical-error and documentation limits, fraud carve-outs, rate-validation limits and consequences for improper audits. Ten new count tiles on the Summary tab.",
     "New Map: U.S. Audit Climate tab: an audit climate score (0–100, higher = more restrictive) built from 14 statutory factors, on a U.S. heat map with hover and click breakdowns and a ranked table. An independent review of 16 states corrected 13 scoring inputs before publishing.",
     "New Cases & laws tab: 18 decisions and statutes on rate submissions, rate validation, audits, chargebacks and cost recovery, each labeled with how it was verified, including Putnam Ford v. Ford and Putnam Kia v. Kia (California New Motor Vehicle Board).",
     "News now has two labeled streams, law changes and rulings plus industry commentary from reliable publications (starting with Warranty Week's mid-year U.S. auto warranty expense report), and shows the list of sources checked each Monday.",
-    "Excel adds Audit procedures and Audit climate sheets and a News type column; state PDFs show the audit climate score and distributor status.",
+    "Excel adds Audit procedures and Audit climate sheets and a News type column; state PDFs show the audit climate score and flagged status.",
     "Correction: Oregon's 1-year audit and chargeback limit applies to all franchises (an earlier note limited it to franchises from 2026 on).",
-    "Every tab now opens with a plain-English summary (what's here, and what to use it for). Tabs renamed: State Rules, Dashboard Overview, Map: U.S. Audit Climate, Cases & Laws. The Dashboard Overview's section bar stays pinned while you scroll and highlights the current section, and the distributor-outline toggle sits on the map. Downloads trimmed to the Excel workbook, state PDFs and one research data file (CSV exports and the state-PDF ZIP retired).",
+    "Every tab now opens with a plain-English summary (what's here, and what to use it for). Tabs renamed: State Rules, Dashboard Overview, Map: U.S. Audit Climate, Cases & Laws. The Dashboard Overview's section bar stays pinned while you scroll and highlights the current section, and the flagged-state outline toggle sits on the map. Downloads trimmed to the Excel workbook, state PDFs and one research data file (CSV exports and the state-PDF ZIP retired).",
     "Added basic site analytics (Google Analytics): visits, pages viewed and downloads, never names or IP addresses. Disclosed in a footer and on About, with a one-click opt-out for your browser.",
-    "Map: U.S. Audit Climate is now the first tab and the page the site opens on. Tabs renamed State-by-State Matrix (was State Rules) and State Rules Dashboard (was Dashboard Overview). Distributor outlines on the map are now solid gold.",
+    "Map: U.S. Audit Climate is now the first tab and the page the site opens on. Tabs renamed State-by-State Matrix (was State Rules) and State Rules Dashboard (was Dashboard Overview). Flagged-state outlines on the map are now solid gold.",
     "Update log, News and Cases & Laws simplified: at-a-glance counts on the Update log, one compact row per item with a one-line \"why it matters\" or site impact, full summaries and sources under Details, older weeks collapsed, and cases grouped by topic with topic filter buttons.",
     "Compare states: tick 2 to 6 states on the State-by-State Matrix (or use \"Add to compare\" on the map or a state page), then press Compare to see them side by side, with rows that differ marked and a shareable link.",
     "Map hover and selection outlines now wrap the whole state (drawn on top of neighboring states).",
@@ -506,7 +506,8 @@
     "Usability updates (from an outside UX review): a 'Go to state' picker in the header on every tab, including the Map; the banner now reads 'Research summary · Not legal advice'.",
     "Matrix, Service contracts & CPO: each Conditional answer now shows its condition (for example 'if manufacturer-issued'), and the 30 states with no service-contract or CPO coverage are no longer lumped together as 'Factory warranty only': 29 are labeled Silent (the statute doesn't address them), and Alaska shows Not covered because its statute expressly excludes service contracts.",
     "A 'Copy quote + cite' button next to every statute quote copies the quote, pinpoint cite, main statute and source link for workpapers.",
-    "Audit climate: the map and workbook now say the score measures how strict the law is, not how likely an audit dispute is, and that the weights are a draft pending S&Q and Legal review. The 'How the score works' table now runs Level 0 to Level 3, left to right, matching the dots elsewhere."
+    "Audit climate: the map and workbook now say the score measures how strict the law is, not how likely an audit dispute is, and that the weights are a draft. The 'How the score works' table now runs Level 0 to Level 3, left to right, matching the dots elsewhere.",
+    "Flagged states keep their gold outline and badges, now labeled 'Flagged'. Company-specific names and references were removed from the site, the data files and the downloads."
    ],
    "no_change_states": [
     "FL",

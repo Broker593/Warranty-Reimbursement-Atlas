@@ -1,0 +1,45 @@
+{
+ "schema": 1,
+ "checked": "2026-09-28",
+ "label": "Flagged",
+ "about": "Flagged states are outlined in gold on the map and marked Flagged in the Matrix, on state pages and in the downloads.",
+ "states": [
+  {
+   "state": "CT",
+   "coverage": "statewide"
+  },
+  {
+   "state": "MA",
+   "coverage": "statewide"
+  },
+  {
+   "state": "ME",
+   "coverage": "statewide"
+  },
+  {
+   "state": "NH",
+   "coverage": "statewide"
+  },
+  {
+   "state": "RI",
+   "coverage": "statewide"
+  },
+  {
+   "state": "VT",
+   "coverage": "statewide"
+  },
+  {
+   "state": "NY",
+   "coverage": "statewide"
+  },
+  {
+   "state": "NJ",
+   "coverage": "partial",
+   "area_note": "Northern counties only"
+  },
+  {
+   "state": "HI",
+   "coverage": "statewide"
+  }
+ ]
+}

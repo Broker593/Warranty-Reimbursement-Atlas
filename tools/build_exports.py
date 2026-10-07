@@ -135,14 +135,14 @@ def build_xlsx(audit, cov, weekly, news, build_date, path, procs=None, idx=None,
              ('Law dates: last amendment, amending act, original enactment, next scheduled change.', F),
              ('Governing bodies: whether the rules come from the statute alone or also an agency rule, the agency and its website, and where a dealer takes a dispute.', F),
              ('Audit procedures: notice, selection basis, frequency, written reasons, response period, appeal, chargeback holds, extrapolation, clerical errors, documentation limits, fraud carve-outs, rate validation and consequences, with quotes.', F),
-             ('Audit climate: the audit climate score (0-100) behind the Map: U.S. Audit Climate tab, its two sub-scores and each limit\'s level (0-3), with the weights, plus distributor-franchised states. Higher = more restrictive toward audits, chargebacks and rate validation. Statute text only.', F),
+             ('Audit climate: the audit climate score (0-100) behind the Map: U.S. Audit Climate tab, its two sub-scores and each limit\'s level (0-3), with the weights, plus flagged states. Higher = more restrictive toward audits, chargebacks and rate validation. Statute text only.', F),
              ('Weekly log and News: the Update log and News tabs.', F), ('', F),
              ('How to read it', FB),
              ('"Silent" / "Not addressed" means the reviewed statute says nothing and no state agency rule was found (all 50 states checked 2026-10-06). Contracts or other law may still apply.', F),
              ('"Conditional" coverage usually turns on who the legal obligor is, or whether the manufacturer pays for the work. Program branding does not establish the obligor.', F),
              ('Rhode Island: the 2026 amendments took effect 10/1/2026 and are shown as current law.', F), ('', F),
              ('Limits', FB),
-             ('Public-source research summary for audit planning. It is not legal advice and does not contain SOA-approved rates or dealer payment data. Confirm against the cited statute before relying on a specific rule; escalate disputes to Legal.', F),
+             ('Public-source research summary for audit planning. It is not legal advice and does not contain any company-approved rates or dealer payment data. Confirm against the cited statute before relying on a specific rule; escalate disputes to Legal.', F),
              ('Sources: official legislature/revisor text unless the record says enrolled act or mirror. Quotes were machine-checked against saved source text during research.', F)]
     for i, (t, f) in enumerate(lines, 1):
         c = ws.cell(row=i, column=1, value=t); c.font = f; c.alignment = Alignment(wrap_text=True, vertical='top')
@@ -263,7 +263,6 @@ def build_xlsx(audit, cov, weekly, news, build_date, path, procs=None, idx=None,
     if procs and idx:
         P = {x['state']: x for x in procs['states']}
         D = {x['state']: x for x in (dist or {}).get('states', [])}
-        DN = (dist or {}).get('distributors', {})
         yes = lambda v: 'Yes' if v is True else ('No' if v is False else 'Not in statute')
         prow = []
         for a in audit:
@@ -287,8 +286,8 @@ def build_xlsx(audit, cov, weekly, news, build_date, path, procs=None, idx=None,
         for a in audit:
             v = idx['states'][a['state']]; d = D.get(a['state'])
             irow.append([a['state'], a['name'], v['score'], v['tier'], v['rank'], v['subscores']['limits'], v['subscores']['process']] + [v['levels'][f] for f in F_] +
-                        [(DN.get(d['distributor'], {}).get('name', '') + (' (northern counties only)' if d.get('coverage') == 'partial' else '')) if d else ''])
-        ws = sheet('Audit climate', ['State', 'Name', 'Score (0-100)', 'Tier', 'Rank', 'Chargeback limits (75%, of 75)', 'Process and oversight (25%, of 25)'] + [f"{f['label']}: level 0-3 (weight {f['weight']})" for f in idx['factors']] + ['Distributor-franchised'],
+                        [('Yes' + (' (northern counties only)' if d.get('coverage') == 'partial' else '')) if d else ''])
+        ws = sheet('Audit climate', ['State', 'Name', 'Score (0-100)', 'Tier', 'Rank', 'Chargeback limits (75%, of 75)', 'Process and oversight (25%, of 25)'] + [f"{f['label']}: level 0-3 (weight {f['weight']})" for f in idx['factors']] + ['Flagged state'],
                    irow, [7, 15, 10, 11, 7, 12, 12] + [12] * len(F_) + [34])
         r0 = len(irow) + 3
         ws.cell(row=r0, column=1, value='How the audit climate score is built (higher = more restrictive; statute and agency-rule text, not legal advice)').font = FB
@@ -330,7 +329,7 @@ def build_pdf(a, c, build_date, path, scale=1.0, proc=None, ix=None, dist=None):
     head.setStyle(TableStyle([('BACKGROUND', (0, 0), (-1, -1), navy), ('LEFTPADDING', (0, 0), (-1, -1), 8), ('TOPPADDING', (0, 0), (-1, -1), 5), ('BOTTOMPADDING', (0, 0), (-1, -1), 5)]))
     story += [head, Spacer(1, 4), P('Cites: ' + '; '.join(a.get('cites') or []), B)]
     if dist:
-        story.append(P(f"Distributor-franchised state: dealers here are franchised by {dist['name']}{' (northern New Jersey counties only)' if dist.get('partial') else ''}, an independent regional distributor. The rules below apply to the franchisor that holds the dealer's franchise; confirm with Legal how they apply to programs run by the manufacturer's U.S. company.", BB))
+        story.append(P(f"Flagged state{' (northern counties only)' if dist.get('partial') else ''}.", BB))
 
     def grid(rows, widths, header=True):
         t = Table(rows, colWidths=[w * inch for w in widths], repeatRows=1 if header else 0)
@@ -378,7 +377,7 @@ def build_pdf(a, c, build_date, path, scale=1.0, proc=None, ix=None, dist=None):
         story.append(Paragraph('Notes', H)); story.append(P(trim(a['notes'], int(900 * scale))))
     story.append(Spacer(1, 4))
     story.append(P(f"Source: {a.get('source_quality')} · {trim(a.get('official_url'), 120)} · Confidence: {a.get('confidence')}. "
-                   "Public-source research summary for audit planning, not legal advice. No SOA-approved rates. Confirm against the cited statute; escalate disputes to Legal.",
+                   "Public-source research summary for audit planning, not legal advice. No company-approved rates. Confirm against the cited statute; escalate disputes to Legal.",
                    ParagraphStyle('f', parent=B, fontSize=fs - 0.8, leading=(fs - 0.8) * 1.2, textColor=colors.HexColor('#3d4c60'))))
     doc = SimpleDocTemplate(path, pagesize=letter, leftMargin=0.45 * inch, rightMargin=0.45 * inch, topMargin=0.4 * inch, bottomMargin=0.4 * inch,
                             title=f"Warranty Atlas - {a['name']}", author='Warranty Atlas')
@@ -404,12 +403,12 @@ def main():
         sys.exit(f'Consistency check failed ({len(fails)}). Fix the data before building; see tools/check_consistency.py.')
     audit = load('data/audit-fields.json'); cov = load('research/labor-by-coverage-v3.json')
     weekly = load('data/weekly-checks.json'); news = load('data/news.json')
-    procs = load('data/audit-procedures.json'); dist = load('data/distributors.json')
+    procs = load('data/audit-procedures.json'); dist = load('data/flagged-states.json')
     sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
     import audit_index
     idx = audit_index.write(audit_index.compute(audit, procs))
     P_ = {x['state']: x for x in procs['states']}
-    DS = {x['state']: {'name': dist['distributors'][x['distributor']]['name'], 'partial': x.get('coverage') == 'partial'} for x in dist['states']}
+    DS = {x['state']: {'partial': x.get('coverage') == 'partial'} for x in dist['states']}
     by = {r['state']: r for r in cov}
     missing = sorted(set(a['state'] for a in audit) ^ set(by))
     if missing: sys.exit(f'State mismatch between audit and coverage data: {missing}')
