@@ -521,6 +521,59 @@
     "The shared web-search budget ran out near the end, so final 2026-session sweeps for MS, NV, NM, SC, TN, UT and WY rest on the earlier recorded checks."
    ],
    "method": "Ten parallel research passes, one per five states: administrative-code search for each state's dealer regulator, re-check of every flagged source note, and field-by-field comparison of matrix rows with statute text. Quotes verbatim, 40 words max."
+  },
+  {
+   "check_date": "2026-10-12",
+   "type": "weekly",
+   "run_by": "Claude (scheduled)",
+   "headline": "0 enacted changes, 3 pending bills unchanged, 0 law-data updates",
+   "summary": "No new enacted or adopted warranty-reimbursement changes found. PA SB 1182, NY A8773 and IL SB1939 remain pending and were not loaded as law. No new news items met the window and source standards.",
+   "items": [
+    {
+     "category": "pending",
+     "state": "PA",
+     "bill": "SB 1182 (2025-26), PN 1866",
+     "effective": null,
+     "status": "Official page returned HTTP 503 this run; search found no new action. Prior status carried forward (House Commerce, last action 07/01/2026). Not law.",
+     "last_action_date": "2026-07-01",
+     "summary_short": "No committee action since referral; still pending.",
+     "summary": "No change since baseline. Session ends 11/30/2026.",
+     "source_url": "https://www.palegis.us/legislation/bills/2025/sb1182",
+     "atlas_impact": "Watch only, unchanged."
+    },
+    {
+     "category": "pending",
+     "state": "NY",
+     "bill": "A8773 (Magnarelli) / S8360 (Cooney), 2025-26",
+     "effective": null,
+     "status": "Re-checked on nyassembly.gov 10/12/2026: passed Assembly 06/01/2026, referred to Senate Rules; no Senate action.",
+     "last_action_date": "2026-06-01",
+     "summary_short": "No Senate action since referral; still pending.",
+     "summary": "No change since baseline. Bills die 12/31/2026.",
+     "source_url": "https://nyassembly.gov/leg/?default_fld=&leg_video=&bn=A08773&term=2025&Summary=Y&Actions=Y",
+     "atlas_impact": "Watch only, unchanged."
+    },
+    {
+     "category": "pending",
+     "state": "IL",
+     "bill": "SB1939 (104th GA), as amended by Senate Floor Amendments 1-2",
+     "effective": null,
+     "status": "Official page returned HTTP 503 this run; search found no new action. Prior status carried forward (House Rules). Not law.",
+     "last_action_date": "2026-03-20",
+     "summary_short": "No House action since Rules re-assignment; still pending.",
+     "summary": "No change since baseline. Could move in the Nov/Dec 2026 veto or lame-duck session.",
+     "source_url": "https://www.ilga.gov/Legislation/BillStatus?DocNum=1939&GAID=18&DocTypeID=SB&SessionID=114",
+     "atlas_impact": "Watch only, unchanged."
+    }
+   ],
+   "site_changes": [],
+   "no_change_states": [],
+   "gaps": [
+    "palegis.us and ilga.gov returned HTTP 503, so PA SB 1182 and IL SB1939 rest on search results and prior status.",
+    "Web search is not a full 50-state sweep; no state-by-state official-site scan of new bills was possible this run.",
+    "No new Illinois Review Board or Volkswagen appeal reporting found after the 8/26/2026 ruling already logged."
+   ],
+   "method": "Re-checked the three pending items (NY on official site; PA and IL official sites unavailable). Ran general and targeted searches for new warranty-reimbursement laws, board rulings and Warranty Week coverage. No audit-fields, key-facts or procedure data changed."
   }
  ]
 }
