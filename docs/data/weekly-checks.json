@@ -507,7 +507,9 @@
     "Matrix, Service contracts & CPO: each Conditional answer now shows its condition (for example 'if manufacturer-issued'), and the 30 states with no service-contract or CPO coverage are no longer lumped together as 'Factory warranty only': 29 are labeled Silent (the statute doesn't address them), and Alaska shows Not covered because its statute expressly excludes service contracts.",
     "A 'Copy quote + cite' button next to every statute quote copies the quote, pinpoint cite, main statute and source link for workpapers.",
     "Audit climate: the map and workbook now say the score measures how strict the law is, not how likely an audit dispute is, and that the weights are a draft. The 'How the score works' table now runs Level 0 to Level 3, left to right, matching the dots elsewhere.",
-    "Flagged states keep their gold outline and badges, now labeled 'Flagged'. Company-specific names and references were removed from the site, the data files and the downloads."
+    "Flagged states keep their gold outline and badges, now labeled 'Flagged'. Company-specific names and references were removed from the site, the data files and the downloads.",
+    "Governing Bodies: new plain-English explanation of the legislature, state agencies and courts, with a click-to-open section on why states differ and how states use more than one body (licensing vs. hearing agency, mediation first, dealer's choice of agency or court, court review).",
+    "Quieter layout: one row of tabs with task names (Audit Climate, State Rules, Rule Patterns, Who Governs, Cases & Laws, News, Downloads, Updates); each page opens with a one-line summary instead of the 'What's here / Use it to' boxes (that guidance is in About); labeled answer chips with a key in State Rules; 'How the score works' shortened to one line plus the full table on click; the ranked list shows how many limits each state has; Rule Patterns folds the law-change cards and the definition lists until opened."
    ],
    "no_change_states": [
     "FL",

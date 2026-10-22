@@ -514,3 +514,86 @@ th[aria-sort=ascending] .kd-sort,th[aria-sort=descending] .kd-sort{text-decorati
 /* score table: four equal level columns, Level 0 to Level 3 left to right */
 @media(min-width:641px){.km-ftable2 thead th:nth-child(2){width:8%}.km-ftable2 thead th:nth-child(n+3){width:17%}}
 .kd-flagline{margin:0 0 16px;font-size:14px;color:#1d2d44;display:flex;gap:10px;align-items:center}
+/* Governing Bodies: plain-English explainer (smaller type, expandable detail) */
+.xgv-head{margin-bottom:16px}
+.xgv-explain{max-width:900px;font-size:15px;line-height:1.55;color:#2c3a4d}
+.xgv-explain p{margin:0 0 6px;font-size:15px;color:#2c3a4d}
+.xgv-explain ul{margin:4px 0 8px;padding-left:20px}
+.xgv-explain li{margin:3px 0}
+.xgv-more{margin-top:6px}
+.xgv-more summary{cursor:pointer;color:#0b57a8;font-weight:700;font-size:14.5px;text-decoration:underline;text-underline-offset:3px;padding:4px 0}
+.xgv-more summary:focus-visible{outline:3px solid #c88c27;outline-offset:2px}
+.xgv-more[open] summary{margin-bottom:6px}
+.xgv-more>div{border-left:3px solid #142943;padding:4px 0 2px 14px;font-size:14px}
+.xgv-more>div p,.xgv-more>div li{font-size:14px}
+.xgv-count{color:#46566b}
+/* ===== Quiet layout (2026-10-07): one-row task tabs, one-line intros, fewer boxes, answer chips ===== */
+.xnotice{font-size:12.5px;padding:5px 16px}
+.masthead{height:62px}
+.brandmark{width:34px;height:34px;font-size:21px}
+.brand small{margin-top:3px}
+main{padding-top:6px}
+.xnav{gap:2px;border-bottom:1px solid #c9d3df;margin:0 0 22px;flex-wrap:nowrap;overflow-x:auto;scrollbar-width:thin}
+.xnav .xnav-break{display:none}
+.xnav a,.xnav .xnav-quiet{background:transparent;border:0;border-radius:0;margin:0 0 -1px 0;padding:16px 16px 12px;font-size:15px;font-weight:600;color:#46566b;text-decoration:none;border-bottom:3px solid transparent;white-space:nowrap}
+.xnav .xnav-quiet{margin-left:0}
+.xnav a:hover{background:transparent;color:#142943;border-bottom-color:#9fb0c4}
+.xnav a[aria-current=page],.xnav .xnav-quiet[aria-current=page]{background:transparent;color:#142943;border:0;border-bottom:3px solid #142943;font-weight:700;text-decoration:none}
+.xpanel{border:0;box-shadow:none;background:transparent;padding:0}
+.xhead{margin-bottom:16px}
+.ks-h1{font-size:30px}
+.xi-lead{font-size:16px!important;color:#3d4c60!important;margin:0 0 4px!important;max-width:980px}
+.xi-note{font-size:13px!important;color:#46566b!important;margin:2px 0 0!important;border:0!important;background:none!important;padding:0!important;max-width:980px}
+.xstamp{border:0;padding:0;font-size:13px;color:#46566b;line-height:1.6}
+.xstamp-sep{display:none}
+.ks-head .eyebrow{display:none}
+.xtable thead th{background:#eef2f7;color:#142943;border-bottom:2px solid #142943}
+.xtable thead th small{color:#46566b}
+.xtable-scroll,.table-scroll{border-color:#dbe2ea}
+/* answer chips: fill, outline style and text differ, so color is never the only signal */
+.xchip{display:inline-flex;align-items:center;gap:4px;border-radius:999px;padding:1px 9px;font-size:12.5px;font-weight:700;line-height:1.55;white-space:nowrap;vertical-align:middle}
+.xchip-yes{background:#142943;color:#fff;border:1.5px solid #142943}
+.xchip-cond{background:#fff;color:#142943;border:1.5px solid #142943}
+.xchip-silent{background:#fff;color:#46566b;border:1.5px dashed #6b7a8f;font-weight:600}
+.xchip-no{background:#eef1f5;color:#142943;border:1.5px solid #6b7a8f}
+.ks-sc{display:flex;flex-wrap:wrap;align-items:center;gap:2px 6px;margin:2px 0 5px;line-height:1.4}
+.ks-sc-name{font-size:12.5px;color:#46566b}
+.ks-sc-cond{flex-basis:100%;font-size:12px;color:#46566b;margin:0}
+.xkey{display:flex;flex-wrap:wrap;align-items:center;gap:6px 12px;font-size:13px;color:#46566b;margin:4px 0 10px}
+.xkey strong{color:#142943}
+.xkey a{margin-left:4px}
+/* map */
+.km-how-sec{border:0;background:#fff;border-radius:10px;padding:16px 20px;box-shadow:0 1px 0 #dbe2ea}
+.km-how-sec h2{margin:0 0 6px}
+.km-lim{color:#46566b;font-size:13.5px}
+/* rule patterns */
+.xd-section{border-color:#dbe2ea}
+.xd-section-head{background:#fff;color:#142943;border-bottom:2px solid #142943}
+.xd-section-head h2{color:#142943}
+.xd-section-head p{color:#3d4c60}
+.xd-section-number{color:#142943;border-color:#142943}
+.xd-section-meta{color:#142943;border-color:#9fb0c4}
+.xd-scale,.xd-more{display:none}
+.xl-recent{border:1px solid #dbe2ea;background:#fff;margin:16px 0 24px}
+.xl-recent>header{border-bottom:0;padding:16px 20px 6px}
+.xl-recent header p:last-child{font-size:13px;color:#46566b}
+.xl-fold>summary,.xs-fold>summary{cursor:pointer;list-style:none}
+.xl-fold>summary::-webkit-details-marker,.xs-fold>summary::-webkit-details-marker{display:none}
+.xl-fold>summary{padding:0 20px 16px;color:#0b57a8;font-weight:700;text-decoration:underline;text-underline-offset:3px}
+.xl-fold>summary::before,.xs-fold>summary::before{content:'▸ ';text-decoration:none;display:inline-block;margin-right:4px}
+.xl-fold[open]>summary::before,.xs-fold[open]>summary::before{content:'▾ '}
+.xs-card{border:1px solid #dbe2ea}
+.xs-fold>summary{display:block;padding:14px 20px}
+.xs-fold>summary h4{display:inline;margin:0;font-size:17px;color:#142943}
+.xs-fold>summary::before{color:#142943}
+.xs-sumline{display:block;margin:4px 0 0 18px;font-size:13.5px;color:#3d4c60}
+.xs-sumline b{color:#142943}
+.xs-fold>summary:focus-visible,.xl-fold>summary:focus-visible{outline:3px solid #c88c27;outline-offset:2px}
+.xs-fold .xs-card-head{border-radius:0;border-top:1px solid #dbe2ea}
+@media(max-width:640px){.masthead{height:auto;min-height:62px;padding:8px 12px}.xnav a,.xnav .xnav-quiet{padding:12px 11px 10px;font-size:14px}.ks-h1{font-size:25px}}
+@media print{.xs-fold>summary::before,.xl-fold>summary::before{content:''}}
+.xtable thead th,.ks-table thead th,.km-table thead th{color:#142943!important;background:#eef2f7!important}
+.xtable thead th small,.ks-table thead th small{color:#46566b!important}
+.xl-recent .xd-eyebrow{display:none}
+.xc-table thead th{background:#142943!important;color:#fff!important}
+.xc-table thead th small,.xc-table thead th span{color:#dbe5f0!important}
