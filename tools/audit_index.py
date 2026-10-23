@@ -71,7 +71,8 @@ def levels(a, p):
     """Level 0-3 for each limit, from the research files."""
     m = (a.get('chargebacks') or {}).get('lookback_months')
     extrap = (p.get('extrapolation') or {}).get('rule')
-    req = lambda k: 3 if (p.get(k) or {}).get('required') is True else 0
+    # true = level 3; 'unresolved' (statute conflicts with itself) scores only through a recorded provisional score_level
+    req = lambda k: 3 if (p.get(k) or {}).get('required') is True else _override(p.get(k), 0) if (p.get(k) or {}).get('required') == 'unresolved' else 0
     cls = p.get('classification') or {}
     days = (p.get('dealer_response_period') or {}).get('days')
     freq = p.get('audit_frequency_limit') or {}
@@ -119,7 +120,16 @@ def compute(audit=None, procs=None):
         exact = sum(pts.values())
         score = int(exact + 0.5)
         subs = {sid: int(sum(pts[f[0]] for f in FACTORS if bucket_sub[f[2]] == sid) + 0.5) for sid, _, _ in SUBSCORES}
+        # provisional limits: the statute conflicts with itself and the level rests on a recorded score_level; the score carries a range
+        SRC = {'clerical': 'clerical_error_protection', 'docs': 'documentation_limits', 'stay': 'chargeback_stayed_pending_appeal', 'notice': 'advance_notice',
+               'selection': 'selection_basis_disclosed', 'written': 'written_reasons_before_chargeback', 'appeal': 'internal_appeal'}
+        prov = {fid: (P[s].get(key) or {}).get('score_level_reason') or 'Provisional: the statute conflicts with itself.' for fid, key in SRC.items()
+                if (P[s].get(key) or {}).get('required') == 'unresolved' and pts.get(fid)}
         states[s] = {'score': score, 'exact': round(exact, 2), 'tier': tier(score), 'levels': L, 'points': pts, 'subscores': subs}
+        if prov:
+            low = int(exact - sum(pts[f] for f in prov) + 0.5)
+            states[s]['provisional'] = prov
+            states[s]['score_range'] = [low, score]
     ranked = sorted(states, key=lambda s: (-states[s]['exact'], s))
     for i, s in enumerate(ranked, 1):
         states[s]['rank'] = i
@@ -128,7 +138,7 @@ def compute(audit=None, procs=None):
         'name': 'Audit climate score',
         'description': 'How restrictive state law is toward a manufacturer\'s warranty audits, chargebacks and retail-rate validation. Each of 14 statutory limits gets a level from 0 to 3; points = weight x level / 3; weights add up to 100, so scores run 0-100. Higher = more restrictive. Statute text, plus state agency rules where they set a limit (all 50 states\' rules checked 2026-10-06); not legal advice and not an assessment of any company\'s audit program.',
         'formula': 'Points = weight × level ÷ 3. Score = sum of points (0–100).',
-        'weights_note': 'Weights are a judgment call about how much each limit constrains audits and chargebacks, and are a draft that may change. Levels are read from the statute text and, where a state agency rule sets the limit, from that rule. The score measures how strict the law is, not how likely an audit dispute is.',
+        'weights_note': 'Weights are a judgment call about how much each limit constrains audits and chargebacks, and are a draft that may change. Levels are read from the statute text and, where a state agency rule sets the limit, from that rule. A limit marked provisional rests on statute text that conflicts with itself (recorded as unresolved, with a reason); that state\'s score is shown with its range until the reading is settled. The score measures how strict the law is, not how likely an audit dispute is.',
         'checked': procs.get('checked'),
         'max': 100,
         'subscores': [{'id': i, 'label': l, 'about': t, 'max_points': sub_max[i], 'share': f'{sub_max[i]}%'} for i, l, t in SUBSCORES],

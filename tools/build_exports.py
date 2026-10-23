@@ -263,7 +263,7 @@ def build_xlsx(audit, cov, weekly, news, build_date, path, procs=None, idx=None,
     if procs and idx:
         P = {x['state']: x for x in procs['states']}
         D = {x['state']: x for x in (dist or {}).get('states', [])}
-        yes = lambda v: 'Yes' if v is True else ('No' if v is False else 'Not in statute')
+        yes = lambda v: 'Yes' if v is True else ('No' if v is False else 'Unresolved (conflict in statute)' if v == 'unresolved' else 'Not in statute')
         prow = []
         for a in audit:
             x = P[a['state']]
@@ -358,9 +358,9 @@ def build_pdf(a, c, build_date, path, scale=1.0, proc=None, ix=None, dist=None):
             [P('Mfr response', BB), P(f"{d(mr.get('response_deadline_days'))}; no response = approved: {'Yes' if mr.get('deemed_approved_if_no_response') is True else 'no rule in statute'}. Challenge: " + trim(mr.get('challenge_standard'), L) + (f" Forum: {trim(mr.get('dispute_forum'), 70)}." if mr.get('dispute_forum') else '')), P(trim(mr.get('pinpoint'), 60))],
             [P('Penalties', BB), P(trim((pe.get('private_remedies') or '') + ' ' + (pe.get('admin_sanctions') or ''), int(L * 1.3))), P(trim(pe.get('cite'), 70))]]
     if proc and ix:
-        yn_ = lambda k: 'yes' if (proc.get(k) or {}).get('required') is True else 'no'
+        yn_ = lambda k: 'yes' if (proc.get(k) or {}).get('required') is True else 'unresolved (conflict in statute)' if (proc.get(k) or {}).get('required') == 'unresolved' else 'no'
         rd = (proc.get('dealer_response_period') or {}).get('days')
-        txt = (f"Audit climate score {ix['score']}/100 ({ix['tier']} restrictiveness; chargeback limits {ix['subscores']['limits']}/75 + process and oversight {ix['subscores']['process']}/25; measures how strict the law is, not how likely a dispute is; weights in draft). Advance notice: {yn_('advance_notice')}; selection basis disclosed: {yn_('selection_basis_disclosed')}; "
+        txt = (f"Audit climate score {ix['score']}/100{' (provisional: ' + str(ix['score_range'][0]) + '-' + str(ix['score_range'][1]) + ', one limit rests on conflicting statute text)' if ix.get('score_range') else ''} ({ix['tier']} restrictiveness; chargeback limits {ix['subscores']['limits']}/75 + process and oversight {ix['subscores']['process']}/25; measures how strict the law is, not how likely a dispute is; weights in draft). Advance notice: {yn_('advance_notice')}; selection basis disclosed: {yn_('selection_basis_disclosed')}; "
                f"frequency cap: {trim((proc.get('audit_frequency_limit') or {}).get('limit') or 'none', 50)}; written reasons: {yn_('written_reasons_before_chargeback')}; "
                f"response period: {str(rd) + ' days' if rd else 'none'}; internal appeal: {yn_('internal_appeal')}; held pending appeal: {yn_('chargeback_stayed_pending_appeal')}; "
                f"extrapolation: {(proc.get('extrapolation') or {}).get('rule') or 'silent'}; clerical-error protection: {yn_('clerical_error_protection')}; "
@@ -486,7 +486,7 @@ def build_brief_pdf(a, b, idx, build_date, path, scale=1.0):
             story += [Spacer(1, 2), box, Spacer(1, 2)]
         else:
             flag = ' <font color="#6b3d00"><b>[Legal review]</b></font>' if obj.get('status') in ('conflict', 'unresolved') else ''
-            story.append(P(f"<b>{i}. {X(obj['label'])}.</b> {X(obj.get('short') or obj['value'])}{flag} {cite(obj, True)}", N))
+            story.append(P(f"<b>{i}. {X(obj['label'])}.</b> {X(obj.get('short') or obj['value'])}{flag} {cite(obj, True)}" + (f" <i>Practice (not a statutory rule): {X(obj['guidance'])}</i>" if obj.get('guidance') else ''), N))
     nal = b.get('not_addressed') or []
     if nal:
         story.append(P(f"<b>Not expressly addressed in the reviewed {X(scope)} (verified {vdate}):</b> " + X('; '.join(x['label'].lower() for x in nal)) + '.', N))

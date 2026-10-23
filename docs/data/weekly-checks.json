@@ -675,7 +675,9 @@
     }
    ],
    "site_changes": [
-    "Audit brief block on the FL, CA, IL and AR state pages; audit brief PDFs (summary table plus notes) under Downloads; state summary PDF and audit climate score kept, score collapsed below the brief."
+    "Audit brief block on the FL, CA, IL and AR state pages; audit brief PDFs (summary table plus notes) under Downloads; state summary PDF and audit climate score kept, score collapsed below the brief.",
+    "Audit brief PDF reworked to a summary table plus a notes page; the state-page block shows the same table with a notes fold.",
+    "After a three-round second-opinion review of the four-state research: operating practice separated from statutory rules ('Practice' lines); California's Board-protest clock corrected (six months from the later of the disapproval notice or the end of the appeal process); Illinois clerical-error row recorded as unresolved (the warranty-RO bar was added in 2022 and conflicts with the older 'false or unsubstantiated' right) with a provisional score shown as a range; Florida and Arkansas lines narrowed to what the text says."
    ],
    "method": "Not a law check (the Monday check of 2026-10-19 stands; its tracked laws are repeated here). Research: each state's full warranty statute read and every existing audit field validated against it, plus an open-ended search for rules outside the 14 scored limits; every quote machine-checked against the source text; approach agreed in a three-round second-opinion review on 2026-10-22."
   }

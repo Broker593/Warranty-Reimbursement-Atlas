@@ -1010,7 +1010,7 @@
   function procAnswer(abbr, key, kind) {
     const p = procOf(abbr), v = p[key] || {}, cls = p.classification || {};
     let ans = 'Not in statute', on = false;
-    if (kind === 'req') { if (v.required === true) { ans = 'Yes'; on = true; } else if (v.required === false) ans = 'No'; }
+    if (kind === 'req') { if (v.required === true) { ans = 'Yes'; on = true; } else if (v.required === false) ans = 'No'; else if (v.required === 'unresolved') ans = 'Unresolved: conflict in statute, legal review' + (v.score_level ? ' (scored provisionally)' : ''); }
     else if (kind === 'limit') { if (v.limit) { ans = v.limit; on = true; } }
     else if (kind === 'days') { if (v.days) { ans = v.days + (abbr === 'KY' ? ' business days' : ' days'); on = true; } }
     else if (kind === 'rule') { ans = {prohibited: 'Prohibited', restricted: 'Restricted', silent: 'Not addressed'}[v.rule] || 'Not addressed'; on = v.rule === 'prohibited' || v.rule === 'restricted'; }
@@ -1034,7 +1034,8 @@
     const lv = v.levels || {};
     return '<ul class="ki-factors' + (compact ? ' ki-compact' : '') + '">' + IDX.factors.filter(f => !compact || v.points[f.id] > 0).map(f => {
       const pts = v.points[f.id], L = lv[f.id] || 0;
-      return '<li class="' + (pts > 0 ? 'on' : 'off') + '">' + dots(L) + '<span class="ki-flab">' + esc(f.label) + (L && f.levels && f.levels[L] && f.levels[L] !== 'Applies' && !compact ? '<small>' + esc(f.levels[L]) + '</small>' : '') + '</span><span class="ki-pts">' + fmtPts(pts) + ' / ' + fmtPts(f.weight || f.max) + '</span></li>';
+      const pv = v.provisional && v.provisional[f.id];
+      return '<li class="' + (pts > 0 ? 'on' : 'off') + (pv ? ' ki-prov' : '') + '">' + dots(L) + '<span class="ki-flab">' + esc(f.label) + (pv ? ' <span class="xb-flag">Provisional</span>' : '') + (L && f.levels && f.levels[L] && f.levels[L] !== 'Applies' && !compact ? '<small>' + esc(f.levels[L]) + '</small>' : '') + (pv && !compact ? '<small>' + esc(pv) + '</small>' : '') + '</span><span class="ki-pts">' + fmtPts(pts) + ' / ' + fmtPts(f.weight || f.max) + '</span></li>';
     }).join('') + '</ul>';
   }
   function howLead() {
@@ -1050,7 +1051,7 @@
       SUB.map(sb => '<tbody><tr class="km-fsub"><th scope="rowgroup" colspan="6">Sub-score: ' + esc(subName(sb)) + ' · ' + fmtPts(sb.max_points) + ' of the 100 points<span>' + esc(sb.about) + '</span></th></tr>' +
         B.filter(b => b.subscore === sb.id).map(b => '<tr class="km-fgroup"><th scope="rowgroup" colspan="6">' + esc(b.label) + ' · ' + fmtPts(b.weight) + ' points</th></tr>' +
           IDX.factors.filter(f => f.bucket === b.id).map(f => '<tr><th scope="row">' + esc(f.label) + '</th><td class="km-pts"><span>' + fmtPts(f.weight) + '</span></td>' + [0, 1, 2, 3].map(i => '<td>' + cell(f.levels[i]) + '</td>').join('') + '</tr>').join('')).join('') + '</tbody>').join('') +
-      '</table></div><p class="xpin">' + esc(IDX.weights_note || '') + ' A dash means that level isn\'t used for that limit yet. "Not in statute" also means no state agency rule was found (all 50 states\' rules checked Oct 6, 2026). Statute text, plus agency rules where they set a limit (Tennessee); not legal advice and not an assessment of any company\'s audit program.</p>';
+      '</table></div><p class="xpin">' + esc(IDX.weights_note || '') + ' A dash means that level isn\'t used for that limit yet. A limit marked Provisional on a state\'s breakdown rests on statute text that conflicts with itself; that state\'s score is shown with its range until the reading is settled. "Not in statute" also means no state agency rule was found (all 50 states\' rules checked Oct 6, 2026). Statute text, plus agency rules where they set a limit (Tennessee); not legal advice and not an assessment of any company\'s audit program.</p>';
   }
   /* collapsed version, used on state pages */
   function indexMethod() {
@@ -1076,8 +1077,8 @@
     }).join('');
     const p = procOf(abbr);
     return '<div class="ks-sectionhead" id="kf-audit"><h2>Audit procedures</h2><a class="ks-maplink" href="#map">See all states on the audit climate map →</a></div>' +
-      (v ? '<details class="xs-fold ki-fold"><summary><span class="ki-sum"><strong>Audit climate score ' + v.score + ' / ' + IDX.max + '</strong> ' + tierBadge(v.tier) + ' <span class="xs-sumline">rank ' + v.rank + ' of 50 · how it was scored</span></span></summary>' +
-        '<div class="ki-card"><div class="ki-score"><span class="ki-num">' + v.score + '</span><span class="ki-of">/ ' + IDX.max + '</span></div><div class="ki-text"><p class="ki-title">Audit climate score ' + tierBadge(v.tier) + '</p><p class="xs-note">How restrictive state law is toward warranty audits, chargebacks and rate validation here (higher = more restrictive). Rank ' + v.rank + ' of 50 (1 = most restrictive). Statute and agency-rule text. It measures the law, not how likely a dispute is' + (briefMeta(abbr) ? '; the audit brief above is what to use before an audit' : '') + '.</p>' + subLine(v) + factorList(abbr, false) + indexMethod() + '</div></div></details>' : '') +
+      (v ? '<details class="xs-fold ki-fold"><summary><span class="ki-sum"><strong>Audit climate score ' + v.score + ' / ' + IDX.max + '</strong> ' + tierBadge(v.tier) + (v.score_range ? ' <span class="xb-flag">Provisional: ' + v.score_range[0] + '–' + v.score_range[1] + '</span>' : '') + ' <span class="xs-sumline">rank ' + v.rank + ' of 50 · how it was scored</span></span></summary>' +
+        '<div class="ki-card"><div class="ki-score"><span class="ki-num">' + v.score + '</span><span class="ki-of">/ ' + IDX.max + '</span></div><div class="ki-text"><p class="ki-title">Audit climate score ' + tierBadge(v.tier) + '</p>' + (v.score_range ? '<p class="xnextbox"><strong>Provisional score.</strong> One limit rests on statute text that conflicts with itself; without it the score would be ' + v.score_range[0] + '. See the limit marked Provisional below and the legal-review item in the audit brief.</p>' : '') + '<p class="xs-note">How restrictive state law is toward warranty audits, chargebacks and rate validation here (higher = more restrictive). Rank ' + v.rank + ' of 50 (1 = most restrictive). Statute and agency-rule text. It measures the law, not how likely a dispute is' + (briefMeta(abbr) ? '; the audit brief above is what to use before an audit' : '') + '.</p>' + subLine(v) + factorList(abbr, false) + indexMethod() + '</div></div></details>' : '') +
       '<div class="table-scroll"><table class="xtable kp-table"><tbody>' + rows + '</tbody></table></div>' +
       '<p class="xpin">Confidence: ' + esc(p.confidence || '') + (p.notes ? '. ' + esc(trim(p.notes, 400)) : '') + '</p>' +
       (cases.length ? '<div class="ks-sectionhead"><h2>Cases and laws for this state</h2><a class="ks-maplink" href="#cases">All cases →</a></div><ul class="kc-mini">' + cases.map(c => '<li><a href="#cases/' + esc(c.id) + '">' + esc(c.title) + '</a><span class="xpin"> · ' + esc(c.forum) + ' · ' + esc(c.date) + '</span></li>').join('') + '</ul>' : '');
@@ -1097,7 +1098,7 @@
   function briefRule(x, full) {
     const pin = x.url ? '<a class="xb-pin" href="' + esc(safeUrl(x.url)) + '" target="_blank" rel="noopener noreferrer" title="' + esc(x.pinpoint) + '">' + esc(x.pin_short || x.pinpoint) + ' ↗</a>' : '<span class="xb-pin">' + esc(x.pin_short || x.pinpoint) + '</span>';
     const flag = FLAGGED(x.status) ? ' <span class="xb-flag">⚠ Legal review</span>' : '';
-    const det = briefTags(x) + (full ? '' : '<p>' + esc(x.value) + '</p>') + (x.reason ? '<p class="xb-why"><strong>Why this reading:</strong> ' + esc(x.reason) + '</p>' : '') +
+    const det = briefTags(x) + (full ? '' : '<p>' + esc(x.value) + '</p>') + (x.reason ? '<p class="xb-why"><strong>Why this reading:</strong> ' + esc(x.reason) + '</p>' : '') + (x.guidance ? '<p class="xb-guide"><strong>Practice (not a statutory rule):</strong> ' + esc(x.guidance) + '</p>' : '') +
       (x.quote ? quoteBlock({quote: x.quote, pinpoint: x.pinpoint}) : '<p class="xpin">' + esc(x.pinpoint) + '</p>') + (x.note ? '<p class="xnote">' + esc(x.note) + '</p>' : '');
     return '<li class="xb-rule' + (FLAGGED(x.status) ? ' xb-flagged' : '') + '" id="xb-' + esc(x.id) + '"><div class="xb-line"><span class="xb-label">' + esc(x.label) + '</span><span class="xb-short">' + esc(full ? x.value : x.short) + flag + '</span>' + pin + '</div>' +
       '<details class="kf-more"><summary>Details and statute text</summary><div class="kf-detail">' + det + '</div></details></li>';
@@ -1149,6 +1150,7 @@
     h += '<details class="xb-other"><summary>Other topics reviewed, more rules found in the statute' + (more.length ? ' (' + more.length + ')' : '') + ', pending bills and sources</summary><div class="kf-detail">' +
       (na.length ? '<h4>Topics reviewed and not expressly addressed</h4><ul class="xb-nalist">' + na.map(x => '<li><strong>' + esc(x.label) + '.</strong> ' + esc(x.note || 'Nothing in the reviewed sections.') + ' <span class="xpin">Reviewed: ' + esc((x.sections_reviewed || []).join('; ')) + '</span></li>').join('') + '</ul>' : '') +
       (more.length ? '<h4>More rules found in the statute</h4><ol class="xb-rules xb-more">' + more.map(x => briefRule(x, true)).join('') + '</ol>' : '') +
+      ((b.research_flags || []).length ? '<h4>Research flags (outside this brief\'s scope)</h4><ul class="xb-nalist">' + b.research_flags.map(f => '<li><strong>' + esc(f.title) + '.</strong> ' + esc(f.text) + ' <span class="xpin">' + esc(f.pinpoint || '') + (f.note ? ' · ' + esc(f.note) : '') + '</span></li>').join('') + '</ul>' : '') +
       ((b.pending || []).length ? '<h4>Pending bills (not law)</h4><ul>' + b.pending.map(p => '<li><strong>' + esc(p.bill) + '.</strong> ' + esc(p.status) + ' ' + esc(p.would_change || '') + '</li>').join('') + '</ul>' : '') +
       (srcs.length ? '<h4>Sources read for this brief</h4><ul class="xb-src">' + srcs.map(s => '<li>' + (s.url ? link(s.url, s.cite) : esc(s.cite)) + ' <span class="xpin">' + esc(s.kind || '') + (s.version ? ' · ' + s.version : '') + '</span></li>').join('') + '</ul>' : '') +
       (b.notes ? '<h4>Research notes</h4><p class="xnote">' + esc(b.notes) + '</p>' : '') + '</div></details>' +
@@ -1185,7 +1187,7 @@
     $('kmBody').innerHTML = rows.map(r => {
       const v = idxOf(r.state), d = distOf(r.state);
       const earned = IDX.factors.filter(f => v.points[f.id] > 0).map(f => f.label);
-      return '<tr><td>' + v.rank + '</td><th scope="row"><a class="ks-state" href="#state/' + r.state + '">' + esc(r.name) + ' <span class="abbr">' + r.state + '</span></a>' + (d ? '<span class="ks-dist">Flagged' + (d.coverage === 'partial' ? ' (north)' : '') + '</span>' : '') + '</th><td>' + tierBadge(v.tier, v.score) + '</td><td class="km-sub">' + (v.subscores ? v.subscores.limits : '') + '</td><td class="km-sub">' + (v.subscores ? v.subscores.process : '') + '</td><td>' + '<span class="km-lim" title="' + esc(earned.join(' · ') || 'None') + '">' + earned.length + ' of ' + IDX.factors.length + ' limits</span></td></tr>';
+      return '<tr><td>' + v.rank + '</td><th scope="row"><a class="ks-state" href="#state/' + r.state + '">' + esc(r.name) + ' <span class="abbr">' + r.state + '</span></a>' + (d ? '<span class="ks-dist">Flagged' + (d.coverage === 'partial' ? ' (north)' : '') + '</span>' : '') + '</th><td>' + tierBadge(v.tier, v.score) + (v.score_range ? ' <span class="xb-flag" title="One limit rests on statute text that conflicts with itself">Provisional ' + v.score_range[0] + '–' + v.score_range[1] + '</span>' : '') + '</td><td class="km-sub">' + (v.subscores ? v.subscores.limits : '') + '</td><td class="km-sub">' + (v.subscores ? v.subscores.process : '') + '</td><td>' + '<span class="km-lim" title="' + esc(earned.join(' · ') || 'None') + '">' + earned.length + ' of ' + IDX.factors.length + ' limits</span></td></tr>';
     }).join('');
   }
   function drawMap() {
@@ -1236,7 +1238,7 @@
       const el = svg.querySelector('.km-st[data-st="' + ab + '"]'); if (el) el.classList.add('sel');
       outline('kmSelO', 'kmSelI', ab);
       const v = idxOf(ab), r = byAbbr[ab], d = distOf(ab);
-      $('kmPanel').innerHTML = '<p class="xd-eyebrow">Selected state</p><h2>' + esc(r.name) + ' <span class="abbr">' + ab + '</span></h2><div class="ki-score"><span class="ki-num">' + v.score + '</span><span class="ki-of">/ ' + IDX.max + '</span></div>' + tierBadge(v.tier) + '<p class="xs-note">Rank ' + v.rank + ' of 50 (1 = most restrictive).</p>' + subLine(v) +
+      $('kmPanel').innerHTML = '<p class="xd-eyebrow">Selected state</p><h2>' + esc(r.name) + ' <span class="abbr">' + ab + '</span></h2><div class="ki-score"><span class="ki-num">' + v.score + '</span><span class="ki-of">/ ' + IDX.max + '</span></div>' + tierBadge(v.tier) + (v.score_range ? ' <span class="xb-flag">Provisional ' + v.score_range[0] + '–' + v.score_range[1] + '</span>' : '') + '<p class="xs-note">Rank ' + v.rank + ' of 50 (1 = most restrictive).</p>' + subLine(v) +
         (d ? '<p class="km-pd"><strong>Flagged state' + (d.coverage === 'partial' ? ' (northern counties only)' : '') + '</strong></p>' : '') +
         factorList(ab, false) + '<p class="km-acts"><a class="xbtn-open" href="#state/' + ab + '">Open ' + esc(r.name) + ' →</a><button type="button" class="xbtn-save xcmp-btn" data-cmp-toggle="' + ab + '">+ Add to compare</button></p>';
       cmpUI();

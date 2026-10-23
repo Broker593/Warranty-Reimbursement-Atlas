@@ -294,7 +294,7 @@
    "section": "testing",
    "label": "Proof and documentation",
    "brief": true,
-   "short": "The manufacturer may require documentation for claims (no stated limit); no standard of proof for 'false or unsubstantiated'; fraud must be established in court.",
+   "short": "Express: the manufacturer may require documentation for claims. Not stated: any standard of proof for a 'false or unsubstantiated' finding. A fraud chargeback needs a court finding.",
    "value": "The manufacturer or franchiser may require documentation for claims; no limit on what may be required is stated. No standard of proof is stated for finding a paid claim 'false or unsubstantiated'. The only stated evidentiary burden is for fraud: it must be established in an Arkansas court of competent jurisdiction before a fraud chargeback.",
    "covers": [
     "factory_warranty",
@@ -309,7 +309,7 @@
    "pin_short": "§ 23-112-313(e)(4)(A)(i)",
    "url": "https://law.justia.com/codes/arkansas/2025/title-23/subtitle-4/chapter-112/subchapter-3/section-23-112-313/",
    "note": null,
-   "glance": "May require documentation; no standard stated; fraud needs a court"
+   "glance": "May require documentation (express); no standard of proof stated; fraud needs a court"
   },
   {
    "id": "clerical_error",
@@ -337,7 +337,7 @@
    "section": "process",
    "label": "Written reasons",
    "brief": true,
-   "short": "Required for disapprovals (specific grounds within 30 days). For chargebacks the statute says only 'notification', which starts the dealer's 90-day appeal clock: give dated written notice with reasons.",
+   "short": "Disapprovals: written notice with specific grounds within 30 days (express). Chargebacks: the statute says only 'notification', which starts the dealer's 90-day appeal clock.",
    "value": "Disapproval of a submitted claim: written notice within the 30-day decision period stating the specific grounds. Chargebacks: the statute refers only to 'notification by the manufacturer or distributor', which starts the dealer's 90-day Commission appeal clock; no form or content is prescribed. Practice: give dated written chargeback notice with reasons, since the appeal window runs from notification.",
    "covers": [
     "factory_warranty",
@@ -351,14 +351,15 @@
    "pin_short": "§ 23-112-313(e)(2)(A)(i)",
    "url": "https://law.justia.com/codes/arkansas/2025/title-23/subtitle-4/chapter-112/subchapter-3/section-23-112-313/",
    "note": null,
-   "glance": "Disapprovals only; chargeback 'notification' starts the 90-day appeal clock"
+   "glance": "Disapprovals: written specific grounds in 30 days; chargebacks: 'notification' only",
+   "guidance": "Give dated written chargeback notice with reasons, so the appeal clock is clear. Recommended practice, not a statutory requirement."
   },
   {
    "id": "cure_rights",
    "section": "process",
    "label": "Cure and resubmission",
    "brief": true,
-   "short": "Disapproved unpaid claims: correct and resubmit within 30 days. No cure right after a chargeback; the dealer's route is the Commission appeal.",
+   "short": "Disapproved unpaid claims: correct and resubmit within 30 days. Post-payment cure is not expressly addressed; the dealer's statutory route after a chargeback is the Commission appeal.",
    "value": "Disapproved (unpaid) claims only: the dealer may correct and resubmit within 30 days of receipt of the disapproval, and resubmitted claims get the same 30-day decision clock ((e)(1): 'either original or resubmitted'). No cure, correction or resubmission right is stated after a chargeback of a paid claim; the dealer's remedy there is the Commission appeal.",
    "covers": [
     "factory_warranty",
@@ -372,7 +373,7 @@
    "pin_short": "§ 23-112-313(e)(2)(A)(ii)",
    "url": "https://law.justia.com/codes/arkansas/2025/title-23/subtitle-4/chapter-112/subchapter-3/section-23-112-313/",
    "note": null,
-   "glance": "Correct and resubmit within 30 days (unpaid claims only)"
+   "glance": "Correct and resubmit within 30 days (unpaid claims); post-payment cure not addressed"
   },
   {
    "id": "internal_appeal",
@@ -422,29 +423,30 @@
    "section": "process",
    "label": "Minimum wait after chargeback notice",
    "brief": true,
-   "short": "No minimum wait stated. The dealer has 90 days from notification to appeal; conservative practice is to hold the levy until that window closes or the appeal is resolved.",
+   "short": "No minimum wait is stated. The stay starts when the dealer files a Commission appeal, which it may do within 90 days of notification. Whether a levy before an appeal is permitted, or must be reversed if an appeal follows, is not addressed.",
    "value": "No minimum wait is stated. The dealer has 90 days from notification to appeal, and once an appeal is filed the chargeback 'shall not' be levied until the appeal is resolved. The text does not say whether a chargeback levied inside the 90-day window must be reversed when an appeal is then filed. Conservative practice: do not levy until the 90-day window closes without an appeal, or the appeal is resolved.",
    "covers": [
     "factory_warranty",
     "recalls",
     "incentives"
    ],
-   "effect": "conditional",
+   "effect": "not_expressly_addressed",
    "status": "unresolved",
-   "reason": "(e)(4)(D)(ii) bars levying after an appeal is filed; (D)(i) gives the dealer 90 days to file; nothing addresses a levy made before an appeal is filed.",
+   "reason": "(e)(4)(D)(ii) bars levying once an appeal is filed and (D)(i) gives the dealer 90 days to file; nothing addresses a levy made before an appeal is filed.",
    "quote": "A dealer may file an appeal with the Arkansas Motor Vehicle Commission to protest any chargeback under this subdivision (e)(4) within ninety (90) days of notification by the manufacturer or distributor.",
    "pinpoint": "Ark. Code Ann. § 23-112-313(e)(4)(D)(i)-(ii)",
    "pin_short": "§ 23-112-313(e)(4)(D)(i)-(ii)",
    "url": "https://law.justia.com/codes/arkansas/2025/title-23/subtitle-4/chapter-112/subchapter-3/section-23-112-313/",
    "note": null,
-   "glance": "None stated; dealer has 90 days to appeal"
+   "glance": "None stated; the stay starts when the dealer appeals (90 days to file)",
+   "guidance": "Hold the levy until the 90-day appeal window closes with no appeal, or the appeal is resolved. A conservative operating practice, not a statutory requirement."
   },
   {
    "id": "recall_claim_same_limits",
    "section": "exceptions",
    "label": "Recall-remedy and stop-sale reimbursement claims take the § 313 limits",
    "brief": true,
-   "short": "Recall-remedy and stop-sale reimbursement claims under § 23-112-319 take the same audit window, grounds, fraud route, appeal and stay.",
+   "short": "Reimbursement claims under § 23-112-319 (used vehicles under a federal recall with a stop-sale or do-not-drive order and parts unavailable 30 days or more, in inventory or taken in trade) take the same limits as warranty claims under § 313, unless paid under a national recall program that pays at least as much or as otherwise agreed (§ 319(d)(2)).",
    "value": "A dealer's reimbursement claim for a recall remedy or repair, or for stop-sale/do-not-drive compensation on a used vehicle when no part or remedy is reasonably available, is subject to the same limitations and requirements as a warranty reimbursement claim under § 313 (unless paid under a national recall compensation program that pays at least as much, or as otherwise agreed). So the one-year audit window, 'false or unsubstantiated' ground, fraud route, 90-day appeal and stay apply to those claims.",
    "covers": [
     "recalls"
@@ -456,7 +458,8 @@
    "pinpoint": "Ark. Code Ann. § 23-112-319(d)(1); see § 23-112-319(a)-(b)",
    "pin_short": "§ 23-112-319(d)(1)",
    "url": "https://law.justia.com/codes/arkansas/title-23/subtitle-4/chapter-112/subchapter-3/section-23-112-319/",
-   "note": null
+   "note": null,
+   "glance": "§ 319 recall claims take the § 313 limits unless a national program pays as much"
   },
   {
    "id": "recall_claim_anti_retaliation",

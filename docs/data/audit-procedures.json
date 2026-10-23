@@ -1,7 +1,7 @@
 {
  "schema": 1,
  "checked": "2026-10-06",
- "method": "Official statute text read for each state; state administrative rules checked for all 50 states on 2026-10-06 and used where a state agency rule sets the limit (Tennessee) (quotes machine-checked verbatim, 40 words max). true = the statute imposes the requirement or protection; null = silent; false = the statute expressly provides otherwise. The two classification fields are editorial judgments made from the recorded limits and penalties text. Revised 2026-09-27 after an independent review: frequency caps count only numeric limits; response periods count only time to respond, cure or resubmit to the manufacturer (not windows to sue or protest to a board); rate validation is \"limited\" only when the manufacturer has no right to request additional ROs or re-verify periodically and no comparison with other dealers.",
+ "method": "Official statute text read for each state; state administrative rules checked for all 50 states on 2026-10-06 and used where a state agency rule sets the limit (Tennessee) (quotes machine-checked verbatim, 40 words max). true = the statute imposes the requirement or protection; null = silent; false = the statute expressly provides otherwise. 'unresolved' (added 2026-10-23) = the statute's own sentences conflict and nothing reconciles them; such a field scores only through a recorded provisional score_level with a score_level_reason, and the state's audit brief carries a LEGAL REVIEW REQUIRED block. The two classification fields are editorial judgments made from the recorded limits and penalties text. Revised 2026-09-27 after an independent review: frequency caps count only numeric limits; response periods count only time to respond, cure or resubmit to the manufacturer (not windows to sue or protest to a board); rate validation is \"limited\" only when the manufacturer has no right to request additional ROs or re-verify periodically and no comparison with other dealers.",
  "states": [
   {
    "state": "AK",
@@ -1319,10 +1319,12 @@
     "pinpoint": null
    },
    "clerical_error_protection": {
-    "required": true,
-    "detail": "Indirect, and the statute conflicts with itself. There is no clerical-error clause, but 710/6(b) bars any debit or chargeback of any warranty RO item absent a finding of fraud or illegal actions by the dealer; read literally, that bars clerical-only chargebacks. The same subsection separately lets the manufacturer charge back 'false or unsubstantiated' claims, and nothing reconciles the two sentences or says who makes the 'finding'. Recorded as applying because the bar is express; legal review required before any warranty RO chargeback (see the audit brief).",
+    "required": "unresolved",
+    "detail": "No clerical-error clause, and the statute conflicts with itself. 710/6(b) bars any debit or chargeback of a warranty RO item absent a finding of fraud or illegal actions by the dealer (added by P.A. 102-232, effective 1-1-22), which read literally bars clerical-only chargebacks; the same subsection, in older text, lets the manufacturer charge back 'false or unsubstantiated' claims. Nothing reconciles the two or says who makes the finding. Recorded as unresolved; the audit climate score keeps the limit provisionally (level 3, 12 points; Illinois would score 18 instead of 30 without it) because the later-enacted bar is express. Legal review required before any warranty RO chargeback (see the audit brief).",
     "quote": "No debit reduction or charge back of any item on a warranty repair order may be made absent a finding of fraud or illegal actions by the dealer.",
-    "pinpoint": "815 ILCS 710/6(b)"
+    "pinpoint": "815 ILCS 710/6(b)",
+    "score_level": 3,
+    "score_level_reason": "Provisional. The express bar on warranty-RO chargebacks absent a finding of fraud or illegal actions (added by P.A. 102-232, eff. 1-1-22) is read as a limit on the older 'false or unsubstantiated' chargeback right; the statute does not reconcile them. Score range 18 to 30 pending legal interpretation."
    },
    "documentation_limits": {
     "required": true,

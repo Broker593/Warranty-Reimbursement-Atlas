@@ -471,7 +471,7 @@
    "section": "process",
    "label": "Cure rights",
    "brief": true,
-   "short": "At least 30 days to cure material documentation noncompliance; a claim rebutted and cured before the deadline can't be charged back.",
+   "short": "At least 30 days to cure material documentation noncompliance; a claim rebutted and cured before the deadline can't be charged back. For a documentation-only finding, supplying the documents is the rebuttal; a cure does not answer a separate ground such as repairs not performed.",
    "value": "At least 30 days (scaled to claim volume) to cure material documentation or administrative noncompliance. A claim that is rebutted and cured before the applicable deadline may not be charged back.",
    "covers": [
     "factory_warranty",
@@ -480,8 +480,8 @@
     "incentives"
    ],
    "effect": "required",
-   "status": "express",
-   "reason": null,
+   "status": "reasoned_interpretation",
+   "reason": "§ 3065(e)(3) bars a chargeback when the franchisee 'rebuts any disapproval and cures any material noncompliance'; for a documentation-only disapproval, supplying the missing documentation is itself the rebuttal. The incentive rule (§ 3065.1(g)(5)) bars a chargeback on a cure alone. A cure does not answer an unrelated ground such as repairs not performed.",
    "quote": "to respond to any disapproval with additional supporting documentation or information rebutting the disapproval and to cure noncompliance, with the period to be commensurate with the volume of claims under consideration.",
    "pinpoint": "Cal. Veh. Code § 3065(e)(3); § 3065.1(g)(3), (g)(5)",
    "pin_short": "§ 3065(e)(3)",
@@ -517,8 +517,8 @@
    "section": "process",
    "label": "Final Denial notice",
    "brief": true,
-   "short": "If the dealer appeals and loses: written notice within 30 days of the end of the appeal, marked 'Final Denial' on page 1. The 45-day hold, 90-day deadline and 6-month protest window run from the later of this notice and the disapproval notice.",
-   "value": "If the dealer rebuts, attempts to cure or otherwise appeals and the franchisor still denies, a written notification of the final denial is due within 30 days of completion of the appeal process and must conspicuously state \"Final Denial\" on the first page. The 45-day hold, the 90-day chargeback deadline and the six-month protest window all run from the later of this notice or the disapproval notice.",
+   "short": "If the dealer appeals and loses: written notice within 30 days after the appeal ends, marked 'Final Denial' on page 1. The 45-day hold and 90-day chargeback deadline run from receipt of the later of this notice and the disapproval notice. The 6-month Board protest window runs from the later of the disapproval notice or completion of the appeal process (§ 3065(e)(6)), which can be earlier.",
+   "value": "If the franchisee provides rebuttal documentation, attempts to cure, or otherwise appeals and the franchisor continues to deny the claim, the franchisor must give written notification of the final denial within 30 days of completion of the appeal process, conspicuously stating \"Final Denial\" on the first page (§ 3065(e)(4)). Two different clocks follow. The chargeback clocks (no chargeback until 45 days after receipt, chargeback within 90 days of receipt) run from the later of the disapproval notice and the Final Denial notice (§ 3065(e)(5)). The Board protest window (six months) runs from the later of receipt of the written disapproval notice or completion of the franchisor's appeal process (§ 3065(e)(6)); because the Final Denial notice may come up to 30 days after the appeal ends, the protest window can open before that notice arrives.",
    "covers": [
     "factory_warranty",
     "cpo",
@@ -533,7 +533,7 @@
    "pin_short": "§ 3065(e)(4)-(6)",
    "url": "https://california.public.law/codes/ca_veh_code_section_3065",
    "note": null,
-   "glance": "Within 30 days after the appeal; marked 'Final Denial'"
+   "glance": "Within 30 days after the appeal; starts the 45/90-day chargeback clocks"
   },
   {
    "id": "stay_pending_dispute",
@@ -607,7 +607,7 @@
    "section": "exceptions",
    "label": "Incentive-program audits",
    "brief": true,
-   "short": "Incentive audits run on a parallel regime (same window, cap and clocks) with different grounds: false or fraudulent; ineligible under program terms as previously communicated; material documentation noncompliance. A cure alone bars the chargeback.",
+   "short": "Incentive audits run on a parallel regime (same window, cap and clocks) with different grounds: false or fraudulent; ineligible under program terms as previously communicated; material documentation noncompliance. A cure alone bars the chargeback. The incentive protest window is six months after receipt of the disapproval or Final Denial notice (§ 3065.1(g)(6)), a different trigger from the warranty rule.",
    "value": "Incentive claims have a parallel regime in § 3065.1(g)-(h): 9-month window from payment or credit, one random audit per nine months with written basis for any additional audit, random and statistically valid extrapolation only, written grounds within 30 days of the audit, at least 30 days to rebut and cure, Final Denial notice, 45-day hold, 90-day chargeback deadline, Board-protest stay and franchisor burden of proof. Differences from warranty: chargeback grounds are (1) false or fraudulent, (2) ineligible under the terms of the incentive program as previously communicated to the franchisee, or (3) material documentation noncompliance (no \"repairs not properly made\" ground); a cure alone bars the chargeback (§ 3065.1(g)(5)); the 45- and 90-day clocks run from the franchisee's receipt; and the § 11705(a)(7) license sanction names § 3065 but not § 3065.1.",
    "covers": [
     "incentives"
@@ -646,7 +646,7 @@
    "section": "exceptions",
    "label": "Waivers of audit protections",
    "brief": true,
-   "short": "Agreements that waive § 3065 duties or Board-protest rights are void; the only carve-out is a post-disapproval waiver of an incentive-claim protest.",
+   "short": "Agreements that modify § 3065 duties or limit Board-protest rights are unenforceable and void (§ 11713.3(g)(1)-(2)). The exceptions are settlements of a protest or proceeding already under way and a post-disapproval waiver of an incentive-claim protest (§ 11713.3(g)(3)). Any audit settlement, acknowledgment or repayment agreement containing a release or waiver needs legal review.",
    "value": "A manufacturer may not obtain from a dealer, or enforce, any agreement, release or waiver that modifies its duties or the dealer's rights under Division 2 Chapter 6 (which includes §§ 3065-3065.4) or that limits the dealer's right to file, pursue or submit evidence in a Board protest; such provisions are void. The only audit-settlement carve-out: a dealer may waive its right to a § 3065.1 (incentive) protest if the waiver is entered after the incentive claim was disapproved and is voluntarily given to settle that claim. Terms settling a protest, civil action or other proceeding already under way are not restricted. Pre-protest settlements of warranty (§ 3065) audit findings are not expressly carved out (see legal review).",
    "covers": [
     "factory_warranty",
@@ -659,7 +659,8 @@
    "pinpoint": "Cal. Veh. Code § 11713.3(g)(1)(A)-(B), (g)(2), (g)(3)(A), (g)(3)(E)",
    "pin_short": "§ 11713.3(g)",
    "url": "https://california.public.law/codes/ca_veh_code_section_11713.3",
-   "note": null
+   "note": null,
+   "glance": "Waivers of § 3065 duties or protest rights are void; releases need legal review"
   },
   {
    "id": "fraud_intent_burden",
@@ -706,19 +707,20 @@
    "section": "exceptions",
    "label": "Time-allowance reductions",
    "brief": true,
-   "short": "No blanket time cuts; a repair-specific time reduction needs 15 days' prior written notice. Confirm the allowance was in force on the repair date before charging back hours.",
+   "short": "No blanket time cuts; a repair-specific time reduction needs 15 days' prior written notice, and the franchisor must prove it reasonable if protested within six months.",
    "value": "No fixed-percentage or other reduction in time or compensation for warranty repairs that is not attributable to a specific repair. A reduction for a specific repair takes effect only on 15 days' prior written notice to the dealer, and if protested within six months the franchisor must prove the reduction reasonable and the result adequate and fair. An audit finding that relies on a reduced time allowance should confirm the allowance was in force, with the required notice, on the repair date; the franchisor also may not unreasonably deny a dealer's documented request for additional diagnostic or repair time on a specific vehicle (§ 3065(a)(1)).",
    "covers": [
     "factory_warranty"
    ],
    "effect": "prohibited",
-   "status": "express",
-   "reason": null,
+   "status": "reasoned_interpretation",
+   "reason": "The no-blanket-reduction rule, the 15-day notice and the burden on protest are express (§ 3065(a)); applying them to an audit chargeback of labor hours is an inference.",
    "quote": "A franchisor may reduce the allowed time or compensation applicable to a specific warranty repair only upon 15 days’ prior written notice to the franchisee.",
    "pinpoint": "Cal. Veh. Code § 3065(a)(1)-(3)",
    "pin_short": "§ 3065(a)(1)-(3)",
    "url": "https://california.public.law/codes/ca_veh_code_section_3065",
-   "note": null
+   "note": null,
+   "guidance": "Before charging back hours against a time allowance, confirm the allowance (and any reduction) was in force, with the required notice, on the repair date."
   },
   {
    "id": "rate_submission_review_limits",
@@ -802,42 +804,6 @@
   }
  ],
  "legal_review": [
-  {
-   "title": "Cure without rebuttal (warranty chargebacks)",
-   "summary": "§ 3065(e)(3) bars a chargeback when the dealer 'rebuts … and cures' in time; the incentive rule in § 3065.1(g)(5) bars it on a cure alone, and § 3065(e)(5) has no such sentence for warranty claims.",
-   "text": "§ 3065(e)(3) bars a chargeback when the franchisee \"rebuts any disapproval and cures any material noncompliance\" before the applicable deadline. § 3065.1(g)(5), for incentive claims, separately provides that if the franchisee \"cures any material noncompliance relating to a claim, the franchisor shall not chargeback the dealer for that claim\"; § 3065(e)(5) contains no such sentence. The statute does not say whether a warranty claim that is cured but not otherwise rebutted is protected from chargeback.",
-   "action": "Treat a timely cure of a documentation-only disapproval as a bar to chargeback; obtain legal interpretation before charging back a cured warranty claim on any other ground.",
-   "pinpoint": "Cal. Veh. Code § 3065(e)(3), (e)(5); § 3065.1(g)(5)",
-   "pin_short": "§ 3065(e)(3), (e)(5)",
-   "quotes": [
-    {
-     "quote": "If the franchisee rebuts any disapproval and cures any material noncompliance relating to a claim before the applicable deadline, the franchisor shall not chargeback the franchisee for that claim.",
-     "pinpoint": "Cal. Veh. Code § 3065(e)(3)"
-    },
-    {
-     "quote": "If the franchisee cures any material noncompliance relating to a claim, the franchisor shall not chargeback the dealer for that claim.",
-     "pinpoint": "Cal. Veh. Code § 3065.1(g)(5)"
-    }
-   ]
-  },
-  {
-   "title": "Protest waivers in warranty-audit settlements",
-   "summary": "§ 11713.3(g) voids agreements that waive § 3065 duties or Board-protest rights; the only audit-settlement carve-out is a post-disapproval waiver of an incentive-claim protest, so a pre-protest warranty audit settlement that waives protest rights may be void.",
-   "text": "§ 11713.3(g)(1)(A)-(B) and (g)(2) make void any agreement, release or waiver that modifies a franchisor duty under Division 2 Chapter 6 or limits a dealer's right to file or pursue a Board protest. The only audit-settlement carve-out, (g)(3)(E), covers a waiver of a § 3065.1 incentive-claim protest given after disapproval; (g)(3)(A) protects settlement terms only once a protest, civil action or other proceeding exists. The statute does not say whether a pre-protest settlement of warranty (§ 3065) audit findings that waives or limits protest rights is enforceable.",
-   "action": "Obtain legal review of any audit settlement, acknowledgment or repayment agreement that waives or limits a dealer's § 3065 protest rights before a protest has been filed.",
-   "pinpoint": "Cal. Veh. Code § 11713.3(g)(1)(A)-(B), (g)(2), (g)(3)(A), (g)(3)(E)",
-   "pin_short": "§ 11713.3(g)",
-   "quotes": [
-    {
-     "quote": "Limits or constrains the right of a dealer to file, pursue, or submit evidence in connection with a protest before the board.",
-     "pinpoint": "Cal. Veh. Code § 11713.3(g)(1)(B)"
-    },
-    {
-     "quote": "Prohibit a dealer from waiving its right to file a protest pursuant to Section 3065.1 if the waiver agreement is entered into after a franchisor incentive program claim has been disapproved by the franchisor",
-     "pinpoint": "Cal. Veh. Code § 11713.3(g)(3)(E)"
-    }
-   ]
-  },
   {
    "title": "Part return on audit chargebacks",
    "summary": "§ 3065(c) requires return of the part or reimbursement of its cost when a 'part not defective' claim is disallowed; § 3065(e) does not say whether that applies to an audit chargeback.",
