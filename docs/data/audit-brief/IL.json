@@ -154,7 +154,8 @@
    "pinpoint": "815 ILCS 710/6(b), final paragraph (sentence beginning 'The manufacturer or franchiser shall have the right')",
    "pin_short": "710/6(b)",
    "url": "https://my.ilga.gov/ftp/ILCS/Ch%200815/Act%200710/081507100K6.html",
-   "note": null
+   "note": null,
+   "glance": "1 year from payment or credit (incentives too)"
   },
   {
    "id": "post_window_exception",
@@ -175,7 +176,8 @@
    "pinpoint": "815 ILCS 710/6(b), final paragraph, last sentence",
    "pin_short": "710/6(b)",
    "url": "https://my.ilga.gov/ftp/ILCS/Ch%200815/Act%200710/081507100K6.html",
-   "note": null
+   "note": null,
+   "glance": "Fraud only, established in an Illinois court"
   },
   {
    "id": "recovery_deadline",
@@ -196,7 +198,8 @@
    "pinpoint": "815 ILCS 710/6(b), final paragraph (second-to-last sentence)",
    "pin_short": "710/6(b)",
    "url": "https://my.ilga.gov/ftp/ILCS/Ch%200815/Act%200710/081507100K6.html",
-   "note": null
+   "note": null,
+   "glance": "Not stated; finish audit and chargeback within the year"
   },
   {
    "id": "audit_basis",
@@ -220,7 +223,8 @@
    "pinpoint": "815 ILCS 710/4(b)",
    "pin_short": "710/4(b)",
    "url": "https://my.ilga.gov/ftp/ILCS/Ch%200815/Act%200710/081507100K4.html",
-   "note": null
+   "note": null,
+   "glance": "No audit rule; general bar on arbitrary or bad-faith action"
   },
   {
    "id": "paid_claim_chargeback_grounds",
@@ -241,7 +245,8 @@
    "pinpoint": "815 ILCS 710/6(b), final paragraph (sentence beginning 'The manufacturer or franchiser shall have the right')",
    "pin_short": "710/6(b)",
    "url": "https://my.ilga.gov/ftp/ILCS/Ch%200815/Act%200710/081507100K6.html",
-   "note": null
+   "note": null,
+   "glance": "'False or unsubstantiated', but RO items need a fraud finding: conflict"
   },
   {
    "id": "warranty_ro_chargeback_bar",
@@ -261,7 +266,8 @@
    "pinpoint": "815 ILCS 710/6(b), 10th paragraph (sentence beginning 'No debit reduction')",
    "pin_short": "710/6(b)",
    "url": "https://my.ilga.gov/ftp/ILCS/Ch%200815/Act%200710/081507100K6.html",
-   "note": null
+   "note": null,
+   "glance": "No warranty RO chargeback absent a finding of fraud or illegal acts"
   },
   {
    "id": "claim_denial_grounds",
@@ -281,7 +287,8 @@
    "pinpoint": "815 ILCS 710/6(b), final paragraph (third sentence); see also 7th paragraph and 10th paragraph",
    "pin_short": "710/6(b)",
    "url": "https://my.ilga.gov/ftp/ILCS/Ch%200815/Act%200710/081507100K6.html",
-   "note": null
+   "note": null,
+   "glance": "No list; written specific grounds within 30 days or deemed approved"
   },
   {
    "id": "proof_requirements",
@@ -302,7 +309,8 @@
    "pinpoint": "815 ILCS 710/2(m); 710/6(b) 10th and final paragraphs",
    "pin_short": "710/2(m)",
    "url": "https://ilga.gov/legislation/ilcs/documents/081507100K2.htm",
-   "note": null
+   "note": null,
+   "glance": "No burden stated inside the year; court-established fraud outside it"
   },
   {
    "id": "recovery_scope",
@@ -323,7 +331,8 @@
    "pinpoint": "815 ILCS 710/6(b), 10th paragraph",
    "pin_short": "710/6(b)",
    "url": "https://my.ilga.gov/ftp/ILCS/Ch%200815/Act%200710/081507100K6.html",
-   "note": null
+   "note": null,
+   "glance": "Not addressed; bar reads item by item"
   },
   {
    "id": "documentation_limits",
@@ -345,7 +354,8 @@
    "pinpoint": "815 ILCS 710/6(b), final paragraph; 710/6(b) 7th paragraph; 710/6(d)",
    "pin_short": "710/6(b)",
    "url": "https://my.ilga.gov/ftp/ILCS/Ch%200815/Act%200710/081507100K6.html",
-   "note": null
+   "note": null,
+   "glance": "'Reasonable documentation' only"
   },
   {
    "id": "clerical_error",
@@ -365,7 +375,8 @@
    "pinpoint": "815 ILCS 710/6(b), 10th paragraph; final paragraph",
    "pin_short": "710/6(b)",
    "url": "https://my.ilga.gov/ftp/ILCS/Ch%200815/Act%200710/081507100K6.html",
-   "note": null
+   "note": null,
+   "glance": "No clause; unresolved between the two sentences"
   },
   {
    "id": "market_norms_reduction_bar",
@@ -385,7 +396,8 @@
    "pinpoint": "815 ILCS 710/6(b), 9th paragraph (first sentence)",
    "pin_short": "710/6(b)",
    "url": "https://my.ilga.gov/ftp/ILCS/Ch%200815/Act%200710/081507100K6.html",
-   "note": null
+   "note": null,
+   "glance": "No reductions based on market norms or averages"
   },
   {
    "id": "failure_rate_limits_bar",
@@ -405,7 +417,8 @@
    "pinpoint": "815 ILCS 710/6(b), 9th paragraph (second sentence)",
    "pin_short": "710/6(b)",
    "url": "https://my.ilga.gov/ftp/ILCS/Ch%200815/Act%200710/081507100K6.html",
-   "note": null
+   "note": null,
+   "glance": "No repair-frequency limits from failure-rate indexes"
   },
   {
    "id": "parts_price_peer_comparison",
@@ -446,7 +459,8 @@
    "pinpoint": "815 ILCS 710/6(b), final paragraph (third sentence); 710/12(b), (e)",
    "pin_short": "710/6(b)",
    "url": "https://my.ilga.gov/ftp/ILCS/Ch%200815/Act%200710/081507100K6.html",
-   "note": null
+   "note": null,
+   "glance": "Disapprovals only; nothing for chargebacks; cite the Act provision"
   },
   {
    "id": "cure_rights",
@@ -466,7 +480,8 @@
    "pinpoint": "815 ILCS 710/6(b), final paragraph (fourth sentence)",
    "pin_short": "710/6(b)",
    "url": "https://my.ilga.gov/ftp/ILCS/Ch%200815/Act%200710/081507100K6.html",
-   "note": null
+   "note": null,
+   "glance": "Correct and resubmit within 30 days (unpaid claims only)"
   },
   {
    "id": "deemed_approval",
@@ -860,7 +875,8 @@
  "penalties_line": "An improper audit or chargeback exposes the manufacturer to a dealer action for damages and injunctive relief, treble damages if willful or wanton, and a mandatory award of the dealer's reasonable attorney's fees, expert fees and costs if the dealer substantially prevails, including when the manufacturer simply stops the challenged conduct (815 ILCS 710/13), plus Board hearing costs assessed against the non-prevailing party (815 ILCS 710/29; 92 Ill. Adm. Code 1001.790); no license sanction reaches manufacturers.",
  "protest_forum": {
   "value": "Agreed arbitration (Sec. 12(a)); otherwise a Motor Vehicle Review Board protest under Secs. 12(b) and 29 for a remedy other than damages, commenced by timely notice of protest or within 60 days of written notice of the franchiser's determination, or a circuit-court action for non-damages relief within the same 60 days (Sec. 12(e)); damages, treble damages and fees in circuit court or agreed arbitration under Sec. 13. The 60-day clock runs only if the franchiser's notice identifies the Act provision; otherwise Sec. 14's 4-year period applies.",
-  "pinpoint": "815 ILCS 710/12(a), (b), (e); 710/29; 710/13; 710/14"
+  "pinpoint": "815 ILCS 710/12(a), (b), (e); 710/29; 710/13; 710/14",
+  "glance": "Motor Vehicle Review Board or circuit court, within 60 days of a notice that names the Act provision"
  },
  "pending": [
   {
@@ -869,5 +885,6 @@
    "would_change": "Primarily direct-sales and dealer-network provisions. The bill text reprints the Sec. 6(b) audit, chargeback, no-debit-reduction and court-fraud sentences; because the plain-text copy shows no added/deleted-text markup, this pass could not independently confirm that those sentences are unchanged (the context's earlier review says they are). Treat as no change to the audit and chargeback rules unless the engrossed text shows otherwise."
   }
  ],
- "notes": "Analytics search: Sec. 6 and Sec. 4 contain no use of 'analytics', 'data', 'algorithm', 'statistic' or 'survey'. The passages behind the auditor's 'odd language around analytics' are three consecutive sentences in Sec. 6(b): (1) parts reimbursed at retail 'provided that such dealer's prevailing retail price is not unreasonable when compared with that of the holders of motor vehicle franchises from the same manufacturer for identical parts in the geographic area'; (2) 'There shall be no reduction in payments due to preestablished market norms or market averages.'; (3) 'Manufacturers are prohibited from establishing restrictions or limitations of customer repair frequency due to failure rate indexes or national failure averages.' A fourth, in the same subsection, is the item-level 'No debit reduction or charge back of any item on a warranty repair order may be made absent a finding of fraud or illegal actions by the dealer.' Read together, benchmark-driven adjustments (norms, averages, failure-rate indexes) are barred, a case-by-case parts-price reasonableness comparison with same-make area dealers is allowed, and nothing addresses sample-based extrapolation. Paragraph numbering used in pinpoints counts the unnumbered paragraphs of Sec. 6(b) in order (1: adequate compensation standard; 2: time guides; 3: diagnostic time; 4: recall/stop-sell inclusion; 5: effective labor rate, diagnostic and TAC time; 6: once-per-year rate request; 7: 30-day approval, payment and deemed approval; 8: retail floor and parts price; 9: norms/averages and failure rates; 10: no-debit-reduction bar and unavailable-parts mileage; 11: recall/stop-sale interest and storage, no cost-recovery surcharges; 12 (final): 30-day claims rules, reasonable documentation, one-year audit and chargeback, incentive programs, court-established fraud). There is no Sec. 6.1 in the Act. Sec. 6(g) is '(Blank)'. Sec. 2 has no definition of warranty, audit, charge back, incentive, recall or service contract. Sources: www.ilga.gov blocked fetching (robots); the my.ilga.gov, ilga.gov and witnessslips.ilga.gov hosts served the same ILCS section pages and were used; Justia (2025 ILCS) was used only for Sec. 12 quotes because the ILGA conversion of 12(a) dropped two words. Not verified: 625 ILCS 5/5-501; the engrossed text of SB1939; which Sec. 6(b) sentences P.A. 102-232 added."
+ "notes": "Analytics search: Sec. 6 and Sec. 4 contain no use of 'analytics', 'data', 'algorithm', 'statistic' or 'survey'. The passages behind the auditor's 'odd language around analytics' are three consecutive sentences in Sec. 6(b): (1) parts reimbursed at retail 'provided that such dealer's prevailing retail price is not unreasonable when compared with that of the holders of motor vehicle franchises from the same manufacturer for identical parts in the geographic area'; (2) 'There shall be no reduction in payments due to preestablished market norms or market averages.'; (3) 'Manufacturers are prohibited from establishing restrictions or limitations of customer repair frequency due to failure rate indexes or national failure averages.' A fourth, in the same subsection, is the item-level 'No debit reduction or charge back of any item on a warranty repair order may be made absent a finding of fraud or illegal actions by the dealer.' Read together, benchmark-driven adjustments (norms, averages, failure-rate indexes) are barred, a case-by-case parts-price reasonableness comparison with same-make area dealers is allowed, and nothing addresses sample-based extrapolation. Paragraph numbering used in pinpoints counts the unnumbered paragraphs of Sec. 6(b) in order (1: adequate compensation standard; 2: time guides; 3: diagnostic time; 4: recall/stop-sell inclusion; 5: effective labor rate, diagnostic and TAC time; 6: once-per-year rate request; 7: 30-day approval, payment and deemed approval; 8: retail floor and parts price; 9: norms/averages and failure rates; 10: no-debit-reduction bar and unavailable-parts mileage; 11: recall/stop-sale interest and storage, no cost-recovery surcharges; 12 (final): 30-day claims rules, reasonable documentation, one-year audit and chargeback, incentive programs, court-established fraud). There is no Sec. 6.1 in the Act. Sec. 6(g) is '(Blank)'. Sec. 2 has no definition of warranty, audit, charge back, incentive, recall or service contract. Sources: www.ilga.gov blocked fetching (robots); the my.ilga.gov, ilga.gov and witnessslips.ilga.gov hosts served the same ILCS section pages and were used; Justia (2025 ILCS) was used only for Sec. 12 quotes because the ILGA conversion of 12(a) dropped two words. Not verified: 625 ILCS 5/5-501; the engrossed text of SB1939; which Sec. 6(b) sentences P.A. 102-232 added.",
+ "penalties_glance": "Damages, treble if willful; mandatory fees and costs to a dealer that substantially prevails"
 }

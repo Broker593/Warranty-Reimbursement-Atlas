@@ -166,7 +166,8 @@
    "pinpoint": "Cal. Veh. Code § 3065(e)(1); § 3065.1(g)(1) (incentives); § 3065.25(b) (definition of \"warranty\")",
    "pin_short": "§ 3065(e)(1)",
    "url": "https://california.public.law/codes/ca_veh_code_section_3065",
-   "note": null
+   "note": null,
+   "glance": "9 months from payment or credit; chargeback follows the notice clock"
   },
   {
    "id": "post_window_exception",
@@ -188,7 +189,8 @@
    "pinpoint": "Cal. Veh. Code § 3065(f); § 3065.1(h); § 3066(c)",
    "pin_short": "§ 3065(f)",
    "url": "https://california.public.law/codes/ca_veh_code_section_3065",
-   "note": null
+   "note": null,
+   "glance": "Fraud only, with a Board order first; franchisor proves intent"
   },
   {
    "id": "recovery_deadline",
@@ -210,7 +212,8 @@
    "pinpoint": "Cal. Veh. Code § 3065(e)(5); § 3065.1(g)(5)",
    "pin_short": "§ 3065(e)(5)",
    "url": "https://california.public.law/codes/ca_veh_code_section_3065",
-   "note": null
+   "note": null,
+   "glance": "Within 90 days of the (Final Denial) notice"
   },
   {
    "id": "frequency_cap",
@@ -232,7 +235,8 @@
    "pinpoint": "Cal. Veh. Code § 3065(e)(1); § 3065.1(g)(1)",
    "pin_short": "§ 3065(e)(1)",
    "url": "https://california.public.law/codes/ca_veh_code_section_3065",
-   "note": null
+   "note": null,
+   "glance": "1 random audit per 9 months; extra audits need a written basis"
   },
   {
    "id": "selection_basis",
@@ -254,7 +258,8 @@
    "pinpoint": "Cal. Veh. Code § 3065(e)(1); § 3065.1(g)(1)",
    "pin_short": "§ 3065(e)(1)",
    "url": "https://california.public.law/codes/ca_veh_code_section_3065",
-   "note": null
+   "note": null,
+   "glance": "Never punitive, retaliatory or unfairly discriminatory"
   },
   {
    "id": "audit_basis",
@@ -276,7 +281,8 @@
    "pinpoint": "Cal. Veh. Code § 3065.2(i)(2)(G); § 3065(e)(1)",
    "pin_short": "§ 3065.2(i)(2)(G)",
    "url": "https://california.public.law/codes/ca_veh_code_section_3065.2",
-   "note": null
+   "note": null,
+   "glance": "No nonroutine audit in response to a rate submission"
   },
   {
    "id": "paid_claim_chargeback_grounds",
@@ -297,7 +303,8 @@
    "pinpoint": "Cal. Veh. Code § 3065(e)(2)",
    "pin_short": "§ 3065(e)(2)",
    "url": "https://california.public.law/codes/ca_veh_code_section_3065",
-   "note": null
+   "note": null,
+   "glance": "False/fraudulent; repairs not proper; dealer fault; material documentation failure"
   },
   {
    "id": "claim_denial_grounds",
@@ -318,7 +325,8 @@
    "pinpoint": "Cal. Veh. Code § 3065(d)(1)-(3)",
    "pin_short": "§ 3065(d)(1)-(3)",
    "url": "https://california.public.law/codes/ca_veh_code_section_3065",
-   "note": null
+   "note": null,
+   "glance": "Same four grounds; written within 30 days or deemed approved"
   },
   {
    "id": "proof_requirements",
@@ -340,7 +348,8 @@
    "pinpoint": "Cal. Veh. Code § 3065(e)(6); § 3065.1(g)(6); § 3066(c)",
    "pin_short": "§ 3065(e)(6)",
    "url": "https://california.public.law/codes/ca_veh_code_section_3065",
-   "note": null
+   "note": null,
+   "glance": "Specific grounds per claim; franchisor bears the burden at the Board"
   },
   {
    "id": "documentation_limits",
@@ -362,7 +371,8 @@
    "pinpoint": "Cal. Veh. Code § 3065(e)(2); § 3065.1(g)(2)",
    "pin_short": "§ 3065(e)(2)",
    "url": "https://california.public.law/codes/ca_veh_code_section_3065",
-   "note": null
+   "note": null,
+   "glance": "Material noncompliance only, with 30 days to cure"
   },
   {
    "id": "clerical_error",
@@ -384,7 +394,8 @@
    "pinpoint": "Cal. Veh. Code § 3065(e)(2)-(3); § 3065.1(g)(2)-(3), (g)(5)",
    "pin_short": "§ 3065(e)(2)-(3)",
    "url": "https://california.public.law/codes/ca_veh_code_section_3065",
-   "note": null
+   "note": null,
+   "glance": "Non-material defects can't be charged back; cure protects"
   },
   {
    "id": "extrapolation",
@@ -406,7 +417,8 @@
    "pinpoint": "Cal. Veh. Code § 3065(e)(2); § 3065.1(g)(2)",
    "pin_short": "§ 3065(e)(2)",
    "url": "https://california.public.law/codes/ca_veh_code_section_3065",
-   "note": null
+   "note": null,
+   "glance": "Only from a random sample, statistically valid method"
   },
   {
    "id": "written_reasons",
@@ -428,7 +440,8 @@
    "pinpoint": "Cal. Veh. Code § 3065(e)(3); § 3065.1(g)(3)",
    "pin_short": "§ 3065(e)(3)",
    "url": "https://california.public.law/codes/ca_veh_code_section_3065",
-   "note": null
+   "note": null,
+   "glance": "Written disapproval within 30 days after the audit"
   },
   {
    "id": "dealer_response",
@@ -450,7 +463,8 @@
    "pinpoint": "Cal. Veh. Code § 3065(e)(3); § 3065.1(g)(3)",
    "pin_short": "§ 3065(e)(3)",
    "url": "https://california.public.law/codes/ca_veh_code_section_3065",
-   "note": null
+   "note": null,
+   "glance": "At least 30 days after the notice (more for volume)"
   },
   {
    "id": "cure_rights",
@@ -472,7 +486,8 @@
    "pinpoint": "Cal. Veh. Code § 3065(e)(3); § 3065.1(g)(3), (g)(5)",
    "pin_short": "§ 3065(e)(3)",
    "url": "https://california.public.law/codes/ca_veh_code_section_3065",
-   "note": null
+   "note": null,
+   "glance": "At least 30 days; cured and rebutted claims can't be charged back"
   },
   {
    "id": "internal_appeal",
@@ -494,7 +509,8 @@
    "pinpoint": "Cal. Veh. Code § 3065(e)(3)-(4); § 3065.1(g)(3)-(4)",
    "pin_short": "§ 3065(e)(3)-(4)",
    "url": "https://california.public.law/codes/ca_veh_code_section_3065",
-   "note": null
+   "note": null,
+   "glance": "Required; at least 30 days; 'Final Denial' notice if denied"
   },
   {
    "id": "final_denial_notice",
@@ -516,7 +532,8 @@
    "pinpoint": "Cal. Veh. Code § 3065(e)(4)-(6); § 3065.1(g)(4)-(6)",
    "pin_short": "§ 3065(e)(4)-(6)",
    "url": "https://california.public.law/codes/ca_veh_code_section_3065",
-   "note": null
+   "note": null,
+   "glance": "Within 30 days after the appeal; marked 'Final Denial'"
   },
   {
    "id": "stay_pending_dispute",
@@ -538,7 +555,8 @@
    "pinpoint": "Cal. Veh. Code § 3065(e)(5)-(6); § 3065.1(g)(5)-(6)",
    "pin_short": "§ 3065(e)(5)-(6)",
    "url": "https://california.public.law/codes/ca_veh_code_section_3065",
-   "note": null
+   "note": null,
+   "glance": "Yes, if the Board protest is filed before the chargeback"
   },
   {
    "id": "chargeback_hold",
@@ -560,7 +578,8 @@
    "pinpoint": "Cal. Veh. Code § 3065(e)(5); § 3065.1(g)(5)",
    "pin_short": "§ 3065(e)(5)",
    "url": "https://california.public.law/codes/ca_veh_code_section_3065",
-   "note": null
+   "note": null,
+   "glance": "Not before day 45 after notice; must land by day 90"
   },
   {
    "id": "warranty_definition_scope",
@@ -837,8 +856,10 @@
  "penalties_line": "An improper audit or chargeback exposes the manufacturer to a New Motor Vehicle Board protest in which it carries the burden of proof (§ 3065(e)(6); § 3066(c)), to DMV suspension or revocation of its license for a willful violation of § 3065 (§ 11705(a)(7)), and, where the conduct also breaches § 11713.3 (unfair warranty discrimination, void waivers, export adverse action) or a Board decision, to damages, reasonable attorney fees and injunctive relief under § 11726.",
  "protest_forum": {
   "value": "Protest to the New Motor Vehicle Board within six months after the later of receipt of the written disapproval notice or completion of the franchisor's appeal process; franchisor bears the burden of proof; a protest filed before the chargeback stays offset or collection until the Board's final order; judicial review within 45 days of the final order.",
-  "pinpoint": "§ 3065(e)(5)-(6); § 3066(a), (c); § 3067(a); § 3068"
+  "pinpoint": "§ 3065(e)(5)-(6); § 3066(a), (c); § 3067(a); § 3068",
+  "glance": "New Motor Vehicle Board, within 6 months; stays collection only if filed before the chargeback"
  },
  "pending": [],
- "notes": "SOURCES. The official leginfo.legislature.ca.gov pages are behind a Cloudflare challenge (HTTP 403 to both WebFetch and curl on 2026-10-23), so the text was taken from the california.public.law mirror, which reproduces the leginfo text and shows a leginfo \"updated\" date per section, and was cross-checked for § 3065(e)(1), (e)(5) and (f) against FindLaw (\"Current as of January 01, 2026\"); the two mirrors agree. Neither mirror displays leginfo credit lines, so the Atlas's law_dates (AB 179, Stats. 2019 ch. 796, eff. 1/1/2020) could not be re-verified from the official page; public.law's \"updated Jan. 1, 2020\" for §§ 3065, 3065.25 and 3065.4 and \"Jan. 1, 2021\" for § 3065.2 are consistent with it. AGENCY RULES. 13 CCR § 586(b)-(c) (franchisor must file its warranty reimbursement schedule with the Board within 30 days of licensure and file any change on or before its effective date) and § 593.3 (failure to file may lead the Board to order DMV license action) were read; neither adds an audit or chargeback rule, so they are not loaded as rules. 13 CCR § 586(a) sets protest form and content. \"LOCAL ATTORNEY REVIEW\" CLAIM. No statutory basis found. Nothing in Veh. Code §§ 3050, 3060, 3062, 3064, 3065, 3065.1, 3065.2, 3065.25, 3065.3, 3065.4, 3066, 3067, 3068, 3069, 11705, 11713.3, 11726 or 13 CCR §§ 586, 593.3 requires attorney review, counsel sign-off or any legal opinion before a chargeback. The only external prerequisites are (1) a New Motor Vehicle Board order before auditing or charging back beyond nine months on a fraud theory (§ 3065(f)) and (2) the Board's final order when a protest was filed before the chargeback (§ 3065(e)(5)). NINE-MONTH WINDOW. § 3065(e)(1) limits when the audit may be conducted; (e)(5) sets the chargeback deadline by reference to the notice date, so a claim audited at month 9 can lawfully be charged back at about month 13. § 3065(f)'s phrase \"a longer period for audit and any resulting chargeback\" is the only text that could be read to bound the chargeback itself by the nine months; it is a weak reading against the express (e)(5) clock. BURDEN INTERPLAY. § 3066(c) places the burden on the franchisee in § 3065/§ 3065.1 protests \"except as otherwise provided in this chapter\"; §§ 3065(a)(3), (d)(6), (e)(6) and 3065.1(e), (g)(6) otherwise provide, so the franchisor carries the burden in time-reduction, disapproval and audit protests, and always on intent to defraud. LICENSE SANCTION SCOPE. § 11705(a)(7) names §§ 3064, 3065, 3074 and 3075, not § 3065.1 or § 3065.2. PENDING BILLS. Searches found no 2025-2026 bill amending §§ 3065-3065.4, 3066 or 11713.3(y); AB 646 (2025) surfaced in search but amends only Ins. Code § 116.6 and failed (Joint Rule 56, 2026-02-02). VALIDATION SUMMARY. 16 fields checked: 13 ok, 2 mismatch (chargebacks.limits; clerical_error_protection), 1 reclassify (advance_notice). All Atlas quotes are verbatim. PROCEDURAL EXTRAS from § 3066(a), § 3067(a), § 3068: Board hearing set within 60 days and not rescheduled beyond 90 days of the initial order; decision final on delivery or mailing, no rehearing; judicial review within 45 days."
+ "notes": "SOURCES. The official leginfo.legislature.ca.gov pages are behind a Cloudflare challenge (HTTP 403 to both WebFetch and curl on 2026-10-23), so the text was taken from the california.public.law mirror, which reproduces the leginfo text and shows a leginfo \"updated\" date per section, and was cross-checked for § 3065(e)(1), (e)(5) and (f) against FindLaw (\"Current as of January 01, 2026\"); the two mirrors agree. Neither mirror displays leginfo credit lines, so the Atlas's law_dates (AB 179, Stats. 2019 ch. 796, eff. 1/1/2020) could not be re-verified from the official page; public.law's \"updated Jan. 1, 2020\" for §§ 3065, 3065.25 and 3065.4 and \"Jan. 1, 2021\" for § 3065.2 are consistent with it. AGENCY RULES. 13 CCR § 586(b)-(c) (franchisor must file its warranty reimbursement schedule with the Board within 30 days of licensure and file any change on or before its effective date) and § 593.3 (failure to file may lead the Board to order DMV license action) were read; neither adds an audit or chargeback rule, so they are not loaded as rules. 13 CCR § 586(a) sets protest form and content. \"LOCAL ATTORNEY REVIEW\" CLAIM. No statutory basis found. Nothing in Veh. Code §§ 3050, 3060, 3062, 3064, 3065, 3065.1, 3065.2, 3065.25, 3065.3, 3065.4, 3066, 3067, 3068, 3069, 11705, 11713.3, 11726 or 13 CCR §§ 586, 593.3 requires attorney review, counsel sign-off or any legal opinion before a chargeback. The only external prerequisites are (1) a New Motor Vehicle Board order before auditing or charging back beyond nine months on a fraud theory (§ 3065(f)) and (2) the Board's final order when a protest was filed before the chargeback (§ 3065(e)(5)). NINE-MONTH WINDOW. § 3065(e)(1) limits when the audit may be conducted; (e)(5) sets the chargeback deadline by reference to the notice date, so a claim audited at month 9 can lawfully be charged back at about month 13. § 3065(f)'s phrase \"a longer period for audit and any resulting chargeback\" is the only text that could be read to bound the chargeback itself by the nine months; it is a weak reading against the express (e)(5) clock. BURDEN INTERPLAY. § 3066(c) places the burden on the franchisee in § 3065/§ 3065.1 protests \"except as otherwise provided in this chapter\"; §§ 3065(a)(3), (d)(6), (e)(6) and 3065.1(e), (g)(6) otherwise provide, so the franchisor carries the burden in time-reduction, disapproval and audit protests, and always on intent to defraud. LICENSE SANCTION SCOPE. § 11705(a)(7) names §§ 3064, 3065, 3074 and 3075, not § 3065.1 or § 3065.2. PENDING BILLS. Searches found no 2025-2026 bill amending §§ 3065-3065.4, 3066 or 11713.3(y); AB 646 (2025) surfaced in search but amends only Ins. Code § 116.6 and failed (Joint Rule 56, 2026-02-02). VALIDATION SUMMARY. 16 fields checked: 13 ok, 2 mismatch (chargebacks.limits; clerical_error_protection), 1 reclassify (advance_notice). All Atlas quotes are verbatim. PROCEDURAL EXTRAS from § 3066(a), § 3067(a), § 3068: Board hearing set within 60 days and not rescheduled beyond 90 days of the initial order; decision final on delivery or mailing, no rehearing; judicial review within 45 days.",
+ "penalties_glance": "Board protest with the burden on the franchisor; DMV license action for a willful violation; damages and fees under § 11726"
 }

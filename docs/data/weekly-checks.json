@@ -634,7 +634,7 @@
    "check_date": "2026-10-23",
    "type": "review",
    "run_by": "Claude (audit brief, phase 1 and 2)",
-   "headline": "Audit brief added for Florida, California, Illinois and Arkansas: what to know before auditing paid factory-warranty claims, on the state page and as a one-page PDF; 10 matrix fields corrected",
+   "headline": "Audit brief added for Florida, California, Illinois and Arkansas: what to know before auditing paid factory-warranty claims, on the state page and as a PDF (summary table plus notes); 10 matrix fields corrected",
    "summary": "Each of the four states' warranty statutes was re-read in full (official text for Florida; official ILGA pages for Illinois; published mirrors cross-checked against enrolled acts for California and Arkansas) to validate every audit field and to look for rules outside the fixed set of 14 limits. The brief lists only the rules the state has, in the order an audit runs (eligibility, planning, testing and findings, chargeback process, exceptions and escalation), with the statute's own answer and cite on every line and the verbatim quote one click deeper. Readings the text leaves open render as LEGAL REVIEW REQUIRED blocks (Florida 3, California 3, Illinois 2, Arkansas 3). Corrections from the validation: Florida payment clock runs from receipt and the protest clock from receipt of the final notice; California's advance-notice row is now 'not in statute' (the sentence is a selection-basis rule; score 75 to 72), chargeback limits reworded (unfairly discriminatory; stay only for a protest filed before the chargeback), clerical-error wording tightened; Illinois clerical-error detail now states the unreconciled conflict; Arkansas denial requirements add the properly-performed-work rule, chargeback limits add the transaction-date trigger and the settle exception, the sanction ground carries its 'unfairly and without due regard to the equities' qualifier, the rate-submission standard cites § 23-112-310(d)(1)(A) (the § 313(c)(3) comparison language was struck in 2021), and the clerical-error rule is noted as a disapproval rule. The audit climate score moves below the brief, collapsed. The other 46 states follow after the auditor's review.",
    "items": [
     {
@@ -675,7 +675,7 @@
     }
    ],
    "site_changes": [
-    "Audit brief block on the FL, CA, IL and AR state pages; one-page audit brief PDFs under Downloads; state summary PDF and audit climate score kept, score collapsed below the brief."
+    "Audit brief block on the FL, CA, IL and AR state pages; audit brief PDFs (summary table plus notes) under Downloads; state summary PDF and audit climate score kept, score collapsed below the brief."
    ],
    "method": "Not a law check (the Monday check of 2026-10-19 stands; its tracked laws are repeated here). Research: each state's full warranty statute read and every existing audit field validated against it, plus an open-ended search for rules outside the 14 scored limits; every quote machine-checked against the source text; approach agreed in a three-round second-opinion review on 2026-10-22."
   }

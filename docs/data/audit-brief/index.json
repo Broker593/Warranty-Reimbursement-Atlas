@@ -2,7 +2,7 @@
  "schema": 1,
  "updated": "2026-10-23",
  "version": 1,
- "about": "Per-state audit brief: what an auditor needs to know before auditing a dealer's paid factory-warranty claims and charging any back. Generated from this file; nothing is hand-written per state. Each rule carries the statute's own answer, its effect (required, prohibited, permitted, conditional or not expressly addressed), how settled the reading is (express, reasoned interpretation, conflict or unresolved), the programs it reaches, a pinpoint cite, a verbatim quote and the source version. Rules with a 'short' line appear on the one-page brief; the rest are web-only under 'More rules found in the statute'. A conflict or unresolved reading renders a LEGAL REVIEW REQUIRED block until the data records a resolution. Research summary for audit planning, not legal advice.",
+ "about": "Per-state audit brief: what an auditor needs to know before auditing a dealer's paid factory-warranty claims and charging any back. Generated from this file; nothing is hand-written per state. Each rule carries the statute's own answer, its effect (required, prohibited, permitted, conditional or not expressly addressed), how settled the reading is (express, reasoned interpretation, conflict or unresolved), the programs it reaches, a pinpoint cite, a verbatim quote and the source version. Rules with a 'short' line appear on the one-page brief; the rest are web-only under 'More rules found in the statute'. A conflict or unresolved reading renders a LEGAL REVIEW REQUIRED block until the data records a resolution. Research summary for audit planning, not legal advice. Page 1 of the PDF is an at-a-glance table built from each rule's 'glance' line (a dozen words); page 2 holds the numbered notes: the full lines, legal-review items, topics not addressed and sources.",
  "sections": [
   {
    "id": "eligibility",
@@ -82,5 +82,195 @@
    "legal_review": 3,
    "pdf": "downloads/audit-briefs/AR-audit-brief-2026-10-23.pdf"
   }
- }
+ },
+ "glance_rows": [
+  {
+   "section": "Audit eligibility",
+   "rows": [
+    {
+     "label": "Audit window",
+     "ids": [
+      "audit_window"
+     ]
+    },
+    {
+     "label": "Incentive window",
+     "ids": [
+      "window_trigger"
+     ]
+    },
+    {
+     "label": "After the window",
+     "ids": [
+      "post_window_exception"
+     ]
+    },
+    {
+     "label": "Deadline to take the chargeback",
+     "ids": [
+      "recovery_deadline"
+     ]
+    },
+    {
+     "label": "Audit prerequisite",
+     "ids": [
+      "timely_audit_prerequisite"
+     ]
+    }
+   ]
+  },
+  {
+   "section": "Planning restrictions",
+   "rows": [
+    {
+     "label": "Frequency cap",
+     "ids": [
+      "frequency_cap"
+     ]
+    },
+    {
+     "label": "Advance notice",
+     "ids": [
+      "advance_notice"
+     ]
+    },
+    {
+     "label": "Selection basis",
+     "ids": [
+      "selection_basis"
+     ]
+    },
+    {
+     "label": "Permitted basis",
+     "ids": [
+      "audit_basis"
+     ]
+    }
+   ]
+  },
+  {
+   "section": "Testing and findings",
+   "rows": [
+    {
+     "label": "Chargeback grounds",
+     "ids": [
+      "paid_claim_chargeback_grounds"
+     ]
+    },
+    {
+     "label": "Warranty RO bar",
+     "ids": [
+      "warranty_ro_chargeback_bar"
+     ]
+    },
+    {
+     "label": "Denial grounds",
+     "ids": [
+      "claim_denial_grounds"
+     ]
+    },
+    {
+     "label": "Proof and burden",
+     "ids": [
+      "proof_requirements"
+     ]
+    },
+    {
+     "label": "Recovery scope",
+     "ids": [
+      "recovery_scope"
+     ]
+    },
+    {
+     "label": "Documentation",
+     "ids": [
+      "documentation_limits"
+     ]
+    },
+    {
+     "label": "Clerical errors",
+     "ids": [
+      "clerical_error"
+     ]
+    },
+    {
+     "label": "Extrapolation",
+     "ids": [
+      "extrapolation"
+     ]
+    },
+    {
+     "label": "Benchmarks and averages",
+     "ids": [
+      "market_norms_reduction_bar"
+     ]
+    },
+    {
+     "label": "Failure-rate limits",
+     "ids": [
+      "failure_rate_limits_bar"
+     ]
+    }
+   ]
+  },
+  {
+   "section": "Chargeback process",
+   "rows": [
+    {
+     "label": "Post-audit meeting",
+     "ids": [
+      "post_audit_meeting"
+     ]
+    },
+    {
+     "label": "Written reasons",
+     "ids": [
+      "written_reasons"
+     ]
+    },
+    {
+     "label": "Dealer response",
+     "ids": [
+      "dealer_response"
+     ]
+    },
+    {
+     "label": "Cure",
+     "ids": [
+      "cure_rights"
+     ]
+    },
+    {
+     "label": "Internal appeal",
+     "ids": [
+      "internal_appeal"
+     ]
+    },
+    {
+     "label": "Final notice",
+     "ids": [
+      "final_denial_notice"
+     ]
+    },
+    {
+     "label": "Wait before charging back",
+     "ids": [
+      "chargeback_hold"
+     ]
+    },
+    {
+     "label": "Held during dispute",
+     "ids": [
+      "stay_pending_dispute"
+     ]
+    },
+    {
+     "label": "New information",
+     "ids": [
+      "new_information"
+     ]
+    }
+   ]
+  }
+ ]
 }

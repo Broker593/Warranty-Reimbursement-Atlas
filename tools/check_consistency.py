@@ -189,6 +189,10 @@ def run(build_date):
             if meta.get('pdf') != f'downloads/audit-briefs/{st}-audit-brief-{vd}.pdf':
                 F(st, f'audit-brief index pdf path must be downloads/audit-briefs/{st}-audit-brief-{vd}.pdf')
             ids = [x.get('id') for x in b.get('rules', [])]
+            gl = {i for g in bidx.get('glance_rows', []) for r in g['rows'] for i in r['ids']}
+            for x in b.get('rules', []):
+                if x.get('id') in gl and not (x.get('glance') or '').strip(): F(st, f'audit-brief rule {x.get("id")}: named in glance_rows but has no glance line')
+                if (x.get('glance') or '') and len(x['glance'].split()) > 16: W(st, f'audit-brief rule {x.get("id")}: glance is {len(x["glance"].split())} words (aim for 12)')
             if len(ids) != len(set(ids)):
                 F(st, 'audit-brief has duplicate rule ids')
             for x in b.get('rules', []):

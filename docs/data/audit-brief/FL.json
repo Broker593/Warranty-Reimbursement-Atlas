@@ -132,7 +132,8 @@
    "pinpoint": "Fla. Stat. § 320.64(25)",
    "pin_short": "§ 320.64(25)",
    "url": "http://www.leg.state.fl.us/statutes/index.cfm?App_mode=Display_Statute&URL=0300-0399/0320/Sections/0320.64.html",
-   "note": null
+   "note": null,
+   "glance": "12 months from payment (incentives: from the incentive payment)"
   },
   {
    "id": "window_trigger",
@@ -150,7 +151,8 @@
    "pinpoint": "Fla. Stat. § 320.64(25)",
    "pin_short": "§ 320.64(25)",
    "url": "http://www.leg.state.fl.us/statutes/index.cfm?App_mode=Display_Statute&URL=0300-0399/0320/Sections/0320.64.html",
-   "note": null
+   "note": null,
+   "glance": "Incentives: 12 months from the date the incentive was paid"
   },
   {
    "id": "post_window_exception",
@@ -175,7 +177,8 @@
    "pinpoint": "Fla. Stat. § 320.64(25)",
    "pin_short": "§ 320.64(25)",
    "url": "http://www.leg.state.fl.us/statutes/index.cfm?App_mode=Display_Statute&URL=0300-0399/0320/Sections/0320.64.html",
-   "note": null
+   "note": null,
+   "glance": "None; after 12 months payments are final, even for fraud"
   },
   {
    "id": "recovery_deadline",
@@ -200,7 +203,8 @@
    "pinpoint": "Fla. Stat. § 320.64(25)",
    "pin_short": "§ 320.64(25)",
    "url": "http://www.leg.state.fl.us/statutes/index.cfm?App_mode=Display_Statute&URL=0300-0399/0320/Sections/0320.64.html",
-   "note": null
+   "note": null,
+   "glance": "Not stated; process can outrun the 12-month finality"
   },
   {
    "id": "timely_audit_prerequisite",
@@ -225,7 +229,8 @@
    "pinpoint": "Fla. Stat. § 320.64(25)",
    "pin_short": "§ 320.64(25)",
    "url": "http://www.leg.state.fl.us/statutes/index.cfm?App_mode=Display_Statute&URL=0300-0399/0320/Sections/0320.64.html",
-   "note": null
+   "note": null,
+   "glance": "Only from an audit done inside the 12 months"
   },
   {
    "id": "frequency_cap",
@@ -250,7 +255,8 @@
    "pinpoint": "Fla. Stat. § 320.696(2); see § 320.64(25), (30)",
    "pin_short": "§ 320.696(2)",
    "url": "http://www.leg.state.fl.us/statutes/index.cfm?App_mode=Display_Statute&URL=0300-0399/0320/Sections/0320.696.html",
-   "note": null
+   "note": null,
+   "glance": "1 warranty/service audit per calendar year; reasonable and periodic"
   },
   {
    "id": "selection_basis",
@@ -275,7 +281,8 @@
    "pinpoint": "Fla. Stat. § 320.64(25)",
    "pin_short": "§ 320.64(25)",
    "url": "http://www.leg.state.fl.us/statutes/index.cfm?App_mode=Display_Statute&URL=0300-0399/0320/Sections/0320.64.html",
-   "note": null
+   "note": null,
+   "glance": "Yes: written reason for selection, given at the post-audit meeting"
   },
   {
    "id": "audit_basis",
@@ -300,7 +307,8 @@
    "pinpoint": "Fla. Stat. § 320.64(25); § 320.64(30)",
    "pin_short": "§ 320.64(25)",
    "url": "http://www.leg.state.fl.us/statutes/index.cfm?App_mode=Display_Statute&URL=0300-0399/0320/Sections/0320.64.html",
-   "note": null
+   "note": null,
+   "glance": "Reasonable and periodic; never to coerce or retaliate"
   },
   {
    "id": "retaliatory_audit",
@@ -374,7 +382,8 @@
    "pinpoint": "Fla. Stat. § 320.64(25); § 320.696(2)",
    "pin_short": "§ 320.64(25)",
    "url": "http://www.leg.state.fl.us/statutes/index.cfm?App_mode=Display_Statute&URL=0300-0399/0320/Sections/0320.64.html",
-   "note": null
+   "note": null,
+   "glance": "False/fraudulent, or substantial noncompliance with written uniform procedures"
   },
   {
    "id": "claim_denial_grounds",
@@ -399,7 +408,8 @@
    "pinpoint": "Fla. Stat. § 320.64(25); § 320.696(2); § 320.64(41)",
    "pin_short": "§ 320.64(25)",
    "url": "http://www.leg.state.fl.us/statutes/index.cfm?App_mode=Display_Statute&URL=0300-0399/0320/Sections/0320.64.html",
-   "note": null
+   "note": null,
+   "glance": "Same two grounds; no audit needed to deny"
   },
   {
    "id": "proof_requirements",
@@ -424,7 +434,8 @@
    "pinpoint": "Fla. Stat. § 320.64(25); § 320.697",
    "pin_short": "§ 320.64(25)",
    "url": "http://www.leg.state.fl.us/statutes/index.cfm?App_mode=Display_Statute&URL=0300-0399/0320/Sections/0320.64.html",
-   "note": null
+   "note": null,
+   "glance": "Licensee must show and prove each claim; burden on licensee"
   },
   {
    "id": "recovery_scope",
@@ -449,7 +460,8 @@
    "pinpoint": "Fla. Stat. § 320.64(25)",
    "pin_short": "§ 320.64(25)",
    "url": "http://www.leg.state.fl.us/statutes/index.cfm?App_mode=Display_Statute&URL=0300-0399/0320/Sections/0320.64.html",
-   "note": null
+   "note": null,
+   "glance": "Only the portion proven; never the whole claim"
   },
   {
    "id": "documentation_limits",
@@ -474,7 +486,8 @@
    "pinpoint": "Fla. Stat. § 320.64(25); § 320.696(1)(c), (2)",
    "pin_short": "§ 320.64(25)",
    "url": "http://www.leg.state.fl.us/statutes/index.cfm?App_mode=Display_Statute&URL=0300-0399/0320/Sections/0320.64.html",
-   "note": null
+   "note": null,
+   "glance": "Substantial noncompliance with reasonable, written, uniform procedures only"
   },
   {
    "id": "clerical_error",
@@ -499,7 +512,8 @@
    "pinpoint": "Fla. Stat. § 320.696(2); § 320.64(25)",
    "pin_short": "§ 320.696(2)",
    "url": "http://www.leg.state.fl.us/statutes/index.cfm?App_mode=Display_Statute&URL=0300-0399/0320/Sections/0320.696.html",
-   "note": null
+   "note": null,
+   "glance": "Minor coding/processing defects are not a ground"
   },
   {
    "id": "extrapolation",
@@ -524,7 +538,8 @@
    "pinpoint": "Fla. Stat. § 320.64(25)",
    "pin_short": "§ 320.64(25)",
    "url": "http://www.leg.state.fl.us/statutes/index.cfm?App_mode=Display_Statute&URL=0300-0399/0320/Sections/0320.64.html",
-   "note": null
+   "note": null,
+   "glance": "Not addressed; text is claim-by-claim"
   },
   {
    "id": "post_audit_meeting",
@@ -549,7 +564,8 @@
    "pinpoint": "Fla. Stat. § 320.64(25)",
    "pin_short": "§ 320.64(25)",
    "url": "http://www.leg.state.fl.us/statutes/index.cfm?App_mode=Display_Statute&URL=0300-0399/0320/Sections/0320.64.html",
-   "note": null
+   "note": null,
+   "glance": "Required within 30 days after the audit, before any chargeback"
   },
   {
    "id": "written_reasons",
@@ -574,7 +590,8 @@
    "pinpoint": "Fla. Stat. § 320.64(25)",
    "pin_short": "§ 320.64(25)",
    "url": "http://www.leg.state.fl.us/statutes/index.cfm?App_mode=Display_Statute&URL=0300-0399/0320/Sections/0320.64.html",
-   "note": null
+   "note": null,
+   "glance": "Claim-by-claim explanation with documents at the meeting; final written notice"
   },
   {
    "id": "dealer_response",
@@ -599,7 +616,8 @@
    "pinpoint": "Fla. Stat. § 320.64(25)",
    "pin_short": "§ 320.64(25)",
    "url": "http://www.leg.state.fl.us/statutes/index.cfm?App_mode=Display_Statute&URL=0300-0399/0320/Sections/0320.64.html",
-   "note": null
+   "note": null,
+   "glance": "At least 45 days after the meeting"
   },
   {
    "id": "internal_appeal",
@@ -624,7 +642,8 @@
    "pinpoint": "Fla. Stat. § 320.64(25)",
    "pin_short": "§ 320.64(25)",
    "url": "http://www.leg.state.fl.us/statutes/index.cfm?App_mode=Display_Statute&URL=0300-0399/0320/Sections/0320.64.html",
-   "note": null
+   "note": null,
+   "glance": "Not mandated; if offered, finish it before the final notice"
   },
   {
    "id": "stay_pending_dispute",
@@ -649,7 +668,8 @@
    "pinpoint": "Fla. Stat. § 320.64(25)",
    "pin_short": "§ 320.64(25)",
    "url": "http://www.leg.state.fl.us/statutes/index.cfm?App_mode=Display_Statute&URL=0300-0399/0320/Sections/0320.64.html",
-   "note": null
+   "note": null,
+   "glance": "Yes: DHSMV protest within 30 days stops all recovery"
   },
   {
    "id": "chargeback_hold",
@@ -674,7 +694,8 @@
    "pinpoint": "Fla. Stat. § 320.64(25)",
    "pin_short": "§ 320.64(25)",
    "url": "http://www.leg.state.fl.us/statutes/index.cfm?App_mode=Display_Statute&URL=0300-0399/0320/Sections/0320.64.html",
-   "note": null
+   "note": null,
+   "glance": "No express wait; practically 30 days after the final notice"
   },
   {
    "id": "new_information",
@@ -699,7 +720,8 @@
    "pinpoint": "Fla. Stat. § 320.64(25)",
    "pin_short": "§ 320.64(25)",
    "url": "http://www.leg.state.fl.us/statutes/index.cfm?App_mode=Display_Statute&URL=0300-0399/0320/Sections/0320.64.html",
-   "note": null
+   "note": null,
+   "glance": "Only if received within 30 days after the audit"
   },
   {
    "id": "used_vehicle_recall_protection",
@@ -1053,8 +1075,10 @@
  "penalties_line": "An audit or chargeback that violates § 320.64(25), or any failure to meet § 320.696, is a licensing ground (denial, suspension or revocation on a pattern of wrongdoing) and makes the licensee liable for any single violation to treble the dealer's pecuniary loss plus costs and attorney's fees with the burden shifting to the licensee after a prima facie showing (§ 320.697), to an injunction without bond (§ 320.695), and to a DHSMV proceeding (§ 320.699).",
  "protest_forum": {
   "value": "Protest to the Department of Highway Safety and Motor Vehicles within 30 days after the dealer receives the written notice of the final proposed chargeback amount; a timely protest bars any action to recover until the department's final, unappealable determination, with the burden of proof on the licensee. Dealers may also request a § 320.699 administrative hearing or sue under §§ 320.695 and 320.697.",
-  "pinpoint": "Fla. Stat. § 320.64(25); §§ 320.695, 320.697, 320.699"
+  "pinpoint": "Fla. Stat. § 320.64(25); §§ 320.695, 320.697, 320.699",
+  "glance": "DHSMV, within 30 days after the final notice; a timely protest stays all recovery"
  },
  "pending": [],
- "notes": "All 18 Atlas quotes verified verbatim against the official 2026 Florida Statutes text (leg.state.fl.us), fetched in full by HTTP so quotes here are exact copies, not reassembled fragments. Edition on every page: \"The 2026 Florida Statutes\"; ch. 2026-39 (effective 10/1/2026) is already incorporated and touches (16), (36)(a) and new (44) only. No agency rule adds a warranty rule (context rule_note null), so scope is statutes. The three legal_review items are readings the text leaves open, not errors in the Atlas: (1) finality after month 12 versus a chargeback from a timely audit; (2) whether the calendar-year cap reaches incentive audits; (3) whether § 320.64(25) reaches service-contract claims outside § 320.696(1)(a). Apostrophes and quotation marks inside quotes are the statute page's typographic characters (U+2019, U+201C/U+201D). Pending: the 2027 Senate bill-citation search returned 0 bills for both sections; the 2027 regular session has not convened, so re-check after prefiling closes."
+ "notes": "All 18 Atlas quotes verified verbatim against the official 2026 Florida Statutes text (leg.state.fl.us), fetched in full by HTTP so quotes here are exact copies, not reassembled fragments. Edition on every page: \"The 2026 Florida Statutes\"; ch. 2026-39 (effective 10/1/2026) is already incorporated and touches (16), (36)(a) and new (44) only. No agency rule adds a warranty rule (context rule_note null), so scope is statutes. The three legal_review items are readings the text leaves open, not errors in the Atlas: (1) finality after month 12 versus a chargeback from a timely audit; (2) whether the calendar-year cap reaches incentive audits; (3) whether § 320.64(25) reaches service-contract claims outside § 320.696(1)(a). Apostrophes and quotation marks inside quotes are the statute page's typographic characters (U+2019, U+201C/U+201D). Pending: the 2027 Senate bill-citation search returned 0 bills for both sections; the 2027 regular session has not convened, so re-check after prefiling closes.",
+ "penalties_glance": "Treble damages, costs and fees; injunction; license action on a pattern"
 }

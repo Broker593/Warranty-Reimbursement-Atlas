@@ -446,7 +446,7 @@
     });
     window.scrollTo(0, 0);
     if (briefMeta(abbr)) loadBrief(abbr).then(b => { const el = $('xbrief'); if (el && b && location.hash.toUpperCase() === '#STATE/' + abbr) { el.outerHTML = briefSection(abbr, b); } })
-      .catch(err => { const el = $('xbrief'); if (el) el.innerHTML = '<div class="ks-sectionhead"><h2>Audit brief</h2></div><p class="xerror">Could not load the audit brief (' + esc(err.message) + '). The one-page PDF above has the same content.</p>'; });
+      .catch(err => { const el = $('xbrief'); if (el) el.innerHTML = '<div class="ks-sectionhead"><h2>Audit brief</h2></div><p class="xerror">Could not load the audit brief (' + esc(err.message) + '). The PDF above has the same content.</p>'; });
   }
 
   /* ---------- Matrix: detailed view (every field, grouped, sortable, filterable) ---------- */
@@ -752,7 +752,7 @@
       card('All states · PDF', '50 one-page state summaries in one file.', openA('downloads/warranty-atlas-all-states.pdf', 'Open') + saveA('downloads/warranty-atlas-all-states.pdf')) +
       card('Research data · JSON', 'For analysts: every state\'s claim, chargeback, rate-submission, manufacturer-response and penalty rules with statute quotes, in one machine-readable file. Everything else is in the Excel workbook.', openA('data/audit-fields.json', 'Open') + saveA('data/audit-fields.json')) +
       '</div><p class="xfoot">The Excel "Open in browser" button uses Microsoft\'s free online viewer. The workbook is public research data; no company data is included.</p>' +
-      (BRIEF && BRIEF.states && Object.keys(BRIEF.states).length ? '<h3 class="xsub">Audit brief by state</h3><p class="xfoot">One page: what to know before auditing paid factory-warranty claims, in the order an audit runs, with the statute cite on every line. Available for ' + Object.keys(BRIEF.states).length + ' states so far; the file name carries the verification date.</p><div class="xstates">' +
+      (BRIEF && BRIEF.states && Object.keys(BRIEF.states).length ? '<h3 class="xsub">Audit brief by state</h3><p class="xfoot">Two pages: a summary table of what to know before auditing paid factory-warranty claims, in the order an audit runs, with the statute cite on every line, then the numbered notes behind it. Available for ' + Object.keys(BRIEF.states).length + ' states so far; the file name carries the verification date.</p><div class="xstates">' +
         AUDIT.filter(r => BRIEF.states[r.state]).map(r => '<a href="' + esc(BRIEF.states[r.state].pdf) + '" target="_blank" rel="noopener" title="Open ' + esc(r.name) + ' audit brief (verified ' + esc(BRIEF.states[r.state].verified) + ')">' + r.state + '</a>').join('') + '</div>' : '') +
       '<h3 class="xsub">One-page state summary PDF</h3><p class="xfoot">Click a state to open its PDF in a new tab. Use the viewer\'s download or print button to keep a copy.</p><div class="xstates">' + AUDIT.map(r => '<a href="downloads/state-pdfs/' + r.state + '.pdf" target="_blank" rel="noopener" title="Open ' + esc(r.name) + ' PDF">' + r.state + '</a>').join('') + '</div>';
   }
@@ -1095,7 +1095,7 @@
     const secs = BRIEF.sections || [], rules = b.rules || [], lr = b.legal_review || [], na = b.not_addressed || [];
     const onBrief = rules.filter(x => x.brief), more = rules.filter(x => !x.brief);
     const vdate = fmtDate((b.verified || {}).date), scope = (b.verified || {}).scope || 'statutes';
-    let h = '<section class="xb" id="kf-brief" aria-labelledby="xbH"><div class="ks-sectionhead"><h2 id="xbH">Audit brief</h2>' + (meta.pdf ? '<a class="ks-maplink" href="' + esc(meta.pdf) + '" target="_blank" rel="noopener">One-page audit brief PDF ↗</a>' : '') + '</div>' +
+    let h = '<section class="xb" id="kf-brief" aria-labelledby="xbH"><div class="ks-sectionhead"><h2 id="xbH">Audit brief</h2>' + (meta.pdf ? '<a class="ks-maplink" href="' + esc(meta.pdf) + '" target="_blank" rel="noopener">Audit brief PDF (2 pages) ↗</a>' : '') + '</div>' +
       '<p class="xb-lead">What to know before auditing a dealer\'s paid factory-warranty claims in ' + esc(r.name) + ', in the order an audit runs. Only rules this state has are listed, with the statute\'s own answer on the line and the cite beside it.</p>' +
       '<p class="xb-covers"><strong>Covers:</strong> ' + esc(b.covers_line || '') + '</p>' +
       '<p class="xb-meta"><span>Verified <strong>' + vdate + '</strong> (' + esc(scope) + ')</span>' + (lr.length ? '<span><a href="#xb-lr" class="xb-lrlink">⚠ ' + lr.length + ' item' + (lr.length > 1 ? 's' : '') + ' need legal review</a></span>' : '') + '<span>Open a line for the statute text and a copy button</span></p>';
@@ -1119,7 +1119,7 @@
       ((b.pending || []).length ? '<h4>Pending bills (not law)</h4><ul>' + b.pending.map(p => '<li><strong>' + esc(p.bill) + '.</strong> ' + esc(p.status) + ' ' + esc(p.would_change || '') + '</li>').join('') + '</ul>' : '') +
       (srcs.length ? '<h4>Sources read for this brief</h4><ul class="xb-src">' + srcs.map(s => '<li>' + (s.url ? link(s.url, s.cite) : esc(s.cite)) + ' <span class="xpin">' + esc(s.kind || '') + (s.version ? ' · ' + s.version : '') + '</span></li>').join('') + '</ul>' : '') +
       (b.notes ? '<h4>Research notes</h4><p class="xnote">' + esc(b.notes) + '</p>' : '') + '</div></details>' +
-      '<p class="xfoot">Generated from the same data as the one-page PDF and the Audit procedures table below. Research summary for audit planning, not legal advice; confirm against the cited statute and take disputes to Legal.</p></section>';
+      '<p class="xfoot">Generated from the same data as the PDF and the Audit procedures table below. Research summary for audit planning, not legal advice; confirm against the cited statute and take disputes to Legal.</p></section>';
     return h;
   }
 
