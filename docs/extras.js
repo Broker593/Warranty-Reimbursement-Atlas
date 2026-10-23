@@ -165,6 +165,17 @@
     if (navigator.clipboard && window.isSecureContext) return navigator.clipboard.writeText(t);
     return new Promise((ok, no) => { const ta = document.createElement('textarea'); ta.value = t; ta.setAttribute('readonly', ''); ta.style.cssText = 'position:fixed;top:0;left:0;opacity:0'; document.body.appendChild(ta); ta.select(); let r = false; try { r = document.execCommand('copy'); } catch (e) {} ta.remove(); r ? ok() : no(); });
   }
+  /* audit brief: a "note" link in the summary table opens the notes fold and the rule's own details before scrolling */
+  function bindBriefNotes() {
+    document.addEventListener('click', e => {
+      const a = e.target.closest ? e.target.closest('a.xg-more') : null; if (!a) return;
+      const id = (a.getAttribute('href') || '').replace(/^#/, ''), t = id && document.getElementById(id); if (!t) return;
+      e.preventDefault();
+      let n = t; while (n) { if (n.tagName === 'DETAILS') n.open = true; n = n.parentElement; }
+      const own = t.querySelector ? t.querySelector(':scope > details') : null; if (own) own.open = true;
+      t.scrollIntoView({block: 'start'}); if (t.tabIndex < 0) t.tabIndex = -1; t.focus({preventScroll: true});
+    });
+  }
   function bindCopyQuote() {
     let live = $('xCopyMsg');
     if (!live) { live = document.createElement('div'); live.id = 'xCopyMsg'; live.setAttribute('role', 'status'); live.style.cssText = 'position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap'; document.body.appendChild(live); }
@@ -208,6 +219,7 @@
     bindPrivacy(dlg);
     bindCompare();
     bindCopyQuote();
+    bindBriefNotes();
     window.addEventListener('hashchange', route);
   }
   /* ---------- site analytics (Google Analytics 4, loaded in index.html) ---------- */
@@ -910,9 +922,9 @@
     const rows = st.map(r => {
       const g = G[r.state], sec = (r.law_dates || {}).section || '', su = safeUrl(r.official_url);
       const statute = su ? '<a href="' + esc(su) + '" target="_blank" rel="noopener noreferrer">' + esc(sec || 'Statute') + ' ↗</a>' : esc(sec);
-      const law = g.law === 'statute_rules' ? '<strong>Statute + agency rule</strong><small>' + statute + '</small><small>' + esc(g.rule_note || '') + '</small>' : 'Statute<small>' + statute + '</small>';
-      const site = safeUrl(g.agency_url) ? '<small><a href="' + esc(safeUrl(g.agency_url)) + '" target="_blank" rel="noopener noreferrer">Agency website ↗</a></small>' : '<small>No agency website: enforced through the courts</small>';
-      const forumSite = safeUrl(g.forum_url) ? '<small><a href="' + esc(safeUrl(g.forum_url)) + '" target="_blank" rel="noopener noreferrer">Forum website ↗</a></small>' : '';
+      const law = g.law === 'statute_rules' ? '<strong>Statute + agency rule</strong> <span class="xgv-inl">(' + statute + ')</span><small>' + esc(g.rule_note || '') + '</small>' : 'Statute <span class="xgv-inl">(' + statute + ')</span>';
+      const site = safeUrl(g.agency_url) ? ' <span class="xgv-inl">(<a href="' + esc(safeUrl(g.agency_url)) + '" target="_blank" rel="noopener noreferrer">website ↗</a>)</span>' : ' <span class="xgv-inl">(no agency website: enforced through the courts)</span>';
+      const forumSite = safeUrl(g.forum_url) ? ' <span class="xgv-inl">(<a href="' + esc(safeUrl(g.forum_url)) + '" target="_blank" rel="noopener noreferrer">website ↗</a>)</span>' : '';
       return '<tr data-law="' + esc(g.law) + '" data-forum="' + esc(g.forum_kind) + '"><th scope="row"><a href="#state/' + r.state + '">' + esc(r.name) + '</a> <span class="xgv-abbr">' + r.state + '</span></th><td data-label="Where the rules come from">' + law + '</td><td data-label="Agency">' + esc(g.agency) + site + '</td><td data-label="Where disputes go"><span class="xgv-tag">' + esc(GOV_FORUM[g.forum_kind] || '') + '</span>' + esc(g.forum) + forumSite + '</td></tr>';
     }).join('');
     const ruleStates = st.filter(r => G[r.state].law === 'statute_rules').map(r => r.name);
@@ -1096,9 +1108,29 @@
     const onBrief = rules.filter(x => x.brief), more = rules.filter(x => !x.brief);
     const vdate = fmtDate((b.verified || {}).date), scope = (b.verified || {}).scope || 'statutes';
     let h = '<section class="xb" id="kf-brief" aria-labelledby="xbH"><div class="ks-sectionhead"><h2 id="xbH">Audit brief</h2>' + (meta.pdf ? '<a class="ks-maplink" href="' + esc(meta.pdf) + '" target="_blank" rel="noopener">Audit brief PDF (2 pages) ↗</a>' : '') + '</div>' +
-      '<p class="xb-lead">What to know before auditing a dealer\'s paid factory-warranty claims in ' + esc(r.name) + ', in the order an audit runs. Only rules this state has are listed, with the statute\'s own answer on the line and the cite beside it.</p>' +
+      '<p class="xb-lead">What to know before auditing a dealer\'s paid factory-warranty claims in ' + esc(r.name) + ', in the order an audit runs. The statute\'s own answer is on each line with the cite beside it; topics the statute does not address say so. The notes below hold the full lines and the statute text.</p>' +
       '<p class="xb-covers"><strong>Covers:</strong> ' + esc(b.covers_line || '') + '</p>' +
-      '<p class="xb-meta"><span>Verified <strong>' + vdate + '</strong> (' + esc(scope) + ')</span>' + (lr.length ? '<span><a href="#xb-lr" class="xb-lrlink">⚠ ' + lr.length + ' item' + (lr.length > 1 ? 's' : '') + ' need legal review</a></span>' : '') + '<span>Open a line for the statute text and a copy button</span></p>';
+      '<p class="xb-meta"><span>Verified <strong>' + vdate + '</strong> (' + esc(scope) + ')</span>' + (lr.length ? '<span><a href="#xb-lr" class="xb-lrlink">⚠ ' + lr.length + ' item' + (lr.length > 1 ? 's' : '') + ' need legal review</a></span>' : '') + '<span>Same rows as page 1 of the PDF</span></p>';
+    /* summary table (same rows as page 1 of the PDF), then one fold with the full lines and statute text */
+    const R = {}; rules.forEach(x => { R[x.id] = x; }); const NA = {}; na.forEach(x => { NA[x.id] = x; });
+    const used = new Set();
+    const cell = x => esc(x.glance || x.short || x.value) + (FLAGGED(x.status) ? ' <span class="xb-flag">⚠ Legal review</span>' : '') + ' <a class="xg-more" href="#xb-' + esc(x.id) + '" title="Full line and statute text">note</a>';
+    const citeCell = x => x.url ? '<a href="' + esc(safeUrl(x.url)) + '" target="_blank" rel="noopener noreferrer" title="' + esc(x.pinpoint) + '">' + esc(x.pin_short || x.pinpoint) + ' ↗</a>' : esc(x.pin_short || x.pinpoint);
+    let rowsH = '';
+    (BRIEF.glance_rows || []).forEach(g => {
+      rowsH += '<tr class="xg-sec"><th scope="rowgroup" colspan="3">' + esc(g.section) + '</th></tr>';
+      g.rows.forEach(rw => { const x = rw.ids.map(i => R[i]).find(Boolean);
+        if (x) { used.add(x.id); rowsH += '<tr><th scope="row">' + esc(rw.label) + '</th><td>' + cell(x) + '</td><td class="xg-cite">' + citeCell(x) + '</td></tr>'; }
+        else if (rw.ids.some(i => NA[i])) rowsH += '<tr class="xg-na"><th scope="row">' + esc(rw.label) + '</th><td><span class="ks-muted">Not in statute</span></td><td class="xg-cite ks-muted">—</td></tr>'; });
+    });
+    const extras = onBrief.filter(x => !used.has(x.id));
+    rowsH += '<tr class="xg-sec"><th scope="rowgroup" colspan="3">Exceptions and escalation</th></tr>';
+    if (extras.length) rowsH += '<tr><th scope="row">State-specific rules</th><td>' + esc(extras.map(x => x.label).join('; ')) + ' <a class="xg-more" href="#xb-' + esc(extras[0].id) + '" title="Full lines and statute text">notes</a></td><td class="xg-cite">' + extras.length + ' rules</td></tr>';
+    if (lr.length) rowsH += '<tr class="xg-lr"><th scope="row">⚠ Legal review required</th><td>' + esc(lr.map(l => l.title).join('; ')) + ' <a class="xg-more" href="#xb-lr" title="What the statute leaves open and the action to take">notes</a></td><td class="xg-cite">' + lr.length + ' item' + (lr.length > 1 ? 's' : '') + '</td></tr>';
+    if (b.penalties_glance || b.penalties_line) rowsH += '<tr><th scope="row">If done wrong</th><td>' + esc(b.penalties_glance || b.penalties_line) + ' <a class="xg-more" href="#xb-pen" title="Full line">note</a></td><td class="xg-cite"></td></tr>';
+    if (b.protest_forum && (b.protest_forum.glance || b.protest_forum.value)) rowsH += '<tr><th scope="row">Where the dealer protests</th><td>' + esc(b.protest_forum.glance || b.protest_forum.value) + ' <a class="xg-more" href="#xb-forum" title="Full line">note</a></td><td class="xg-cite">' + esc((b.protest_forum.pinpoint || '').split(';')[0]) + '</td></tr>';
+    h += '<div class="table-scroll xg-scroll"><table class="xtable xg-table"><thead><tr><th scope="col">Topic</th><th scope="col">Answer</th><th scope="col">Cite</th></tr></thead><tbody>' + rowsH + '</tbody></table></div>';
+    h += '<details class="xb-notes" id="xb-notes"><summary>Notes: the full lines, statute text and legal-review items</summary><div class="xb-notes-body">';
     secs.forEach((s, i) => {
       const list = onBrief.filter(x => x.section === s.id);
       const isLast = s.id === 'exceptions';
@@ -1107,10 +1139,11 @@
       if (list.length) h += '<ol class="xb-rules">' + list.map(x => briefRule(x, false)).join('') + '</ol>';
       if (isLast) {
         if (lr.length) h += '<div id="xb-lr" class="xb-lrs">' + lr.map(l => '<div class="xb-lr" role="note"><p class="xb-lr-t">⚠ LEGAL REVIEW REQUIRED — ' + esc(l.title) + '</p><p>' + esc(l.text) + '</p><p><strong>Action:</strong> ' + esc(l.action) + '</p><p class="xpin">' + esc(l.pinpoint) + '</p></div>').join('') + '</div>';
-        if (b.penalties_line) h += '<p class="xb-pen"><strong>If done wrong:</strong> ' + esc(b.penalties_line) + '</p>';
-        if (b.protest_forum && b.protest_forum.value) h += '<p class="xb-pen"><strong>Where the dealer protests:</strong> ' + esc(b.protest_forum.value) + ' <span class="xpin">' + esc(b.protest_forum.pinpoint || '') + '</span></p>';
+        if (b.penalties_line) h += '<p class="xb-pen" id="xb-pen"><strong>If done wrong:</strong> ' + esc(b.penalties_line) + '</p>';
+        if (b.protest_forum && b.protest_forum.value) h += '<p class="xb-pen" id="xb-forum"><strong>Where the dealer protests:</strong> ' + esc(b.protest_forum.value) + ' <span class="xpin">' + esc(b.protest_forum.pinpoint || '') + '</span></p>';
       }
     });
+    h += '</div></details>';
     if (na.length) h += '<p class="xb-na"><strong>Not expressly addressed in the reviewed ' + esc(scope) + ' (verified ' + vdate + '):</strong> ' + esc(na.map(x => x.label.toLowerCase()).join('; ')) + '.</p>';
     const srcs = ((b.verified || {}).sources || []);
     h += '<details class="xb-other"><summary>Other topics reviewed, more rules found in the statute' + (more.length ? ' (' + more.length + ')' : '') + ', pending bills and sources</summary><div class="kf-detail">' +

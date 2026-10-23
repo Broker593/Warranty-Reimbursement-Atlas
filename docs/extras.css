@@ -641,3 +641,24 @@ main{padding-top:6px}
 .ki-fold .ki-card{margin:0;border:0;border-top:1px solid #dbe2ea;border-radius:0}
 @media(max-width:700px){.xb{padding:4px 14px 12px}.xb-line{grid-template-columns:1fr;gap:2px}.xb-pin{white-space:normal}.xb-h3{font-size:16px}}
 @media print{.xb-rule .kf-more,.xb-other{display:none}.xb{border:0;padding:0}}
+/* audit brief summary table (same rows as page 1 of the PDF) */
+.xb .xg-scroll{max-height:none;border:1px solid #dbe2ea;border-radius:8px}
+.xg-table{font-size:14px}
+.xg-table thead th{position:static}
+.xg-table tbody th{position:static;min-width:140px;width:180px;font-weight:700;color:#142943;border-right:1px solid #e3e8ef}
+.xg-table tbody th,.xg-table tbody td{padding:7px 10px;line-height:1.45}
+.xg-table .xg-sec th{background:#eef2f7!important;color:#142943;font-weight:700;border-right:0;padding:6px 10px;font-size:13.5px}
+.xg-table tbody tr:nth-child(even) th,.xg-table tbody tr:nth-child(even) td{background:#fff}
+.xg-table .xg-na th{color:#46566b;font-weight:600}
+.xg-cite{white-space:nowrap;font-size:12.5px;font-weight:600}
+.xg-cite a{color:#0b57a8}
+.xg-more{font-size:12px;color:#46566b;margin-left:4px;white-space:nowrap}
+.xg-lr th,.xg-lr td{background:#fff7ea!important;color:#3a2200}
+.xg-lr th{color:#6b3d00!important}
+.xb-notes{margin:10px 0 0;font-size:14px}
+.xb-notes>summary{cursor:pointer;color:#0b57a8;font-weight:600;text-decoration:underline;text-underline-offset:3px}
+.xb-notes-body{padding-top:4px}
+.xb-rule:focus{outline:3px solid #c88c27;outline-offset:2px}
+@media(max-width:700px){.xg-table tbody th{min-width:110px;width:120px}.xg-cite{white-space:normal}}
+.xgv-inl{font-size:12.5px;color:#46566b}
+.xgv-inl a{font-weight:600}
