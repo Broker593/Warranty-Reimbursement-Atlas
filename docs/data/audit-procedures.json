@@ -241,7 +241,7 @@
    },
    "clerical_error_protection": {
     "required": true,
-    "detail": "A claim may not be disapproved for a clerical error that does not make the claim amount incorrect, including errors caused by the manufacturer's prior-approval process. Act 1055 of 2015 struck the former preapproval proviso. The text addresses disapproval; chargebacks are limited to 'false or unsubstantiated claims'.",
+    "detail": "A claim may not be DISAPPROVED for a clerical error that does not make the claim amount incorrect, including errors caused by the manufacturer's prior-approval process. Act 1055 of 2015 struck the former preapproval proviso. The text is a disapproval rule; chargebacks of paid claims are limited to 'false or unsubstantiated claims' and the statute does not say whether a paid claim with such an error can be charged back (legal review required; see the audit brief).",
     "quote": "A claim shall not be disapproved because a clerical error was made that does not render the amount of the claim incorrect",
     "pinpoint": "Ark. Code Ann. § 23-112-313(e)(3)(A)"
    },
@@ -259,7 +259,7 @@
    },
    "rate_submission_audit": {
     "allowed": true,
-    "limits": "The manufacturer must approve or disapprove a rate-change request within 45 days, or it is deemed approved. If the calculated rate is substantially higher or lower than the rate on record, it may request additional documentation for 45 days before or after the submitted period. The rate must be reasonable compared with same line-make dealers in an economically similar area or the dealer's competitive market area (§ 23-112-313(c)(3)). There is no frequency limit.",
+    "limits": "The manufacturer must approve or disapprove a rate-change request within 45 days, or it is deemed approved. If the calculated rate is substantially higher or lower than the rate on record, it may request additional documentation for 45 days before or after the submitted period. The rate must be reasonable (§ 23-112-313(c)(3)); § 23-112-310(d)(1)(A) measures reasonableness against other same line-make dealers in the dealer's relevant market area or competitive market area. There is no frequency limit.",
     "quote": "may request additional documentation for a period of either forty-five (45) days prior or forty-five (45) days subsequent to the time period for which the repair orders were submitted",
     "pinpoint": "Ark. Code Ann. § 23-112-310(d)(1)(D)(iii) (added by Act 1077 of 2021, § 4); see (d)(1)(D)(i)-(ii)"
    },
@@ -386,9 +386,9 @@
   {
    "state": "CA",
    "advance_notice": {
-    "required": true,
+    "required": null,
     "days": null,
-    "detail": "Only for an additional (non-random) audit within the 9-month period: the notification to the dealer must be accompanied by written disclosure of the basis for the audit.",
+    "detail": "No notice period is set for any audit. The notification of an additional (non-random) audit within a nine-month period must be accompanied by written disclosure of the basis for that audit; that is a selection-basis rule (see below), not an advance-notice rule.",
     "quote": "The franchisor’s notification to the franchisee of any additional audit within a nine-month period shall be accompanied by written disclosure of the basis for that additional audit.",
     "pinpoint": "Cal. Veh. Code § 3065(e)(1); § 3065.1(g)(1)"
    },
@@ -437,7 +437,7 @@
    },
    "clerical_error_protection": {
     "required": true,
-    "detail": "Documentation or administrative noncompliance supports a chargeback only if MATERIAL, and the franchisee has at least 30 days to cure it. A cured claim may not be charged back.",
+    "detail": "Documentation or administrative noncompliance supports a chargeback only if MATERIAL, and the franchisee has at least 30 days to cure it. A warranty claim that is rebutted and cured before the deadline may not be charged back (§ 3065(e)(3)); an incentive claim may not be charged back once the material noncompliance is cured (§ 3065.1(g)(5)). The statute never uses the words 'clerical error'.",
     "quote": "If the franchisee rebuts any disapproval and cures any material noncompliance relating to a claim before the applicable deadline, the franchisor shall not chargeback the franchisee for that claim.",
     "pinpoint": "Cal. Veh. Code § 3065(e)(2)-(3); § 3065.1(g)(2)-(3), (g)(5)"
    },
@@ -820,7 +820,7 @@
    },
    "chargeback_stayed_pending_appeal": {
     "required": true,
-    "detail": "The dealer may protest to the Department of Highway Safety and Motor Vehicles within 30 days of the final notice. The licensee may not act to recover until the department makes a final, unappealable determination. The licensee bears the burden of proof.",
+    "detail": "The dealer may protest to the Department of Highway Safety and Motor Vehicles within 30 days after receiving the written notice of the final proposed chargeback amount. The licensee may not take any action to recover until the department makes a final determination that is not subject to further appeal. The licensee bears the burden of proof.",
     "quote": "the applicant or licensee may not take any action to recover the amount of the proposed chargeback until the department renders a final determination",
     "pinpoint": "Fla. Stat. § 320.64(25)"
    },
@@ -1320,7 +1320,7 @@
    },
    "clerical_error_protection": {
     "required": true,
-    "detail": "Indirect. There is no clerical-error clause, but 710/6(b) bars any debit or chargeback of any warranty RO item absent a finding of fraud or illegal actions by the dealer. Read literally, that also bars clerical-only chargebacks. The same subsection separately lets the mfr charge back \"false or unsubstantiated claims\"; the statute does not reconcile the two sentences.",
+    "detail": "Indirect, and the statute conflicts with itself. There is no clerical-error clause, but 710/6(b) bars any debit or chargeback of any warranty RO item absent a finding of fraud or illegal actions by the dealer; read literally, that bars clerical-only chargebacks. The same subsection separately lets the manufacturer charge back 'false or unsubstantiated' claims, and nothing reconciles the two sentences or says who makes the 'finding'. Recorded as applying because the bar is express; legal review required before any warranty RO chargeback (see the audit brief).",
     "quote": "No debit reduction or charge back of any item on a warranty repair order may be made absent a finding of fraud or illegal actions by the dealer.",
     "pinpoint": "815 ILCS 710/6(b)"
    },

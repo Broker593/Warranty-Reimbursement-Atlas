@@ -1,0 +1,1108 @@
+{
+ "state": "FL",
+ "verified": {
+  "date": "2026-10-23",
+  "scope": "statutes",
+  "sources": [
+   {
+    "cite": "Fla. Stat. § 320.64",
+    "url": "http://www.leg.state.fl.us/statutes/index.cfm?App_mode=Display_Statute&URL=0300-0399/0320/Sections/0320.64.html",
+    "kind": "official",
+    "version": "The 2026 Florida Statutes (history through s. 13, ch. 2026-39)"
+   },
+   {
+    "cite": "Fla. Stat. § 320.696",
+    "url": "http://www.leg.state.fl.us/statutes/index.cfm?App_mode=Display_Statute&URL=0300-0399/0320/Sections/0320.696.html",
+    "kind": "official",
+    "version": "The 2026 Florida Statutes (history through s. 3, ch. 2017-187)"
+   },
+   {
+    "cite": "Fla. Stat. § 320.695",
+    "url": "http://www.leg.state.fl.us/statutes/index.cfm?App_mode=Display_Statute&URL=0300-0399/0320/Sections/0320.695.html",
+    "kind": "official",
+    "version": "The 2026 Florida Statutes"
+   },
+   {
+    "cite": "Fla. Stat. § 320.697",
+    "url": "http://www.leg.state.fl.us/statutes/index.cfm?App_mode=Display_Statute&URL=0300-0399/0320/Sections/0320.697.html",
+    "kind": "official",
+    "version": "The 2026 Florida Statutes"
+   },
+   {
+    "cite": "Fla. Stat. § 320.699",
+    "url": "http://www.leg.state.fl.us/statutes/index.cfm?App_mode=Display_Statute&URL=0300-0399/0320/Sections/0320.699.html",
+    "kind": "official",
+    "version": "The 2026 Florida Statutes"
+   },
+   {
+    "cite": "Fla. Stat. § 320.6992",
+    "url": "http://www.leg.state.fl.us/statutes/index.cfm?App_mode=Display_Statute&URL=0300-0399/0320/Sections/0320.6992.html",
+    "kind": "official",
+    "version": "The 2026 Florida Statutes"
+   },
+   {
+    "cite": "Fla. Stat. § 320.60 (definitions)",
+    "url": "http://www.leg.state.fl.us/statutes/index.cfm?App_mode=Display_Statute&URL=0300-0399/0320/Sections/0320.60.html",
+    "kind": "official",
+    "version": "The 2026 Florida Statutes"
+   },
+   {
+    "cite": "Fla. Stat. § 320.605 (legislative intent)",
+    "url": "http://www.leg.state.fl.us/statutes/index.cfm?App_mode=Display_Statute&URL=0300-0399/0320/Sections/0320.605.html",
+    "kind": "official",
+    "version": "The 2026 Florida Statutes"
+   },
+   {
+    "cite": "Fla. Stat. § 320.61 (licensing)",
+    "url": "http://www.leg.state.fl.us/statutes/index.cfm?App_mode=Display_Statute&URL=0300-0399/0320/Sections/0320.61.html",
+    "kind": "official",
+    "version": "The 2026 Florida Statutes"
+   },
+   {
+    "cite": "Florida Senate bill-citation search, 2027 session, § 320.64 and § 320.696",
+    "url": "https://www.flsenate.gov/Session/Bills?sessionYear=2027&citation=320.64&citationType=FL+Statutes",
+    "kind": "official",
+    "version": "0 bills found as of 2026-10-23 (same result for citation=320.696)"
+   }
+  ]
+ },
+ "covers": {
+  "primary": "factory_warranty",
+  "also": [
+   {
+    "program": "maintenance",
+    "treatment": "Same window, grounds and process as warranty; § 320.64(25) names \"warranty, maintenance, and other service-related payments\" throughout, and § 320.696(1)(a) requires compensation for work under a maintenance plan.",
+    "pinpoint": "§ 320.64(25); § 320.696(1)(a)"
+   },
+   {
+    "program": "service",
+    "treatment": "Same as warranty: § 320.696(1)(a) covers extended warranty, delivery or preparation procedures, campaign service, authorized goodwill, directives and bulletins, and § 320.64(25) reaches \"other service-related payments\".",
+    "pinpoint": "§ 320.696(1)(a); § 320.64(25)"
+   },
+   {
+    "program": "recalls",
+    "treatment": "Same as warranty (§ 320.696(1)(a) names recall repairs), plus § 320.64(41): no denial, reduction or chargeback of used-vehicle warranty or recall repairs because of how the need was discovered or because the dealer notified the consumer of a safety recall; and § 320.696(3)(c): markup still owed on parts furnished at no cost for recalls.",
+    "pinpoint": "§ 320.696(1)(a), (3)(c); § 320.64(41)"
+   },
+   {
+    "program": "cpo",
+    "treatment": "Certified pre-owned warranty issued by the licensee or its common entity is within § 320.696(1)(a); same audit rules.",
+    "pinpoint": "§ 320.696(1)(a); § 320.64(25)"
+   },
+   {
+    "program": "service_contracts",
+    "treatment": "Within § 320.696 only if issued by the licensee or a common entity that is a manufacturer; a contract issued by a non-manufacturer common entity is outside the compensation rules, and whether the § 320.64(25) window and process reach audits of such claims is unresolved (see legal_review).",
+    "pinpoint": "§ 320.696(1)(a); § 320.64(25)"
+   },
+   {
+    "program": "incentives",
+    "treatment": "Own 12-month window from the date the incentive was paid; \"incentive\" includes any bonus, incentive, or other monetary or nonmonetary consideration and payments under any licensee-issued program, policy or benefit; same grounds, meeting, 45-day response, new-information, final-notice and protest process as warranty. The § 320.696(2) calendar-year cap names warranty, retail customer repair and service-related audits, not incentive audits. Export/resale chargebacks have their own process and a 12-month-from-sale notice rule (§ 320.64(26)); facility-linked programs carry an 80-percent floor (§ 320.64(38)); loaner program payments are protected (§ 320.64(39)).",
+    "pinpoint": "§ 320.64(25), (26), (38), (39); § 320.696(2)"
+   },
+   {
+    "program": "rate_submission",
+    "treatment": "A \"retail customer repair\" audit counts against the once-per-calendar-year cap; established rates may not be reviewed or changed except on the dealer's request or a written predetermined increase schedule; the licensee may select the first of the 50 consecutive ROs for a parts-markup request within the dealer's 10-day notice period.",
+    "pinpoint": "§ 320.696(2), (3)(a)1., (5)"
+   }
+  ]
+ },
+ "rules": [
+  {
+   "id": "audit_window",
+   "section": "eligibility",
+   "label": "Audit window",
+   "value": "Warranty, maintenance and other service-related payments may be audited only during the 12 months immediately following the date the claim was paid. Incentive payments (any bonus, incentive, or other monetary or nonmonetary consideration, including payments under any licensee-issued program, policy or benefit) may be audited only during the 12 months immediately following the date the incentive was paid. The window runs from payment, not from the repair date or claim submission.",
+   "covers": [
+    "factory_warranty",
+    "maintenance",
+    "service",
+    "recalls",
+    "cpo",
+    "service_contracts",
+    "incentives"
+   ],
+   "effect": "conditional",
+   "status": "express",
+   "reason": null,
+   "quote": "Audits of warranty, maintenance, and other service-related payments shall be performed by an applicant or licensee only during the 12-month period immediately following the date the claim was paid.",
+   "pinpoint": "Fla. Stat. § 320.64(25)",
+   "url": "http://www.leg.state.fl.us/statutes/index.cfm?App_mode=Display_Statute&URL=0300-0399/0320/Sections/0320.64.html"
+  },
+  {
+   "id": "window_trigger",
+   "section": "eligibility",
+   "label": "Window trigger for incentives",
+   "value": "Incentive audits have their own sentence: 12 months from the date the incentive was paid. For a repair claim the trigger is the date the claim was paid. Both triggers are payment dates, but an incentive paid later than the related claim (for example a quarterly or year-end bonus) carries its own, later, 12-month clock.",
+   "covers": [
+    "incentives"
+   ],
+   "effect": "conditional",
+   "status": "express",
+   "reason": null,
+   "quote": "Audits of incentive payments shall be performed only during the 12-month period immediately following the date the incentive was paid.",
+   "pinpoint": "Fla. Stat. § 320.64(25)",
+   "url": "http://www.leg.state.fl.us/statutes/index.cfm?App_mode=Display_Statute&URL=0300-0399/0320/Sections/0320.64.html"
+  },
+  {
+   "id": "post_window_exception",
+   "section": "eligibility",
+   "label": "Post-window exception (fraud etc.)",
+   "value": "None. Once the 12-month period has elapsed, warranty, maintenance, other service-related and incentive payments are deemed final and incontrovertible for any reason notwithstanding any otherwise applicable law, and the dealer is not subject to any chargeback or repayment. There is no fraud, intentional-misrepresentation or statute-of-limitations carve-out. Fraud is a chargeback ground only inside the window.",
+   "covers": [
+    "factory_warranty",
+    "maintenance",
+    "service",
+    "recalls",
+    "cpo",
+    "service_contracts",
+    "incentives"
+   ],
+   "effect": "prohibited",
+   "status": "express",
+   "reason": null,
+   "quote": "shall be deemed final and incontrovertible for any reason notwithstanding any otherwise applicable law, and the motor vehicle dealer shall not be subject to any chargeback or repayment.",
+   "pinpoint": "Fla. Stat. § 320.64(25)",
+   "url": "http://www.leg.state.fl.us/statutes/index.cfm?App_mode=Display_Statute&URL=0300-0399/0320/Sections/0320.64.html"
+  },
+  {
+   "id": "recovery_deadline",
+   "section": "eligibility",
+   "label": "Deadline to take the chargeback",
+   "value": "Not expressly stated. The statute requires only that the audit be \"timely conducted\" (within 12 months of payment) and then prescribes a process (meeting within 30 days after the audit, at least 45 days for the dealer to respond, internal dispute processes, final written notice, 30-day protest window) that will routinely run past the 12-month anniversary of payment. But the same subsection says that after the 12-month periods have elapsed all such payments are final \"for any reason notwithstanding any otherwise applicable law\" and the dealer \"shall not be subject to any chargeback or repayment\". The text does not say whether a timely audit preserves the right to take the chargeback after month 12. See legal_review.",
+   "covers": [
+    "factory_warranty",
+    "maintenance",
+    "service",
+    "recalls",
+    "cpo",
+    "service_contracts",
+    "incentives"
+   ],
+   "effect": "conditional",
+   "status": "unresolved",
+   "reason": "Two sentences in § 320.64(25) pull apart: chargebacks are allowed \"as a result of a timely conducted audit\" through a multi-step process, yet payments become \"final and incontrovertible for any reason\" once 12 months from payment have elapsed; nothing in the text reconciles a timely audit whose chargeback lands after month 12.",
+   "quote": "After such time periods have elapsed, all warranty, maintenance, and other service-related payments and incentive payments shall be deemed final and incontrovertible for any reason notwithstanding any otherwise applicable law",
+   "pinpoint": "Fla. Stat. § 320.64(25)",
+   "url": "http://www.leg.state.fl.us/statutes/index.cfm?App_mode=Display_Statute&URL=0300-0399/0320/Sections/0320.64.html"
+  },
+  {
+   "id": "timely_audit_prerequisite",
+   "section": "eligibility",
+   "label": "Chargeback only from a timely audit",
+   "value": "A post-payment chargeback may be imposed only \"as a result of a timely conducted audit\", i.e., an audit performed inside the 12-month window. A chargeback not traceable to a timely audit (for example a desk review or system sweep started after month 12, or a chargeback raised outside any audit) has no statutory basis. Denials of unpaid claims are not tied to an audit.",
+   "covers": [
+    "factory_warranty",
+    "maintenance",
+    "service",
+    "recalls",
+    "cpo",
+    "service_contracts",
+    "incentives"
+   ],
+   "effect": "conditional",
+   "status": "express",
+   "reason": null,
+   "quote": "as a result of a timely conducted audit, impose a chargeback against a motor vehicle dealer for warranty, maintenance, or other service-related payments or incentive payments",
+   "pinpoint": "Fla. Stat. § 320.64(25)",
+   "url": "http://www.leg.state.fl.us/statutes/index.cfm?App_mode=Display_Statute&URL=0300-0399/0320/Sections/0320.64.html"
+  },
+  {
+   "id": "frequency_cap",
+   "section": "planning",
+   "label": "Audit frequency cap",
+   "value": "Not more than one warranty, retail customer repair, or other service-related audit per calendar year (calendar year, not rolling 12 months). The cap is framed as prohibited \"adverse action\" against a dealer who seeks compensation under § 320.696, which every dealer submitting warranty claims does. Audits must also be \"reasonable and periodic\" (§ 320.64(25)) and may not be used to coerce (§ 320.64(30)). The calendar-year cap does not name incentive audits; see legal_review.",
+   "covers": [
+    "factory_warranty",
+    "maintenance",
+    "service",
+    "recalls",
+    "cpo",
+    "service_contracts",
+    "rate_submission"
+   ],
+   "effect": "prohibited",
+   "status": "express",
+   "reason": null,
+   "quote": "conducting or threatening to conduct any warranty, retail customer repair, or other service-related audit more frequently than once each calendar year",
+   "pinpoint": "Fla. Stat. § 320.696(2); see § 320.64(25), (30)",
+   "url": "http://www.leg.state.fl.us/statutes/index.cfm?App_mode=Display_Statute&URL=0300-0399/0320/Sections/0320.696.html"
+  },
+  {
+   "id": "selection_basis",
+   "section": "planning",
+   "label": "Selection basis disclosure",
+   "value": "Required. At the mandatory post-audit meeting (within 30 days after the audit, before any chargeback) the licensee must hand the dealer a written statement of the basis on which the dealer was selected for audit or review. Applies to warranty, maintenance, service and incentive audits alike. Document the selection rationale before fieldwork so the statement can be produced.",
+   "covers": [
+    "factory_warranty",
+    "maintenance",
+    "service",
+    "recalls",
+    "cpo",
+    "service_contracts",
+    "incentives"
+   ],
+   "effect": "required",
+   "status": "express",
+   "reason": null,
+   "quote": "a written statement containing the basis upon which the motor vehicle dealer was selected for audit or review.",
+   "pinpoint": "Fla. Stat. § 320.64(25)",
+   "url": "http://www.leg.state.fl.us/statutes/index.cfm?App_mode=Display_Statute&URL=0300-0399/0320/Sections/0320.64.html"
+  },
+  {
+   "id": "audit_basis",
+   "section": "planning",
+   "label": "Permitted basis for an audit",
+   "value": "Audits must be \"reasonable and periodic\" and limited to determining the validity of paid claims as provided in § 320.696. Conducting or threatening an audit to coerce a dealer to forego any right under §§ 320.60-320.70 or the franchise agreement is a separate licensing ground (§ 320.64(30)). The statute does not define \"reasonable\" or \"periodic\".",
+   "covers": [
+    "factory_warranty",
+    "maintenance",
+    "service",
+    "recalls",
+    "cpo",
+    "service_contracts",
+    "incentives"
+   ],
+   "effect": "conditional",
+   "status": "express",
+   "reason": null,
+   "quote": "An applicant or licensee may reasonably and periodically audit a motor vehicle dealer to determine the validity of paid claims as provided in s. 320.696.",
+   "pinpoint": "Fla. Stat. § 320.64(25); § 320.64(30)",
+   "url": "http://www.leg.state.fl.us/statutes/index.cfm?App_mode=Display_Statute&URL=0300-0399/0320/Sections/0320.64.html"
+  },
+  {
+   "id": "retaliatory_audit",
+   "section": "planning",
+   "label": "Audit as retaliation or in response to a rate request",
+   "value": "An audit taken as retaliation because the dealer invoked a statutory right (for example a parts-markup or labor-rate request under § 320.696, or a protest), asserted a violation, or participated in a proceeding is a licensing ground under § 320.64(43). Separately, § 320.696(2) bars any \"adverse action\", including a non-good-faith act, against a dealer who seeks compensation under that section. The statute does not say \"rate request\" in the audit provisions; the rule is the combined effect of (43) and § 320.696(2).",
+   "covers": [
+    "factory_warranty",
+    "maintenance",
+    "service",
+    "recalls",
+    "cpo",
+    "service_contracts",
+    "incentives",
+    "rate_submission"
+   ],
+   "effect": "prohibited",
+   "status": "reasoned_interpretation",
+   "reason": "§ 320.64(43) prohibits retaliation for invoking any statutory right and § 320.696(2) prohibits adverse action against a dealer seeking compensation; a rate request is such a right, so an audit triggered by it falls within both, although neither provision names audits or rate requests expressly.",
+   "quote": "has engaged in an action, or implemented a policy, standard, rule, practice, or program, taken as retaliation against a motor vehicle dealer because the dealer invoked a statutory right created by ss. 320.60-320.70",
+   "pinpoint": "Fla. Stat. § 320.64(43); § 320.696(2)",
+   "url": "http://www.leg.state.fl.us/statutes/index.cfm?App_mode=Display_Statute&URL=0300-0399/0320/Sections/0320.64.html"
+  },
+  {
+   "id": "audit_coercion",
+   "section": "planning",
+   "label": "Audit used to coerce",
+   "value": "Conducting or threatening to conduct any audit in order to coerce the dealer to forego rights under §§ 320.60-320.70 or the franchise agreement is prohibited. The same subsection preserves reasonable and periodic audits of paid-claim validity if the licensee complies with the audit provisions.",
+   "covers": [
+    "factory_warranty",
+    "maintenance",
+    "service",
+    "recalls",
+    "cpo",
+    "service_contracts",
+    "incentives"
+   ],
+   "effect": "prohibited",
+   "status": "express",
+   "reason": null,
+   "quote": "The applicant or licensee has conducted or threatened to conduct any audit of a motor vehicle dealer in order to coerce or attempt to coerce the dealer to forego any rights granted to the dealer under ss. 320.60-320.70",
+   "pinpoint": "Fla. Stat. § 320.64(30)",
+   "url": "http://www.leg.state.fl.us/statutes/index.cfm?App_mode=Display_Statute&URL=0300-0399/0320/Sections/0320.64.html"
+  },
+  {
+   "id": "paid_claim_chargeback_grounds",
+   "section": "testing",
+   "label": "Grounds to charge back a paid claim",
+   "value": "Two grounds only, and only as a result of a timely conducted audit: (1) the claim was false or fraudulent; or (2) the dealer failed to substantially comply with the licensee's reasonable, written and uniformly applied procedures for such repairs or incentives. The licensee must \"show\" (and in any hearing \"prove\") the ground, and may charge back only the portion of the claim so shown. These grounds override any franchise agreement, guideline, program, policy or procedure. For a warranty claim, failure to comply with \"all\" of the licensee's claim description or processing requirements is not a ground (§ 320.696(2)).",
+   "covers": [
+    "factory_warranty",
+    "maintenance",
+    "service",
+    "recalls",
+    "cpo",
+    "service_contracts",
+    "incentives"
+   ],
+   "effect": "conditional",
+   "status": "express",
+   "reason": null,
+   "quote": "was false or fraudulent or that the motor vehicle dealer failed to substantially comply with the reasonable written and uniformly applied procedures of the applicant or licensee for such repairs or incentives",
+   "pinpoint": "Fla. Stat. § 320.64(25); § 320.696(2)",
+   "url": "http://www.leg.state.fl.us/statutes/index.cfm?App_mode=Display_Statute&URL=0300-0399/0320/Sections/0320.64.html"
+  },
+  {
+   "id": "claim_denial_grounds",
+   "section": "testing",
+   "label": "Grounds to deny an unpaid claim",
+   "value": "The same sentence governs denial and chargeback: a claim may be denied only if the licensee can show it was false or fraudulent or that the dealer failed to substantially comply with the licensee's reasonable, written and uniformly applied procedures, and only for the portion so shown. Denial does not require an audit; a post-payment chargeback does. Additional denial limits: no denial, reduction or chargeback of a warranty claim for failing \"all\" claim description or processing requirements (§ 320.696(2)); no denial, reduction or chargeback for used-vehicle warranty or recall repairs because of how the need was discovered or because the dealer notified the consumer of a recall (§ 320.64(41)).",
+   "covers": [
+    "factory_warranty",
+    "maintenance",
+    "service",
+    "recalls",
+    "cpo",
+    "service_contracts",
+    "incentives"
+   ],
+   "effect": "conditional",
+   "status": "express",
+   "reason": null,
+   "quote": "An applicant or licensee may deny a claim or, as a result of a timely conducted audit, impose a chargeback against a motor vehicle dealer for warranty, maintenance, or other service-related payments or incentive payments only if",
+   "pinpoint": "Fla. Stat. § 320.64(25); § 320.696(2); § 320.64(41)",
+   "url": "http://www.leg.state.fl.us/statutes/index.cfm?App_mode=Display_Statute&URL=0300-0399/0320/Sections/0320.64.html"
+  },
+  {
+   "id": "proof_requirements",
+   "section": "testing",
+   "label": "Who must prove what",
+   "value": "The licensee carries the burden throughout. To deny or charge back it must \"show\" the ground; to charge back it may recover only what it \"has proven\"; at the post-audit meeting it must give a detailed explanation with supporting documentation for each claim proposed for chargeback; and in any DHSMV hearing it has the burden of proof that both the audit and the resulting chargeback comply with § 320.64(25). In a § 320.697 damages action the burden shifts to the licensee once the dealer makes a prima facie showing. The dealer has no stated burden.",
+   "covers": [
+    "factory_warranty",
+    "maintenance",
+    "service",
+    "recalls",
+    "cpo",
+    "service_contracts",
+    "incentives"
+   ],
+   "effect": "required",
+   "status": "express",
+   "reason": null,
+   "quote": "In any hearing pursuant to this subsection, the applicant or licensee has the burden of proof that its audit and resulting chargeback are in compliance with this subsection.",
+   "pinpoint": "Fla. Stat. § 320.64(25); § 320.697",
+   "url": "http://www.leg.state.fl.us/statutes/index.cfm?App_mode=Display_Statute&URL=0300-0399/0320/Sections/0320.64.html"
+  },
+  {
+   "id": "recovery_scope",
+   "section": "testing",
+   "label": "How much of a claim may be recovered",
+   "value": "Only that portion of the claim which the licensee has proven to be false or fraudulent, or for which the dealer failed to substantially comply with the licensee's reasonable written and uniformly applied procedures. Whole-claim chargebacks are not available where only part of the claim is shown defective (for example an unsupported add-on operation or excess labor hours on an otherwise valid repair). The rule applies notwithstanding any franchise agreement, guideline, program, policy or procedure.",
+   "covers": [
+    "factory_warranty",
+    "maintenance",
+    "service",
+    "recalls",
+    "cpo",
+    "service_contracts",
+    "incentives"
+   ],
+   "effect": "conditional",
+   "status": "express",
+   "reason": null,
+   "quote": "an applicant or licensee may deny or charge back only that portion of a warranty, maintenance, or other service-related claim or incentive claim which the applicant or licensee has proven to be false or fraudulent",
+   "pinpoint": "Fla. Stat. § 320.64(25)",
+   "url": "http://www.leg.state.fl.us/statutes/index.cfm?App_mode=Display_Statute&URL=0300-0399/0320/Sections/0320.64.html"
+  },
+  {
+   "id": "documentation_limits",
+   "section": "testing",
+   "label": "Limits on procedural (documentation) chargebacks",
+   "value": "A documentation or procedure-based chargeback stands only if the dealer failed to SUBSTANTIALLY comply with procedures that are reasonable, written and uniformly applied, and only for the portion shown. Procedures that impose a term, policy or procedure different from § 320.696 for obtaining compensation are themselves prohibited (§ 320.696(1)(c)), and any compensation policy must be applied uniformly and nondisparately among the licensee's Florida dealers (§ 320.696(2)). Unwritten, non-uniform or non-compliant procedures cannot support a chargeback.",
+   "covers": [
+    "factory_warranty",
+    "maintenance",
+    "service",
+    "recalls",
+    "cpo",
+    "service_contracts",
+    "incentives"
+   ],
+   "effect": "conditional",
+   "status": "express",
+   "reason": null,
+   "quote": "the motor vehicle dealer failed to substantially comply with the reasonable written and uniformly applied procedures of the applicant or licensee for such repairs or incentives",
+   "pinpoint": "Fla. Stat. § 320.64(25); § 320.696(1)(c), (2)",
+   "url": "http://www.leg.state.fl.us/statutes/index.cfm?App_mode=Display_Statute&URL=0300-0399/0320/Sections/0320.64.html"
+  },
+  {
+   "id": "clerical_error",
+   "section": "testing",
+   "label": "Clerical and technical errors",
+   "value": "The statute never uses the words \"clerical error\". Two provisions combine: § 320.696(2) makes it prohibited adverse action to deny, reduce or charge back a warranty claim because the dealer failed to comply with ALL of the licensee's requirements for describing or processing a claim; and § 320.64(25) allows a denial or chargeback only for failure to SUBSTANTIALLY comply with reasonable, written, uniformly applied procedures. A minor coding, description or processing defect on an otherwise valid repair is therefore not a chargeback ground. Note § 320.696(2) names \"a warranty claim\"; the substantial-compliance standard in § 320.64(25) reaches maintenance, service and incentive claims too.",
+   "covers": [
+    "factory_warranty",
+    "maintenance",
+    "service",
+    "recalls",
+    "cpo",
+    "service_contracts",
+    "incentives"
+   ],
+   "effect": "prohibited",
+   "status": "reasoned_interpretation",
+   "reason": "No clerical-error clause exists; the protection is the combined effect of the \"all of the licensee's requirements\" clause in § 320.696(2) and the \"substantially comply\" standard in § 320.64(25).",
+   "quote": "denying, reducing, or charging back a warranty claim because of a dealer’s failure to comply with all of the licensee’s requirements for describing or processing a claim.",
+   "pinpoint": "Fla. Stat. § 320.696(2); § 320.64(25)",
+   "url": "http://www.leg.state.fl.us/statutes/index.cfm?App_mode=Display_Statute&URL=0300-0399/0320/Sections/0320.696.html"
+  },
+  {
+   "id": "extrapolation",
+   "section": "testing",
+   "label": "Sampling and extrapolation",
+   "value": "Not expressly addressed. No sentence permits or forbids projecting an error rate from a sample to unsampled claims. The text is claim-specific: the licensee may charge back \"only that portion\" of a claim it \"has proven\" defective and must give, at the meeting, a detailed explanation with supporting documentation for \"each of the claims\" proposed for chargeback. An extrapolated amount has no claim-level proof or documentation behind it, so it is hard to square with the text; treat extrapolation as unavailable absent legal advice.",
+   "covers": [
+    "factory_warranty",
+    "maintenance",
+    "service",
+    "recalls",
+    "cpo",
+    "service_contracts",
+    "incentives"
+   ],
+   "effect": "not_expressly_addressed",
+   "status": "reasoned_interpretation",
+   "reason": "The statute is silent on extrapolation; the inference against it rests on the \"only that portion ... proven\" and \"each of the claims\" language, not on an express ban.",
+   "quote": "may deny or charge back only that portion of a warranty, maintenance, or other service-related claim or incentive claim which the applicant or licensee has proven to be false or fraudulent",
+   "pinpoint": "Fla. Stat. § 320.64(25)",
+   "url": "http://www.leg.state.fl.us/statutes/index.cfm?App_mode=Display_Statute&URL=0300-0399/0320/Sections/0320.64.html"
+  },
+  {
+   "id": "post_audit_meeting",
+   "section": "process",
+   "label": "Mandatory post-audit meeting",
+   "value": "No chargeback of a paid warranty, maintenance, service-related or incentive claim unless, within 30 days after the timely conducted audit, a licensee representative first meets (in person, by telephone or by video teleconference) with the officer or employee the dealer designates. Missing the 30-day meeting forfeits the chargeback. The meeting must come before, not after, the chargeback.",
+   "covers": [
+    "factory_warranty",
+    "maintenance",
+    "service",
+    "recalls",
+    "cpo",
+    "service_contracts",
+    "incentives"
+   ],
+   "effect": "required",
+   "status": "express",
+   "reason": null,
+   "quote": "may not charge back a motor vehicle dealer subsequent to the payment of a warranty, maintenance, or service-related claim or incentive claim unless, within 30 days after a timely conducted audit",
+   "pinpoint": "Fla. Stat. § 320.64(25)",
+   "url": "http://www.leg.state.fl.us/statutes/index.cfm?App_mode=Display_Statute&URL=0300-0399/0320/Sections/0320.64.html"
+  },
+  {
+   "id": "written_reasons",
+   "section": "process",
+   "label": "Written reasons",
+   "value": "At the post-audit meeting the licensee must give a detailed explanation, with supporting documentation, of the basis for each claim proposed for chargeback, plus the written selection-basis statement. After any internal dispute processes are completed it must give written notice of the final amount of the proposed chargeback; that notice starts the dealer's 30-day protest clock. The explanation must be claim-by-claim.",
+   "covers": [
+    "factory_warranty",
+    "maintenance",
+    "service",
+    "recalls",
+    "cpo",
+    "service_contracts",
+    "incentives"
+   ],
+   "effect": "required",
+   "status": "express",
+   "reason": null,
+   "quote": "At such meeting the applicant or licensee must provide a detailed explanation, with supporting documentation, as to the basis for each of the claims for which the applicant or licensee proposed a chargeback to the dealer",
+   "pinpoint": "Fla. Stat. § 320.64(25)",
+   "url": "http://www.leg.state.fl.us/statutes/index.cfm?App_mode=Display_Statute&URL=0300-0399/0320/Sections/0320.64.html"
+  },
+  {
+   "id": "dealer_response",
+   "section": "process",
+   "label": "Dealer response period",
+   "value": "After the meeting the dealer must get a reasonable period to respond to the proposed chargebacks, commensurate with the volume of claims, and never less than 45 days after the meeting. If the licensee invokes new information, the dealer gets the same meeting and response rights again.",
+   "covers": [
+    "factory_warranty",
+    "maintenance",
+    "service",
+    "recalls",
+    "cpo",
+    "service_contracts",
+    "incentives"
+   ],
+   "effect": "required",
+   "status": "express",
+   "reason": null,
+   "quote": "a reasonable period after the meeting within which to respond to the proposed chargebacks, with such period to be commensurate with the volume of claims under consideration, but in no case less than 45 days after the meeting.",
+   "pinpoint": "Fla. Stat. § 320.64(25)",
+   "url": "http://www.leg.state.fl.us/statutes/index.cfm?App_mode=Display_Statute&URL=0300-0399/0320/Sections/0320.64.html"
+  },
+  {
+   "id": "internal_appeal",
+   "section": "process",
+   "label": "Internal appeal",
+   "value": "Not mandated. The statute assumes the licensee may have \"internal dispute resolution processes\" and requires the final written chargeback notice to wait until all of them are completed, but it does not oblige the licensee to offer one. If a program offers an appeal, it must run to completion before the final notice.",
+   "covers": [
+    "factory_warranty",
+    "maintenance",
+    "service",
+    "recalls",
+    "cpo",
+    "service_contracts",
+    "incentives"
+   ],
+   "effect": "conditional",
+   "status": "reasoned_interpretation",
+   "reason": "The text references internal processes \"provided through the applicant or licensee\" and sequences the final notice after them, which conditions the notice on completion but does not itself require an appeal to exist.",
+   "quote": "After all internal dispute resolution processes provided through the applicant or licensee have been completed, the applicant or licensee shall give written notice to the motor vehicle dealer of the final amount of its proposed chargeback.",
+   "pinpoint": "Fla. Stat. § 320.64(25)",
+   "url": "http://www.leg.state.fl.us/statutes/index.cfm?App_mode=Display_Statute&URL=0300-0399/0320/Sections/0320.64.html"
+  },
+  {
+   "id": "stay_pending_dispute",
+   "section": "process",
+   "label": "Stay pending dispute",
+   "value": "If the dealer files a protest with DHSMV within 30 days after receiving the final notice, the department notifies the licensee and the licensee may not take any action to recover the proposed chargeback until the department renders a final determination, not subject to further appeal, that the chargeback complies with § 320.64. The licensee bears the burden of proof in the hearing. Debiting the parts account, netting against future payments or withholding are all \"action to recover\".",
+   "covers": [
+    "factory_warranty",
+    "maintenance",
+    "service",
+    "recalls",
+    "cpo",
+    "service_contracts",
+    "incentives"
+   ],
+   "effect": "prohibited",
+   "status": "express",
+   "reason": null,
+   "quote": "the applicant or licensee may not take any action to recover the amount of the proposed chargeback until the department renders a final determination, which is not subject to further appeal",
+   "pinpoint": "Fla. Stat. § 320.64(25)",
+   "url": "http://www.leg.state.fl.us/statutes/index.cfm?App_mode=Display_Statute&URL=0300-0399/0320/Sections/0320.64.html"
+  },
+  {
+   "id": "chargeback_hold",
+   "section": "process",
+   "label": "Minimum wait before taking the chargeback",
+   "value": "No express \"wait N days after notice\" clause. The sequence the statute imposes is: (1) meeting within 30 days after the audit; (2) at least 45 days after the meeting for the dealer to respond; (3) completion of any internal dispute processes; (4) written notice of the final amount; (5) the dealer's 30-day protest window after receipt of that notice; (6) if protested, no recovery until DHSMV's final determination. Recovering before the 30-day protest window closes would defeat the protest right the statute grants, so the practical earliest chargeback date is 30 days after the dealer receives the final notice, and only if no protest is filed.",
+   "covers": [
+    "factory_warranty",
+    "maintenance",
+    "service",
+    "recalls",
+    "cpo",
+    "service_contracts",
+    "incentives"
+   ],
+   "effect": "conditional",
+   "status": "reasoned_interpretation",
+   "reason": "The statute states the 45-day response floor and the protest stay expressly; the 30-day hold after the final notice is inferred from the protest right, which would be meaningless if recovery could precede it.",
+   "quote": "If the dealer disputes that amount, the dealer may file a protest with the department within 30 days after receipt of the notice.",
+   "pinpoint": "Fla. Stat. § 320.64(25)",
+   "url": "http://www.leg.state.fl.us/statutes/index.cfm?App_mode=Display_Statute&URL=0300-0399/0320/Sections/0320.64.html"
+  },
+  {
+   "id": "new_information",
+   "section": "process",
+   "label": "New information after the audit",
+   "value": "The licensee may not change or alter the basis for any proposed chargeback as presented at the meeting unless it receives new information affecting the basis, and that information is received within 30 days after the conclusion of the timely conducted audit. If it claims new information, the dealer gets the same meeting and response rights as for the original presentation. Information surfacing more than 30 days after the audit closes cannot be used to re-ground a chargeback.",
+   "covers": [
+    "factory_warranty",
+    "maintenance",
+    "service",
+    "recalls",
+    "cpo",
+    "service_contracts",
+    "incentives"
+   ],
+   "effect": "conditional",
+   "status": "express",
+   "reason": null,
+   "quote": "unless the applicant or licensee receives new information affecting the basis for one or more chargebacks and that new information is received within 30 days after the conclusion of the timely conducted audit.",
+   "pinpoint": "Fla. Stat. § 320.64(25)",
+   "url": "http://www.leg.state.fl.us/statutes/index.cfm?App_mode=Display_Statute&URL=0300-0399/0320/Sections/0320.64.html"
+  },
+  {
+   "id": "used_vehicle_recall_protection",
+   "section": "exceptions",
+   "label": "Used-vehicle warranty and recall repairs",
+   "value": "Except as authorized under § 320.64(25), the licensee may not deny, reduce or charge back a claim for covered warranty repairs or required recall repairs on a used motor vehicle because (a) the dealer discovered the need for the warranty or recall repair during a separate repair the consumer requested, or (b) the dealer notified the consumer of the need for recall repairs after the licensee or a government agency issued a notice of an outstanding safety-related recall. A \"solicited repair\" or \"found during unrelated work\" finding is not a chargeback ground on a used vehicle. The (25) grounds (false or fraudulent; substantial noncompliance) still apply.",
+   "covers": [
+    "factory_warranty",
+    "recalls"
+   ],
+   "effect": "prohibited",
+   "status": "express",
+   "reason": null,
+   "quote": "or process a chargeback to a motor vehicle dealer for performing covered warranty repairs or required recall repairs on a used motor vehicle due to either of the following circumstances",
+   "pinpoint": "Fla. Stat. § 320.64(41)",
+   "url": "http://www.leg.state.fl.us/statutes/index.cfm?App_mode=Display_Statute&URL=0300-0399/0320/Sections/0320.64.html"
+  },
+  {
+   "id": "export_resale_rule",
+   "section": "exceptions",
+   "label": "Export and resale chargebacks",
+   "value": "No chargeback, withholding of program money, exclusion from a promotion, allocation cut or other adverse action because the dealer sold or leased a vehicle to a customer who exported it or resold it, unless the licensee proves the dealer knew or reasonably should have known of the customer's intent. A vehicle titled or registered in any U.S. state carries a rebuttable presumption that the dealer did not know. Before any such action, including charging back a previously paid incentive, the licensee must meet with the dealer (in person, phone or video) and give a detailed explanation with supporting documentation; the dealer then gets a response period commensurate with the number of vehicles and not less than 15 days; after internal processes, the dealer may protest to DHSMV within 30 days of written notice of intent to proceed, which stays the action until a final determination; the licensee bears the burden on all issues. This process is separate from, and shorter than, the § 320.64(25) process.",
+   "covers": [
+    "incentives"
+   ],
+   "effect": "conditional",
+   "status": "express",
+   "reason": null,
+   "quote": "unless the licensee proves that the dealer knew or reasonably should have known that the customer intended to export or resell the motor vehicle.",
+   "pinpoint": "Fla. Stat. § 320.64(26)",
+   "url": "http://www.leg.state.fl.us/statutes/index.cfm?App_mode=Display_Statute&URL=0300-0399/0320/Sections/0320.64.html"
+  },
+  {
+   "id": "export_resale_notice_window",
+   "section": "exceptions",
+   "label": "Export/resale 12-month notice window",
+   "value": "A separate timing trap: no adverse action for an export or resale unless the licensee gives the dealer written notification of the resale or export within 12 months after the date the dealer sold or leased the vehicle to the customer. This clock runs from the sale or lease date, not from the date the incentive was paid, so an export-based incentive chargeback must satisfy both this window and the § 320.64(25) 12-months-from-payment audit window.",
+   "covers": [
+    "incentives"
+   ],
+   "effect": "conditional",
+   "status": "express",
+   "reason": null,
+   "quote": "unless the applicant or licensee provides written notification to the motor vehicle dealer of such resale or export within 12 months after the date the dealer sold or leased the vehicle to the customer.",
+   "pinpoint": "Fla. Stat. § 320.64(26)",
+   "url": "http://www.leg.state.fl.us/statutes/index.cfm?App_mode=Display_Statute&URL=0300-0399/0320/Sections/0320.64.html"
+  },
+  {
+   "id": "loaner_program_payments",
+   "section": "exceptions",
+   "label": "Loaner and rental program payments",
+   "value": "The licensee may not fail to pay, under any agreement, program, incentive, bonus, policy or rule, for a temporary replacement vehicle the dealer loaned, rented or provided to its service or repair customers, even if the vehicle is leased, rented, titled or registered to the dealer's rental or leasing division or an entity the dealer owns or controls, provided the dealer or that entity complies with the licensee's written and uniformly enforced vehicle eligibility, use and reporting requirements. An audit finding that the loaner was titled to an affiliate is not, by itself, a chargeback ground. Separately, where the licensee requires a loaner or counts it in a customer-satisfaction index, it must reimburse the dealer in full for the reasonable cost of providing it (§ 320.64(29)).",
+   "covers": [
+    "service",
+    "incentives"
+   ],
+   "effect": "conditional",
+   "status": "express",
+   "reason": null,
+   "quote": "may not fail to make any payment pursuant to any agreement, program, incentive, bonus, policy, or rule for any temporary replacement motor vehicle loaned, rented, or provided by a motor vehicle dealer",
+   "pinpoint": "Fla. Stat. § 320.64(39); see § 320.64(29)",
+   "url": "http://www.leg.state.fl.us/statutes/index.cfm?App_mode=Display_Statute&URL=0300-0399/0320/Sections/0320.64.html"
+  },
+  {
+   "id": "facility_incentive_floor",
+   "section": "exceptions",
+   "label": "Facility-linked incentive programs",
+   "value": "For a per-vehicle bonus, rebate or incentive program tied in part to the dealer's facility, a dealer who does not meet the facility criteria is still entitled to a reasonable percentage of the per-vehicle benefit by meeting the non-facility criteria; a percentage of at least 80 percent is presumed reasonable. A dealer who completed a facility in reliance on a program is deemed in full compliance with facility, sign and image requirements for 10 years (§ 320.64(10)(i)). An incentive chargeback premised on facility non-compliance must respect both.",
+   "covers": [
+    "incentives"
+   ],
+   "effect": "conditional",
+   "status": "express",
+   "reason": null,
+   "quote": "Any dealer who does not comply with the facility criteria or eligibility requirements of such program is entitled to receive a reasonable percentage of the bonus, incentive, rebate, or other benefit offered by the licensee under that program",
+   "pinpoint": "Fla. Stat. § 320.64(38); see § 320.64(10)(i)",
+   "url": "http://www.leg.state.fl.us/statutes/index.cfm?App_mode=Display_Statute&URL=0300-0399/0320/Sections/0320.64.html"
+  },
+  {
+   "id": "uniform_application",
+   "section": "exceptions",
+   "label": "Uniform and nondisparate application",
+   "value": "Any policy, standard, rule, program or incentive regarding compensation due under § 320.696 must be established, implemented, enforced and applied uniformly and nondisparately among the licensee's Florida dealers; doing otherwise is prohibited adverse action. Audit programs, chargeback policies and claim procedures applied to one dealer and not others, or more strictly to one dealer, fall within this.",
+   "covers": [
+    "factory_warranty",
+    "maintenance",
+    "service",
+    "recalls",
+    "cpo",
+    "service_contracts"
+   ],
+   "effect": "required",
+   "status": "express",
+   "reason": null,
+   "quote": "establishing, implementing, enforcing, or applying any policy, standard, rule, program, or incentive regarding compensation due under this section other than in a uniform and nondisparate manner among the licensee’s dealers in this state",
+   "pinpoint": "Fla. Stat. § 320.696(2)",
+   "url": "http://www.leg.state.fl.us/statutes/index.cfm?App_mode=Display_Statute&URL=0300-0399/0320/Sections/0320.696.html"
+  },
+  {
+   "id": "no_different_claim_procedures",
+   "section": "exceptions",
+   "label": "No claim terms different from the statute",
+   "value": "The licensee may not establish or implement a term, policy or procedure different from those in § 320.696 for a dealer to obtain compensation, and may not pay less than the amounts due under the section; it also may not implement or continue any compensation policy, procedure or program inconsistent with the section (§ 320.696(7)). A claim-procedure requirement that conflicts with § 320.696 cannot be a \"reasonable written and uniformly applied procedure\" for chargeback purposes.",
+   "covers": [
+    "factory_warranty",
+    "maintenance",
+    "service",
+    "recalls",
+    "cpo",
+    "service_contracts"
+   ],
+   "effect": "prohibited",
+   "status": "reasoned_interpretation",
+   "reason": "The prohibition on different or inconsistent procedures is express; the consequence for chargebacks (that a non-compliant procedure cannot ground one) follows from § 320.64(25)'s requirement that the procedure be \"reasonable\", which is not stated expressly.",
+   "quote": "A licensee shall not establish or implement a term, policy, or procedure different from those described in this section for any motor vehicle dealer to obtain compensation under this section",
+   "pinpoint": "Fla. Stat. § 320.696(1)(c); see (7)",
+   "url": "http://www.leg.state.fl.us/statutes/index.cfm?App_mode=Display_Statute&URL=0300-0399/0320/Sections/0320.696.html"
+  },
+  {
+   "id": "no_cost_recovery",
+   "section": "exceptions",
+   "label": "No recovery of warranty compensation costs",
+   "value": "The licensee may not recover or attempt to recover, directly or indirectly, any of its costs of compensating dealers under § 320.696. Any audit fee, surcharge, holdback, price adjustment or offset designed to recoup warranty reimbursement costs is prohibited; chargebacks must rest on the § 320.64(25) grounds, not on cost recovery.",
+   "covers": [
+    "factory_warranty",
+    "maintenance",
+    "service",
+    "recalls",
+    "cpo",
+    "service_contracts"
+   ],
+   "effect": "prohibited",
+   "status": "express",
+   "reason": null,
+   "quote": "A licensee shall not recover or attempt to recover, directly or indirectly, any of its costs for compensating a motor vehicle dealer under this section.",
+   "pinpoint": "Fla. Stat. § 320.696(6)",
+   "url": "http://www.leg.state.fl.us/statutes/index.cfm?App_mode=Display_Statute&URL=0300-0399/0320/Sections/0320.696.html"
+  },
+  {
+   "id": "rate_review_limit",
+   "section": "exceptions",
+   "label": "No re-review of established rates",
+   "value": "Once a parts markup or labor rate is agreed or determined under § 320.696, the licensee may not review, change or fail to pay it unless the dealer requests a change or the action follows the licensee's written, predetermined schedule for increasing compensation. A warranty audit cannot be used to re-open or re-verify a dealer's rate. Related limits: a retail customer repair audit (the kind used to test a rate submission) counts against the once-per-calendar-year cap (§ 320.696(2)); for a parts-markup request the dealer gives 10 days' notice and the licensee may, within that period, select the first of the 50 consecutive retail ROs, failing which the dealer selects (§ 320.696(3)(a)1.); the labor rate can never fall below the rate paid on January 2, 2008 (§ 320.696(4)(b)).",
+   "covers": [
+    "rate_submission"
+   ],
+   "effect": "prohibited",
+   "status": "express",
+   "reason": null,
+   "quote": "A licensee shall not review, change, or fail to pay a motor vehicle dealer for parts or labor determined under this section unless the dealer has requested a change",
+   "pinpoint": "Fla. Stat. § 320.696(5); see (2), (3)(a)1., (4)(b)",
+   "url": "http://www.leg.state.fl.us/statutes/index.cfm?App_mode=Display_Statute&URL=0300-0399/0320/Sections/0320.696.html"
+  },
+  {
+   "id": "flat_rate_times",
+   "section": "exceptions",
+   "label": "Flat-rate time guides",
+   "value": "The licensee may not eliminate flat-rate times from, or establish an unreasonable flat-rate time in, its warranty repair manual, warranty time guide or similar document, and must set reasonable times for new models consistent with existing documents. A labor-hours chargeback measured against a time guide is exposed if the guide time is unreasonable or was removed.",
+   "covers": [
+    "factory_warranty",
+    "maintenance",
+    "service",
+    "recalls",
+    "cpo",
+    "service_contracts"
+   ],
+   "effect": "prohibited",
+   "status": "express",
+   "reason": null,
+   "quote": "A licensee shall not eliminate flat-rate times from or establish an unreasonable flat-rate time in its warranty repair manual, warranty time guide, or any other similarly named document.",
+   "pinpoint": "Fla. Stat. § 320.696(4)(b)",
+   "url": "http://www.leg.state.fl.us/statutes/index.cfm?App_mode=Display_Statute&URL=0300-0399/0320/Sections/0320.696.html"
+  },
+  {
+   "id": "no_charge_parts_markup",
+   "section": "exceptions",
+   "label": "Parts furnished at no cost",
+   "value": "When the licensee supplies a part or component at no cost for a recall, campaign service action or warranty repair, it must still compensate the dealer for the part in the same manner as warranty parts compensation, less the dealer cost listed in the licensee's price schedule. A chargeback of the markup on a no-charge recall or campaign part is not supported.",
+   "covers": [
+    "factory_warranty",
+    "recalls"
+   ],
+   "effect": "required",
+   "status": "express",
+   "reason": null,
+   "quote": "the licensee shall compensate the dealer for the part or component in the same manner as warranty parts compensation under this subsection, less the dealer cost for the part or component as listed in the licensee’s price schedule.",
+   "pinpoint": "Fla. Stat. § 320.696(3)(c)",
+   "url": "http://www.leg.state.fl.us/statutes/index.cfm?App_mode=Display_Statute&URL=0300-0399/0320/Sections/0320.696.html"
+  },
+  {
+   "id": "payment_timeliness",
+   "section": "exceptions",
+   "label": "Claim payment deadline",
+   "value": "Compensation not paid within 30 days after the licensee receives a claim is not timely; hindering, delaying or rejecting proper and timely payment is prohibited adverse action (§ 320.696(2)). Holding payment of new claims while an audit or chargeback dispute is pending is exposed under both provisions.",
+   "covers": [
+    "factory_warranty",
+    "maintenance",
+    "service",
+    "recalls",
+    "cpo",
+    "service_contracts"
+   ],
+   "effect": "required",
+   "status": "express",
+   "reason": null,
+   "quote": "Compensation not paid to a motor vehicle dealer within 30 days after receipt of a claim is not timely.",
+   "pinpoint": "Fla. Stat. § 320.696(1)(c); see (2)",
+   "url": "http://www.leg.state.fl.us/statutes/index.cfm?App_mode=Display_Statute&URL=0300-0399/0320/Sections/0320.696.html"
+  },
+  {
+   "id": "confidential_dealer_data",
+   "section": "exceptions",
+   "label": "Confidentiality of dealer financial data",
+   "value": "Information a dealer provides on vehicle sales prices or profit per vehicle may not be published or disclosed in any form; other confidential dealer financial information (for example financial statements submitted with a rate request or examined in an audit) may be made publicly available only in composite form, absent written dealer consent, a subpoena or an order of the department, a court or a tribunal.",
+   "covers": [
+    "rate_submission",
+    "factory_warranty"
+   ],
+   "effect": "prohibited",
+   "status": "express",
+   "reason": null,
+   "quote": "Other confidential financial information provided by motor vehicle dealers shall not be published, disclosed, or otherwise made publicly available except in composite form.",
+   "pinpoint": "Fla. Stat. § 320.64(28)",
+   "url": "http://www.leg.state.fl.us/statutes/index.cfm?App_mode=Display_Statute&URL=0300-0399/0320/Sections/0320.64.html"
+  },
+  {
+   "id": "penalties",
+   "section": "exceptions",
+   "label": "Penalties for a non-compliant audit or chargeback",
+   "value": "An audit of previously paid warranty, maintenance, service-related or incentive payments conducted in violation of § 320.64, or any failure to meet § 320.696, is a listed ground: the license may be denied, suspended or revoked statewide or by location on proof of violations frequent enough to show a pattern of wrongdoing, and the licensee is liable under §§ 320.695 and 320.697 for ANY violation (no pattern needed). § 320.697: treble the pecuniary loss plus costs and a reasonable attorney's fee, with the burden shifting to the licensee after a prima facie showing. § 320.695: temporary or permanent injunction without bond, on a single violation, sought by the department or by a dealer in its name. § 320.699: DHSMV administrative hearing on the dealer's request.",
+   "covers": [
+    "factory_warranty",
+    "maintenance",
+    "service",
+    "recalls",
+    "cpo",
+    "service_contracts",
+    "incentives"
+   ],
+   "effect": "conditional",
+   "status": "express",
+   "reason": null,
+   "quote": "upon proof that the section was violated with sufficient frequency to establish a pattern of wrongdoing, and a licensee or applicant shall be liable for claims and remedies provided in ss. 320.695 and 320.697 for any violation",
+   "pinpoint": "Fla. Stat. § 320.64 (intro), (25); §§ 320.695, 320.697, 320.699",
+   "url": "http://www.leg.state.fl.us/statutes/index.cfm?App_mode=Display_Statute&URL=0300-0399/0320/Sections/0320.64.html"
+  },
+  {
+   "id": "protest_forum",
+   "section": "exceptions",
+   "label": "Protest forum",
+   "value": "Department of Highway Safety and Motor Vehicles: the dealer may file a protest within 30 days after receipt of the written notice of the final proposed chargeback amount. A timely protest stays all recovery until the department's final, unappealable determination, and the licensee bears the burden of proof. Dealers may also seek a § 320.699 administrative hearing on any alleged violation, a § 320.695 injunction, or § 320.697 damages in court.",
+   "covers": [
+    "factory_warranty",
+    "maintenance",
+    "service",
+    "recalls",
+    "cpo",
+    "service_contracts",
+    "incentives"
+   ],
+   "effect": "conditional",
+   "status": "express",
+   "reason": null,
+   "quote": "If the dealer disputes that amount, the dealer may file a protest with the department within 30 days after receipt of the notice.",
+   "pinpoint": "Fla. Stat. § 320.64(25); §§ 320.695, 320.697, 320.699",
+   "url": "http://www.leg.state.fl.us/statutes/index.cfm?App_mode=Display_Statute&URL=0300-0399/0320/Sections/0320.64.html"
+  }
+ ],
+ "not_addressed": [
+  {
+   "id": "advance_notice",
+   "label": "Advance audit notice",
+   "sections_reviewed": [
+    "§ 320.64(25)",
+    "§ 320.64(26)",
+    "§ 320.64(30)",
+    "§ 320.696"
+   ],
+   "note": "No pre-audit notice period. The only notice events are post-audit: the meeting within 30 days after the audit, the written selection-basis statement, the final chargeback notice, and (for exports) written notification of the resale or export within 12 months after the sale."
+  },
+  {
+   "id": "cure_rights",
+   "label": "Right to cure or resubmit",
+   "sections_reviewed": [
+    "§ 320.64(25)",
+    "§ 320.64(41)",
+    "§ 320.696"
+   ],
+   "note": "No right to correct and resubmit a denied or charged-back claim is stated. The dealer's stated rights are the response period (at least 45 days), the renewed meeting and response on new information, any internal dispute process the licensee offers, and the DHSMV protest."
+  }
+ ],
+ "legal_review": [
+  {
+   "title": "LEGAL REVIEW REQUIRED — Chargebacks finalized after month 12 from a timely audit",
+   "text": "Fla. Stat. § 320.64(25) allows a chargeback only \"as a result of a timely conducted audit\" and then requires a meeting within 30 days after the audit, a dealer response period of at least 45 days, completion of internal dispute processes, a final written notice and a 30-day protest window, a sequence that will routinely end more than 12 months after the claim or incentive was paid. The same subsection says that after the 12-month periods have elapsed all such payments \"shall be deemed final and incontrovertible for any reason notwithstanding any otherwise applicable law, and the motor vehicle dealer shall not be subject to any chargeback or repayment.\" The statute does not say whether a timely audit preserves a chargeback taken after month 12, and nothing in §§ 320.60-320.70 reconciles the two sentences.",
+   "action": "Obtain legal interpretation before taking any chargeback more than 12 months after the payment date, and schedule Florida audits early enough in the window that the meeting, 45-day response and final notice can be completed inside 12 months of payment.",
+   "pinpoint": "Fla. Stat. § 320.64(25)",
+   "quotes": [
+    {
+     "quote": "as a result of a timely conducted audit, impose a chargeback against a motor vehicle dealer for warranty, maintenance, or other service-related payments or incentive payments",
+     "pinpoint": "Fla. Stat. § 320.64(25)"
+    },
+    {
+     "quote": "shall be deemed final and incontrovertible for any reason notwithstanding any otherwise applicable law, and the motor vehicle dealer shall not be subject to any chargeback or repayment.",
+     "pinpoint": "Fla. Stat. § 320.64(25)"
+    }
+   ]
+  },
+  {
+   "title": "LEGAL REVIEW REQUIRED — Calendar-year audit cap and incentive audits",
+   "text": "Fla. Stat. § 320.696(2) makes it prohibited adverse action to conduct or threaten \"any warranty, retail customer repair, or other service-related audit more frequently than once each calendar year.\" Fla. Stat. § 320.64(25) regulates audits of \"warranty, maintenance, and other service-related payments or incentive payments\" as parallel categories with separate 12-month windows, but the calendar-year cap does not name incentive audits, and no provision says whether an incentive audit is an \"other service-related audit\" or whether a separate incentive audit in the same calendar year as a warranty audit is permitted. The statute does not reconcile the two.",
+   "action": "Obtain legal interpretation before conducting a second audit of any kind at a Florida dealer in the same calendar year; until then treat incentive audits as subject to the once-per-calendar-year cap and to the \"reasonable and periodic\" standard.",
+   "pinpoint": "Fla. Stat. § 320.696(2); § 320.64(25)",
+   "quotes": [
+    {
+     "quote": "conducting or threatening to conduct any warranty, retail customer repair, or other service-related audit more frequently than once each calendar year",
+     "pinpoint": "Fla. Stat. § 320.696(2)"
+    },
+    {
+     "quote": "Audits of incentive payments shall be performed only during the 12-month period immediately following the date the incentive was paid.",
+     "pinpoint": "Fla. Stat. § 320.64(25)"
+    }
+   ]
+  },
+  {
+   "title": "LEGAL REVIEW REQUIRED — Service contracts issued by a non-manufacturer common entity",
+   "text": "Fla. Stat. § 320.696(1)(a) requires compensation for work under a warranty, maintenance plan, extended warranty, certified pre-owned warranty or service contract \"issued by the licensee or its common entity, unless issued by a common entity that is not a manufacturer,\" which carves such contracts out of the compensation rules. Fla. Stat. § 320.64(25) limits audits of \"warranty, maintenance, and other service-related payments\" to 12 months from payment and imposes the chargeback process without that carve-out, while also describing the audit as one \"to determine the validity of paid claims as provided in s. 320.696.\" The statute does not say whether the (25) window and process apply to audits of service-contract claims that fall outside § 320.696(1)(a).",
+   "action": "Obtain legal interpretation before auditing or charging back service-contract claims paid by or for a non-manufacturer affiliate on any basis that would not satisfy § 320.64(25); until then apply the (25) window, grounds and process to all service-related payments.",
+   "pinpoint": "Fla. Stat. § 320.696(1)(a); § 320.64(25)",
+   "quotes": [
+    {
+     "quote": "under a warranty or maintenance plan, extended warranty, certified pre-owned warranty, or a service contract, issued by the licensee or its common entity, unless issued by a common entity that is not a manufacturer",
+     "pinpoint": "Fla. Stat. § 320.696(1)(a)"
+    },
+    {
+     "quote": "Audits of warranty, maintenance, and other service-related payments shall be performed by an applicant or licensee only during the 12-month period immediately following the date the claim was paid.",
+     "pinpoint": "Fla. Stat. § 320.64(25)"
+    }
+   ]
+  }
+ ],
+ "penalties_line": "An audit or chargeback that violates § 320.64(25), or any failure to meet § 320.696, is a licensing ground (denial, suspension or revocation on a pattern of wrongdoing) and makes the licensee liable for any single violation to treble the dealer's pecuniary loss plus costs and attorney's fees with the burden shifting to the licensee after a prima facie showing (§ 320.697), to an injunction without bond (§ 320.695), and to a DHSMV proceeding (§ 320.699).",
+ "protest_forum": {
+  "value": "Protest to the Department of Highway Safety and Motor Vehicles within 30 days after the dealer receives the written notice of the final proposed chargeback amount; a timely protest bars any action to recover until the department's final, unappealable determination, with the burden of proof on the licensee. Dealers may also request a § 320.699 administrative hearing or sue under §§ 320.695 and 320.697.",
+  "pinpoint": "Fla. Stat. § 320.64(25); §§ 320.695, 320.697, 320.699"
+ },
+ "exceptions_found": [
+  "Timing trap: chargebacks are allowed only \"as a result of a timely conducted audit\", yet payments become \"final and incontrovertible for any reason\" after 12 months from payment; the text does not say whether a timely audit preserves a chargeback finalized after month 12 (§ 320.64(25); legal_review).",
+  "Prerequisite: no post-payment chargeback unless a licensee representative first meets the dealer's designee within 30 days after the audit and gives claim-by-claim reasons with documentation plus a written selection-basis statement (§ 320.64(25)).",
+  "New information re-grounding a chargeback must be received within 30 days after the audit concludes, and re-triggers the meeting and response rights (§ 320.64(25)).",
+  "Used-vehicle warranty and recall repairs: no denial, reduction or chargeback because the need was found during a separate consumer-requested repair or because the dealer notified the consumer of a safety recall, except on § 320.64(25) grounds (§ 320.64(41)).",
+  "Export/resale: no chargeback or other adverse action unless the licensee proves the dealer knew or should have known; U.S. title or registration raises a rebuttable presumption; separate meeting, 15-day minimum response, protest and stay; written notice of the export or resale must be given within 12 months after the SALE date, a clock independent of the 12-months-from-payment audit window (§ 320.64(26)).",
+  "Incentive audits: own 12-month window from the date the incentive was paid; \"incentive\" includes nonmonetary consideration and any licensee-issued program payment; not named in the once-per-calendar-year cap (§ 320.64(25); § 320.696(2); legal_review).",
+  "Calendar-year cap is a calendar year, not a rolling 12 months, and also covers \"retail customer repair\" audits used to test rate submissions (§ 320.696(2)).",
+  "Loaner program payments cannot be withheld because the loaner is titled or registered to the dealer's rental/leasing affiliate if the dealer meets written, uniformly enforced eligibility, use and reporting rules; required loaners must be reimbursed in full at reasonable cost (§ 320.64(39), (29)).",
+  "Facility-linked per-vehicle incentives: non-facility-compliant dealers keep a reasonable share (80 percent presumed), and dealers who built in reliance are deemed compliant for 10 years (§ 320.64(38), (10)(i)).",
+  "Compensation policies, standards, programs and incentives must be applied uniformly and nondisparately among Florida dealers; no claim term or procedure different from § 320.696; no policy inconsistent with it (§ 320.696(2), (1)(c), (7)).",
+  "No direct or indirect recovery of the licensee's warranty compensation costs (§ 320.696(6)).",
+  "Established parts markups and labor rates may not be reviewed, changed or left unpaid except on the dealer's request or a written predetermined increase schedule; the labor rate may never drop below the January 2, 2008 rate (§ 320.696(5), (4)(b)).",
+  "Flat-rate times may not be eliminated or set unreasonably in warranty time guides (§ 320.696(4)(b)).",
+  "Markup is still owed on parts the licensee furnishes at no cost for recalls, campaigns or warranty repairs, less dealer cost (§ 320.696(3)(c)).",
+  "Claims must be paid within 30 days after receipt; hindering or delaying proper payment is adverse action (§ 320.696(1)(c), (2)).",
+  "Audits may not be conducted or threatened to coerce a dealer to forego rights; retaliation for invoking a statutory right (including a rate request or protest) is a separate ground (§ 320.64(30), (43)).",
+  "Dealer sales-price and per-vehicle profit data may not be disclosed; other confidential dealer financial data only in composite form (§ 320.64(28)).",
+  "Licensee bears the burden of proof in the DHSMV chargeback hearing and, after a prima facie showing, in a § 320.697 damages action (§ 320.64(25); § 320.697)."
+ ],
+ "pending": [],
+ "validation": [
+  {
+   "field": "audit_fields.claims.payment_deadline_days",
+   "finding": "ok",
+   "detail": "30 days confirmed: \"Compensation not paid to a motor vehicle dealer within 30 days after receipt of a claim is not timely.\" (§ 320.696(1)(c))."
+  },
+  {
+   "field": "audit_fields.claims.payment_deadline_trigger",
+   "finding": "mismatch",
+   "detail": "Minor. Atlas says \"after submission\"; the statute runs the 30 days from the licensee's RECEIPT of the claim. Corrected text: \"within 30 days after receipt of a claim\" (§ 320.696(1)(c))."
+  },
+  {
+   "field": "audit_fields.claims.denial_requirements",
+   "finding": "ok",
+   "detail": "Accurate: denial and chargeback share one sentence and the same two grounds, portion-only, in § 320.64(25); § 320.696(2) bars denial, reduction or chargeback of a warranty claim for failing \"all\" description or processing requirements. Could add § 320.64(41) (used-vehicle warranty and recall repairs: no denial because the need was found during a separate repair or because the dealer notified the consumer of a recall)."
+  },
+  {
+   "field": "audit_fields.claims.quote/pinpoint",
+   "finding": "ok",
+   "detail": "Quote verbatim at § 320.696(1)(c); cross-references to (2) and § 320.64(25) correct."
+  },
+  {
+   "field": "audit_fields.claims.dealer_filing_deadline, decision_deadline_days, deemed_approved_if_late, resubmission_rights",
+   "finding": "ok",
+   "detail": "Correctly null: §§ 320.64 and 320.696 set no dealer filing deadline, no approval/denial decision deadline, no deemed-approval rule and no resubmission right. The only claim-handling clock is the 30-day payment deadline."
+  },
+  {
+   "field": "audit_fields.chargebacks.lookback_months",
+   "finding": "ok",
+   "detail": "12 months from the date the claim (or incentive) was paid, § 320.64(25). Note the trigger is payment date, not repair or submission date."
+  },
+  {
+   "field": "audit_fields.chargebacks.fraud_extension",
+   "finding": "ok",
+   "detail": "Confirmed: no fraud carve-out. After the 12-month periods, payments are \"final and incontrovertible for any reason notwithstanding any otherwise applicable law\" and the dealer \"shall not be subject to any chargeback or repayment.\""
+  },
+  {
+   "field": "audit_fields.chargebacks.limits",
+   "finding": "mismatch",
+   "detail": "Substantively right but two precision points. (1) \"The dealer may protest to DHSMV within 30 days of the final notice\" should read \"within 30 days after receipt of the notice\" (§ 320.64(25)). (2) Under-read: \"the chargeback basis cannot change without new information\" omits that the new information must be received within 30 days after the conclusion of the audit, and that the dealer then gets the same meeting and response rights again. Also worth adding: a post-payment chargeback is available only \"as a result of a timely conducted audit\", and the calendar-year cap in § 320.696(2) names warranty, retail customer repair and service-related audits, not incentive audits."
+  },
+  {
+   "field": "audit_fields.chargebacks.quote/pinpoint",
+   "finding": "ok",
+   "detail": "Quote verbatim at § 320.64(25); pinpoint and cross-reference to § 320.696(2) correct."
+  },
+  {
+   "field": "audit_fields.penalties.private_remedies",
+   "finding": "ok",
+   "detail": "Confirmed: § 320.697 treble pecuniary loss plus costs and reasonable attorney's fee, burden shifts to licensee after prima facie showing; § 320.695 injunction without bond by the department or a dealer in its name (a single act suffices); § 320.699 administrative hearing on dealer request. § 320.64 intro and closing paragraph make the licensee liable under §§ 320.695 and 320.697 for ANY violation of the listed provisions, without a pattern."
+  },
+  {
+   "field": "audit_fields.penalties.admin_sanctions",
+   "finding": "ok",
+   "detail": "Confirmed: denial, suspension or revocation \"within the entire state or at any specific location or locations\" upon proof the section was violated \"with sufficient frequency to establish a pattern of wrongdoing\"; an audit in violation of § 320.64 or any failure under § 320.696 is ground (25)."
+  },
+  {
+   "field": "audit_fields.penalties.cite",
+   "finding": "ok",
+   "detail": "Cites correct. The 2026 Florida Statutes text of §§ 320.695, 320.697 and 320.699 matches the summary."
+  },
+  {
+   "field": "audit_procedures.advance_notice",
+   "finding": "ok",
+   "detail": "Confirmed: no pre-audit notice requirement anywhere in §§ 320.64 or 320.696. The notice events are all post-audit (meeting within 30 days, written selection basis, final chargeback notice) plus the export rule's 12-month written notification of resale or export (§ 320.64(26))."
+  },
+  {
+   "field": "audit_procedures.selection_basis_disclosed",
+   "finding": "ok",
+   "detail": "Quote verbatim and pinpoint right. The written selection-basis statement is due at the post-audit meeting, which must occur within 30 days after a timely audit and before any chargeback; the sentence covers warranty, maintenance, service-related and incentive claims."
+  },
+  {
+   "field": "audit_procedures.audit_frequency_limit",
+   "finding": "ok",
+   "detail": "Quote verbatim at § 320.696(2). Cap is per calendar year (not rolling), is framed as prohibited \"adverse action\" against a dealer who seeks compensation under § 320.696, names warranty, retail customer repair and other service-related audits, and does not name incentive audits. \"Reasonably and periodically\" at § 320.64(25) also confirmed. Score level 3 reason is accurate."
+  },
+  {
+   "field": "audit_procedures.written_reasons_before_chargeback",
+   "finding": "ok",
+   "detail": "Quote verbatim; detail matches the text, including the 30-day limit on new information and the renewed meeting and response rights. The meeting may be in person, by telephone or by video teleconference with an officer or employee the dealer designates."
+  },
+  {
+   "field": "audit_procedures.dealer_response_period",
+   "finding": "ok",
+   "detail": "Quote verbatim. \"Reasonable period ... commensurate with the volume of claims under consideration, but in no case less than 45 days after the meeting\" confirmed; the same right recurs when the licensee claims new information."
+  },
+  {
+   "field": "audit_procedures.internal_appeal",
+   "finding": "ok",
+   "detail": "Quote verbatim. The statute sequences the final notice after \"all internal dispute resolution processes provided through the applicant or licensee\" but does not mandate one; \"required: null\" is the right reading."
+  },
+  {
+   "field": "audit_procedures.chargeback_stayed_pending_appeal",
+   "finding": "mismatch",
+   "detail": "Minor. Quote verbatim and the stay and burden are right, but \"within 30 days of the final notice\" should read \"within 30 days after receipt of the notice\" (§ 320.64(25)); the protest clock runs from the dealer's receipt. The final determination must be one \"which is not subject to further appeal\"."
+  },
+  {
+   "field": "audit_procedures.extrapolation",
+   "finding": "ok",
+   "detail": "Correctly recorded as silent with the inference flagged as implied. The claim-by-claim reading rests on \"only that portion ... proven\" and the meeting requirement of a detailed explanation with supporting documentation \"for each of the claims\"; no sentence addresses sampling or projection."
+  },
+  {
+   "field": "audit_procedures.clerical_error_protection",
+   "finding": "ok",
+   "detail": "Quote verbatim at § 320.696(2) and the detail is accurate. Two cautions for the maintainer: the statute never says \"clerical error\" (the protection is the \"all of the licensee's requirements\" clause plus the \"substantially comply\" standard in § 320.64(25)); and the § 320.696(2) clause names \"a warranty claim\" only, while the substantial-compliance standard covers maintenance, service and incentive claims. Not a reclassify: the clause expressly covers \"denying, reducing, or charging back\"."
+  },
+  {
+   "field": "audit_procedures.documentation_limits",
+   "finding": "ok",
+   "detail": "Quote verbatim. \"Reasonable written and uniformly applied procedures\", portion-only, and the § 320.696(1)(c) bar on different terms, policies or procedures all confirmed. § 320.696(2) adds that compensation policies must be applied \"in a uniform and nondisparate manner\" among Florida dealers."
+  },
+  {
+   "field": "audit_procedures.fraud_exception",
+   "finding": "ok",
+   "detail": "Quote verbatim; \"exists: false\" confirmed. Fraud is a ground only inside the 12-month window."
+  },
+  {
+   "field": "audit_procedures.rate_submission_audit",
+   "finding": "ok",
+   "detail": "Both quotes verbatim (§ 320.696(5) and (3)(a)1.). Detail confirmed: 10-day notice, licensee selects the initial RO within that period (if it fails to do so timely, the dealer may select, which the Atlas omits), no review or change except on dealer request or a written predetermined increase schedule, requests not more than semiannually with supporting documentation, retail customer repair audits capped at once per calendar year. \"No rebuttal or contest procedure\" is accurate as to § 320.696; disputes go to § 320.699 or court."
+  },
+  {
+   "field": "audit_procedures.penalties_for_audit_violations",
+   "finding": "ok",
+   "detail": "Both quotes verbatim. The intro to § 320.64 imposes liability under §§ 320.695 and 320.697 for any violation and license action on a pattern; (25) lists a non-compliant audit or any § 320.696 failure as a ground."
+  },
+  {
+   "field": "audit_procedures.notes / classification / law_dates",
+   "finding": "ok",
+   "detail": "Edition confirmed as \"The 2026 Florida Statutes\"; § 320.64 history runs through s. 13, ch. 2026-39, and § 320.696 history ends at s. 3, ch. 2017-187 (last substantive change ch. 2009-93). Ch. 2026-39 changes ((16)(a)3. cross-reference, (36)(a), new (44) on distribution concentration) are now in the text and are not audit-related; (43) (retaliation, ch. 2025-38) is present. The 2027 bill-citation search on flsenate.gov returns 0 bills for § 320.64 and § 320.696."
+  }
+ ],
+ "notes": "All 18 Atlas quotes verified verbatim against the official 2026 Florida Statutes text (leg.state.fl.us), fetched in full by HTTP so quotes here are exact copies, not reassembled fragments. Edition on every page: \"The 2026 Florida Statutes\"; ch. 2026-39 (effective 10/1/2026) is already incorporated and touches (16), (36)(a) and new (44) only. No agency rule adds a warranty rule (context rule_note null), so scope is statutes. The three legal_review items are readings the text leaves open, not errors in the Atlas: (1) finality after month 12 versus a chargeback from a timely audit; (2) whether the calendar-year cap reaches incentive audits; (3) whether § 320.64(25) reaches service-contract claims outside § 320.696(1)(a). Apostrophes and quotation marks inside quotes are the statute page's typographic characters (U+2019, U+201C/U+201D). Pending: the 2027 Senate bill-citation search returned 0 bills for both sections; the 2027 regular session has not convened, so re-check after prefiling closes."
+}

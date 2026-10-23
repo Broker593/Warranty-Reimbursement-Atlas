@@ -389,6 +389,129 @@ def pages(path):
     return len(PdfReader(path).pages)
 
 
+# ---------------------------------------------------------------- Audit brief PDFs (data/audit-brief/XX.json)
+def build_brief_pdf(a, b, idx, build_date, path, scale=1.0):
+    """One page, two columns: what to know before auditing paid factory-warranty claims in this state."""
+    from reportlab.lib import colors
+    from reportlab.lib.enums import TA_LEFT
+    from reportlab.lib.pagesizes import letter
+    from reportlab.lib.styles import ParagraphStyle
+    from reportlab.lib.units import inch
+    from reportlab.platypus import BaseDocTemplate, Frame, FrameBreak, KeepTogether, PageTemplate, Paragraph, Spacer, Table, TableStyle
+    from xml.sax.saxutils import escape as X
+    navy = colors.HexColor('#142943'); grey = colors.HexColor('#9FB0C5'); amber = colors.HexColor('#6b3d00'); amberbg = colors.HexColor('#fff7ea')
+    fs = 7.3 * scale
+    B = ParagraphStyle('b', fontName='Helvetica', fontSize=fs, leading=fs * 1.24, alignment=TA_LEFT, spaceAfter=1.6 * scale)
+    H = ParagraphStyle('h', parent=B, fontName='Helvetica-Bold', fontSize=fs + 1.6, leading=(fs + 1.6) * 1.2, textColor=navy, spaceBefore=4.5 * scale, spaceAfter=1.5 * scale)
+    HS = ParagraphStyle('hs', parent=B, fontSize=fs - 0.8, leading=(fs - 0.8) * 1.2, textColor=colors.HexColor('#46566b'), spaceAfter=2)
+    T = ParagraphStyle('t', parent=B, fontName='Helvetica-Bold', fontSize=14, leading=17, textColor=colors.white, spaceAfter=0)
+    TS = ParagraphStyle('ts', parent=B, fontSize=7.6, leading=9.6, textColor=colors.white, spaceAfter=0)
+    LR = ParagraphStyle('lr', parent=B, textColor=colors.HexColor('#3a2200'), spaceAfter=1)
+    LRT = ParagraphStyle('lrt', parent=LR, fontName='Helvetica-Bold')
+    F = ParagraphStyle('f', parent=B, fontSize=fs - 0.9, leading=(fs - 0.9) * 1.22, textColor=colors.HexColor('#3d4c60'))
+    W, Hh = letter
+    lm = rm = 0.42 * inch; tm = 0.4 * inch; bm = 0.38 * inch; gutter = 0.22 * inch
+    colw = (W - lm - rm - gutter) / 2
+    secs = {s['id']: s for s in idx['sections']}; order = [s['id'] for s in idx['sections']]
+    rules = [x for x in b['rules'] if x.get('brief')]
+    lr = b.get('legal_review') or []
+    vdate = b['verified']['date']; scope = b['verified'].get('scope', 'statutes')
+    tag = f"{a['state']}-audit-brief-{vdate}"
+
+    def pin(x):
+        p = X(x.get('pin_short') or x.get('pinpoint') or '')
+        u = (x.get('url') or '').strip()
+        return f'<a href="{X(u)}" color="#0b57a8">{p}</a>' if u.startswith('http') else f'<font color="#46566b">{p}</font>'
+    def rule_par(x):
+        flag = ' <font color="#6b3d00"><b>[Legal review]</b></font>' if x.get('status') in ('conflict', 'unresolved') else ''
+        return Paragraph(f"<b>{X(x['label'])}.</b> {X(x['short'])}{flag} <font size={fs - 1.1}>{pin(x)}</font>", B)
+
+    head = Table([[Paragraph(f"AUDIT BRIEF · {X(a['name'])} ({a['state']})", T), Paragraph(f"Before auditing paid factory-warranty claims<br/>Verified {vdate} ({X(scope)}) · Built {build_date} · {X(tag)}", ParagraphStyle('tr', parent=TS, alignment=2))]],
+                 colWidths=[(W - lm - rm) * 0.5, (W - lm - rm) * 0.5])
+    head.setStyle(TableStyle([('BACKGROUND', (0, 0), (-1, -1), navy), ('VALIGN', (0, 0), (-1, -1), 'MIDDLE'), ('LEFTPADDING', (0, 0), (-1, -1), 8), ('RIGHTPADDING', (0, 0), (-1, -1), 8), ('TOPPADDING', (0, 0), (-1, -1), 5), ('BOTTOMPADDING', (0, 0), (-1, -1), 5)]))
+    top = [head, Spacer(1, 3 * scale),
+           Paragraph(f"<b>Covers:</b> {X(b.get('covers_line') or '')}" + (f"  <font color='#6b3d00'><b>{len(lr)} item{'s' if len(lr) != 1 else ''} need legal review (section 5).</b></font>" if lr else ''), B)]
+
+    body = []
+    for i, sid in enumerate(order, 1):
+        lst = [x for x in rules if x['section'] == sid]
+        if not lst and not (sid == 'exceptions' and lr):
+            continue
+        body.append(KeepTogether([Paragraph(f"{i}. {X(secs[sid]['title'])}", H), Paragraph(X(secs[sid]['blurb']), HS)] + ([rule_par(lst[0])] if lst else [])))
+        body += [rule_par(x) for x in lst[1:]]
+        if sid == 'exceptions':
+            for l in lr:
+                box = Table([[Paragraph(f"LEGAL REVIEW REQUIRED — {X(l['title'])}", LRT)], [Paragraph(X(l.get('summary') or l['text']), LR)], [Paragraph(f"<b>Action:</b> {X(l['action'])} <font color='#46566b' size={fs - 1.1}>{X(l.get('pin_short') or l['pinpoint'])}</font>", LR)]], colWidths=[colw - 2])
+                box.setStyle(TableStyle([('BOX', (0, 0), (-1, -1), 1.2, amber), ('BACKGROUND', (0, 0), (-1, -1), amberbg), ('LEFTPADDING', (0, 0), (-1, -1), 5), ('RIGHTPADDING', (0, 0), (-1, -1), 5), ('TOPPADDING', (0, 0), (-1, -1), 2), ('BOTTOMPADDING', (0, 0), (-1, -1), 1.5)]))
+                body += [Spacer(1, 2 * scale), box, Spacer(1, 2 * scale)]
+            if b.get('penalties_line'):
+                body.append(Paragraph(f"<b>If done wrong.</b> {X(b['penalties_line'])}", B))
+            pf = b.get('protest_forum') or {}
+            if pf.get('value'):
+                body.append(Paragraph(f"<b>Where the dealer protests.</b> {X(pf['value'])} <font color='#46566b' size={fs - 1.1}>{X(pf.get('pinpoint') or '')}</font>", B))
+    na = b.get('not_addressed') or []
+    foot = []
+    if na:
+        foot.append(Paragraph(f"<b>Not expressly addressed in the reviewed {X(scope)} (verified {vdate}):</b> " + X('; '.join(x['label'].lower() for x in na)) + '.', B))
+    foot.append(Paragraph(f"Generated from the Warranty Atlas data file for {X(a['name'])}; the state page has the statute quotes behind every line, a copy button, and the rules that did not fit on this page. "
+                          f"Research summary for audit planning, not legal advice. Confirm against the cited statute before acting; take disputes and every legal-review item to Legal. {X(tag)}.", F))
+
+    doc = BaseDocTemplate(path, pagesize=letter, leftMargin=lm, rightMargin=rm, topMargin=tm, bottomMargin=bm, title=f"Audit brief - {a['name']}", author='Warranty Atlas')
+    # measure the top block and footer so the two columns fill the space between them
+    avail_w = W - lm - rm
+    top_h = sum(f.wrap(avail_w, Hh)[1] for f in top) + 2
+    foot_h = sum(f.wrap(avail_w, Hh)[1] for f in foot) + 2
+    col_h = Hh - tm - bm - top_h - foot_h - 6
+    if col_h < 2 * inch:
+        raise RuntimeError('brief: no room for columns')
+    y0 = bm + foot_h + 3
+    frames = [Frame(lm, bm + foot_h + col_h + 3, avail_w, top_h, id='top', leftPadding=0, rightPadding=0, topPadding=0, bottomPadding=0),
+              Frame(lm, y0, colw, col_h, id='c1', leftPadding=0, rightPadding=0, topPadding=0, bottomPadding=0),
+              Frame(lm + colw + gutter, y0, colw, col_h, id='c2', leftPadding=0, rightPadding=0, topPadding=0, bottomPadding=0)]
+    def decorate(canv, d):
+        # footer drawn directly on the canvas so body text can never flow into it; a rule separates it from the columns
+        canv.saveState(); canv.setStrokeColor(grey); canv.setLineWidth(0.4)
+        canv.line(lm, bm + foot_h + 1.5, W - rm, bm + foot_h + 1.5)
+        y = bm
+        for f in reversed(foot):
+            w, h = f.wrap(avail_w, foot_h); f.drawOn(canv, lm, y); y += h
+        canv.restoreState()
+    doc.addPageTemplates([PageTemplate(id='brief', frames=frames, onPage=decorate)])
+    # frames fill in order: top -> c1 -> c2. If the body spills past c2 the doc runs to a second page (or a box cannot be placed)
+    # and the caller retries at a smaller scale.
+    from reportlab.platypus.doctemplate import LayoutError
+    try:
+        doc.build(top + [FrameBreak()] + body)
+    except LayoutError:
+        return False
+    return True
+
+
+def build_briefs(audit, build_date):
+    """Audit briefs: one page per state that has data/audit-brief/XX.json; the file name carries the verification date."""
+    bidx_path = os.path.join(DOCS, 'data', 'audit-brief', 'index.json')
+    if not os.path.exists(bidx_path):
+        return 0
+    bidx = load('data/audit-brief/index.json')
+    bdir = os.path.join(OUT, 'audit-briefs'); os.makedirs(bdir, exist_ok=True)
+    keep = set()
+    A_ = {x['state']: x for x in audit}
+    for st, meta in sorted(bidx['states'].items()):
+        b = load(f'data/audit-brief/{st}.json')
+        rel = meta['pdf']
+        if not rel.startswith('downloads/audit-briefs/'): sys.exit(f'{st}: audit-brief index pdf path must be under downloads/audit-briefs/')
+        p = os.path.join(DOCS, rel); keep.add(os.path.basename(p))
+        for scale in (1.0, 0.95, 0.9, 0.85, 0.8, 0.76, 0.72):
+            if build_brief_pdf(A_[st], b, bidx, build_date, p, scale) and pages(p) == 1: break
+        else:
+            sys.exit(f"{st}: audit brief could not fit on one page")
+    for fn in os.listdir(bdir):
+        if fn.endswith('.pdf') and fn not in keep:
+            os.remove(os.path.join(bdir, fn))  # superseded brief (older verification date); git history keeps it
+    print(f'Built {len(keep)} audit briefs.')
+    return len(keep)
+
+
 def main():
     ap = argparse.ArgumentParser(); ap.add_argument('--date', default=dt.date.today().isoformat())
     build_date = ap.parse_args().date
@@ -426,6 +549,7 @@ def main():
         allw.add_page(PdfReader(p).pages[0])
     with open(os.path.join(OUT, 'warranty-atlas-all-states.pdf'), 'wb') as f:
         allw.write(f)
+    build_briefs(audit, build_date)
     stale = os.path.join(OUT, 'state-pdfs.zip')
     if os.path.exists(stale):
         os.remove(stale)  # retired 2026-09-28: the per-state PDFs and all-states PDF cover it

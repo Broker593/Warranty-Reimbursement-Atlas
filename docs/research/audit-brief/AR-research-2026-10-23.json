@@ -1,0 +1,812 @@
+{
+ "state": "AR",
+ "verified": {
+  "date": "2026-10-23",
+  "scope": "statutes",
+  "sources": [
+   {
+    "cite": "Ark. Code Ann. § 23-112-313",
+    "url": "https://law.justia.com/codes/arkansas/2025/title-23/subtitle-4/chapter-112/subchapter-3/section-23-112-313/",
+    "kind": "mirror",
+    "version": "2025 Arkansas Code (Justia); history ends 'Acts ... 2021, No. 1077, §§ 5, 6; 2023, No. 515, §§ 1, 2.' Page carries no 'current through' line. NOTE: the subtitle-2 path in the task returned 403/client_error; the section lives under subtitle-4."
+   },
+   {
+    "cite": "Ark. Code Ann. § 23-112-310",
+    "url": "https://law.justia.com/codes/arkansas/2025/title-23/subtitle-4/chapter-112/subchapter-3/section-23-112-310/",
+    "kind": "mirror",
+    "version": "2025 Arkansas Code (Justia); history ends '2019, No. 924, § 2; 2021, No. 1077, § 4.'"
+   },
+   {
+    "cite": "Ark. Code Ann. § 23-112-319",
+    "url": "https://law.justia.com/codes/arkansas/title-23/subtitle-4/chapter-112/subchapter-3/section-23-112-319/",
+    "kind": "mirror",
+    "version": "2025 Arkansas Code (Justia); history 'Acts 2019, No. 924, § 4.'"
+   },
+   {
+    "cite": "Ark. Code Ann. § 23-112-105",
+    "url": "https://law.justia.com/codes/arkansas/2025/title-23/subtitle-4/chapter-112/subchapter-1/section-23-112-105/",
+    "kind": "mirror",
+    "version": "2025 Arkansas Code (Justia); history ends '2013, No. 1043, § 3; 2019, No. 315, § 2827.'"
+   },
+   {
+    "cite": "Ark. Code Ann. § 23-112-308 (two versions)",
+    "url": "https://law.justia.com/codes/arkansas/2025/title-23/subtitle-4/chapter-112/subchapter-3/section-23-112-308-d-1/",
+    "kind": "mirror",
+    "version": "2025 Arkansas Code (Justia), current version; history ends '2021, No. 504, § 10; 2025, No. 816, § 1.' The companion page section-23-112-308/ is labeled '[Effective until August 5, 2025]'."
+   },
+   {
+    "cite": "Ark. Code Ann. § 23-112-309",
+    "url": "https://law.justia.com/codes/arkansas/2025/title-23/subtitle-4/chapter-112/subchapter-3/section-23-112-309/",
+    "kind": "mirror",
+    "version": "2025 Arkansas Code (Justia); history ends '2001, No. 1053, § 10; 2019, No. 315, § 2832.'"
+   },
+   {
+    "cite": "Ark. Code Ann. § 23-112-403",
+    "url": "https://law.justia.com/codes/arkansas/2025/title-23/subtitle-4/chapter-112/subchapter-4/section-23-112-403/",
+    "kind": "mirror",
+    "version": "2025 Arkansas Code (Justia); history ends '2021, No. 1077, §§ 8-12; 2023, No. 515, §§ 3, 4.' Keyword scan only (audit, chargeback, warranty, incentive, recall, export, reimburse, retaliat, coerce)."
+   },
+   {
+    "cite": "Ark. Code Ann. § 23-112-103",
+    "url": "https://law.justia.com/codes/arkansas/2025/title-23/subtitle-4/chapter-112/subchapter-1/section-23-112-103/",
+    "kind": "mirror",
+    "version": "2025 Arkansas Code (Justia); definitions (9) distributor, (14) franchise/franchiser, (19) manufacturer, (21) motor vehicle dealer read."
+   },
+   {
+    "cite": "Ark. Code Ann. § 23-112-311",
+    "url": "https://law.justia.com/codes/arkansas/2025/title-23/subtitle-4/chapter-112/subchapter-3/section-23-112-311/",
+    "kind": "mirror",
+    "version": "2025 Arkansas Code (Justia); add-point/relocation section; no claim, audit or chargeback language."
+   },
+   {
+    "cite": "Ark. Code Ann. §§ 23-112-501, 23-112-506, 23-112-507 (subchapter 5 index also read)",
+    "url": "https://law.justia.com/codes/arkansas/2025/title-23/subtitle-4/chapter-112/subchapter-5/",
+    "kind": "mirror",
+    "version": "2025 Arkansas Code (Justia). § 501 history ends '2013, No. 1043, § 9'; § 506 '1993, No. 383, § 3'; § 507 'Acts 1975, No. 388, § 7'."
+   },
+   {
+    "cite": "Ark. Code Ann. § 23-112-1016 (Recreational Vehicle Franchise Act)",
+    "url": "https://law.justia.com/codes/arkansas/2025/title-23/subtitle-4/chapter-112/subchapter-10/section-23-112-1016/",
+    "kind": "mirror",
+    "version": "2025 Arkansas Code (Justia); history 'Acts 2013, No. 1043, § 10.' Read for scope only (RV warrantors)."
+   },
+   {
+    "cite": "Act 1077 of 2021 (HB 1922), enrolled",
+    "url": "https://arkleg.state.ar.us/Acts/FTPDocument?path=%2FACTS%2F2021R%2FPublic%2F&file=1077.pdf&ddBienniumSession=2021%2F2021R",
+    "kind": "official",
+    "version": "Enrolled act, approved 4/30/21. §§ 4-6 amend § 23-112-310(d)(1) and § 23-112-313(a), (c). Does not touch § 313(e)."
+   },
+   {
+    "cite": "Act 515 of 2023 (HB 1579), enrolled",
+    "url": "https://arkleg.state.ar.us/Acts/FTPDocument?path=%2FACTS%2F2023R%2FPublic%2F&file=515.pdf&ddBienniumSession=2023%2F2023R",
+    "kind": "official",
+    "version": "Enrolled act, approved 4/10/23, no emergency clause. §§ 1-2 rewrite § 313(f) and add § 313(g); §§ 3-4 amend § 403(a)(2)(A), (U). Does not touch § 313(e)."
+   },
+   {
+    "cite": "Act 924 of 2019 (HB 1917), enrolled",
+    "url": "https://arkleg.state.ar.us/Acts/FTPDocument?path=%2FACTS%2F2019R%2FPublic%2F&file=924.pdf&ddBienniumSession=2019%2F2019R",
+    "kind": "official",
+    "version": "Enrolled act, approved 4/11/19. § 2 rewrites § 310(d)(3); § 3 adds § 313(f) routine-maintenance definition; § 4 adds § 23-112-319. Does not touch § 313(e)."
+   },
+   {
+    "cite": "Act 1055 of 2015 (SB 917), enrolled",
+    "url": "https://arkleg.state.ar.us/Acts/FTPDocument?path=%2FACTS%2F2015R%2FPublic%2F&file=1055.pdf&ddBienniumSession=2015%2F2015R",
+    "kind": "official",
+    "version": "Enrolled act, approved 4/04/15. § 5 amends § 313(e)(3)(A) (strike-through not recoverable from text extraction; Justia 2025 confirms the 'provided the dealer receives preapproval' proviso is gone)."
+   },
+   {
+    "cite": "Act 1043 of 2013 (SB 934), enrolled",
+    "url": "https://arkleg.state.ar.us/Acts/FTPDocument?path=%2FACTS%2F2013R%2FPublic%2F&file=1043.pdf&ddBienniumSession=2013%2F2013R",
+    "kind": "official",
+    "version": "Enrolled act, approved 4/10/13. § 3 amends § 105(b); § 4 amends § 310(d)(1); § 5 repeals the former § 313(f) motor-home carve-out; § 10 adds subchapter 10 (RV Franchise Act)."
+   },
+   {
+    "cite": "Act 756 of 2009 (SB 781), enrolled",
+    "url": "https://arkleg.state.ar.us/Acts/FTPDocument?path=%2FACTS%2F2009%2FPublic%2F&file=756.pdf&ddBienniumSession=2009%2FR",
+    "kind": "official",
+    "version": "Enrolled act. § 12 rewrites § 23-112-313 and renumbers the audit/charge-back text as (e)(4), extending the appeal window from 30 to 90 days."
+   },
+   {
+    "cite": "Act 816 of 2025 (HB), enrolled",
+    "url": "https://arkleg.state.ar.us/Acts/FTPDocument?path=%2FACTS%2F2025R%2FPublic%2F&file=816.pdf&ddBienniumSession=2025%2F2025R",
+    "kind": "official",
+    "version": "Enrolled act, approved 4/17/25. § 1 amends § 23-112-308(a)(25) (buyer's tags / dealer plates) only."
+   },
+   {
+    "cite": "Act 233 of 2025, enrolled",
+    "url": "https://arkleg.state.ar.us/Acts/FTPDocument?path=%2FACTS%2F2025R%2FPublic%2F&file=233.pdf&ddBienniumSession=2025%2F2025R",
+    "kind": "official",
+    "version": "Enrolled act, approved 3/4/25. § 1 amends § 23-112-302(e) (license applications) only."
+   },
+   {
+    "cite": "Arkansas Motor Vehicle Commission Act compilation (A.C.A. Tit. 23, Subt. 4, Ch. 112)",
+    "url": "https://www.labor.arkansas.gov/wp-content/uploads/law.pdf",
+    "kind": "mirror",
+    "version": "Commission-hosted copy of the Arkansas Code of 1987 Annotated Official Edition, 'CURRENT THROUGH THE 2011 REGULAR SESSION AND UPDATES ... THROUGH JUNE 2, 2011'. Used to confirm the pre-2015 text of § 313(e)."
+   }
+  ]
+ },
+ "covers": {
+  "primary": "factory_warranty",
+  "also": [
+   {
+    "program": "recalls",
+    "treatment": "Recall campaign work is inside § 313 itself ('warranty or recall campaign agreements', (a); (c)(1)-(3)), so the (e) claim, audit and chargeback rules apply directly. Recall-remedy and stop-sale reimbursement claims under § 319 are expressly 'subject to the same limitations and requirements as a warranty reimbursement claim made under § 23-112-313', and § 319(c) bars reducing compensation (chargeback, incentive removal or reduction) because a dealer filed a § 319 claim unless the reduction is applied uniformly statewide.",
+    "pinpoint": "§ 23-112-313(a), (c); § 23-112-319(c), (d)(1)"
+   },
+   {
+    "program": "incentives",
+    "treatment": "The audit and charge-back provisions of § 313(e) 'also apply to all other incentive and reimbursement programs', but the window is 12 months after 'the date of the transactions', not the payment/credit date used for warranty claims. The 90-day Commission appeal and the stay apply ('any chargeback under this subdivision (e)(4)').",
+    "pinpoint": "§ 23-112-313(e)(4)(B), (D)"
+   },
+   {
+    "program": "maintenance",
+    "treatment": "Not named. A manufacturer-funded maintenance or service-contract reimbursement program would fall under 'all other incentive and reimbursement programs' on a plain reading ((e)(4)(B)); 'routine maintenance' is defined in (f) only to exclude it from the retail-rate calculation.",
+    "pinpoint": "§ 23-112-313(e)(4)(B), (f)"
+   },
+   {
+    "program": "service_contracts",
+    "treatment": "Not named; same reasoning as maintenance: a manufacturer reimbursement program is reached by (e)(4)(B) with the 12-month transaction-date window.",
+    "pinpoint": "§ 23-112-313(e)(4)(B)"
+   },
+   {
+    "program": "rate_submission",
+    "treatment": "Separate regime in § 310(d)(1)(D): 45-day decision or deemed approval; if submitted ROs show a rate substantially higher or lower than the rate on record, the manufacturer may request additional documentation for 45 days before or after the submitted period. No frequency limit and no audit-triggered rate consequence.",
+    "pinpoint": "§ 23-112-310(d)(1)(D)(i)-(iii); § 23-112-313(c)(4)-(7)"
+   }
+  ]
+ },
+ "rules": [
+  {
+   "id": "audit_window",
+   "section": "eligibility",
+   "label": "Audit window",
+   "value": "Warranty and recall claims: within a one-year period from the date the claim was paid or credit was issued by the manufacturer or franchiser. The year is stated as the period for the audit; no separate date is given for levying the resulting chargeback (see recovery_deadline).",
+   "covers": [
+    "factory_warranty",
+    "recalls"
+   ],
+   "effect": "conditional",
+   "status": "express",
+   "reason": null,
+   "quote": "Audit the claims within a one-year period from the date the claim was paid or credit issued by the manufacturer or franchiser",
+   "pinpoint": "Ark. Code Ann. § 23-112-313(e)(4)(A)(ii)",
+   "url": "https://law.justia.com/codes/arkansas/2025/title-23/subtitle-4/chapter-112/subchapter-3/section-23-112-313/"
+  },
+  {
+   "id": "window_trigger",
+   "section": "eligibility",
+   "label": "Window trigger for incentive and reimbursement programs",
+   "value": "Incentive and all other reimbursement programs: the audit and charge-back provisions apply for 12 months after the date of the transactions subject to audit. The trigger is the transaction date, not the date the manufacturer paid or credited the dealer (which is the trigger for warranty and recall claims).",
+   "covers": [
+    "incentives",
+    "maintenance",
+    "service_contracts"
+   ],
+   "effect": "conditional",
+   "status": "express",
+   "reason": null,
+   "quote": "The audit and charge-back provisions of this subsection also apply to all other incentive and reimbursement programs for a period of twelve (12) months after the date of the transactions that are subject to audit by the franchiser.",
+   "pinpoint": "Ark. Code Ann. § 23-112-313(e)(4)(B)",
+   "url": "https://law.justia.com/codes/arkansas/2025/title-23/subtitle-4/chapter-112/subchapter-3/section-23-112-313/"
+  },
+  {
+   "id": "post_window_exception",
+   "section": "eligibility",
+   "label": "Post-window exception (fraud)",
+   "value": "Fraud only. The manufacturer may charge back a fraudulent claim if it establishes in a court of competent jurisdiction in Arkansas that the claim is fraudulent, within a period not to exceed two years from the date of the claim. There is no extension for intentional misrepresentation, lack of cooperation or similar. Conservative reading: obtain the court finding AND take the chargeback within two years of the claim date.",
+   "covers": [
+    "factory_warranty",
+    "recalls",
+    "incentives"
+   ],
+   "effect": "conditional",
+   "status": "unresolved",
+   "reason": "The court-finding prerequisite and the two-year outer limit are express, but the sentence does not say whether 'within a period not to exceed two (2) years' governs the court finding or the chargeback. (e)(4)(C) also names only 'the manufacturer' where (e)(4)(A) names 'the manufacturer or franchiser' (see fraud_carveout_actor).",
+   "quote": "charge back any fraudulent claim if the manufacturer establishes in a court of competent jurisdiction in this state that the claim is fraudulent within a period not to exceed two (2) years from the date of the claim",
+   "pinpoint": "Ark. Code Ann. § 23-112-313(e)(4)(C)",
+   "url": "https://law.justia.com/codes/arkansas/2025/title-23/subtitle-4/chapter-112/subchapter-3/section-23-112-313/"
+  },
+  {
+   "id": "recovery_deadline",
+   "section": "eligibility",
+   "label": "Deadline to take the chargeback",
+   "value": "Not stated. The one-year period in (e)(4)(A)(ii) is written as the period within which to 'Audit the claims'; the chargeback right in (iii) carries no deadline; and (e)(4)(D)(ii) bars levying while a Commission appeal is pending, which can push an actual levy past the year. Conservative practice: finish the audit and give the chargeback notification within one year of payment or credit.",
+   "covers": [
+    "factory_warranty",
+    "recalls",
+    "incentives"
+   ],
+   "effect": "not_expressly_addressed",
+   "status": "unresolved",
+   "reason": "The audit window and the chargeback right sit in separate clauses, and nothing says whether a chargeback arising from a timely audit may be notified or levied after the one-year (or 12-month) period ends.",
+   "quote": null,
+   "note": "No single sentence states a chargeback deadline; the relevant words are the (e)(4)(A)(ii) audit-window quote above and (e)(4)(A)(iii) 'Charge back any false or unsubstantiated claims.'",
+   "pinpoint": "Ark. Code Ann. § 23-112-313(e)(4)(A)(ii)-(iii), (e)(4)(D)(ii)",
+   "url": "https://law.justia.com/codes/arkansas/2025/title-23/subtitle-4/chapter-112/subchapter-3/section-23-112-313/"
+  },
+  {
+   "id": "paid_claim_chargeback_grounds",
+   "section": "testing",
+   "label": "Grounds to charge back a paid claim",
+   "value": "Only 'false or unsubstantiated' claims may be charged back. 'Unsubstantiated' is not defined; read with (e)(4)(A)(i) (manufacturer may require documentation), a paid claim the dealer cannot support with the required documentation is the natural case. Fraudulent claims outside the one-year window go through the separate court-finding route in (e)(4)(C). The denial-side rules (clerical error, work properly performed) are not cross-referenced into this ground.",
+   "covers": [
+    "factory_warranty",
+    "recalls",
+    "incentives"
+   ],
+   "effect": "conditional",
+   "status": "express",
+   "reason": null,
+   "quote": "Charge back any false or unsubstantiated claims.",
+   "pinpoint": "Ark. Code Ann. § 23-112-313(e)(4)(A)(iii); (e)(4)(B) for incentive and reimbursement programs",
+   "url": "https://law.justia.com/codes/arkansas/2025/title-23/subtitle-4/chapter-112/subchapter-3/section-23-112-313/"
+  },
+  {
+   "id": "claim_denial_grounds",
+   "section": "testing",
+   "label": "Grounds to deny an unpaid claim",
+   "value": "No list of denial grounds. Three limits apply to an unpaid claim: (1) the manufacturer shall pay for warranty work properly performed in accordance with its requirements (§ 310(d)(3)); (2) a claim shall not be disapproved for a clerical error that does not render the amount incorrect (§ 313(e)(3)(A)); (3) a disapproval must be in writing within 30 days of submission and state the specific grounds (§ 313(e)(2)(A)(i); § 310(d)(2)(B)). These are denial rules; the statute does not carry them into the chargeback ground, which is only 'false or unsubstantiated'.",
+   "covers": [
+    "factory_warranty",
+    "recalls"
+   ],
+   "effect": "conditional",
+   "status": "express",
+   "reason": null,
+   "quote": "shall pay a motor vehicle dealer for warranty work, as long as the work in question was properly performed in accordance with requirements of the manufacturer",
+   "pinpoint": "Ark. Code Ann. § 23-112-310(d)(3); § 23-112-313(e)(2)(A)(i), (e)(3)(A)",
+   "url": "https://law.justia.com/codes/arkansas/2025/title-23/subtitle-4/chapter-112/subchapter-3/section-23-112-310/"
+  },
+  {
+   "id": "proof_requirements",
+   "section": "testing",
+   "label": "Proof and documentation",
+   "value": "The manufacturer or franchiser may require documentation for claims; no limit on what may be required is stated. No standard of proof is stated for finding a paid claim 'false or unsubstantiated'. The only stated evidentiary burden is for fraud: it must be established in an Arkansas court of competent jurisdiction before a fraud chargeback.",
+   "covers": [
+    "factory_warranty",
+    "recalls",
+    "incentives"
+   ],
+   "effect": "permitted",
+   "status": "express",
+   "reason": null,
+   "quote": "Require documentation for claims;",
+   "pinpoint": "Ark. Code Ann. § 23-112-313(e)(4)(A)(i); see (e)(4)(C)",
+   "url": "https://law.justia.com/codes/arkansas/2025/title-23/subtitle-4/chapter-112/subchapter-3/section-23-112-313/"
+  },
+  {
+   "id": "clerical_error",
+   "section": "testing",
+   "label": "Clerical error (disapproval rule)",
+   "value": "A claim shall not be DISAPPROVED because of a clerical error that does not render the claim amount incorrect, including clerical errors arising from the manufacturer's or distributor's prior-approval process. Act 1055 of 2015 removed the former 'provided the dealer receives preapproval' condition. The rule governs disapproval of a submitted claim; it does not say whether such a claim, once paid, may be charged back as 'unsubstantiated' (see legal review).",
+   "covers": [
+    "factory_warranty",
+    "recalls"
+   ],
+   "effect": "prohibited",
+   "status": "express",
+   "reason": null,
+   "quote": "A claim shall not be disapproved because a clerical error was made that does not render the amount of the claim incorrect, including without limitation clerical errors that occur as a result of a manufacturer or distributor's prior approval process.",
+   "pinpoint": "Ark. Code Ann. § 23-112-313(e)(3)(A)",
+   "url": "https://law.justia.com/codes/arkansas/2025/title-23/subtitle-4/chapter-112/subchapter-3/section-23-112-313/"
+  },
+  {
+   "id": "written_reasons",
+   "section": "process",
+   "label": "Written reasons",
+   "value": "Disapproval of a submitted claim: written notice within the 30-day decision period stating the specific grounds. Chargebacks: the statute refers only to 'notification by the manufacturer or distributor', which starts the dealer's 90-day Commission appeal clock; no form or content is prescribed. Practice: give dated written chargeback notice with reasons, since the appeal window runs from notification.",
+   "covers": [
+    "factory_warranty",
+    "recalls"
+   ],
+   "effect": "required",
+   "status": "express",
+   "reason": null,
+   "quote": "The motor vehicle dealer who submits a claim which is disapproved shall be notified in writing of the disapproval within the same period, and the notice shall state the specific grounds upon which the disapproval is based.",
+   "pinpoint": "Ark. Code Ann. § 23-112-313(e)(2)(A)(i); § 23-112-310(d)(2)(B); chargeback notification: § 23-112-313(e)(4)(D)(i)",
+   "url": "https://law.justia.com/codes/arkansas/2025/title-23/subtitle-4/chapter-112/subchapter-3/section-23-112-313/"
+  },
+  {
+   "id": "cure_rights",
+   "section": "process",
+   "label": "Cure and resubmission",
+   "value": "Disapproved (unpaid) claims only: the dealer may correct and resubmit within 30 days of receipt of the disapproval, and resubmitted claims get the same 30-day decision clock ((e)(1): 'either original or resubmitted'). No cure, correction or resubmission right is stated after a chargeback of a paid claim; the dealer's remedy there is the Commission appeal.",
+   "covers": [
+    "factory_warranty",
+    "recalls"
+   ],
+   "effect": "required",
+   "status": "express",
+   "reason": null,
+   "quote": "The motor vehicle dealer may correct and resubmit the disapproved claims within thirty (30) days of receipt of disapproval.",
+   "pinpoint": "Ark. Code Ann. § 23-112-313(e)(2)(A)(ii); see (e)(1)",
+   "url": "https://law.justia.com/codes/arkansas/2025/title-23/subtitle-4/chapter-112/subchapter-3/section-23-112-313/"
+  },
+  {
+   "id": "internal_appeal",
+   "section": "process",
+   "label": "Manufacturer internal appeal",
+   "value": "Not required. The statute says a dealer 'may contest the disapproval through the manufacturer's appeals process' but imposes no duty to maintain one, and the sentence follows the clerical-error disapproval rule. Nothing addresses an internal appeal of a chargeback; the statutory route for chargebacks is the Commission appeal.",
+   "covers": [
+    "factory_warranty",
+    "recalls"
+   ],
+   "effect": "not_expressly_addressed",
+   "status": "reasoned_interpretation",
+   "reason": "(e)(3)(B) assumes an appeals process exists and lets the dealer use it for a disapproval; it contains no 'shall maintain' language and does not mention chargebacks.",
+   "quote": "However, a dealer may contest the disapproval through the manufacturer's appeals process.",
+   "pinpoint": "Ark. Code Ann. § 23-112-313(e)(3)(B)",
+   "url": "https://law.justia.com/codes/arkansas/2025/title-23/subtitle-4/chapter-112/subchapter-3/section-23-112-313/"
+  },
+  {
+   "id": "stay_pending_dispute",
+   "section": "process",
+   "label": "Stay while the Commission appeal is pending",
+   "value": "Once the dealer files an appeal of the chargeback with the Arkansas Motor Vehicle Commission, the manufacturer or distributor shall not levy the chargeback until the appeal is resolved. The Commission must hold a hearing within 120 days of filing unless all parties have agreed to settle. Applies to 'any chargeback under this subdivision (e)(4)', so warranty, recall and incentive/reimbursement-program chargebacks alike.",
+   "covers": [
+    "factory_warranty",
+    "recalls",
+    "incentives"
+   ],
+   "effect": "required",
+   "status": "express",
+   "reason": null,
+   "quote": "If a dealer files an appeal of the chargeback with the commission, the manufacturer or distributor shall not levy the chargeback until the appeal is resolved.",
+   "pinpoint": "Ark. Code Ann. § 23-112-313(e)(4)(D)(i)-(ii)",
+   "url": "https://law.justia.com/codes/arkansas/2025/title-23/subtitle-4/chapter-112/subchapter-3/section-23-112-313/"
+  },
+  {
+   "id": "chargeback_hold",
+   "section": "process",
+   "label": "Minimum wait after chargeback notice",
+   "value": "No minimum wait is stated. The dealer has 90 days from notification to appeal, and once an appeal is filed the chargeback 'shall not' be levied until the appeal is resolved. The text does not say whether a chargeback levied inside the 90-day window must be reversed when an appeal is then filed. Conservative practice: do not levy until the 90-day window closes without an appeal, or the appeal is resolved.",
+   "covers": [
+    "factory_warranty",
+    "recalls",
+    "incentives"
+   ],
+   "effect": "conditional",
+   "status": "unresolved",
+   "reason": "(e)(4)(D)(ii) bars levying after an appeal is filed; (D)(i) gives the dealer 90 days to file; nothing addresses a levy made before an appeal is filed.",
+   "quote": "A dealer may file an appeal with the Arkansas Motor Vehicle Commission to protest any chargeback under this subdivision (e)(4) within ninety (90) days of notification by the manufacturer or distributor.",
+   "pinpoint": "Ark. Code Ann. § 23-112-313(e)(4)(D)(i)-(ii)",
+   "url": "https://law.justia.com/codes/arkansas/2025/title-23/subtitle-4/chapter-112/subchapter-3/section-23-112-313/"
+  },
+  {
+   "id": "recall_claim_same_limits",
+   "section": "exceptions",
+   "label": "Recall-remedy and stop-sale reimbursement claims take the § 313 limits",
+   "value": "A dealer's reimbursement claim for a recall remedy or repair, or for stop-sale/do-not-drive compensation on a used vehicle when no part or remedy is reasonably available, is subject to the same limitations and requirements as a warranty reimbursement claim under § 313 (unless paid under a national recall compensation program that pays at least as much, or as otherwise agreed). So the one-year audit window, 'false or unsubstantiated' ground, fraud route, 90-day appeal and stay apply to those claims.",
+   "covers": [
+    "recalls"
+   ],
+   "effect": "conditional",
+   "status": "express",
+   "reason": null,
+   "quote": "Is subject to the same limitations and requirements as a warranty reimbursement claim made under § 23-112-313",
+   "pinpoint": "Ark. Code Ann. § 23-112-319(d)(1); see § 23-112-319(a)-(b)",
+   "url": "https://law.justia.com/codes/arkansas/title-23/subtitle-4/chapter-112/subchapter-3/section-23-112-319/"
+  },
+  {
+   "id": "recall_claim_anti_retaliation",
+   "section": "exceptions",
+   "label": "No chargeback or incentive reduction because a § 319 recall claim was filed",
+   "value": "It is a violation for a manufacturer to reduce compensation otherwise owed to a dealer because the dealer submitted a § 319 reimbursement claim, including through a chargeback, removal from an incentive program, or a reduction in the amount owed under an incentive program. Exception: a reduction applied uniformly to all new motor vehicle dealers of the same line make in the state. § 319 reaches used vehicles under a federal safety or emissions recall with a stop-sale or do-not-drive order and parts unavailable 30 days or longer.",
+   "covers": [
+    "recalls",
+    "incentives"
+   ],
+   "effect": "prohibited",
+   "status": "express",
+   "reason": null,
+   "quote": "It is a violation of this section for a manufacturer to reduce the amount of compensation otherwise owed to a new motor vehicle dealer because the new motor vehicle dealer has submitted a claim for reimbursement under this section",
+   "pinpoint": "Ark. Code Ann. § 23-112-319(c)(1)(A)-(C), (c)(2); scope § 23-112-319(b)",
+   "url": "https://law.justia.com/codes/arkansas/title-23/subtitle-4/chapter-112/subchapter-3/section-23-112-319/"
+  },
+  {
+   "id": "fraud_carveout_actor",
+   "section": "exceptions",
+   "label": "Fraud carve-out is written for 'the manufacturer' only",
+   "value": "(e)(4)(A) gives audit and chargeback rights to 'the manufacturer or franchiser' and (e)(4)(D) refers to 'the manufacturer or distributor', but the fraud carve-out in (e)(4)(C) says 'the manufacturer retains the right'. § 23-112-103(14) treats a distributor as a 'franchiser'. A distributor that is the franchiser should not assume it can use the two-year fraud route without legal review.",
+   "covers": [
+    "factory_warranty",
+    "recalls",
+    "incentives"
+   ],
+   "effect": "conditional",
+   "status": "unresolved",
+   "reason": "The three clauses of (e)(4) name different actors; nothing in § 313 or the § 103 definitions says whether 'manufacturer' in (C) includes a distributor-franchiser.",
+   "quote": "However, the manufacturer retains the right to charge back any fraudulent claim",
+   "pinpoint": "Ark. Code Ann. § 23-112-313(e)(4)(A), (C), (D)(i); § 23-112-103(14)",
+   "url": "https://law.justia.com/codes/arkansas/2025/title-23/subtitle-4/chapter-112/subchapter-3/section-23-112-313/"
+  },
+  {
+   "id": "rate_submission_documentation_cap",
+   "section": "exceptions",
+   "label": "Rate-submission validation: 45-day documentation window",
+   "value": "Rate-change requests: approve or disapprove within 45 days of receipt or the request is approved. If the submitted repair orders show a labor rate or parts markup substantially higher or lower than the rate on record, the manufacturer or distributor may request additional documentation for 45 days before or 45 days after the submitted period. That is the only validation step the statute names. The dealer's ROs must come from the lesser of 100 sequential customer-pay ROs or a 90-day look-back, with repair dates within 180 days before submission (§ 313(c)(6)(B)). No frequency limit on requests; no audit-triggered rate consequence.",
+   "covers": [
+    "rate_submission"
+   ],
+   "effect": "conditional",
+   "status": "express",
+   "reason": null,
+   "quote": "may request additional documentation for a period of either forty-five (45) days prior or forty-five (45) days subsequent to the time period for which the repair orders were submitted",
+   "pinpoint": "Ark. Code Ann. § 23-112-310(d)(1)(D)(i)-(iii); § 23-112-313(c)(4)-(7)",
+   "url": "https://law.justia.com/codes/arkansas/2025/title-23/subtitle-4/chapter-112/subchapter-3/section-23-112-310/"
+  },
+  {
+   "id": "deemed_approval_timing",
+   "section": "exceptions",
+   "label": "Deemed approval and payment clock",
+   "value": "Claims not specifically disapproved in writing within 30 days of submission are deemed approved and must be paid within 30 days; approved claims are paid within 30 days following approval (§ 310(d)(2)(A)). The statute does not exempt deemed-approved claims from the one-year audit. Note the codified (e)(1) reads 'within thirty (30) days following their approval or disapproval' (a drafting defect carried since Act 756 of 2009); the operative 30-day clocks are in (e)(2)(B) and § 310(d)(2)(B).",
+   "covers": [
+    "factory_warranty",
+    "recalls"
+   ],
+   "effect": "required",
+   "status": "express",
+   "reason": null,
+   "quote": "Any claims not specifically disapproved in writing within thirty (30) days from their submission shall be deemed approved, and payment shall follow within thirty (30) days.",
+   "pinpoint": "Ark. Code Ann. § 23-112-313(e)(1)-(2); § 23-112-310(d)(2)(A)-(B)",
+   "url": "https://law.justia.com/codes/arkansas/2025/title-23/subtitle-4/chapter-112/subchapter-3/section-23-112-313/"
+  },
+  {
+   "id": "ota_assistance_compensation",
+   "section": "exceptions",
+   "label": "Over-the-air / remote update assistance is compensable",
+   "value": "Added by Act 515 of 2023: the manufacturer, distributor or branch shall compensate a dealer that provides customer-requested assistance with an over-the-air or remote change, repair or update performed at the dealer's location or other manufacturer-authorized repair location. Expect these as a claim category under § 313; the statute sets no separate audit or chargeback rule for them.",
+   "covers": [
+    "factory_warranty"
+   ],
+   "effect": "required",
+   "status": "express",
+   "reason": null,
+   "quote": "shall compensate a motor vehicle dealer that provides assistance requested by a customer whose motor vehicle was subjected to an over-the-air or remote change, repair, or update",
+   "pinpoint": "Ark. Code Ann. § 23-112-313(g)",
+   "url": "https://law.justia.com/codes/arkansas/2025/title-23/subtitle-4/chapter-112/subchapter-3/section-23-112-313/"
+  },
+  {
+   "id": "penalties",
+   "section": "exceptions",
+   "label": "Sanctions and remedies",
+   "value": "Administrative: the Commission may deny, suspend or revoke a manufacturer's or distributor's license on proof it 'unfairly and without due regard to the equities of the parties or to the detriment of the public welfare' failed to properly fulfill a warranty agreement or to adequately and fairly compensate dealers for labor, parts or incidental expenses under factory warranty agreements (§ 308(a)(18)(A)); in lieu of revocation a penalty up to $10,000, in lieu of suspension $50-$500 per day capped at $5,000, each instance a separate violation, only if the Commission finds the public interest is not impaired (§ 309). Civil: a licensee suffering pecuniary loss from another licensee's willful failure to comply may recover reasonable damages and attorney's fees; a dealer that prevails against a manufacturer or distributor under any provision of the chapter also has a cause of action for attorney's fees if none were awarded in an earlier administrative hearing (§ 105). No audit-specific penalty exists.",
+   "covers": [
+    "factory_warranty",
+    "recalls",
+    "incentives"
+   ],
+   "effect": "conditional",
+   "status": "express",
+   "reason": null,
+   "quote": "failed to properly fulfill any warranty agreement or to adequately and fairly compensate any of its motor vehicle dealers for labor, parts, or incidental expenses incurred by the dealer with regard to factory warranty agreements performed by the dealer",
+   "pinpoint": "Ark. Code Ann. § 23-112-308(a)(18)(A); § 23-112-309(a)(3), (b)(1)-(2), (d); § 23-112-105(a)-(b)",
+   "url": "https://law.justia.com/codes/arkansas/2025/title-23/subtitle-4/chapter-112/subchapter-3/section-23-112-308-d-1/"
+  }
+ ],
+ "not_addressed": [
+  {
+   "id": "frequency_cap",
+   "label": "Audit frequency cap",
+   "sections_reviewed": [
+    "§ 23-112-313",
+    "§ 23-112-310",
+    "§ 23-112-319",
+    "§ 23-112-403"
+   ],
+   "note": "The only 'reasonable basis' language for warranty audits is in the Recreational Vehicle Franchise Act (§ 23-112-1016(b)(1)) and binds RV warrantors only."
+  },
+  {
+   "id": "advance_notice",
+   "label": "Advance audit notice",
+   "sections_reviewed": [
+    "§ 23-112-313",
+    "§ 23-112-310",
+    "§ 23-112-319",
+    "§ 23-112-403"
+   ],
+   "note": null
+  },
+  {
+   "id": "selection_basis",
+   "label": "Selection basis disclosure",
+   "sections_reviewed": [
+    "§ 23-112-313",
+    "§ 23-112-310",
+    "§ 23-112-319",
+    "§ 23-112-403"
+   ],
+   "note": null
+  },
+  {
+   "id": "audit_basis",
+   "label": "Audit basis (reasonable / non-retaliatory / not tied to a rate request)",
+   "sections_reviewed": [
+    "§ 23-112-313",
+    "§ 23-112-310",
+    "§ 23-112-319",
+    "§ 23-112-403"
+   ],
+   "note": "No general requirement. The only anti-retaliation rule is § 23-112-319(c), limited to reductions made because a dealer filed a § 319 recall-reimbursement claim (recorded as a rule). § 403(a)(2)(U)(iii) bars unreasonable discrimination among franchisees in assistance programs 'including ... warranty policy adjustments', which is not an audit rule."
+  },
+  {
+   "id": "recovery_scope",
+   "label": "Recovery scope (whole claim vs. unsupported portion)",
+   "sections_reviewed": [
+    "§ 23-112-313(e)(4)",
+    "§ 23-112-319"
+   ],
+   "note": "'Charge back any false or unsubstantiated claims' does not say whether the whole claim or only the unsupported amount may be recovered. Do not infer whole-claim recovery."
+  },
+  {
+   "id": "documentation_limits",
+   "label": "Limits on claim documentation",
+   "sections_reviewed": [
+    "§ 23-112-313(e)(4)(A)(i)",
+    "§ 23-112-310(d)"
+   ],
+   "note": "The manufacturer may 'Require documentation for claims' with no stated limit. The 45-day additional-documentation cap in § 310(d)(1)(D)(iii) is a rate-submission rule, not a claim rule."
+  },
+  {
+   "id": "extrapolation",
+   "label": "Extrapolation / sampling",
+   "sections_reviewed": [
+    "§ 23-112-313",
+    "§ 23-112-310",
+    "§ 23-112-319"
+   ],
+   "note": null
+  },
+  {
+   "id": "dealer_response",
+   "label": "Dealer rebuttal period before a chargeback",
+   "sections_reviewed": [
+    "§ 23-112-313(e)(4)(D)",
+    "§ 23-112-501 et seq."
+   ],
+   "note": "No pre-chargeback rebuttal period. The dealer's response is the 90-day Commission appeal (recorded under chargeback_hold and stay_pending_dispute)."
+  },
+  {
+   "id": "new_information",
+   "label": "Reopening on new information",
+   "sections_reviewed": [
+    "§ 23-112-313",
+    "§ 23-112-310",
+    "§ 23-112-319"
+   ],
+   "note": null
+  },
+  {
+   "id": "chargeback_notice_content",
+   "label": "Written reasons for a chargeback",
+   "sections_reviewed": [
+    "§ 23-112-313(e)(4)(D)(i)",
+    "§ 23-112-313(e)(2)(A)(i)"
+   ],
+   "note": "Only 'notification by the manufacturer or distributor' is mentioned, as the start of the 90-day appeal clock. The written-specific-grounds requirement applies to disapprovals of submitted claims."
+  }
+ ],
+ "legal_review": [
+  {
+   "title": "LEGAL REVIEW REQUIRED — Fraud chargebacks outside the one-year window",
+   "text": "§ 23-112-313(e)(4)(C) lets 'the manufacturer' charge back a fraudulent claim if it establishes fraud in an Arkansas court of competent jurisdiction 'within a period not to exceed two (2) years from the date of the claim'. The sentence does not say whether the two-year limit governs the court finding or the chargeback, and it names only 'the manufacturer' while (e)(4)(A) grants the audit and chargeback rights to 'the manufacturer or franchiser' and (D) speaks of 'the manufacturer or distributor'. The statute does not reconcile the two-year attachment or the actor mismatch.",
+   "action": "Obtain legal interpretation before relying on (e)(4)(C), especially as a distributor-franchiser; until then, obtain the court finding and take the chargeback within two years of the claim date.",
+   "pinpoint": "Ark. Code Ann. § 23-112-313(e)(4)(A), (C), (D)(i); § 23-112-103(14)",
+   "quotes": [
+    {
+     "quote": "charge back any fraudulent claim if the manufacturer establishes in a court of competent jurisdiction in this state that the claim is fraudulent within a period not to exceed two (2) years from the date of the claim",
+     "pinpoint": "Ark. Code Ann. § 23-112-313(e)(4)(C)"
+    },
+    {
+     "quote": "The manufacturer or franchiser may:",
+     "pinpoint": "Ark. Code Ann. § 23-112-313(e)(4)(A)"
+    }
+   ]
+  },
+  {
+   "title": "LEGAL REVIEW REQUIRED — Timing of the chargeback levy",
+   "text": "§ 23-112-313(e)(4)(A)(ii) lets the manufacturer or franchiser 'Audit the claims within a one-year period from the date the claim was paid or credit issued', and (iii) lets it 'Charge back any false or unsubstantiated claims' with no deadline. (e)(4)(D)(i) gives the dealer 90 days from notification to appeal to the Commission and (D)(ii) bars levying the chargeback once an appeal is filed. The statute does not say whether a chargeback from a timely audit may be notified or levied after the year ends, nor whether a chargeback levied before an appeal is filed must be reversed on filing.",
+   "action": "Obtain legal interpretation before levying a chargeback after the one-year (or 12-month incentive) period or inside the 90-day appeal window; until then, notify within the window and hold the levy until the appeal window closes or the appeal is resolved.",
+   "pinpoint": "Ark. Code Ann. § 23-112-313(e)(4)(A)(ii)-(iii), (e)(4)(D)(i)-(ii)",
+   "quotes": [
+    {
+     "quote": "Audit the claims within a one-year period from the date the claim was paid or credit issued by the manufacturer or franchiser",
+     "pinpoint": "Ark. Code Ann. § 23-112-313(e)(4)(A)(ii)"
+    },
+    {
+     "quote": "If a dealer files an appeal of the chargeback with the commission, the manufacturer or distributor shall not levy the chargeback until the appeal is resolved.",
+     "pinpoint": "Ark. Code Ann. § 23-112-313(e)(4)(D)(ii)"
+    }
+   ]
+  },
+  {
+   "title": "LEGAL REVIEW REQUIRED — Clerical errors on paid claims",
+   "text": "§ 23-112-313(e)(3)(A) bars DISAPPROVAL of a claim for a clerical error that does not render the amount incorrect, including errors from the manufacturer's or distributor's prior-approval process. § 23-112-313(e)(4)(A)(iii) permits charging back 'any false or unsubstantiated claims' and does not cross-reference (e)(3)(A). The statute does not say whether a paid claim carrying such a clerical error can be treated as 'unsubstantiated' and charged back.",
+   "action": "Obtain legal interpretation before charging back a paid claim for a clerical or prior-approval error that does not change the claim amount.",
+   "pinpoint": "Ark. Code Ann. § 23-112-313(e)(3)(A), (e)(4)(A)(iii)",
+   "quotes": [
+    {
+     "quote": "A claim shall not be disapproved because a clerical error was made that does not render the amount of the claim incorrect",
+     "pinpoint": "Ark. Code Ann. § 23-112-313(e)(3)(A)"
+    },
+    {
+     "quote": "Charge back any false or unsubstantiated claims.",
+     "pinpoint": "Ark. Code Ann. § 23-112-313(e)(4)(A)(iii)"
+    }
+   ]
+  }
+ ],
+ "penalties_line": "An improper audit or chargeback exposes the manufacturer or distributor to a dealer's action for reasonable damages and attorney's fees for a willful failure to comply (§ 23-112-105(a)-(b)), and to Commission denial, suspension or revocation of its license for unfairly failing to fulfill a warranty agreement or fairly compensate dealers (§ 23-112-308(a)(18)(A)), or a penalty in lieu of up to $10,000 (revocation) or $50-$500 per day capped at $5,000 (suspension), each instance a separate violation (§ 23-112-309).",
+ "protest_forum": {
+  "value": "Appeal to the Arkansas Motor Vehicle Commission within 90 days of notification of the chargeback; the chargeback may not be levied while the appeal is pending; hearing within 120 days of filing unless all parties agree to settle; procedure under § 23-112-501 et seq., with further appeal under the Arkansas Administrative Procedure Act",
+  "pinpoint": "Ark. Code Ann. § 23-112-313(e)(4)(D)(i)-(iii); § 23-112-506"
+ },
+ "exceptions_found": [
+  "Recall-remedy and stop-sale reimbursement claims under § 23-112-319 are expressly 'subject to the same limitations and requirements as a warranty reimbursement claim made under § 23-112-313' (§ 23-112-319(d)(1)).",
+  "Anti-retaliation: it is a violation to reduce compensation owed to a dealer because it filed a § 319 recall-reimbursement claim, including by chargeback, removal from an incentive program or reduction of an incentive amount, unless applied uniformly to all same-line-make dealers in the state (§ 23-112-319(c)).",
+  "The fraud carve-out names only 'the manufacturer', while the audit/chargeback grant names 'the manufacturer or franchiser' and the appeal clause 'the manufacturer or distributor' (§ 23-112-313(e)(4)(A), (C), (D)); unresolved for a distributor-franchiser.",
+  "Incentive and reimbursement-program window runs 12 months from 'the date of the transactions', not from payment or credit (§ 23-112-313(e)(4)(B)).",
+  "The one-year period is stated as the period for the audit; no deadline is stated for levying the chargeback, and the stay during a Commission appeal can push a levy past the year (§ 23-112-313(e)(4)(A)(ii)-(iii), (D)(ii)).",
+  "Hearing-within-120-days rule yields if all parties have agreed to settle (§ 23-112-313(e)(4)(D)(ii)).",
+  "Denial-side limit: the manufacturer 'shall pay' for warranty work properly performed in accordance with its requirements (§ 23-112-310(d)(3), as rewritten by Act 924 of 2019).",
+  "Rate submissions: additional documentation limited to 45 days before or after the submitted RO period, and only when the submitted rate is substantially higher or lower than the rate on record (§ 23-112-310(d)(1)(D)(iii)).",
+  "Over-the-air/remote update assistance requested by a customer is a compensable claim category since Act 515 of 2023 (§ 23-112-313(g)).",
+  "Codified § 23-112-313(e)(1) reads 'approved or disapproved within thirty (30) days following their approval or disapproval' — a drafting defect; the operative clocks are (e)(2)(B) and § 23-112-310(d)(2)(B).",
+  "Separate regime: recreational-vehicle warrantors are governed by § 23-112-1016 (audits 'on a reasonable basis'; denial only for cause), not by § 23-112-313."
+ ],
+ "pending": [],
+ "validation": [
+  {
+   "field": "audit_fields.claims.decision_deadline_days",
+   "finding": "ok",
+   "detail": "30 days: (e)(2)(B) 'within thirty (30) days from their submission'; § 310(d)(2)(B) 'within thirty (30) days after their receipt'."
+  },
+  {
+   "field": "audit_fields.claims.deemed_approved_if_late",
+   "finding": "ok",
+   "detail": "(e)(2)(B): 'shall be deemed approved'."
+  },
+  {
+   "field": "audit_fields.claims.payment_deadline_days / payment_deadline_trigger",
+   "finding": "ok",
+   "detail": "§ 310(d)(2)(A): 'paid within thirty (30) days following their approval'; (e)(2)(B): deemed-approved claims, 'payment shall follow within thirty (30) days'."
+  },
+  {
+   "field": "audit_fields.claims.resubmission_rights",
+   "finding": "ok",
+   "detail": "(e)(2)(A)(ii) verbatim in substance; (e)(1) gives resubmitted claims the same 30-day decision clock."
+  },
+  {
+   "field": "audit_fields.claims.denial_requirements",
+   "finding": "mismatch",
+   "detail": "Under-reads. Omits § 23-112-310(d)(3): the manufacturer 'shall pay a motor vehicle dealer for warranty work, as long as the work in question was properly performed in accordance with requirements of the manufacturer' (Act 924 of 2019 removed 'safety and repair specifications, bulletins, and' and the technician-preapproval subdivisions). Corrected text: 'Written notice within the 30-day period stating the specific grounds (§ 313(e)(2)(A)(i); § 310(d)(2)(B)). A claim may not be disapproved for a clerical error that does not make the claim amount incorrect, including errors from the manufacturer's prior-approval process (§ 313(e)(3)(A)). The manufacturer must pay for warranty work properly performed in accordance with its requirements (§ 310(d)(3)). The dealer may contest a disapproval through the manufacturer's appeals process (§ 313(e)(3)(B)).'"
+  },
+  {
+   "field": "audit_fields.claims.quote",
+   "finding": "ok",
+   "detail": "Verbatim (e)(2)(B)."
+  },
+  {
+   "field": "audit_fields.claims.pinpoint",
+   "finding": "ok",
+   "detail": "Correct; § 310(d)(2)(A)-(B) also carries the 30-day decision rule."
+  },
+  {
+   "field": "audit_fields.chargebacks.lookback_months",
+   "finding": "ok",
+   "detail": "12 months is right for both programs, but the triggers differ: warranty/recall claims run one year from 'the date the claim was paid or credit issued'; incentive and reimbursement programs run 12 months 'after the date of the transactions' ((e)(4)(B)). Record both triggers."
+  },
+  {
+   "field": "audit_fields.chargebacks.fraud_extension",
+   "finding": "ok",
+   "detail": "Court-finding condition and two-year outer limit are verbatim in substance. Two cautions: the text does not say whether the two-year limit attaches to the court finding or the chargeback (read conservatively: both), and (e)(4)(C) names only 'the manufacturer' (see legal review)."
+  },
+  {
+   "field": "audit_fields.chargebacks.limits",
+   "finding": "mismatch",
+   "detail": "Under-reads in three places. Corrected text: 'The manufacturer or franchiser may audit warranty and recall claims within one year from the date the claim was paid or credit issued; incentive and reimbursement programs are auditable for 12 months after the date of the transactions. Only false or unsubstantiated claims may be charged back. The dealer may appeal any (e)(4) chargeback to the Arkansas Motor Vehicle Commission within 90 days of notification; once an appeal is filed the chargeback may not be levied until the appeal is resolved, and the Commission must hold a hearing within 120 days of filing unless all parties have agreed to settle. The one-year period is stated for the audit; no separate deadline is stated for levying the chargeback.'"
+  },
+  {
+   "field": "audit_fields.chargebacks.quote",
+   "finding": "ok",
+   "detail": "Verbatim (e)(4)(A)(ii)-(iii)."
+  },
+  {
+   "field": "audit_fields.chargebacks.pinpoint",
+   "finding": "ok",
+   "detail": "Correct."
+  },
+  {
+   "field": "audit_fields.penalties.private_remedies",
+   "finding": "ok",
+   "detail": "§ 105(a) and (b) verbatim in substance. Add the condition on (b): the fee action exists 'if none have been awarded in an earlier administrative hearing'."
+  },
+  {
+   "field": "audit_fields.penalties.admin_sanctions",
+   "finding": "mismatch",
+   "detail": "Under-reads the sanction ground and drops the pinpoint. § 308(a)(18)(A) requires 'satisfactory proof' that the manufacturer 'has unfairly and without due regard to the equities of the parties or to the detriment of the public welfare failed to properly fulfill any warranty agreement or to adequately and fairly compensate any of its motor vehicle dealers for labor, parts, or incidental expenses incurred by the dealer with regard to factory warranty agreements performed by the dealer'. § 309 amounts are right; add that the penalty in lieu is available 'only if the commission formally finds that the public interest would not be impaired thereby' (§ 309(a)(3)) and that § 309(e) lets the Commission sue in Pulaski County Circuit Court for an unpaid penalty. Pinpoint: § 23-112-308(a)(18)(A); § 23-112-309(a)(3), (b)(1)-(2), (d)-(e). Act 816 of 2025 amended only § 308(a)(25) (buyer's tags), not (18)."
+  },
+  {
+   "field": "audit_fields.penalties.cite",
+   "finding": "ok",
+   "detail": "Correct."
+  },
+  {
+   "field": "audit_procedures.advance_notice",
+   "finding": "ok",
+   "detail": "Silent. Reviewed §§ 313, 310, 319, 403, 501-509."
+  },
+  {
+   "field": "audit_procedures.selection_basis_disclosed",
+   "finding": "ok",
+   "detail": "Silent. Same sections reviewed."
+  },
+  {
+   "field": "audit_procedures.audit_frequency_limit",
+   "finding": "ok",
+   "detail": "Silent for motor vehicle warrantors. § 23-112-1016(b)(1) ('on a reasonable basis') binds RV warrantors only."
+  },
+  {
+   "field": "audit_procedures.written_reasons_before_chargeback",
+   "finding": "ok",
+   "detail": "Correct: written specific grounds apply to disapprovals ((e)(2)(A)(i)); chargebacks get only 'notification' ((e)(4)(D)(i))."
+  },
+  {
+   "field": "audit_procedures.dealer_response_period",
+   "finding": "ok",
+   "detail": "Correct: no rebuttal period; 90 days from notification to appeal."
+  },
+  {
+   "field": "audit_procedures.internal_appeal",
+   "finding": "ok",
+   "detail": "Quote verbatim (e)(3)(B). Detail correct: no duty to maintain an appeals process; nothing on chargebacks."
+  },
+  {
+   "field": "audit_procedures.chargeback_stayed_pending_appeal",
+   "finding": "ok",
+   "detail": "Quote verbatim (e)(4)(D)(ii). Add the settlement exception to the 120-day hearing rule ('unless all parties have otherwise agreed to settle the matter'). Coverage of incentive chargebacks via (e)(4)(B) and 'any chargeback under this subdivision (e)(4)' is a sound reading."
+  },
+  {
+   "field": "audit_procedures.extrapolation",
+   "finding": "ok",
+   "detail": "Silent."
+  },
+  {
+   "field": "audit_procedures.clerical_error_protection",
+   "finding": "reclassify",
+   "detail": "The text bars DISAPPROVAL of a submitted claim for a clerical error that does not render the amount incorrect, including errors from the manufacturer's or distributor's prior-approval process; it says nothing about charging back a paid claim. The only chargeback ground is 'false or unsubstantiated' ((e)(4)(A)(iii)), which does not cross-reference (e)(3)(A). Record it as a denial rule and flag the paid-claim question for legal review. Quote and pinpoint are verbatim and correct; the Act 1055 of 2015 removal of the preapproval proviso is confirmed by the 2025 Justia text, which ends at 'prior approval process.'"
+  },
+  {
+   "field": "audit_procedures.documentation_limits",
+   "finding": "ok",
+   "detail": "Correct: no limit; (e)(4)(A)(i) 'Require documentation for claims;'. The 45-day cap in § 310(d)(1)(D)(iii) is a rate-submission rule."
+  },
+  {
+   "field": "audit_procedures.fraud_exception",
+   "finding": "ok",
+   "detail": "Quote verbatim (e)(4)(C). Detail is one permissible reading; note the two-year attachment is unresolved and the clause names only 'the manufacturer'."
+  },
+  {
+   "field": "audit_procedures.rate_submission_audit",
+   "finding": "mismatch",
+   "detail": "The limits text says the rate must be 'reasonable compared with same line-make dealers in an economically similar area or the dealer's competitive market area (§ 23-112-313(c)(3))'. That language was struck by Act 1077 of 2021, § 6; the 2025 text of (c)(3) ends 'provided the rate is reasonable.' The comparison standard now lives only in § 23-112-310(d)(1)(A): 'reasonable compared to other same line-make dealers in the dealer's relevant market area or the dealer's competitive market area'. Corrected text: replace the (c)(3) sentence with 'The rate must be reasonable (§ 313(c)(3)); § 310(d)(1)(A) measures reasonableness against other same line-make dealers in the dealer's relevant market area or competitive market area.' Quote and pinpoint for (d)(1)(D)(iii) are verbatim and correct. The context's manufacturer_response.challenge_standard field already states this correctly."
+  },
+  {
+   "field": "audit_procedures.penalties_for_audit_violations",
+   "finding": "ok",
+   "detail": "Quote verbatim (e)(4)(D)(i). Correct that no audit-specific penalty exists; the general § 308(a)(18)(A)/§ 309 sanctions and § 105 damages remain available."
+  },
+  {
+   "field": "audit_procedures.notes",
+   "finding": "ok",
+   "detail": "Lineage confirmed from enrolled acts: Act 756/2009 § 12 wrote (e)(4) and extended the appeal window from 30 to 90 days; Act 1005/2011 § 9 added the prior-approval language; Act 1055/2015 § 5 struck the preapproval proviso; Acts 924/2019, 1077/2021 and 515/2023 did not touch (e). Update: the 2025 Regular Session was checked — Justia 2025 histories for §§ 310, 313, 319 show no 2025 act, and the only 2025 acts touching ch. 112 (Acts 233 and 816, enrolled PDFs read) amend §§ 302(e) and 308(a)(25). Confidence can move to high for § 313(e)."
+  },
+  {
+   "field": "audit_procedures.sources",
+   "finding": "ok",
+   "detail": "The Justia URL is the subtitle-4 path, which is the correct one; the subtitle-2 path returns a client error."
+  }
+ ],
+ "notes": "1) Official code: the LexisNexis-hosted Arkansas Code on arkleg.state.ar.us was not read; the current text comes from the Justia 2025 edition (mirror) cross-checked against the enrolled acts (official) for every amendment since 2009 and the Commission-hosted 2011 Official Edition. Justia pages carry no 'current through' line; their histories for §§ 310, 313 and 319 end at 2021, 2023 and 2019 respectively. 2) Justia path: § 23-112-313 sits under title-23/subtitle-4 (Miscellaneous Regulated Industries); the subtitle-2 URL in the task brief returns 403 to curl and a client error to WebFetch. 3) 2025 session: no act amended §§ 310, 313 or 319. Acts 233 and 816 of 2025 (the only AMVC acts) amend § 302(e) and § 308(a)(25) (buyer's tags). The arkleg keyword search endpoint returned HTTP 500, so the session check rests on the Justia 2025 histories plus the two enrolled acts; the 2026 fiscal session was not checked. No pending bill found. 4) Act 924 of 2019 § 2 rewrote § 310(d)(3); pdftotext drops strike-through, but the Justia 2025 text ('shall pay ... in accordance with requirements of the manufacturer', no (A)-(D) subdivisions, no 'service technician' language anywhere in § 310) shows the act struck the 'safety and repair specifications, bulletins' words and the technician-preapproval subdivisions. 5) § 23-112-105(b): Act 1043 of 2013 § 3 added a (b)(2) excluding motor-home dealers, manufacturers and distributors from the fee action; the Justia 2024 extract showed (b) as one paragraph and the 2025 page was checked only for (a) — immaterial to a line-make auto manufacturer, but the (b)(2) carve-out was not confirmed in the 2025 text. 6) Drafting defect: codified (e)(1) says claims shall be approved or disapproved 'within thirty (30) days following their approval or disapproval' (so since Act 756 of 2009); the operative clocks are (e)(2)(B) and § 310(d)(2)(B). 7) Actor terms: (e)(4)(A)-(B) say 'manufacturer or franchiser', (C) 'the manufacturer', (D) 'manufacturer or distributor'. 'Franchiser' is not separately defined; § 103(14) uses it for 'a manufacturer or a distributor, importer, second-stage manufacturer, or converter as franchiser'. 8) Separate RV regime: § 23-112-1016 (Act 1043 of 2013) governs recreational-vehicle warrantors (audits 'on a reasonable basis', denial only for cause, 60-day payment); it does not apply to motor vehicle manufacturers under subchapter 3. 9) § 403 contains no audit, chargeback or export language; (a)(2)(U)(iii) bars unreasonable discrimination in assistance programs 'including ... warranty policy adjustments'. 10) Agency rules: the context shows no rule note, so scope is statutes only."
+}

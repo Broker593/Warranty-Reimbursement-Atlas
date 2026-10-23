@@ -1,0 +1,86 @@
+{
+ "schema": 1,
+ "updated": "2026-10-23",
+ "version": 1,
+ "about": "Per-state audit brief: what an auditor needs to know before auditing a dealer's paid factory-warranty claims and charging any back. Generated from this file; nothing is hand-written per state. Each rule carries the statute's own answer, its effect (required, prohibited, permitted, conditional or not expressly addressed), how settled the reading is (express, reasoned interpretation, conflict or unresolved), the programs it reaches, a pinpoint cite, a verbatim quote and the source version. Rules with a 'short' line appear on the one-page brief; the rest are web-only under 'More rules found in the statute'. A conflict or unresolved reading renders a LEGAL REVIEW REQUIRED block until the data records a resolution. Research summary for audit planning, not legal advice.",
+ "sections": [
+  {
+   "id": "eligibility",
+   "title": "Audit eligibility",
+   "blurb": "Which claims and programs can be audited, how far back, and from what date."
+  },
+  {
+   "id": "planning",
+   "title": "Planning restrictions",
+   "blurb": "Frequency cap, notice, selection basis and permitted reasons for an audit."
+  },
+  {
+   "id": "testing",
+   "title": "Testing and findings",
+   "blurb": "Chargeback grounds, documentation limits, clerical errors, sampling and extrapolation, proof, recovery scope."
+  },
+  {
+   "id": "process",
+   "title": "Chargeback process",
+   "blurb": "Written reasons, dealer response and cure, internal appeal, stay during a dispute, timing of the chargeback."
+  },
+  {
+   "id": "exceptions",
+   "title": "Exceptions and escalation",
+   "blurb": "Unusual state rules, legal-review flags, penalties and where the dealer protests."
+  }
+ ],
+ "programs": {
+  "factory_warranty": "factory warranty",
+  "maintenance": "maintenance",
+  "service": "service",
+  "recalls": "recalls",
+  "cpo": "CPO",
+  "service_contracts": "service contracts",
+  "incentives": "incentives",
+  "rate_submission": "rate submissions"
+ },
+ "effects": {
+  "required": "Required",
+  "prohibited": "Prohibited",
+  "permitted": "Permitted",
+  "conditional": "Conditional",
+  "not_expressly_addressed": "Not expressly addressed"
+ },
+ "statuses": {
+  "express": "Express in the statute",
+  "reasoned_interpretation": "Reasoned interpretation",
+  "conflict": "Conflict in the statute",
+  "unresolved": "Unresolved reading"
+ },
+ "states": {
+  "FL": {
+   "verified": "2026-10-23",
+   "scope": "statutes",
+   "rules": 37,
+   "legal_review": 3,
+   "pdf": "downloads/audit-briefs/FL-audit-brief-2026-10-23.pdf"
+  },
+  "CA": {
+   "verified": "2026-10-23",
+   "scope": "statutes and agency rules",
+   "rules": 28,
+   "legal_review": 3,
+   "pdf": "downloads/audit-briefs/CA-audit-brief-2026-10-23.pdf"
+  },
+  "IL": {
+   "verified": "2026-10-23",
+   "scope": "statutes",
+   "rules": 29,
+   "legal_review": 2,
+   "pdf": "downloads/audit-briefs/IL-audit-brief-2026-10-23.pdf"
+  },
+  "AR": {
+   "verified": "2026-10-23",
+   "scope": "statutes",
+   "rules": 19,
+   "legal_review": 3,
+   "pdf": "downloads/audit-briefs/AR-audit-brief-2026-10-23.pdf"
+  }
+ }
+}

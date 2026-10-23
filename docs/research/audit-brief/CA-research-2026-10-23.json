@@ -1,0 +1,840 @@
+{
+ "state": "CA",
+ "verified": {
+  "date": "2026-10-23",
+  "scope": "statutes and agency rules",
+  "sources": [
+   {
+    "cite": "Cal. Veh. Code § 3065",
+    "url": "https://california.public.law/codes/ca_veh_code_section_3065",
+    "kind": "mirror",
+    "version": "California Vehicle Code section 3065 (2025); public.law copy of leginfo text, source updated Jan. 1, 2020; page verified \"Up to date\" Oct. 19, 2026"
+   },
+   {
+    "cite": "Cal. Veh. Code § 3065",
+    "url": "https://codes.findlaw.com/ca/vehicle-code/veh-sect-3065/",
+    "kind": "mirror",
+    "version": "FindLaw, \"Current as of January 01, 2026\"; used only to cross-check § 3065(e)(1), (e)(5) and (f) against the public.law text (they match)"
+   },
+   {
+    "cite": "Cal. Veh. Code § 3065.1",
+    "url": "https://california.public.law/codes/ca_veh_code_section_3065.1",
+    "kind": "mirror",
+    "version": "public.law copy of leginfo text, source updated Jan. 1, 2014; verified Oct. 19, 2026"
+   },
+   {
+    "cite": "Cal. Veh. Code § 3065.2",
+    "url": "https://california.public.law/codes/ca_veh_code_section_3065.2",
+    "kind": "mirror",
+    "version": "public.law copy of leginfo text, source updated Jan. 1, 2021; verified Oct. 19, 2026"
+   },
+   {
+    "cite": "Cal. Veh. Code § 3065.25",
+    "url": "https://california.public.law/codes/ca_veh_code_section_3065.25",
+    "kind": "mirror",
+    "version": "public.law copy of leginfo text, source updated Jan. 1, 2020; verified Oct. 19, 2026"
+   },
+   {
+    "cite": "Cal. Veh. Code § 3065.3",
+    "url": "https://california.public.law/codes/ca_veh_code_section_3065.3",
+    "kind": "mirror",
+    "version": "public.law copy of leginfo text, source updated Jan. 1, 2024; verified Oct. 19, 2026"
+   },
+   {
+    "cite": "Cal. Veh. Code § 3065.4",
+    "url": "https://california.public.law/codes/ca_veh_code_section_3065.4",
+    "kind": "mirror",
+    "version": "public.law copy of leginfo text, source updated Jan. 1, 2020; verified Oct. 19, 2026"
+   },
+   {
+    "cite": "Cal. Veh. Code § 3066",
+    "url": "https://california.public.law/codes/ca_veh_code_section_3066",
+    "kind": "mirror",
+    "version": "public.law copy of leginfo text, source updated Jan. 1, 2020; verified Oct. 19, 2026"
+   },
+   {
+    "cite": "Cal. Veh. Code § 3067",
+    "url": "https://california.public.law/codes/ca_veh_code_section_3067",
+    "kind": "mirror",
+    "version": "public.law copy of leginfo text, source updated Jan. 1, 2016; verified Oct. 19, 2026"
+   },
+   {
+    "cite": "Cal. Veh. Code § 3068",
+    "url": "https://california.public.law/codes/ca_veh_code_section_3068",
+    "kind": "mirror",
+    "version": "public.law copy of leginfo text, source updated Jan. 1, 2016; verified Oct. 19, 2026"
+   },
+   {
+    "cite": "Cal. Veh. Code § 3050",
+    "url": "https://california.public.law/codes/ca_veh_code_section_3050",
+    "kind": "mirror",
+    "version": "public.law copy of leginfo text, source updated Jan. 1, 2020; verified Oct. 19, 2026"
+   },
+   {
+    "cite": "Cal. Veh. Code §§ 3060, 3062, 3064, 3069",
+    "url": "https://california.public.law/codes/ca_veh_code_section_3064",
+    "kind": "mirror",
+    "version": "public.law copies of leginfo text (3060 updated 1999; 3062 and 3064 updated Jan. 1, 2014; 3069 updated 1973); read for context, no audit content"
+   },
+   {
+    "cite": "Cal. Veh. Code § 11705",
+    "url": "https://california.public.law/codes/ca_veh_code_section_11705",
+    "kind": "mirror",
+    "version": "public.law copy of leginfo text, source updated Jan. 1, 2017; verified Oct. 19, 2026"
+   },
+   {
+    "cite": "Cal. Veh. Code § 11713.3",
+    "url": "https://california.public.law/codes/ca_veh_code_section_11713.3",
+    "kind": "mirror",
+    "version": "public.law copy of leginfo text, source updated Jan. 1, 2024; verified Oct. 19, 2026"
+   },
+   {
+    "cite": "Cal. Veh. Code § 11726",
+    "url": "https://california.public.law/codes/ca_veh_code_section_11726",
+    "kind": "mirror",
+    "version": "public.law copy of leginfo text, source updated Jan. 1, 2020; verified Oct. 19, 2026"
+   },
+   {
+    "cite": "13 CCR § 586",
+    "url": "https://www.law.cornell.edu/regulations/california/13-CCR-586",
+    "kind": "mirror",
+    "version": "Cornell LII copy of Cal. Code Regs. tit. 13, § 586; last amendment operative Jan. 1, 2022 (Register 2021, No. 40)"
+   },
+   {
+    "cite": "13 CCR § 593.3",
+    "url": "https://www.law.cornell.edu/regulations/california/13-CCR-593.3",
+    "kind": "mirror",
+    "version": "Cornell LII copy of Cal. Code Regs. tit. 13, § 593.3; last change filed Feb. 26, 2020 (Register 2020, No. 9)"
+   }
+  ]
+ },
+ "covers": {
+  "primary": "factory_warranty",
+  "also": [
+   {
+    "program": "recalls",
+    "treatment": "Inside the § 3065 regime: \"warranty\" is defined to include a recall conducted under 49 U.S.C. §§ 30118-30120, so recall-claim audits carry the same 9-month window, grounds, notice, hold, deadline and protest rules.",
+    "pinpoint": "§ 3065.25(b)"
+   },
+   {
+    "program": "cpo",
+    "treatment": "Inside the § 3065 regime: \"warranty\" includes a certified pre-owned warranty, plus TSB and customer-service-campaign repairs on vehicles within the warranty period.",
+    "pinpoint": "§ 3065.25(b)"
+   },
+   {
+    "program": "incentives",
+    "treatment": "Parallel regime with the same 9-month window from payment or credit, one random audit per nine months, extrapolation rule, 30-day written grounds, 30-day rebut/cure, Final Denial, 45-day hold, 90-day deadline, protest stay and franchisor burden. Chargeback grounds differ (false/fraudulent; ineligible under program terms as previously communicated; material documentation noncompliance), a cure alone bars the chargeback, and § 11705(a)(7) does not name § 3065.1.",
+    "pinpoint": "§ 3065.1(g)-(h); § 11705(a)(7)"
+   },
+   {
+    "program": "rate_submission",
+    "treatment": "Not an audit. One contest notification within 30 days limited to material inaccuracy or fraud; supplemental ROs only if the rate is substantially higher; no nonroutine or nonrandom warranty, nonwarranty-repair or service audits in response to a submission.",
+    "pinpoint": "§ 3065.2(d), (h), (i)(2)(G); § 3065.4"
+   },
+   {
+    "program": "service",
+    "treatment": "No audit window or procedure for non-warranty repair or service claims. Named only in the § 3065.2(i)(2)(G) retaliation bar.",
+    "pinpoint": "§ 3065.2(i)(2)(G)"
+   },
+   {
+    "program": "maintenance",
+    "treatment": "Not addressed as an audit subject; maintenance items appear only as exclusions from the retail-rate calculation.",
+    "pinpoint": "§ 3065.2(c)(3)"
+   }
+  ]
+ },
+ "rules": [
+  {
+   "id": "audit_window",
+   "section": "eligibility",
+   "label": "Audit window",
+   "value": "Nine months after the claim is paid or credit is issued, and only on a reasonable basis. The window governs when the audit may be conducted; the chargeback itself then follows the § 3065(e)(3)-(5) clock (written grounds within 30 days of the audit, 45-day hold, chargeback within 90 days of notice). Same window and trigger for incentive claims (§ 3065.1(g)(1)).",
+   "covers": [
+    "factory_warranty",
+    "cpo",
+    "recalls",
+    "incentives"
+   ],
+   "effect": "conditional",
+   "status": "express",
+   "reason": null,
+   "quote": "Audits of franchisee warranty records may be conducted by the franchisor on a reasonable basis for a period of nine months after a claim is paid or credit issued.",
+   "pinpoint": "Cal. Veh. Code § 3065(e)(1); § 3065.1(g)(1) (incentives); § 3065.25(b) (definition of \"warranty\")",
+   "url": "https://california.public.law/codes/ca_veh_code_section_3065"
+  },
+  {
+   "id": "post_window_exception",
+   "section": "eligibility",
+   "label": "Post-window exception (fraud)",
+   "value": "Fraud only. If a false claim was submitted with intent to defraud the franchisor, a longer audit and chargeback period is allowed only if the franchisor first obtains an order from the New Motor Vehicle Board. No outer time limit is stated. In the Board proceeding the franchisor bears the burden of proving the intent to defraud (§ 3066(c)). Same rule for incentives (§ 3065.1(h)).",
+   "covers": [
+    "factory_warranty",
+    "cpo",
+    "recalls",
+    "incentives"
+   ],
+   "effect": "conditional",
+   "status": "express",
+   "reason": null,
+   "quote": "If a false claim was submitted by a franchisee with the intent to defraud the franchisor, a longer period for audit and any resulting chargeback may be permitted if the franchisor obtains an order from the board.",
+   "pinpoint": "Cal. Veh. Code § 3065(f); § 3065.1(h); § 3066(c)",
+   "url": "https://california.public.law/codes/ca_veh_code_section_3065"
+  },
+  {
+   "id": "recovery_deadline",
+   "section": "eligibility",
+   "label": "Deadline to take the chargeback",
+   "value": "Within 90 days of the dealer's receipt of the written notice: the disapproval notice, or the Final Denial notice if the dealer appealed, whichever is later. If the dealer filed a Board protest before the chargeback and the Board sustains the chargeback or dismisses the protest, the franchisor has 90 days from the final order or dismissal, unless a settlement agreement provides otherwise. Incentives: 90 days after the franchisee receives the notice (§ 3065.1(g)(5)).",
+   "covers": [
+    "factory_warranty",
+    "cpo",
+    "recalls",
+    "incentives"
+   ],
+   "effect": "required",
+   "status": "express",
+   "reason": null,
+   "quote": "Any chargeback to a franchisee for warranty parts or service compensation shall be made within 90 days of receipt of that written notice.",
+   "pinpoint": "Cal. Veh. Code § 3065(e)(5); § 3065.1(g)(5)",
+   "url": "https://california.public.law/codes/ca_veh_code_section_3065"
+  },
+  {
+   "id": "frequency_cap",
+   "section": "planning",
+   "label": "Audit frequency cap",
+   "value": "No more than one random audit of a dealer in any nine-month period. Any additional audit within that period is allowed only if the notification of it is accompanied by written disclosure of the basis for that additional audit. Same cap for incentive audits (§ 3065.1(g)(1)).",
+   "covers": [
+    "factory_warranty",
+    "cpo",
+    "recalls",
+    "incentives"
+   ],
+   "effect": "conditional",
+   "status": "express",
+   "reason": null,
+   "quote": "A franchisor may conduct no more than one random audit of a franchisee in a nine-month period.",
+   "pinpoint": "Cal. Veh. Code § 3065(e)(1); § 3065.1(g)(1)",
+   "url": "https://california.public.law/codes/ca_veh_code_section_3065"
+  },
+  {
+   "id": "selection_basis",
+   "section": "planning",
+   "label": "Selection basis",
+   "value": "A dealer may not be selected for audit, and an audit may not be performed, in a punitive, retaliatory or unfairly discriminatory manner. For any additional (non-random) audit within a nine-month period the written basis for that audit must accompany the audit notification. No advance-notice period is set for any audit.",
+   "covers": [
+    "factory_warranty",
+    "cpo",
+    "recalls",
+    "incentives"
+   ],
+   "effect": "prohibited",
+   "status": "express",
+   "reason": null,
+   "quote": "A franchisor shall not select a franchisee for an audit, or perform an audit, in a punitive, retaliatory, or unfairly discriminatory manner.",
+   "pinpoint": "Cal. Veh. Code § 3065(e)(1); § 3065.1(g)(1)",
+   "url": "https://california.public.law/codes/ca_veh_code_section_3065"
+  },
+  {
+   "id": "audit_basis",
+   "section": "planning",
+   "label": "Audit basis / no response to a rate request",
+   "value": "Audits only on a reasonable basis (§ 3065(e)(1)). A nonroutine or nonrandom warranty, nonwarranty-repair or other service-related audit may not be conducted, or threatened, in response to a dealer submitting a retail labor or parts rate or exercising any other § 3065.2 right. Related adverse actions barred by § 3065.2(i)(2): penalties or surcharges, cost shifting, allocation limits, bad faith, delaying payment, discriminatory programs.",
+   "covers": [
+    "factory_warranty",
+    "service",
+    "maintenance",
+    "rate_submission"
+   ],
+   "effect": "prohibited",
+   "status": "express",
+   "reason": null,
+   "quote": "Conducting or threatening to conduct nonroutine or nonrandom warranty, nonwarranty repair, or other service-related audits in response to a franchisee seeking compensation or exercising any right pursuant to this section.",
+   "pinpoint": "Cal. Veh. Code § 3065.2(i)(2)(G); § 3065(e)(1)",
+   "url": "https://california.public.law/codes/ca_veh_code_section_3065.2"
+  },
+  {
+   "id": "paid_claim_chargeback_grounds",
+   "section": "testing",
+   "label": "Chargeback grounds (paid claims)",
+   "value": "Four grounds only: (1) the claim is false or fraudulent; (2) repairs were not properly made; (3) repairs were inappropriate to correct a nonconformity with the written warranty due to an improper act or omission of the franchisee; (4) material noncompliance with reasonable and nondiscriminatory documentation and administrative claims-submission requirements. These are the denial grounds of § 3065(d)(2) restated word for word in (e)(2), so denial and chargeback grounds are identical for warranty claims. Incentive chargeback grounds differ (see incentive_audit_rules).",
+   "covers": [
+    "factory_warranty",
+    "cpo",
+    "recalls"
+   ],
+   "effect": "conditional",
+   "status": "express",
+   "reason": null,
+   "quote": "Previously approved claims shall not be disapproved or charged back to the franchisee unless the claim is false or fraudulent, repairs were not properly made, repairs were inappropriate to correct a nonconformity with the written warranty",
+   "pinpoint": "Cal. Veh. Code § 3065(e)(2)",
+   "url": "https://california.public.law/codes/ca_veh_code_section_3065"
+  },
+  {
+   "id": "claim_denial_grounds",
+   "section": "testing",
+   "label": "Denial grounds (unpaid claims)",
+   "value": "Same four grounds as the chargeback grounds: false or fraudulent; repairs not properly made; repairs inappropriate to correct a nonconformity due to the franchisee's improper act or omission; material noncompliance with reasonable and nondiscriminatory documentation and administrative requirements. Disapproval must be in writing, within 30 days of receipt, stating the specific grounds; a claim not specifically disapproved in writing within 30 days is deemed approved on day 30 and must be paid within 30 days after approval.",
+   "covers": [
+    "factory_warranty",
+    "cpo",
+    "recalls"
+   ],
+   "effect": "conditional",
+   "status": "express",
+   "reason": null,
+   "quote": "A franchisor shall not disapprove a claim unless the claim is false or fraudulent, repairs were not properly made, repairs were inappropriate to correct a nonconformity with the written warranty due to an improper act or omission of the franchisee",
+   "pinpoint": "Cal. Veh. Code § 3065(d)(1)-(3)",
+   "url": "https://california.public.law/codes/ca_veh_code_section_3065"
+  },
+  {
+   "id": "proof_requirements",
+   "section": "testing",
+   "label": "Proof requirements and burden",
+   "value": "The written disapproval must state the specific grounds for each claim. In any Board protest over an audit disapproval or chargeback the franchisor carries the burden of proof; where intent to defraud is material (for example a § 3065(f) order) the franchisor must prove it (§ 3066(c)). The statute sets no other evidentiary standard for audit findings.",
+   "covers": [
+    "factory_warranty",
+    "cpo",
+    "recalls",
+    "incentives"
+   ],
+   "effect": "required",
+   "status": "express",
+   "reason": null,
+   "quote": "In any protest pursuant to this subdivision, the franchisor shall have the burden of proof.",
+   "pinpoint": "Cal. Veh. Code § 3065(e)(6); § 3065.1(g)(6); § 3066(c)",
+   "url": "https://california.public.law/codes/ca_veh_code_section_3065"
+  },
+  {
+   "id": "documentation_limits",
+   "section": "testing",
+   "label": "Documentation grounds",
+   "value": "Only MATERIAL noncompliance with REASONABLE and NONDISCRIMINATORY documentation and administrative claims-submission requirements supports a chargeback, and the dealer must be given at least 30 days to cure it. Incentive claims add a separate ground: ineligible under the program terms as previously communicated to the franchisee (§ 3065.1(g)(2)).",
+   "covers": [
+    "factory_warranty",
+    "cpo",
+    "recalls",
+    "incentives"
+   ],
+   "effect": "conditional",
+   "status": "express",
+   "reason": null,
+   "quote": "or for material noncompliance with reasonable and nondiscriminatory documentation and administrative claims submission requirements",
+   "pinpoint": "Cal. Veh. Code § 3065(e)(2); § 3065.1(g)(2)",
+   "url": "https://california.public.law/codes/ca_veh_code_section_3065"
+  },
+  {
+   "id": "clerical_error",
+   "section": "testing",
+   "label": "Clerical errors",
+   "value": "No express clerical-error rule. Non-material documentation or administrative defects cannot support a chargeback because the ground is limited to \"material\" noncompliance, and the dealer gets at least 30 days to cure; a claim rebutted and cured before the deadline cannot be charged back. For incentive claims a cure alone bars the chargeback (§ 3065.1(g)(5)); for warranty claims see the legal-review item on cure without rebuttal.",
+   "covers": [
+    "factory_warranty",
+    "cpo",
+    "recalls",
+    "incentives"
+   ],
+   "effect": "conditional",
+   "status": "reasoned_interpretation",
+   "reason": "The statute never uses the words \"clerical error\"; the protection follows from the materiality limit in (e)(2) and the cure right in (e)(3).",
+   "quote": "If the franchisee rebuts any disapproval and cures any material noncompliance relating to a claim before the applicable deadline, the franchisor shall not chargeback the franchisee for that claim.",
+   "pinpoint": "Cal. Veh. Code § 3065(e)(2)-(3); § 3065.1(g)(2)-(3), (g)(5)",
+   "url": "https://california.public.law/codes/ca_veh_code_section_3065"
+  },
+  {
+   "id": "extrapolation",
+   "section": "testing",
+   "label": "Extrapolation",
+   "value": "Permitted only if the sample of claims was selected randomly AND the extrapolation is performed in a reasonable and statistically valid manner. Otherwise no disapproval or chargeback may rest on an extrapolation. Same rule for incentives (§ 3065.1(g)(2)).",
+   "covers": [
+    "factory_warranty",
+    "cpo",
+    "recalls",
+    "incentives"
+   ],
+   "effect": "conditional",
+   "status": "express",
+   "reason": null,
+   "quote": "A franchisor shall not disapprove or chargeback a claim based upon an extrapolation from a sample of claims, unless the sample of claims is selected randomly and the extrapolation is performed in a reasonable and statistically valid manner.",
+   "pinpoint": "Cal. Veh. Code § 3065(e)(2); § 3065.1(g)(2)",
+   "url": "https://california.public.law/codes/ca_veh_code_section_3065"
+  },
+  {
+   "id": "written_reasons",
+   "section": "process",
+   "label": "Written reasons",
+   "value": "Within 30 days after the audit, a written disapproval notice stating the specific grounds on which each previously approved claim is disapproved. Same for incentives (§ 3065.1(g)(3)).",
+   "covers": [
+    "factory_warranty",
+    "cpo",
+    "recalls",
+    "incentives"
+   ],
+   "effect": "required",
+   "status": "express",
+   "reason": null,
+   "quote": "the franchisor shall provide to the franchisee, within 30 days after the audit, a written disapproval notice stating the specific grounds upon which the claim is disapproved.",
+   "pinpoint": "Cal. Veh. Code § 3065(e)(3); § 3065.1(g)(3)",
+   "url": "https://california.public.law/codes/ca_veh_code_section_3065"
+  },
+  {
+   "id": "dealer_response",
+   "section": "process",
+   "label": "Dealer response period",
+   "value": "A reasonable period of not less than 30 days after receipt of the written disapproval notice to respond with additional supporting documentation or information rebutting the disapproval and to cure noncompliance. The period must be commensurate with the volume of claims under consideration, so a large audit requires more than 30 days.",
+   "covers": [
+    "factory_warranty",
+    "cpo",
+    "recalls",
+    "incentives"
+   ],
+   "effect": "required",
+   "status": "express",
+   "reason": null,
+   "quote": "a reasonable period of not less than 30 days after receipt of the written disapproval notice to respond to any disapproval with additional supporting documentation or information rebutting the disapproval and to cure noncompliance",
+   "pinpoint": "Cal. Veh. Code § 3065(e)(3); § 3065.1(g)(3)",
+   "url": "https://california.public.law/codes/ca_veh_code_section_3065"
+  },
+  {
+   "id": "cure_rights",
+   "section": "process",
+   "label": "Cure rights",
+   "value": "At least 30 days (scaled to claim volume) to cure material documentation or administrative noncompliance. A claim that is rebutted and cured before the applicable deadline may not be charged back.",
+   "covers": [
+    "factory_warranty",
+    "cpo",
+    "recalls",
+    "incentives"
+   ],
+   "effect": "required",
+   "status": "express",
+   "reason": null,
+   "quote": "to respond to any disapproval with additional supporting documentation or information rebutting the disapproval and to cure noncompliance, with the period to be commensurate with the volume of claims under consideration.",
+   "pinpoint": "Cal. Veh. Code § 3065(e)(3); § 3065.1(g)(3), (g)(5)",
+   "url": "https://california.public.law/codes/ca_veh_code_section_3065"
+  },
+  {
+   "id": "internal_appeal",
+   "section": "process",
+   "label": "Internal appeal",
+   "value": "A reasonable appeal process is mandatory, giving the dealer not less than 30 days after receipt of the written disapproval notice. If the dealer rebuts, attempts to cure or otherwise appeals and the franchisor continues to deny, a written Final Denial notice is required (see final_denial_notice).",
+   "covers": [
+    "factory_warranty",
+    "cpo",
+    "recalls",
+    "incentives"
+   ],
+   "effect": "required",
+   "status": "express",
+   "reason": null,
+   "quote": "The franchisor shall provide a reasonable appeal process allowing the franchisee a reasonable period of not less than 30 days after receipt of the written disapproval notice",
+   "pinpoint": "Cal. Veh. Code § 3065(e)(3)-(4); § 3065.1(g)(3)-(4)",
+   "url": "https://california.public.law/codes/ca_veh_code_section_3065"
+  },
+  {
+   "id": "final_denial_notice",
+   "section": "process",
+   "label": "Final Denial notice",
+   "value": "If the dealer rebuts, attempts to cure or otherwise appeals and the franchisor still denies, a written notification of the final denial is due within 30 days of completion of the appeal process and must conspicuously state \"Final Denial\" on the first page. The 45-day hold, the 90-day chargeback deadline and the six-month protest window all run from the later of this notice or the disapproval notice.",
+   "covers": [
+    "factory_warranty",
+    "cpo",
+    "recalls",
+    "incentives"
+   ],
+   "effect": "required",
+   "status": "express",
+   "reason": null,
+   "quote": "the franchisor shall provide the franchisee with a written notification of the final denial within 30 days of completion of the appeal process, which shall conspicuously state “Final Denial” on the first page.",
+   "pinpoint": "Cal. Veh. Code § 3065(e)(4)-(6); § 3065.1(g)(4)-(6)",
+   "url": "https://california.public.law/codes/ca_veh_code_section_3065"
+  },
+  {
+   "id": "stay_pending_dispute",
+   "section": "process",
+   "label": "Stay pending Board protest",
+   "value": "If the dealer files a New Motor Vehicle Board protest BEFORE the chargeback is taken, the franchisor may not offset or otherwise collect until the Board issues a final order. If the Board sustains the chargeback or dismisses the protest, the franchisor then has 90 days to take it, unless a settlement agreement provides otherwise. A protest filed after the chargeback has been taken (still possible within the six-month window) does not trigger the statutory stay, though the Board may still rule on compliance.",
+   "covers": [
+    "factory_warranty",
+    "cpo",
+    "recalls",
+    "incentives"
+   ],
+   "effect": "conditional",
+   "status": "express",
+   "reason": null,
+   "quote": "If the franchisee files a protest pursuant to this subdivision prior to the franchisor’s chargeback for denied claims, the franchisor shall not offset or otherwise undertake to collect the chargeback until the board issues a final order on the protest.",
+   "pinpoint": "Cal. Veh. Code § 3065(e)(5)-(6); § 3065.1(g)(5)-(6)",
+   "url": "https://california.public.law/codes/ca_veh_code_section_3065"
+  },
+  {
+   "id": "chargeback_hold",
+   "section": "process",
+   "label": "Chargeback hold",
+   "value": "No chargeback until 45 days after the dealer receives the written disapproval notice or the Final Denial notice, whichever is later. Combined with the 90-day deadline, the chargeback must land in the window of day 45 to day 90 after that notice.",
+   "covers": [
+    "factory_warranty",
+    "cpo",
+    "recalls",
+    "incentives"
+   ],
+   "effect": "prohibited",
+   "status": "express",
+   "reason": null,
+   "quote": "The franchisor shall not chargeback the franchisee until 45 days after receipt of the written notice described in paragraph (3) or paragraph (4), whichever is later.",
+   "pinpoint": "Cal. Veh. Code § 3065(e)(5); § 3065.1(g)(5)",
+   "url": "https://california.public.law/codes/ca_veh_code_section_3065"
+  },
+  {
+   "id": "warranty_definition_scope",
+   "section": "exceptions",
+   "label": "What counts as \"warranty\"",
+   "value": "The § 3065 audit and chargeback rules reach every claim within the § 3065.25(b) definition of \"warranty\": the new-vehicle warranty, a certified pre-owned warranty, technical service bulletin repairs and customer service campaign repairs on vehicles within the warranty period, and recalls conducted under 49 U.S.C. §§ 30118-30120. Recall and CPO claim audits therefore carry the same 9-month window, grounds, notice, hold and protest rules as factory-warranty claims.",
+   "covers": [
+    "factory_warranty",
+    "cpo",
+    "recalls"
+   ],
+   "effect": "required",
+   "status": "express",
+   "reason": null,
+   "quote": "“Warranty” includes a new vehicle warranty, a certified preowned warranty, a repair pursuant to a technical service bulletin on a vehicle covered under the period of warranty",
+   "pinpoint": "Cal. Veh. Code § 3065.25(b) (applies to §§ 3065, 3065.2 and 3065.4)",
+   "url": "https://california.public.law/codes/ca_veh_code_section_3065.25"
+  },
+  {
+   "id": "incentive_audit_rules",
+   "section": "exceptions",
+   "label": "Incentive-program audits",
+   "value": "Incentive claims have a parallel regime in § 3065.1(g)-(h): 9-month window from payment or credit, one random audit per nine months with written basis for any additional audit, random and statistically valid extrapolation only, written grounds within 30 days of the audit, at least 30 days to rebut and cure, Final Denial notice, 45-day hold, 90-day chargeback deadline, Board-protest stay and franchisor burden of proof. Differences from warranty: chargeback grounds are (1) false or fraudulent, (2) ineligible under the terms of the incentive program as previously communicated to the franchisee, or (3) material documentation noncompliance (no \"repairs not properly made\" ground); a cure alone bars the chargeback (§ 3065.1(g)(5)); the 45- and 90-day clocks run from the franchisee's receipt; and the § 11705(a)(7) license sanction names § 3065 but not § 3065.1.",
+   "covers": [
+    "incentives"
+   ],
+   "effect": "conditional",
+   "status": "express",
+   "reason": null,
+   "quote": "Previously approved claims shall not be disapproved and charged back unless the claim is false or fraudulent, the claim is ineligible under the terms of the incentive program as previously communicated to the franchisee",
+   "pinpoint": "Cal. Veh. Code § 3065.1(g)(1)-(6), (h); § 11705(a)(7)",
+   "url": "https://california.public.law/codes/ca_veh_code_section_3065.1"
+  },
+  {
+   "id": "export_adverse_action",
+   "section": "exceptions",
+   "label": "Export / sale-for-resale chargebacks",
+   "value": "No adverse action, which expressly includes nonroutine or nonrandom audits, withholding of incentives and monetary chargebacks, may be taken or threatened under an export or sale-for-resale prohibition unless (1) the policy was given to the dealer in writing at least 48 hours before the sale or lease and (2) the dealer knew or reasonably should have known of the customer's intent to export or resell. If the dealer registered the vehicle in any state and collected the applicable sales or use tax, a rebuttable presumption arises that it did not know. The manufacturer bears the burden of proof by a preponderance of the evidence on all three elements. The policy must state the presumption and may not require inquiry based on Civil Code § 51 characteristics, or it is void.",
+   "covers": [
+    "incentives",
+    "factory_warranty"
+   ],
+   "effect": "conditional",
+   "status": "express",
+   "reason": null,
+   "quote": "unless the export or sale-for-resale prohibition policy was provided to the dealer in writing at least 48 hours before the sale or lease of the vehicle, and the dealer knew or reasonably should have known",
+   "pinpoint": "Cal. Veh. Code § 11713.3(y)(1)-(4)",
+   "url": "https://california.public.law/codes/ca_veh_code_section_11713.3"
+  },
+  {
+   "id": "waiver_of_protections_void",
+   "section": "exceptions",
+   "label": "Waivers of audit protections",
+   "value": "A manufacturer may not obtain from a dealer, or enforce, any agreement, release or waiver that modifies its duties or the dealer's rights under Division 2 Chapter 6 (which includes §§ 3065-3065.4) or that limits the dealer's right to file, pursue or submit evidence in a Board protest; such provisions are void. The only audit-settlement carve-out: a dealer may waive its right to a § 3065.1 (incentive) protest if the waiver is entered after the incentive claim was disapproved and is voluntarily given to settle that claim. Terms settling a protest, civil action or other proceeding already under way are not restricted. Pre-protest settlements of warranty (§ 3065) audit findings are not expressly carved out (see legal review).",
+   "covers": [
+    "factory_warranty",
+    "incentives"
+   ],
+   "effect": "prohibited",
+   "status": "express",
+   "reason": null,
+   "quote": "Prohibit a dealer from waiving its right to file a protest pursuant to Section 3065.1 if the waiver agreement is entered into after a franchisor incentive program claim has been disapproved by the franchisor",
+   "pinpoint": "Cal. Veh. Code § 11713.3(g)(1)(A)-(B), (g)(2), (g)(3)(A), (g)(3)(E)",
+   "url": "https://california.public.law/codes/ca_veh_code_section_11713.3"
+  },
+  {
+   "id": "fraud_intent_burden",
+   "section": "exceptions",
+   "label": "Burden of proof on fraud",
+   "value": "When intent to defraud is material to a § 3065 or § 3065.1 protest, including an application for a § 3065(f) or § 3065.1(h) extended-lookback order, the franchisor bears the burden of proving it. The general § 3066(c) rule placing the burden on the franchisee in § 3065 and § 3065.1 protests applies only \"except as otherwise provided in this chapter\"; § 3065(a)(3), (d)(6) and (e)(6) and § 3065.1(e) and (g)(6) otherwise provide, so the franchisor carries the burden in disapproval, audit-chargeback and time-allowance-reduction protests.",
+   "covers": [
+    "factory_warranty",
+    "cpo",
+    "recalls",
+    "incentives"
+   ],
+   "effect": "required",
+   "status": "express",
+   "reason": null,
+   "quote": "the franchisor has the burden of proof to establish that a franchisee acted with intent to defraud the franchisor when that issue is material to a protest filed pursuant to Section 3065 or 3065.1",
+   "pinpoint": "Cal. Veh. Code § 3066(c); § 3065(a)(3), (d)(6), (e)(6); § 3065.1(e), (g)(6)",
+   "url": "https://california.public.law/codes/ca_veh_code_section_3066"
+  },
+  {
+   "id": "part_return_on_disallowance",
+   "section": "exceptions",
+   "label": "Part return on \"not defective\" findings",
+   "value": "If the franchisor disallows a claim for a defective part on the ground that the part is not defective, it must either return the part to the dealer at the franchisor's expense or reimburse the dealer's cost of the part, at the franchisor's option. Whether this duty attaches when a paid parts claim is charged back after audit on a not-defective finding is not settled by the text.",
+   "covers": [
+    "factory_warranty"
+   ],
+   "effect": "conditional",
+   "status": "unresolved",
+   "reason": "\"Disallows a franchisee's claim\" plainly covers a denial of an unpaid claim; § 3065(e), which governs chargebacks of previously approved claims, does not cross-reference (c), and nothing in the text says whether (c) reaches an audit chargeback.",
+   "quote": "If any franchisor disallows a franchisee’s claim for a defective part, alleging that the part, in fact, is not defective, the franchisor shall return the part alleged not to be defective to the franchisee at the expense of the franchisor",
+   "pinpoint": "Cal. Veh. Code § 3065(c)",
+   "url": "https://california.public.law/codes/ca_veh_code_section_3065"
+  },
+  {
+   "id": "labor_time_reduction_limits",
+   "section": "exceptions",
+   "label": "Time-allowance reductions",
+   "value": "No fixed-percentage or other reduction in time or compensation for warranty repairs that is not attributable to a specific repair. A reduction for a specific repair takes effect only on 15 days' prior written notice to the dealer, and if protested within six months the franchisor must prove the reduction reasonable and the result adequate and fair. An audit finding that relies on a reduced time allowance should confirm the allowance was in force, with the required notice, on the repair date; the franchisor also may not unreasonably deny a dealer's documented request for additional diagnostic or repair time on a specific vehicle (§ 3065(a)(1)).",
+   "covers": [
+    "factory_warranty"
+   ],
+   "effect": "prohibited",
+   "status": "express",
+   "reason": null,
+   "quote": "A franchisor may reduce the allowed time or compensation applicable to a specific warranty repair only upon 15 days’ prior written notice to the franchisee.",
+   "pinpoint": "Cal. Veh. Code § 3065(a)(1)-(3)",
+   "url": "https://california.public.law/codes/ca_veh_code_section_3065"
+  },
+  {
+   "id": "rate_submission_review_limits",
+   "section": "exceptions",
+   "label": "Rate-submission review is not an audit",
+   "value": "A retail labor or parts rate submission (once per calendar year) may be contested only within 30 days, only for material inaccuracy or fraud, and only by ONE notification carrying a full explanation, substantiating evidence, all calculations and a proposed adjusted rate; the franchisor may not later expand the notification without justification and may not deny the submission. If the submitted rate is substantially higher than the current warranty rate, the franchisor may within 30 days request all repair orders closed in the 30 days immediately before or after the submitted set and recalculate using the statutory formula and exclusions; all time periods are suspended until the dealer provides them. It must pay its proposed adjusted rate pending the Board or a mutual resolution, and an uncontested rate takes effect on the 30th day. Substituting another sample, part-by-part or transaction-by-transaction methods, financial statements and unilateral rate calculations are barred.",
+   "covers": [
+    "rate_submission"
+   ],
+   "effect": "conditional",
+   "status": "express",
+   "reason": null,
+   "quote": "If the franchisor seeks to contest the retail labor rate, retail parts rate, or both, the franchisor shall submit no more than one notification to the franchisee.",
+   "pinpoint": "Cal. Veh. Code § 3065.2(a), (d)(1)-(5), (e), (h), (i); § 3065.4",
+   "url": "https://california.public.law/codes/ca_veh_code_section_3065.2"
+  },
+  {
+   "id": "warranty_discrimination_bar",
+   "section": "exceptions",
+   "label": "Unfair discrimination in warranty reimbursement",
+   "value": "Unfair discrimination among franchisees in warranty reimbursement, or in the authority to make warranty adjustments with retail customers, is an unlawful act under the dealer-licensing chapter. An audit or chargeback program applied unevenly among dealers therefore exposes the manufacturer to § 11726 damages and attorney fees and § 11705(a)(10) license action, on top of the § 3065(e)(1) bar on unfairly discriminatory audits.",
+   "covers": [
+    "factory_warranty"
+   ],
+   "effect": "prohibited",
+   "status": "express",
+   "reason": null,
+   "quote": "To unfairly discriminate among its franchisees with respect to warranty reimbursement or authority granted to its franchisees to make warranty adjustments with retail customers.",
+   "pinpoint": "Cal. Veh. Code § 11713.3(p)(1); § 11726; § 11705(a)(10)",
+   "url": "https://california.public.law/codes/ca_veh_code_section_11713.3"
+  },
+  {
+   "id": "protest_forum",
+   "section": "exceptions",
+   "label": "Board protest",
+   "value": "The dealer may protest to the New Motor Vehicle Board within six months after the later of receipt of the written disapproval notice or completion of the franchisor's appeal process; the franchisor bears the burden of proof. The Board sets a hearing within 60 days and may not reschedule beyond 90 days of its initial order (§ 3066(a)); its decision is final on delivery or mailing with no rehearing (§ 3067(a)); judicial review must be sought within 45 days (§ 3068). Note the timing gap: the six-month protest window outlasts the 90-day chargeback deadline, so a protest can arrive after the chargeback is taken.",
+   "covers": [
+    "factory_warranty",
+    "cpo",
+    "recalls",
+    "incentives"
+   ],
+   "effect": "permitted",
+   "status": "express",
+   "reason": null,
+   "quote": "Within six months after either receipt of the written disapproval notice or completion of the franchisor’s appeal process, whichever is later, a franchisee may file a protest with the board",
+   "pinpoint": "Cal. Veh. Code § 3065(e)(6); § 3065.1(g)(6); § 3066(a), (c); § 3067(a); § 3068",
+   "url": "https://california.public.law/codes/ca_veh_code_section_3065"
+  }
+ ],
+ "not_addressed": [
+  {
+   "id": "advance_notice",
+   "label": "Advance audit notice",
+   "sections_reviewed": [
+    "§ 3065(e)(1)",
+    "§ 3065.1(g)(1)",
+    "§ 3065.2(i)",
+    "§ 11713.3(y)"
+   ],
+   "note": "No advance-notice period is set for any audit. The only notice-content rule is that the franchisor's notification of an additional (non-random) audit within a nine-month period must be accompanied by written disclosure of its basis (recorded under selection_basis and frequency_cap)."
+  },
+  {
+   "id": "recovery_scope",
+   "label": "Recovery scope (whole claim vs. part)",
+   "sections_reviewed": [
+    "§ 3065(c)",
+    "§ 3065(e)(2)-(5)",
+    "§ 3065.1(g)(2)-(5)"
+   ],
+   "note": "The statute speaks of charging back \"a claim\" and sets no rule on partial versus whole-claim recovery. § 3065(c) adds a part-return or cost-reimbursement duty on a not-defective disallowance (see part_return_on_disallowance). Whole-claim recovery is not to be inferred from silence."
+  },
+  {
+   "id": "new_information",
+   "label": "New information after the audit",
+   "sections_reviewed": [
+    "§ 3065(e)(2)-(6)",
+    "§ 3065.1(g)",
+    "§ 3065.2(d)(1)"
+   ],
+   "note": "Nothing addresses adding grounds or claims after the written disapproval notice in an audit. The only \"no expansion without justification\" rule is § 3065.2(d)(1), which applies to a rate-submission contest, not an audit."
+  },
+  {
+   "id": "service_maintenance_audits",
+   "label": "Audits of non-warranty service or maintenance claims",
+   "sections_reviewed": [
+    "§ 3065",
+    "§ 3065.1",
+    "§ 3065.2(i)(2)(G)",
+    "§ 3065.25"
+   ],
+   "note": "No window, grounds or procedure for audits of non-warranty repair, maintenance or service-contract claims. The only mention is the § 3065.2(i)(2)(G) bar on nonroutine or nonrandom \"nonwarranty repair, or other service-related audits\" in response to a rate request."
+  }
+ ],
+ "legal_review": [
+  {
+   "title": "LEGAL REVIEW REQUIRED — Cure without rebuttal (warranty chargebacks)",
+   "text": "§ 3065(e)(3) bars a chargeback when the franchisee \"rebuts any disapproval and cures any material noncompliance\" before the applicable deadline. § 3065.1(g)(5), for incentive claims, separately provides that if the franchisee \"cures any material noncompliance relating to a claim, the franchisor shall not chargeback the dealer for that claim\"; § 3065(e)(5) contains no such sentence. The statute does not say whether a warranty claim that is cured but not otherwise rebutted is protected from chargeback.",
+   "action": "Treat a timely cure of a documentation-only disapproval as a bar to chargeback; obtain legal interpretation before charging back a cured warranty claim on any other ground.",
+   "pinpoint": "Cal. Veh. Code § 3065(e)(3), (e)(5); § 3065.1(g)(5)",
+   "quotes": [
+    {
+     "quote": "If the franchisee rebuts any disapproval and cures any material noncompliance relating to a claim before the applicable deadline, the franchisor shall not chargeback the franchisee for that claim.",
+     "pinpoint": "Cal. Veh. Code § 3065(e)(3)"
+    },
+    {
+     "quote": "If the franchisee cures any material noncompliance relating to a claim, the franchisor shall not chargeback the dealer for that claim.",
+     "pinpoint": "Cal. Veh. Code § 3065.1(g)(5)"
+    }
+   ]
+  },
+  {
+   "title": "LEGAL REVIEW REQUIRED — Protest waivers in warranty-audit settlements",
+   "text": "§ 11713.3(g)(1)(A)-(B) and (g)(2) make void any agreement, release or waiver that modifies a franchisor duty under Division 2 Chapter 6 or limits a dealer's right to file or pursue a Board protest. The only audit-settlement carve-out, (g)(3)(E), covers a waiver of a § 3065.1 incentive-claim protest given after disapproval; (g)(3)(A) protects settlement terms only once a protest, civil action or other proceeding exists. The statute does not say whether a pre-protest settlement of warranty (§ 3065) audit findings that waives or limits protest rights is enforceable.",
+   "action": "Obtain legal review of any audit settlement, acknowledgment or repayment agreement that waives or limits a dealer's § 3065 protest rights before a protest has been filed.",
+   "pinpoint": "Cal. Veh. Code § 11713.3(g)(1)(A)-(B), (g)(2), (g)(3)(A), (g)(3)(E)",
+   "quotes": [
+    {
+     "quote": "Limits or constrains the right of a dealer to file, pursue, or submit evidence in connection with a protest before the board.",
+     "pinpoint": "Cal. Veh. Code § 11713.3(g)(1)(B)"
+    },
+    {
+     "quote": "Prohibit a dealer from waiving its right to file a protest pursuant to Section 3065.1 if the waiver agreement is entered into after a franchisor incentive program claim has been disapproved by the franchisor",
+     "pinpoint": "Cal. Veh. Code § 11713.3(g)(3)(E)"
+    }
+   ]
+  },
+  {
+   "title": "LEGAL REVIEW REQUIRED — Part return on audit chargebacks",
+   "text": "§ 3065(c) requires a franchisor that disallows a claim for a defective part on the ground that the part is not defective to return the part at its own expense or reimburse the dealer's cost, at the franchisor's option. § 3065(e), which governs chargebacks of previously approved claims, does not cross-reference (c). The statute does not say whether (c) applies when a paid parts claim is charged back after audit on a not-defective finding.",
+   "action": "Before charging back a paid parts claim on a \"part not defective\" finding, obtain legal interpretation of whether § 3065(c) requires return of the part or reimbursement of the dealer's part cost.",
+   "pinpoint": "Cal. Veh. Code § 3065(c), (e)(2)",
+   "quotes": [
+    {
+     "quote": "If any franchisor disallows a franchisee’s claim for a defective part, alleging that the part, in fact, is not defective, the franchisor shall return the part alleged not to be defective to the franchisee at the expense of the franchisor",
+     "pinpoint": "Cal. Veh. Code § 3065(c)"
+    }
+   ]
+  }
+ ],
+ "penalties_line": "An improper audit or chargeback exposes the manufacturer to a New Motor Vehicle Board protest in which it carries the burden of proof (§ 3065(e)(6); § 3066(c)), to DMV suspension or revocation of its license for a willful violation of § 3065 (§ 11705(a)(7)), and, where the conduct also breaches § 11713.3 (unfair warranty discrimination, void waivers, export adverse action) or a Board decision, to damages, reasonable attorney fees and injunctive relief under § 11726.",
+ "protest_forum": {
+  "value": "Protest to the New Motor Vehicle Board within six months after the later of receipt of the written disapproval notice or completion of the franchisor's appeal process; franchisor bears the burden of proof; a protest filed before the chargeback stays offset or collection until the Board's final order; judicial review within 45 days of the final order.",
+  "pinpoint": "§ 3065(e)(5)-(6); § 3066(a), (c); § 3067(a); § 3068"
+ },
+ "exceptions_found": [
+  "\"Warranty\" is defined to include CPO warranties, TSB and customer-service-campaign repairs within the warranty period, and 49 U.S.C. §§ 30118-30120 recalls, so recall and CPO claim audits sit inside the § 3065 regime (§ 3065.25(b)).",
+  "Incentive audits have a parallel regime with different chargeback grounds (program ineligibility as previously communicated), a cure-alone bar on chargeback, and no § 11705(a)(7) license sanction (§ 3065.1(g)-(h); § 11705(a)(7)).",
+  "Export / sale-for-resale chargebacks and nonroutine audits are barred unless the written policy preceded the sale by 48 hours and the dealer knew or should have known; registration plus tax collection raises a rebuttable presumption; manufacturer bears the burden by a preponderance (§ 11713.3(y)).",
+  "Agreements that modify § 3065 duties or limit Board-protest rights are void; the only audit-settlement carve-out is a post-disapproval waiver of a § 3065.1 incentive protest (§ 11713.3(g)).",
+  "Franchisor bears the burden of proving intent to defraud in any § 3065 or § 3065.1 protest, including an extended-lookback order application (§ 3066(c)).",
+  "On a \"part not defective\" disallowance the franchisor must return the part at its expense or reimburse the dealer's part cost (§ 3065(c)); application to audit chargebacks unresolved.",
+  "No blanket time-allowance cuts; specific-repair reductions need 15 days' prior written notice and the franchisor must prove reasonableness if protested within six months (§ 3065(a)(2)-(3)).",
+  "Rate-submission contests are limited to one notification within 30 days on material inaccuracy or fraud, with supplemental ROs only when the rate is substantially higher; no retaliatory nonroutine audits (§ 3065.2(d), (h), (i)).",
+  "Unfair discrimination in warranty reimbursement is a licensing-chapter unlawful act reachable by § 11726 damages and attorney fees (§ 11713.3(p)(1)).",
+  "Timing trap: the chargeback must be taken between day 45 and day 90 after the later notice, but the dealer's protest window is six months; only a protest filed before the chargeback triggers the statutory stay (§ 3065(e)(5)-(6)).",
+  "The Board's jurisdiction section carries a sunset: § 3050 \"shall remain in effect only until January 1, 2030, and as of that date is repealed\" unless extended (§ 3050(f))."
+ ],
+ "pending": [],
+ "validation": [
+  {
+   "field": "audit_fields.claims",
+   "finding": "ok",
+   "detail": "Quote is verbatim from § 3065(d)(1). 30-day decision, deemed approval on day 30, payment within 30 days after approval, denial grounds, 30-day rebut and cure periods, Final Denial and six-month protest all match (d)(1)-(6). Not recorded: (d)(5) excuses a late approval or payment \"in individual instances for reasons beyond the reasonable control of the franchisor\"."
+  },
+  {
+   "field": "audit_fields.chargebacks",
+   "finding": "mismatch",
+   "detail": "Quote and lookback are verbatim and correct. Three over-reads in \"limits\": (1) the statute bars \"punitive, retaliatory, or unfairly discriminatory\" audits, not all \"discriminatory\" ones; (2) the stay applies only when the protest is filed \"prior to the franchisor's chargeback\"; a protest filed after the chargeback is taken does not stay anything; (3) the six-month protest window runs from the later of the written disapproval notice or completion of the appeal process. Corrected text: \"Audits on a reasonable basis, never punitive, retaliatory or unfairly discriminatory, and no more than one random audit per 9 months (any additional audit needs written disclosure of its basis). Chargeback grounds are the same four as the denial grounds. No extrapolation unless the sample is random and the method statistically valid. Written notice of specific grounds within 30 days after the audit, then at least 30 days (scaled to claim volume) to rebut or cure. No chargeback until 45 days after the later of the disapproval or Final Denial notice, and it must be taken within 90 days of that notice. A Board protest filed within 6 months of that notice (or the end of the appeal process) and before the chargeback stays offset or collection until the Board's final order, after which the franchisor has 90 days.\""
+  },
+  {
+   "field": "audit_fields.penalties",
+   "finding": "ok",
+   "detail": "All cites verified. Scope notes: § 11705(a)(7) names §§ 3064, 3065, 3074 and 3075 only, so the willful-violation license ground does not expressly reach incentive audits (§ 3065.1) or rate contests (§ 3065.2); those fall under § 11705(a)(10) only where the conduct also violates Art. 1 of Ch. 4 (e.g., § 11713.3). § 11726 damages run from willful failure to comply with Art. 1 or 3 of Ch. 4 of Div. 5, a DMV regulation, or a Board rule or decision; § 3065 itself sits in Div. 2 Ch. 6, so § 11726 reaches a § 3065 violation through a Board decision or through a § 11713.3 violation (unfair warranty discrimination, void waivers, export adverse action), not directly. 13 CCR § 593.3 verified."
+  },
+  {
+   "field": "audit_procedures.advance_notice",
+   "finding": "reclassify",
+   "detail": "The statute sets no advance-notice requirement or period for any audit. The quoted sentence is a basis-disclosure rule for additional (non-random) audits, already recorded under selection_basis_disclosed. Suggested: required = false (not expressly addressed), days = null, detail = \"No notice period is set. The notification of any additional audit within a nine-month period must be accompanied by written disclosure of the basis for that audit.\""
+  },
+  {
+   "field": "audit_procedures.selection_basis_disclosed",
+   "finding": "ok",
+   "detail": "Quote verbatim from § 3065(e)(1); § 3065.1(g)(1) is identical. Detail correctly limits the disclosure duty to additional audits and correctly uses \"unfairly discriminatory\"."
+  },
+  {
+   "field": "audit_procedures.audit_frequency_limit",
+   "finding": "ok",
+   "detail": "Quote verbatim. One random audit per nine-month period; additional audits need written disclosure of basis; nine-month window from payment or credit. Matches § 3065(e)(1) and § 3065.1(g)(1)."
+  },
+  {
+   "field": "audit_procedures.written_reasons_before_chargeback",
+   "finding": "ok",
+   "detail": "Quote verbatim from § 3065(e)(3). Final Denial rule matches (e)(4), including the conspicuous first-page label."
+  },
+  {
+   "field": "audit_procedures.dealer_response_period",
+   "finding": "ok",
+   "detail": "Quote verbatim. \"Not less than 30 days\", \"commensurate with the volume of claims\", 45-day hold and 90-day deadline from the later notice all match § 3065(e)(3) and (e)(5)."
+  },
+  {
+   "field": "audit_procedures.internal_appeal",
+   "finding": "ok",
+   "detail": "Quote verbatim from § 3065(e)(3). The second sentence of the detail (\"rebuts and cures ... no chargeback\") tracks the conjunctive text; see the legal-review item on cure without rebuttal."
+  },
+  {
+   "field": "audit_procedures.chargeback_stayed_pending_appeal",
+   "finding": "ok",
+   "detail": "Quote verbatim from § 3065(e)(5). Detail correctly conditions the stay on a protest filed before the chargeback and correctly adds the 90 days after the final order. The field name says \"appeal\" but the stay is tied to a Board protest, not the internal appeal; the detail makes that clear."
+  },
+  {
+   "field": "audit_procedures.extrapolation",
+   "finding": "ok",
+   "detail": "Quote verbatim from § 3065(e)(2). § 3065.1(g)(2) reads \"shall not disapprove a claim or chargeback a claim\" but is otherwise identical."
+  },
+  {
+   "field": "audit_procedures.clerical_error_protection",
+   "finding": "mismatch",
+   "detail": "Quote verbatim and the materiality and 30-day cure points are right. Over-read: \"A cured claim may not be charged back\" is express only for incentive claims (§ 3065.1(g)(5)); for warranty claims § 3065(e)(3) bars the chargeback when the franchisee \"rebuts any disapproval and cures any material noncompliance\". The statute never uses \"clerical error\". Corrected text: \"Documentation or administrative noncompliance supports a chargeback only if MATERIAL, and the franchisee has at least 30 days to cure it. A warranty claim that is rebutted and cured before the deadline may not be charged back (§ 3065(e)(3)); an incentive claim may not be charged back once the material noncompliance is cured (§ 3065.1(g)(5)).\""
+  },
+  {
+   "field": "audit_procedures.documentation_limits",
+   "finding": "ok",
+   "detail": "Quote verbatim from § 3065(e)(2); the incentive-ineligibility ground is correctly attributed to § 3065.1(g)(2) only."
+  },
+  {
+   "field": "audit_procedures.fraud_exception",
+   "finding": "ok",
+   "detail": "Quote verbatim from § 3065(f); § 3065.1(h) identical. Add: under § 3066(c) the franchisor bears the burden of proving intent to defraud when that issue is material to a § 3065 or § 3065.1 protest."
+  },
+  {
+   "field": "audit_procedures.rate_submission_audit",
+   "finding": "ok",
+   "detail": "Both quotes verbatim (§ 3065.2(d)(4) and (i)(2)(G)). Limits match (d)(1), (d)(4)-(5), (h) and (i). Not recorded: if the dealer fails to provide the supplemental repair orders, all time periods under § 3065.2 are suspended until it does ((d)(4))."
+  },
+  {
+   "field": "audit_procedures.penalties_for_audit_violations",
+   "finding": "ok",
+   "detail": "Quote verbatim from § 3065(e)(6). Two precision points: the stay applies only to a protest filed before the chargeback (§ 3065(e)(5)); and § 3066(c) places the burden on the franchisee in § 3065/§ 3065.1 protests \"except as otherwise provided in this chapter\", which (d)(6) and (e)(6) do, so the franchisor-burden statement holds for audit protests."
+  }
+ ],
+ "notes": "SOURCES. The official leginfo.legislature.ca.gov pages are behind a Cloudflare challenge (HTTP 403 to both WebFetch and curl on 2026-10-23), so the text was taken from the california.public.law mirror, which reproduces the leginfo text and shows a leginfo \"updated\" date per section, and was cross-checked for § 3065(e)(1), (e)(5) and (f) against FindLaw (\"Current as of January 01, 2026\"); the two mirrors agree. Neither mirror displays leginfo credit lines, so the Atlas's law_dates (AB 179, Stats. 2019 ch. 796, eff. 1/1/2020) could not be re-verified from the official page; public.law's \"updated Jan. 1, 2020\" for §§ 3065, 3065.25 and 3065.4 and \"Jan. 1, 2021\" for § 3065.2 are consistent with it. AGENCY RULES. 13 CCR § 586(b)-(c) (franchisor must file its warranty reimbursement schedule with the Board within 30 days of licensure and file any change on or before its effective date) and § 593.3 (failure to file may lead the Board to order DMV license action) were read; neither adds an audit or chargeback rule, so they are not loaded as rules. 13 CCR § 586(a) sets protest form and content. \"LOCAL ATTORNEY REVIEW\" CLAIM. No statutory basis found. Nothing in Veh. Code §§ 3050, 3060, 3062, 3064, 3065, 3065.1, 3065.2, 3065.25, 3065.3, 3065.4, 3066, 3067, 3068, 3069, 11705, 11713.3, 11726 or 13 CCR §§ 586, 593.3 requires attorney review, counsel sign-off or any legal opinion before a chargeback. The only external prerequisites are (1) a New Motor Vehicle Board order before auditing or charging back beyond nine months on a fraud theory (§ 3065(f)) and (2) the Board's final order when a protest was filed before the chargeback (§ 3065(e)(5)). NINE-MONTH WINDOW. § 3065(e)(1) limits when the audit may be conducted; (e)(5) sets the chargeback deadline by reference to the notice date, so a claim audited at month 9 can lawfully be charged back at about month 13. § 3065(f)'s phrase \"a longer period for audit and any resulting chargeback\" is the only text that could be read to bound the chargeback itself by the nine months; it is a weak reading against the express (e)(5) clock. BURDEN INTERPLAY. § 3066(c) places the burden on the franchisee in § 3065/§ 3065.1 protests \"except as otherwise provided in this chapter\"; §§ 3065(a)(3), (d)(6), (e)(6) and 3065.1(e), (g)(6) otherwise provide, so the franchisor carries the burden in time-reduction, disapproval and audit protests, and always on intent to defraud. LICENSE SANCTION SCOPE. § 11705(a)(7) names §§ 3064, 3065, 3074 and 3075, not § 3065.1 or § 3065.2. PENDING BILLS. Searches found no 2025-2026 bill amending §§ 3065-3065.4, 3066 or 11713.3(y); AB 646 (2025) surfaced in search but amends only Ins. Code § 116.6 and failed (Joint Rule 56, 2026-02-02). VALIDATION SUMMARY. 16 fields checked: 13 ok, 2 mismatch (chargebacks.limits; clerical_error_protection), 1 reclassify (advance_notice). All Atlas quotes are verbatim. PROCEDURAL EXTRAS from § 3066(a), § 3067(a), § 3068: Board hearing set within 60 days and not rescheduled beyond 90 days of the initial order; decision final on delivery or mailing, no rehearing; judicial review within 45 days."
+}

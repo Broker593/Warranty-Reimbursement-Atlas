@@ -242,14 +242,14 @@
    "payment_deadline_days": 30,
    "payment_deadline_trigger": "after approval",
    "resubmission_rights": "The dealer may correct and resubmit a disapproved claim within 30 days of receiving the disapproval.",
-   "denial_requirements": "Written notice within the 30-day period stating the specific grounds. A claim may not be disapproved for a clerical error that does not make the claim amount incorrect, including errors from the manufacturer's prior-approval process. The dealer may contest a disapproval through the manufacturer's appeals process.",
+   "denial_requirements": "Written notice within the 30-day period stating the specific grounds (§ 313(e)(2)(A)(i); § 310(d)(2)(B)). A claim may not be disapproved for a clerical error that does not make the claim amount incorrect, including errors from the manufacturer's prior-approval process (§ 313(e)(3)(A)). The manufacturer must pay for warranty work properly performed in accordance with its requirements (§ 310(d)(3)). The dealer may contest a disapproval through the manufacturer's appeals process (§ 313(e)(3)(B)).",
    "quote": "Any claims not specifically disapproved in writing within thirty (30) days from their submission shall be deemed approved, and payment shall follow within thirty (30) days.",
    "pinpoint": "§ 23-112-313(e)(2)(B); see (e)(1)-(3) and § 23-112-310(d)(2)(A)-(B) (pay within 30 days following approval)"
   },
   "chargebacks": {
    "lookback_months": 12,
    "fraud_extension": "A fraudulent claim may be charged back within 2 years of the claim date, but only if the manufacturer establishes the fraud in an Arkansas court.",
-   "limits": "Audits must occur within 1 year from payment or credit. Only false or unsubstantiated claims may be charged back. The dealer may appeal a chargeback to the Motor Vehicle Commission within 90 days of notice. The chargeback cannot be levied until the appeal is resolved, and the hearing must be held within 120 days.",
+   "limits": "The manufacturer or franchiser may audit warranty and recall claims within one year from the date the claim was paid or credit issued; incentive and reimbursement programs are auditable for 12 months after the date of the transactions. Only false or unsubstantiated claims may be charged back. The dealer may appeal any chargeback to the Arkansas Motor Vehicle Commission within 90 days of notification; once an appeal is filed the chargeback may not be levied until the appeal is resolved, and the Commission must hold a hearing within 120 days of filing unless all parties have agreed to settle. The one-year period is stated for the audit; no separate deadline is stated for levying the chargeback.",
    "quote": "Audit the claims within a one-year period from the date the claim was paid or credit issued by the manufacturer or franchiser; and (iii) Charge back any false or unsubstantiated claims.",
    "pinpoint": "§ 23-112-313(e)(4)(A)(ii)-(iii); see (e)(4)(C)-(D)"
   },
@@ -285,7 +285,7 @@
   },
   "penalties": {
    "private_remedies": "A licensee suffering pecuniary loss from another licensee's willful failure to comply may recover reasonable damages and attorney's fees (§ 23-112-105(a)). A dealer that prevails against a manufacturer also has an action for attorney's fees (§ 23-112-105(b)).",
-   "admin_sanctions": "The Commission may deny, suspend or revoke a license if a manufacturer 'failed to properly fulfill any warranty agreement or to adequately and fairly compensate' dealers (§ 23-112-308). A monetary penalty may be imposed instead: up to $10,000 in place of revocation, or $50-$500 per day capped at $5,000 in place of suspension. Each instance is a separate violation (§ 23-112-309).",
+   "admin_sanctions": "The Commission may deny, suspend or revoke a license on satisfactory proof that a manufacturer 'unfairly and without due regard to the equities of the parties or to the detriment of the public welfare' failed to properly fulfill any warranty agreement or to adequately and fairly compensate dealers for labor, parts or incidental expenses under factory warranty agreements (§ 23-112-308(a)(18)(A)). A monetary penalty may be imposed instead, only if the Commission finds the public interest would not be impaired: up to $10,000 in place of revocation, or $50-$500 per day capped at $5,000 in place of suspension. Each instance is a separate violation (§ 23-112-309(a)(3), (b), (d)).",
    "cite": "Ark. Code Ann. §§ 23-112-105, 23-112-308, 23-112-309"
   },
   "confidence": "medium",
@@ -306,7 +306,7 @@
    "note": ""
   },
   "verified": {
-   "audit_fields": "2026-10-06",
+   "audit_fields": "2026-10-23",
    "coverage": "2026-09-24",
    "method": "Claude research against statute text; quotes machine-checked against saved source text",
    "last_change_check": "2026-10-06",
@@ -445,7 +445,7 @@
   "chargebacks": {
    "lookback_months": 9,
    "fraud_extension": "For a false claim submitted with intent to defraud, a longer audit and chargeback period is allowed only if the franchisor obtains a Board order.",
-   "limits": "Audits on a reasonable basis, never punitive, retaliatory or discriminatory, and no more than one random audit per 9 months. Chargeback grounds are the same as the denial grounds. No extrapolation unless the sample is random and statistically valid. Written notice within 30 days after the audit, then at least 30 days to rebut or cure. No chargeback until 45 days after the notice, and it must be taken within 90 days. Chargebacks are stayed while a Board protest (filed within 6 months) is pending.",
+   "limits": "Audits on a reasonable basis, never punitive, retaliatory or unfairly discriminatory, and no more than one random audit per 9 months (any additional audit needs written disclosure of its basis). Chargeback grounds are the same four as the denial grounds. No extrapolation unless the sample is random and the method statistically valid. Written notice of specific grounds within 30 days after the audit, then at least 30 days (scaled to claim volume) to rebut or cure. No chargeback until 45 days after the later of the disapproval or Final Denial notice, and it must be taken within 90 days of that notice. A Board protest filed within 6 months of that notice (or the end of the appeal process) and before the chargeback stays offset or collection until the Board's final order, after which the franchisor has 90 days.",
    "quote": "Audits of franchisee warranty records may be conducted by the franchisor on a reasonable basis for a period of nine months after a claim is paid or credit issued.",
    "pinpoint": "§ 3065(e)(1); see (e)(2)-(6), (f)"
   },
@@ -524,7 +524,7 @@
    "note": ""
   },
   "verified": {
-   "audit_fields": "2026-10-06",
+   "audit_fields": "2026-10-23",
    "coverage": "2026-09-24",
    "method": "Claude research against statute text; quotes machine-checked against saved source text",
    "last_change_check": "2026-10-06",
@@ -880,7 +880,7 @@
    "decision_deadline_days": null,
    "deemed_approved_if_late": null,
    "payment_deadline_days": 30,
-   "payment_deadline_trigger": "after submission",
+   "payment_deadline_trigger": "after receipt of the claim",
    "resubmission_rights": null,
    "denial_requirements": "A claim may be denied, or charged back, only for the portion shown false or fraudulent or not substantially compliant with the licensee's reasonable written, uniformly applied procedures (§ 320.64(25)). No denial, reduction or chargeback because the dealer failed to comply with all of the licensee's claim-description or processing requirements (§ 320.696(2)).",
    "quote": "Compensation not paid to a motor vehicle dealer within 30 days after receipt of a claim is not timely.",
@@ -889,7 +889,7 @@
   "chargebacks": {
    "lookback_months": 12,
    "fraud_extension": "None. After 12 months, payments are 'final and incontrovertible for any reason notwithstanding any otherwise applicable law'.",
-   "limits": "No more than one audit per calendar year (§ 320.696(2)). Only the portion proven false or fraudulent, or substantially noncompliant, may be charged back. Within 30 days after the audit, the licensee must meet with the dealer (in person, phone or video) and give a detailed explanation with documentation and the basis for selecting the dealer. The dealer gets at least 45 days to respond, and the chargeback basis cannot change without new information. The dealer may protest to DHSMV within 30 days of the final notice; recovery is stayed, and the licensee bears the burden.",
+   "limits": "No more than one warranty, retail customer repair or other service-related audit per calendar year (§ 320.696(2); the cap does not name incentive audits). A post-payment chargeback is allowed only as a result of a timely conducted audit, and only for the portion proven false or fraudulent or not in substantial compliance with reasonable, written, uniformly applied procedures. Within 30 days after the audit, the licensee must meet with the dealer (in person, phone or video) and give a detailed explanation with documentation for each claim, plus a written statement of why the dealer was selected. The dealer gets at least 45 days to respond. The chargeback basis cannot change unless new information is received within 30 days after the audit ends, and then the dealer gets the same meeting and response rights again. After any internal dispute process, the licensee gives written notice of the final amount; the dealer may protest to DHSMV within 30 days after receiving it. A timely protest stays recovery until the department's final, unappealable determination, and the licensee bears the burden.",
    "quote": "Audits of warranty, maintenance, and other service-related payments shall be performed by an applicant or licensee only during the 12-month period immediately following the date the claim was paid.",
    "pinpoint": "§ 320.64(25); see § 320.696(2)"
   },
@@ -958,7 +958,7 @@
    "note": ""
   },
   "verified": {
-   "audit_fields": "2026-09-25",
+   "audit_fields": "2026-10-23",
    "coverage": "2026-09-24",
    "method": "Claude research against statute text; quotes machine-checked against saved source text",
    "last_change_check": "2026-10-06",
@@ -1557,7 +1557,7 @@
    "note": "Illinois: 100 sequential ROs chosen by the dealer, less simple-maintenance ROs. No day window or age limit stated."
   },
   "verified": {
-   "audit_fields": "2026-10-06",
+   "audit_fields": "2026-10-23",
    "coverage": "2026-09-24",
    "method": "Claude research against statute text; quotes machine-checked against saved source text",
    "last_change_check": "2026-10-06",

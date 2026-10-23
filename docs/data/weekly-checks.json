@@ -629,6 +629,55 @@
     "Searches surfaced no Warranty Week or trade-press items dated inside the window."
    ],
    "method": "Re-checked three pending items (NY on official site; PA and IL official sites unavailable). Ran general and targeted web searches for new warranty-reimbursement laws, board rulings and trade coverage. No audit-fields, key-facts or procedure data changed."
+  },
+  {
+   "check_date": "2026-10-23",
+   "type": "review",
+   "run_by": "Claude (audit brief, phase 1 and 2)",
+   "headline": "Audit brief added for Florida, California, Illinois and Arkansas: what to know before auditing paid factory-warranty claims, on the state page and as a one-page PDF; 10 matrix fields corrected",
+   "summary": "Each of the four states' warranty statutes was re-read in full (official text for Florida; official ILGA pages for Illinois; published mirrors cross-checked against enrolled acts for California and Arkansas) to validate every audit field and to look for rules outside the fixed set of 14 limits. The brief lists only the rules the state has, in the order an audit runs (eligibility, planning, testing and findings, chargeback process, exceptions and escalation), with the statute's own answer and cite on every line and the verbatim quote one click deeper. Readings the text leaves open render as LEGAL REVIEW REQUIRED blocks (Florida 3, California 3, Illinois 2, Arkansas 3). Corrections from the validation: Florida payment clock runs from receipt and the protest clock from receipt of the final notice; California's advance-notice row is now 'not in statute' (the sentence is a selection-basis rule; score 75 to 72), chargeback limits reworded (unfairly discriminatory; stay only for a protest filed before the chargeback), clerical-error wording tightened; Illinois clerical-error detail now states the unreconciled conflict; Arkansas denial requirements add the properly-performed-work rule, chargeback limits add the transaction-date trigger and the settle exception, the sanction ground carries its 'unfairly and without due regard to the equities' qualifier, the rate-submission standard cites § 23-112-310(d)(1)(A) (the § 313(c)(3) comparison language was struck in 2021), and the clerical-error rule is noted as a disapproval rule. The audit climate score moves below the brief, collapsed. The other 46 states follow after the auditor's review.",
+   "items": [
+    {
+     "category": "pending",
+     "state": "PA",
+     "bill": "SB 1182 (2025-26), PN 1866",
+     "effective": null,
+     "status": "Official page returned HTTP 503 this run; search found no new action. Prior status carried forward. Not law.",
+     "last_action_date": "2026-07-01",
+     "summary_short": "No committee action since referral; still pending.",
+     "summary": "No change since baseline. Session ends 11/30/2026.",
+     "source_url": "https://www.palegis.us/legislation/bills/2025/sb1182",
+     "atlas_impact": "Watch only, unchanged."
+    },
+    {
+     "category": "pending",
+     "state": "NY",
+     "bill": "A8773 (Magnarelli) / S8360 (Cooney), 2025-26",
+     "effective": null,
+     "status": "Re-checked on nyassembly.gov 10/19/2026: passed Assembly 06/01/2026, delivered to Senate, referred to Rules; no Senate action since.",
+     "last_action_date": "2026-06-01",
+     "summary_short": "No Senate action since referral; still pending.",
+     "summary": "No change since baseline. Bills die 12/31/2026.",
+     "source_url": "https://nyassembly.gov/leg/?default_fld=&leg_video=&bn=A08773&term=2025&Summary=Y&Actions=Y",
+     "atlas_impact": "Watch only, unchanged."
+    },
+    {
+     "category": "pending",
+     "state": "IL",
+     "bill": "SB1939 (104th GA), as amended by Senate Floor Amendments 1-2",
+     "effective": null,
+     "status": "Official page returned HTTP 503 this run; search found no new action. Prior status carried forward. Not law.",
+     "last_action_date": "2026-03-20",
+     "summary_short": "No House action since Rules re-assignment; still pending.",
+     "summary": "No change since baseline. Could move in the Nov/Dec 2026 veto or lame-duck session.",
+     "source_url": "https://www.ilga.gov/Legislation/BillStatus?DocNum=1939&GAID=18&DocTypeID=SB&SessionID=114",
+     "atlas_impact": "Watch only, unchanged."
+    }
+   ],
+   "site_changes": [
+    "Audit brief block on the FL, CA, IL and AR state pages; one-page audit brief PDFs under Downloads; state summary PDF and audit climate score kept, score collapsed below the brief."
+   ],
+   "method": "Not a law check (the Monday check of 2026-10-19 stands; its tracked laws are repeated here). Research: each state's full warranty statute read and every existing audit field validated against it, plus an open-ended search for rules outside the 14 scored limits; every quote machine-checked against the source text; approach agreed in a three-round second-opinion review on 2026-10-22."
   }
  ]
 }

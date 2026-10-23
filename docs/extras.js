@@ -35,7 +35,8 @@
   const PROGRAM_SCOPE = 'Service-contract and CPO rules apply only to contracts the manufacturer, distributor or a qualifying affiliate actually issues or pays for. Branding such as "factory-backed" does not decide it. Check the obligor named in the contract.';
 
   let AUDIT = [], WEEKLY = null, NEWS = null, KEY = {states: {}}, GOV = {states: {}}, loaded = false, loading = null;
-  let PROC = {}, DIST = {states: []}, CASES = {items: []}, IDX = null;
+  let PROC = {}, DIST = {states: []}, CASES = {items: []}, IDX = null, BRIEF = null;
+  const BRIEFS = {};
   const byAbbr = {}, byName = {}, REF = {};
 
   /* ---------- helpers ---------- */
@@ -272,9 +273,10 @@
     if (loading) return loading;
     const get = p => fetch(p + '?v=' + Date.now().toString(36).slice(0, 6)).then(r => { if (!r.ok) throw new Error(p + ' ' + r.status); return r.json(); });
     loading = Promise.all([get('data/audit-fields.json'), get('data/weekly-checks.json'), get('data/news.json'), get('data/key-facts.json'),
-      get('data/audit-procedures.json'), get('data/flagged-states.json'), get('data/cases.json'), get('data/audit-index.json'), get('data/governance.json').catch(() => ({states: {}}))]).then(([a, w, n, k, pr, di, ca, ix, gv]) => {
+      get('data/audit-procedures.json'), get('data/flagged-states.json'), get('data/cases.json'), get('data/audit-index.json'), get('data/governance.json').catch(() => ({states: {}})),
+      get('data/audit-brief/index.json').catch(() => null)]).then(([a, w, n, k, pr, di, ca, ix, gv, bf]) => {
       AUDIT = a.slice().sort((x, y) => x.name.localeCompare(y.name)); WEEKLY = w; NEWS = n; KEY = k || {states: {}}; loaded = true;
-      (pr.states || []).forEach(x => { PROC[x.state] = x; }); DIST = di || {states: []}; CASES = ca || {items: []}; IDX = ix; GOV = gv || {states: {}};
+      (pr.states || []).forEach(x => { PROC[x.state] = x; }); DIST = di || {states: []}; CASES = ca || {items: []}; IDX = ix; GOV = gv || {states: {}}; BRIEF = bf;
       AUDIT.forEach(r => { byAbbr[r.state] = r; byName[r.name.toLowerCase()] = r; });
       ((window.REFERENCE || {}).states || []).forEach(s => { REF[s.abbr] = s; });
     }).catch(err => {
@@ -409,10 +411,11 @@
       '<header class="ks-head"><div><span class="eyebrow">STATE OVERVIEW</span><h1 class="ks-h1">' + esc(r.name) + ' <span class="abbr">' + abbr + '</span></h1>' +
       '<p class="ks-cites">' + esc((r.cites || []).join(' · ')) + '</p>' +
       '<p class="ks-dates"><span>Law last amended <strong>' + esc(amended(r)) + '</strong></span><span>Last verified <strong>' + fmtDate((r.verified || {}).audit_fields) + '</strong></span>' + ((r.verified || {}).last_change_check ? '<span>Checked for law changes <strong>' + fmtDate(r.verified.last_change_check) + '</strong></span>' : '') + '</p></div>' +
-      '<div class="ks-actions"><button type="button" class="xbtn-save xcmp-btn" data-cmp-toggle="' + abbr + '">+ Add to compare</button><a class="xbtn-open" href="downloads/state-pdfs/' + abbr + '.pdf" target="_blank" rel="noopener">One-page PDF ↗</a>' + (safeUrl(r.official_url) ? '<a class="xbtn-save" href="' + esc(safeUrl(r.official_url)) + '" target="_blank" rel="noopener noreferrer">Official statute ↗</a>' : '') + '</div></header>' +
+      '<div class="ks-actions"><button type="button" class="xbtn-save xcmp-btn" data-cmp-toggle="' + abbr + '">+ Add to compare</button>' + (briefMeta(abbr) ? '<a class="xbtn-open" href="' + esc(briefMeta(abbr).pdf) + '" target="_blank" rel="noopener">Audit brief PDF ↗</a>' : '') + '<a class="' + (briefMeta(abbr) ? 'xbtn-save' : 'xbtn-open') + '" href="downloads/state-pdfs/' + abbr + '.pdf" target="_blank" rel="noopener">State summary PDF ↗</a>' + (safeUrl(r.official_url) ? '<a class="xbtn-save" href="' + esc(safeUrl(r.official_url)) + '" target="_blank" rel="noopener noreferrer">Official statute ↗</a>' : '') + '</div></header>' +
       (n ? '<p class="xnextbox"><strong>Law change coming · effective ' + fmtDate(n.effective) + ':</strong> ' + esc(n.act || '') + (n.summary ? ' — ' + esc(n.summary) : '') + '</p>' : '') +
       (rc ? '<p class="xnote"><strong>Changed in last 9 months · effective ' + fmtDate(rc.effective) + ':</strong> ' + esc(rc.act || '') + (rc.summary ? ' — ' + esc(rc.summary) : '') + ' ' + link(rc.source, 'Original source') + '</p>' : '') +
       distBox(abbr) +
+      (briefMeta(abbr) ? '<div id="xbrief" class="xb xb-loading" aria-busy="true"><div class="ks-sectionhead"><h2>Audit brief</h2></div><p class="xloading">Loading the audit brief…</p></div>' : '') +
       '<div class="ks-sectionhead"><h2>Key facts</h2><button type="button" class="quiet ks-expand" id="ksExpand" aria-pressed="false">Expand all details</button></div>' +
       '<div class="kf">' +
       fact('Labor rate', esc(k.labor || '—'), adds(f.stateHourlyRate, k.labor), laborDetail, 'labor') +
@@ -442,6 +445,8 @@
       e.currentTarget.setAttribute('aria-pressed', String(open)); e.currentTarget.textContent = open ? 'Collapse all details' : 'Expand all details';
     });
     window.scrollTo(0, 0);
+    if (briefMeta(abbr)) loadBrief(abbr).then(b => { const el = $('xbrief'); if (el && b && location.hash.toUpperCase() === '#STATE/' + abbr) { el.outerHTML = briefSection(abbr, b); } })
+      .catch(err => { const el = $('xbrief'); if (el) el.innerHTML = '<div class="ks-sectionhead"><h2>Audit brief</h2></div><p class="xerror">Could not load the audit brief (' + esc(err.message) + '). The one-page PDF above has the same content.</p>'; });
   }
 
   /* ---------- Matrix: detailed view (every field, grouped, sortable, filterable) ---------- */
@@ -747,7 +752,9 @@
       card('All states · PDF', '50 one-page state summaries in one file.', openA('downloads/warranty-atlas-all-states.pdf', 'Open') + saveA('downloads/warranty-atlas-all-states.pdf')) +
       card('Research data · JSON', 'For analysts: every state\'s claim, chargeback, rate-submission, manufacturer-response and penalty rules with statute quotes, in one machine-readable file. Everything else is in the Excel workbook.', openA('data/audit-fields.json', 'Open') + saveA('data/audit-fields.json')) +
       '</div><p class="xfoot">The Excel "Open in browser" button uses Microsoft\'s free online viewer. The workbook is public research data; no company data is included.</p>' +
-      '<h3 class="xsub">One-page PDF by state</h3><p class="xfoot">Click a state to open its PDF in a new tab. Use the viewer\'s download or print button to keep a copy.</p><div class="xstates">' + AUDIT.map(r => '<a href="downloads/state-pdfs/' + r.state + '.pdf" target="_blank" rel="noopener" title="Open ' + esc(r.name) + ' PDF">' + r.state + '</a>').join('') + '</div>';
+      (BRIEF && BRIEF.states && Object.keys(BRIEF.states).length ? '<h3 class="xsub">Audit brief by state</h3><p class="xfoot">One page: what to know before auditing paid factory-warranty claims, in the order an audit runs, with the statute cite on every line. Available for ' + Object.keys(BRIEF.states).length + ' states so far; the file name carries the verification date.</p><div class="xstates">' +
+        AUDIT.filter(r => BRIEF.states[r.state]).map(r => '<a href="' + esc(BRIEF.states[r.state].pdf) + '" target="_blank" rel="noopener" title="Open ' + esc(r.name) + ' audit brief (verified ' + esc(BRIEF.states[r.state].verified) + ')">' + r.state + '</a>').join('') + '</div>' : '') +
+      '<h3 class="xsub">One-page state summary PDF</h3><p class="xfoot">Click a state to open its PDF in a new tab. Use the viewer\'s download or print button to keep a copy.</p><div class="xstates">' + AUDIT.map(r => '<a href="downloads/state-pdfs/' + r.state + '.pdf" target="_blank" rel="noopener" title="Open ' + esc(r.name) + ' PDF">' + r.state + '</a>').join('') + '</div>';
   }
 
   /* ---------- Summary dashboard: answer counts, definitions and states for every column ---------- */
@@ -1057,10 +1064,63 @@
     }).join('');
     const p = procOf(abbr);
     return '<div class="ks-sectionhead" id="kf-audit"><h2>Audit procedures</h2><a class="ks-maplink" href="#map">See all states on the audit climate map →</a></div>' +
-      (v ? '<div class="ki-card"><div class="ki-score"><span class="ki-num">' + v.score + '</span><span class="ki-of">/ ' + IDX.max + '</span></div><div class="ki-text"><p class="ki-title">Audit climate score ' + tierBadge(v.tier) + '</p><p class="xs-note">How restrictive state law is toward warranty audits, chargebacks and rate validation here (higher = more restrictive). Rank ' + v.rank + ' of 50 (1 = most restrictive). Statute and agency-rule text.</p>' + subLine(v) + factorList(abbr, false) + indexMethod() + '</div></div>' : '') +
+      (v ? '<details class="xs-fold ki-fold"><summary><span class="ki-sum"><strong>Audit climate score ' + v.score + ' / ' + IDX.max + '</strong> ' + tierBadge(v.tier) + ' <span class="xs-sumline">rank ' + v.rank + ' of 50 · how it was scored</span></span></summary>' +
+        '<div class="ki-card"><div class="ki-score"><span class="ki-num">' + v.score + '</span><span class="ki-of">/ ' + IDX.max + '</span></div><div class="ki-text"><p class="ki-title">Audit climate score ' + tierBadge(v.tier) + '</p><p class="xs-note">How restrictive state law is toward warranty audits, chargebacks and rate validation here (higher = more restrictive). Rank ' + v.rank + ' of 50 (1 = most restrictive). Statute and agency-rule text. It measures the law, not how likely a dispute is' + (briefMeta(abbr) ? '; the audit brief above is what to use before an audit' : '') + '.</p>' + subLine(v) + factorList(abbr, false) + indexMethod() + '</div></div></details>' : '') +
       '<div class="table-scroll"><table class="xtable kp-table"><tbody>' + rows + '</tbody></table></div>' +
       '<p class="xpin">Confidence: ' + esc(p.confidence || '') + (p.notes ? '. ' + esc(trim(p.notes, 400)) : '') + '</p>' +
       (cases.length ? '<div class="ks-sectionhead"><h2>Cases and laws for this state</h2><a class="ks-maplink" href="#cases">All cases →</a></div><ul class="kc-mini">' + cases.map(c => '<li><a href="#cases/' + esc(c.id) + '">' + esc(c.title) + '</a><span class="xpin"> · ' + esc(c.forum) + ' · ' + esc(c.date) + '</span></li>').join('') + '</ul>' : '');
+  }
+
+  /* ---------- Audit brief: what to know before auditing paid factory-warranty claims (data/audit-brief/XX.json) ---------- */
+  function briefMeta(abbr) { return BRIEF && BRIEF.states && BRIEF.states[abbr] ? BRIEF.states[abbr] : null; }
+  function loadBrief(abbr) {
+    if (BRIEFS[abbr]) return Promise.resolve(BRIEFS[abbr]);
+    return fetch('data/audit-brief/' + abbr + '.json?v=' + Date.now().toString(36).slice(0, 6)).then(r => { if (!r.ok) throw new Error('brief ' + r.status); return r.json(); }).then(b => { BRIEFS[abbr] = b; return b; });
+  }
+  const FLAGGED = s => s === 'conflict' || s === 'unresolved';
+  function briefTags(x) {
+    const P = BRIEF.programs || {}, E = BRIEF.effects || {}, S = BRIEF.statuses || {};
+    return '<p class="xb-tags"><span><b>Effect</b> ' + esc(E[x.effect] || x.effect) + '</span><span><b>Reading</b> ' + esc(S[x.status] || x.status) + '</span><span><b>Covers</b> ' + esc((x.covers || []).map(c => P[c] || c).join(', ')) + '</span></p>';
+  }
+  function briefRule(x, full) {
+    const pin = x.url ? '<a class="xb-pin" href="' + esc(safeUrl(x.url)) + '" target="_blank" rel="noopener noreferrer" title="' + esc(x.pinpoint) + '">' + esc(x.pin_short || x.pinpoint) + ' ↗</a>' : '<span class="xb-pin">' + esc(x.pin_short || x.pinpoint) + '</span>';
+    const flag = FLAGGED(x.status) ? ' <span class="xb-flag">⚠ Legal review</span>' : '';
+    const det = briefTags(x) + (full ? '' : '<p>' + esc(x.value) + '</p>') + (x.reason ? '<p class="xb-why"><strong>Why this reading:</strong> ' + esc(x.reason) + '</p>' : '') +
+      (x.quote ? quoteBlock({quote: x.quote, pinpoint: x.pinpoint}) : '<p class="xpin">' + esc(x.pinpoint) + '</p>') + (x.note ? '<p class="xnote">' + esc(x.note) + '</p>' : '');
+    return '<li class="xb-rule' + (FLAGGED(x.status) ? ' xb-flagged' : '') + '" id="xb-' + esc(x.id) + '"><div class="xb-line"><span class="xb-label">' + esc(x.label) + '</span><span class="xb-short">' + esc(full ? x.value : x.short) + flag + '</span>' + pin + '</div>' +
+      '<details class="kf-more"><summary>Details and statute text</summary><div class="kf-detail">' + det + '</div></details></li>';
+  }
+  function briefSection(abbr, b) {
+    const meta = briefMeta(abbr) || {}, r = byAbbr[abbr];
+    const secs = BRIEF.sections || [], rules = b.rules || [], lr = b.legal_review || [], na = b.not_addressed || [];
+    const onBrief = rules.filter(x => x.brief), more = rules.filter(x => !x.brief);
+    const vdate = fmtDate((b.verified || {}).date), scope = (b.verified || {}).scope || 'statutes';
+    let h = '<section class="xb" id="kf-brief" aria-labelledby="xbH"><div class="ks-sectionhead"><h2 id="xbH">Audit brief</h2>' + (meta.pdf ? '<a class="ks-maplink" href="' + esc(meta.pdf) + '" target="_blank" rel="noopener">One-page audit brief PDF ↗</a>' : '') + '</div>' +
+      '<p class="xb-lead">What to know before auditing a dealer\'s paid factory-warranty claims in ' + esc(r.name) + ', in the order an audit runs. Only rules this state has are listed, with the statute\'s own answer on the line and the cite beside it.</p>' +
+      '<p class="xb-covers"><strong>Covers:</strong> ' + esc(b.covers_line || '') + '</p>' +
+      '<p class="xb-meta"><span>Verified <strong>' + vdate + '</strong> (' + esc(scope) + ')</span>' + (lr.length ? '<span><a href="#xb-lr" class="xb-lrlink">⚠ ' + lr.length + ' item' + (lr.length > 1 ? 's' : '') + ' need legal review</a></span>' : '') + '<span>Open a line for the statute text and a copy button</span></p>';
+    secs.forEach((s, i) => {
+      const list = onBrief.filter(x => x.section === s.id);
+      const isLast = s.id === 'exceptions';
+      if (!list.length && !(isLast && lr.length)) return;
+      h += '<h3 class="xb-h3"><span class="xb-num" aria-hidden="true">' + (i + 1) + '</span>' + esc(s.title) + '<small>' + esc(s.blurb) + '</small></h3>';
+      if (list.length) h += '<ol class="xb-rules">' + list.map(x => briefRule(x, false)).join('') + '</ol>';
+      if (isLast) {
+        if (lr.length) h += '<div id="xb-lr" class="xb-lrs">' + lr.map(l => '<div class="xb-lr" role="note"><p class="xb-lr-t">⚠ LEGAL REVIEW REQUIRED — ' + esc(l.title) + '</p><p>' + esc(l.text) + '</p><p><strong>Action:</strong> ' + esc(l.action) + '</p><p class="xpin">' + esc(l.pinpoint) + '</p></div>').join('') + '</div>';
+        if (b.penalties_line) h += '<p class="xb-pen"><strong>If done wrong:</strong> ' + esc(b.penalties_line) + '</p>';
+        if (b.protest_forum && b.protest_forum.value) h += '<p class="xb-pen"><strong>Where the dealer protests:</strong> ' + esc(b.protest_forum.value) + ' <span class="xpin">' + esc(b.protest_forum.pinpoint || '') + '</span></p>';
+      }
+    });
+    if (na.length) h += '<p class="xb-na"><strong>Not expressly addressed in the reviewed ' + esc(scope) + ' (verified ' + vdate + '):</strong> ' + esc(na.map(x => x.label.toLowerCase()).join('; ')) + '.</p>';
+    const srcs = ((b.verified || {}).sources || []);
+    h += '<details class="xb-other"><summary>Other topics reviewed, more rules found in the statute' + (more.length ? ' (' + more.length + ')' : '') + ', pending bills and sources</summary><div class="kf-detail">' +
+      (na.length ? '<h4>Topics reviewed and not expressly addressed</h4><ul class="xb-nalist">' + na.map(x => '<li><strong>' + esc(x.label) + '.</strong> ' + esc(x.note || 'Nothing in the reviewed sections.') + ' <span class="xpin">Reviewed: ' + esc((x.sections_reviewed || []).join('; ')) + '</span></li>').join('') + '</ul>' : '') +
+      (more.length ? '<h4>More rules found in the statute</h4><ol class="xb-rules xb-more">' + more.map(x => briefRule(x, true)).join('') + '</ol>' : '') +
+      ((b.pending || []).length ? '<h4>Pending bills (not law)</h4><ul>' + b.pending.map(p => '<li><strong>' + esc(p.bill) + '.</strong> ' + esc(p.status) + ' ' + esc(p.would_change || '') + '</li>').join('') + '</ul>' : '') +
+      (srcs.length ? '<h4>Sources read for this brief</h4><ul class="xb-src">' + srcs.map(s => '<li>' + (s.url ? link(s.url, s.cite) : esc(s.cite)) + ' <span class="xpin">' + esc(s.kind || '') + (s.version ? ' · ' + s.version : '') + '</span></li>').join('') + '</ul>' : '') +
+      (b.notes ? '<h4>Research notes</h4><p class="xnote">' + esc(b.notes) + '</p>' : '') + '</div></details>' +
+      '<p class="xfoot">Generated from the same data as the one-page PDF and the Audit procedures table below. Research summary for audit planning, not legal advice; confirm against the cited statute and take disputes to Legal.</p></section>';
+    return h;
   }
 
   /* ---------- Map: U.S. Audit Climate ---------- */

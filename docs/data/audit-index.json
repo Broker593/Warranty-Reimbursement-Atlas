@@ -435,8 +435,8 @@
    "rank": 24
   },
   "CA": {
-   "score": 75,
-   "exact": 75,
+   "score": 72,
+   "exact": 72,
    "tier": "Very high",
    "levels": {
     "lookback": 2,
@@ -445,7 +445,7 @@
     "clerical": 3,
     "docs": 3,
     "stay": 3,
-    "notice": 3,
+    "notice": 0,
     "selection": 3,
     "written": 3,
     "response": 2,
@@ -461,7 +461,7 @@
     "clerical": 12,
     "docs": 8,
     "stay": 15,
-    "notice": 3,
+    "notice": 0,
     "selection": 3,
     "written": 3,
     "response": 2,
@@ -472,7 +472,7 @@
    },
    "subscores": {
     "limits": 59,
-    "process": 16
+    "process": 13
    },
    "rank": 2
   },

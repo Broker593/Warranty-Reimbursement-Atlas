@@ -1,0 +1,873 @@
+{
+ "state": "IL",
+ "schema": 1,
+ "verified": {
+  "date": "2026-10-23",
+  "scope": "statutes",
+  "sources": [
+   {
+    "cite": "815 ILCS 710/6",
+    "url": "https://my.ilga.gov/ftp/ILCS/Ch%200815/Act%200710/081507100K6.html",
+    "kind": "official",
+    "version": "ILCS as published by the Illinois General Assembly (my.ilga.gov mirror host of ilga.gov; www.ilga.gov blocks fetching). Source note: P.A. 102-232, eff. 1-1-22; 102-669, eff. 11-16-21. Read 2026-10-23."
+   },
+   {
+    "cite": "815 ILCS 710/4",
+    "url": "https://my.ilga.gov/ftp/ILCS/Ch%200815/Act%200710/081507100K4.html",
+    "kind": "official",
+    "version": "ILCS (ILGA). Source note: P.A. 102-433, eff. 1-1-22."
+   },
+   {
+    "cite": "815 ILCS 710/2",
+    "url": "https://ilga.gov/legislation/ilcs/documents/081507100K2.htm",
+    "kind": "official",
+    "version": "ILCS (ILGA). Source note: P.A. 100-308, eff. 8-24-17."
+   },
+   {
+    "cite": "815 ILCS 710/5",
+    "url": "https://ilga.gov/legislation/ilcs/documents/081507100K5.htm",
+    "kind": "official",
+    "version": "ILCS (ILGA). Source note: P.A. 91-485, eff. 1-1-00; 92-758, eff. 1-1-03."
+   },
+   {
+    "cite": "815 ILCS 710/12",
+    "url": "https://ilga.gov/legislation/ilcs/documents/081507100K12.htm",
+    "kind": "official",
+    "version": "ILCS (ILGA). Source note: P.A. 100-308, eff. 8-24-17. Note: the fetched text of 12(a) dropped the words 'involving' and 'to'; verbatim quotes for Sec. 12 were taken from the Justia mirror below and cross-checked for structure here."
+   },
+   {
+    "cite": "815 ILCS 710 (full Act; used for Sec. 12 quotes)",
+    "url": "https://law.justia.com/codes/illinois/chapter-815/act-815-ilcs-710/",
+    "kind": "mirror",
+    "version": "2025 Illinois Compiled Statutes (newest edition offered; 2024 and 2023 also listed)."
+   },
+   {
+    "cite": "815 ILCS 710/13",
+    "url": "https://ilga.gov/legislation/ilcs/documents/081507100K13.htm",
+    "kind": "official",
+    "version": "ILCS (ILGA). Source note: P.A. 91-485, eff. 1-1-00; 91-533, eff. 8-13-99; 92-272, eff. 1-1-02."
+   },
+   {
+    "cite": "815 ILCS 710/14",
+    "url": "https://ilga.gov/legislation/ilcs/documents/081507100K14.htm",
+    "kind": "official",
+    "version": "ILCS (ILGA). Source note: P.A. 81-43."
+   },
+   {
+    "cite": "815 ILCS 710/29",
+    "url": "https://witnessslips.ilga.gov/legislation/ilcs/documents/081507100K29.htm",
+    "kind": "official",
+    "version": "ILCS (ILGA host). Source note: P.A. 91-485, eff. 1-1-00; 92-272, eff. 1-1-02."
+   },
+   {
+    "cite": "625 ILCS 5/5-103",
+    "url": "https://ilga.gov/legislation/ilcs/documents/062500050K5-103.htm",
+    "kind": "official",
+    "version": "ILCS (ILGA). Source note: P.A. 92-458, eff. 8-22-01."
+   },
+   {
+    "cite": "625 ILCS 5/5-109",
+    "url": "https://ilga.gov/legislation/ilcs/documents/062500050K5-109.htm",
+    "kind": "official",
+    "version": "ILCS (ILGA). Source note: P.A. 99-127, eff. 1-1-16."
+   },
+   {
+    "cite": "92 Ill. Adm. Code 1001.790 (read only to validate the protest-cost figures in the penalties field; adds no warranty or audit rule)",
+    "url": "https://ilga.gov/ftp/JCAR/AdminCode/092/092010010G07900R.html",
+    "kind": "official",
+    "version": "Amended at 47 Ill. Reg. 10998, effective July 10, 2023."
+   },
+   {
+    "cite": "SB1939, 104th GA (bill status and introduced text)",
+    "url": "https://my.ilga.gov/ftp/legislation/104/BillStatus/HTML/10400SB1939.html",
+    "kind": "official",
+    "version": "Status page read 2026-10-23; introduced text at https://ilga.gov/ftp/legislation/104/SB/10400SB1939.htm (Introduced 2/6/2025)."
+   },
+   {
+    "cite": "P.A. 102-0232 (amendment history check)",
+    "url": "https://ilga.gov/ftp/Public%20Acts/102/102-0232.htm",
+    "kind": "official",
+    "version": "Plain-text copy; added/deleted-text markup not visible, so which Sec. 6(b) sentences the 2022 amendment added could not be confirmed."
+   }
+  ]
+ },
+ "covers": {
+  "primary": "factory_warranty",
+  "also": [
+   {
+    "program": "incentives",
+    "treatment": "The audit and chargeback provisions 'also apply to all other incentive and reimbursement programs' for one year after the claim was paid or credit issued. The warranty-repair-order chargeback bar ('absent a finding of fraud or illegal actions') is limited by its words to warranty repair orders and does not reach incentive chargebacks; the court-finding sentence for fraudulent claims follows the incentive sentence and reads as applying to both.",
+    "pinpoint": "815 ILCS 710/6(b), final paragraph"
+   },
+   {
+    "program": "recalls",
+    "treatment": "Recall and voluntary stop-sell repairs are expressly inside the Section's compensation requirement ('No warranty or factory compensated repairs shall be excluded from this requirement, including recalls'), so recall claims are claims 'hereunder' subject to the same claims, audit and chargeback rules. Manufacturer must also pay interest and storage on inventory held under a recall or stop sale.",
+    "pinpoint": "815 ILCS 710/6(b), 4th and 11th paragraphs"
+   },
+   {
+    "program": "maintenance",
+    "treatment": "Not named. Factory-reimbursed maintenance programs fall within 'all other incentive and reimbursement programs' (reasoned reading); customer-pay simple-maintenance ROs are excluded from the labor-rate sample and routine-maintenance parts from the markup sample.",
+    "pinpoint": "815 ILCS 710/6(b) final paragraph; 710/6(b) 5th paragraph; 710/6(d)"
+   },
+   {
+    "program": "service",
+    "treatment": "Not named. Factory-paid service campaigns fall within 'all other incentive and reimbursement programs' (reasoned reading).",
+    "pinpoint": "815 ILCS 710/6(b), final paragraph"
+   },
+   {
+    "program": "service_contracts",
+    "treatment": "Section 6 obligations extend to any parent, subsidiary, affiliate, agent, employee or 1%+ owner of the franchiser that issues 'a warranty or service or repair plan' instead of or in addition to the franchiser's own, so a captive service-contract company's claim audits and chargebacks sit under the same rules.",
+    "pinpoint": "815 ILCS 710/6(f)"
+   },
+   {
+    "program": "rate_submission",
+    "treatment": "Parts markup: manufacturer may audit the submitted ROs within 30 days of the declaration and adjust the markup; dealer may request a change at most twice per calendar year. Labor rate: dealer-chosen 100 sequential ROs, increase requests at most once per calendar year, no manufacturer audit or rebuttal right stated.",
+    "pinpoint": "815 ILCS 710/6(d); 710/6(b) 5th and 6th paragraphs"
+   },
+   {
+    "program": "cpo",
+    "treatment": "Not addressed in Sec. 6. Sec. 4(c-5) lets the manufacturer prohibit non-OEM 'secondary products' on repairs paid under a certified pre-owned program; Sec. 4(d)(9) bars tying used/CPO vehicle purchase eligibility, pricing or incentives to new-vehicle sales performance.",
+    "pinpoint": "815 ILCS 710/4(c-5); 710/4(d)(9)"
+   }
+  ]
+ },
+ "covers_line": "Factory warranty and recall claims; all other incentive and reimbursement programs (same one-year rule); affiliate-issued warranty and service plans (same obligations).",
+ "rules": [
+  {
+   "id": "audit_window",
+   "section": "eligibility",
+   "label": "Audit window",
+   "brief": true,
+   "short": "One year from the date the claim was paid or credit issued; the same year for incentive and reimbursement programs.",
+   "value": "One year from the date the claim was paid or credit was issued by the manufacturer or franchiser. The same one-year period, from the same trigger, applies to 'all other incentive and reimbursement programs'. Recall and stop-sell repairs are inside the Section's compensation regime, so their claims are 'such claims'.",
+   "covers": [
+    "factory_warranty",
+    "recalls",
+    "incentives",
+    "maintenance",
+    "service"
+   ],
+   "effect": "conditional",
+   "status": "express",
+   "reason": null,
+   "quote": "to audit such claims within a one year period from the date the claim was paid or credit issued by the manufacturer or franchiser",
+   "pinpoint": "815 ILCS 710/6(b), final paragraph (sentence beginning 'The manufacturer or franchiser shall have the right')",
+   "pin_short": "710/6(b)",
+   "url": "https://my.ilga.gov/ftp/ILCS/Ch%200815/Act%200710/081507100K6.html",
+   "note": null
+  },
+  {
+   "id": "post_window_exception",
+   "section": "eligibility",
+   "label": "Post-window fraud exception",
+   "brief": true,
+   "short": "After the year, a fraudulent claim can be charged back only if the manufacturer establishes fraud in an Illinois court. 'Fraud' includes reckless misrepresentation and intentional non-disclosure.",
+   "value": "After the one-year window a fraudulent claim may still be charged back, but only if the manufacturer establishes in a court of competent jurisdiction in Illinois that the claim is fraudulent. The burden is the manufacturer's. No outer time limit is stated in Sec. 6; the Act's general 4-year limitations period (Sec. 14) is the only time bar in the text. 'Fraud' is defined in Sec. 2(m) and includes reckless misrepresentation of, and intentional failure to disclose, a material fact.",
+   "covers": [
+    "factory_warranty",
+    "recalls",
+    "incentives"
+   ],
+   "effect": "conditional",
+   "status": "reasoned_interpretation",
+   "reason": "The sentence opens 'However' and directly follows the two one-year sentences, so the natural reading is an exception to the one-year limit; it does not literally say 'after one year' and could also be read to require a court finding for any chargeback labelled fraudulent at any time (see legal_review).",
+   "quote": "However, the manufacturer retains the right to charge back any fraudulent claim if the manufacturer establishes in a court of competent jurisdiction in this State that the claim is fraudulent.",
+   "pinpoint": "815 ILCS 710/6(b), final paragraph, last sentence",
+   "pin_short": "710/6(b)",
+   "url": "https://my.ilga.gov/ftp/ILCS/Ch%200815/Act%200710/081507100K6.html",
+   "note": null
+  },
+  {
+   "id": "recovery_deadline",
+   "section": "eligibility",
+   "label": "Deadline to take the chargeback",
+   "brief": true,
+   "short": "Not stated whether a chargeback from a timely audit may be taken after the year ends. Conservative: finish both the audit and the chargeback within one year of payment.",
+   "value": "Not fixed in terms. For warranty claims the one-year period textually limits the audit ('to audit such claims within a one year period'); for incentive and reimbursement programs the text applies 'the audit and charge back provisions' for 'a period of one year'. Nothing says whether a chargeback arising from an audit begun inside the year may be taken after the year ends. Conservative reading: complete both the audit and the chargeback within one year of payment or credit.",
+   "covers": [
+    "factory_warranty",
+    "recalls",
+    "incentives"
+   ],
+   "effect": "conditional",
+   "status": "unresolved",
+   "reason": "The warranty sentence attaches the one-year period to 'audit' only, while the incentive sentence attaches it to 'the audit and charge back provisions'; neither states when the chargeback itself must be taken and nothing in Sec. 6 settles it.",
+   "quote": "The audit and charge back provisions of this Section also apply to all other incentive and reimbursement programs for a period of one year after the date the claim was paid or credit issued by the manufacturer or franchiser.",
+   "pinpoint": "815 ILCS 710/6(b), final paragraph (second-to-last sentence)",
+   "pin_short": "710/6(b)",
+   "url": "https://my.ilga.gov/ftp/ILCS/Ch%200815/Act%200710/081507100K6.html",
+   "note": null
+  },
+  {
+   "id": "audit_basis",
+   "section": "planning",
+   "label": "Audit basis / general conduct standard",
+   "brief": true,
+   "short": "No audit-specific standard. The Act's general bar on arbitrary, bad-faith or unconscionable action that causes damage applies.",
+   "value": "No audit-specific standard (nothing on reasonableness, retaliation or rate requests). The Act's general rule applies to 'any action with respect to a franchise': action that is arbitrary, in bad faith or unconscionable and causes damage is a violation.",
+   "covers": [
+    "factory_warranty",
+    "recalls",
+    "incentives",
+    "maintenance",
+    "service",
+    "rate_submission"
+   ],
+   "effect": "prohibited",
+   "status": "reasoned_interpretation",
+   "reason": "Sec. 4(b) does not name audits or chargebacks; it reaches 'any action with respect to a franchise', which on its face includes a warranty audit or chargeback.",
+   "quote": "to engage in any action with respect to a franchise which is arbitrary, in bad faith or unconscionable and which causes damage to any of the parties or to the public.",
+   "pinpoint": "815 ILCS 710/4(b)",
+   "pin_short": "710/4(b)",
+   "url": "https://my.ilga.gov/ftp/ILCS/Ch%200815/Act%200710/081507100K4.html",
+   "note": null
+  },
+  {
+   "id": "paid_claim_chargeback_grounds",
+   "section": "testing",
+   "label": "Grounds to charge back a paid claim",
+   "brief": true,
+   "short": "'False or unsubstantiated' claims, inside the year. BUT a separate sentence bars any debit or chargeback of a warranty RO item absent a finding of fraud or illegal actions. Not reconciled: legal review before any warranty RO chargeback.",
+   "value": "Express ground, inside the one-year window: 'any false or unsubstantiated claims'. But a separate sentence in the same subsection says no debit reduction or charge back of 'any item on a warranty repair order' may be made 'absent a finding of fraud or illegal actions by the dealer', and a third says fraudulent claims may be charged back if fraud is established in an Illinois court. The statute does not reconcile the first two. The warranty-repair-order bar does not by its words reach incentive or reimbursement-program chargebacks, which rest on the 'false or unsubstantiated' ground alone.",
+   "covers": [
+    "factory_warranty",
+    "recalls",
+    "incentives"
+   ],
+   "effect": "conditional",
+   "status": "conflict",
+   "reason": "'False or unsubstantiated' is a broader ground than 'fraud or illegal actions'; the two sentences sit in different paragraphs of Sec. 6(b) with no cross-reference or priority rule.",
+   "quote": "to audit such claims within a one year period from the date the claim was paid or credit issued by the manufacturer or franchiser, and to charge back any false or unsubstantiated claims.",
+   "pinpoint": "815 ILCS 710/6(b), final paragraph (sentence beginning 'The manufacturer or franchiser shall have the right')",
+   "pin_short": "710/6(b)",
+   "url": "https://my.ilga.gov/ftp/ILCS/Ch%200815/Act%200710/081507100K6.html",
+   "note": null
+  },
+  {
+   "id": "warranty_ro_chargeback_bar",
+   "section": "testing",
+   "label": "Warranty RO chargeback bar (fraud or illegal-actions finding)",
+   "brief": true,
+   "short": "No debit reduction or chargeback of any item on a warranty repair order absent a finding of fraud or illegal actions by the dealer. Who makes the finding is not stated.",
+   "value": "No debit reduction or charge back of any item on a warranty repair order absent a finding of fraud or illegal actions by the dealer. The text does not say who makes the 'finding' (court, Review Board, or the manufacturer's own audit). Limited by its words to warranty repair orders.",
+   "covers": [
+    "factory_warranty",
+    "recalls"
+   ],
+   "effect": "prohibited",
+   "status": "conflict",
+   "reason": "Pulls against the 'false or unsubstantiated' chargeback right in the final paragraph; the statute does not reconcile them or identify who makes the finding.",
+   "quote": "No debit reduction or charge back of any item on a warranty repair order may be made absent a finding of fraud or illegal actions by the dealer.",
+   "pinpoint": "815 ILCS 710/6(b), 10th paragraph (sentence beginning 'No debit reduction')",
+   "pin_short": "710/6(b)",
+   "url": "https://my.ilga.gov/ftp/ILCS/Ch%200815/Act%200710/081507100K6.html",
+   "note": null
+  },
+  {
+   "id": "claim_denial_grounds",
+   "section": "testing",
+   "label": "Denial grounds (unpaid submitted claim)",
+   "brief": true,
+   "short": "No list. Disapprove in writing within 30 days stating specific grounds, or the claim is deemed approved. A timely claim can't be invalid solely because unavailable parts added mileage.",
+   "value": "No list of grounds. A claim must be approved or disapproved within 30 days of submission 'in the manner and on the forms the manufacturer reasonably prescribes'; disapproval must be in writing within that period and state the specific grounds (the first claims paragraph also accepts disapproval 'by electronic transmission'); a claim not specifically disapproved within 30 days is deemed approved and must be paid within 30 days. One express limit on grounds: a timely claim may not be deemed invalid solely because unavailable parts caused additional use and mileage. These rules govern submitted, unpaid claims (original and resubmitted, including Sec. 5 predelivery claims); nothing carries them into chargebacks of paid claims.",
+   "covers": [
+    "factory_warranty",
+    "recalls"
+   ],
+   "effect": "conditional",
+   "status": "express",
+   "reason": null,
+   "quote": "The motor vehicle dealer who submits a claim which is disapproved shall be notified in writing of the disapproval within the same period, and each such notice shall state the specific grounds upon which the disapproval is based.",
+   "pinpoint": "815 ILCS 710/6(b), final paragraph (third sentence); see also 7th paragraph and 10th paragraph",
+   "pin_short": "710/6(b)",
+   "url": "https://my.ilga.gov/ftp/ILCS/Ch%200815/Act%200710/081507100K6.html",
+   "note": null
+  },
+  {
+   "id": "proof_requirements",
+   "section": "testing",
+   "label": "Proof / burden",
+   "brief": true,
+   "short": "Inside the year: no burden or standard beyond 'reasonable documentation'. Outside it: fraud established in court. 'Fraud' is defined broadly (reckless misrepresentation counts).",
+   "value": "Inside the year: the text names the grounds ('false or unsubstantiated') but sets no burden or standard; 'unsubstantiated' ties to the manufacturer's right to require 'reasonable documentation', so the dealer's documentation is the test. Outside the year: the manufacturer must establish fraud in an Illinois court. The warranty-RO bar requires 'a finding of fraud or illegal actions by the dealer' without saying who finds. 'Fraud' under Sec. 2(m) includes reckless (not only intentional) misrepresentation of a material fact, a promise or representation not made honestly and in good faith, and an intentional failure to disclose a material fact.",
+   "covers": [
+    "factory_warranty",
+    "recalls",
+    "incentives"
+   ],
+   "effect": "conditional",
+   "status": "unresolved",
+   "reason": "The maker of the 'finding' in the warranty-RO sentence is not identified, and the statute does not say whether the court-finding requirement is confined to post-window chargebacks.",
+   "quote": "\"Fraud\", shall include, in addition to its normal legal connotation, the following: a misrepresentation in any manner, whether intentionally false or due to reckless disregard for truth or falsity, of a material fact",
+   "pinpoint": "815 ILCS 710/2(m); 710/6(b) 10th and final paragraphs",
+   "pin_short": "710/2(m)",
+   "url": "https://ilga.gov/legislation/ilcs/documents/081507100K2.htm",
+   "note": null
+  },
+  {
+   "id": "recovery_scope",
+   "section": "testing",
+   "label": "Recovery scope (line item vs whole claim)",
+   "brief": true,
+   "short": "Not addressed. The RO bar speaks of 'any item', which reads item by item; don't infer whole-claim recovery.",
+   "value": "Not expressly addressed. The chargeback right runs to 'claims'; the warranty-RO bar runs to 'any item on a warranty repair order', which reads item by item. Nothing authorizes charging back a whole claim because one line fails; silence is not permission.",
+   "covers": [
+    "factory_warranty",
+    "recalls",
+    "incentives"
+   ],
+   "effect": "not_expressly_addressed",
+   "status": "reasoned_interpretation",
+   "reason": "Item-level wording in the bar sentence and no whole-claim language anywhere in Sec. 6.",
+   "quote": "No debit reduction or charge back of any item on a warranty repair order",
+   "pinpoint": "815 ILCS 710/6(b), 10th paragraph",
+   "pin_short": "710/6(b)",
+   "url": "https://my.ilga.gov/ftp/ILCS/Ch%200815/Act%200710/081507100K6.html",
+   "note": null
+  },
+  {
+   "id": "documentation_limits",
+   "section": "testing",
+   "label": "Documentation the manufacturer may require",
+   "brief": true,
+   "short": "Only 'reasonable documentation', submitted in the manner and on the forms the manufacturer reasonably prescribes.",
+   "value": "'Reasonable documentation' for claims, and submission 'in the manner and on the forms the manufacturer reasonably prescribes'. For parts-markup declarations, no methodology or information request that is 'unduly burdensome or time consuming', such as part-by-part or transaction-by-transaction calculations.",
+   "covers": [
+    "factory_warranty",
+    "recalls",
+    "incentives",
+    "rate_submission"
+   ],
+   "effect": "conditional",
+   "status": "express",
+   "reason": null,
+   "quote": "The manufacturer or franchiser shall have the right to require reasonable documentation for claims",
+   "pinpoint": "815 ILCS 710/6(b), final paragraph; 710/6(b) 7th paragraph; 710/6(d)",
+   "pin_short": "710/6(b)",
+   "url": "https://my.ilga.gov/ftp/ILCS/Ch%200815/Act%200710/081507100K6.html",
+   "note": null
+  },
+  {
+   "id": "clerical_error",
+   "section": "testing",
+   "label": "Clerical error",
+   "brief": true,
+   "short": "No clause. The RO bar read literally blocks clerical-only chargebacks; the 'false or unsubstantiated' sentence read literally allows them. Unresolved.",
+   "value": "No clerical-error clause. Read literally, the warranty-RO bar ('absent a finding of fraud or illegal actions') blocks a chargeback for a purely clerical error; read literally, the audit sentence allows chargeback of 'any false or unsubstantiated claims', which could include a claim that is wrong on its face. Not reconciled; do not treat clerical-only chargebacks as either clearly barred or clearly allowed.",
+   "covers": [
+    "factory_warranty",
+    "recalls"
+   ],
+   "effect": "conditional",
+   "status": "conflict",
+   "reason": "Same unreconciled pair of sentences as paid_claim_chargeback_grounds; neither mentions clerical errors.",
+   "quote": "No debit reduction or charge back of any item on a warranty repair order may be made absent a finding of fraud or illegal actions by the dealer.",
+   "pinpoint": "815 ILCS 710/6(b), 10th paragraph; final paragraph",
+   "pin_short": "710/6(b)",
+   "url": "https://my.ilga.gov/ftp/ILCS/Ch%200815/Act%200710/081507100K6.html",
+   "note": null
+  },
+  {
+   "id": "market_norms_reduction_bar",
+   "section": "testing",
+   "label": "No reductions based on market norms or averages",
+   "brief": true,
+   "short": "No reduction in payments due to preestablished market norms or market averages: benchmark-driven adjustments are barred.",
+   "value": "No reduction in payments due to preestablished market norms or market averages. This is the 'analytics' language: an audit adjustment that cuts a paid amount because the dealer's hours, parts price or repair mix exceeds a benchmark set in advance is a reduction 'due to' a preestablished norm or average.",
+   "covers": [
+    "factory_warranty",
+    "recalls"
+   ],
+   "effect": "prohibited",
+   "status": "express",
+   "reason": null,
+   "quote": "There shall be no reduction in payments due to preestablished market norms or market averages.",
+   "pinpoint": "815 ILCS 710/6(b), 9th paragraph (first sentence)",
+   "pin_short": "710/6(b)",
+   "url": "https://my.ilga.gov/ftp/ILCS/Ch%200815/Act%200710/081507100K6.html",
+   "note": null
+  },
+  {
+   "id": "failure_rate_limits_bar",
+   "section": "testing",
+   "label": "No failure-rate or repair-frequency limits",
+   "brief": true,
+   "short": "No restrictions on customer repair frequency based on failure-rate indexes or national failure averages.",
+   "value": "Manufacturers may not establish restrictions or limitations of customer repair frequency due to failure rate indexes or national failure averages. Flagging or denying repeat repairs because a dealer's repair frequency exceeds a failure-rate index is prohibited.",
+   "covers": [
+    "factory_warranty",
+    "recalls"
+   ],
+   "effect": "prohibited",
+   "status": "express",
+   "reason": null,
+   "quote": "Manufacturers are prohibited from establishing restrictions or limitations of customer repair frequency due to failure rate indexes or national failure averages.",
+   "pinpoint": "815 ILCS 710/6(b), 9th paragraph (second sentence)",
+   "pin_short": "710/6(b)",
+   "url": "https://my.ilga.gov/ftp/ILCS/Ch%200815/Act%200710/081507100K6.html",
+   "note": null
+  },
+  {
+   "id": "parts_price_peer_comparison",
+   "section": "testing",
+   "label": "Parts price reasonableness vs same-make dealers in the area",
+   "brief": true,
+   "short": "The only peer comparison allowed: a dealer's retail parts price may be tested for reasonableness against same-make dealers in its area, case by case.",
+   "value": "Warranty parts are reimbursed at the dealer's prevailing retail price 'provided that' the price is not unreasonable compared with same-manufacturer franchisees for identical parts in the dealer's geographic area. This is the one place the statute permits a comparison with other dealers; it is a case-by-case reasonableness condition, not a licence to reduce to a preestablished average (which the next sentence bars).",
+   "covers": [
+    "factory_warranty",
+    "recalls"
+   ],
+   "effect": "conditional",
+   "status": "reasoned_interpretation",
+   "reason": "The peer-comparison condition and the bar on reductions 'due to preestablished market norms or market averages' are consecutive sentences; reading 'preestablished' as the dividing line keeps both operative.",
+   "quote": "provided that such dealer's prevailing retail price is not unreasonable when compared with that of the holders of motor vehicle franchises from the same manufacturer for identical parts in the geographic area in which the dealer is engaged in business.",
+   "pinpoint": "815 ILCS 710/6(b), 8th paragraph (second sentence)",
+   "pin_short": "710/6(b)",
+   "url": "https://my.ilga.gov/ftp/ILCS/Ch%200815/Act%200710/081507100K6.html",
+   "note": null
+  },
+  {
+   "id": "written_reasons",
+   "section": "process",
+   "label": "Written reasons",
+   "brief": true,
+   "short": "Required for disapproving a submitted claim (specific grounds, within 30 days); nothing for chargebacks of paid claims. Cite the Act provision in any chargeback notice (see the 60-day clock below).",
+   "value": "Chargeback of a paid claim: no written-reasons requirement. Disapproval of a submitted claim: written notice within the 30-day decision period stating the specific grounds. The disapproval rules speak of claims 'disapproved' and 'resubmitted' before payment and are not cross-referenced to the audit/chargeback sentences. Timing point: under Sec. 12(b) and (e) the dealer's 60-day protest or suit clock runs from written notice of the franchiser's determination, and only if that notice identifies the Act provision under which the determination was made; otherwise Sec. 14's 4-year period applies.",
+   "covers": [
+    "factory_warranty",
+    "recalls",
+    "incentives"
+   ],
+   "effect": "not_expressly_addressed",
+   "status": "reasoned_interpretation",
+   "reason": "The claims paragraph runs submission, approve or disapprove within 30 days, pay within 30 days; 'disapproval' is a pre-payment event and no text extends it to post-payment chargebacks.",
+   "quote": "The motor vehicle dealer who submits a claim which is disapproved shall be notified in writing of the disapproval within the same period, and each such notice shall state the specific grounds upon which the disapproval is based.",
+   "pinpoint": "815 ILCS 710/6(b), final paragraph (third sentence); 710/12(b), (e)",
+   "pin_short": "710/6(b)",
+   "url": "https://my.ilga.gov/ftp/ILCS/Ch%200815/Act%200710/081507100K6.html",
+   "note": null
+  },
+  {
+   "id": "cure_rights",
+   "section": "process",
+   "label": "Correct and resubmit",
+   "brief": true,
+   "short": "Disapproved unpaid claims: correct and resubmit within 30 days. No cure right after a chargeback.",
+   "value": "Disapproved (unpaid) claims only: the dealer may correct and resubmit within 30 days of receipt of the disapproval; resubmitted claims get the same 30-day approve-or-disapprove and 30-day payment rules. No cure or resubmission right is stated for a charged-back paid claim.",
+   "covers": [
+    "factory_warranty",
+    "recalls"
+   ],
+   "effect": "conditional",
+   "status": "express",
+   "reason": null,
+   "quote": "The motor vehicle dealer shall be permitted to correct and resubmit such disapproved claims within 30 days of receipt of disapproval.",
+   "pinpoint": "815 ILCS 710/6(b), final paragraph (fourth sentence)",
+   "pin_short": "710/6(b)",
+   "url": "https://my.ilga.gov/ftp/ILCS/Ch%200815/Act%200710/081507100K6.html",
+   "note": null
+  },
+  {
+   "id": "deemed_approval",
+   "section": "process",
+   "label": "Deemed approval and payment clock",
+   "brief": false,
+   "value": "A claim not specifically disapproved in writing (first paragraph: 'in writing or by electronic transmission') within 30 days is deemed approved and payment must follow within 30 days; approved claims are paid within 30 days of approval. Applies to original and resubmitted claims, including Sec. 5 predelivery claims. A claim deemed approved by silence is still a paid claim subject to the one-year audit.",
+   "covers": [
+    "factory_warranty",
+    "recalls"
+   ],
+   "effect": "required",
+   "status": "express",
+   "reason": null,
+   "quote": "If a claim is not specifically disapproved in writing or by electronic transmission within 30 days after the date on which the manufacturer receives it, the claim shall be considered to be approved and payment shall follow within 30 days.",
+   "pinpoint": "815 ILCS 710/6(b), 7th paragraph (third sentence); final paragraph (first, second and fifth sentences)",
+   "pin_short": "710/6(b)",
+   "url": "https://my.ilga.gov/ftp/ILCS/Ch%200815/Act%200710/081507100K6.html",
+   "note": null
+  },
+  {
+   "id": "protest_clock_notice_trap",
+   "section": "exceptions",
+   "label": "60-day protest clock runs only from a notice that names the provision",
+   "brief": true,
+   "short": "The dealer's 60-day window to protest to the Motor Vehicle Review Board or sue runs only from a written notice that names the Act provision; without it, four years.",
+   "value": "The dealer's 60-day window to protest to the Board or sue in circuit court runs from written notice of the franchiser's determination; if the franchiser does not give notice of the provision under which the determination was made, the proceeding may instead be commenced within Sec. 14's 4-year period. A chargeback notice that does not cite the Act provision leaves the dealer's challenge window open for years.",
+   "covers": [
+    "factory_warranty",
+    "recalls",
+    "incentives"
+   ],
+   "effect": "conditional",
+   "status": "express",
+   "reason": null,
+   "quote": "however, if notice of the provision under which the determination has been made is not given by the franchiser, then the proceeding shall be commenced as provided by Section 14 of this Act.",
+   "pinpoint": "815 ILCS 710/12(b); same proviso in 710/12(e)",
+   "pin_short": "710/12(b)",
+   "url": "https://law.justia.com/codes/illinois/chapter-815/act-815-ilcs-710/",
+   "note": null
+  },
+  {
+   "id": "fee_exposure_on_reversal",
+   "section": "exceptions",
+   "label": "Reversing a chargeback after the dealer seeks relief does not avoid fee exposure",
+   "brief": true,
+   "short": "Withdrawing a disputed chargeback after the dealer files for relief can still carry the dealer's attorney's fees and costs.",
+   "value": "For fee, expert-fee and cost awards, a dealer seeking injunctive or other relief 'may be considered to have prevailed' when the manufacturer ceases the challenged conduct, as well as on a judgment, an affirmed administrative decision or a consent order. Withdrawing a disputed chargeback after a protest or suit is filed can still carry the dealer's fees.",
+   "covers": [
+    "factory_warranty",
+    "recalls",
+    "incentives"
+   ],
+   "effect": "conditional",
+   "status": "express",
+   "reason": null,
+   "quote": "the franchisee or dealer may be considered to have prevailed when a judgment is entered in its favor ... or when the manufacturer ... ceases the conduct, act or practice which is alleged to be in violation",
+   "pinpoint": "815 ILCS 710/13 (sentence beginning 'Moreover')",
+   "pin_short": "710/13",
+   "url": "https://ilga.gov/legislation/ilcs/documents/081507100K13.htm",
+   "note": null
+  },
+  {
+   "id": "cost_recovery_surcharge_bar",
+   "section": "exceptions",
+   "label": "No cost-recovery fees or surcharges",
+   "brief": true,
+   "short": "No cost-recovery fees or surcharges against a dealer for payments made under Section 6.",
+   "value": "Manufacturers may not impose any form of cost recovery fee or surcharge against a dealer for payments made under Sec. 6. An audit fee, administrative charge or recovery of audit costs tied to warranty or incentive payments is barred.",
+   "covers": [
+    "factory_warranty",
+    "recalls",
+    "incentives"
+   ],
+   "effect": "prohibited",
+   "status": "express",
+   "reason": null,
+   "quote": "Manufacturers are not permitted to impose any form of cost recovery fees or surcharges against a franchised auto dealership for payments made in accordance with this Section.",
+   "pinpoint": "815 ILCS 710/6(b), 11th paragraph (second sentence)",
+   "pin_short": "710/6(b)",
+   "url": "https://my.ilga.gov/ftp/ILCS/Ch%200815/Act%200710/081507100K6.html",
+   "note": null
+  },
+  {
+   "id": "tac_hold_time_pay",
+   "section": "exceptions",
+   "label": "Technician communication and hold time is compensable",
+   "brief": true,
+   "short": "TAC or engineering communication time, including hold time, and diagnostic time must be paid; don't charge back documented TAC or diagnostic time as excessive.",
+   "value": "If a technician must communicate with a Technical Assistance Center, engineering or another external manufacturer source to provide a warranty repair, the manufacturer must pay for the time from the start of communications, including hold time, until the communication is complete. Diagnostic time for all warranty repairs is inside the effective-labor-rate requirement. Charging back documented TAC or diagnostic time as excessive trips these sentences.",
+   "covers": [
+    "factory_warranty",
+    "recalls"
+   ],
+   "effect": "required",
+   "status": "express",
+   "reason": null,
+   "quote": "the manufacturer shall pay for the time from start of communications (including hold time) until the communication is complete.",
+   "pinpoint": "815 ILCS 710/6(b), 5th paragraph (second and third sentences)",
+   "pin_short": "710/6(b)",
+   "url": "https://my.ilga.gov/ftp/ILCS/Ch%200815/Act%200710/081507100K6.html",
+   "note": null
+  },
+  {
+   "id": "unavailable_parts_mileage",
+   "section": "exceptions",
+   "label": "Added mileage from unavailable parts is not a defect in the claim",
+   "brief": true,
+   "short": "A timely claim isn't invalid solely because backordered parts added use and mileage.",
+   "value": "A timely warranty claim may not be deemed invalid solely because unavailable parts caused additional use and mileage on the vehicle. Mileage-out-of-warranty findings on claims delayed by parts backorders are barred on that ground alone.",
+   "covers": [
+    "factory_warranty",
+    "recalls"
+   ],
+   "effect": "prohibited",
+   "status": "express",
+   "reason": null,
+   "quote": "A warranty claim timely made shall not be deemed invalid solely because unavailable parts cause additional use and mileage on the vehicle.",
+   "pinpoint": "815 ILCS 710/6(b), 10th paragraph (second sentence)",
+   "pin_short": "710/6(b)",
+   "url": "https://my.ilga.gov/ftp/ILCS/Ch%200815/Act%200710/081507100K6.html",
+   "note": null
+  },
+  {
+   "id": "recall_stop_sale_costs",
+   "section": "exceptions",
+   "label": "Recall and stop-sale repairs and inventory costs",
+   "brief": true,
+   "short": "Recall and stop-sale repairs are inside the compensation rules; interest and storage are owed on inventory held under a recall or stop sale.",
+   "value": "Recall and voluntary stop-sell repairs cannot be excluded from the Section's compensation requirement; recall labor is paid on the same time rules. If a recall or stop sale prevents sale of a new vehicle in dealer inventory, the manufacturer must compensate the dealer for interest and storage until the vehicle is repaired and ready for sale.",
+   "covers": [
+    "recalls"
+   ],
+   "effect": "required",
+   "status": "express",
+   "reason": null,
+   "quote": "the manufacturer shall compensate the dealer for any interest and storage until the vehicle is repaired and made ready for sale.",
+   "pinpoint": "815 ILCS 710/6(b), 4th paragraph and 11th paragraph (first sentence)",
+   "pin_short": "710/6(b)",
+   "url": "https://my.ilga.gov/ftp/ILCS/Ch%200815/Act%200710/081507100K6.html",
+   "note": null
+  },
+  {
+   "id": "export_adverse_action",
+   "section": "exceptions",
+   "label": "Export / sale-for-resale chargebacks",
+   "brief": true,
+   "short": "Export/resale adverse action (including an incentive chargeback) only if the written policy preceded the sale and the dealer knew or should have known; registration and titling plus Illinois tax collection presume it didn't.",
+   "value": "Adverse action under an export or sale-for-resale prohibition (which includes an incentive chargeback) is a violation unless (1) the policy was provided to the dealer in writing, electronically or on paper, before the sale or lease, and (2) the dealer knew or reasonably should have known of the customer's intent at the time of the sale or lease. If the dealer caused the vehicle to be registered and titled in any state and collected applicable Illinois sales or use tax, a rebuttable presumption arises that the dealer did not have reason to know.",
+   "covers": [
+    "incentives"
+   ],
+   "effect": "conditional",
+   "status": "express",
+   "reason": null,
+   "quote": "unless the export or sale-for-resale prohibition policy was provided to the dealer in writing either electronically or on paper, prior to the sale or lease, and the dealer knew or reasonably should have known of the customer's intent",
+   "pinpoint": "815 ILCS 710/4(d)(10)",
+   "pin_short": "710/4(d)(10)",
+   "url": "https://my.ilga.gov/ftp/ILCS/Ch%200815/Act%200710/081507100K4.html",
+   "note": null
+  },
+  {
+   "id": "waiver_bar",
+   "section": "exceptions",
+   "label": "No required waiver of Act rights",
+   "brief": true,
+   "short": "A dealer can't be required to sign a release, waiver or estoppel relieving anyone of Act liability; chargeback acknowledgment forms that waive rights fall here.",
+   "value": "It is a violation to require a dealer to assent to a release, assignment, novation, waiver or estoppel that would relieve any person from liability under the Act. Audit settlement or chargeback acknowledgment forms that waive Sec. 6 or Sec. 13 rights fall here.",
+   "covers": [
+    "factory_warranty",
+    "recalls",
+    "incentives",
+    "rate_submission"
+   ],
+   "effect": "prohibited",
+   "status": "express",
+   "reason": null,
+   "quote": "to require a motor vehicle dealer to assent to a release, assignment, novation, waiver or estoppel which would relieve any person from liability imposed by this Act",
+   "pinpoint": "815 ILCS 710/4(e)(9)",
+   "pin_short": "710/4(e)(9)",
+   "url": "https://my.ilga.gov/ftp/ILCS/Ch%200815/Act%200710/081507100K4.html",
+   "note": null
+  },
+  {
+   "id": "oem_parts_warranty_work",
+   "section": "exceptions",
+   "label": "Manufacturer may require OEM parts on factory-paid repairs",
+   "brief": false,
+   "value": "It is not a violation of Sec. 4(c-5) for the manufacturer to prohibit the dealer from using non-OEM 'secondary products' on any repair paid under a warranty, recall, service contract, extended warranty, maintenance plan or certified pre-owned program the manufacturer establishes or offers. A non-OEM part on a factory-paid RO may be a policy violation if such a policy exists; the statute does not itself make it a chargeback ground.",
+   "covers": [
+    "factory_warranty",
+    "recalls",
+    "maintenance",
+    "service_contracts",
+    "cpo"
+   ],
+   "effect": "permitted",
+   "status": "express",
+   "reason": null,
+   "quote": "to prohibit a motor vehicle dealer from using secondary products for any repair work paid for under the terms of a warranty, recall, service contract, extended warranty, maintenance plan, or certified pre-owned vehicle program",
+   "pinpoint": "815 ILCS 710/4(c-5)",
+   "pin_short": "710/4(c-5)",
+   "url": "https://my.ilga.gov/ftp/ILCS/Ch%200815/Act%200710/081507100K4.html",
+   "note": null
+  },
+  {
+   "id": "affiliate_plan_issuers",
+   "section": "exceptions",
+   "label": "Section 6 reaches affiliate-issued warranty and service plans",
+   "brief": true,
+   "short": "Section 6 applies to affiliate-issued warranty or service plans; a captive service-contract company's audits follow the same rules.",
+   "value": "The obligations of Sec. 6 apply to any parent, subsidiary, affiliate, agent, employee, person under common control, or 1%-or-more owner of the franchiser that issues a warranty or service or repair plan instead of or in addition to the franchiser's own. Audits and chargebacks by a captive service-contract company follow the same rules.",
+   "covers": [
+    "service_contracts",
+    "factory_warranty"
+   ],
+   "effect": "required",
+   "status": "express",
+   "reason": null,
+   "quote": "The obligations imposed on motor vehicle franchisers by this Section shall apply to any parent, subsidiary, affiliate, or agent ... if a warranty or service or repair plan is issued by that person",
+   "pinpoint": "815 ILCS 710/6(f)",
+   "pin_short": "710/6(f)",
+   "url": "https://my.ilga.gov/ftp/ILCS/Ch%200815/Act%200710/081507100K6.html",
+   "note": null
+  },
+  {
+   "id": "parts_markup_audit",
+   "section": "exceptions",
+   "label": "Parts-markup declaration audit",
+   "brief": false,
+   "value": "Dealer declares its average percentage markup from 100 sequential customer-paid service ROs or 90 days of customer-paid ROs, whichever is less, covering repairs made no more than 180 days before submission. The declared markup takes effect 30 days after the declaration, subject to audit of the submitted ROs and adjustment based on that audit; any audit must be conducted within 30 days following the declaration. Warranty, Sec. 6(e) assembly parts and routine-maintenance parts are excluded from the calculation. Dealer may request a change at most twice per calendar year. No unduly burdensome methodology may be required.",
+   "covers": [
+    "rate_submission"
+   ],
+   "effect": "conditional",
+   "status": "express",
+   "reason": null,
+   "quote": "subject to audit of the submitted repair orders by the motor vehicle franchiser and adjustment of the average percentage markup based on that audit. Any audit must be conducted within 30 days following the declaration.",
+   "pinpoint": "815 ILCS 710/6(d)",
+   "pin_short": "710/6(d)",
+   "url": "https://my.ilga.gov/ftp/ILCS/Ch%200815/Act%200710/081507100K6.html",
+   "note": null
+  },
+  {
+   "id": "labor_rate_submission",
+   "section": "exceptions",
+   "label": "Labor-rate basis and request frequency",
+   "brief": false,
+   "value": "Warranty labor is paid at the same effective labor rate the dealer receives for customer-pay repairs, computed from 100 sequential repair orders 'chosen and submitted by the dealer' less simple-maintenance ROs; the dealer may request a warranty labor-rate increase at most once per calendar year. Floor: never less than the dealer's rates for like retail non-warranty service. No manufacturer audit, rebuttal or re-verification right for the labor rate is stated (contrast the 30-day audit right for parts markup in subsection (d)); silence is not permission.",
+   "covers": [
+    "rate_submission"
+   ],
+   "effect": "conditional",
+   "status": "express",
+   "reason": null,
+   "quote": "Furthermore, manufacturers shall pay the dealer the same effective labor rate (using the 100 sequential repair orders chosen and submitted by the dealer less simple maintenance repair orders) that the dealer receives for customer-pay repairs.",
+   "pinpoint": "815 ILCS 710/6(b), 5th paragraph (first sentence) and 6th paragraph; 8th paragraph (first sentence)",
+   "pin_short": "710/6(b)",
+   "url": "https://my.ilga.gov/ftp/ILCS/Ch%200815/Act%200710/081507100K6.html",
+   "note": null
+  }
+ ],
+ "not_addressed": [
+  {
+   "id": "frequency_cap",
+   "label": "Audit frequency cap",
+   "sections_reviewed": [
+    "815 ILCS 710/6 (all subsections)",
+    "815 ILCS 710/4"
+   ],
+   "note": "No limit on how often or how many times a dealer may be audited. The only frequency rules run the other way: dealer labor-rate increase requests once per calendar year (6(b)) and markup change requests twice per calendar year (6(d))."
+  },
+  {
+   "id": "advance_notice",
+   "label": "Advance audit notice",
+   "sections_reviewed": [
+    "815 ILCS 710/6 (all subsections)",
+    "815 ILCS 710/4"
+   ],
+   "note": null
+  },
+  {
+   "id": "selection_basis",
+   "label": "Selection basis disclosure",
+   "sections_reviewed": [
+    "815 ILCS 710/6 (all subsections)",
+    "815 ILCS 710/4"
+   ],
+   "note": "Nothing regulates how audits or claims are selected or requires disclosure of the basis. The closest text (6(b) 9th paragraph) bars reductions in payments due to preestablished market norms or averages and bars repair-frequency limits based on failure-rate indexes; it speaks to the adjustment, not the selection."
+  },
+  {
+   "id": "extrapolation",
+   "label": "Extrapolation / sample projection",
+   "sections_reviewed": [
+    "815 ILCS 710/6 (all subsections)",
+    "815 ILCS 710/4",
+    "815 ILCS 710/29"
+   ],
+   "note": "Silent. Nothing authorizes projecting a sample error rate across unexamined claims; the warranty-RO bar speaks of 'any item on a warranty repair order' and 'a finding', and the norms/averages bar speaks to benchmark-based reductions. Silence is not permission."
+  },
+  {
+   "id": "dealer_response",
+   "label": "Dealer response period before a chargeback",
+   "sections_reviewed": [
+    "815 ILCS 710/6(b)",
+    "815 ILCS 710/12"
+   ],
+   "note": "No pre-chargeback response period. The 30-day correct-and-resubmit right covers disapproved unpaid claims (see cure_rights)."
+  },
+  {
+   "id": "internal_appeal",
+   "label": "Internal appeal",
+   "sections_reviewed": [
+    "815 ILCS 710/6",
+    "815 ILCS 710/12",
+    "815 ILCS 710/29"
+   ],
+   "note": "No manufacturer-level appeal required. External routes are agreed arbitration, Board protest or circuit court (see protest_forum)."
+  },
+  {
+   "id": "stay_pending_dispute",
+   "label": "Stay pending dispute",
+   "sections_reviewed": [
+    "815 ILCS 710/6",
+    "815 ILCS 710/12(a), (b)",
+    "815 ILCS 710/29"
+   ],
+   "note": "No stay of a chargeback pending protest. The court stay power in Sec. 12(a)/(b) is limited to the effective date of an additional franchise, relocation, cancellation, termination, modification, non-renewal, succession or transfer refusal; it does not list chargebacks."
+  },
+  {
+   "id": "chargeback_hold",
+   "label": "Minimum wait after chargeback notice",
+   "sections_reviewed": [
+    "815 ILCS 710/6",
+    "815 ILCS 710/12"
+   ],
+   "note": null
+  },
+  {
+   "id": "new_information",
+   "label": "New information after decision",
+   "sections_reviewed": [
+    "815 ILCS 710/6",
+    "815 ILCS 710/12"
+   ],
+   "note": null
+  }
+ ],
+ "legal_review": [
+  {
+   "title": "Warranty repair-order chargebacks",
+   "summary": "Section 6(b) lets the manufacturer charge back 'false or unsubstantiated' claims within one year, yet also says no debit or chargeback of any warranty repair-order item may be made 'absent a finding of fraud or illegal actions by the dealer', and a third sentence requires court-established fraud; the statute does not reconcile them or say who makes the finding.",
+   "text": "Section 6(b) gives the manufacturer the right, within one year of payment or credit, to 'charge back any false or unsubstantiated claims'. A separate sentence in the same subsection says 'No debit reduction or charge back of any item on a warranty repair order may be made absent a finding of fraud or illegal actions by the dealer', and a third says the manufacturer 'retains the right to charge back any fraudulent claim' if it establishes fraud in an Illinois court. The statute does not reconcile the false-or-unsubstantiated right with the fraud-or-illegal-actions bar, does not say who makes the 'finding', and does not say whether the court-finding sentence is confined to post-window chargebacks. The Act's definition of 'Fraud' (Sec. 2(m)) reaches reckless misrepresentation and intentional non-disclosure of a material fact, not only intentional falsity. Which sentence the 2022 amendment (P.A. 102-232) added could not be confirmed from the public act text, so no later-in-time reading is offered.",
+   "action": "Obtain legal interpretation before imposing any debit or chargeback on a warranty repair order that does not rest on a documented finding of fraud or illegal actions by the dealer; for incentive and reimbursement-program chargebacks, note that the warranty-RO bar does not apply by its terms, but the fraud-court sentence may.",
+   "pinpoint": "815 ILCS 710/6(b), 10th and final paragraphs; 710/2(m)",
+   "pin_short": "710/6(b)",
+   "quotes": [
+    {
+     "quote": "to audit such claims within a one year period from the date the claim was paid or credit issued by the manufacturer or franchiser, and to charge back any false or unsubstantiated claims.",
+     "pinpoint": "815 ILCS 710/6(b), final paragraph (sentence beginning 'The manufacturer or franchiser shall have the right')"
+    },
+    {
+     "quote": "No debit reduction or charge back of any item on a warranty repair order may be made absent a finding of fraud or illegal actions by the dealer.",
+     "pinpoint": "815 ILCS 710/6(b), 10th paragraph (sentence beginning 'No debit reduction')"
+    },
+    {
+     "quote": "However, the manufacturer retains the right to charge back any fraudulent claim if the manufacturer establishes in a court of competent jurisdiction in this State that the claim is fraudulent.",
+     "pinpoint": "815 ILCS 710/6(b), final paragraph, last sentence"
+    },
+    {
+     "quote": "\"Fraud\", shall include, in addition to its normal legal connotation, the following: a misrepresentation in any manner, whether intentionally false or due to reckless disregard for truth or falsity, of a material fact",
+     "pinpoint": "815 ILCS 710/2(m)"
+    }
+   ]
+  },
+  {
+   "title": "Does the one-year period cap the chargeback or only the audit?",
+   "summary": "The one-year period attaches to the audit for warranty claims and to 'the audit and charge back provisions' for incentive programs; nothing says whether a chargeback from a timely audit may be taken after the year ends.",
+   "text": "For warranty claims Sec. 6(b) attaches the one-year period to the audit ('to audit such claims within a one year period ... and to charge back any false or unsubstantiated claims'). For incentive and reimbursement programs it applies 'the audit and charge back provisions ... for a period of one year'. The text does not say whether a chargeback that results from an audit begun inside the year may be taken after the year ends, and nothing in the Act settles it.",
+   "action": "Until counsel advises otherwise, complete both the audit and the chargeback within one year of the date the claim was paid or credit issued; treat a chargeback issued after that date, other than a court-established fraud chargeback, as unsupported by the text.",
+   "pinpoint": "815 ILCS 710/6(b), final paragraph",
+   "pin_short": "710/6(b)",
+   "quotes": [
+    {
+     "quote": "The audit and charge back provisions of this Section also apply to all other incentive and reimbursement programs for a period of one year after the date the claim was paid or credit issued by the manufacturer or franchiser.",
+     "pinpoint": "815 ILCS 710/6(b), final paragraph (second-to-last sentence)"
+    }
+   ]
+  }
+ ],
+ "penalties_line": "An improper audit or chargeback exposes the manufacturer to a dealer action for damages and injunctive relief, treble damages if willful or wanton, and a mandatory award of the dealer's reasonable attorney's fees, expert fees and costs if the dealer substantially prevails, including when the manufacturer simply stops the challenged conduct (815 ILCS 710/13), plus Board hearing costs assessed against the non-prevailing party (815 ILCS 710/29; 92 Ill. Adm. Code 1001.790); no license sanction reaches manufacturers.",
+ "protest_forum": {
+  "value": "Agreed arbitration (Sec. 12(a)); otherwise a Motor Vehicle Review Board protest under Secs. 12(b) and 29 for a remedy other than damages, commenced by timely notice of protest or within 60 days of written notice of the franchiser's determination, or a circuit-court action for non-damages relief within the same 60 days (Sec. 12(e)); damages, treble damages and fees in circuit court or agreed arbitration under Sec. 13. The 60-day clock runs only if the franchiser's notice identifies the Act provision; otherwise Sec. 14's 4-year period applies.",
+  "pinpoint": "815 ILCS 710/12(a), (b), (e); 710/29; 710/13; 710/14"
+ },
+ "pending": [
+  {
+   "bill": "IL SB1939 (104th GA)",
+   "status": "Not law. Amends 815 ILCS 710/2, 710/4 and 710/6 (introduced 2/6/2025; Senate floor amendments 1 and 2 adopted; passed Senate). ILGA status page read 2026-10-23 shows last action 5/09/2025, House Rule 19(a) re-referral to Rules Committee; the Atlas context records a further 3/20/2026 re-assignment to House Rules.",
+   "would_change": "Primarily direct-sales and dealer-network provisions. The bill text reprints the Sec. 6(b) audit, chargeback, no-debit-reduction and court-fraud sentences; because the plain-text copy shows no added/deleted-text markup, this pass could not independently confirm that those sentences are unchanged (the context's earlier review says they are). Treat as no change to the audit and chargeback rules unless the engrossed text shows otherwise."
+  }
+ ],
+ "notes": "Analytics search: Sec. 6 and Sec. 4 contain no use of 'analytics', 'data', 'algorithm', 'statistic' or 'survey'. The passages behind the auditor's 'odd language around analytics' are three consecutive sentences in Sec. 6(b): (1) parts reimbursed at retail 'provided that such dealer's prevailing retail price is not unreasonable when compared with that of the holders of motor vehicle franchises from the same manufacturer for identical parts in the geographic area'; (2) 'There shall be no reduction in payments due to preestablished market norms or market averages.'; (3) 'Manufacturers are prohibited from establishing restrictions or limitations of customer repair frequency due to failure rate indexes or national failure averages.' A fourth, in the same subsection, is the item-level 'No debit reduction or charge back of any item on a warranty repair order may be made absent a finding of fraud or illegal actions by the dealer.' Read together, benchmark-driven adjustments (norms, averages, failure-rate indexes) are barred, a case-by-case parts-price reasonableness comparison with same-make area dealers is allowed, and nothing addresses sample-based extrapolation. Paragraph numbering used in pinpoints counts the unnumbered paragraphs of Sec. 6(b) in order (1: adequate compensation standard; 2: time guides; 3: diagnostic time; 4: recall/stop-sell inclusion; 5: effective labor rate, diagnostic and TAC time; 6: once-per-year rate request; 7: 30-day approval, payment and deemed approval; 8: retail floor and parts price; 9: norms/averages and failure rates; 10: no-debit-reduction bar and unavailable-parts mileage; 11: recall/stop-sale interest and storage, no cost-recovery surcharges; 12 (final): 30-day claims rules, reasonable documentation, one-year audit and chargeback, incentive programs, court-established fraud). There is no Sec. 6.1 in the Act. Sec. 6(g) is '(Blank)'. Sec. 2 has no definition of warranty, audit, charge back, incentive, recall or service contract. Sources: www.ilga.gov blocked fetching (robots); the my.ilga.gov, ilga.gov and witnessslips.ilga.gov hosts served the same ILCS section pages and were used; Justia (2025 ILCS) was used only for Sec. 12 quotes because the ILGA conversion of 12(a) dropped two words. Not verified: 625 ILCS 5/5-501; the engrossed text of SB1939; which Sec. 6(b) sentences P.A. 102-232 added."
+}

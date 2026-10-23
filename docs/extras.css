@@ -597,3 +597,47 @@ main{padding-top:6px}
 .xl-recent .xd-eyebrow{display:none}
 .xc-table thead th{background:#142943!important;color:#fff!important}
 .xc-table thead th small,.xc-table thead th span{color:#dbe5f0!important}
+/* ---------- Audit brief (state pages): the rules an auditor needs before an audit, in audit order ---------- */
+.xb{margin:0 0 26px;border:1px solid #dbe2ea;border-radius:10px;padding:4px 20px 14px;background:#fff}
+.xb .ks-sectionhead{margin-top:10px}
+.xb-lead{font-size:15px;color:#24344a;margin:0 0 8px;line-height:1.5;max-width:980px}
+.xb-covers{font-size:14px;color:#24344a;margin:0 0 6px;line-height:1.5;border-left:4px solid #142943;padding-left:10px}
+.xb-meta{display:flex;flex-wrap:wrap;gap:4px 18px;font-size:13px;color:#46566b;margin:0 0 6px}
+.xb-lrlink{color:#6b3d00;font-weight:700}
+.xb-h3{display:flex;align-items:baseline;flex-wrap:wrap;gap:6px 10px;font-size:17px;color:#142943;margin:18px 0 6px;border-bottom:2px solid #142943;padding-bottom:4px}
+.xb-h3 small{font-size:13px;font-weight:400;color:#46566b}
+.xb-num{display:inline-flex;align-items:center;justify-content:center;width:24px;height:24px;border-radius:50%;background:#142943;color:#fff;font-size:13px;font-weight:700}
+.xb-rules{list-style:none;margin:0;padding:0}
+.xb-rule{border-bottom:1px solid #e3e8ef;padding:7px 0 6px}
+.xb-rule:last-child{border-bottom:0}
+.xb-line{display:grid;grid-template-columns:minmax(150px,190px) 1fr auto;gap:4px 14px;align-items:baseline;font-size:14.5px;line-height:1.5}
+.xb-label{font-weight:700;color:#142943}
+.xb-short{color:#1f2d40}
+.xb-pin{font-size:12.5px;white-space:nowrap;color:#0b57a8;font-weight:600}
+.xb-flag{display:inline-block;margin-left:6px;font-size:12px;font-weight:700;color:#6b3d00;border:1.5px solid #6b3d00;border-radius:4px;padding:0 5px;white-space:nowrap;background:#fff7ea}
+.xb-rule .kf-more{margin:2px 0 0;font-size:13.5px}
+.xb-rule .kf-more>summary{color:#46566b;font-size:13px}
+.xb-tags{display:flex;flex-wrap:wrap;gap:4px 16px;font-size:12.5px;color:#46566b;margin:4px 0 8px}
+.xb-tags b{color:#142943;margin-right:4px}
+.xb-why{font-size:13.5px;color:#24344a;background:#f1f5fa;padding:6px 10px;border-radius:6px}
+.xb-lrs{margin:8px 0 10px}
+.xb-lr{border:2px solid #6b3d00;background:#fff7ea;border-radius:8px;padding:10px 14px;margin:8px 0;color:#3a2200;font-size:14px;line-height:1.5}
+.xb-lr p{margin:0 0 6px}.xb-lr p:last-child{margin:0}
+.xb-lr-t{font-weight:700;letter-spacing:.3px}
+.xb-pen{font-size:14px;color:#24344a;margin:8px 0;line-height:1.5}
+.xb-na{font-size:14px;color:#24344a;margin:14px 0 6px;line-height:1.5;border-top:1px dashed #9fb0c4;padding-top:10px}
+.xb-other{margin:6px 0 0;font-size:14px}
+.xb-other>summary{cursor:pointer;color:#0b57a8;font-weight:600;text-decoration:underline;text-underline-offset:3px}
+.xb-other h4{margin:14px 0 6px;color:#142943;font-size:15px}
+.xb-nalist,.xb-src{margin:0;padding-left:18px;line-height:1.5}
+.xb-nalist li,.xb-src li{margin:0 0 6px}
+.xb-more .xb-line{grid-template-columns:minmax(150px,190px) 1fr auto}
+.xb-loading{min-height:80px}
+.xb .xfoot{margin:12px 0 0}
+/* score card, collapsed below the brief */
+.ki-fold{border:1px solid #dbe2ea;border-radius:10px;margin:0 0 14px;background:#fff}
+.ki-fold>summary{padding:12px 16px}
+.ki-sum{display:inline-flex;flex-wrap:wrap;align-items:center;gap:6px 10px;font-size:15px;color:#142943}
+.ki-fold .ki-card{margin:0;border:0;border-top:1px solid #dbe2ea;border-radius:0}
+@media(max-width:700px){.xb{padding:4px 14px 12px}.xb-line{grid-template-columns:1fr;gap:2px}.xb-pin{white-space:normal}.xb-h3{font-size:16px}}
+@media print{.xb-rule .kf-more,.xb-other{display:none}.xb{border:0;padding:0}}

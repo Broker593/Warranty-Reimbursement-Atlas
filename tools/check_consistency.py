@@ -170,6 +170,51 @@ def run(build_date):
             continue
         for m in banned.finditer(open(fp, encoding='utf-8', errors='ignore').read()):
             F(os.path.relpath(fp, root), f'company-specific reference "{m.group(0)}" must not be published')
+    # 13. audit briefs (data/audit-brief/XX.json): well-formed, quotes within 40 words, every brief line has an answer and a cite,
+    #     the brief's audit window agrees with audit-fields lookback, and the index points at the PDF the build will write
+    bdir = os.path.join(DOCS, 'data', 'audit-brief')
+    if os.path.isdir(bdir):
+        bidx = json.load(open(os.path.join(bdir, 'index.json'), encoding='utf-8'))
+        secs = {s['id'] for s in bidx.get('sections', [])}
+        EFF = {'required', 'prohibited', 'permitted', 'conditional', 'not_expressly_addressed'}
+        STA = {'express', 'reasoned_interpretation', 'conflict', 'unresolved'}
+        for st, meta in bidx.get('states', {}).items():
+            fp = os.path.join(bdir, st + '.json')
+            if not os.path.exists(fp):
+                F(st, 'audit-brief index lists the state but data/audit-brief/' + st + '.json is missing'); continue
+            b = json.load(open(fp, encoding='utf-8'))
+            vd = (b.get('verified') or {}).get('date') or ''
+            if meta.get('verified') != vd:
+                F(st, f'audit-brief index verified date {meta.get("verified")} != state file {vd}')
+            if meta.get('pdf') != f'downloads/audit-briefs/{st}-audit-brief-{vd}.pdf':
+                F(st, f'audit-brief index pdf path must be downloads/audit-briefs/{st}-audit-brief-{vd}.pdf')
+            ids = [x.get('id') for x in b.get('rules', [])]
+            if len(ids) != len(set(ids)):
+                F(st, 'audit-brief has duplicate rule ids')
+            for x in b.get('rules', []):
+                tag = f'audit-brief rule {x.get("id")}'
+                if x.get('section') not in secs: F(st, f'{tag}: unknown section {x.get("section")}')
+                if x.get('effect') not in EFF: F(st, f'{tag}: bad effect {x.get("effect")}')
+                if x.get('status') not in STA: F(st, f'{tag}: bad status {x.get("status")}')
+                if x.get('status') != 'express' and not x.get('reason'): F(st, f'{tag}: status {x.get("status")} needs a reason')
+                if not x.get('pinpoint') or not x.get('pin_short'): F(st, f'{tag}: missing pinpoint')
+                if x.get('brief') and not (x.get('short') or '').strip(): F(st, f'{tag}: on the brief but has no short line')
+                if x.get('brief') and len((x.get('short') or '').split()) > 60: W(st, f'{tag}: short line is {len(x["short"].split())} words (aim for 45 or fewer)')
+                q = x.get('quote')
+                if q and len(q.split()) > 40: F(st, f'{tag}: quote is {len(q.split())} words (limit 40)')
+                if not q and not x.get('note') and x.get('effect') != 'not_expressly_addressed': W(st, f'{tag}: no quote and no note')
+            for l in b.get('legal_review', []):
+                if not (l.get('title') and l.get('text') and l.get('action') and l.get('pinpoint')): F(st, 'audit-brief legal_review item is incomplete')
+            flagged = [x['id'] for x in b.get('rules', []) if x.get('status') in ('conflict', 'unresolved')]
+            if flagged and not b.get('legal_review'):
+                F(st, f'audit-brief has conflict/unresolved rules {flagged} but no legal_review block')
+            aw = next((x for x in b.get('rules', []) if x.get('id') == 'audit_window'), None)
+            lb = ((audit.get(st) or {}).get('chargebacks') or {}).get('lookback_months')
+            if aw and lb is not None:
+                m = re.search(r'\b(\d+)\s*months?\b|\b(one|1)\s*year\b', (aw.get('short') or aw.get('value') or '').lower())
+                months = int(m.group(1)) if m and m.group(1) else (12 if m else None)
+                if months is not None and months != lb:
+                    F(st, f'audit-brief audit window says {months} months but audit-fields lookback is {lb}')
     return fails, warns
 
 
