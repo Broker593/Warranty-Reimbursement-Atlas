@@ -680,6 +680,59 @@
     "After a three-round second-opinion review of the four-state research: operating practice separated from statutory rules ('Practice' lines); California's Board-protest clock corrected (six months from the later of the disapproval notice or the end of the appeal process); Illinois clerical-error row recorded as unresolved (the warranty-RO bar was added in 2022 and conflicts with the older 'false or unsubstantiated' right) with a provisional score shown as a range; Florida and Arkansas lines narrowed to what the text says."
    ],
    "method": "Not a law check (the Monday check of 2026-10-19 stands; its tracked laws are repeated here). Research: each state's full warranty statute read and every existing audit field validated against it, plus an open-ended search for rules outside the 14 scored limits; every quote machine-checked against the source text; approach agreed in a three-round second-opinion review on 2026-10-22."
+  },
+  {
+   "check_date": "2026-10-26",
+   "type": "weekly",
+   "run_by": "Claude (scheduled)",
+   "headline": "0 enacted changes, 3 pending bills unchanged, 0 law-data updates",
+   "summary": "No new enacted law or agency rule found. NY A8773 and PA SB 1182 re-checked on official sites with no new recorded action (PA lists an Oct 5 Commerce Committee voting meeting with no outcome shown). IL SB1939 official page returned HTTP 503. No news items met the bar this week.",
+   "items": [
+    {
+     "category": "pending",
+     "state": "PA",
+     "bill": "SB 1182 (2025-26), PN 1866",
+     "effective": null,
+     "status": "Re-checked on palegis.us 2026-10-26: passed Senate 50-0 on 06/30/2026, referred to House Commerce 07/01/2026. A Commerce Committee voting meeting is listed for 10/05/2026 but the page records no outcome. Not law.",
+     "last_action_date": "2026-07-01",
+     "summary_short": "In House Commerce; listed for a 10/5 committee vote with no recorded outcome.",
+     "summary": "No recorded action since 07/01/2026. Session ends 11/30/2026.",
+     "source_url": "https://www.palegis.us/legislation/bills/2025/sb1182",
+     "atlas_impact": "Watch only, unchanged."
+    },
+    {
+     "category": "pending",
+     "state": "NY",
+     "bill": "A8773 (Magnarelli) / S8360 (Cooney), 2025-26",
+     "effective": null,
+     "status": "Re-checked on nyassembly.gov 10/26/2026: passed Assembly 06/01/2026, delivered to Senate, referred to Rules; no Senate action since.",
+     "last_action_date": "2026-06-01",
+     "summary_short": "No Senate action since referral; still pending.",
+     "summary": "No change since baseline. Bills die 12/31/2026.",
+     "source_url": "https://nyassembly.gov/leg/?default_fld=&leg_video=&bn=A08773&term=2025&Summary=Y&Actions=Y",
+     "atlas_impact": "Watch only, unchanged."
+    },
+    {
+     "category": "pending",
+     "state": "IL",
+     "bill": "SB1939 (104th GA), as amended by Senate Floor Amendments 1-2",
+     "effective": null,
+     "status": "Official page returned HTTP 503 again this run; no new action found by search. Prior status carried forward. Not law.",
+     "last_action_date": "2026-03-20",
+     "summary_short": "No House action since Rules re-assignment; still pending.",
+     "summary": "No change since baseline. Could move in the Nov/Dec 2026 veto or lame-duck session.",
+     "source_url": "https://www.ilga.gov/Legislation/BillStatus?DocNum=1939&GAID=18&DocTypeID=SB&SessionID=114",
+     "atlas_impact": "Watch only, unchanged."
+    }
+   ],
+   "site_changes": [],
+   "no_change_states": [],
+   "gaps": [
+    "ilga.gov returned HTTP 503, so IL SB1939 rests on search results and prior status.",
+    "Web search is not a full 50-state official-site sweep.",
+    "Searches surfaced no Warranty Week, law-firm or trade-press items dated inside the window."
+   ],
+   "method": "Re-checked three pending items (NY and PA on official sites; IL unavailable). Ran general and targeted web searches for new warranty-reimbursement laws, board rulings and trade coverage. No audit-fields, key-facts or procedure data changed."
   }
  ]
 }
