@@ -32,7 +32,7 @@
      "states": [
       "CA"
      ],
-     "topic": "A retail-rate vendor urges dealership buyers to run a warranty reimbursement review within 60 days of an acquisition, estimating stores on outdated rates leave about $8,000–$12,000 a month on the table.",
+     "topic": "A retail-rate vendor urges dealership buyers to run a warranty reimbursement review within 60 days of an acquisition, estimating stores on outdated rates leave about $8,000\u2013$12,000 a month on the table.",
      "why_it_matters": "Signals where dealer-side vendors are steering buyers: expect retail-rate submissions soon after buy-sells. Rate submissions tied to ownership changes may deserve a closer look against the state's RO-sample rules.",
      "perspective": "dealer-side"
     }
@@ -51,7 +51,7 @@
      "states": [
       "CT"
      ],
-     "topic": "Dealer compensation for recalled used vehicles in inventory under stop-sale or do-not-drive orders (at least 1% of value per month after 30 days). Covers claim processing under § 42-133s(j), the national-program or agreement alternative, and the ban on offsets through chargebacks or incentive cuts. Effective 10/1/2026.",
+     "topic": "Dealer compensation for recalled used vehicles in inventory under stop-sale or do-not-drive orders (at least 1% of value per month after 30 days). Covers claim processing under \u00a7 42-133s(j), the national-program or agreement alternative, and the ban on offsets through chargebacks or incentive cuts. Effective 10/1/2026.",
      "why_it_matters": "From 10/1/2026 manufacturers' recall and warranty claim systems must accept and pay Connecticut used-inventory stop-sale claims on the 30-day/1-year-audit timetable, and may not claw these payments back through chargebacks or incentive programs unless the action applies uniformly to every same-line-make dealer in the state.",
      "perspective": "neutral",
      "kind": "law"
@@ -66,7 +66,7 @@
       "IL"
      ],
      "topic": "The Illinois Motor Vehicle Review Board sustained a protest by 33 VW/Audi dealers. It held that VWNA's quarterly warranty cost-recovery surcharge, debited to dealers' parts accounts to offset the 1.5x time-allowance law, violates 815 ILCS 710/6. VWNA's appeal deadline was 9/24/2026.",
-     "why_it_matters": "This is the first board ruling that recovering statutory warranty uplift through per-vehicle or parts-account debits is an illegal surcharge. Manufacturers should confirm that nothing in their Illinois pricing or charge structure is tied to warranty reimbursement, and should watch for the same argument under other anti-cost-recovery statutes, such as RI § 31-5.1-6(g).",
+     "why_it_matters": "This is the first board ruling that recovering statutory warranty uplift through per-vehicle or parts-account debits is an illegal surcharge. Manufacturers should confirm that nothing in their Illinois pricing or charge structure is tied to warranty reimbursement, and should watch for the same argument under other anti-cost-recovery statutes, such as RI \u00a7 31-5.1-6(g).",
      "perspective": "dealer-side",
      "kind": "law"
     },
@@ -100,6 +100,11 @@
    "week_of": "2026-10-26",
    "check_date": "2026-10-26",
    "items": []
+  },
+  {
+   "week_of": "2026-11-02",
+   "check_date": "2026-11-02",
+   "items": []
   }
  ],
  "limits": {
@@ -110,7 +115,7 @@
  "sources": [
   {
    "group": "Law changes and rulings",
-   "name": "Nelson Mullins · Driving Forward blog",
+   "name": "Nelson Mullins \u00b7 Driving Forward blog",
    "url": "https://www.nelsonmullins.com/insights/blogs/driving-forward-developments-in-transportation-law-and-innovation",
    "type": "law firm",
    "note": "Tracks state warranty-reimbursement amendments (e.g., the 2025 \"reasonableness\" roundup, New Jersey time multiplier)."
@@ -119,14 +124,14 @@
    "group": "Law changes and rulings",
    "name": "Bass Sox Mercer",
    "url": "https://bsm-law.com/",
-   "type": "law firm · dealer-side",
+   "type": "law firm \u00b7 dealer-side",
    "note": "Dealer franchise firm; warranty-reimbursement and time-guide trend pieces."
   },
   {
    "group": "Law changes and rulings",
    "name": "Bellavia Blatt",
    "url": "https://www.dealerlaw.com/retail-warranty-reimbursement/",
-   "type": "law firm · dealer-side",
+   "type": "law firm \u00b7 dealer-side",
    "note": "Dealer law firm; retail-rate commentary."
   },
   {
@@ -161,7 +166,7 @@
    "group": "Law changes and rulings",
    "name": "NADA and state dealer associations",
    "url": "https://www.nada.org/",
-   "type": "dealer association · dealer-side",
+   "type": "dealer association \u00b7 dealer-side",
    "note": "Legislative summaries (e.g., VADA, IADA, CNCDA)."
   },
   {
@@ -203,21 +208,21 @@
    "group": "Industry commentary",
    "name": "California New Car Dealer Quarterly (CNCDA)",
    "url": "https://california-new-car-dealer.thenewslinkgroup.org/",
-   "type": "dealer association magazine · dealer-side",
+   "type": "dealer association magazine \u00b7 dealer-side",
    "note": "Dealer and vendor views on retail-rate reimbursement."
   },
   {
    "group": "Industry commentary",
    "name": "Alliance for Automotive Innovation",
    "url": "https://www.autosinnovate.org/",
-   "type": "manufacturer trade group · manufacturer-side",
+   "type": "manufacturer trade group \u00b7 manufacturer-side",
    "note": "Manufacturer-side policy positions for balance."
   },
   {
    "group": "Industry commentary",
    "name": "Retail-rate vendors (Armatus Dealer Uplift and others)",
    "url": "https://dealeruplift.com/",
-   "type": "vendor · dealer-side",
+   "type": "vendor \u00b7 dealer-side",
    "note": "Shows what dealers are being sold and told; include only when it signals a trend, and label it."
   }
  ]
